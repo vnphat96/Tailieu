@@ -1,0 +1,970 @@
+%Dạng 38
+\setcounter{section}{37}
+\setcounter{ex}{0}
+\section{Khoảng cách từ một điểm tới mặt phẳng}
+\subsection{Kiến thức cần nhớ}
+\begin{khung}
+	\subsubsection{Phương pháp chung}
+	Khoảng cách từ điểm $M$ đến mặt phằng $(P)$ là $M H$, với $H$ là hình chiếu vuông góc của $M$ trên mặt phẳng $(P)$.\\
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+			\path
+			(0,0) coordinate (A)
+			(-1.9,-1.6)coordinate (B)
+			(1.6,-1.6)coordinate (C)
+			($(A)+(C)-(B)$)coordinate (D)
+			($(A)!0.5!(C)$)coordinate (H)
+			($(H)+(0,2.6)$) coordinate (M)
+			;
+			\draw (M)--(H);
+			\draw (A)--(B)--(C)--(D)--(A);
+			\foreach \p/\q in {M/90,H/-90}
+			\fill[black] (\p) circle (1.0pt)node[shift={(\q:3mm)}]{$\p$};
+			\draw pic[draw=black,angle radius=0.2cm] {right angle = M--H--A}; 
+			\draw pic[draw=black,angle radius=0.2cm] {right angle = M--H--D}; 		
+			\node at ($(B)+(0.3,0.32)$)[right]{$(P)$};
+			
+		\end{tikzpicture}
+	\end{center}
+	
+	Phương pháp giải chung: Muốn tìm khoảng cách từ một điểm đến một mặt phẳng, trước hết ta phải tìm hình chiếu vuông góc của điểm đó trên mặt phẳng. Việc xác định hình chiếu của điểm trên mặt phẳng ta thường dùng một trong các cách sau:
+	\begin{itemize}
+	\item \textbf{Cách 1:}\\		
+	+ Bước 1: Tìm một mặt phẳng $(Q)$ chứa $M$ và vuông góc với $(P)$.\\
+	+ Bước 2: Xác định giao tuyến: $\Delta=(P) \cap(Q)$.\\
+	+ Bước 3: Trong $(Q)$, dựng $M H \perp \Delta,(H \in \Delta)$.\\
+	Vì $\heva{& (P) \perp(Q) \\ & \Delta=(P) \cap(Q) \Rightarrow MH \perp(P) \Rightarrow d(M,(P))=M H\\&(Q) \supset M H \perp \Delta}\\ $
+	
+
+\begin{center}
+		\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+	\path
+	(0,0) coordinate (A)
+	(-1.9,-1.6)coordinate (B)
+	(1.6,-1.6)coordinate (C)
+	($(A)+(C)-(B)$)coordinate (D)
+	($(A)!0.5!(C)$)coordinate (H)
+	($(A)!0.3!(B)$)coordinate (I)
+	($(I)+(0,2)$)coordinate (K)
+	($(C)!0.3!(D)$)coordinate (J)
+	($(J)+(0,2)$)coordinate (P)
+	($(A)!0.7!(D)$)coordinate(U)
+	($(H)+(0,1.5)$) coordinate (M)
+	;
+	\draw (M)--(H) (I)--(J) (I)--(K) (J)--(P) (P)--(K);
+	\draw (I)--(B)--(C)--(D)--(U);
+	\draw[dashed](I)--(A) (A)--(U);
+	\foreach \p/\q in {M/90,H/-90}
+	\fill[black] (\p) circle (1.0pt)node[shift={(\q:3mm)}]{$\p$};
+	\draw pic[draw=black,angle radius=0.2cm] {right angle = M--H--A}; 
+	\draw pic[draw=black,angle radius=0.2cm] {right angle = M--H--D}; 		
+	\node at ($(B)+(0.3,0.32)$)[right]{$(P)$};
+	\node at ($(B)+(1.3,2.72)$)[right]{$(Q)$};
+\end{tikzpicture}
+
+\end{center}
+
+\item \textbf{Cách 2}
+Nếu đã biết trước một đường thẳng $d \perp(P)$ thì ta sẽ dựng $M x / / d$, khi đó: $H=M x \cap(P)$ là hình chiếu vuông góc của $M$ trên $(P)$.
+$$
+\Rightarrow d(M,(P))=M H
+$$
+	\begin{center}
+	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+		\path
+		(0,0) coordinate (A)
+		(-1.9,-1.6)coordinate (B)
+		(1.6,-1.6)coordinate (C)
+		($(A)+(C)-(B)$)coordinate (D)
+		($(A)!0.5!(C)$)coordinate (H)
+		($(A)!0.8!(C)$)coordinate (K)
+		($(K)+(0,2.4)$)coordinate (K1)
+		($(K)+(0,-1)$)coordinate (K2)
+		($(H)+(0,2.0)$) coordinate (M)
+		;
+		\draw (M)--(H) (K1)--(K);
+		\draw[dashed] (K)--(K2);
+		\draw (A)--(B)--(C)--(D)--(A);
+		\foreach \p/\q in {M/90,H/-90}
+		\fill[black] (\p) circle (1.0pt)node[shift={(\q:3mm)}]{$\p$};
+		\draw pic[draw=black,angle radius=0.2cm] {right angle = K1--K--D}; 
+		\draw pic[draw=black,angle radius=0.2cm] {right angle = M--H--D}; 		
+		\node at ($(B)+(0.3,0.32)$)[right]{$(P)$};
+		\node at ($(K)+(0,1.8)$)[right]{$d$};
+	\end{tikzpicture}
+\end{center}
+
+\item \textbf{Cách 3}
+
+Dựa vào tính chất trục của tam giác: Cho $\triangle A B C$ nằm trên $(P)$, nếu $M A=M B=M C$ thì hình chiếu vuông góc của điểm $M$ trên $(P)$ chính là tâm $O$ của đường tròn ngoại tiếp $\triangle A B C$.
+Khi đó: $M O \perp(P) \Rightarrow d(M,(P))=M O$.
+
+\end{itemize}
+	\subsubsection{Khoảng cách dựng trực tiếp}
+	\begin{itemize}
+		\item \textbf{Khoảng cách từ chân đường cao tới mặt bên }
+		
+		Bài toán: Cho hình chóp có đỉnh $S$ có hình chiếu vuông góc lên mặt đáy là $H$. Tính khoảng cách từ điêm $H$ đến mặt bên $(S A B)$.\\
+		+ Kẻ $H I \perp A B,(I \in A B)$.\\
+		+ Kẻ $H K \perp S I,(K \in S I)$\\
+		Khi đó: $$d(H,(S A B))=HK=\dfrac{SH \cdot HI}{\sqrt{S H^2+H I^2}}$$.\\
+		
+		\item \textbf{Khoảng cách từ một điểm trên mặt đáy tới mặt đứng(chứa đường cao)}
+		
+		Bài toán: Cho hình chóp có đỉnh $S$ có hình chiếu vuông góc lên mặt đáy là $H$. Tính khoảng cách tù điêm $A$ bất  kì đến mặt bên $(SHB)$.\\
+		
+		+ Kẻ $A K \perp H B$\\
+		+ $\heva{&AK \perp HB \\&AK \perp SH} \Rightarrow AK \perp(SHB) \Rightarrow d(A,(S H B))=A K$
+	
+		\item \textbf{Khối chóp có các cạnh bên bằng nhau}
+		
+		Cho hình chóp có đỉnh $S$ có các cạnh bên có độ dài bằng nhau: $S A=S B=S C=S D$ (đáy có thể là bốn đỉnh hoạc ba đỉnh). Khi đó nếu như O là tâm đường tròn ngoại tiếp đi qua các đỉnh nằm trên mặt đáy thì $SO$ là trục đường tròn ngoại tiêp của đa giác đáy hay nói cách khác: $S O \perp(A B C D) \Rightarrow d(S,(A B C D))=S O$.\\
+		Chú ý:\\
+		Nếu đáy là:\\
+		+ Tam giác đều, $O$ là trọng tâm.\\
+		+ Tam giác vuông, $O$ là trung điểm cạnh huyền.\\
+		+ Hình vuông, hình chữ nhật, $O$ là giao của 2 đường chéo đồng thời là trung điểm mỗi đường.
+	\end{itemize}
+
+	\subsubsection{Khoảng cách dựng gián tiếp}
+	Giả sử ta muốn dựng trục tiếp khoảng cách tù điểm $(P)$ tới mặt phẳng $(P)$ mà không thực hiện được. Đồng thời từ điểm $B$ ta lại dựng được trực tiếp khoảng cách tới khi đó ta sẽ thục hiện tính khoảng cách gián tiếp như sau:
+	\begin{itemize}
+		\item \textbf{Cách 1(Đổi điểm) Tính thông qua tỉ số khoảng cách.}
+
+  TH1: Khi $AB \| (P)$ thì:$$\mathrm{d}(A,(P))=\mathrm{d}(B,(P))$$
+  
+  TH2: Khi $AB  \cap(P) = \{I\}$ thì:$$\dfrac{\mathrm{d}(A,(P))}{\mathrm{d}(B,(P))}=\dfrac{A I}{B I}$$
+		
+		\item \textbf{Cách 2 (Đổi đỉnh): Sử dụng phương pháp thể tích để tìm khoảng cách:}
+		
+		Bài toán tính khoảng cách từ một điểm đến một mặt phẳng trong nhiều truờng hợp có thể qui về bài toán thể tích khối đa diện. Việc tính khoảng cách này dưa vào công thức:\\
+		$$h=\dfrac{3 V}{S}$$ $V, S, h$ lần lượt là thể tích, diện tích đáy và chiều cao của hình chóp.\\
+		$$h=\dfrac{V}{S}$$ $V, S, h$ lần lượt là thể tích, diện tích đáy và chiêu cao của hình lăng trụ.\\
+		
+\textit{		Phương pháp này áp dụng đươc trong trường hợp sau: Giả sử có thể qui bài toán tìm khoảng cách về bài toán tìm chiều cao của một hình chóp (hoặc một lăng trụ) nào đó. Dĩ nhiên, các chiều cao này thuờng là không tính được trục tiếp bằng cách sử dụng các phương pháp thông thường như định lí Pitago, công thức luợng giác,.. Tuy nhiên, các khối đa diện này lại dễ dàng tính được thể tích và diện tích đáy. Như vậy, chiều cao của nó sẽ được xác định bởi công thức đơn giản trên.
+		}
+	\end{itemize}
+\end{khung}
+\subsection{Bài tập mẫu}
+\Opensolutionfile{ans}[ans/ANS-DANG-38]
+\begin{khung}
+%	\setcounter{vd}{37}% Reset lại số đếm câu hỏi
+	\begin{vd}[Đề minh họa BGD 2022-2023]%[Trương Hữu Đăng]%[1H3K5-3]
+		\immini{
+			Cho hình chóp đều $S.ABCD$ có chiều cao $a$, $AC=2a$ (tham khảo hình bên). Khoảng cách từ $B$ đến mặt phẳng $(SCD)$ bằng
+			\choice
+			{$\dfrac{\sqrt{3}}{3}a$}
+			{$\sqrt{2}a$}
+			{\True $\dfrac{2 \sqrt{3}}{3}a$}
+			{$\dfrac{\sqrt{2}}{2}a$}}{	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+				\path
+				(0,0) coordinate (A)
+				(-1.9,-1.6)coordinate (B)
+				(1.6,-1.6)coordinate (C)
+				($(A)+(C)-(B)$)coordinate (D)
+				($(A)!0.5!(C)$)coordinate (O)
+				($(O)+(0,3.5)$) coordinate (S)
+				($(C)!0.5!(D)$) coordinate (H)
+				($(S)!0.6!(H)$) coordinate (I)
+				;
+				\draw (S)--(B)--(C)--(D)--cycle (S)--(C) (S)--(H);
+				\draw[dashed] (O)--(S)--(A)--(D) (C)--(A)--(B)--(D) (O)--(H) (O)--(I);	
+				\foreach \p/\q in {S/90,A/-100,B/-90,C/-90,D/0,O/-90,H/-90,I/90}
+				\fill[black] (\p) circle (1.0pt)node[shift={(\q:3mm)}]{$\p$};
+				\draw pic[draw=black,angle radius=0.2cm] {right angle = S--O--A}; 
+				\draw pic[draw=black,angle radius=0.2cm] {right angle = S--O--D};
+				\draw pic[draw=black,angle radius=0.2cm] {right angle = O--I--H}; %Lệnh đánh dấu góc vuông BAC 		
+		\end{tikzpicture}}
+			\loigiai{
+				 Gọi $O=A C \cap B D, H$ là trung điểm $C D$. Trong $(S O H)$, kẻ $O I \perp S H$.\\
+				Có $\heva{&C D \perp S O \\& CD \perp S H} \Rightarrow C D \perp(S O H) \Rightarrow C D \perp O I$.\\
+				Mà $OI \perp S H$ nên $O I \perp(S C D) \Rightarrow d(O,(S C D))=OI$.\\
+				Vì $O$ là trung điểm $BD$ nên $$\mathrm{d}(B,(SCD))=\mathrm{d}(O,(SCD))=2OI=\dfrac{2SO \cdot OH}{\sqrt{S O^2+O H^2}}$$\\
+				Có $AD=AC \sin 45^{\circ}=a \sqrt{2}, OH=a \dfrac{\sqrt{2}}{2}\\ \Rightarrow \mathrm{d}(B,(S C D))=\dfrac{2 \sqrt{3}}{3}a$.
+			}
+	\end{vd}
+\end{khung}
+
+\subsection{Bài tập tương tự và phát triển}
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$ và cạnh bên $SB$ vuông góc với mặt phẳng đáy. Cho biết $SB=3a$, $AB=4a$, $BC=2a$. Tính khoảng cách từ $B$ đến mặt phẳng $(SAC)$.
+	\choice
+	{\True $\dfrac{12\sqrt{61}a}{61}$}
+	{$\dfrac{4a}{5}$}
+	{$\dfrac{12\sqrt{29}a}{29}$}
+	{$\dfrac{3\sqrt{14}a}{14}$}
+	\loigiai{
+		\immini
+		{
+			Trong tam giác $ABC$ kẻ $BI\perp AC$ và trong tam giác $SBI$ kẻ $BH\perp SI$.\\
+			Ta có $\heva{& AC\perp BI\\ & AC\perp SB
+			}\\ \Rightarrow AC\perp (SBI)$ $\Rightarrow (SAC)\perp (SBI)$.\\
+			Ta có  $\heva{&(SAC)\perp (SBI)\\ &(SAC) \cap (SBI)=SI\\ & BH \perp SI}$ \\
+			$\Rightarrow BH\perp (SAC)$ $\Rightarrow {\rm d}\left( B,(SAC)\right)=BH$.\\
+			Ta có $\dfrac{1}{BH^2}=\dfrac{1}{BI^2}+\dfrac{1}{BS^2}=\dfrac{1}{BA^2}+\dfrac{1}{BC^2}+\dfrac{1}{BS^2}=\dfrac{61}{144a^2}$.\\
+			Suy ra ${\rm d} \left( B,(SAC)\right)=BH=\dfrac{12a\sqrt{61}}{61}$.
+		}
+		{
+			\begin{tikzpicture}[scale=0.6, line join=round, line cap=round,>=stealth]
+				\tkzDefPoint[label=175:$B$](0,0){B}
+				\tkzDefPoint[label=195:$A$](2,-2){A}
+				\tkzDefPoint[label=-5:$C$](6,0){C}
+				\tkzDefShiftPoint[B](90:5){S}
+				\tkzLabelPoints[above](S)
+				\tkzDefBarycentricPoint(A=1,C=1.5) \tkzGetPoint{I}
+				\tkzDefBarycentricPoint(S=1,I=1.5) \tkzGetPoint{H}
+				\tkzLabelPoints[below](I)
+				\tkzLabelPoints[right](H)
+				\tkzDrawPoints[fill=black](A,B,C,S,H,I)
+				\tkzDrawSegments(A,B C,S S,A S,B A,C S,I)
+				\tkzDrawSegments[style=dashed](B,C B,I B,H)
+				\tkzMarkRightAngles(S,B,A S,B,C B,I,A B,H,I A,B,C)
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thang vuông tại $A$ và $B$, $AB = BC =a, AD=2a$. Biết $SA = a\sqrt{3}, SA\perp (ABCD)$. Gọi $H$ là hình chiếu của $A$ trên $(SBC)$. Tính khoảng cách $d$ từ $H$ đến mặt phẳng $(SCD)$.
+	\choice
+	{$d=\dfrac{3a\sqrt{50}}{80}$}
+	{\True $d=\dfrac{3a\sqrt{30}}{40}$}
+	{$d=\dfrac{3a\sqrt{10}}{20}$}
+	{$d=\dfrac{3a\sqrt{15}}{60}$}
+	\loigiai{
+		\immini{
+			Dựng hệ trục tọa độ $Axyz$ với $AD$ trùng với $Ox$, $AB$ trùng với $Oy$, $AS$ trùng với $Oz$. Không mất tính tổng quát ta có thể cho $a=1$, khi đó ta có $A(0;0;0), B(0;1;0), D(2;0;0), S(0;0;\sqrt{3}), C(1;1;0)$.\\
+			Vì $(SBC)\perp (SAB)$ nên $H\in SB$. Phương trình đường $SB: \heva{&x=0\\&y=1+t\\&z=-\sqrt{3}t},t\in \mathbb{R}\Rightarrow H(0;1+t;-\sqrt{3}t)$.\\
+			$\Rightarrow \vec{AH}\cdot\vec{SB}=0\Leftrightarrow t=-\dfrac{1}{4}\Rightarrow H\left(0;\dfrac{3}{4};\dfrac{\sqrt{3}}{4}\right)$.\\
+		}
+		{
+			\begin{tikzpicture}[scale=0.7]
+				\tkzDefPoints{-3/5/S, -3/0/A, -2/-2/B, 2/-2/C}
+				\tkzDefBarycentricPoint(A=1,C=2,B=-2)\tkzGetPoint{D}
+				%\tkzInterLL(A,C)(B,D)\tkzGetPoint{O}
+				%\tkzCentroid(S,C,D)\tkzGetPoint{G}
+				%\tkzDefMidPoint(S,D)\tkzGetPoint{M}
+				%\tkzDefBarycentricPoint(S=1,C=2)\tkzGetPoint{I}
+				%\tkzDefMidPoint(A,S)\tkzGetPoint{N}
+				%\tkzDefMidPoint(S,C)\tkzGetPoint{J}
+				\coordinate (H) at ($(S)!0.66!(B)$);
+				\tkzLabelPoints[above](S)
+				\tkzLabelPoints[left](A)
+				\tkzLabelPoints[right](D,H)
+				\tkzLabelPoints[below](B,C)
+				\tkzDrawSegments[dashed](A,D)
+				\tkzDrawSegments(S,A S,D S,B S,C A,B B,C C,D A,H)
+				\tkzMarkRightAngle(B,A,D)
+				\tkzMarkRightAngle(A,B,C)
+				\tkzMarkRightAngle(A,H,B)
+			\end{tikzpicture}
+		}Phương trình mặt phẳng $(SCD)$ đi qua $D$ và có véc-tơ pháp tuyến $\vec{n}=\left[\vec{CD},\vec{CS}\right]=(\sqrt{3};\sqrt{3};2)$: $\sqrt{3}x+\sqrt{3}y+2z-2\sqrt{3}=0$.\\
+		Vậy $d_{(H,(SCD))}=\dfrac{\left|0+\dfrac{3\sqrt{3}}{4}+\dfrac{2\sqrt{3}}{4}-2\sqrt{3}\right|}{\sqrt{3+3+4}}=\dfrac{3\sqrt{3}}{4\sqrt{10}}=\dfrac{3\sqrt{30}}{40}$.
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABCD$ có đáy là hình vuông $ABCD$ cạnh $a$, mặt phẳng $(SAB)$ vuông góc với đáy và tam giác $SAB$ đều. Gọi $M$ là trung điểm của $SA$. Tính khoảng cách từ $M$ đến mặt phẳng $(SCD)$.
+	\choice
+	{\True $\dfrac{a\sqrt{21}}{14}$}
+	{$\dfrac{a\sqrt{21}}{7}$}
+	{$\dfrac{a\sqrt{3}}{14}$}
+	{$\dfrac{a\sqrt{3}}{7}$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[line cap=round,line join=round,>=stealth,x=1.0cm,y=1.0cm, scale=0.7]
+				\tkzInit[xmax=8,xmin=-6,ymax=8,ymin=-3]
+				\tkzDefPoint(0,0){A}
+				\tkzDefShiftPoint[A](0:7){D}
+				\tkzDefShiftPoint[A](-160:4){B}
+				\tkzDefPointBy[translation = from A to D](B)\tkzGetPoint{C}
+				\coordinate (H) at ($(A)!.5!(B)$);
+				\tkzDefPointBy[translation = from A to D](H)\tkzGetPoint{E}
+				\tkzDefShiftPoint[H](90:6){S}
+				\coordinate (M) at ($(A)!.5!(S)$);
+				\coordinate (N) at ($(B)!.5!(S)$);
+				\coordinate (I) at ($(H)!.5!(S)$);
+				\coordinate (K) at ($(E)!.2!(S)$);
+				\tkzDrawSegments[dashed](S,H A,B M,N H,E A,D S,A H,K)
+				\tkzDrawSegments(B,C C,D S,B S,C S,D S,E)
+				\pgfresetboundingbox
+				\tkzLabelPoints[above left](H)
+				\tkzLabelPoints[left](B,N,S)
+				\tkzLabelPoints[above right](A,K)
+				% \tkzLabelPoints[above right](N)
+				\tkzLabelPoints[right](D)
+				\tkzLabelPoints[below right](E,C,M)
+				\tkzLabelPoints[below left](I)
+				\tkzMarkRightAngle(A,H,S)
+				\tkzMarkRightAngle(H,K,E)
+			\end{tikzpicture}
+		\end{center}
+		Gọi $H$, $E$, $N$, $I$ lần lượt là trung điểm của $AB$, $CD$, $SB$, $SH$. Vì $(SAB)\perp (ABCD)$ và tam giác $SAB$ đều nên $SH\perp (ABCD)$.\\
+		Do $MN$ là đường trung bình của tam giác $SAB$ và $I$ là trung điểm của $SH$ nên $M$, $I$, $N$ thẳng hàng và $MN\parallel (SCD)\Rightarrow d(M,(SCD))=d(I,(SCD))=\dfrac{1}{2}d(H,(SCD))$.\\
+		Gọi $K$ là đường cao kẻ từ $H$ xuống $SE\Rightarrow HK=d(H,(SCD))$.\\
+		Xét tam giác $SHE$ có $SH=\dfrac{a\sqrt{3}}{2}$, $HE=a$\\
+		$\Rightarrow \dfrac{1}{HK^{2}}=\dfrac{4}{3a^{2}}+\dfrac{1}{a^{2}}=\dfrac{7}{3a^{2}}\Rightarrow HK=\dfrac{a\sqrt{3}}{\sqrt{7}}\Rightarrow d(M,(SCD))=\dfrac{a\sqrt{21}}{14}$.
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Hình chóp $S.ABCD$ đáy hình vuông cạnh a, $SA\perp  \left(ABCD\right); SA=a\sqrt{3}$. Khoảng cách từ $B$ đến mặt phẳng $(SCD)$ bằng bao nhiêu?
+	\choice
+	{$a\sqrt{3}$}
+	{\True $\dfrac{a\sqrt{3}}{2}$}
+	{$2a\sqrt{3}$}
+	{$\dfrac{a\sqrt{3}}{4}$}
+	\loigiai{
+		\immini{
+			Do $AB\parallel CD\Rightarrow \mathrm{d}\left(B;\left(SCD\right)\right)=\mathrm{d}\left(A;\left(SCD\right)\right)$.\\
+			Dựng $AH\perp  SD$, do$\heva{
+				& CD\perp  SA \\
+				& CD\perp  AD \\
+			}\Rightarrow CD\perp  AH\Rightarrow AH\perp  \left(SCD\right)$.\\
+			Lại có $AH=\dfrac{SA.AD}{\sqrt{SA^2+AD^2}}=\dfrac{a\sqrt{3}}{2}$.\\
+			Do đó $\mathrm{d}\left(B;\left(SCD\right)\right)=AH=\dfrac{a\sqrt{3}}{2}$.
+		}
+		{
+			\begin{tikzpicture}[scale=.6]
+				\tkzDefPoints{0/0/A, -2/-2/B, 3/-2/C}
+				\coordinate (D) at ($(A)+(C)-(B)$);
+				%\coordinate (O) at ($(A)!.5!(C)$);
+				\coordinate (S) at ($(A)+(0,4)$);
+				\tkzDrawSegments[dashed](S,A A,B A,D)
+				\tkzDrawPolygon(S,C,D)
+				\tkzDrawSegments(S,B B,C)
+				\tkzLabelPoints[left](A,B)
+				\tkzLabelPoints[right](C,D)
+				\tkzLabelPoints[above](S)
+				% góc vuông
+				\tkzMarkRightAngle[size=.2](S,A,B)
+				\tkzMarkRightAngle[size=.2](S,A,D)
+				%\tkzLabelLine[pos=0.6,above](A,D){$a$}
+				%\tkzLabelLine[pos=0.5,left,rotate=0 ](A,S){$a$}
+				\coordinate (H) at ($(S)!.5!(D)$);
+				\tkzDrawSegments[dashed](A,H);
+				\tkzLabelPoints[right](H);
+				\tkzMarkRightAngle[size=.2](A,H,D)
+				\tkzDrawPoints(S,A,B,C,D,H)
+		\end{tikzpicture} }
+	}
+\end{ex}
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình lập phương $ABCD.A'B'C'D'$ có độ dài cạnh bằng 10. Tính khoảng cách giữa haimặt phẳng $\left(ADD'A'\right)$ và $\left(BCC'B'\right)$.\choice
+	{\True $10$}
+	{  $\sqrt{10}$}
+	{ $100$}
+	{$5$}
+	\loigiai{\immini{Theo tính chất của hình lập phương thì $AB\perp \left(ADD'A'\right)$ và $AB\perp \left(BCC'B'\right)$. \\
+			Hay khoảng cách giữa  haimặt phẳng $\left(ADD'A'\right)$ và $\left(BCC'B'\right)$ bằng $AB=10$.
+		}{
+			\begin{tikzpicture}[scale=.7]
+				\tkzDefPoints{-1/-2/x, 6/0/y, 0/3/z, 0/0/A}
+				\coordinate (B) at ($(A)+(x)$);
+				\coordinate (C) at ($(B)+(y)$);
+				\coordinate (D) at ($(C)-(x)$);
+				\coordinate (A') at ($(A)+(z)$);
+				\coordinate (B') at ($(B)+(z)$);
+				\coordinate (C') at ($(C)+(z)$);
+				\coordinate (D') at ($(D)+(z)$);
+				\tkzDrawSegments[dashed](B,A A,D A,A')
+				\tkzDrawSegments(D,C D,D')
+				\tkzDrawPolygon(A',B',C',D')
+				\tkzDrawPolygon(B,B',C',C)
+				\tkzLabelPoints[right](C, C', D', D)
+				\tkzLabelPoints[left](A, B, A', B')
+				\tkzDrawPoints(A,B,C,D,A',B',C',D')
+		\end{tikzpicture}}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình lăng trụ đứng $ABC.A'B'C'$ có đáy là tam giác $ABC$ vuông tại $A$ có $BC=2a$, $AB=a\sqrt{3}$. Tính khoảng cách từ $AA'$ đến mặt phẳng $(BCC'B')$.
+	\choice
+	{$\dfrac{a\sqrt{21}}{7}$}
+	{\True $\dfrac{a\sqrt{3}}{2}$}
+	{$\dfrac{a\sqrt{5}}{2}$}
+	{$\dfrac{a\sqrt{7}}{3}$}
+	\loigiai{
+		\immini
+		{
+			Trong mặt phẳng $(ABC)$ kẻ $AH$ vuông góc $BC$ tại $H$, khi đó ${\rm d} \left( AA',(BB'C'C)\right)={\rm d} \left( A,(BB'C'C)\right)=AH$.\\
+			Tam giác $ABC$ vuông tại $A$ có $BC=2a$, $AB=a\sqrt{3}$ nên $AC=a$. \\
+			$\dfrac{1}{AH^2}=\dfrac{1}{AB^2}+\dfrac{1}{AC^2}=\dfrac{4}{3a^2} \Rightarrow AH= \dfrac{a\sqrt{3}}{2}$.
+		}
+		{
+			\begin{tikzpicture}[scale=0.8,line join= around, line cap= around,>=stealth]
+				\tkzDefPoint[label=175:$ $](0,4){T}
+				\tkzDefPoint[label=-70:$A$](2,-2){A}
+				\tkzDefPoint[label=180:$B$](0,0){B}
+				\tkzDefPoint[label=30:$C$](5,0){C}
+				\tkzDefPointsBy[translation= from B to T](A,B,C){}
+				\tkzDefBarycentricPoint(B=1,C=1.5) \tkzGetPoint{H}
+				\tkzDrawPoints(A,B,C,A',B',C',H)
+				\tkzDrawSegments(A,B A,C B',A' A',C' C',B' B,B' C,C' A,A')
+				\tkzDrawSegments[dashed](B,C A,H)
+				\tkzMarkRightAngles(B,A,C A,H,B)
+				\tkzLabelPoints[above](A',B',C',H)
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho tứ diện $ABCD$ có cạnh $AD$ vuông góc với mặt phẳng $(ABC)$, $AC=AD=4$, $AB=3$, $BC=5$. Tính khoảng cách $\mathrm{d}$ từ điểm $A$ đến mặt phẳng $(BCD)$.
+	\choice
+	{\True$\mathrm{d}=\dfrac{12}{\sqrt{34}}$}
+	{$\mathrm{d}=\dfrac{60}{\sqrt{769}}$}
+	{$\mathrm{d}=\dfrac{\sqrt{769}}{60}$}
+	{$\mathrm{d}=\dfrac{\sqrt{34}}{12}$}
+	\loigiai{
+		\immini{
+			Ta có $AB^2+AC^2=BC^2 \Rightarrow \Delta ABC$ vuông tại $A$. Kẻ $AM\perp BC, M\in BC$ và $AH\perp DM,\ H\in DM$ khi đó ta có $AH\perp (BCD)$ nên $\mathrm{d}=AH$.\\
+			Ta có\\ $\dfrac{1}{AH^2}=\dfrac{1}{AD^2}+\dfrac{1}{AM^2}=\dfrac{1}{AB^2}+\dfrac{1}{AC^2}+\dfrac{1}{AD^2}=\dfrac{1}{16}+\dfrac{1}{16}+\dfrac{1}{9}=\dfrac{17}{72}$.\\
+			Từ đó suy ra $\mathrm{d}=\dfrac{12}{\sqrt{34}}$.
+		}
+		{
+			\begin{tikzpicture}[line join=round, line cap=round,scale=.7]
+				\tkzDefPoints{0/0/A, 3.5/-2/B, 6/0/C}
+				\coordinate (M) at ($(B)!.5!(C)$);
+				\coordinate (D) at ($(A)+(0,5)$);
+				\coordinate (H) at ($(D)!.5!(M)$);
+				\tkzDrawSegments[dashed](A,C A,M A,H)
+				\tkzDrawPolygon(D,B,C)
+				\tkzDrawSegments(D,A A,B D,M)
+				\tkzLabelPoints[left](A)
+				\tkzLabelPoints[right](C,M,H)
+				\tkzLabelPoints[below](B)
+				\tkzLabelPoints[above](D)
+				\tkzMarkRightAngle(B,M,A)
+				\tkzMarkRightAngle(A,H,M)
+				\tkzMarkRightAngle(D,A,B)
+				\tkzMarkRightAngle(D,A,C)
+				\tkzDrawPoints(A,B,C,D,H,M)
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, mặt bên $SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc với mặt phẳng đáy. Tính khoảng cách $h$ từ điểm $A$ đến mặt phẳng $(SCD)$.
+	\choice
+	{\True $h=\dfrac{a\sqrt{21}}{7}$}
+	{$h=a$}
+	{$h=\dfrac{a\sqrt{3}}{4}$}
+	{$h=\dfrac{a\sqrt{3}}{7}$}
+	\loigiai{
+		\immini {
+			Gọi $H$ là trung điểm $AB$.
+			Ta có $SH\perp AB$ nên $SH\perp (ABCD)$.\\
+			Vì $AH \parallel CD$, $CD\subset (SCD)$ nên\\ $\mathrm{d}(A,(SCD))=\mathrm{d}(H,(SCD))$.\\
+			Kẻ $HK \perp SM$ tại $K$.\\
+			Ta có: $\heva {&CD \perp HM\\&CD \perp SH} \Rightarrow CD \perp (SHM)$.\\
+			Lại có $\heva {&HK \perp SM\\&HK \perp CD} \Rightarrow HK \perp (SCD)$ tại $K$.\\
+		}{
+			\begin{tikzpicture}[>=stealth, line join=round, line cap=round,scale=0.6]
+				\tkzDefPoints{0/0/A, 6/0/D, -2/-2/B, -1/4/S}
+				\tkzDefPointBy[translation=from A to D](B)\tkzGetPoint{C}
+				\tkzDefMidPoint(A,B)\tkzGetPoint{H}
+				\tkzDefMidPoint(C,D)\tkzGetPoint{M}
+				\tkzDefPointWith[linear,K=0.6](S,M)\tkzGetPoint{K}
+				\tkzDrawSegments(S,B S,C S,D B,C C,D S,M)
+				\tkzDrawSegments[dashed](A,B A,D S,A S,H H,M H,K)
+				\tkzLabelPoints[left](H)
+				\tkzLabelPoints[right](D,M)
+				\tkzLabelPoints[above right](A,K)
+				\tkzLabelPoints[below](C)
+				\tkzLabelPoints[below left](B)
+				\tkzLabelPoints[above](S)
+				\tkzLabelSegment[above](B,C){$a$}
+				\tkzDrawPoints[fill=black](S,A,B,C,D,H,M,K)
+				\tkzMarkRightAngles(S,H,B S,H,M H,K,M B,A,D A,B,C)
+				\tkzMarkSegments[mark=|](S,A S,B A,B)
+				\tkzMarkSegments[mark=||](H,A H,B M,D M,C)
+			\end{tikzpicture}
+		}
+		\noindent
+		Khi đó $\mathrm{d}(A,(SCD))=\mathrm{d}(H,(SCD))=HK$.\\
+		Ta có $SH=\dfrac{a\sqrt{3}}{2}$, $HM=a$, $SM=\sqrt{SH^2+HM^2}=\dfrac{a\sqrt{7}}{2}$.\\
+		Suy ra $HK=\dfrac{SH\cdot HM}{SM}=\dfrac{\dfrac{a\sqrt{3}}{2}\cdot a}{\dfrac{a\sqrt{7}}{2}}=\dfrac{a\sqrt{21}}{7}$.
+		Vậy $h=\dfrac{a\sqrt{21}}{7}$.
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABC$ có hai mặt $ABC$ và $SBC$ là tam giác đều, hai mặt còn lại là tam giác vuông. Tính khoảng cách từ $A$ đến $(SBC)$ biết $BC=a\sqrt 2$.
+	\choice
+	{\True $d\left(A;(SBC)\right)=\dfrac{a}{\sqrt2}$}
+	{$d\left(A;(SBC)\right)=\dfrac{1}{\sqrt3}$}
+	{$d\left(A;(SBC)\right)=\dfrac{2a\sqrt3}{3}$}
+	{$d\left(A;(SBC)\right)=a\sqrt2$}
+	\loigiai{
+		\immini{Vì $CS=CA$ nên $\triangle SCA$ là tam giác vuông tại $C$; tương tự $\triangle SBA$ là tam giác vuông tại $B$. \\
+			Gọi $M$ là trung điểm của $BC$, $H$ là hình chiếu của $A$ lên $SM$.\\
+			Khi đó $H$ là hình chiếu của $A$ lên $(SBC)$. Thật vậy:  \\
+			Vì $BC\perp SM$, $BC\perp AM$ nên $BC\perp (SAM)$.\\ Do đó, $BC\perp AH$. Suy ra $AH\perp (SBC)$.\\
+			Ta có $SM=AM=BC\dfrac{\sqrt3}{2}=\dfrac{\sqrt6}{2}a$; $SA=\sqrt{SC^2+AC^2}=2a$.\\
+			Áp dụng công thức Hê-rông ta tính được $S_{\triangle SMA}=\dfrac{\sqrt2}{2}a^2$.
+			\\
+			Hơn nữa, $S_{\triangle SMA}=\dfrac{1}{2}\cdot AH\cdot SM$. Từ đó ta tính được $SM=\dfrac{2a\sqrt3}{3}$.
+		}{
+			\begin{tikzpicture}[scale=0.7]
+				\tkzDefPoints{-3/0/B, 3/0/C, -2/-3/A, 0/6/S}
+				\tkzDefMidPoint(B,C)\tkzGetPoint{M}
+				\tkzDefPointBy[homothety=center S ratio 0.7](M)\tkzGetPoint{H}
+				\tkzDrawPoints(A,B,C,S,M,H)
+				\tkzLabelPoints(A,B,C,M,H)
+				\tkzLabelPoints[above](S)
+				\tkzDrawSegments(A,B A,C S,A S,B S,C)
+				\tkzDrawSegments[dashed](B,C S,M M,A A,H)
+				\tkzMarkRightAngles(S,C,A S,B,A A,H,M)
+		\end{tikzpicture}}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thang vuông tại $A$ và $B$. Biết $AD=2a$, $AB=BC=SA=a$. Cạnh bên $SA$ vuông góc với mặt đáy, gọi $M$ là trung điểm của $AD$. Tính khoảng cách $h$ từ $M$ đến mặt phẳng $(SCD)$.
+	\choice
+	{$h=\dfrac{a}{3}$}
+	{\True $h=\dfrac{a\sqrt{6}}{6}$}
+	{$h=\dfrac{a\sqrt{3}}{6}$}
+	{$h=\dfrac{a\sqrt{6}}{3}$}
+	\loigiai{
+		\immini{
+			Vì $M$ là trung điểm $AD$ nên $\dfrac{\mathrm{d}\left(A,(SCD)\right)}{\mathrm{d}\left(M,(SCD)\right)}=2$ \\
+			$\Rightarrow \mathrm{d}\left(M,(SCD)\right)=\dfrac{1}{2}\mathrm{d}\left(A,(SCD)\right)$.\\
+			Dựng $AH\perp SC \ \  (1)$\\
+			Ta có $\heva{&AC\perp CD\\&SA\perp CD}\Rightarrow CD\perp (SAC)\Rightarrow CD\perp AH \ \ (2)$\\
+			Từ $(1)$ và $(2)$ $\Rightarrow AH\perp (SCD)\Rightarrow \mathrm{d}\left(A,(SCD)\right)=AH$.\\
+			Xét tam giác vuông $SAC$ vuông tại $A$\\
+			Ta có $\dfrac{1}{AH^2}=\dfrac{1}{AC^2}+\dfrac{1}{AS^2}$
+			$\Rightarrow AH=\dfrac{a\sqrt{6}}{3}$.\\
+			Vậy $\mathrm{d}\left(M,(SCD)\right)=\dfrac{a\sqrt{6}}{6}$.}
+		{
+			\begin{tikzpicture}[scale=.5]
+				\tkzDefPoints{0/0/A, -2/-2/B, 3/-2/C}
+				\coordinate (M) at ($(A)+(C)-(B)$);
+				\coordinate (D) at ($2*(M)$);
+				\coordinate (S) at ($(A)+(0,5)$);
+				\coordinate (H) at ($(S)!0.5!(C)$);
+				\tkzDrawSegments[dashed](S,A A,B A,D C,M A,C A,H)
+				\tkzDrawPolygon(S,C,D)
+				\tkzDrawSegments(S,B B,C)
+				\tkzLabelPoints[left](A,B)
+				\tkzLabelPoints[right](D,H)
+				\tkzLabelPoints[above](S,M)
+				\tkzLabelPoints[below](C)
+				\tkzMarkRightAngle[size=0.35](D,A,S)
+				\tkzMarkRightAngle[size=0.35](B,A,M)
+				\tkzMarkRightAngle[size=0.35](A,H,S)
+				\tkzMarkRightAngle[size=0.35](A,B,C)
+				\coordinate (z) at ($(C)!0.55!(B)$);
+				\tkzText[below](z){$a$}
+				\tkzMarkSegments[mark=||](B,A M,A B,C S,A M,D)
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $ S.ABCD $ có đáy $ ABCD $ là hình vuông cạnh $ a $, tam giác $ SAB $ đều và nằm trong mặt phẳng vuông góc với đáy. Gọi $ I $ là trung điểm của $ AB $ và $ M $ là trung điểm của $ AD $. Tính khoảng cách từ $ I $ đến mặt phẳng $ (SMC) $.
+	\choice
+	{\True $ \dfrac{3 \sqrt{2}a}{8} $}
+	{$ \dfrac{\sqrt{30}a}{10} $}
+	{$ \dfrac{\sqrt{30}a}{8} $}
+	{$ \dfrac{3 \sqrt{7}a}{14} $}
+	\loigiai
+	{
+		\immini
+		{Kẻ $ IK \bot CM $ tại $ K $,
+			kẻ $ IH \bot SK $ tại $ H $.\\
+			Mà $ CM \bot SI \, (gt)  \Rightarrow CM \bot (SIK) \Rightarrow CM \bot IH$.\\
+			Suy ra $ IH \bot (SCM) $.\\ Do đó $ \mathrm{d}(I,(SMC)) = IH. $\\
+			Ta có $ IM = \dfrac{a\sqrt{2}}{2}, IC = \sqrt{BC^2 +IB^2} =  \dfrac{a\sqrt{5}}{2} $.\\
+			Gọi $ J  $ là trung điểm $ IM $. \\Tam giác $ MIC $ cân tại $ C $ nên $ CJ \bot IM $.\\
+			Ta có $ CJ = \sqrt{IC^2 - JM^2} = \dfrac{3a\sqrt{2}}{4} $.\\
+			Diện tích tam giác $ IMC $ bằng $ S_{IMC} = \dfrac{1}{2}IM \times CJ = \dfrac{3}{8}a^2 $.\\
+			Mặt khác $ S_{IMC} = \dfrac{1}{2} IK \times CM \Rightarrow IK = \dfrac{2S}{MC} = \dfrac{3 \sqrt{5}}{10}a $.\\
+			Vậy $ IH = \dfrac{SI \times IK}{\sqrt{SI^2 + IK^2}} = \dfrac{3a\sqrt{2}}{8} \cdot  $
+		}
+		{
+			\begin{tikzpicture}[scale=.8]
+				%\clip (-4,4) rectangle (5,-3);
+				\tkzDefPoints{0/0/A, -2/-2/B, 3/-2/C}
+				\coordinate (D) at ($(A)+(C)-(B)$);
+				\coordinate (I) at ($(A)!.5!(B)$);
+				\coordinate (S) at ($(I)+(0,4)$);
+				\coordinate (M) at ($(A)!.5!(D)$);
+				\coordinate (K) at ($(C)!.75!(M)$);
+				\coordinate (H) at ($(S)!.65!(K)$);
+				\tkzLabelPoints[left](I)
+				\tkzDrawSegments[dashed](S,A A,B A,D S,I C,M I,K S,K I,H)
+				\tkzDrawPolygon(S,C,D)
+				\tkzDrawSegments(S,B B,C)
+				\tkzLabelPoints[left](A,B)
+				\tkzLabelPoints[right](C,D,H,K)
+				\tkzLabelPoints[above](S,M)
+				\tkzMarkRightAngle[size=.2,draw=black](S,I,A)
+				\tkzMarkRightAngle[size=.2,draw=black](I,K,C)
+				\tkzMarkRightAngle[size=.2,draw=black](K,H,I)
+				\tkzMarkRightAngle[size=.2,draw=black](A,B,C)
+				\tkzDefPoints{0/-3/A, 4/-3/B, 4/-7/C, 0/-7/D}
+				\tkzLabelPoints[right](B,C)
+				\tkzLabelPoints[left](A,D)
+				\coordinate (M) at ($(A)!.5!(D)$);
+				\coordinate (I) at ($(B)!.5!(A)$);
+				\coordinate (J) at ($(I)!.5!(M)$);
+				\coordinate (K) at ($(C)!.85!(M)$);
+				\tkzDrawSegments(B,D A,C I,M A,B I,K B,C C,M C,I C,D D,A)
+				\tkzLabelPoints[above](I)
+				\tkzLabelPoints[below](K)
+				\tkzLabelPoints[above](J)
+				\tkzLabelPoints[left](M)
+				\tkzMarkRightAngle(I,K,C)
+				\tkzMarkRightAngle(C,J,I)
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $a$, tam giác $SAB$ đều và nằm trong mặt phẳng vuông góc với đáy. Tính khoảng cách từ $A$ đến mặt phẳng $(SCD)$.
+	\choice
+	{$\dfrac{2a\sqrt{3}}{7}$}
+	{$\dfrac{3a}{7}$}
+	{\True $\dfrac{a\sqrt{21}}{7}$}
+	{$\dfrac{a\sqrt{3}}{7}$}
+	\loigiai{
+		\immini{Gọi $H$ là trung điểm của $AB$. Vì $\triangle SAB$ đều và vuông góc với đáy nên $SH$ là đường cao của hình chóp.\\
+			Ta có $AH\parallel (SCD)\Rightarrow d(A, (SCD))=d(H, (SCD))$.\\
+			Gọi $M$ là trung điểm của $CD$, ta có $CD\perp (SHM)$.\\
+			Trong $(SHM)$, gọi $K$ là hình chiếu của $H$ trên $SM$, ta có $\heva{&HK\perp SM\\&HK\perp CD}\Rightarrow HK\perp (SCD)$.\\
+			Xét tam giác vuông $SHM$ có $HM=a$, $SH=\dfrac{a\sqrt{3}}{2}$ và\\
+			$\dfrac{1}{HK^2}=\dfrac{1}{HM^2}+\dfrac{1}{SH^2}=\dfrac{1}{a^2}+\dfrac{4}{3a^2}=\dfrac{7}{3a^2}$\\
+			$\Rightarrow HK=\dfrac{a\sqrt{21}}{7}=d(A, (SCD))$.
+		}
+		{
+			\begin{tikzpicture}[scale=0.8]
+				\tkzInit[xmin=-10,xmax=6,ymin=-2,ymax=6]
+				\tkzDefPoints{0.5/1.25/A, 0/0/H,-0.5/-1.25/B,0/5/S,3.5/-1.25/C,4.5/1.25/D,4/0/M}
+				\tkzDefPointBy[homothety = center S ratio 0.7](M)\tkzGetPoint{K}
+				\tkzLabelPoints[left](B)
+				\tkzLabelPoints[right](C,D,K,M)
+				\tkzLabelPoints[above](S)
+				\tkzLabelPoints[below right](H)
+				\tkzLabelPoints[above right](A)
+				\tkzDrawSegments[dashed](S,A S,H A,B A,D H,M H,K)
+				\tkzDrawSegments(S,B S,C S,D S,M B,C C,D)
+				\tkzDrawPoints(A,B,C,D,S,H,M)
+				\tkzMarkRightAngle(S,H,A)
+				\tkzMarkRightAngle(A,B,C)
+				\tkzMarkRightAngle(S,K,B)
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABCD$ có đáy là hình chữ nhật, $SA \perp (ABCD)$. Biết $AB=a, AD=2a$, góc giữa $SC$ và $(SAB)$ là $30^{\circ}$. Tính khoảng cách từ điểm $B$ đến $(SCD)$.
+	\choice
+	{ $\dfrac{2a}{\sqrt{15}}$}
+	{ $\dfrac{2a}{\sqrt{7}}$}
+	{\True $\dfrac{2a\sqrt{11}}{\sqrt{15}}$}
+	{ $\dfrac{22a}{\sqrt{15}}$}
+	\loigiai{
+		\immini{ Ta có $BC\perp AB$ và $BC\perp SA$ nên $BC\perp (SAB)$ hay hình chiếu của $C$ lên $(SAB)$ là điểm $B$ nên $\widehat{\left( SC,(SAB)\right)}=\widehat{(SC,SB)}=\widehat{BSC}=30^{\circ}$. Suy ra $SB=\dfrac{BC}{\tan30^{\circ} }=2a\sqrt{3}$ và $SA=\sqrt{SB^2-AB^2}=a\sqrt{11}$.\\
+			Ta có $AB\parallel CD$ hay $AB\parallel (SCD)$ nên $d\left(B,(SCD) \right) =d\left(A,(SCD) \right)$. \\
+			Tương tự như trên ta chứng minh được $CD\perp(SAD)$. Trong mặt phẳng  $(SAD)$, kẻ $AH\perp SD$. Khi đó $AH\perp (SCD)$ hay $d\left(A,(SCD) \right)= AH=d\left(B,(SCD) \right)$.\\
+			Ta có $AH$ là đường cao trong tam giác vuông $SAD$ nên $\dfrac{1}{AH^2}=\dfrac{1}{AD^2}+\dfrac{1}{AS^2}=\dfrac{1}{11a^2}+\dfrac{1}{4a^2}$ suy ra $AH=\dfrac{2a\sqrt{11}}{\sqrt{15}}.$\\
+			Vậy khoảng cách từ điểm $B$ đến $(SCD)$ là $\dfrac{2a\sqrt{11}}{\sqrt{15}}$.
+		}{
+			\begin{tikzpicture}[>=stealth, line join=round, line cap = round,scale=0.6]
+				\tkzDefPoints{0/0/A, 6/0/D, -2/-2/B, 0/5/S}
+				\tkzDefPointBy[translation=from A to D](B)\tkzGetPoint{C}
+				%\tkzInCenter(S,A,B)\tkzGetPoint{G}
+				\tkzInterLL(A,C)(B,D)\tkzGetPoint{O}
+				\tkzDrawSegments(B,C C,D S,B S,C S,D)
+				\tkzDrawSegments[dashed](A,B S,A A,C B,D A,D S,O)
+				%\tkzLabelPoints[left](A)
+				\tkzLabelPoints[below](B,O,A)
+				\tkzLabelPoints[right](C,D)
+				\tkzLabelPoints[above](S)
+				\tkzDrawPoints[fill=black](S,A,B,C,D, O)
+				\tkzMarkAngles[size=0.4cm, label=$30^\circ$](B,S,C)
+				\tkzMarkRightAngle(D,A,S)
+				\tkzMarkRightAngle(B,A,S)
+				\tkzLabelSegment[above](D,A){$2a$}
+				\tkzLabelSegment[above=2pt](A,B){$a$}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $AB=3$, $AD=1$. Hình chiếu vuông góc của $S$ trên mặt phẳng $(ABCD)$ là điểm $H$ thuộc cạnh đáy $AB$ sao cho $AH=2HB$. Tính khoảng cách từ điểm $A$ đến mặt phẳng $(SHC)$.
+	\choice
+	{$3\sqrt{2}$}
+	{$2\sqrt{2}$}
+	{\True $\sqrt{2}$}
+	{$2$}
+	\loigiai{
+		\immini{
+			Do $SH \perp (ABCD)$ nên $(SHC) \perp (ABCD)$ theo giao tuyến là $HC$. Trong mp $(ABCD)$, kẻ $BI \perp HC, I\in HC$. \\
+			Suy ra $BI \perp (SHC)$. Suy ra $d(B,(SHC))=BI$. \\[5 pt]
+			Mặt khác ta có: $\dfrac{d(A,(SHC))}{d(B,(SHC))}=\dfrac{AH}{BH}=2$\\[5 pt]
+			$ \Rightarrow d(A,(SHC))=2d(B,(SHC))=2BI$.\\
+			Ta có: $BH =\dfrac{1}{3}AB=1$.\\
+			$\dfrac{1}{BI^2}=\dfrac{1}{BH^2}+\dfrac{1}{BC^2}=1+1=2$\\
+			$\Rightarrow BI=\dfrac{\sqrt{2}}{2} \Rightarrow d(A,(SHC))=\sqrt{2}$.
+		}{
+			\begin{tikzpicture}[scale=0.6]
+				\tkzDefPoints{0/0/B, 3/3/A, 6/0/C}
+				\coordinate (D) at ($(C)-(B)+(A)$);
+				\coordinate (H) at ($(A)!0.67!(B)$);
+				\coordinate (S) at ($(H)+(0,8)$);
+				\coordinate (I) at ($(H)!0.3!(C)$);
+				\tkzDrawSegments[dashed](S,A A,B S,H H,C B,I A,D)
+				\tkzDrawSegments(S,B B,C C,D D,S S,C)
+				\tkzMarkRightAngle[size=0.5](B,I,C)
+				\tkzLabelPoints[above](S,I)
+				\tkzLabelPoints[left](A,H)
+				\tkzLabelPoints[right](D)
+				\tkzLabelPoints[below left](B)
+				\tkzLabelPoints[below right](C)
+				\tkzDrawPoints(S,A,B,C,D,H,I)
+		\end{tikzpicture}}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$, $SA \perp (ABCD)$. Gọi $I$ là trung điểm $SC$. Khoảng cách từ $I$ đến mặt phẳng $(ABCD)$ bằng độ dài đoạn nào?
+	\choice
+	{\True $IO$}
+	{$IA$}
+	{$IC$}
+	{$IB$}
+	\loigiai{
+		\immini{
+			Ta có $IO \parallel SA$ và $SA \perp (ABCD)$, suy ra $IO\perp (ABCD)$, do đó khoảng cách từ điểm $I$ đến mặt phẳng $(ABCD)$ bằng độ dài đoạn thẳng $IO$.
+		}{
+			\begin{tikzpicture}[scale=0.6]
+				\tkzDefPoints{0/0/A, 5/0/D, -1.5/-2/B, 0/5/S}
+				\tkzDefPointBy[translation=from A to D](B) \tkzGetPoint{C}
+				\tkzDefMidPoint(A,C) \tkzGetPoint{O}
+				\tkzDefMidPoint(S,C) \tkzGetPoint{I}
+				\tkzDrawSegments(B,C  S,B S,C S,D C,D)
+				\tkzDrawSegments[dashed](A,D A,C B,D A,B S,A I,O)
+				\tkzDrawPoints[](S,B,C,D,O,I)
+				\tkzLabelPoints(C,B,D)
+				\tkzLabelPoints[above](S)
+				\tkzLabelPoints[right](I)
+				\tkzLabelPoints[below](O,A)
+				\tkzMarkRightAngle(S,A,D)
+				\tkzMarkRightAngle(S,A,B)
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có tất cả các cạnh bằng $a$. Khoảng cách từ $A$ đến mặt phẳng $(A'BC)$ bằng
+	\choice
+	{$\dfrac{a\sqrt{2}}{2}$}
+	{$\dfrac{a\sqrt{6}}{4}$}
+	{\True $\dfrac{a\sqrt{21}}{7}$}
+	{$\dfrac{a\sqrt{3}}{4}$}
+	\loigiai{\immini{Gọi $N$ là trung điểm $BC$ $\Rightarrow AN\perp BC\Rightarrow BC\perp(A'AN)$.\\
+			Với $H$ là hình chiếu của $A$ lên $A'N$\\
+			$\Rightarrow AH\perp(A'BC)\Rightarrow d(A,(A'BC))=AH$.\\
+			Ta có $\triangle ABC$ đều nên $AN=\dfrac{a\sqrt{3}}{2}$.\\
+			$\triangle A'AB$ có $\dfrac{1}{AH^2}=\dfrac{1}{A'A^2}+\dfrac{1}{AN^2}=\dfrac{1}{a^2}+\dfrac{1}{\dfrac{3a^2}{4}}$\\
+			$\Rightarrow d(A,(A'BC))=AH=\dfrac{a\sqrt{21}}{7}$.}
+		{
+			\begin{tikzpicture}[scale=0.8]
+				\tkzDefPoints{0/0/A, 2/-1.3/B, 6/0/C, 0/5/A'}
+				\coordinate (B') at ($(A')+(B)-(A)$);
+				\coordinate (C') at ($(A')+(C)-(A)$);
+				\coordinate (M) at ($(B)!0.5!(C)$);
+				\coordinate (H) at ($(A')!0.36!(M)$);
+				\tkzDrawSegments(A,B B,C A,A' B,B' C,C' A',B' B',C' C',A' A',B)
+				\tkzDrawSegments[dashed](A,C A',C A,M A',M A,H)
+				\tkzDrawPoints(A,B,C,A',B',C',M,H)
+				\tkzMarkRightAngle(A,M,B)
+				\tkzMarkRightAngle(A,H,M)
+				\tkzLabelPoints[below left](A,B)
+				\tkzLabelPoints[below right](M,C)
+				\tkzLabelPoints[above left](A')
+				\tkzLabelPoints[above right](C')
+				\tkzLabelPoints[above](B')
+				\tkzLabelPoints[left](H)
+	\end{tikzpicture}}}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình chóp tam giác đều $ S.ABC $ có cạnh đáy bằng $ a $. Góc giữa mặt bên và mặt đáy bằng $ 60^{\circ} $. Khoảng cách từ điểm $ A $ đến mặt phẳng $ (SBC) $ bằng
+	\choice
+	{\True $\dfrac{3a}{4}  $}
+	{$ \dfrac{a}{4} $}
+	{$ \dfrac{a}{2}$}
+	{$ \dfrac{3a}{2}$}
+	\loigiai{\immini{Gọi $ H $ là tâm của tam giác đều $ ABC $. Gọi $ M=AH \cap BC $ suy ra $ M $ là trung điểm cạnh $ BC $. Do đó, góc $ \widehat{SMH}=60^{\circ} $.\\
+			Kẻ $ HK \perp SM $ với $ K \in SM $. Khi đó $ HK \perp (SBC) $.\\
+			Ta có $ \mathrm{d}(A;(SBC))=\dfrac{AM}{HM} \cdot \mathrm{d}(H;(SBC)) =3 HK$.\\ Lại có\\ $ \dfrac{1}{HK^2}=\dfrac{1}{HM^2}+\dfrac{1}{SH^2} =\dfrac{12}{a^2}+\dfrac{4}{a^2}=\dfrac{16}{a^2} \Rightarrow HK=\dfrac{a}{4}$. Do đó $ \mathrm{d}(A;(SBC))=\dfrac{3a}{4} $.}
+		{
+			\begin{tikzpicture}[scale=.8]
+				\tkzDefPoints{0/0/A, 4/-2/B, 6/0/C}
+				\coordinate (M) at ($(B)!.5!(C)$);   % M là trung điểm BC
+				\coordinate (H) at ($(A)!.67!(M)$);
+				\coordinate (S) at ($(H)+(0,5)$);
+				\tkzDrawSegments[dashed](A,C S,H A,M)
+				\tkzDrawPolygon(S,B,C)
+				\tkzDrawSegments(S,A B,A S,M)
+				\tkzLabelPoints[left](A)
+				\tkzLabelPoints[right](C, M)
+				\tkzLabelPoints[below](B,H)
+				\tkzLabelPoints[above](S)
+				\tkzMarkRightAngle(M,H,S)
+				\tkzMarkRightAngle(A,M,B)
+				\tkzMarkSegments[mark=|](B,M M,C)
+				\tkzDefPointBy[projection=onto S--M](H)\tkzGetPoint{K}
+				\tkzDrawPoints(K)
+				\tkzLabelPoints[right](K)
+				\tkzDrawSegments[dashed](H,K)
+				\tkzDrawPoints(S,A,B,C,H,M)
+		\end{tikzpicture}}.
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho lăng trụ đứng $ABC.A'B'C'$ có đáy là tam giác vuông tại $B$ với $AB=a$, $AA'=2a$, $A'C=3a$. Gọi $M$ là trung điểm cạnh $C'A'$, $I$ là giao điểm của các đường thẳng $AM$ và $A'C$. Tính khoảng cách $d$ từ $A$ tới $(IBC)$.
+	\choice
+	{$d=\dfrac{a}{\sqrt{5}}$}
+	{$d=\dfrac{a}{2\sqrt{5}}$}
+	{$d=\dfrac{5a}{3\sqrt{2}}$}
+	{\True $d=\dfrac{2a}{\sqrt{5}}$}
+	\loigiai{\immini{Tam giác $A'AB$ vuông tại $A$ nên $A'B=\sqrt{A'A^2+AB^2}=a\sqrt{5}$.\\
+			Mặt khác ta dễ dàng chứng minh được $BC\perp (AA'B)$ nên tam giác $\triangle A'BC$ vuông tại $B\Rightarrow BC=\sqrt{A'C^2-A'B^2}=2a$\\
+			$\Rightarrow$ diện tích tam giác $A'BC$ là $S_{A'BC}=a^2\sqrt{5}$.\\
+			Mặt khác, vì $I\in A'C\Rightarrow (IBC)\equiv (A'BC)$ nên\\ $d\left(A,(IBC)\right)=d\left(A,(A'BC)\right)$.\\
+			Hình chóp $A.A'BC$ có $AA'\perp (ABC)$\\
+			$\Rightarrow V_{A.A'BC}=\dfrac{1}{3}AA'\cdot S_{ABC}=\dfrac{2a^3}{3}$.\\
+			Vậy $d=d\left(A,(IBC)\right)=\dfrac{3V_{A.A'BC}}{S_{A'BC}}=\dfrac{2a}{\sqrt{5}}$.}{
+			\begin{tikzpicture}[scale=0.9]
+				\tkzDefPoints{0/0/A, 3/-1.3/B, 5/0/C}
+				\coordinate (A') at ($(A)+(0,4)$);
+				\tkzDefPointBy[translation = from A to B](A')
+				\tkzGetPoint{B'}
+				\tkzDefPointBy[translation = from A to C](A')
+				\tkzGetPoint{C'}
+				\tkzDefMidPoint(A',C')\tkzGetPoint{M}
+				\tkzInterLL(A,M)(A',C)\tkzGetPoint{I}
+				\tkzDrawSegments[dashed](A,C A',C A,M I,B)
+				\tkzDrawPolygon[dashed,pattern=dots](I,B,C)
+				\tkzDrawSegments(A,B B,C A,A' B,B' C,C' A',B' B',C' C',A' A',B)
+				\tkzLabelSegment[below](A,B){\footnotesize $a$}
+				\tkzLabelSegment[left](A,A'){\footnotesize $2a$}
+				\tkzLabelSegment[below](A',C){\footnotesize $3a$}
+				\tkzLabelPoints[right](C,C')
+				\tkzLabelPoints[left](A,A',B',I)
+				\tkzLabelPoints[below](B)
+				\tkzLabelPoints[above](M)
+				%\tkzMarkRightAngles(B',B,A);
+				%\tkzMarkRightAngles(B',B,C);
+				\tkzMarkRightAngles(A,B,C);
+				%\tkzMarkRightAngles(A,I,B);
+				%\tkzMarkRightAngles(B,H,I);
+				\tkzDrawPoints(A,B,C,A',B',C',I,M)
+		\end{tikzpicture}}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có tất cả các cạnh bằng $a$. Tính khoảng cách $d$ từ điểm $A$ đến mặt phẳng $(A'BC)$.
+	\choice
+	{$d=\dfrac{a\sqrt{2}}{2}$}
+	{$d=\dfrac{a\sqrt{6}}{4}$}
+	{\True $d=\dfrac{a\sqrt{21}}{7}$}
+	{$d=\dfrac{a\sqrt{3}}{4}$}
+	\loigiai
+	{
+		\immini
+		{
+			Gọi $E$ là trung điểm của $BC$ và $H$ là hình chiếu vuông góc của $A$ lên cạnh $A'E$.\\
+			Ta có $\heva{&BC\perp AE\\&BC\perp AA'} \Rightarrow BC \perp AH \quad (1)$.\\
+			Mặt khác, $AH\perp A'E \quad(2)$. \\
+			Từ (1) và (2) suy ra $AH\perp (A'BC)$,\\ khi đó $\mathrm{d}(A,(A'BC))=AH$.\\
+			Xét $\triangle AA'E$, ta có
+			\begin{eqnarray*}
+				\dfrac{1}{AH^2}&=&\dfrac{1}{AA'^2}+\dfrac{1}{AE^2}\\
+				&= &\dfrac{1}{a^2}+\dfrac{4}{3a^2}=\dfrac{7}{3a^2}.
+			\end{eqnarray*}
+			Vậy $\mathrm{d}=AH=\dfrac{a\sqrt{21}}{7}$.
+		}
+		{
+			\begin{tikzpicture}[line cap=round,line join=round,x=1.0cm,y=1.0cm,>=stealth,scale=1]
+				\tkzDefPoints{3/-2/C, 5/0/B, 0/0/A}
+				\coordinate (A') at ($(A)!1!90:(B)$);
+				\coordinate (B') at ($(B)!1!-90:(A)$);
+				\coordinate (C') at ($(C)-(A)+(A')$);
+				\coordinate (E) at ($(B)!.5!(C)$);
+				\coordinate (H) at ($(A')!4/7!(E)$);
+				\tkzDrawSegments[dashed](A,B A',B A,H A,E A',E)
+				\tkzDrawSegments(A',C)
+				\tkzMarkRightAngles[size=0.2](A',A,C A',A,B A,E,B A,H,E)
+				\tkzLabelPoints[above](A')\tkzLabelPoints[right](B,B',C')
+				\tkzLabelPoints[below](C)
+				\tkzLabelPoints[left](A)
+				\tkzLabelPoints[right](E,H)
+				\tkzDrawPolygon(A',C',B') \tkzDrawPolygon(A',A,C,C') \tkzDrawPolygon(C',C,B,B')
+				\tkzMarkSegments[size=3pt,mark=|](E,C E,B)
+				\tkzDrawPoints[fill=black](A,B,C,A',B',C',E,H)
+		\end{tikzpicture}}
+	}
+\end{ex}
+
+\begin{ex}%[Trương Hữu Đăng]%[1H3K5-3]
+	Cho tứ diện $ABCD$ có $AB=2a$, $CD=a$, $\widehat{ACB}=\widehat{ADB}=90^\circ$. Đáy $BCD$ là tam giác cân tại $B$ và $\widehat{CBD}=2\alpha$. Tính khoảng cách từ $A$ đến $(BCD)$ theo $a$ và $\alpha$.
+	\choice
+	{$\dfrac{a}{\sin2\alpha}\sqrt{4\sin^2 2\alpha - 2}$}
+	{\True $\dfrac{a}{\sin2\alpha}\sqrt{4\sin^2 2\alpha - 1}$}
+	{$\dfrac{a}{2\sin2\alpha}\sqrt{4\sin^2 2\alpha - 1}$}
+	{$\dfrac{2a}{\sin2\alpha}\sqrt{4\sin^2 2\alpha - 1}$}
+	\loigiai
+	{
+		\immini
+		{
+			Vì $\widehat{ACB}=\widehat{ADB}=90^\circ$ nên $ABCD$ nội tiếp mặt cầu đường kính $AB$.\\
+			Gọi $I$ là trung điểm $AB$, $O$ là tâm đường tròn ngoại tiếp tam giác $BCD$. Suy ra, $OI \perp (BCD)$.\\
+			Gọi $H$ là điểm thuộc đường thẳng $BO$ sao cho $O$ là trung điểm của $BH$. Khi đó $AH \parallel IO$ nên $AH \perp (BCD)$ và $AH = 2OI$. Vậy $d(A,(BCD)) = AH$.\\
+			Trong tam giác $BCD$ ta có
+			$$\dfrac{CD}{\sin\widehat{CBD}} = 2OD \Leftrightarrow OD = \dfrac{a}{2\sin 2\alpha}.$$
+		}
+		{
+			\begin{tikzpicture}[scale=0.8]
+				\tkzDefPoints{0/0/B, 6/0/D, 3.5/-3/C, 7/-2/H}
+				\tkzDefShiftPoint[H](90:6.5){A}
+				\tkzDefMidPoint(A,B)\tkzGetPoint{I}
+				\tkzDefMidPoint(B,H)\tkzGetPoint{O}
+				\tkzInterLL(B,H)(C,D)\tkzGetPoint{i}
+				\tkzDrawPoints[fill=black](B,C,D,H,A,I,O)
+				\tkzDrawPolygon(A,B,C)
+				\tkzDrawSegments[dashed](B,D B,i I,O A,D i,D)
+				\tkzDrawSegments(A,H i,H C,i A,i)
+				\tkzMarkSegments[mark=|](A,I I,B)
+				\tkzMarkSegments[mark=||](B,C B,D)
+				\tkzMarkRightAngles(A,D,B A,C,B)
+				\tkzMarkAngle[size=0.5](C,B,D)
+				\tkzLabelPoints[above](A,I)
+				\tkzLabelPoints[below](C,H,O)
+				\tkzLabelPoints[left](B)
+				\tkzLabelPoints[right](D)
+			\end{tikzpicture}
+		}
+		\noindent
+		Ta có $ID = \dfrac{AB}{2} = a$.\\
+		Do đó $d(A,(BCD)) = AH = 2OI = 2\sqrt{ID^2 - OD^2} = 2 \sqrt{a^2 - \dfrac{a^2}{4\sin^2 2\alpha}} = \dfrac{a}{\sin2\alpha}\sqrt{4\sin^2 2\alpha - 1}$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\subsection{Bảng đáp án}
+\inputansbox{8}{ans/ANS-DANG-38}

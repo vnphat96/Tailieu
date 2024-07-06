@@ -1,0 +1,856 @@
+\begin{dang}
+	{Cực trị thể tích}
+\end{dang}
+\subsubsection{Ví dụ mẫu}
+\begin{vd}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%%[1K7KQ-5]
+	Cho $x$, $y$ là các số thực dương. Xét các khối chóp $S.ABC$ có $SA=x$, $BC=y$, các cạnh còn lại đều bằng $1$. Khi $x$, $y$ thay đổi, tính giá trị lớn nhất thể tích của khối chóp.
+	\loigiai{
+		\immini{Gọi $M$, $K$ lần lượt là trung điểm $BC$, $SA$.\\
+			Khi đó $AM^2=1-\dfrac{y^2}{4}$, $MK^2=AM^2-\dfrac{x^2}{4}=1-\dfrac{x^2+y^2}{4}$.\\
+			Lại có $S_{\triangle ABC}=\dfrac{1}{2}AM\cdot BC$ và $SH\cdot AM=MK\cdot SA$ \\
+			từ đó suy ra $SH=\dfrac{MK\cdot SA}{AM}$.\\
+			Thể tích khối chóp 
+			{\allowdisplaybreaks\begin{eqnarray*}
+					V_{S.ABC}&=&\dfrac{1}{3}\cdot S_{\triangle ABC}\cdot SH\\
+					&=&\dfrac{1}{3}\cdot \dfrac{1}{2}AM\cdot BC\cdot \dfrac{MK\cdot SA}{AM}\\
+					&=&\dfrac{1}{6}SA\cdot BC\cdot MK\\
+					&=&\dfrac{1}{12}x\cdot y\cdot \sqrt{4-(x^2+y^2)}.
+		\end{eqnarray*}}}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,0) coordinate (A)
+				(2.4,-1.7) coordinate (B)
+				(4,0) coordinate (C)
+				(1.3,-0.7) coordinate (H)
+				($(H)+(0,4.5)$) coordinate (S)
+				($(B)!1/2!(C)$) coordinate (M)
+				($(S)!1/2!(A)$) coordinate (K);
+				\draw  (S)--(A)--(B)--(C)--(S)--(B);
+				\draw[dashed]  (K)--(M)--(A)--(C) (S)--(H);
+				\fill[black] (S) circle (1.5pt) node[above right]{$S$} (A) circle (1.5pt) node[below left]{$A$}(B) circle (1.5pt) node[below]{$B$}(C) circle (1.5pt) node[right]{$C$} (H) circle (1.5pt) node[right]{$H$} (M) circle (1.5pt) node[below right]{$M$} (K) circle (1.5pt) node[left]{$K$};
+		\end{tikzpicture}}
+		\noindent Theo bất đẳng thức Cô-si ta có
+		\begin{eqnarray*}
+			V_{S.ABC}&=&\dfrac{1}{12}x\cdot y\cdot \sqrt{4-(x^2+y^2)}\\
+			&\le& \dfrac{1}{12}\sqrt{\dfrac{[x^2+y^2+(4-(x^2+y^2))]^3}{27}}=\dfrac{2\sqrt{3}}{27}.
+		\end{eqnarray*}
+		Vậy thế tích lớn nhất của khối chóp là $ \dfrac{2\sqrt{3}}{27} $ xảy ra khi và chỉ khi $ x=y=\dfrac{2\sqrt{3}}{3}. $}
+\end{vd}
+
+\begin{vd}%%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%%[1K7KQ-5]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thoi tâm $O$ cạnh bằng $a$, $SA=SB=SC=a$. Tính giá trị lớn nhất của thể tích của khối chóp $S.ABCD$.
+	\loigiai
+	{
+		\immini
+		{
+			Vì $SA=SB=SC$ nên chân đường cao $SH$ trùng với tâm đường tròn ngoại tiếp tam giác $ABC$. Suy ra $H\in BO$.\\
+			Ta có $\triangle SAC = \triangle BAC$ (c-c-c) nên $OS=OB$.\\
+			Mà $OB=OD$ nên $OS=OB=OD$, suy ra tam giác $SBD$ vuông tại $S$.\\
+			Đặt $SD=x$. Khi đó $SH=\dfrac{ax}{\sqrt{a^2+x^2}}$.			
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (-2,-1.5);
+				\coordinate (D) at (5,0);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (O) at ($(A)!1/2!(C)$);
+				\coordinate (H) at ($(B)!2/3!(O)$);
+				\coordinate (S) at ($(H)+(0,5.5)$);
+				\draw (S)--(B)--(C)--(D)--(S)--(C);
+				\draw[dashed] (S)--(A)--(D)--(B)--(A)--(C);
+				\draw[dashed] (H)--(S)--(O);
+				\fill[black] (S) circle (1.5pt) node[above right]{$S$}(A) circle (1.5pt) node[above left]{$A$}(B) circle (1.5pt) node[below]{$B$}(C) circle (1.5pt) node[below]{$C$}(D) circle (1.5pt) node[right]{$D$}(O) circle (1.5pt) node[below]{$O$}(H) circle (1.5pt) node[below]{$H$};
+			\end{tikzpicture}
+		}
+		\noindent
+		Thể tích khối chóp $S.ABCD$ là
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			V_{S.ABCD} = \dfrac{1}{3}S_{ABCD}\cdot SH &=& \dfrac{1}{3}\cdot \dfrac{1}{2}\sqrt{a^2+x^2}\cdot \sqrt{3a^2-x^2} \cdot \dfrac{ax}{\sqrt{a^2+x^2}}\\
+			&=& \dfrac{1}{6}a\sqrt{x^2(3a^2-x^2)} \leq \dfrac{1}{6}a\left(\dfrac{x^2+3a^2-x^2}{2}\right) = \dfrac{a^3}{4}.
+		\end{eqnarray*}
+		Đẳng thức xảy ra khi $x^2=3a^2-x^2$ hay $SD=x=\dfrac{a\sqrt{6}}{2}$.\\
+		Vậy thể tích của khối chóp $S.ABCD$ lớn nhất bằng $\dfrac{a^3}{4}$.
+	}
+\end{vd}
+\begin{vd}%%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%%[1K7KQ-5]
+	Cho hình hộp chữ nhật $ABCD.A'B'C'D' $ có $AB=x$, $AD=1$. Biết rằng góc giữa đường thẳng $A'C$ và mặt phẳng $(ABB'A')$ bằng $30^\circ$. Tìm giá trị lớn nhất $V_{\max}$ của thể tích khối hộp $ABCD.A'B'C'D'$.
+	\loigiai{
+		\immini{\begin{itemize}
+				\item Góc giữa $A'C$ và $(ABB'A')$ là góc $\widehat{BA'C}=30^\circ$.
+				\item Từ đó $A'B=BC\cdot\cot 30^\circ=\sqrt{3}$.
+				\item Có $AB=x$, $A'A=\sqrt{A'B^2-AB^2}=\sqrt{3-x^2}$. Suy ra
+				\[V=V_{ABCD.A'B'C'D'}=AB\cdot A'A\cdot AD=x\sqrt{3-x^2}.\]
+				\item Áp dụng bất đẳng thức Cauchy ta có
+				$$x\sqrt{3-x^2}\leq \dfrac{x^2+3-x^2}{2}=\dfrac{3}{2}\Rightarrow V_{\max}=\dfrac{3}{2}.$$
+		\end{itemize}}{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,0) coordinate (A)
+				(-2,-1.5) coordinate (B)
+				(4,0) coordinate (D);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (A') at ($(A)+(0,4)$);
+				\coordinate (B') at ($(B)+(0,4)$);
+				\coordinate (C') at ($(C)+(0,4)$);
+				\coordinate (D') at ($(D)+(0,4)$);
+				\draw  (A')--(B')--(C')--(D')--(A')--(B')--(B)--(C)--(D)--(D')--(C')--(C);
+				\draw[dashed]  (C)--(A')--(A)--(D) (A)--(B);
+				\fill[black] (D') circle (1.5pt) node[above right]{$D'$}(A) circle (1.5pt) node[below]{$A$}(B) circle (1.5pt) node[below]{$B$}(C) circle (1.5pt) node[below]{$C$}(D) circle (1.5pt) node[right]{$D$}(A') circle (1.5pt) node[above]{$A'$}(B') circle (1.5pt) node[above]{$B'$}(C') circle (1.5pt) node[above]{$C'$};
+		\end{tikzpicture}}
+	}
+\end{vd}
+\begin{vd}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%%[1K7KQ-5]
+	Cho hình chóp $S.ABC$ có $SA=SB=SC=AB=AC=a$, $BC=2x$ với $a$ là hằng số và $x$ thay
+	đổi thuộc khoảng $\left(0 ;\dfrac{a\sqrt{3}}{2}\right)$. Tính thể tích lớn nhất $V_{\max}$ của hình chóp $S.ABC$.
+	\loigiai{
+		\immini
+		{
+			Gọi $H$ là hình chiếu vuông góc của $S$ trên $(ABC)$ và $M$ là trung điểm của $BC$.\\
+			Vì $SA=SB=SC$ nên $\triangle SHA=\triangle SHB=\triangle SHC$.\\
+			Suy ra $HA=HB=HC$ $\Rightarrow H$ là tâm đường tròn ngoại tiếp $\triangle ABC$ và $HA=HB=HC=R$.\\
+			Vì $\triangle ABC$ cân tại $A$ nên $H\in AM$.\\
+			Xét $\triangle ABM\Rightarrow AM^2=AB^2-BM^2=a^2-x^2$\\
+			$\Rightarrow AM=\sqrt{a^2-x^2}$.\\
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,0) coordinate (A)
+				(1.7,-2) coordinate (B)
+				(5,0) coordinate (C);
+				\coordinate (M) at ($(B)!1/2!(C)$);
+				\coordinate (H) at ($(A)!2/3!(M)$);
+				\coordinate (S) at ($(H)+(0,5)$);
+				\draw  (M)--(S)--(A)--(B)--(C)--(S)--(B);
+				\draw[dashed]  (M)--(A)--(C) (S)--(H);
+				\draw (S) circle (1.5pt) node[above right]{$S$}--(A) circle (1.5pt) node[left]{$A$}--(B) circle (1.5pt) node[below]{$B$}--(S)--(C) circle (1.5pt) node[right]{$C$};
+				\draw (M) circle (1.5pt) node[below right]{$M$};
+				\draw (H) circle (1.5pt) node[below]{$H$};
+			\end{tikzpicture}
+		}
+		\noindent Diện tích tam giác $ABC$ là $S=\dfrac{1}{2}\cdot BC\cdot AM=\dfrac{1}{2}\cdot 2x\cdot \sqrt{a^2-x^2}=x\sqrt{a^2-x^2}$.\\
+		Xét $\triangle ABM$ vuông tại $M\Rightarrow \sin\widehat{ABM}=\dfrac{AM}{AB}=\dfrac{\sqrt{a^2-x^2}}{a}$.\\
+		Theo định lí sin trong tam giác $ABC$
+		$$\dfrac{AC}{\sin\widehat{ABM}}=2R\Leftrightarrow R=\dfrac{a^2}{2\sqrt{a^2-x^2}}\Rightarrow HA=\dfrac{a^2}{2\sqrt{a^2-x^2}}.$$
+		Xét $\triangle SAH$ vuông tại $H$
+		$\Rightarrow SH=\sqrt{SA^2-AH^2}=\sqrt{a^2-\dfrac{a^4}{4(a^2-x^2)}}=\dfrac{a\sqrt{3a^2-4x^2}}{2\sqrt{a^2-x^2}}$.\\
+		Thể tích khối chóp $S.ABC$ là
+		$$V=\dfrac{1}{3}\cdot S\cdot SH=\dfrac{1}{3}\cdot x\sqrt{a^2-x^2}\cdot \dfrac{a^2\sqrt{3a^2-4x^2}}{2\sqrt{a^2-x^2}}=\dfrac{1}{6}xa\sqrt{3a^2-4x^2}=\dfrac{a}{12}\cdot 2x\cdot \sqrt{3a^2-4x^2}.$$
+		Áp dụng bất đẳng thức AM-GM suy ra $2x\cdot \sqrt{3a^2-4x^2}\le \dfrac{4x^2+3a^2-4x^2}{2}=\dfrac{3a^2}{2}$.\\
+		Do đó $V\le \dfrac{a^3}{8}$. Dấu bằng xảy ra khi $2x=\sqrt{3a^2-4x^2}\Leftrightarrow x=\dfrac{a\sqrt{6}}{4}$ (thỏa mãn).\\
+		Vậy thể tích lớn nhất của hình chóp $S.ABC$ là $V_{\max}=\dfrac{a^3}{8}$.
+	}
+\end{vd}
+\begin{vd}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%%[1K7KQ-5]
+	Cho hình chóp tứ giác đều $S.ABCD$ có khoảng cách từ $A$ đến mặt phẳng $(SCD)$ bằng $4$. Gọi $V$ là thể tích khối chóp $S.ABCD$. Tìm giá trị nhỏ nhất của $V$.
+	
+	\loigiai{
+		\immini{
+			Đặt $ AB=2x$, $ SO=h $.\\
+			Ta có $\mathrm{d}\left(O,(SCD)\right)= \dfrac{1}{2}\mathrm{d}\left(A,(SCD)\right)=2=OH$.\\
+			Xét $ \triangle SOK $ có
+			$\dfrac{1}{OH^2}= \dfrac{1}{SO^2}+ \dfrac{1}{OK^2}$\\
+			$\Rightarrow\dfrac{1}{OK^2}= \dfrac{1}{OH^2}- \dfrac{1}{SO^2}= \dfrac{1}{4}- \dfrac{1}{h^2}\Rightarrow x = \dfrac{2h}{\sqrt{h^2 - 4}}$.\\
+			$\Rightarrow V = \dfrac{1}{3}SO\cdot S_{ABCD} = \dfrac{1}{3}h \cdot 4x^2 = \dfrac{16}{3}\cdot\dfrac{h^3}{h^2 - 4}~(h>2)$.\\
+			Xét hàm $ f(h)= \dfrac{16}{3}\cdot\dfrac{h^3}{h^2 - 4}$, $h>2$.\\
+			Có $ f'(h)=\dfrac{16}{3}\cdot\dfrac{h^4 - 12h^2}{\left(h^2 - 4\right)^2}\Rightarrow V'=0\Leftrightarrow h = 2\sqrt{3} $.}{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,0) coordinate (A)
+				(-1.7,-1.3) coordinate (B)
+				(4,0) coordinate (D)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(B)!1/2!(D)$) coordinate (O)
+				($(O)+(0,4.5)$) coordinate (S);
+				\coordinate (K) at ($(C)!.5!(D)$);
+				\coordinate (H) at ($(S)!2/3!(K)$);
+				\draw  (S)--(B)--(C)--(D)--(S)--(C)--(S)--(K);
+				\draw[dashed]  (C)--(A)(B)--(D)(A)--(B)(A)--(D)(S)--(A);
+				\draw[dashed]  (S)--(O)--(K)(O)--(H);
+				\fill[black] (S) circle (1.5pt) node[above right]{$S$}(A) circle (1.5pt) node[above left]{$A$}(B) circle (1.5pt) node[below]{$B$}(C) circle (1.5pt) node[below right]{$C$}(D) circle (1.5pt) node[right]{$D$}(O) circle (1.5pt) node[below]{$O$}(K) circle (1.5pt) node[right]{$K$}(H) circle (1.5pt) node[above right]{$H$};
+		\end{tikzpicture}}
+		Ta có bảng biến thiên
+		\begin{center}
+			\begin{tikzpicture}
+				\tkzTabInit[nocadre=false,lgt=1.2,espcl=2.5,deltacl=0.6]
+				{$h$/0.6,$f'(h)$/0.6,$f(h)$/2}
+				{$2$,$2\sqrt{3}$,$+\infty$}
+				\tkzTabLine{,-,0,+,}
+				\tkzTabVar{+/,-/$16\sqrt{3}$,+/}
+			\end{tikzpicture}
+		\end{center}
+		Vậy thể tích nhỏ nhất $ V=16\sqrt{3}\approx 27{,}71 $.
+	}
+\end{vd}
+\subsubsection{Bài tập rèn luyện}
+\centerline{\fcolorbox{red}{yellow!50}{\bf {BÀI TẬP TỰ LUẬN }}}
+
+\begin{bt}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7KQ-5]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, cạnh bên $SA=a$ và vuông góc với mặt phẳng đáy $(ABCD)$. Trên $SB$, $SD$ lần lượt lấy hai điểm $M$, $N$ sao cho $\dfrac{SM}{SB}=m>0$, $\dfrac{SN}{SD}=n>0$. Tính thể tích lớn nhất $V_{\max}$ của khối chóp $S.AMN$ biết $2m^2+3n^2=1$.
+	\loigiai{
+		\immini{Ta có $V_{S.ABD}=\dfrac{1}{3}\cdot\dfrac{1}{2}{a}^2\cdot a=\dfrac{a^3}{6}$.\\
+			Lại có $\dfrac{V_{S.AMN}}{V_{S.ABD}}=\dfrac{SA\cdot SM\cdot SN}{SA\cdot SB\cdot SD}=m\cdot n$.\\
+			Suy ra $ V_{S.AMN}=\dfrac{a^3}{6}\cdot m\cdot n$. \\
+			Mặt khác $1=2m^2+3n^2\ge 2\sqrt{2m^2\cdot 3n^2}=2\sqrt{6}\cdot m\cdot n$.\\
+			Suy ra $ m\cdot n\le \dfrac{1}{2\sqrt{6}}=\dfrac{\sqrt{6}}{12}$.\\
+			Vậy $V_{S.AMN}\le \dfrac{a^3\sqrt{6}}{72}\Rightarrow V_{\max}=\dfrac{a^3\sqrt{6}}{72}$ xảy ra khi $m=\dfrac{1}{2}$ và $n=\dfrac{1}{\sqrt{6}}$.}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,4) coordinate (S)
+				(0,0) coordinate (A)
+				(-1.3,-1.7) coordinate (B)
+				(4,0) coordinate (D)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(S)!2/5!(B)$) coordinate (M)
+				($(S)!1/2!(D)$) coordinate (N);
+				\draw  (S)--(B)--(C)--(D)--(S)--(C);
+				\draw[dashed]  (S)--(A)--(M)--(N)--(A) (B)--(A)--(D);
+				\fill[black] (S) circle (1.5pt) node[above right]{$S$}(A) circle (1.5pt) node[below]{$A$} (B) circle (1.5pt) node[below]{$B$}(C) circle (1.5pt) node[below]{$C$}(D) circle (1.5pt) node[right]{$D$} (M) circle (1.5pt) node[left]{$M$} (N) circle (1.5pt) node[above right]{$N$};
+			\end{tikzpicture}
+		}
+	}
+\end{bt}
+
+
+
+\begin{bt}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Trong các khối chóp tứ giác đều $S.ABCD$ mà khoảng cách từ $A$ đến mặt phẳng $(SBC)$ bằng $2a$. Tính thể tích nhỏ nhất.
+	\loigiai{
+		\immini{
+			Gọi $O$, $K$ lần lượt là trung điểm của $AC$ và $BC$, gọi $H$ là hình chiếu của $O$ lên $SK$. Vì $AC=2OC$ nên
+			$$\mathrm{d}\left(A,(SBD)\right)=2\mathrm{d}\left(O,(SBC)\right)=2OH.$$
+			Mà $\mathrm{d}(A,(SBC))=2a$ $\Rightarrow 2OH=2a\Rightarrow OH=a$.\\
+			Đặt $OK=x$ ($x>a$). Khi đó
+			$$AB=2x,\ \dfrac{1}{OS^2}=\dfrac{1}{OH^2}-\dfrac{1}{OK^2}=\dfrac{1}{a^2}-\dfrac{1}{x^2}\Rightarrow OS=\sqrt{\dfrac{a^2x^2}{x^2-a^2}}=\dfrac{ax}{\sqrt{x^2-a^2}}.$$
+			Thể tích của khối chóp $S.ABCD$ bằng
+			$$V=\dfrac{1}{3}\cdot S_{ABCD}\cdot SO=\dfrac{4x^2}{3}\cdot \dfrac{ax}{\sqrt{x^2-a^2}}=\dfrac{4a}{3}\cdot \dfrac{x^3}{\sqrt{x^2-a^2}}.$$
+		}{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,0) coordinate (A)
+				(-1.3,-1.7) coordinate (D)
+				(4,0) coordinate (B)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(B)!1/2!(D)$) coordinate (O)
+				($(O)+(0,4.5)$) coordinate (S);
+				\coordinate (K) at ($(C)!.5!(B)$);
+				\coordinate (H) at ($(S)!2/3!(K)$);
+				\draw  (S)--(D)--(C)--(B)--(S)--(C)--(S)--(K);
+				\draw[dashed]  (C)--(A)(D)--(B)(A)--(B)(A)--(B)(S)--(A) (A)--(D);
+				\draw[dashed]  (S)--(O)--(K)(O)--(H);
+				\fill[black] (S) circle (1.5pt) node[above right]{$S$}(A) circle (1.5pt) node[below]{$A$}(D) circle (1.5pt) node[below]{$D$}(C) circle (1.5pt) node[right]{$C$}(B) circle (1.5pt) node[below]{$B$}(O) circle (1.5pt) node[below]{$O$}(K) circle (1.5pt) node[right]{$K$}(H) circle (1.5pt) node[above right]{$H$};
+			\end{tikzpicture}
+		}
+		
+		Đặt $f(x)=\dfrac{4a}{3}\cdot \dfrac{x^3}{\sqrt{x^2-a^2}}$. Ta có
+		\begin{align*}
+			&f'(x)=\dfrac{4a}{3}\cdot \dfrac{3x^2\sqrt{x^2-a^2}-x^3\cdot\dfrac{x}{\sqrt{x^2-a^2}}}{x^2-a^2}=\dfrac{4a}{3}\cdot\dfrac{x^2(2x^2-3a^2)}{(x^2-a^2)\sqrt{x^2-a^2}}.\\
+			&f'(x)=0\Leftrightarrow x=\dfrac{a\sqrt{6}}{2}.
+		\end{align*}
+		\begin{center}
+			\begin{tikzpicture}[>=stealth]
+				\tkzTabInit[lgt=1.5,espcl=3,deltacl=0.6]
+				{$x$ /1.2, $f'(x)$ /0.8, $f(x)$ /2}
+				{$a$, $\dfrac{a\sqrt{6}}{2}$, $+\infty$}
+				\tkzTabLine{,-,0,+,}
+				\tkzTabVar{+/ , -/ $2\sqrt{3}a^3$, +/}
+			\end{tikzpicture}
+		\end{center}
+		Vậy khối chóp có thể tích nhỏ nhất bằng $2\sqrt{3}a^3$.
+	}
+\end{bt}
+
+\begin{bt}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho hình chóp tứ giác đều $S.ABCD$ đỉnh $S$, khoảng cách từ $C$ đến mặt phẳng $(SAB)$ bằng $6$. Gọi $V$ là thể tích khối chóp $S.ABCD$, tính giá trị nhỏ nhất của $V$.
+	\loigiai{
+		\immini{
+			Gọi $O$ là giao điểm của $AC$ và $BD$.\\
+			Đặt $AB=x\sqrt{2},\ SO=h \Rightarrow OA=OB=x$.\\
+			Từ giả thiết $\mathrm{d}(C,(SAB))=6$ suy ra $\mathrm{d}(O,(SAB))=3$.\\
+			Vì $OA,OB,OS$ đôi một vuông góc nên ta có
+			$$\dfrac{1}{h^2}+\dfrac{1}{x^2}+\dfrac{1}{x^2}=\dfrac{1}{3^2} \Leftrightarrow x^2=\dfrac{18h^2}{h^2-9}.$$
+			Thể tích khối chóp $S.ABCD$ là
+			$V=\dfrac{2}{3}hx^2=\dfrac{12h^3}{h^2-9}$.\\
+			Xét hàm số $f(h)=\dfrac{12h^3}{h^2-9}$ trên khoảng $(3;+\infty)$, ta có\\ $f'(h)=\dfrac{12(h^4-27h^2)}{(h^2-9)^2}$. 
+			
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,0) coordinate (C)
+				(-1.3,-1.7) coordinate (D)
+				(4,0) coordinate (B)
+				($(B)+(D)-(C)$) coordinate (A)
+				($(B)!1/2!(D)$) coordinate (O)
+				($(O)+(0,4.5)$) coordinate (S);
+				\coordinate (K) at ($(A)!.5!(B)$);
+				\coordinate (H) at ($(S)!3/5!(K)$);
+				\draw  (S)--(D)--(A)--(B)--(S)--(A)--(S)--(K);
+				\draw[dashed]  (A)--(C)(D)--(B)(C)--(B)(C)--(B)(S)--(C) (C)--(D);
+				\draw[dashed]  (S)--(O)--(K)(O)--(H);
+				\fill[black] (S) circle (1.5pt) node[above right]{$S$}(C) circle (1.5pt) node[below]{$C$}(D) circle (1.5pt) node[below]{$D$}(A) circle (1.5pt) node[below]{$A$}(B) circle (1.5pt) node[right]{$B$}(O) circle (1.5pt) node[below]{$O$}(K) circle (1.5pt) node[right]{$K$}(H) circle (1.5pt) node[above right]{$H$};
+			\end{tikzpicture}
+		}
+		$$f'(h)=0 \Leftrightarrow 12(h^4-27h^2)=0 \Leftrightarrow \hoac{&h=0 \text{ (loại)}\\& h=3\sqrt{3}.}$$
+		Bảng biến thiên của hàm số $f(h)$ là
+		\begin{center}
+			\begin{tikzpicture}[>=stealth]
+				\tkzTabInit[nocadre=false,lgt=1.5,espcl=2,deltacl=0.6]
+				{$h$/.7,$f'(h)$/.7,$f(h)$/1.5}
+				{$3$,$3\sqrt{3}$,$+\infty$}
+				\tkzTabLine{,-,z,+,} 
+				\tkzTabVar{+/$+\infty$,-/$54\sqrt{3}$,+/$+\infty$}
+			\end{tikzpicture}
+		\end{center}
+		Vậy giá trị nhỏ nhất của $V$ là $\min V=f\left(3\sqrt{3}\right)=54\sqrt{3}$.
+	}
+\end{bt}
+
+\begin{bt}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho tứ diện $SABC$ có $SA$, $SB$, $SC$ đôi một vuông góc với nhau, độ dài các cạnh $BC=a$, $SB=b$, $SC=c$. Tính thể tích lớn nhất  $V_{\max}$ của khối tứ diện đã cho.
+	\loigiai{
+		\immini{
+			Ta có $SA^2+AB^2=b^2 \Rightarrow b^2 \geqslant 2SA \cdot AB$; \\
+			$SA^2+AC^2=c^2 \Rightarrow c^2 \geqslant 2SA \cdot AC$;\\
+			$AB^2+AC^2=a^2 \Rightarrow a^2 \geqslant 2AB \cdot AC$. \\
+			Suy ra $V_{S.ABC} =\dfrac{1}{6}SA \cdot SB \cdot SC \leqslant \dfrac{abc\sqrt{2}}{24}$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=0.5]
+				\path
+				(0,8) coordinate (A)
+				(0,0) coordinate (S)
+				(5,-3) coordinate (B)
+				(10,0) coordinate (C);
+				\draw  (A)--(S)--(B)--(C)--(A)--(B)--(S);
+				\draw[dashed]  (S)--(C);
+				\fill[black] (S) circle (1.5pt) node[above left]{$S$}(A) circle (1.5pt) node[above]{$A$}(C) circle (1.5pt) node[below right]{$C$}(B) circle (1.5pt) node[below]{$B$};
+				\draw pic[draw, angle radius = 5pt] {right angle  =A--S--B};
+				\draw pic[draw, angle radius = 5pt] {right angle =A--S--C};
+				\draw pic[draw, angle radius = 5pt] {right angle =B--S--C};
+			\end{tikzpicture}
+		}
+	}
+\end{bt}
+
+\begin{bt}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho hình chóp $S.ABC$ có $AB=a$, $BC=a\sqrt{3}$, $\widehat{ABC}=60^\circ$. Hình chiếu vuông góc của $S$ lên mặt phẳng $(ABC)$ là một điểm thuộc cạnh $BC$. Góc giữa đường thẳng $SA$ và $(ABC)$ mặt phẳng là $45^\circ$. Tính thể tích nhỏ nhất của khối chóp $S.ABC$.
+	\loigiai{\immini{Gọi $H$ là hình chiếu của $S$ lên mặt phẳng $(ABC)$. Ta có $$(SA,(ABC))=\widehat{SAH}=45^\circ.$$
+			Vậy tam giác $SAH$ vuông cân tại $H$ $\Rightarrow SH=AH$.
+			\begin{eqnarray*}
+				V_{S.ABC}&=&\dfrac{1}{3}SH\cdot S_{\Delta ABC}\\
+				&=&\dfrac{1}{3}AH\cdot \dfrac{1}{2}AB\cdot BC\cdot\sin\widehat{ABC}\\
+				&=&AH\cdot\dfrac{a^2}{4}.
+			\end{eqnarray*}
+			Vậy nên $V_{S.ABC}$ nhỏ nhất khi $AH$ nhỏ nhất, khi đó $AH\perp BC$.\\
+			Suy ra $AH=a\cdot\sin 60^\circ=a\dfrac{\sqrt{3}}{2}$. Vậy ${V_{S.ABC}}_{\min}=\dfrac{a^3\sqrt{3}}{8}$.}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,0) coordinate (A)
+				(1.3,-1.7) coordinate (B)
+				(4,0) coordinate (C)
+				($(B)!3/5!(C)$) coordinate (H)
+				($(H)+(0,4.5)$) coordinate (S);
+				\draw  (H)--(S)--(A)--(B)--(C)--(S)--(B);
+				\draw[dashed]  (H)--(A)--(C);
+				\fill[black] (S) circle (1.5pt) node[above right]{$S$} (C) circle (1.5pt) node[right]{$C$} (A) circle (1.5pt) node[left]{$A$} (B) circle (1.5pt) node[below]{$B$} (H) circle (1.5pt) node[right]{$H$};
+		\end{tikzpicture}}
+	}
+\end{bt}
+\centerline{\fcolorbox{red}{yellow!50}{\bf {BÀI TẬP TRẮC NGHIỆM }}}
+
+\Opensolutionfile{ans}[ans/ans-1K7-27-Dang6]
+
+
+
+\begin{ex}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho hai đường thẳng $Ax$, $By$ chéo nhau và vuông góc với nhau, có $AB$ là đoạn vuông góc chung của hai đường thẳng đó và $AB = a$. Hai điểm $M$ và $N$ lần lượt di động trên $Ax$ và $By$ sao cho $MN = b$. Xác định độ dài đoạn thẳng $AM$ theo $a$ và $b$ sao cho thể tích tứ diện $ABMN$ đạt giá trị lớn nhất.
+	\choice
+	{$AM=\dfrac{\sqrt{b^2-a^2}}{3}$}
+	{\True $AM=\sqrt{\dfrac{b^2-a^2}{2}}$}
+	{$AM=\dfrac{\sqrt{b^2-a^2}}{2}$}
+	{$AM=\sqrt{\dfrac{b^2-a^2}{3}}$}
+	\loigiai{
+		\immini{
+			Đặt $AM=x$ với $x>0$.\\ 
+			Suy ra $AN=\sqrt{b^2-x^2}$ và $BN=\sqrt{b^2-x^2-a^2}$.\\
+			Ta có $\heva{& AM\perp AB\\& AM\perp By}\Rightarrow AM\perp (ABN)$.\\
+			Khi đó 
+			\begin{eqnarray*}
+				V_{M.ABN}&=&\dfrac{1}{3}\cdot\dfrac{1}{2}\cdot BA\cdot BN\cdot AM
+				\\&=& \dfrac{1}{6}\cdot a\cdot x\cdot\sqrt{b^2-a^2-x^2}.
+			\end{eqnarray*}
+			Áp dụng bất đẳng thức Cô-si ta có
+			\begin{eqnarray*}
+				&& x\cdot\sqrt{b^2-a^2-x^2}\leq \dfrac{x^2+b^2-a^2-x^2}{2}=\dfrac{b^2-a^2}{2}.
+			\end{eqnarray*}
+			Dấu \lq\lq$=$\rq\rq~ xảy ra $\Leftrightarrow x^2=\dfrac{b^2-a^2}{2}\Leftrightarrow AM=x=\sqrt{\dfrac{b^2-a^2}{2}}$.
+		}{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=0.8]
+				\path
+				(0,8) coordinate (x)
+				(0,0) coordinate (A)
+				(6,0) coordinate (B)
+				(3,-6) coordinate (y)
+				(0,6) coordinate (M)
+				(4,-4) coordinate (N)
+				;
+				\draw  (x) node[above right]{$x$}--(A) circle (1.5pt) node[below]{$A$};
+				\draw(B)circle (1.5pt) node[below right]{$B$}--(y) node[below]{$y$}--(N)circle (1.5pt) node[below right]{$N$}--(A)--(M)circle (1.5pt) node[above left]{$M$}--(N)--(B)--(M);
+				\draw[dashed]  (A)--(B);
+				\fill[black] (A)(B)(M)(N);
+				\draw pic[draw, angle radius = 5pt] {right angle  =M--A--B};
+				\draw pic[draw, angle radius = 5pt] {right angle =A--B--N};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	\immini{Cho hình chóp $S.ABC$. Mặt phẳng $(P)$ song song với đáy và cắt các cạnh $SA$, $SB$, $SC$ lần lượt tại $D, E, F$. Gọi $D', E',F'$ tương ứng là hình chiếu của $D, E, F$ lên mặt phẳng đáy (tham khảo hình vẽ). $V$ là thể tích khối chóp $S.ABC$. Giá trị lớn nhất của thể tích khối đa diện $DEF. D'E'F'$ bằng
+		\choice
+		{$\dfrac{V}{6}$}
+		{$\dfrac{V}{12}$}
+		{\True $\dfrac{4V}{9}$}
+		{$\dfrac{2V}{3}$}}
+	{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=0.65]
+			\path
+			(2,7) coordinate (S)
+			(0,0) coordinate (A)
+			(4,-3) coordinate (B)
+			(10,0) coordinate (C)
+			(1,3.5) coordinate (D)
+			(3,2) coordinate (E)
+			(6,3.5) coordinate (F)
+			(1,-0.4) coordinate (D')
+			($(D')+(E)-(D)$) coordinate (E')
+			($(D')+(F)-(D)$) coordinate (F')
+			;
+			\draw  (S) node[above right]{$S$}--(A) circle (1.5pt) node[left]{$A$}  (B)circle (1.5pt) node[below]{$B$}--(C)circle (1.5pt) node[right]{$C$}--(S)--(B)--(E)circle (1.5pt) node[above right]{$E$}--(F)circle (1.5pt) node[above right]{$F$}--(E)--(D)circle (1.5pt) node[above left]{$D$}--(A)--(B);
+			\draw[dashed]  (A)--(C)(D)--(F)--(F')circle (1.5pt)node[below right]{$F'$}--(E')circle (1.5pt)node[above]{$E'$}--(D')circle (1.5pt)node[above right]{$D'$};\draw[dashed] (F')--(D')--(D);
+			\fill[black] (A)circle (1.5pt)(B)circle (1.5pt)(C)circle (1.5pt)(D)circle (1.5pt)(E)circle (1.5pt)(F)circle (1.5pt);
+		\end{tikzpicture}
+	}	
+	\loigiai{
+		Đặt $V'$ là thể tích khối lăng trụ $DEF.D'E'F'$.\\
+		Đặt $\dfrac{SD}{SA}=x$, $(0<x<1)$ suy ra $\dfrac{S_{\Delta DEF}}{S_{\Delta ABC}}=x^2$ và $\dfrac{d\left[D,(ABC)\right]}{d\left[S,(ABC)\right]}=\dfrac{DA}{SA}=1-x$.\\
+		Do đó 
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			V' & = & S_{\Delta DEF}\cdot d\left[D,(ABC)\right] =  \left(S_{\Delta ABC}\cdot x^2\right)\cdot  d\left[S,(ABC) \right] \cdot(1-x)\\
+			& = & V\cdot x^2(1-x) =  V\cdot\dfrac{3}{2}\cdot x\cdot x(2-2x)\\
+			&\le & V\cdot\dfrac{3}{2}\cdot\left(\dfrac{x+x+2-2x}{3}\right)^3.
+		\end{eqnarray*}
+		Suy ra $V'\le V\cdot\dfrac{3}{2}\cdot\dfrac{8}{27}=\dfrac{4V}{9}$.\\
+		Vậy giá trị lớn nhất của $V'$ là $\dfrac{4V}{9}$.
+	}
+\end{ex}
+
+
+
+
+\begin{ex}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, cạnh bên $SA=2a$ và vuông góc với $(ABCD).$ Điểm $M$ thay đổi trên cạnh $CD$, $H$ là hình chiếu vuông góc của $S$ trên $BM$. Tìm giá trị lớn nhất của thể tích khối chóp $S.ABH$ theo $a$.
+	\choice
+	{\True $\dfrac{a^3}{6}$}
+	{$\dfrac{a^3}{12}$}
+	{$\dfrac{a^3}{4}$}
+	{$\dfrac{a^3}{9}$}
+	\loigiai{
+		\immini
+		{
+			Ta có $\left\{\begin{array}{l}BH \perp SH \\ BH \perp SA\end{array}\right. \Rightarrow BH \perp(SAH) \Rightarrow BH \perp AH$.\\
+			Do đó $H$ thuộc đường tròn đường kính $AB$.\\
+			Gọi $K$ là hình chiếu vuông góc của $H$ lên cạnh $AB$.
+			\begin{eqnarray*}
+				\Rightarrow V_{SABH}
+				& = & \dfrac{1}{3} SA \cdot S_{\triangle ABH}\\
+				& = & \dfrac{1}{3}\cdot 2a \cdot S_{\triangle ABH}=\dfrac{2a^2 \cdot HK}{6}=\dfrac{a^2 \cdot HK}{3}.
+			\end{eqnarray*}	
+			Do đó để thể tích lớn nhất thì $HK$ lớn nhất. $HK$ lớn nhất khi $H$ là điểm chính giữa cung $AB$, tức $H$ trùng với tâm hình vuông $ABCD$ hay $M$ trùng với $D$. Khi đó $HK=\dfrac{a}{2}$.\\
+			Vậy $V_{\max}=\dfrac{a^3}{6}$.
+		}
+		{
+			\begin{tikzpicture}[scale=1,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (A) at (0,0);
+				\coordinate (D) at (3,0);
+				\coordinate (B) at (-1,-1.5);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (S) at ($(A)+(0,3)$);
+				\coordinate (M) at ($(C)!.7!(D)$);
+				\coordinate (H) at ($(B)!.55!(M)$);
+				\coordinate (K) at ($(B)!.35!(A)$);
+				\draw (S)node[left]{$S$}--(B)node[below]{$B$}--(C)node[right]{$C$}--(D)node[right]{$D$}--(S)--(C);
+				\draw[dashed] (S)--(A)node[left]{$A$};
+				\draw[dashed] (A)node[left]{$A$}--(D) (A)--(B)--(M)node[right]{$M$} (H)node[below right]{$H$}--(K)node[left=.2cm]{$K$} (S)--(H)--(A);
+				\fill[black] (A)circle (1pt)(B)circle (1pt)(C)circle (1pt)(D)circle (1pt)(M)circle (1pt)(H)circle (1pt)(K)circle (1pt)(S)circle (1pt);
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho hình chóp $ S.ABCD $ có đáy là hình vuông cạnh $ a $, $ SA $ vuông góc với mặt phẳng đáy $ (ABCD) $ và $ SA=a $. Điểm $ M $ thuộc cạnh $ SA $ sao cho $\dfrac{SM}{SA}=k $, $ 0<k<1 $. Khi đó giá trị của $ k $ để mặt phẳng $ (BMC) $ chia khối chóp $ S.ABCD $ thành hai phần có thể tích bằng nhau là
+	\choice
+	{\True $ k=\dfrac{-1+\sqrt{5}}{2} $}
+	{$ k=\dfrac{1+\sqrt{5}}{4} $}
+	{$ k=\dfrac{-1+\sqrt{5}}{4} $}
+	{$ k=\dfrac{-1+\sqrt{2}}{2} $}
+	\loigiai{
+		\immini{Gọi giao điểm của $(BMC)$ với $SD$ là $N$. \\
+			Khi đó do $BC\parallel AD$ nên $(BMC)\cap (SAD)=MN\parallel AD \parallel BC$ 
+			$\Rightarrow \dfrac{SM}{SA}=\dfrac{SN}{SD}=k$.\\
+			Gọi $V$ là thể tích của khối chóp $S.ABCD$.\\
+			$V_1$ là thể tích của khối chóp $S.BCNM$, $V_2$ là thể tích của khối đa diện còn lại. \\
+			Ta có $V_1+V_2=V\Rightarrow V_1=V_2=\dfrac{V}{2}$.\\
+			Và $V_1=V_{S.MBC}+V_{S.MNC}$.
+		}
+		{\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\path
+				(0,0) coordinate (A) 
+				(-2,-2) coordinate (B)
+				(5,0) coordinate (D)
+				(3,-2) coordinate (C)
+				(0,4) coordinate (S)
+				(1.5,-1) coordinate (O)
+				;
+				\draw 
+				(D)--(C)--(B)
+				(S)--(D) (S)--(C) (S)--(B)
+				;
+				\coordinate (M) at ($(S)!.6!(A)$);
+				\coordinate (N) at ($(S)!.6!(D)$);
+				\draw[dashed] (S)--(A)--(D) (B)--(A)--(C);
+				\draw[dashed] (B)--(M)--(N)--(C)--(M);
+				%\tkzMarkRightAngles(S,A,D)
+				\draw pic[draw,angle radius=5pt]{right angle=S--A--D};
+				\foreach \x/\g in
+				{A/150,D/0,C/-90,B/-120,S/90, M/150, N/30
+				}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+		\end{tikzpicture}}
+		\noindent 
+		Mặt khác $\dfrac{V_{S.MBC}}{V_{S.MNC}}=\dfrac{SM}{SA}=k$ $\Rightarrow V_{S.MBC}=k\cdot V_{S.ABC}=\dfrac{1}{2}kV$.\\
+		Ta có
+		\begin{eqnarray*}
+			& & \dfrac{V_{S.MNC}}{V_{S.ADC}}=\dfrac{SM}{SA}\cdot\dfrac{SN}{SD}=k^2\\
+			&\Rightarrow & V_{S.MNC}=k^2\cdot V_{S.ADC}=\dfrac{1}{2}k^2 V\\
+			&\Leftrightarrow & V_1=\dfrac{V}{2}\left(k^2+k\right)=\dfrac{V}{2}\\
+			&\Leftrightarrow & k^2+k-1=0\Rightarrow k=\dfrac{-1+\sqrt{5}}{2}.
+		\end{eqnarray*}
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M$, $N$ lần lượt thuộc các đoạn thẳng $AB$, $AD$ ($M$, $N$ không trùng $A$) sao cho $\dfrac{AB}{AM} = x$ và $\dfrac{AD}{AN} = y$ thỏa mãn $x + 2y = 4$ và $\dfrac{V_{S.AMN}}{V_{S.ABCD}}$ đạt giá trị nhỏ nhất. Giá trị của $x^2 + y^2 + \dfrac{V_{S.ABD}}{V_{S.AMN}}$ bằng
+	\choice
+	{$9$}
+	{\True $7$}
+	{$5$}
+	{$6$}
+	\loigiai{
+		\immini{
+			Ta có: 
+			\begin{itemize}
+				\item $V_{S.AMN} = \dfrac{1}{3}\mathrm{d}\left(S;(ABCD)\right)\cdot S_{\triangle AMN}$,
+				\item $V_{S.ABCD} = \dfrac{1}{3}\mathrm{d}\left(S;(ABCD)\right)\cdot S_{ABCD}$.
+			\end{itemize}
+			Mà
+			\begin{itemize}
+				\item $S_{\triangle AMN} = \dfrac{1}{2}AM\cdot AN \cdot \sin A$,
+				\item $S_{ABCD} = 2S_{\triangle ABD} = 2\cdot\dfrac{1}{2}AB\cdot AD \cdot \sin A$,
+				\item $x + 2y = 4 \Leftrightarrow y = \dfrac{4-x}{2}$.
+			\end{itemize}
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\path (0,0) coordinate (A)
+				++(-0.5,3) coordinate (S)
+				(-1.3,-1.4) coordinate (B)
+				++(3.5,0) coordinate (C)
+				($(A)+(C)-(B)$) coordinate (D)
+				($(A)!2/3!(B)$) coordinate (M)
+				($(A)!1/4!(D)$) coordinate (N);
+				\draw (S)--(B)--(C)--(D)--(S)--(C);
+				\draw[dashed](S)--(A)--(B) (D)--(A) (S)--(M) (S)--(N) (N)--(M);
+				\foreach \d/\g in {A/160, B/-90, C/-90, D/0, S/90, N/-90, M/-45} \fill (\d)node[shift={(\g:0.3)}]{$\d$} circle(1pt);
+			\end{tikzpicture}
+		}
+		\noindent
+		Do đó
+		$$\dfrac{V_{S.AMN}}{V_{S.ABCD}} = \dfrac{1}{2}\dfrac{AM}{AB}\cdot\dfrac{AN}{AD} = \dfrac{1}{2}\cdot\dfrac{1}{x}\cdot\dfrac{1}{y} = \dfrac{1}{2}\cdot\dfrac{2}{x(4-x)} = \dfrac{1}{x(4-x)}.$$
+		Vì $x(4-x) \leq \left( \dfrac{x + 4 - x}{2} \right)^2 = 4 \Rightarrow \dfrac{V_{S.AMN}}{V_{S.ABCD}} \geq \dfrac{1}{4}$.\\
+		Khi đó $\left( \dfrac{V_{\triangle AMN}}{V_{ABCD}} \right)_{\min} = \dfrac{1}{4} \Leftrightarrow x = 4-x \Leftrightarrow x = 2 \Rightarrow y = 1$.\\
+		Suy ra $\dfrac{V_{S.ABD}}{V_{S.AMN}} = xy = 2\cdot1 = 2$.\\
+		Do đó $x^2 + y^2 + \dfrac{V_{S.ABD}}{V_{S.AMN}} = 2^2 + 1^2 + 2 = 7$.\\
+		Vậy giá trị của $x^2 + y^2 + \dfrac{V_{S.ABD}}{V_{S.AMN}}$ bằng $7$.
+	}
+\end{ex}
+
+
+\begin{ex}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M, N$ là hai điểm lần lượt nằm trên các đoạn thẳng $AB$ và $AD\left(M, N\right.$ không trùng $A$ ) sao cho $\dfrac{A B}{A M}+2 \dfrac{A D}{A N}=4$. Gọi $V$ và $V^{\prime}$ lần lượt là thể tích của các khối chóp $S.ABCD$ và $S.MBCDN$. Giá trị nhỏ nhất của $\dfrac{V^{\prime}}{V}$ bằng
+	\choice
+	{$\dfrac{1}{3}$}
+	{$\dfrac{1}{2}$}
+	{$\dfrac{3}{4}$}
+	{\True $\dfrac{2}{3}$}
+	\loigiai{
+		\immini
+		{
+			Gọi $h$ là khoảng cách từ điểm $S$ đến mặt phẳng đáy $(ABCD)$.\\
+			Ta có  $V=\dfrac{1}{3}hS_{ABCD} = \dfrac{1}{3}hAB \cdot AD\sin \widehat{BAD}$.\\
+			Thể tích khối chóp $S.AMN$ là  $$V_{S.AMN}=\dfrac{1}{3}h\dfrac{1}{2}AM \cdot AN\sin \widehat{BAD}.$$
+			Mặt khác $V'=V-V_{S.AMN}$ nên suy ra
+		}
+		{
+			\begin{tikzpicture}[font=\footnotesize, line join=round, line cap=round, >=stealth,scale=.8]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (-1.5,-1.5);
+				\coordinate (D) at (4,0);
+				\coordinate (C) at ($(B)+(D)$);
+				\coordinate (S) at (1,3);
+				\coordinate (M) at ($(A)!0.3!(B)$);
+				\coordinate (N) at ($(A)!0.6!(D)$);
+				\draw (S)--(B)--(C)--(D)--(S)--(C);
+				\draw[dashed] (B)--(A)--(D) (S)--(M)--(N)--(S)--(A);
+				\fill[black](A)circle (1.5pt) node[above right]{$A$} (B)circle (1.5pt) node[below]{$B$} (C)circle (1.5pt) node[below right]{$C$} (D)circle (1.5pt) node[right]{$D$} (M)circle (1.5pt) node[below right]{$M$} (N)circle (1.5pt)node[below right]{$N$} (S)circle (1.5pt) node[above]{$S$};
+			\end{tikzpicture}
+		}	
+		$\dfrac{V'}{V}=\dfrac{V-V_{S.AMN}}{V} = 1-\dfrac{V_{S.AMN}}{V} = 1- \dfrac{\dfrac{1}{3} h \dfrac{1}{2} AM \cdot AN \sin \widehat{BAD}}{\dfrac{1}{3} h AB \cdot AD \sin \widehat{BAD}}=1-\dfrac{AM}{AB} \cdot \dfrac{AN}{2AD}$.\\
+		Đặt $\dfrac{AB}{AM}=x \, (1 \le x \le 2) \Rightarrow \dfrac{2AD}{AN} = 4-x$.
+		Khi đó $\dfrac{V'}{V} = 1-\dfrac{1}{x(4-x)}$.\\
+		Xét hàm số $f(x) = 1-\dfrac{1}{x(4-x)}$ với $x \in [1;2]$, ta có
+		$f'(x)=\dfrac{4-2x}{(4x-x^2)^2} = 0 \Leftrightarrow x=2$.\\
+		Lập bảng biến thiên:
+		\begin{center}
+			\begin{tikzpicture}[yscale=.8]
+				\tkzTabInit[nocadre=false,lgt=1.2,espcl=3,deltacl=0.8]
+				{$x$ /1,$y'$ /1,$y$ /2}
+				{$1$,$2$}
+				\tkzTabLine{,+,}
+				\tkzTabVar{-/$\dfrac{2}{3}$,+/$\dfrac{3}{4}$}
+			\end{tikzpicture}
+		\end{center}
+		Vậy giá trị nhỏ nhất của $\dfrac{V'}{V}=\dfrac{2}{3}$ đạt được khi $M$ trùng $B$.
+	}
+\end{ex}
+\begin{ex}%[[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=x$, $AD=3$, góc giữa đường thẳng $A'C$ và mặt phẳng $(ABB'A')$ bằng $30^\circ$. Tìm giá trị lớn nhất của thể tích khối hộp chữ nhật.
+	\choice
+	{$9\sqrt{2}$}
+	{\True $\dfrac{81}{2}$}
+	{$27\sqrt{2}$}
+	{$\dfrac{27}{2}$}
+	\loigiai
+	{\immini{Ta có $CA'\cap (ABB'A')=A'$ và $CB\perp (ABB'A')$ nên góc giữa đường thẳng $A'C$ và mặt phẳng $(ABB'A')$ là  $\widehat{CA'B}=30^\circ$.\\
+			Ta tính được $A'B=\dfrac{BC}{\tan 30^\circ}=3\sqrt{3}$ và $$AA'=\sqrt{27-x^2},\  \left(0<x<3\sqrt{3}\right).$$
+			Thể tích khối hộp chữ nhật là $$V=3x\sqrt{27-x^2}\leq 3\cdot\dfrac{x^2+27-x^2}{2}=\dfrac{81}{2}.$$}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+				\path (0,3) coordinate (h) (0,0)coordinate (B) (3.5,0) coordinate (C) (4.5,1) coordinate (D) ($(B)+(D)-(C)$) coordinate (A);
+				\foreach \p in {A,B,C,D}\path ($(\p)+(h)$) coordinate (\p');
+				\draw (A')--(B')--(B)--(C)--(D)--(D')--cycle (B')--(C')--(D') (C)--(C');
+				\draw[dashed] (A')--(B)--(A)--(D) (A)--(A')--(C);
+				\path (A)--(B) node[near start,left]{$x$} (A)--(D) node[near start,above]{$3$};
+				\foreach \p/\g in {A/150,B/240,C/-60,D/0,A'/90,B'/180,C'/-30,D'/45} \fill[black] (\p) circle(1pt)+(\g:0.3) node{$\p$};
+		\end{tikzpicture}}
+		\noindent
+		Đẳng thức xảy ra khi $x^2=27-x^2\Leftrightarrow x=\dfrac{3\sqrt{6}}{2}$.\\
+		Vậy giá trị lớn nhất của thể tích khối hộp chữ nhật là $\dfrac{81}{2}$.
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7?Q-5]
+	Ông A dự định sử dụng hết $8$ m$^2$ kính để làm một bể cá bằng kính có dạng hình hộp chữ nhật không nắp, chiều dài gấp đôi chiều rộng (các mối ghép có kích thước không đáng kể). Bể cá có dung tích lớn nhất bằng bao nhiêu (làm tròn đến hàng phần trăm)?
+	\choice
+	{\True $2.02$ m$^3$}
+	{$1.02$ m$^3$}
+	{$1.45$ m$^3$}
+	{$0.73$ m$^3$}
+	\loigiai{
+		Gọi $x$ là chiều rộng, $y$ là chiều cao của hình hộp chữ nhật ($0\leq x\leq 2$, đơn vị tính m).\\
+		Tổng diện tích mặt bên và một đáy là $S=2(xy+2xy)+2x^2=6xy+2x^2=8\Rightarrow xy=\dfrac{4-x^2}{3}$.\hfill\\
+		Thể tích bể cá là $V=x\cdot 2x\cdot y=2x^2y=\dfrac{2x(4-x^2)}{3}=\dfrac{8x-2x^3}{3}$.\\
+		Ta có $V'=\dfrac{8}{3}-2x^2$, $V'=0\Leftrightarrow\hoac{&x=\dfrac{2}{\sqrt{3}}\in(0;2)\\&x=-\dfrac{2}{\sqrt{3}}\notin(0;2).}$\\
+		Mà $V(0)=0$, $V(2)=0$, $V\left(\dfrac{2}{\sqrt{3}}\right)=\dfrac{32\sqrt{3}}{27}\approx2,05$ m$^3$.
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7GQ-5]
+	Cho khối trụ ta giác đều $ABC.A'B'C'$. Các mặt phẳng $(ABC')$ và $(A'B'C)$ chia khối lăng trụ thành $4$ khối đa diện. Kí hiệu $H_1,H_2$ lần lượt là khối có thể tích lớn nhất và nhỏ nhất trong bốn khối trên. Giá trị của $\dfrac{V_{\left(H_1\right)}}{V_{\left(H_2\right)}}$ bằng
+	\choice
+	{$4$}
+	{$2$}
+	{\True $5$}
+	{$3$}
+	\loigiai{
+		\immini{Đặt $V=V_{ABC.A'B'C'}$.\\
+			Ta có $$V_{C'.OO'C}=\dfrac{1}{2}\cdot\dfrac{1}{2} V_{C'.ABC}=\dfrac{V}{12}\Rightarrow V_{C'.A'B'O'O}=V_{C.ABO'O}=\dfrac{1}{3}V-\dfrac{1}{12}V=\dfrac{1}{4}V.$$
+			Ta có $V_{OO'BB'A'A}=V_{C.ABB'A'}-V_{C.ABO'O}=\dfrac{2V}{3}-\dfrac{V}{4}=\dfrac{5V}{12}$.\\
+			Suy ra $V_{(H_1)}=\dfrac{5}{12}V,V_{(H_2)}=\dfrac{1}{12}V\Leftrightarrow \dfrac{V_{(H_1)}}{V_{(H_2)}}=5$.}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				% Định nghĩa tham số tự động
+				\def\a{3};
+				\def\b{0.5*\a};
+				\def\h{\a};
+				% Định nghĩa đáy dưới
+				\draw(0,0)coordinate (A)++(0:\a)coordinate(B)++(-135:\b)coordinate(C);
+				% Tịnh tiến đáy dưới
+				\begin{scope}[shift={(0,\h)}]
+					\draw (0,0)coordinate(A')++(0:\a)coordinate(B')++(-135:\b)coordinate(C');
+				\end{scope}
+				\coordinate (O) at ($(A)!0.5!(C')$);
+				\coordinate (O') at ($(B)!0.5!(C')$);
+				% Vẽ 
+				\draw (A')--(A)--(C)--(B)--(B')--(A')--(C')--(C)(A)--(C')--(B')(C')--(B)(A')--(C)--(B');
+				\draw [dashed] (A)--(B)(O)--(O');
+				%Node điểm
+				\foreach \d/\g in {O/180,O'/0,A/180,B/0,C/-90,C'/90,B'/0,A'/180}
+				\draw (\d) circle (1pt) node [shift={({\g}:0.35)}] {$\d$};
+	\end{tikzpicture}}}
+\end{ex}
+
+\begin{ex}%[[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7KQ-5]
+	Từ một tấm bạt hình chữ nhật có kích thước $12 \mathrm{m} \times 6 \mathrm{m}$ như hình vẽ. Một nhóm học sinh trong quá trình đi dã ngoại đã gập đôi tấm bạt lại theo đoạn nối trung điểm hai cạnh là chiều rộng của tấm bạt sao cho hai mép chiều dài của tấm bạt sát đất và cách nhau $x$ ($\mathrm{m}$) (như hình vẽ). Tìm $x$ để khoảng không gian trong lều là lớn nhất.
+	\choice
+	{$x=4$}
+	{\True $x=3\sqrt{2}$}
+	{$x=3$}
+	{$x=3\sqrt{3}$}
+	\begin{center}
+		\begin{tikzpicture}[scale=.7,font=\footnotesize,line join=round, line cap=round,>=stealth]
+			\begin{scope}
+				[xshift=0cm]
+				\path
+				(0,-.5) coordinate (O1)
+				(6,-.5) coordinate (O2)
+				(6,2.5) coordinate (O3)
+				(0,2.5) coordinate (O4)
+				($(O1)!.5!(O4)$) coordinate (O5)
+				($(O2)!.5!(O3)$) coordinate (O6)
+				;
+				\draw (O1)--(O2)--(O3)--(O4)--cycle;
+				\draw (O5)--(O6);
+				\path (O1)--(O2) node[midway,below] {$12 \mathrm{\, m}$};
+				\path (O3)--(O4) node[midway,above] {$12 \mathrm{\, m}$};
+				\path (O1)--(O4) node[midway,left] {$6 \mathrm{\, m}$};
+				\path (O2)--(O3) node[midway,right] {$6 \mathrm{\, m}$};
+			\end{scope}
+			\begin{scope}
+				[xshift=8cm]
+				\path
+				(0,0) coordinate (B)
+				(3,-1) coordinate (C)
+				($(B)!.5!(C)$) coordinate (H)
+				($(H)+(90:2.5)$) coordinate (A)
+				(9,1.7) coordinate (D)
+				($(B)+(D)-(C)$) coordinate (E)
+				($(A)+(E)-(B)$) coordinate (A')
+				($(D)!.5!(E)$) coordinate (H')
+				;
+				\fill[green!20] (B)--(C)--(D)--(E)--cycle;
+				\draw (A)--(B)--(C)--cycle;
+				\draw (C)--(D)--(A')--(A)--(H);
+				\draw[dashed] (B)--(E)--(D) (H')--(A')--(E);
+				\foreach \p/\g in {A/90, B/180, C/-60, H/-90}
+				\draw[fill=black] (\p) circle (1pt) node[shift=(\g:3mm)] {$\p$};
+				\path (A)--(B) node[midway, left] {$3 \mathrm{\, m}$};
+				\path (A)--(C) node[midway, right] {$3 \mathrm{\, m}$};
+				\path (H)--(B) node[midway, below] {$\dfrac{x}{2}$};
+				\path (H)--(C) node[midway, below] {$\dfrac{x}{2}$};
+				\path (A)--(A') node[midway, above, rotate=25] {$12 \mathrm{\, m}$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\loigiai
+	{
+		\begin{center}
+			\begin{tikzpicture}[scale=.7,font=\footnotesize,line join=round, line cap=round,>=stealth]
+				\begin{scope}
+					[xshift=0cm]
+					\path
+					(0,-.5) coordinate (O1)
+					(6,-.5) coordinate (O2)
+					(6,2.5) coordinate (O3)
+					(0,2.5) coordinate (O4)
+					($(O1)!.5!(O4)$) coordinate (O5)
+					($(O2)!.5!(O3)$) coordinate (O6)
+					;
+					\draw (O1)--(O2)--(O3)--(O4)--cycle;
+					\draw (O5)--(O6);
+					\path (O1)--(O2) node[midway,below] {$12 \mathrm{\, m}$};
+					\path (O3)--(O4) node[midway,above] {$12 \mathrm{\, m}$};
+					\path (O1)--(O4) node[midway,left] {$6 \mathrm{\, m}$};
+					\path (O2)--(O3) node[midway,right] {$6 \mathrm{\, m}$};
+				\end{scope}
+				\begin{scope}
+					[xshift=8cm]
+					\path
+					(0,0) coordinate (B)
+					(3,-1) coordinate (C)
+					($(B)!.5!(C)$) coordinate (H)
+					($(H)+(90:2.5)$) coordinate (A)
+					(9,1.7) coordinate (D)
+					($(B)+(D)-(C)$) coordinate (E)
+					($(A)+(E)-(B)$) coordinate (A')
+					($(D)!.5!(E)$) coordinate (H')
+					($(A')+(B)-(A)$) coordinate (B')
+					($(A')+(C)-(A)$) coordinate (C')
+					;
+					\fill[green!20] (B)--(C)--(D)--(E)--cycle;
+					\draw (A)--(B)--(C)--cycle;
+					\draw (C)--(D)--(A')--(A)--(H);
+					\draw[dashed] (B)--(E)--(D) (H')--(A')--(E);
+					\foreach \p/\g in {A/90, B/180, C/-60, H/-90, A'/90, B'/150, C'/-60}
+					\draw[fill=black] (\p) circle (1pt) node[shift=(\g:3mm)] {$\p$};
+					\path (A)--(B) node[midway, left] {$3 \mathrm{\, m}$};
+					\path (A)--(C) node[midway, right] {$3 \mathrm{\, m}$};
+					\path (H)--(B) node[midway, below] {$\dfrac{x}{2}$};
+					\path (H)--(C) node[midway, below] {$\dfrac{x}{2}$};
+					\path (A)--(A') node[midway, above, rotate=25] {$12 \mathrm{\, m}$};
+				\end{scope}
+			\end{tikzpicture}
+		\end{center}
+		Diện tích đáy $ABC$ là $S_{\triangle ABC}= \dfrac{1}{2} AH \cdot BC = \dfrac{1}{2} \cdot \sqrt{9-\dfrac{x^2}{4}} \cdot x$.\\
+		Thể tích khối lăng trụ đứng $ABC.A'B'C'$ là 
+		$$
+		V_{ABC.A'B'C'}= S_{\triangle ABC} \cdot 12= 3x \cdot \sqrt{36-x^2} \le 3\cdot \dfrac{x^2+36-x^2}{2} = 54.
+		$$
+		Dấu ``='' xảy ra khi $x^2=36-x^2 \Leftrightarrow x=3\sqrt{2}$.\\
+		Vậy khoảng không gian trong lều là lớn nhất khi $x=3\sqrt{2}$.
+	}
+\end{ex}
+
+
+
+\begin{ex}%[Nguyễn Thành Nhân]%[Dự án 11 chương trình mới]%[1K7KQ-5]
+	Người ta muốn xây một bể chứa nước dạng hình hộp chữ nhật không nắp có thể tích $200$ m$^3$. Đáy bể là hình chữ nhật có chiều dài gấp đôi chiều rộng. Giá thuê nhân công xây bể là $500.000$ đồng/m$^2$. Chi phí thuê nhân công thấp nhất (làm tròn đến hàng nghìn) là
+	\choice
+	{$67.221.071$ đồng. 	}
+	{\True $84.693.000$ đồng}
+	{$28.231.080$ đồng}
+	{$21.124.612$ đồng}
+	\loigiai{
+		\immini{Gọi chiều rộng của hình hộp chữ nhật là $x$, chiều dài là $2x$ và chiều cao là $h$ $\left(x,h>0\right)$.\\
+			Ta có thể tích bể nước là $V=2x\cdot x\cdot h=200\Rightarrow h=\dfrac{100}{x^2}$.\\
+			Diện tích xung quanh bể nước là $$S_\text{xq}=2\cdot 2x\cdot \dfrac{100}{x^2}+2\cdot x\cdot\dfrac{100}{x^2}=\dfrac{600}{x}.$$
+			Diện tích đáy của bể nước là $2x^2$.\\
+			Tổng diện tích xây bể nước là $S=2x^2+\dfrac{600}{x}$.\\
+			Để chi phí thuê nhân công thấp nhất thì $S$ phải nhỏ nhất.
+		}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+				\path (0,3) coordinate (h) (0,0)coordinate (B) (3.5,0) coordinate (C) (5,1) coordinate (D) ($(B)+(D)-(C)$) coordinate (A);
+				\foreach \p in {A,B,C,D}\path ($(\p)+(h)$) coordinate (\p');
+				\draw (A')--(B')--(B)--(C)--(D)--(D')--cycle (B')--(C')--(D') (C)--(C');
+				\draw[dashed] (B)--(A)--(D) (A)--(A');
+				\path (A)--(B)node[midway, left]{$x$} (B)--(C)node[midway,below]{$2x$} (B)--(B')node[midway,left]{$h$};
+		\end{tikzpicture}}
+		\noindent\\
+		Áp dụng bất đẳng thức Cô-Si ta có
+		$S=2x^2+\dfrac{300}{x}+\dfrac{300}{x}\ge3\sqrt[3]{2x^2\cdot\dfrac{300}{x}\cdot\dfrac{300}{x}}=30\sqrt[3]{180}$ (m$^2$).\\
+		Dấu bằng xảy ra khi và chỉ khi $2x^2=\dfrac{300}{x}\Leftrightarrow x=\sqrt[3]{150}$.\\
+		Vậy chi phí thuê nhân công thấp nhất là $30\sqrt[3]{180}\cdot 500.000\approx 84.693.242$ đồng.
+	}
+\end{ex}
+
+
+\Closesolutionfile{ans}
+\begin{indapan}{10}
+	{ans/ans-1K7-27-Dang6}
+\end{indapan}

@@ -1,0 +1,563 @@
+\section{Hai đường thẳng song song}
+\subsection{Tóm tắt lý thuyết}
+\subsubsection{Vị trí tương đối của hai đường thẳng}
+\begin{dn}
+Cho hai đường thẳng $a$ và $b$ trong không gian.
+\begin{itemize}
+\item Nếu $a$ và $b$ cùng nằm trong một mặt phẳng thì ta nói $a$ và $b$ đồng phẳng. Khi đó, $a$ và $b$ có thể cắt nhau, song song với nhau hoặc trùng nhau.
+\begin{center}
+	\begin{tikzpicture}[scale=.75, font=\footnotesize, line join=round, line cap=round, >=stealth, thick]
+		\def\g{65} \def\a{4} \def\b{3}
+		%Vẽ ba mặt phẳng
+		\path
+		(0:0) coordinate (A)
+		(0:\a) coordinate (B)
+		(\g:\b) coordinate (D)
+		($(B)+(D)-(A)$) coordinate (C)
+		($(A)+(0:\a+1)$) coordinate (A')
+		($(B)+(0:\a+1)$) coordinate (B')
+		($(C)+(0:\a+1)$) coordinate (C')
+		($(D)+(0:\a+1)$) coordinate (D')
+		($(A')+(0:\a+1)$) coordinate (A'')
+		($(B')+(0:\a+1)$) coordinate (B'')
+		($(C')+(0:\a+1)$) coordinate (C'')
+		($(D')+(0:\a+1)$) coordinate (D'')
+		;
+		\draw (A)--(B)--(C)--(D)--cycle (A')--(B')--(C')--(D')--cycle (A'')--(B'')--(C'')--(D'')--cycle;
+		% Vẽ đường song song trong mp đầu
+		\draw ($(A')+(50:1.5)$)coordinate (m)--++(10:3)coordinate (n);
+		\draw ($(A')+(30:1.5)$)coordinate (p)--++(10:3)coordinate (q);
+		\draw ($(m)!1/3!(n)$) node[above]{$a$};
+		\draw ($(p)!1/3!(q)$) node[below]{$b$};
+		\draw pic["$\alpha$", draw=black,fill=gray!20,angle eccentricity=.6,angle radius=19] {angle = B--A--D};
+		% Vẽ đường cắt nhau trong mp thứ 1
+		\draw ($(A)+(30:1.3)$)coordinate (m')--++(20:3)coordinate (n') node[below]{$a$};
+		\draw ($(D)+(-90:0.6)$)coordinate (p')--++(-20:3)coordinate (q')node[below]{$b$};
+		\coordinate (M') at (intersection of m'--n' and p'--q');
+		\draw[fill=black] (M') circle(1pt) node[below]{$M$};
+		\draw pic["$\alpha$", draw=black,fill=gray!20,angle eccentricity=.6,angle radius=19] {angle = B'--A'--D'};
+		%Vẽ đường chéo nhau trong mp thứ ba
+		\draw ($(D'')-(80:2)$) coordinate (m'') node[below right]{$b$} --++(20:3)coordinate (n'');
+		\draw ($(D'')-(80:2)$) coordinate (p'') node[above]{$a$} --++(20:3)coordinate (q'');
+		\draw pic["$\alpha$", draw=black,fill=gray!20,angle eccentricity=.6,angle radius=19] {angle = B''--A''--D''};
+	\end{tikzpicture}
+\end{center}
+\item Nếu $a$ và $b$ không cùng nằm trong bất kì mặt phẳng nào thì ta nói $a$ và $b$ chéo nhau. Khi đó, ta cũng nói a chéo với $b$, hoặc $b$ chéo với $a$.
+\begin{center}
+	\begin{tikzpicture}[scale=.75, font=\footnotesize, line join=round, line cap=round, >=stealth, thick]
+		\def\g{65} \def\a{4} \def\b{3}
+		%Vẽ ba mặt phẳng
+		\path
+		(0:0) coordinate (A)
+		(0:\a) coordinate (B)
+		(\g:\b) coordinate (D)
+		($(B)+(D)-(A)$) coordinate (C)
+		;
+		\draw (A)--(B)--(C)--(D)--cycle;
+		%Vẽ đường chéo nhau trong mp thứ ba
+		\draw ($(D)-(80:2)$) coordinate (m) node[below right]{$b$} --++(20:3)coordinate (n'');
+		\draw ($(D)+(30:1)$) coordinate (a) node[above right]{$a$} --++(-80:1)coordinate (I);
+		\draw[dashed] (I)--++(-80:1.5);
+		\draw pic["$\alpha$", draw=black,fill=gray!20,angle eccentricity=.6,angle radius=19] {angle = B--A--D};
+		\fill(I) circle (2pt)node [right]{$I$};
+	\end{tikzpicture}
+\end{center}
+\end{itemize}
+\end{dn}
+\begin{nx}~
+\begin{itemize}
+\item Hai đường thẳng song song là hai đường thẳng đồng phẳng và không có điểm chung.
+\item Có đúng một mặt phẳng chứa hai đường thẳng song song.
+\end{itemize}
+\end{nx}
+\subsubsection{Tính chất của hai đường thẳng song song}
+\begin{tc}~
+\begin{itemize}
+\item Trong không gian, qua một điểm không nằm trên đường thẳng cho trước, có đúng một đường thẳng song song với đường thẳng đã cho.
+\item Trong không gian, hai đường thằng phân biệt cùng song song với đường thẳng thứ ba thì song song với nhau.
+\end{itemize}
+\end{tc}
+\begin{dl}[``Định lí về ba đường giao tuyến'']
+Nếu ba mặt phẳng đôi một cắt nhau theo ba giao tuyến phân biệt thì ba giao tuyến đó đồng quy hoặc đôi một song song với nhau.
+\end{dl}
+\begin{note}
+	Từ kết quả trên có thể suy ra rằng: Nếu hai mặt phẳng chứa hai đường thẳng song song với nhau thì giao tuyến của chúng (nếu có) song song với hai đường thẳng đó hoặc trùng với một trong hai đường thẳng đó.
+\end{note}
+\subsection{Các dạng toán thường gặp}
+\begin{dang}{Hai đường thẳng song song}
+	\textbf{Phương pháp giải:} Ta sẽ sử dụng một trong các cách sau
+\begin{itemize}
+\item Chứng minh hai đường thẳng đó đồng phẳng rồi áp dụng phương pháp chứng minh song song trong hình học phẳng (Đường trung bình, Định lí Ta-lét đảo,...)
+\item Chứng minh hai đường thẳng đó cùng song song với một đường thẳng thứ ba.
+\[\heva{&a\parallel b\\&a\parallel c\\&b\neq c}\Rightarrow b\parallel c.\]
+\item Áp dụng định lí về giao tuyến song song.
+\item Áp dụng hệ quả: Nếu hai mặt phẳng phân biệt lần lượt chứa hai đường thẳng song song thì giao tuyến của chúng (nếu có) cũng song song với hai đường thẳng đó hoặc trùng với một trong hai đường thẳng đó.
+\[\heva{&d'\subset(\alpha) \\&d''\subset(\beta) \\&(\alpha) \cap(\beta)=d\\&d'\parallel d''} \Rightarrow d\parallel d'',d\parallel d'
+\]
+\end{itemize}
+\end{dang}
+\subsubsection{Các ví dụ}
+\begin{vd}%[1K4BA-2]
+\immini{Cho hai hình bình hành $A B C D$ và $A B E F$ không cùng nằm trong một mặt phẳng.
+\begin{enumerate}[a)]
+	\item Quan sát bốn đường thẳng $A B, B C, C D, D A$. Chỉ ra các cặp đường thẳng cắt nhau, các cặp đường thẳng song song.
+\item Trong ba đường thẳng $A B, A F, B E$ có hai đường thẳng nào chéo nhau hay không?
+\end{enumerate}}
+{
+\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+	\def\r{3}
+	\path
+	(0,0) coordinate (A)
+	(0:\r) coordinate (D)
+	(30:{\r*0.8}) coordinate (B)
+	($(B)+(D)-(A)$) coordinate (C)
+	($(A)+(120:1.8)$) coordinate (F)
+	($(B)+(120:1.8)$) coordinate (E)
+	;
+	\draw (A)--(B)--(C)--(D)--cycle (A)--(F)--(E)--(B);
+	\foreach\x/\y in {A/-100,B/40,C/0,D/-40,E/40,F/-123}
+	{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}
+}
+\loigiai{
+\begin{enumerate}[a)]
+	\item Các cặp đường thẳng cắt nhau là $A B$ và $B C, A B$ và $D A, B C$ và $C D, C D$ và $D A$. Các cặp đường thẳng song song là $A B$ và $C D, D A$ và $B C$.
+\item Các đường thẳng $A B, A F, B E$ cùng nằm trong mặt phẳng $(A B E F)$ nên trong ba đường thẳng đó không có hai đường thẳng nào chéo nhau.
+\end{enumerate}
+}
+\end{vd}
+\begin{vd}%[1K4BA-2]
+	Cho hình chóp $S . A B C D$ có đáy $A B C D$ làhình thang $(A B \parallel C D)$. Gọi $M, N$ lần lượt là trung điểm của các cạnh $S A, S B$. Chứng minh rằng tứ giác $M N C D$ là hình thang.
+	\loigiai{
+		\immini{
+			Ta có $\heva{&MN\parallel AB\\&AB\parallel CD}\Rightarrow MN\parallel CD$.\\
+			Vậy tứ giác $MNCD$ là hình thang.
+		}
+		{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+				\def\r{3}
+				\path
+				(0,0) coordinate (A)
+				(0:\r) coordinate (B)
+				(140:{\r*0.8}) coordinate (D)
+				($(D)+(5,0)$) coordinate (C)
+				(95:{1.8*\r}) coordinate (S)
+				\foreach\x/\y in {A/M,B/N}
+				{($(S)!0.5!(\x)$) coordinate (\y)}
+				;
+				\fill[blue!15] (M)--(N)--(C)--(D)--cycle;
+				\draw (S)--(D)--(A)--(B)--(C)--cycle (A)--(S)--(B) (D)--(M)--(N)--(C);
+				\draw[dashed] (D)--(C)--(B) (S)--(C);
+				\foreach\x/\y in {A/-100,B/0,C/0,D/180,S/90,M/150,N/30}
+				{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+		\end{tikzpicture}}
+	}
+\end{vd}
+\begin{vd}%[1K4BA-2]
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M,N,P,Q$ lần lượt là trung điểm của các cạnh bên $SA$, $SB$, $SC$, $S D$. Chứng minh rằng tứ giác $M N P Q$ là hình bình hành.
+\loigiai{
+\immini{Ta có
+\begin{itemize}
+	\item $MN\parallel AB$ và $MN=\dfrac{1}{2}AB$.
+	\item $PQ\parallel CD$ và $PQ=\dfrac{1}{2}CD$.
+	\item $AB\parallel CD$ và $AB=CD$.
+\end{itemize}
+$\Rightarrow MN\parallel PQ$ và $MN=PQ$.\\
+$\Rightarrow MNPQ$ là hình bình hành.}
+{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+	\def\r{3}
+	\path
+	(0,0) coordinate (A)
+	(0:\r) coordinate (B)
+	(140:{\r*0.8}) coordinate (D)
+	($(B)+(D)-(A)$) coordinate (C)
+	(95:{1.8*\r}) coordinate (S)
+	\foreach\x/\y in {A/M,B/N,C/P,D/Q}
+	{($(S)!0.5!(\x)$) coordinate (\y)}
+	;
+	\fill[blue!15] (M)--(N)--(P)--(Q)--cycle;
+	\draw (D)--(A)--(B)--(S)--cycle (S)--(A) (Q)--(M)--(N);
+	\draw[dashed] (D)--(C)--(B) (S)--(C) (N)--(P)--(Q);
+	\foreach\x/\y in {A/-100,B/0,C/0,D/180,S/90,M/-130,N/0,P/0,Q/170}
+	{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}}
+}
+\end{vd}
+\begin{vd}%[1K4KA-2]
+Cho tứ diện $ABCD$. Gọi $M$, $N$ lần lượt là trọng tâm của các tam giác $ABC$ và $DBC$. Chứng minh $MN\parallel AD$.
+\loigiai{
+\immini
+{Gọi $H$ là trung điểm của $BC$, ta có: $M \in AH $, $N \in DH$.\\
+	Do đó:
+$\dfrac{HM}{HA}=\dfrac{HN}{HD}=\dfrac{1}{3}$ (tính chất trọng tâm tam giác)\\
+$\Rightarrow MN\parallel AD$ (Định lý Ta-lét đảo).
+}
+{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+		\def\r{3}
+		\path
+		(0,0) coordinate (B)
+		(0:1.5*\r) coordinate (C)
+		(-50:{\r}) coordinate (D)
+		(85:{1.5*\r}) coordinate (A)
+		($(A)!.5!(B)!1/3!(C)$) coordinate (M)
+		($(D)!.5!(B)!1/3!(C)$) coordinate (N)
+		($(B)!.5!(C)$)  coordinate (H)
+		;
+		\draw (A)--(B)--(D)--(C)--cycle (A)--(D);
+		\draw [dash pattern=on 2pt off 2pt ] (A)--(H)--(D) (B)--(C) (M)--(N);
+		\foreach\x/\y in {A/90,B/180,C/0,D/-90,M/30,N/0,H/45}
+		{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}}
+}
+\end{vd}
+\begin{vd}%[1K4KA-2]
+Cho tứ diện $ABCD$. Gọi $M$ là một điểm bất kì trên cạnh $BC ;(\alpha)$ là mặt phẳng qua $M$ và song song với $AB$ và $CD$, cắt các cạnh $BD , AD , AC$ lần lượt tại $N , P , Q$. Chứng minh rằng $MNPQ$ là hình bình hành.
+\loigiai{
+\immini{Ta có
+$\heva{&AB\parallel (\alpha)\\&(ABC)\supset AB\\&(ABC)\cap (\alpha)=MQ}$\\
+$\Rightarrow MQ\parallel AB$. Tương tự ta có $NP\parallel AB$. Suy ra $MQ\parallel NP$.\tagEX{1}
+Lại có 
+$\heva{& CD \|(\alpha) \\ & ( ACD ) \supset CD \\ & ( ACD ) \cap(\alpha)= PQ}$\\
+$\Rightarrow MN\parallel CD$. Tương tự ta có $PQ\parallel CD$. Suy ra $MN\parallel PQ$.\tagEX{2}
+Từ (1) và (2) suy ra $MNPQ$ là hình bình hành.}
+{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+		\def\r{3}
+		\def\k{.6}
+		\path
+		(0,0) coordinate (B)
+		(0:1.65*\r) coordinate (D)
+		(-25:{\r}) coordinate (C)
+		(65:{1.5*\r}) coordinate (A)
+		($(C)!\k!(B)$) coordinate (M)
+		($(D)!\k!(B)$) coordinate (N)
+		($(D)!\k!(A)$) coordinate (P)
+		($(C)!\k!(A)$)  coordinate (Q)
+		;
+		\fill[blue!15] (M)--(N)--(P)--(Q)--cycle;
+		\draw (A)--(B)--(C)--(D)--cycle (A)--(C) (M)--(Q)--(P);
+		\draw [dash pattern=on 2pt off 2pt ] (B)--(D) (M)--(N)--(P);
+		\pic[draw,angle radius=22pt, angle eccentricity=.75,"$\alpha$"]{angle=Q--P--N};
+		\foreach\x/\y in {A/90,B/180,C/-90,D/0,M/-130,N/-45,P/45,Q/160}
+		{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}}
+}	
+\end{vd}
+\subsubsection{Bài tập tự luận}
+\begin{bt}%[1K4BA-2]
+Cho hình lập phương $A B C D.A' B' C' D'$, $A C \cap B D=O$. $M$, $N$ là trung điểm của $A'B'$, $BC$. Chứng minh $M N \parallel A' O$.
+\loigiai{
+\immini{$\triangle ABC$ có $ON$ là đường trung bình.\\
+$\Rightarrow ON\parallel AB$ và $ON=\dfrac{1}{2}AB$.\tagEX{1}
+Tính chất hình lập phương: $A B \parallel A' B', A B=A' B'$\\
+$\Rightarrow A' M \parallel A B, A' M=\dfrac{1}{2} A B$.\tagEX{2}
+Từ (1) và (2) $\Rightarrow O N \parallel A' M, O N=A' M $\\
+$\Rightarrow$ Tứ giác $A'MNO$ là hình bình hành. \\
+$\Rightarrow A' O \parallel M N$.}
+{
+\begin{tikzpicture}[declare function={r=3;},line cap=round,line join=round,font=\scriptsize]
+	\path (0:0) coordinate (A)
+	(0:r) coordinate (B)
+	++(37:{0.65*r}) coordinate (C)
+	++(180:r) coordinate (D)
+	\foreach \x in {A,B,C,D}{(\x)++(90:r) coordinate (\x')}
+	($(A)!.5!(C)$) coordinate (O)
+	($(A')!.5!(B')$) coordinate (M)
+	($(C)!.5!(B)$) coordinate (N)
+	;
+	\draw[dash pattern=on 2pt off 2 pt] (D')--(D)--(A) (D)--(C) (M)--(N)--(O)--(A') (A)--(C) (B)--(D);
+	\draw (A)--(B)--(C) (A)--(A') (B)--(B') (C)--(C')(A')--(B')--(C')--(D')--cycle;
+	\foreach \x/\y in {A/-90,B/-90,C/0,D/-90,A'/90,B'/90,C'/0,D'/90,O/-90,M/45,N/0}
+	{\draw[fill=black] (\x) circle (1pt)node[shift={(\y:.35)}]{$\x$};}
+\end{tikzpicture}
+}
+}
+\end{bt}
+\begin{bt}%[1K4BA-2]
+Cho hình lăng trụ $ABC.A'B'C'$. Gọi $M$, $P$, $Q$ lần lượt là trung điểm của $A'B'$, $B'C'$, $A'C'$. Chứng minh $AM\parallel PQ$.
+\loigiai{
+\immini{
+\begin{itemize}
+\item $\triangle A'B'C'$ có  $MP$ là đường trung bình. \\
+$\Rightarrow MP\parallel A'C'$ và $MP=\dfrac{1}{2}A'C'$.\tagEX{1}
+\item Ta có $A'C'\parallel AC$, $A'C'=AC\Rightarrow AQ\parallel A'C'$ và $AQ=\dfrac{1}{2}A'C'$.\tagEX{2}
+\end{itemize}
+Từ (1) và (2) ta suy ra $MP\parallel QA$ và $MP=QA\Rightarrow AMPQ$ là hình bình hành.\\
+Vậy $AM\parallel PQ$.
+}
+{
+\begin{tikzpicture}[scale=1,line cap=round,line join=round,font=\scriptsize]
+	\path (0,0) coordinate (A)
+	(0:3.5) coordinate (C)
+	(-50:2) coordinate (B)
+	\foreach \x in{A,B,C}{($(\x)+(0,4)$) coordinate (\x')}
+	($(A')!.5!(B')$) coordinate (M)
+	($(B')!.5!(C')$) coordinate (P)
+	($(A)!.5!(C)$) coordinate (Q)
+	;
+	\draw (A)--(B)--(C) (A')--(B')--(C')--cycle (A)--(A') (B)--(B') (C)--(C') (A)--(M)--(P);
+	\draw[dash pattern=on 2pt off 2 pt]  (A)--(C) (P)--(Q);
+	\foreach \x/\y in {A/-90,B/-90,C/0,A'/90,B'/90,C'/0,M/45,P/0,Q/-45}
+	{\draw[fill=black] (\x) circle (1pt)node[shift={(\y:.35)}]{$\x$};}
+\end{tikzpicture}
+}
+}
+\end{bt}
+\begin{bt}%[1K4BA-2]
+Cho hình chóp $S . ABC$. Gọi $G$ và $G '$ lần lượt là trọng tâm của tam giác $ABC$ và tam giác $SBC$. Chứng minh $GG'$ song song với $SA$.
+\loigiai{
+\immini{Gọi $M$ là trung điểm của $BC$ nên $\dfrac{M G}{M A}=\dfrac{1}{3}$; $\dfrac{M G'}{M S}=\dfrac{1}{3}$ (tính chất của trọng tâm).\\
+Xét $\triangle SAM$, có $\dfrac{M G}{M A}=\dfrac{M G'}{M S}$ theo định lí Ta-lét đảo suy ra $GG' \parallel SA$.}
+{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+		\def\r{3}
+		\path
+		(0,0) coordinate (A)
+		(0:1.5*\r) coordinate (B)
+		(-50:{\r}) coordinate (C)
+		(70:{1.5*\r}) coordinate (S)
+		($(A)!.5!(B)!1/3!(C)$) coordinate (G)
+		($(S)!.5!(B)!1/3!(C)$) coordinate (G')
+		($(B)!.5!(C)$)  coordinate (M)
+		;
+		\draw (S)--(A)--(C)--(B)--cycle (S)--(C) (S)--(M);
+		\draw [dash pattern=on 2pt off 2pt] (A)--(M) (G)--(G') (A)--(B);
+		\foreach\x/\y in {A/180,B/0,C/-90,S/180,M/-30,G/-90,G'/30}
+		{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}}
+}
+\end{bt}
+\begin{bt}%[1K4YA-2]
+Cho tứ diện $A B C D$. Gọi $I, J$ lần lượt là trọng tâm các tam giác $A B C$ và $A B D$. Chứng minh $IJ\parallel CD$.
+\loigiai{
+	\immini{
+		Gọi $M, N$ lần lượt là trung điểm của $B C, B D$.\\
+		$\Rightarrow M N$ là đường trung bình của tam giác $B C D \Rightarrow M N \parallel C D$ (1)\\
+		$I, J$ lần lượt là trọng tâm các tam giác $A B C$ và $A B D$\\
+		$ \Rightarrow \dfrac{A I}{A M}=\dfrac{A J}{A N}=\dfrac{2}{3} \Rightarrow I J \parallel M N$ (2)\\
+		Từ (1) và (2) suy ra: $I J \parallel C D$.}
+	{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+			\def\r{3}
+			\path
+			(0,0) coordinate (B)
+			(0:1.5*\r) coordinate (C)
+			(-50:{\r}) coordinate (D)
+			(85:{1.5*\r}) coordinate (A)
+			($(A)!.5!(B)!1/3!(C)$) coordinate (I)
+			($(D)!.5!(A)!1/3!(B)$) coordinate (J)
+			($(B)!.5!(D)$)  coordinate (M)
+			($(B)!.5!(C)$)  coordinate (N)
+			;
+			\draw (A)--(B)--(D)--(C)--cycle (A)--(D) (A)--(M);
+			\draw [dash pattern=on 2pt off 2pt ] (A)--(N)--(M) (B)--(C) (I)--(J);
+			\foreach\x/\y in {A/90,B/180,C/0,D/180,M/-130,N/40,I/45,J/-20}
+			{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+	\end{tikzpicture}}
+}
+\end{bt}
+\begin{bt}%[1K4GA-2]
+	Cho tứ diện $ABCD$. Gọi $M,N,P,Q,R,S$ là trung điểm của $AB$, $CD$, $BC$, $AD$, $AC$, $BD$. Chứng minh $MN$, $PQ$, $RS$ đồng quy tại trung điểm của mỗi đường.
+	\loigiai{
+		\immini{\begin{itemize}
+				\item $\triangle A B C$ có $M P$ là đường trung bình\\
+				$\Rightarrow M P \parallel A C, M N=\dfrac{1}{2} A C$.\tagEX{1}
+				\item $\triangle A C D$ có $N Q$ là đường trung bình\\
+				$\Rightarrow N Q \parallel A C, N Q=\dfrac{1}{2} A C$.\tagEX{2}
+			\end{itemize}
+			Từ (1) và (2) $\Rightarrow M P \parallel N Q$ và $MP=NQ\Rightarrow M P N Q$ là hình bình hành.\\
+			$\Rightarrow M N, P Q$ cắt nhau tại trung điểm của mỗi đường.
+			\begin{itemize}
+				\item $\triangle A B C$ có $PR$ là đường trung bình\\
+				$\Rightarrow P R \parallel A B, P R=\dfrac{1}{2} A B$.\tagEX{3}
+				\item $\triangle A B D$ có $Q S$ là đường trung bình\\
+				$\Rightarrow Q S \parallel A B, Q S=\dfrac{1}{2} A B$.\tagEX{4}
+			\end{itemize}
+			Từ (3) và (4) $\Rightarrow P R \parallel Q S$ và $PR=QS$.\\
+			$\Rightarrow P R Q S$ là hình bình hành.\\
+			$\Rightarrow R S, P Q$ cắt nhau tại trung điểm của mỗi đường.\\
+			Vậy $M N$, $P Q$, $R S$ đồng quy tại trung điểm của mỗi đường.}
+		{
+			\begin{tikzpicture}[declare function={r=3;}]
+				\path (160:{r} and {r*0.35}) coordinate(B)
+				(260:{r} and {r*0.5}) coordinate (C)
+				(20:{r} and {r*0.35})coordinate (D)
+				(90:{r*1.25}) coordinate (A)
+				\foreach\x/\y/\z in{A/B/M,C/D/N,B/C/P,A/D/Q,A/C/R,B/D/S}
+				{($(\x)!0.5!(\y)$) coordinate (\z)}
+				;
+				\draw[dash pattern=on 2pt off 2 pt] (B)--(D) (M)--(N) (P)--(Q) (R)--(S) (M)--(Q) (N)--(P);
+				\draw (A)--(B)--(C)--(D)--cycle (A)--(C) (M)--(P) (N)--(Q);
+				\foreach \x/\y in {A/90,B/180,C/-90,D/0,M/135,N/-90,P/-90,Q/45,R/35,S/-90}
+				{\fill(\x) circle (1pt)node[shift={(\y:.35)}]{$\x$};}
+			\end{tikzpicture}
+		}
+	}
+\end{bt}
+\subsubsection{Bài tập trắc nghiệm}
+\Opensolutionfile{ans}[ans/1K4-2-Dang1]
+\begin{ex}%[1K4YA-1]
+Trong các mệnh đề sau, mệnh đề nào sai?
+\choice
+{\True Hai đường thẳng không có điểm chung thì chéo nhau}
+{Hai đường thẳng chéo nhau thì không có điểm chung}
+{Hai đường thẳng phân biệt không cắt nhau và không song song thì chéo nhau}
+{Hai đường thẳng phân biệt không chéo nhau thì hoặc cắt nhau hoặc song song}
+\loigiai{
+Hai đường thẳng không có điểm chung thì chúng song song (khi chúng đồng phẳng) hoặc chéo nhau (khi chúng không đồng phẳng).
+}
+\end{ex}
+\begin{ex}%[1K4YA-1]
+Trong các mệnh đề sau, mệnh đề nào đúng?
+\choice
+{Hai đường thẳng có một điểm chung thì chúng có vô số điểm chung khác}
+{Hai đường thẳng song song khi và chỉ khi chúng không điểm chung}
+{Hai đường thẳng song song khi và chỉ khi chúng không đồng phẳng}
+{\True Hai đường thẳng chéo nhau khi và chỉ khi chúng không đồng phẳng}
+\loigiai{
+\begin{itemize}
+\item Trong trường hợp 2 đường thẳng cắt nhau thì chúng chỉ có 1 điểm chung.
+\item Hai đường thẳng song song khi và chỉ khi chúng đồng phằng và không có điểm chung.
+\end{itemize}
+}
+\end{ex}
+\begin{ex}%[1K4BA-1]
+Trong không gian, cho 3 đường thẳng $a, b, c$, biết $a \parallel b, a$ và $c$ chéo nhau. Khi đó hai đường thẳng $b$ và $c$:
+\choice
+{Trùng nhau hoặc chéo nhau}
+{\True Cắt nhau hoặc chéo nhau}
+{Chéo nhau hoặc song song}
+{Song song hoặc trùng nhau}
+\loigiai{
+Giả sử $b \parallel c \Rightarrow c \parallel a$ (mâu thuẫn với giả thiết).
+}
+\end{ex}
+\begin{ex}%[1K4BA-1]
+Cho tứ diện $A B C D$. Gọi $I, J$ lần lượt là trọng tâm các tam giác $A B C$ và $A B D$. Chọn khẳng định đúng trong các khẳng định sau?
+\choice
+{\True $IJ$ song song với $C D$}
+{$IJ$ song song với $A B$}
+{$IJ$ chéo $C D$}
+{$IJ$ cắt $A B$}
+\loigiai{
+\immini{
+Gọi $M, N$ lần lượt là trung điểm của $B C, B D$.\\
+$\Rightarrow M N$ là đường trung bình của tam giác $B C D \Rightarrow M N \parallel C D$ (1)\\
+$I, J$ lần lượt là trọng tâm các tam giác $A B C$ và $A B D$\\
+$ \Rightarrow \dfrac{A I}{A M}=\dfrac{A J}{A N}=\dfrac{2}{3} \Rightarrow I J \parallel M N$ (2)\\
+Từ (1) và (2) suy ra: $I J \parallel C D$.}
+{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+		\def\r{3}
+		\path
+		(0,0) coordinate (B)
+		(0:1.5*\r) coordinate (C)
+		(-50:{\r}) coordinate (D)
+		(85:{1.5*\r}) coordinate (A)
+		($(A)!.5!(B)!1/3!(C)$) coordinate (I)
+		($(D)!.5!(A)!1/3!(B)$) coordinate (J)
+		($(B)!.5!(D)$)  coordinate (M)
+		($(B)!.5!(C)$)  coordinate (N)
+		;
+		\draw (A)--(B)--(D)--(C)--cycle (A)--(D) (A)--(M);
+		\draw [dash pattern=on 2pt off 2pt ] (A)--(N)--(M) (B)--(C) (I)--(J);
+		\foreach\x/\y in {A/90,B/180,C/0,D/180,M/-130,N/40,I/45,J/-20}
+		{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}}
+}
+\end{ex}
+\begin{ex}%[1K4KA-2]
+Cho hình chóp $S . A B C D$ có $A D$ không song song với $B C$. Gọi $M, N, P, Q, R, T$ lần lượt là trung điểm $A C, B D, B C, C D, S A, S D$. Cặp đường thẳng nào sau đây song song với nhau?
+\choice
+{$M P$ và $R T$}
+{\True $M Q$ và $R T$}
+{$M N$ và $R T$}
+{$P Q$ và $R T$}
+\loigiai{
+\immini{
+Ta có: $M, Q$ lần lượt là trung điểm của $AC, CD$\\
+$\Rightarrow M Q$ là đường trung bình của tam giác $C A D$\\
+$ \Rightarrow M Q \parallel A D$ (1).
+Ta có: $R, T$ lần lượt là trung điểm của $S A$, $S D$\\
+$\Rightarrow R T$ là đường trung bình của tam giác $S A D$\\
+$ \Rightarrow R T \parallel A D$ (2)\\
+Từ (1),(2) suy ra: $M Q \parallel R T$.
+}
+{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+		\def\r{3}
+		\path
+		(0,0) coordinate (A)
+		(0:\r) coordinate (B)
+		(140:{\r*0.8}) coordinate (D)
+		(4,3) coordinate (C)
+		(95:{1.8*\r}) coordinate (S)
+		($(A)!.5!(C)$) coordinate (M)
+		($(B)!.5!(D)$) coordinate (N)
+		($(B)!.5!(C)$) coordinate (P)
+		($(D)!.5!(C)$) coordinate (Q)
+		($(S)!.5!(A)$) coordinate (R)
+		($(S)!.5!(D)$) coordinate (T)
+		;
+		\draw (S)--(D)--(A)--(B)--(C)--cycle (S)--(A) (S)--(B) (R)--(T);
+		\draw[dashed] (C)--(D) (A)--(C) (B)--(D) (N)--(M)--(Q)--cycle (M)--(N);
+		\foreach\x/\y in {A/-100,B/0,C/0,D/180,S/90,M/-90,N/-120,P/0,Q/120,R/0,T/120}
+		{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}}
+}
+\end{ex}
+\begin{ex}%[1K4BA-2]
+Cho hình chóp $S . A B C D$ có đáy $A B C D$ là hình bình hành. Gọi $I$, $J$, $E$, $F$ lần lượt là trung điểm $S A$, $S B$, $S C$, $S D$. Trong các đường thẳng sau, đường thẳng nào không song song với $I J$ ?
+\choice
+{$EF$}
+{$DC$}
+{\True $AD$}
+{$AB$}
+\loigiai{
+\immini{Ta có $I J \parallel A B$ (tính chất đường trung bình trong tam giác $S A B$ ) và $E F \parallel C D$ (tính chất đường trung bình trong tam giác $S C D$ ).\\
+Mà $C D \parallel A B$ (đáy là hình bình hành) $\Rightarrow C D \parallel A B \parallel E F \parallel I J$.}
+{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+		\def\r{3}
+		\path
+		(0,0) coordinate (A)
+		(0:\r) coordinate (B)
+		(140:{\r*0.8}) coordinate (D)
+		($(B)+(D)-(A)$) coordinate (C)
+		(95:{1.8*\r}) coordinate (S)
+		\foreach\x/\y in {A/I,B/J,C/E,D/F}
+		{($(S)!0.5!(\x)$) coordinate (\y)}
+		;
+		\draw (D)--(A)--(B)--(S)--cycle (S)--(A) (I)--(J);
+		\draw[dashed] (D)--(C)--(B) (S)--(C) (E)--(F);
+		\foreach\x/\y in {A/-100,B/0,C/0,D/180,S/90,I/-130,J/0,E/0,F/170}
+		{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}}
+}
+\end{ex}
+\begin{ex}%[1K4BA-2]
+Cho tứ diện $A B C D$. Gọi $M$, $N$ là hai điểm phân biệt cùng thuộc đường thẳng $A B$; $P$, $Q$ là hai điểm phân biệt cùng thuộc đường thẳng $C D$. Xét vị trí tương đối của hai đường thẳng $M P$, $N Q$.
+\choice
+{$M P \parallel N Q$}
+{$M P \equiv N Q$}
+{$M P$ cắt $N Q$}
+{\True $M P, N Q$ chéo nhau}
+\loigiai{
+\immini
+{Xét mặt phẳng $(A B P)$.\\
+Ta có: $M$, $N$ thuộc $A B \Rightarrow M, N$ thuộc mặt phẳng $(A B P)$.\\
+Mặt khác: $C D \cap(A B P)=P$.\\
+Mà: $Q \in C D \Rightarrow Q \notin(A B P) \Rightarrow M, N, P, Q$ không đồng phẳng.}
+{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize]
+		\def\r{3}
+		\path
+		(0,0) coordinate (B)
+		(0:1.5*\r) coordinate (C)
+		(-50:{\r}) coordinate (D)
+		(85:{1.5*\r}) coordinate (A)
+		($(A)!.5!(B)!1/3!(C)$) coordinate (I)
+		($(D)!.5!(A)!1/3!(B)$) coordinate (J)
+		($(B)!.5!(D)$)  coordinate (M)
+		($(B)!.5!(C)$)  coordinate (N)
+		;
+		\draw (A)--(B)--(D)--(C)--cycle (A)--(D) (A)--(M);
+		\draw [dash pattern=on 2pt off 2pt ] (A)--(N)--(M) (B)--(C) (I)--(J);
+		\foreach\x/\y in {A/90,B/180,C/0,D/180,M/-130,N/40,I/45,J/-20}
+		{\fill (\x) circle (1pt)node[shift={(\y:.25)}]{$\x$};}
+\end{tikzpicture}}
+}
+\end{ex}
+\Closesolutionfile{ans}

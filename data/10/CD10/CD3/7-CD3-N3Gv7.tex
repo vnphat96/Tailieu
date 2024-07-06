@@ -1,0 +1,325 @@
+\section{SỰ THỐNG NHẤT GIỮA BA ĐƯỜNG CONIC}
+\subsection{Tóm tắt lí thuyết}
+\subsubsection{Giao của mặt phẳng với mặt nón tròn xoay}
+\begin{note}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Giao của một mặt nón tròn xoay với một mặt phẳng là một đường tròn hoặc đường conic.
+\end{note}
+\begin{listEX}[3]
+\item \foreach \y in{2}{
+\begin{tikzpicture}[green, blend group =screen]
+\def\r{5}
+\def\h{5}
+\pgfmathsetmacro{\l}{sqrt((\r)^2+(\h)^2)}
+\pgfmathsetmacro{\ll}{\l*(\r+\y)/(2*\r)}
+\pgfmathsetmacro{\xmin}{-sqrt((\r)^2-(\y)^2)}
+\pgfmathsetmacro{\a}{-\ll/((\xmin)^2)}
+\pgfmathsetmacro{\goc}{90+atan(\h/\r)}
+\tdplotsetmaincoords{70}{120}
+\begin{scope}[tdplot_main_coords,join=round,cap=round]
+\tikzset{Non/.pic={
+\foreach \t in{0,5,...,355}{
+\fill[opacity=0.6]({\r*cos(\t)},{\r*sin(\t)},0)--(0,0,\h)--({\r*cos(\t+5)},{\r*sin(\t+5)},0)--cycle;
+}
+\fill[magenta,draw=blue,samples=100,domain=\xmin:-\xmin]plot(\x,{\y+cos(\goc)*\a*((\x)^2-(\xmin)^2)},{sin(\goc)*\a*((\x)^2-(\xmin)^2)})--cycle;
+}}
+\path(0,0,0)pic[scale=.35]{Non}(0,0,2*.35*\h)pic[rotate=180,scale=.35]{Non};
+\end{scope}
+\end{tikzpicture}
+}
+\item
+	\foreach \y in{2}{
+\begin{tikzpicture}[green, blend group =screen]
+\def\r{5}
+\def\h{5}
+\pgfmathsetmacro{\l}{sqrt((\r)^2+(\h)^2)}
+\pgfmathsetmacro{\ll}{\l*(\r+\y)/(2*\r)}
+\pgfmathsetmacro{\xmin}{-sqrt((\r)^2-(\y)^2)}
+\pgfmathsetmacro{\a}{-\ll/((\xmin)^2)}
+\pgfmathsetmacro{\goc}{90+atan(\h/\r)}
+\tdplotsetmaincoords{70}{120}
+\begin{scope}[tdplot_main_coords,join=round,cap=round]
+\tikzset{Non1/.pic={
+\draw(0,0,0)circle(\r);
+\foreach \t in{0,5,...,355}{
+\fill[opacity=0.6]({\r*cos(\t)},{\r*sin(\t)},0)--(0,0,\h)--({\r*cos(\t+5)},{\r*sin(\t+5)},0)--cycle;
+}
+\fill[magenta,draw=blue,samples=100,rotate=140] (0,4) arc (0:360:3 cm and 2cm);
+}}
+\tikzset{Non2/.pic={
+\foreach \t in{0,5,...,355}{
+\fill[opacity=0.6]({\r*cos(\t)},{\r*sin(\t)},0)--(0,0,\h)--({\r*cos(\t+5)},{\r*sin(\t+5)},0)--cycle;
+}
+\fill[magenta,draw=blue,samples=100] (-6.9,-1) arc (0:360:2.56 cm and 1cm);
+}}
+\path(0,0,0)pic[scale=.35]{Non1}(0,0,2*.35*\h)pic[rotate=180,scale=.35]{Non2};
+\end{scope}
+\end{tikzpicture}}
+%-----------------------------
+\item
+\foreach \y in{1}{
+\begin{tikzpicture}[green, blend group =screen]
+\def\r{10}
+\def\h{11}
+\pgfmathsetmacro{\l}{sqrt((\r)^2+(\h)^2)}
+\pgfmathsetmacro{\ll}{\l*(\r+\y)/(2*\r)}
+\pgfmathsetmacro{\xmin}{-sqrt((\r)^2-(\y)^2)}
+\pgfmathsetmacro{\a}{-\ll/((\xmin)^2)}
+\pgfmathsetmacro{\goc}{90}
+\tdplotsetmaincoords{70}{120}
+\begin{scope}[tdplot_main_coords,join=round,cap=round]
+\tikzset{Non1/.pic={
+\foreach \t in{0,5,...,355}{
+\fill[opacity=0.6]({\r*cos(\t)},{\r*sin(\t)},0)--(0,0,\h)--({\r*cos(\t+5)},{\r*sin(\t+5)},0)--cycle;
+}
+\fill[magenta,draw=blue,samples=100,domain=\xmin:-\xmin]plot(\x,{\y+cos(\goc)*\a*((\x)^2-(\xmin)^2)},{sin(\goc)*\a*((\x)^2-(\xmin)^2)})--cycle;
+}}
+\tikzset{Non2/.pic={
+\foreach \t in{0,5,...,355}{
+\fill[opacity=0.6]({\r*cos(\t)},{\r*sin(\t)},0)--(0,0,\h)--({\r*cos(\t+5)},{\r*sin(\t+5)},0)--cycle;
+}
+\fill[magenta,draw=blue,samples=100,domain=\xmin:-\xmin]plot(\x+5,{\y+cos(\goc)*\a*((\x)^2-(\xmin)^2)},{sin(\goc)*\a*((\x)^2-(\xmin)^2)+2.15})--cycle;
+}}
+\path(0,0,0)pic[scale=.17]{Non1}(0,0,2*.17*\h)pic[rotate=180,scale=.17]{Non2};
+\end{scope}
+\end{tikzpicture}}
+\end{listEX}
+\subsubsection{Xác định đường conic theo tâm sai và đường chuẩn}
+\begin{note}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+\immini{Khi một điểm thay đổi trên một elip, hypebol hay parabol thì tỉ số khoảng cách từ nó tới tiêu điểm và đường chuẩn tương ứng không đổi và luôn bằng tâm sai.}
+{
+\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\path
+		(0,0) coordinate (O)
+		(0.5,0) coordinate (F)
+		(1.5,1) coordinate (M)
+		;
+		\draw (-1.5,0)--(4,0);
+	
+		\draw[rotate=-90,smooth, samples=200, domain=-2:2] plot (\x,{0.5*(\x)^2});
+		\draw[rotate=-90,smooth, samples=200, domain=-2:2] plot (\x,{0.3*(\x)^2-.2});
+		\draw (-0.5,2)--(-0.5,-2);
+		\node at (-0.5,1) [left]{$K$};
+		\node at (-0.5,-1.5) [left]{$\Delta$};
+		\draw[fill=black] (F) circle(1pt) +(0.5,-0.4) node{$F$};
+		\node at (2.9,1) {$(E)$};
+		\draw[fill=black] (2.8,0) circle(1pt);
+		\draw[fill=black] (M) circle(1pt) node[above]{$M$};
+		\draw (F)--(M)--(-0.5,1);
+		\draw ($(-0.5,1)-(-0.2,0)$)|-($(-0.5,1)+(0,-0.2)$);
+		\draw[magenta,color=blue,samples=100] (3.2,0) arc (0:360:1.5 cm and 1cm);
+	\end{tikzpicture}
+}
+\end{note}
+\begin{nx}	
+Cho số dương $ e $, điểm $ F $ và đường thẳng $ \Delta $ không đi qua $ F $. Khi đó, tập hợp những điểm $ M $ thỏa mãn $ \dfrac{MF}{\mathrm{d}(M,\Delta)} =e$ là một đường conic có {\bf tâm sai} $ e $ nhận $ F $ là một tiêu điểm và $ \Delta $ là {\bf đường chuẩn} ứng với tiêu điểm đó. Hơn nữa,
+\begin{itemize}
+\item Nếu $ 0<e<1 $ thì conic là đường elip;
+\item Nếu $ e=1 $ thì conic là đường parabol;
+\item Nếu $ 0<e<1 $ thì conic là đường hypebol.
+\end{itemize}
+\end{nx}	
+\begin{vd}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Lập phương trình đường conic, biết tâm sai bằng $ \dfrac{2}{3} $, một tiêu điểm $ F(-2;0) $ và đường chuẩn tương ứng $ \Delta \colon x+\dfrac{9}{2}=0 $.
+\loigiai{
+Điểm $ M(x;y) $ thuộc đường conic khi và chỉ khi 
+\allowdisplaybreaks
+\begin{eqnarray*}
+ \dfrac{MF}{\mathrm{d}(M,\Delta)}=\dfrac{2}{3}&\Leftrightarrow& \sqrt{(x+2)^2+y^2}=\dfrac{2}{3}\left( x+\dfrac{9}{2}\right) \\ 
+  &\Leftrightarrow& 5x^2+9y^2=45\\ 
+  &\Leftrightarrow&  \dfrac{x^2}{9} +\dfrac{y^2}{5}=1.
+\end{eqnarray*}
+Vậy đường conic có phương trình là $ \dfrac{x^2}{9} +\dfrac{y^2}{5}=1 $.
+}
+\end{vd}
+\begin{vd}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Xác định tâm sai, tọa độ một tiêu điểm và phương trình đường chuẩn tương ứng của mỗi đường conic sau:
+\begin{listEX}[3]
+\item $ \dfrac{x^2}{5}+\dfrac{y^2}{2}=1 $;
+\item $ \dfrac{x^2}{12}-\dfrac{y^2}{4}=1 $;
+\item $ y^2=\dfrac{1}{2} x $.
+\end{listEX}
+\loigiai{
+\begin{listEX}
+\item Conic $ (E)\colon \dfrac{x^2}{5}+\dfrac{y^2}{2}=1 $ là một elip.\\
+Ta có $ a=\sqrt{5} $, $ b=\sqrt{2}$, $ c=\sqrt{a^2-b^2}=\sqrt{5-2}=\sqrt{3}$.\\
+Suy ra $ (E)$ có tiêu điểm $ F_1\left(-\sqrt{3};0\right) $, tâm sai $ e=\dfrac{c}{a}=\dfrac{\sqrt{3}}{\sqrt{5}}=\dfrac{\sqrt{15}}{5} $.\\
+Các đường chuẩn của elip là 
+\[\Delta_1\colon x=-\dfrac{a^2}{c}\Leftrightarrow x=-\dfrac{5}{\sqrt{3}} =-\dfrac{5\sqrt{3}}{3}\text{ và } \Delta_2\colon x=\dfrac{a^2}{c}\Leftrightarrow x=\dfrac{5}{\sqrt{3}}=\dfrac{5\sqrt{3}}{3}.\]
+\item Conic $ (H)\colon  \dfrac{x^2}{12}-\dfrac{y^2}{4}=1 $ là một hypebol.\\
+Ta có $ a=\sqrt{12} =2\sqrt{3}$, $ b=2 \Rightarrow c=\sqrt{a^2+b^2}=\sqrt{12+4}=4$.\\
+Suy ra $ (E)$ có tiêu điểm $ F_2(4;0) $, tâm sai $ e=\dfrac{4}{\sqrt{12}}=\dfrac{2\sqrt{3}}{3} $.\\
+Các đường chuẩn của hypebol là 
+\[\Delta_1\colon x=-\dfrac{a^2}{c}\Leftrightarrow x=-\dfrac{12}{4} =-3\text{ và } \Delta_2\colon x=\dfrac{a^2}{c}\Leftrightarrow x=\dfrac{12}{4} =3.\]
+\item Conic $ (P)\colon  y^2=\dfrac{1}{2}x$ là một parabol.\\
+Ta có $ 2p=\dfrac{1}{2} \Rightarrow p=\dfrac{1}{4} $. \\
+Suy ra $ (P)$ có tiêu điểm $ F_2\left(\dfrac{1}{8};0\right) $, tâm sai $ e=1$.\\
+Đường chuẩn của parabol là $ x=-\dfrac{p}{2} \Leftrightarrow x=-\dfrac{1}{8}$.
+\end{listEX}
+}
+\end{vd}
+\begin{vd}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Hãy cho biết quỹ đạo của từng vật thể trong bảng sau đây là parabol, elip hay hypebol.
+\begin{center}
+\begin{tabular}{|l|c|c|}
+	\hline 
+	\centering Tên & Tâm sai của quỹ đạo & Ngày phát hiện\\
+	\hline 
+	Sao chổi Halley & $ 0{,}967 $ & TCN\\
+	\hline
+	Sao chổi Hale-Bopp & $ 0{,}995 $ & 23/07/1995\\
+	\hline
+	Sao chổi Hyakutake & $ 0{,}999 $ & 31/01/1996\\
+	\hline
+	Sao chổi C/1980E1 & $ 1{,}058 $ & 11/02/1980\\
+	\hline
+	Ounuamua & $ 1{,}201 $ &19/10/2017\\
+	\hline
+\end{tabular}
+\end{center}
+\loigiai{Ta có
+\begin{itemize}
+\item Sao chổi Halley: elip;
+\item Sao chổi Hale-Bopp: elip;
+\item Sao chổi Hyakutake: elip;
+\item Sao chổi C/1980E1: hypebol;
+\item Oumuamua: hypebol.
+\end{itemize}
+}
+\end{vd}
+\begin{vd}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Quỹ đạo của các vật thể sau đây là những đường conic. Những đường này là elip, parabol hay hypebol? (Nguồn: https://vi.wikipedia.org/wiki/oumuamud)
+\begin{center}
+\begin{tabular}{|l|c|}
+	\hline 
+	\centering Tên & Tâm sai \\
+	\hline 
+	Trái Đất  & $ 0{,}0167 $ \\
+	\hline
+	Sao chổi Halley & $ 0{,}9671 $ \\
+	\hline
+	Sao chổi Great Southern of 1887& $ 1{,}0 $ \\
+	\hline
+	Vật thể Oumuamua & $ 1{,}2 $ \\
+	\hline
+\end{tabular}
+\end{center}
+\loigiai{Ta có
+\begin{itemize}
+\item Trái Đất: elip;
+\item Sao chổi Halley: elip;
+\item Sao chổi Great Southern of 1887: parabol;
+\item Vật thể Oumuamua: hypebol.
+\end{itemize}
+}
+\end{vd}
+\subsection{Bài tập}
+\begin{bt}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Viết phương trình các đường chuẩn của các đường conic sau:
+\begin{listEX}[3]
+\item $ \dfrac{x^2}{25}+\dfrac{y^2}{16}=1 $;
+\item $ \dfrac{x^2}{9}-\dfrac{y^2}{4}=1 $;
+\item $ y^2=8x $.
+\end{listEX}
+\loigiai{
+\begin{listEX}
+\item Elip có $ a=5 $, $ b=4 \Rightarrow c=\sqrt{a^2-b^2}=\sqrt{25-16}=3$.\\
+Các đường chuẩn của elip là 
+\[\Delta_1\colon x=-\dfrac{a^2}{c}\Leftrightarrow x=-\dfrac{25}{3} \text{ và } \Delta_2\colon x=\dfrac{a^2}{c}\Leftrightarrow x=\dfrac{25}{3}.\]
+\item Hypebol có $ a=3 $, $ b=2 \Rightarrow c=\sqrt{a^2+b^2}=\sqrt{9+4}=\sqrt{13}$.\\
+Các đường chuẩn của hypebol là 
+\[\Delta_1\colon x=-\dfrac{a^2}{c}\Leftrightarrow x=-\dfrac{25}{3} \text{ và } \Delta_2\colon x=\dfrac{a^2}{c}\Leftrightarrow x=\dfrac{25}{3}.\]
+\item Ta có $ 2p=8\Rightarrow p=4 $. Đường chuẩn của parabol là $ x=-\dfrac{p}{2} \Leftrightarrow x=-2$.
+\end{listEX}
+}
+\end{bt}
+\begin{bt}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Cho hai elip $ \left(E_1\right) \colon \dfrac{x^2}{25}+\dfrac{y^2}{16}=1$ và $ \left(E_2\right) \colon \dfrac{x^2}{100}+\dfrac{y^2}{64}=1$.
+\begin{listEX}
+\item Tìm mối liên hệ giữa hai tâm sai của các elip đó.
+\item Chứng minh rằng với mỗi điểm $ M $ thuộc elip $ \left(E_2\right)$ thì trung điểm $ N $ của đoạn thẳng $ OM $ thuộc elip $ \left(E_1\right)$.
+\end{listEX}
+\loigiai{
+\begin{listEX}
+\item $ \left(E_1\right)$ có $ a_1=5 $, $ b_1=4\Rightarrow c_1=\sqrt{a_1^2-b_1^2}=3 $.\\
+Suy ra tâm sai $ e_1=\dfrac{c_1}{a_1}=\dfrac{3}{5} $.\\
+$ \left(E_2\right)$ có $ a_2=10 $, $ b_2=8\Rightarrow c_2=\sqrt{a_2^2-b_2^2}=6 $.\\
+Suy ra tâm sai $ e_2=\dfrac{c_2}{a_2}=\dfrac{6}{10}=\dfrac{3}{5} $.\\
+Vậy $ e_1= e_2$.
+\item Giả sử $ M $ có tọa độ là $ (x;y) $. Khi đó $ N $ có tọa độ là $ \left(\dfrac{x}{2};\dfrac{y}{2}\right) $.\\
+Vì $ M $ thuộc $ \left(E_2\right)$ nên $ \dfrac{x^2}{100}+\dfrac{y^2}{64}=1 $.\\
+Suy ra $ \dfrac{x^2}{4\cdot 25}+\dfrac{y^2}{4\cdot 16}=1 \Rightarrow  \left(\dfrac{x}{2}\right)^2\cdot \dfrac{1}{25}+\left(\dfrac{y}{2}\right)^2\cdot \dfrac{1}{16}=1\Rightarrow \dfrac{ \left(\dfrac{x}{2}\right)^2}{25}+\dfrac{ \left(\dfrac{y}{2}\right)^2}{16}=1$.
+\end{listEX}
+}
+\end{bt}
+\begin{bt}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Viết phương trình của đường conic có tâm sai bằng $ 1 $, tiêu điểm $ F(2;0) $ và đường chuẩn là $ \Delta\colon x+2=0 $.
+\loigiai{
+Điểm $ M(x;y) $ thuộc đường conic khi và chỉ khi 
+\allowdisplaybreaks
+\begin{eqnarray*}
+ \dfrac{MF}{\mathrm{d}(M,\Delta)}=1&\Leftrightarrow& \sqrt{(x-2)^2+y^2}=|x+2| \\ 
+  &\Leftrightarrow& (x-2)^2+y^2=(x+2)^2\\ 
+  &\Leftrightarrow& y^2=8x.
+\end{eqnarray*}
+Vậy đường conic có phương trình là $y^2=8x$.
+}
+\end{bt}
+\begin{bt}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Quỹ đạo chuyển động của sao chổi Halley là một elip, nhận tâm Mặt Trời là một tiêu điểm, có tâm sai bằng $ 0{,}967 $.
+\begin{listEX}
+\item Giải thích vì sao ta có thể coi bất kì hình vẽ elip nào với tâm sai bằng $ 0{,}967 $ là hình ảnh thu nhỏ của quỹ đạo sao chổi Halley.
+\item Biết khoảng cách gần nhất từ sao chổi Halley đến tâm Mặt Trời là khoảng $ 88\cdot 10^6 $ km, tính khoảng cách xa nhất (Theo: nssdc.gsfc.nasa.gov).
+\end{listEX}
+\loigiai{
+\begin{listEX}
+\item Xét hai elip bất kì có cùng tâm sai:\\
+$ \left(E_1\right)\colon \dfrac{x^2}{a_1^2}+\dfrac{y^2}{b_1^2}=1$ và $ \left(E_2\right)\colon \dfrac{x^2}{a_2^2}+\dfrac{y^2}{b_2^2}=1$ với $ e_1=e_2 $, tức là $ \dfrac{c_1}{a_1}=\dfrac{c_2}{a_2} $. Suy ra \\
+$ \dfrac{\sqrt{a_1^2+b_1^2}}{a_1} =\dfrac{\sqrt{a_2^2+b_2^2}}{a_2} \Rightarrow \dfrac{a_1^2+b_1^2}{a_1^2}=\dfrac{a_2^2+b_2^2}{a_2^2}\Rightarrow \dfrac{b_1^2}{a_1^2}=\dfrac{b_2^2}{a_2^2}\Rightarrow \dfrac{b_1}{a_1}=\dfrac{b_2}{a_2}\Rightarrow \dfrac{a_1}{a_2}=\dfrac{b_1}{b_2}$.\\
+Xét phép vị tự tâm $ O $ tỉ số $ \dfrac{a_2}{a_1} $. Khi đó, với mỗi điểm $ M(x;y) $ thuộc $ \left(E_1\right)$, ta có tương ứng điểm $ M'\left(x';y'\right) =\left(\dfrac{a_2}{a_1}x;\dfrac{a_2}{a_1}y\right)$. Vì $ M(x;y) $ thuộc $ \left(E_1\right)$ nên $ \dfrac{x^2}{a_1^2}+\dfrac{y^2}{b_1^2} $.\\
+Suy ra $ \dfrac{a_2^2\cdot \dfrac{x^2}{a_1^2}}{a_2^2} +\dfrac{b_2^2\cdot \dfrac{x^2}{b_1^2}}{b_2^2}=1\Rightarrow \dfrac{\left(\dfrac{a_2}{a_1}x\right)^2}{a_2^2}+\dfrac{\left(\dfrac{b_2}{b_1}x\right)^2}{b_2^2}=1\Rightarrow \dfrac{\left(\dfrac{a_2}{a_1}x\right)^2}{a_2^2}+\dfrac{\left(\dfrac{a_2}{a_1}x\right)^2}{b_2^2}=1 $.\\
+Do đó $ M' $ thuộc $ \left(E_2\right)$.\\
+Vậy phép vị tự tâm $ O $ tỉ số $ \dfrac{a_2}{a_1} $ biến $ \left(E_1\right)$ thành $ \left(E_2\right)$.\\
+Như vậy, một elip có cùng tâm sai với một elip khác đều có thể coi là mô hình thu nhỏ của elip đó. Do đó ta có thể coi bất kì hình vẽ elip nào với tâm sai bằng $ 0{,}967 $ là hình ảnh thu nhỏ của quỹ đạo sao chổi Halley.
+\item Chọn hệ trục tọa độ sao cho tâm Mặt Trời trùng với tiêu điểm $ F_1 $ của elip, đơn vị trên các trục là triệu kilômét.\\
+Giả sử phương trình chính tắc của quỹ đạo elip này là $ \dfrac{x^2}{a^2} +\dfrac{y^2}{b^2}=1$ ($ a>b>0 $).\\
+Gọi tọa độ của sao chổi Halley là $ M(x;y) $.\\
+Khoảng cách giữa sao chổi Halley và tâm Mặt Trời là $ MF_1 $.\\
+$ MF_1=a+\dfrac{c}{a}x $, vì $ -a\leq x\leq a $ nên $ a-c\leq MF_1\leq a+c $.\\
+Suy ra khoảng cách gần nhất từ sao chổi Halley đến tâm Mặt Trời là $ a-c$.\\
+Theo giả thiết ta có khoảng cách gần nhất từ sao chổi Halley đến tâm Mặt Trời là khoảng $ 88\cdot 10^6 $ km $ \Rightarrow a-c=88 $.
+\item Elip có tâm sai bằng $ 0{,}967 \Rightarrow \dfrac{c}{a}=0{,}967$.\\
+Suy ra $ \dfrac{a}{1}=\dfrac{c}{0{,}967}=\dfrac{a-c}{1-0{,}967}=\dfrac{88}{1-0{,}967}=\dfrac{8000}{3} \Rightarrow a=\dfrac{8000}{3} $, $ c=\dfrac{7736}{3} $.\\
+Do đó khoảng cách xa nhất từ sao chổi Halley đến tâm Mặt Trời là $ a+c=\dfrac{15736}{3} \approx 5245{,}3$ triệu kilômét.\\
+Vậy khoảng cách xa nhất từ sao chổi Halley đến tâm Mặt Trời là khoảng $ 5245{,}3\cdot 10^6 $ kilômét.
+\end{listEX}
+}
+\end{bt}
+\begin{bt}%[Lương Như Quỳnh, Tex Sách CĐ 10 New]
+Quỹ đạo của các vật thể sau đây là những đường conic. Những đường này là elip, parabol hay hypebol? (Nguồn: https://vi.wikipedia.org)
+\begin{center}
+\begin{tabular}{|l|c|}
+	\hline 
+	\centering Tên & Tâm sai \\
+	\hline 
+	Sao Hỏa  & $ 0{,}0934$ \\
+	\hline
+	Mặt Trăng & $ 0{,}0549 $ \\
+	\hline
+	Sao Thủy & $ 0{,}2056 $ \\
+	\hline
+	Sao chổi Ikeya-Seki & $ 0{,}9999 $ \\
+	\hline
+	C/2019 Q4 & $ 3{,}5 $ \\
+	\hline
+\end{tabular}
+\end{center}
+\loigiai{Ta có
+\begin{itemize}
+\item Sao Hỏa: elip;
+\item Mặt Trăng: elip;
+\item Sao Thủy: elip;
+\item Sao chổi Ikeya-Seki: elip;
+\item C/2019 Q4: hypebol.
+\end{itemize}
+}
+\end{bt}

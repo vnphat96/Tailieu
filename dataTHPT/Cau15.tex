@@ -1,0 +1,741 @@
+%\setcounter{section}{14}
+\setcounter{ex}{0}
+\section{Định nghĩa, tính chất, vị trí tương đối liên quan đến mặt cầu}
+\subsection{Kiến thức cần nhớ}
+\begin{khung}
+	\subsubsection{Định nghĩa liên quan mặt cầu}
+	\vspace{-0.5cm}
+	\immini{
+	\begin{itemize}
+	\item Tập hợp các điểm $M$ trong không gian cách điểm $O$ cho trước một khoảng cách luôn bằng $R$ không đổi được gọi là mặt cầu tâm $O$, bán kính $R$, kí hiệu $S(O,R)$, tức là
+	\item[] \hspace{5cm} $S(O,R)=\big\{M \mid OM=R\big\}.$
+	\end{itemize}}
+	{\vspace{-0.5cm}
+	\begin{tikzpicture}[declare function={%
+	R=2;lambda=0;theta=65;
+	a=130;x(\a)=r*cos(\a);y(\a)=r*sin(\a);
+	r=R*cos(lambda);h=-R*sin(lambda);
+	z=asin(h/r*cot(theta));},
+	font=\small,line join=round,scale=0.85]
+	\tdplotsetmaincoords{theta}{0}
+	\draw(0,0) coordinate(O) circle[radius=R];	
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw[densely dashed] 
+	(0,0,0) coordinate(O)
+	(0,0,h) coordinate(H)
+	({x(a)},{y(a)},h) coordinate(A)
+	({-x(a)},{-y(a)},h) coordinate(B)--(A)
+	plot[domain=z:180-z]({x(\x)},{y(\x)},h);
+	\draw plot[domain=z:-180-z]({x(\x)},{y(\x)},h);
+	\end{scope}
+	\foreach \t\g\l in{A/120/N,B/80/M,O/50/O}{
+	\shade[ball color=black](\t) circle(1.5pt) node[shift={(\g:7pt)}]{$\l$};}
+	\path(O)--(B) node[pos=0.3,below]{$R$};
+	\end{tikzpicture}}
+	\begin{itemize}
+	\item Đoạn thẳng nối $2$ điểm phân biệt trên mặt cầu gọi là dây cung của mặt cầu.
+	\item Dây cung lớn nhất của mặt cầu được gọi là đường kính của mặt cầu(gấp đôi bán kính).
+	\end{itemize}
+	\subsubsection{Các công thức tính toán}
+	\begin{itemize}
+	\item Diện tích mặt cầu có bán kính $R$ là $S=4\pi R^2$.
+	\item Thể tích khối cầu có bán kính $R$ là $V=\dfrac{4}{3}\pi R^3$.
+	\end{itemize}
+	\subsubsection{Vị trí tương đối giữa một điểm và mặt cầu}
+	Có $3$ vị trí tương đối giữa một điểm $M$ và mặt cầu $S(O,R)$, đó là
+	\immini{
+	\begin{itemize}
+	\item $M$ thuộc $S(O,R)$ khi và chỉ khi $OM=R$.
+	\item $M$ nằm bên trong $S(O,R)$ khi và chỉ khi $OM<R$.
+	\item $M$ nằm ngoài $S(O,R)$ khi và chỉ khi $OM>R$.
+	\end{itemize}}
+	{\vspace{-0.9cm}
+	\begin{tikzpicture}[declare function={%
+	R=2;lambda=0;theta=65;
+	a=130;x(\a)=r*cos(\a);y(\a)=r*sin(\a);
+	r=R*cos(lambda);h=-R*sin(lambda);
+	z=asin(h/r*cot(theta));},
+	font=\small,line join=round,scale=1]
+	\tdplotsetmaincoords{theta}{0}
+	\draw(0,0) coordinate(O) circle[radius=R];	
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw[densely dashed] 
+	(0,0,0) coordinate(O)
+	(0,0,h) coordinate(H)
+	({x(a)},{y(a)-2.3},h) coordinate(A)
+	({-x(a)},{-y(a)},h) coordinate(B)--(O)--(A)
+	plot[domain=z:180-z]({x(\x)},{y(\x)},h);
+	\draw plot[domain=z:-180-z]({x(\x)},{y(\x)},h);
+	\coordinate(C) at($(O)!1.6!(B)$);
+	\draw(B)--(C);
+	\end{scope}
+	\foreach \t\g\l in{A/130/M_2,B/80/M_1,O/50/O,C/-80/M_3}{
+	\shade[ball color=black](\t) circle(1.5pt) node[shift={(\g:9pt)}]{$\l$};}
+	\path(O)--(B) node[pos=0.3,below]{$R$};
+	\end{tikzpicture}}
+	\subsubsection{Vị trí tương đối giữa đường thẳng và mặt cầu}
+	Có $3$ vị trí tương đối giữa một đường thẳng $\Delta$ và mặt cầu $S(O,R)$, đó là\\
+	\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, declare function=
+	{r=2.3; g1=-105; g2=-150; k=1.4;}]
+	\pgfmathsetmacro{\a}{r};
+	\pgfmathsetmacro{\b}{0.4*r};
+	\clip(-6.1,-2.4) rectangle(3,2.4);
+	\coordinate(O) at(0,0);
+	\coordinate(A) at(-r,0);
+	\coordinate(E) at(r/cos g1,0);
+	\coordinate(E') at($(O)!k!(E)$);
+	\coordinate(M) at(g1: \a cm and \b cm);
+	\coordinate(H) at($(O)!k!(M)$);
+	\coordinate(N) at(g2: \a cm and \b cm);
+	\coordinate(K) at(intersection of O--N and H--E');
+	\path[name path=c](O) circle(r);
+	\path[name path=d1](E')--(H);
+	\path[name path=d2](O)--(K);
+	\path[name intersections={of=d1 and c,by={x}}];
+	\path[name intersections={of=d2 and c,by={y}}];
+	\pgfmathanglebetweenlines
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{A}{center}}
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{x}{center}}
+	\pgfmathparse{int(round(min(\pgfmathresult, 360-\pgfmathresult))}
+	\pgfmathsetmacro{\z}{\pgfmathresult-180};
+	\pgfmathanglebetweenlines
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{A}{center}}
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{y}{center}}
+	\pgfmathparse{int(round(min(\pgfmathresult, 360-\pgfmathresult))}
+	\pgfmathsetmacro{\v}{\pgfmathresult-180};
+	\draw(x) arc(\z:\v+360:r);
+	\draw[dashed](x) arc(\z:\v:r);
+	\draw[dashed](A) arc(180:0:\a cm and \b cm);
+	\draw(A) arc(-180:0:\a cm and \b cm);
+	\draw[shorten <=-1cm, shorten >=-1cm](K)--(H);
+	\draw(K)--(N)(H)--(M);
+	\draw[dashed](N)--(O)--(M);
+	\path pic[draw,angle radius=4]{right angle=O--H--K};
+	\foreach \t\g in{O,H,K}
+	\draw[fill=yellow](\t)circle(1pt);
+	\node at(O)[above]{$O$};
+	\node at(K)[left=9pt,yshift=-4]{$\Delta$};
+	\node at(H)[below,xshift=-3]{$H$};
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, declare function=
+	{r=2.3; g1=-115; g2=-160; k=1;}]
+	\pgfmathsetmacro{\a}{r};
+	\pgfmathsetmacro{\b}{0.4*r};
+	\clip(-4.5,-2.4) rectangle(3,2.4);
+	\coordinate(O) at(0,0);
+	\coordinate(A) at(-r,0);
+	\coordinate(E) at(r/cos g1,0);
+	\coordinate(E') at($(O)!k!(E)$);
+	\coordinate(M) at(g1: \a cm and \b cm);
+	\coordinate(H) at($(O)!k!(M)$);
+	\coordinate(N) at(g2: \a cm and \b cm);
+	\coordinate(K) at(intersection of O--N and H--E');
+	\path[name path=c](O) circle(r);
+	\path[name path=d1](E')--(H);
+	\path[name path=d2](O)--(K);
+	\path[name intersections={of=d1 and c,by={x}}];
+	\path[name intersections={of=d2 and c,by={y}}];
+	\pgfmathanglebetweenlines
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{A}{center}}
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{x}{center}}
+	\pgfmathparse{int(round(min(\pgfmathresult, 360-\pgfmathresult))}
+	\pgfmathsetmacro{\z}{\pgfmathresult-180};
+	\pgfmathanglebetweenlines
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{A}{center}}
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{y}{center}}
+	\pgfmathparse{int(round(min(\pgfmathresult, 360-\pgfmathresult))}
+	\pgfmathsetmacro{\v}{\pgfmathresult-180};
+	\draw(x) arc(\z:\v+360:r);
+	\draw[dashed](x) arc(\z:\v:r);
+	\draw[dashed](A) arc(180:0:\a cm and \b cm);
+	\draw(A) arc(-180:0:\a cm and \b cm);
+	\draw[shorten <=-1cm, shorten >=-1cm](K)--(H);
+	\draw(K)--(N)(H)--(M);
+	\draw[dashed](N)--(O)--(M);
+	\path pic[draw,angle radius=4]{right angle=O--H--K};
+	\foreach \t\g in{O,H,K}
+	\draw[fill=yellow](\t)circle(1pt);
+	\node at(O)[above]{$O$};
+	\node at(K)[left=9pt,yshift=-3]{$\Delta$};
+	\node at(H)[below,xshift=-3]{$H$};
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=0.82, font=\footnotesize, line join=round, line cap=round, >=stealth]
+	\coordinate(O) at(0,0);
+	\coordinate(B) at(2,0);
+	\coordinate(M) at(-165:2 cm and 0.8 cm);
+	\coordinate(N) at(-69:2 cm and 0.8 cm);
+	\coordinate(l) at($(M)!-0.4!(N)$);
+	\coordinate(r) at($(N)!-0.3!(M)$);
+	\coordinate(H) at($(M)!1/2!(N)$);
+	\draw(O) circle(2);
+	\draw[dashed](B) arc(0:180:2 cm and 0.8 cm);
+	\draw(B) arc(0:-180:2 cm and 0.8 cm);
+	\draw[dashed](O)--(M)--(N)--(O)--(H);
+	\draw(l)node[below]{$\Delta$}--(M)(r)--(N);
+	\foreach \t\g in{O, M, N,H}
+	\draw[fill=black](\t)circle(1pt);
+	\path pic[draw,angle radius=4]{right angle=O--H--M};
+	\node at(O)[above=-1pt]{$O$};
+	\node at(H)[shift={(-110:12pt)}]{$H$};
+	\end{tikzpicture}
+	\begin{itemize}
+	\item $\Delta$ không có điểm chung với $S(O,R)$ khi và chỉ khi $d\big(O,\Delta\big)>R$.
+	\item $\Delta$ tiếp xúc với $S(O,R)$ khi và chỉ khi $\Delta$ và $S(O,R)$ có $1$ điểm chung $\Leftrightarrow d\big(O,\Delta\big)=R$.
+	\item $\Delta$ cắt $S(O,R)$ tại hai điểm phân biệt khi và chỉ khi $d\big(O,\Delta\big)<R$.
+	\end{itemize}
+	\begin{note}
+	Trường hợp đường thẳng $\Delta$ tiếp xúc với mặt cầu tại $H$ ta gọi $\Delta$ là tiếp tuyến của mặt cầu và $H$ là tiếp điểm của $\Delta$ với mặt cầu.
+	\end{note}
+	\subsubsection{Vị trí tương đối giữa mặt phẳng và mặt cầu}
+	Có $3$ vị trí tương đối giữa một mặt phẳng $(P)$ và mặt cầu $S(O,R)$, đó là\\
+	\indent\hspace{0.5cm}
+	\begin{tikzpicture}[declare function={%
+	R=2;lambda=0;theta=68;
+	a=130;x(\a)=r*cos(\a);y(\a)=r*sin(\a);
+	r=R*cos(lambda);h=-R*sin(lambda);
+	z=asin(h/r*cot(theta));},
+	font=\small,line join=round,scale=0.7]
+	\tdplotsetmaincoords{theta}{0}
+	\draw(0,0) coordinate(O) circle[radius=R];
+	\coordinate(i) at(0,-R);	
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw[dashed] 
+	(0,0,0) coordinate(O)
+	({x(a)},{y(a)},h) coordinate(A)
+	({-x(a)},{-y(a)},h) coordinate(B)
+	plot[rotate=0,domain=z:180-z]({x(\x)},{y(\x)},h);
+	\draw plot[rotate=0,domain=z:-180-z]({x(\x)},{y(\x)},h);
+	\end{scope}
+	\foreach \t/\g in{O/50}{
+	\shade[ball color=black](\t) circle(1.4pt) node[shift={(\g:7pt)}]{$\t$};}
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw(-R,0,-R-0.3) coordinate(m)
+	(R+0.8,0,-R-0.3) coordinate(n)
+	(R,-4,-R-0.3) coordinate(p)
+	($(m)+(p)-(n)$) coordinate(q)
+	(0,0,-R) coordinate(x)
+	(0,0,-R-1) coordinate(H)
+	(m)--(n)--(p)--(q)--(m)(H)--(i);
+	\draw[dashed](i)--(O);
+	\path(q) pic[draw,angle radius=14]{angle=p--q--m}node[shift={(29:9pt)}]{$P$};
+	\end{scope}
+	\shade[ball color=black](H) circle(1pt) node[shift={(0:7pt)}]{$H$};
+%	\node at(H)[below=1cm]{\textit{không có điểm chung}};
+	\end{tikzpicture}\qquad
+	\begin{tikzpicture}[declare function={%
+	R=2;lambda=0;theta=65;
+	a=117.5;x(\a)=r*cos(\a);y(\a)=r*sin(\a);
+	r=R*cos(lambda);h=-R*sin(lambda);
+	z=asin(h/r*cot(theta));},
+	font=\small,line join=round,scale=0.8]
+	\tdplotsetmaincoords{theta}{0}
+	\draw(0,0) coordinate(O) circle(R);
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw[dashed] 
+	(0,0,0) coordinate(O)
+	({x(a)},{y(a)},h) coordinate(A)
+	({-x(a)},{-y(a)},h) coordinate(B)
+	plot[rotate=102,domain=z:180-z]({x(\x)},{y(\x)},h)
+	plot[domain=z:180-z]({x(\x)},{y(\x)},h);
+	\draw plot[rotate=102,domain=z:-180-z]({x(\x)},{y(\x)},h)
+	plot[domain=z:-180-z]({x(\x)},{y(\x)},h);
+	\end{scope}
+	\foreach \t/\g in{O/50}{
+	\shade[ball color=black](\t) circle(1.5pt) node[shift={(\g:8pt)}]{$\t$};}
+	\path(-R,-0.55*R) coordinate(m)
+	(R+0.8,-0.55*R) coordinate(n)
+	(R,-1.3*R) coordinate(p)
+	($(m)+(p)-(n)$) coordinate(q);
+	\path[name path=aaa](O) circle(R);
+	\path[name path=bbb](m)--(n);
+	\path[name intersections={of=aaa and bbb}]
+	coordinate(i) at(intersection-1)
+	coordinate(j) at(intersection-2);
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw(0,0,-R) coordinate(H)
+	(m)--(i)(j)--(n)--(p)--(q)--(m);
+	\draw[dashed](H)--(O)(i)--(j);
+	\path(q) pic[draw,angle radius=14]{angle=p--q--m}node[shift={(29:9pt)}]{$P$};
+	\end{scope}
+	\shade[ball color=black](H) circle(1.5pt) node[shift={(30:8pt)}]{$H$};
+%	\node at(H)[below=1cm]{\textit{có $1$ điểm chung}};
+	\end{tikzpicture}\qquad
+	\begin{tikzpicture}[scale=1,line width=0.5pt, font=\footnotesize, line join=round, line cap=round, >=stealth]
+	\draw[fill=black](0,0)coordinate(I) circle(1pt) node[above left]{$O$};
+	\draw[fill=black](0,-0.9)coordinate(H) circle(1pt);
+	\node at(0,-0.9)[left]{$H$};
+	\draw[dashed](0,0)--(0,-0.9)--(1,-1.3)coordinate(M)--(0,0);
+	\node at(0.83,-0.7){$R$};
+	\node at(0.4,-1.23){$r$};
+	\draw(1.61,-1.01) arc[radius=1.9, start angle=-32.1, end angle=212];
+	\draw(-1.164,-1.5) arc[radius=1.9, start angle=-127.9, end angle=-52];
+	\draw[dashed](-1.61,-1.01) arc[radius=1.9, start angle=212, end angle=232.1];
+	\draw[dashed](1.61,-1.01) arc[radius=1.9, start angle=-32.1, end angle=-52];
+	\coordinate(A) at(-2.7,-1.5);
+	\coordinate(B) at(-1.7,-0.3);
+	\coordinate(C) at(2.6,-0.3);
+	\coordinate(D) at($(A)+(C)-(B)$);
+	\draw(-1.84,-0.47)--(A)--(D)--(C)--(1.87,-0.3);
+	\draw[dashed](-1.84,-0.47)--(B)--(1.87,-0.3);
+	\draw[dashed](-1.64,-0.9)..controls(-1.57,-0.2) and(1.57,-0.2)..(1.64,-0.9);
+	\draw(-1.64,-0.9)..controls(-1.57,-1.6) and(1.57,-1.6)..(1.64,-0.9);
+	\node at(-2.25,-1.3){$P$};
+	\node at(-1.9,1.3){$(S)$};
+	\draw(-2.1,-1.5)..controls(-1.95,-1.1)..(-2.34,-1.05);
+%	\node at(H)[below=1.2cm]{\textit{có vô số điểm chung}};
+	\end{tikzpicture}
+	\begin{itemize}
+	\item $(P)$ không có điểm chung với $S(O,R)$ khi và chỉ khi $d\big(O,(P)\big)>R$.
+	\item $(P)$ tiếp xúc $S(O,R)$ khi và chỉ khi $(P)$ và $S(O,R)$ có $1$ điểm chung $\Leftrightarrow d\big(O,(P)\big)=R$.
+	\item $(P)$ cắt $S(O,R)$ theo giao tuyến là một đường tròn khi và chỉ khi 
+	$d\big(O,(P)\big)<R$.
+	\end{itemize}
+	\begin{note}
+	\begin{itemize}
+	\item Trường hợp mặt phẳng $(P)$ tiếp xúc với mặt cầu tại $H$ ta gọi $(P)$ là tiếp diện của mặt cầu và $H$ là tiếp điểm của $(P)$ với mặt cầu.
+	\item Trường hợp mặt phẳng đi qua tâm của mặt cầu cầu thì đường tròn giao tuyến được gọi là đường tròn lớn và mặt phẳng được gọi là mặt phẳng kính của mặt cầu.
+	\item Khi mặt phẳng cắt mặt cầu theo giao tuyến là đường tròn $(C)$ thì $(C)$ có tâm $H$ là hình chiếu vuông góc của tâm $O$ mặt cầu lên mặt phẳng $(P)$, đồng thời $(C)$ có bán kính $r$ tính theo công thức $r=\sqrt{R^2-d^2}$, với $d=d\big(O,(P)\big)$.
+ 	\end{itemize}
+	\end{note}
+\end{khung}
+\subsection{Bài tập mẫu}
+%\setcounter{vd}{14}
+\begin{khung}
+	\begin{vd}[Đề tham khảo 2023]%[Dương Phước Sang]%[2H2Y2-1]
+	Cho mặt phẳng $(P)$ tiếp xúc với mặt cầu $S(O;R)$. Gọi $d$ là khoảng cách từ $O$ đến $(P)$. Khẳng định nào dưới đây đúng?
+	\choice
+	{$d<R$}
+	{$d>R$}
+	{\True $d=R$}
+	{$d=0$}
+	\loigiai{
+	\immini{
+	\vspace{1cm}
+	Mặt phẳng $(P)$ tiếp xúc với mặt cầu $S(O,R)$ khi và chỉ khi 
+	$d\big(O,(P)\big)=R \Leftrightarrow d=R.$}
+	{\begin{tikzpicture}[declare function={%
+	R=2;lambda=0;theta=65;
+	a=117.5;x(\a)=r*cos(\a);y(\a)=r*sin(\a);
+	r=R*cos(lambda);h=-R*sin(lambda);
+	z=asin(h/r*cot(theta));},
+	font=\small,line join=round,scale=0.7]
+	\tdplotsetmaincoords{theta}{0}
+	\draw(0,0) coordinate(O) circle(R);
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw[dashed] 
+	(0,0,0) coordinate(O)
+	({x(a)},{y(a)},h) coordinate(A)
+	({-x(a)},{-y(a)},h) coordinate(B)
+	plot[rotate=102,domain=z:180-z]({x(\x)},{y(\x)},h)
+	plot[domain=z:180-z]({x(\x)},{y(\x)},h);
+	\draw plot[rotate=102,domain=z:-180-z]({x(\x)},{y(\x)},h)
+	plot[domain=z:-180-z]({x(\x)},{y(\x)},h);
+	\end{scope}
+	\foreach \t/\g in{O/50}{
+	\shade[ball color=black](\t) circle(1.5pt) node[shift={(\g:8pt)}]{$\t$};}
+	\path(-R,-0.55*R) coordinate(m)
+	(R+0.8,-0.55*R) coordinate(n)
+	(R,-1.3*R) coordinate(p)
+	($(m)+(p)-(n)$) coordinate(q);
+	\path[name path=aaa](O) circle(R);
+	\path[name path=bbb](m)--(n);
+	\path[name intersections={of=aaa and bbb}]
+	coordinate(i) at(intersection-1)
+	coordinate(j) at(intersection-2);
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw(0,0,-R) coordinate(H)
+	(m)--(i)(j)--(n)--(p)--(q)--(m);
+	\draw[dashed](H)--(O)(i)--(j);
+	\path(q) pic[draw,angle radius=14]{angle=p--q--m}node[shift={(29:9pt)}]{$P$};
+	\end{scope}
+	\shade[ball color=black](H) circle(1.5pt) node[shift={(30:8pt)}]{$H$};
+	\node at(H)[below=0.8cm]{$d\big(O,(P)\big)=R$};
+	\end{tikzpicture}}
+	}
+	\end{vd}
+\end{khung}
+\subsection{Bài tập tương tự và phát triển}
+\Opensolutionfile{ans}[ans/ANS-DANG-15]
+	\begin{ex}%[2H2B2-1]
+	Cho mặt cầu có diện tích bằng $36\pi $ thì khối cầu tương ứng có thể tích bằng
+	\choice
+	{$72\pi $}
+	{$18\pi $}
+	{$9\pi $}
+	{\True $36\pi $}
+	\loigiai{
+	Với $R$ là bán kính mặt cầu ta có $S=4\pi R^2=36\pi \Rightarrow R=3$.\\
+	Khi đó thể tích khối cầu tương ứng là $V=\dfrac{4}{3} \cdot \pi R^3=36\pi$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Diện tích mặt cầu có đường kính $R$ là
+	\choice
+	{$2\pi R^2$}
+	{$4\pi R^2$}
+	{$\dfrac{4}{3}\pi R^2$}
+	{\True $\pi R^2$}
+	\loigiai{
+	Mặt cầu có đường kính $R$ thì có bán kính bằng $\dfrac{R}{2}$.\\
+	Do đó diện tích của mặt cầu là
+	$S=4\pi \left(\dfrac{R}{2}\right)^2=\pi R^2$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Cho khối cầu có bán kính $R=3$. Thể tích khối cầu đã cho bằng
+	\choice
+	{$108\pi$}
+	{\True $36\pi $}
+	{$4\pi $}
+	{$12\pi $}
+	\loigiai{
+	Thể tích khối cầu có bán kính $R$ là $V=\dfrac{4}{3}\pi R^3=\dfrac{4}{3}\pi \cdot 3^3=36\pi$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Diện tích $S$ của mặt cầu có bán kính $r$ bằng
+	\choice
+	{\True $S=4\pi r^2$}
+	{$S=3\pi r^2$}
+	{$S=\pi r^2$}
+	{$S=2\pi r^2$}
+	\loigiai{
+	Diện tích của mặt cầu có bán kính bằng $r$ là $S=4\pi r^2$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Công thức tính thể tích khối cầu bán kính $R$ là
+	\choice
+	{$V=4\pi R^3$}
+	{\True $V=\dfrac{4}{3}\pi R^3$}
+	{$V=\dfrac{1}{3}\pi R^3$}
+	{$V=\pi R^3$}
+	\loigiai{
+	Công thức tính thể tích khối cầu bán kính $R$ là $V=\dfrac{4}{3}\pi R^3$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Cho khối cầu có bán kính $R=2$. Thể tích khối cầu đã cho bằng
+	\choice
+	{$32\pi $}
+	{$16\pi $}
+	{$\dfrac{16\pi}{3}$}
+	{\True $\dfrac{32\pi}{3}$}
+	\loigiai{
+	Thể tích khối cầu có bán kính $R=2$ là $V=\dfrac{4}{3}\pi R^3=\dfrac{4}{3}\pi \cdot 2^3=\dfrac{32\pi}{3}$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Cho khối cầu $(\mathcal{T})$ tâm $O$ bán kính $R$. Gọi $S$ và $V$ lần lượt là diện tích mặt cầu và thể tích khối cầu tương ứng. Mệnh đề nào sau đây là đúng?
+	\choice
+	{$S=\pi R^2$}
+	{\True $V=\dfrac{4}{3}\pi R^3$}
+	{$S=2\pi R^2$}
+	{$V=4\pi R^3$}
+	\loigiai{
+	Công thức đúng là $V=\dfrac{4}{3}\pi R^3$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Khối cầu có bán kính $R=6$ có thể tích bằng bao nhiêu?
+	\choice
+	{$144\pi$}
+	{\True $288\pi$}
+	{$48\pi $}
+	{$72\pi $}
+	\loigiai{
+	Thể tích khối cầu có bán kính $R=6$ là $V=\dfrac{4}{3}\pi R^3=\dfrac{4}{3}\pi \cdot 6^3=288\pi$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Cho mặt cầu có diện tích bằng $\dfrac{8\pi a^2}{3}$. Khi đó bán kính của mặt cầu là
+	\choice
+	{$R=\dfrac{a\sqrt{3}}{3}$}
+	{$R=\dfrac{a\sqrt{2}}{3}$}
+	{\True $R=\dfrac{a\sqrt{6}}{3}$}
+	{$R=\dfrac{a\sqrt{6}}{2}$}
+	\loigiai{
+	Gọi $R$ là bán kính của mặt cầu.\\
+	Diện tích mặt cầu là $S=4\pi R^2 \Leftrightarrow R^2=\dfrac{S}{4\pi}=\dfrac{8\pi a^2}{12\pi}=\dfrac{2a^2}{3} \Rightarrow R=\dfrac{a\sqrt{6}}{3}$.\\
+	Vậy bán kính mặt cầu là $R=\dfrac{a\sqrt{6}}{3}$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Cho mặt cầu có bán kính $r=\dfrac{\sqrt{3}}{2}$. Diện tích của mặt cầu đã cho bằng
+	\choice
+	{$3\sqrt{3}\pi$}
+	{$\dfrac{3}{2}\pi$}
+	{$\sqrt{3}\pi$}
+	{\True $3\pi $}
+	\loigiai{
+	Diện tích mặt cầu có bán kính $r=\dfrac{\sqrt{3}}{2}$ là $S=4\pi r^2=3\pi$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Mặt cầu có bán kính bằng $6$ thì diện có diện tích bằng
+	\choice
+	{$36\pi $}
+	{$288\pi$}
+	{\True $144\pi$}
+	{$72\pi $}
+	\loigiai{
+	Mặt cầu có bán kính bằng $6$ thì diện có diện tích là $S=4 \cdot \pi \cdot 6^2=144\pi$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Cho mặt cầu $(S_1)$ có bán kính $R_1$, mặt cầu $(S_2)$ có bán kính $R_2=2R_1$. Tính tỉ số diện tích của mặt cầu $(S_2)$ và $(S_1)$.
+	\choice
+	{$2$}
+	{$\dfrac{1}{2}$}
+	{$3$}
+	{\True $4$}
+	\loigiai{
+	Gọi $S_1$, $S_2$ lần lượt là diện tích mặt cầu $(S_1)$ và $(S_2)$. Khi đó
+	$\heva{&S_1=4\pi R_1^2\\&S_2=4\pi R_2^2.}$\\
+	Vậy $\dfrac{S_2}{S_1}=\dfrac{4\pi R_2^2}{4\pi R_1^2}=\left(\dfrac{R_2}{R_1}\right)^2=4$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Mặt cầu có bán kính bằng $1$ thì diện tích bằng
+	\choice
+	{\True $4\pi $}
+	{$16\pi $}
+	{$\dfrac{4\pi}{3}$}
+	{$2\pi $}
+	\loigiai{
+	Mặt cầu có bán kính $R=1$ thì có diện tích $S=4\pi R^2=4\pi$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Cho mặt cầu có bán kính $R=5$. Diện tích của mặt cầu đã cho bằng
+	\choice
+	{$\dfrac{100\pi}{3}$}
+	{$\dfrac{500\pi}{3}$}
+	{\True $100\pi$}
+	{$25\pi $}
+	\loigiai{
+	Diện tích của mặt cầu có bán kính $R=5$ là $S=4\pi R^2=4 \cdot \pi \cdot 5^2=100\pi$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Một mặt cầu có diện tích bằng $36\pi $, bán kính của mặt cầu đó bằng
+	\choice
+	{\True $3$}
+	{$3\sqrt{3}$}
+	{$3\sqrt{2}$}
+	{$6$}
+	\loigiai{
+	Gọi $R$ là bán kính của mặt cầu.\\
+	Khi đó, ta có diện tích mặt cầu: $S=4\pi R^2=36\pi \Leftrightarrow R^2=9 \Leftrightarrow R=3$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2Y2-1]
+	Diện tích của mặt cầu có bán kính $R=3$ bằng
+	\choice
+	{$12\pi $}
+	{$6\pi $}
+	{\True $36\pi $}
+	{$18\pi $}
+	\loigiai{
+	Áp dụng công thức tính diện tích mặt cầu $S=4\pi R^2=4\pi \cdot 3^2=36\pi$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Số mặt cầu chứa một đường tròn cho trước là
+	\choice
+	{$0$}
+	{\True Vô số}
+	{$2$}
+	{$1$}
+	\loigiai{
+	Có vô số mặt cầu chứa một đường tròn cho trước, các mặt cầu đó đi qua $1$ điểm trên đường tròn đồng thời có tâm $I$ thuộc đường thẳng vuông góc với mặt phẳng chứa đường tròn tại tâm của đường tròn.
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Cho hai điểm $A$, $B$ phân biệt. Tập hợp tâm những mặt cầu đi qua hai điểm $A$ và $B$ là
+	\choice
+	{\True Mặt phẳng trung trực của đoạn thẳng $AB$}
+	{Trung điểm của đường thẳng $AB$}
+	{Đường thẳng trung trực của đoạn thẳng $AB$}
+	{Mặt phẳng song song với đường thẳng $AB$}
+	\loigiai{
+	Gọi $(S)$ là mặt cầu đi qua $2$ điểm $A$, $B$ cho trước. Khi đó ta có
+	\allowdisplaybreaks
+	$\begin{aligned}
+	& I \text{là tâm của mặt cầu}(S)\\
+	\Leftrightarrow~
+	& IA=IB\\
+	\Leftrightarrow
+	& I \in(P) \text{: mặt phẳng trung trực của đoạn thẳng} AB.
+	\end{aligned}$
+	Vậy tập hợp tâm các mặt cầu đi qua hai điểm $A$, $B$ cho trước là mặt phẳng trung trực của đoạn thẳng $AB$.
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Cho mặt cầu $S(O;R)$ và điểm $A$ cố định nằm ngoài mặt cầu với $OA=d$. Qua $A$ kẻ đường thẳng $\Delta$ tiếp xúc với mặt cầu $S(O;R)$ tại $M$. Công thức nào sau đây được dùng để tính độ dài đoạn thẳng $AM$?
+	\choice
+	{$\sqrt{R^2-2d^2}$}
+	{$\sqrt{R^2+d^2}$}
+	{\True $\sqrt{d^2-R^2}$}
+	{$\sqrt{2R^2-d^2}$}
+	\loigiai{
+	\immini{
+	Vì $\Delta$ tiếp xúc với mặt cầu $S(O;R)$ tại $M$ nên $\Delta$ tiếp xúc với một đường tròn lớn của mặt cầu $S(O;R)$ tại $M$.\\
+	Do đó $\triangle OMA$ vuông tại $M$, suy ra
+	$AM=\sqrt{OA^2-OM^2}=\sqrt{d^2-R^2}.$}
+	{\vspace{-0.5cm}
+	\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, declare function=
+	{r=2.3; g1=-115; g2=-175; k=1;}]
+	\pgfmathsetmacro{\a}{r};
+	\pgfmathsetmacro{\b}{0.4*r};
+	\coordinate(O) at(0,0);
+	\coordinate(A) at(-r,0);
+	\coordinate(E) at(r/cos g1,0);
+	\coordinate(E') at($(O)!k!(E)$);
+	\coordinate(M) at(g1: \a cm and \b cm);
+	\coordinate(H) at($(O)!k!(M)$);
+	\coordinate(N) at(g2: \a cm and \b cm);
+	\coordinate(K) at(intersection of O--N and H--E');
+	\path[name path=c](O) circle(r);
+	\path[name path=d1](E')--(H);
+	\path[name path=d2](O)--(K);
+	\path[name intersections={of=d1 and c,by={x}}];
+	\path[name intersections={of=d2 and c,by={y}}];
+	\pgfmathanglebetweenlines
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{A}{center}}
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{x}{center}}
+	\pgfmathparse{int(round(min(\pgfmathresult, 360-\pgfmathresult))}
+	\pgfmathsetmacro{\z}{\pgfmathresult-180};
+	\pgfmathanglebetweenlines
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{A}{center}}
+	{\pgfpointanchor{O}{center}}{\pgfpointanchor{y}{center}}
+	\pgfmathparse{int(round(min(\pgfmathresult, 360-\pgfmathresult))}
+	\pgfmathsetmacro{\v}{\pgfmathresult-180};
+	\draw(x) arc(\z:\v+360:r);
+	\draw[dashed](x) arc(\z:\v:r);
+	\draw[dashed](A) arc(180:0:\a cm and \b cm);
+	\draw(A) arc(-180:0:\a cm and \b cm);
+	\draw[shorten <=0cm, shorten >=-1cm](K)--(H);
+	\draw(K)--(N)(H)--(M);
+	\draw[dashed](N)--(O)--(M);
+	\path pic[draw,angle radius=4]{right angle=O--H--K};
+	\foreach \t\g in{O,H,K}
+	\draw[fill=yellow](\t)circle(1pt);
+	\node at(O)[above]{$O$};
+	\node at(K)[left]{$A$};
+	\node at(H)[below,xshift=-3]{$M$};
+	\end{tikzpicture}}
+	}
+	\end{ex}
+	\begin{ex}%[2H2B2-1]
+	Số điểm chung giữa mặt cầu và mặt phẳng không thể là
+	\choice
+	{\True $2$}
+	{Vô số}
+	{$0$}
+	{$1$}
+	\loigiai{
+	Mặt cầu và mặt phẳng có 3 vị trí tương đối với số điểm chung như các hình vẽ sau:\\
+	\indent
+	\begin{tikzpicture}[declare function={%
+	R=2;lambda=0;theta=68;
+	a=130;x(\a)=r*cos(\a);y(\a)=r*sin(\a);
+	r=R*cos(lambda);h=-R*sin(lambda);
+	z=asin(h/r*cot(theta));},
+	font=\small,line join=round,scale=0.7]
+	\tdplotsetmaincoords{theta}{0}
+	\draw(0,0) coordinate(O) circle[radius=R];
+	\coordinate(i) at(0,-R);	
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw[dashed] 
+	(0,0,0) coordinate(O)
+	({x(a)},{y(a)},h) coordinate(A)
+	({-x(a)},{-y(a)},h) coordinate(B)--(A)
+	plot[rotate=0,domain=z:180-z]({x(\x)},{y(\x)},h);
+	\draw plot[rotate=0,domain=z:-180-z]({x(\x)},{y(\x)},h);
+	\end{scope}
+	\foreach \t/\g in{A/120,B/80,O/50}{
+	\shade[ball color=black](\t) circle(1pt) node[shift={(\g:7pt)}]{$\t$};}
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw(-R,0,-R-0.3) coordinate(m)
+	(R+0.8,0,-R-0.3) coordinate(n)
+	(R,-4,-R-0.3) coordinate(p)
+	($(m)+(p)-(n)$) coordinate(q)
+	(0,0,-R) coordinate(x)
+	(0,0,-R-1) coordinate(H)
+	(m)--(n)--(p)--(q)--(m)(H)--(i);
+	\draw[dashed](i)--(O);
+	\path(q) pic[draw,angle radius=14]{angle=p--q--m}node[shift={(29:9pt)}]{$P$};
+	\end{scope}
+	\shade[ball color=black](H) circle(1pt) node[shift={(0:7pt)}]{$H$};
+	\node at(H)[below=1cm]{\textit{không có điểm chung}};
+	\end{tikzpicture}\qquad
+	\begin{tikzpicture}[declare function={%
+	R=2;lambda=0;theta=65;
+	a=117.5;x(\a)=r*cos(\a);y(\a)=r*sin(\a);
+	r=R*cos(lambda);h=-R*sin(lambda);
+	z=asin(h/r*cot(theta));},
+	font=\small,line join=round,scale=0.8]
+	\tdplotsetmaincoords{theta}{0}
+	\draw(0,0) coordinate(O) circle(R);
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw[dashed] 
+	(0,0,0) coordinate(O)
+	({x(a)},{y(a)},h) coordinate(A)
+	({-x(a)},{-y(a)},h) coordinate(B)
+	plot[rotate=102,domain=z:180-z]({x(\x)},{y(\x)},h)
+	plot[domain=z:180-z]({x(\x)},{y(\x)},h);
+	\draw plot[rotate=102,domain=z:-180-z]({x(\x)},{y(\x)},h)
+	plot[domain=z:-180-z]({x(\x)},{y(\x)},h);
+	\end{scope}
+	\foreach \t/\g in{O/50}{
+	\shade[ball color=black](\t) circle(1.5pt) node[shift={(\g:8pt)}]{$\t$};}
+	\path(-R,-0.55*R) coordinate(m)
+	(R+0.8,-0.55*R) coordinate(n)
+	(R,-1.3*R) coordinate(p)
+	($(m)+(p)-(n)$) coordinate(q);
+	\path[name path=aaa](O) circle(R);
+	\path[name path=bbb](m)--(n);
+	\path[name intersections={of=aaa and bbb}]
+	coordinate(i) at(intersection-1)
+	coordinate(j) at(intersection-2);
+	\begin{scope}[smooth,tdplot_main_coords]
+	\draw(0,0,-R) coordinate(H)
+	(m)--(i)(j)--(n)--(p)--(q)--(m);
+	\draw[dashed](H)--(O)(i)--(j);
+	\path(q) pic[draw,angle radius=14]{angle=p--q--m}node[shift={(29:9pt)}]{$P$};
+	\end{scope}
+	\shade[ball color=black](H) circle(1.5pt) node[shift={(30:8pt)}]{$H$};
+	\node at(H)[below=1cm]{\textit{có $1$ điểm chung}};
+	\end{tikzpicture}\qquad
+	\begin{tikzpicture}[scale=1,line width=0.5pt, font=\footnotesize, line join=round, line cap=round, >=stealth]
+	\draw[fill=black](0,0)coordinate(I) circle(1pt) node[above left]{$O$};
+	\draw[fill=black](0,-0.9)coordinate(H) circle(1pt);
+	\node at(0,-0.9)[left]{$H$};
+	\draw[dashed](0,0)--(0,-0.9)--(1,-1.3)coordinate(M)--(0,0);
+	\node at(0.83,-0.7){$R$};
+	\node at(0.4,-1.23){$r$};
+	\draw(1.61,-1.01) arc[radius=1.9, start angle=-32.1, end angle=212];
+	\draw(-1.164,-1.5) arc[radius=1.9, start angle=-127.9, end angle=-52];
+	\draw[dashed](-1.61,-1.01) arc[radius=1.9, start angle=212, end angle=232.1];
+	\draw[dashed](1.61,-1.01) arc[radius=1.9, start angle=-32.1, end angle=-52];
+	\coordinate(A) at(-2.7,-1.5);
+	\coordinate(B) at(-1.7,-0.3);
+	\coordinate(C) at(2.6,-0.3);
+	\coordinate(D) at($(A)+(C)-(B)$);
+	\draw(-1.84,-0.47)--(A)--(D)--(C)--(1.87,-0.3);
+	\draw[dashed](-1.84,-0.47)--(B)--(1.87,-0.3);
+	\draw[dashed](-1.64,-0.9)..controls(-1.57,-0.2) and(1.57,-0.2)..(1.64,-0.9);
+	\draw(-1.64,-0.9)..controls(-1.57,-1.6) and(1.57,-1.6)..(1.64,-0.9);
+	\node at(-2.25,-1.3){$P$};
+	\node at(-1.9,1.3){$(S)$};
+	\draw(-2.1,-1.5)..controls(-1.95,-1.1)..(-2.34,-1.05);
+	\node at(H)[below=1.2cm]{\textit{có vô số điểm chung}};
+	\end{tikzpicture}
+	\\
+	Vậy không xảy ra trường hợp mặt phẳng và mặt cầu có đúng $2$ điểm chung.
+	}
+	\end{ex}
+\Closesolutionfile{ans}
+\subsection{Bảng đáp án}
+\inputansbox{8}{ans/ANS-DANG-15}

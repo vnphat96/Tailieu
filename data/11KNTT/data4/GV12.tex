@@ -1,0 +1,221 @@
+\begin{dang}{Bài toán quỹ tích và điểm cố định}
+\end{dang}
+\begin{vd}
+	Cho tứ diện $ABCD$, một mặt phẳng $(P)$ di động luôn song song với $AB$ và $CD$ và lần lượt cắt các cạnh $AC$, $AD$, $BD$, $BC$ tại $M$, $N$, $E$, $F$. Tìm quỹ tích giao hai đường chéo của tứ giác $MNEF$.
+	\loigiai{
+	\immini{
+	Mặt phẳng $(P)$ song song với $AB$ nên cắt mặt phẳng $(ABC)$ và $(ABD)$ theo giao tuyến song song với $AB$. Suy ra $MF \parallel NE$.\\
+	Chứng minh tương tự, $MN \parallel EF$. Do đó $MNEF$ là hình bình hành, suy ra giao điểm hai đường chéo là trung điểm của mỗi đường.\\
+	Gọi $I$, $J$ lần lượt là trung điểm của $AB$, $CD$; gọi $H$, $K$ lần lượt là trung điểm của $M$, $N$ thì $HK \parallel AB$, $H \in AJ$, $K\in BJ$.\\
+	Áp dụng định lý Talet trong tam giác $ABJ$, suy ra trung điểm của $HK$ nằm trên $IJ$.\\
+	Vậy quỹ tích của giao điểm hai đường chéo tứ giác $MNEF$ là đoạn thẳng $IJ$ (không tính hai đầu mút).
+	}
+	{
+	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\path
+		(0:0) coordinate (B)
+		(0:3) coordinate (D)
+		(-66:2) coordinate (C)
+		(55:2) coordinate (A)
+		($(A)!1/2!(B)$) coordinate (I)
+		($(C)!1/2!(D)$) coordinate (J)
+		
+		($(A)!2/3!(C)$) coordinate (M)
+		($(A)!2/3!(D)$) coordinate (N)
+		($(B)!2/3!(D)$) coordinate (E)
+		($(B)!2/3!(C)$) coordinate (F)
+		($(A)!2/3!(J)$) coordinate (H)
+		($(B)!2/3!(J)$) coordinate (K)
+		;
+		\draw (J)--(A)--(B)--(C)--(A)--(D)--(C) (F)--(M)--(N);
+		\draw[dashed] (B)--(D) (N)--(E)--(F) (B)--(J)--(I);
+		\foreach \x/\g in {A/90,B/180,C/-90,D/0,M/180,N/60,E/-80,F/-150,I/120,J/-50}
+		\fill[black] (\x) circle(1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+	\end{tikzpicture}
+	}
+	}
+\end{vd}
+\begin{vd}
+	Cho hình chóp $S.ABCD$ có đáy là hình bình hành. Các điểm $M$, $N$ lần lượt thuộc $AB$, $CD$. Mặt phẳng $(P)$ chứa $MN$ và song song với $SA$.
+	\begin{enumerate}
+		\item Tìm thiết diện của hình chóp và $(P)$.
+		\item Gọi $I$ là giao điểm hai cạnh (từ $M$ và $N$) của thiết diện. Tìm quỹ tích điểm $I$.
+	\end{enumerate}
+	\loigiai{
+	\immini{
+	Vì $(P)$ song song với $SA$ nên giao tuyến của $(P)$ và $(SAB)$ là đường thẳng đi qua $M$, song song với $SA$, cắt $SB$ tại $Q$.\\
+	Gọi $K=MN\cap AC$ thì $K$ là điểm chung của $(P)$ và $(SAC)$. Vì $(P)$ song song với $SA$ nên giao tuyến của $(P)$ và $(SAC)$ là đường thẳng qua $K$, song song với $SA$, cắt $SC$ tại $P$.\\
+	Thiết diện là tứ giác $MNPQ$.\\
+	Gọi $I=MQ\cap NP$ thì $I\in (SAB)\cap (SCD)$.\hfill(1)\\
+	Mà $\heva{&S\in (SAB)\cap (SCD)\\&AB \parallel CD}$ nên giao tuyến của $(SAB)$ và $(SCD)$ là đường thẳng $\Delta$ đi qua $S$, song song với $AB$, $CD$. \hfill(2)\\
+	Từ $(1)$ và $(2)$ suy ra $I\in \Delta$.\\
+	Vì $M, N, P, Q$ nằm về một phía so với $(SAD)$ nên quỹ tích của điểm $I$ là nửa đường thẳng $\Delta$ ở cùng phía với $MNPQ$ so với $(SAD)$.
+	}
+	{
+	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\def\a{2} \def\b{3} \def\h{2.2}
+		\path
+		(0:0) coordinate (A)
+		(0:\b) coordinate (D)
+		(-130:\a) coordinate (B)
+		($(B)+(D)-(A)$) coordinate (C)
+		($(A)+(90:\h)$) coordinate (S)
+		($(A)!1/3!(B)$)coordinate (M)
+		($(C)!1/3!(D)$) coordinate (N)
+		($(A)!1/2!(C)$) coordinate (K)
+		($(S)!1/3!(B)$) coordinate (P)
+		($(S)!1/2!(C)$) coordinate (Q)
+		($(Q)!-1!(N)$) coordinate (I)
+		;
+		\draw (D)--(C)--(B)--(P) (S)--(C) (I)--(S)--(D) (Q)--(P)--(I)--(N);
+		\draw[dashed] (S)--(A)--(B) (A)--(D) (N)--(M)--(P)--(S) (K)--(Q);
+		\foreach \x/\g in {A/-60,B/-90,C/-90,D/0,S/90,M/-60,N/-60,P/160,Q/45,K/-90,I/135}
+		\fill[black] (\x) circle(1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+	\end{tikzpicture}
+	}	
+	}
+\end{vd}
+\begin{vd}
+	Cho hình chóp $S.ABCD$ có đáy là hình bình hành. Điểm $M$ nằm trên cạnh $AB$. Mặt phẳng $(P)$ đi qua $M$, song song với $BC$, $SA$, cắt các cạnh $CD$, $SC$, $SB$ lần lượt tại $N$, $P$, $Q$. Tìm quỹ tích giao điểm $I$ của $MQ$ và $NP$.
+	\loigiai{
+		\immini{
+		Vì $(P) \parallel BC$ nên giao tuyến của $(P)$ và $(ABCD)$ là đường thẳng qua $M$, song song với $BC$, cắt $CD$ tại $N$.\\
+		Gọi $K= MN \cap  AC$. Chứng minh tương tự ta có giao tuyến của $(P)$ và $(SAB)$ là đường thẳng qua $M$, song song với $SA$, cắt $SB$ tại $Q$; giao tuyến của $(P)$ và $(SBC)$ là đường thẳng qua $Q$, song song với $BC$, cắt $SC$ tại $P$.\\
+		Tứ giác $MNPQ$ là hình thang.\\
+		Giao tuyến của $(SAB)$ và $(SCD)$ là đường thẳng $\Delta$ qua $S$, song song với $AB$, $CD$.\\ 
+		Giao điểm $I$ của $MQ$ và $NP$ thuộc giao tuyến của $(SAB)$ và $(SCD)$, suy ra $I \in \Delta$.\\
+		Vì $M, N, P, Q$ nằm về một phía so với $(SAD)$ nên quỹ tích của điểm $I$ là nửa đường thẳng $\Delta$ ở cùng phía với $MNPQ$ so với $(SAD)$.
+		}
+		{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def\a{2} \def\b{3} \def\h{2.2}
+				\path
+				(0:0) coordinate (A)
+				(0:\b) coordinate (D)
+				(-130:\a) coordinate (B)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(A)+(90:\h)$) coordinate (S)
+				($(A)!1/3!(B)$)coordinate (M)
+				($(C)!2/3!(D)$) coordinate (N)
+				($(A)!1/3!(C)$) coordinate (K)
+				($(S)!1/3!(B)$) coordinate (P)
+				($(S)!1/3!(C)$) coordinate (Q)
+				($(S)+(N)-(D)$) coordinate (I)
+				;
+				\draw (D)--(C)--(B)--(P) (S)--(C) (I)--(S)--(D) (Q)--(P)--(I)--(N);
+				\draw[dashed] (S)--(A)--(B) (A)--(D) (N)--(M)--(P)--(S) (K)--(Q);
+				\foreach \x/\g in {A/-60,B/-90,C/-90,D/0,S/90,M/-60,N/-60,P/160,Q/45,K/-90,I/135}
+				\fill[black] (\x) circle(1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}
+		}	
+	}
+\end{vd}
+
+\subsubsection{Bài tập rèn luyện}
+
+\begin{bt}
+	Cho tam giác $ABC$ có trọng tâm $G$ và $d$ là đường thẳng đi qua $A$, $d$ cắt mặt phẳng $(ABC)$. Gọi $M$ là một điểm di động trên $d$ ($M$ khác $A$) và $E$ là trung điểm của $CM$. Chứng minh rằng khi $M$ di động thì đường thẳng $GE$ luôn song song với một mặt phẳng cố định.
+	\loigiai{
+	\immini{
+		Gọi $K$ là điểm đối xứng của $C$ qua $G$ thì $K$ cố định $\Rightarrow (AMK)$ cố định.\\
+		Ta có $GE$ là đường trung bình của tam giác $CMK$ nên $GE \parallel MK$.\\
+		Mà $GE \not\subset (AMK)$, $MK \subset (AMK) \Rightarrow GE \parallel (AMK)$.\\
+		Suy ra khi $M$ di động thì đường thẳng $GE$ luôn song song với một mặt phẳng cố định.
+	}
+	{
+	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+	\path
+	(0:0)coordinate (A)
+	(0:3)coordinate (C)
+	(-50:1.4) coordinate (B)
+	($(A)+(50:1.8)$) coordinate (M)
+	($(C)!1/2!(M)$) coordinate (E)
+	($1/3*(A)+1/3*(B)+1/3*(C)$) coordinate (G)
+	($(G)!-1!(C)$) coordinate (K)
+	;
+	\draw (M)--(B)--(C)--(M)--(A)--(B) (M)--(K)--(A);
+	\draw[dashed] (A)--(C)--(K) (G)--(E);
+	\foreach \x/\g in {A/180,B/-90,C/-90,M/90,E/45,G/-90,K/-90}
+	\fill[black] (\x) circle(1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+	\end{tikzpicture}
+	}
+	}
+\end{bt}
+\begin{bt}
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$. Tam giác $SAB$ vuông tại $A$ và $SA=2a$. Trên cạnh $AD$ lấy điểm $M$ và đặt $MD=x$. Mặt phẳng $(P)$ đi qua $M$ và song song với $SA$, $CD$.
+	\begin{enumerate}
+		\item Mặt phẳng $(P)$ cắt các cạnh $BC$, $SC$, $SD$ lần lượt tại $N$, $P$, $Q$. Tứ giác $MNPQ$ là hình gì?
+		\item Tính diện tích tứ giác $MNPQ$ theo $a$ và $x$.
+		\item Gọi $I$ là giao điểm của $NP$ và $MQ$. Chứng minh điểm $I$ di động trên một đường cố định.
+	\end{enumerate}
+	\loigiai{
+	\begin{enumerate}
+			\item Ta có: $CD \parallel (P)$, $CD \subset (ABCD)$ và $(P) \cap (ABCD)=MN$ $\Rightarrow MN \parallel CD$.\\
+			Tương tự, ta có: $NP \parallel SB$, $PQ \parallel CD$ và $MQ \parallel SA$.\\
+			Mà $SA \perp AB$ nên $MQ \perp AB$ $\Rightarrow MQ \perp MN$. Do đó $MNPQ$ là hình thang vuông tại $M$ và $Q$.
+		\begin{center}
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def\a{2} \def\b{3} \def\h{2.2}
+				\path
+				(0:0) coordinate (A)
+				(0:\b) coordinate (D)
+				(-130:\a) coordinate (B)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(A)+(90:\h)$) coordinate (S)
+				($(A)!2/5!(D)$) coordinate (M)
+				($(B)!2/5!(C)$) coordinate (N)
+				($(S)!2/5!(C)$) coordinate (P)
+				($(S)!2/5!(D)$) coordinate (Q)
+				($(S)+(M)-(A)$)coordinate (I)
+				;
+				\draw (D)--(C)--(B)--(S)--(C) (S)--(D) (N)--(I)--(Q) (S)--(I);
+				\draw[dashed] (S)--(A)--(B) (A)--(D) (N)--(M)--(Q)--(P);
+				\foreach \x/\g in {A/180,B/-90,C/-90,D/0,S/90,M/-45,N/-90,P/180,Q/45,I/90}
+				\fill[black] (\x) circle(1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}	
+		\end{center}
+			\item Tam giác $SAD$ có $MQ \parallel SA$ nên $\dfrac{MQ}{SA}=\dfrac{MD}{AD}$ $\Rightarrow MQ=\dfrac{MD.SA}{AD}=\dfrac{x.2a}{a}=2x$.
+			Tam giác $SCD$ có $PQ \parallel CD$ nên $\dfrac{PQ}{CD}=\dfrac{SQ}{SD}=\dfrac{AM}{AD}$ $\Rightarrow PQ=\dfrac{AM.CD}{AD}=\dfrac{(a-x)a}{a}=a-x$.\\
+			Vậy diện tích hình thang $MNPQ$ vuông tại $M$ và $Q$ là: $$S_{MNPQ}=\dfrac{(MN+PQ).MQ}{2}=\dfrac{(a+a-x).2x}{2}=(2a-x)x.$$
+			\item Hai mặt phẳng $(SAD)$ và $(SBC)$ chứa hai đường thẳng song song $AD$ và $BC$ nên $(SAD)\cap (SBC)=d\parallel AD \parallel BC$ (trong đó $d$ đi qua điểm $S$). Suy ra đường thẳng $d$ cố định.\\
+			Ta có: $I=NP \cap MQ$ và $MQ \subset (SAD)$, $NP \subset (SBC)$ $\Rightarrow I \in (SAD) \cap (SBC)$ hay $I \in d$.\\
+			Suy ra điểm $I$ di động trên một đường thẳng cố định.
+	\end{enumerate}
+	}
+\end{bt}
+\begin{bt}
+	Cho tứ diện $ABCD$ có $E, F$ lần lượt là các điểm di động trên $BC$, $AD$ sao cho $\dfrac{EB}{EC}=\dfrac{FA}{FD}$.
+	\begin{enumerate}
+		\item Qua $C$ dựng đường thẳng $Cx$ song song với $AB$; $K$ là giao điểm của $AE$ và $Cx$. Chứng minh $\dfrac{EB}{EC}=\dfrac{EA}{EK}$.
+		\item Chứng minh $EF \parallel DK$ và chỉ ra $EF$ luôn song song với một mặt phẳng cố định.
+	\end{enumerate}
+	\loigiai{
+	\immini{
+	\begin{enumerate}
+		\item Trong mặt phẳng $(ABC)$, hai tam giác $ABE$ và $KCE$ đồng dạng (g-g).\\
+		Suy ra $\dfrac{EB}{EC}=\dfrac{EA}{EK}$.\\
+		\item Trong mặt phẳng $(ADK)$, ta có $\dfrac{EA}{EK}=\dfrac{FA}{FD}$ nên $EF \parallel DK$.\\
+		Do đó $EF \parallel (DCK)$ cố định.
+	\end{enumerate}
+	}
+	{
+	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\path
+		(0:0) coordinate (B)
+		(0:2) coordinate (D)
+		(-40:1) coordinate (C)
+		(55:1.6) coordinate (A)
+		($(B)!2/3!(C)$) coordinate (E)
+		($(A)!2/3!(D)$) coordinate (F)
+		
+		($(A)+(C)-(B)$) coordinate (x)
+		($(C)!-1/2!(x)$) coordinate (K)
+		;
+		\draw (A)--(B)--(C)--(A)--(D)--(C)--(x) (A)--(K)--(C);
+		\draw[dashed] (B)--(D) (E)--(F);
+		\foreach \x/\g in {A/90,B/180,C/-90,D/0,E/-150,F/0,K/0}
+		\fill[black] (\x) circle(1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+	\end{tikzpicture}
+	}	
+	}
+\end{bt}

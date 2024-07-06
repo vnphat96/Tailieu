@@ -1,0 +1,602 @@
+\section{Phương trình mũ và phương trình logarit}
+\subsection{Kiến thức cần nhớ}
+\begin{khung}
+	\subsubsection{Công thức logarit} 
+	Với $a>0$, $a \neq 1$ và $b>0, c>0$, ta luôn có
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $\log_{a^m}b^n=\dfrac{n}{m}\log_ab$, $m \neq 0$.
+			\item $\log_a(bc)=\log_ab+\log_ac$
+			\item $\log_a\left(\dfrac{b}{c}\right)=\log_ab-\log_ac$
+			\item $\log_ab\log_bc=\log_ac$ \quad $( b \neq 1)$
+		\end{itemize}
+	\end{multicols}
+	\subsubsection{Tính chất}
+	Nếu hàm số $y=f(x)$ đơn điệu $1$ chiều trên miền $D$ và tồn tại $u,v\in D$, thì khi đó phương trình
+	\begin{center}
+		$f(u)=f(v)\Leftrightarrow u=v$.
+	\end{center}
+\end{khung}
+\subsection{Bài tập mẫu}
+\Opensolutionfile{ans}[ans/ANS-DANG-1]
+\begin{khung}
+	\setcounter{vd}{38}
+	\begin{vd}[Đề minh họa BGD 2022-2023]%[Phạm Minh Huy]%[2D2G6-5]
+		Có bao nhiêu số nguyên $x$ thỏa mãn $\log_3\dfrac{x^2-16}{343}<\log_7\dfrac{x^2-16}{27}$?
+		\choice
+		{$193$}	
+		{$92$}
+		{$186$}
+		{\True $184$}
+		\loigiai{
+			Tập xác định: $D=\left(-\infty;-4\right)\cup\left(4;+\infty\right)$.\\
+			Ta có:
+			\allowdisplaybreaks
+			\begin{eqnarray*}
+				&&\log_3\dfrac{x^2-16}{343}<\log_7\dfrac{x^2-16}{27}\\
+				&\Leftrightarrow&\log_37\left[\log_7\left(x^2-16\right)-3\right]<\log_7\left(x^2-16\right)-3\log_73\\
+				&\Leftrightarrow&\left(\log_37-1\right)\log_7\left(x^2-16\right)<3\log_37-3\log_73\\
+				& \Leftrightarrow &\log_7\left(x^2-16\right)<\dfrac{3\left(3\log_37-\log_73\right)}{\log_37-1}\\
+				&\Leftrightarrow&\log_7\left(x^2-16\right)<3\left(1+\log_73\right)\\
+				&\Leftrightarrow&\log_7\left(x^2-16\right)<\log_721^3\\
+				&\Leftrightarrow&x^2-16<21^3\\
+				&\Leftrightarrow&-\sqrt{9277}<x<\sqrt{9277}
+			\end{eqnarray*}
+			Kết hợp điều kiện ta có $x\in\left\{-96;-95;...;-5;5;...;95;96\right\}$.\\ Vậy có $184$ số nguyên $x$ thoả mãn.
+		}
+	\end{vd}
+\end{khung}
+\subsection{Bài tập tương tự và phát triển}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Có bao nhiêu cặp số nguyên $(x;y)$ thoả mãn $2\left(x+\ln\left(x+1\right)\right)+x^2+1=y+e^y$ và $0\le x\le 2020$?
+	\choice
+	{$0$}
+	{$7$}
+	{\True $1$}
+	{$8$}
+	\loigiai{
+		Ta có
+		\begin{equation}\label{1.1}
+			2\left(x+\ln\left(x+1\right)\right)+x^2+1=y+e^y\Leftrightarrow 2\ln(x+1)+e^{2\ln(x+1)}=y+e^y.
+		\end{equation}
+		Xét hàm số $f(t)=t+e^t$, ta có $f'(t)=1+e^t>0$ nên hàm số $f(t)$ đồng biến trên $\mathbb{R}$, do đó
+		\begin{eqnarray*}
+			\eqref{1.1}&\Leftrightarrow&f\left(2\ln(x+1)\right)=f(y)\\
+			& \Leftrightarrow&2\ln(x+1)=y.	
+		\end{eqnarray*}
+		Mặt khác, $0\le x\le 2022$ nên $1\le x+1\le 2021\Leftrightarrow 0\le y\le 2\ln2021$ suy ra $y\in\{0;1;2;...;14;15\}$.\\
+		Ta có $y=2\ln(x+1)\Leftrightarrow x=e^{\frac{y}{2}}-1$, với $y\in\{0;1;2;...;14;15\}$ thì chỉ có $y=0$ để $x\in \mathbb{Z}$.\\
+		Vậy chỉ có duy nhất một cặp số nguyên $(x;y)$ thoả mãn đề bài.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Gọi $x_1,x_2$ là hai nghiệm thực của phương trình $\log_3\dfrac{x-2}{x^2-4x+5}-x^2+7x-10=0$. Tính $\left|x_1-x_2\right|$.
+	\choice
+	{$3$}
+	{$5$}
+	{$\sqrt{3}$}
+	{\True $\sqrt{5}$}
+	\loigiai{
+		Điều kiện: $x>2$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_3\dfrac{3(x-2)}{x^2-4x+5}-x^2+7x-11=0\\
+			&\Leftrightarrow&\log_3(3x-6)-\log_3(x^2-4x+5)+(3x-6)-(x^2-4x+5)=0\\
+			&\Leftrightarrow&\log_3(3x-6)+(3x-6)=\log_3(x^2-4x+5)+(x^2-4x+5).
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log_3t+t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln 3}+1>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_3(3x-6)+(3x-6)=\log_3(x^2-4x+5)+(x^2-4x+5)\\
+			&\Leftrightarrow&f(3x-6)=f(x^2-4x+5)\\
+			&\Leftrightarrow&3x-6=x^2-4x+5\\
+			&\Leftrightarrow&x^2-7x+11=0\\
+			&\Leftrightarrow&\hoac{&x=\dfrac{7+\sqrt{5}}{2}\\&x=\dfrac{7-\sqrt{5}}{2}}
+		\end{eqnarray*}
+		Vậy $\left|x_1-x_2\right|=\sqrt{5}$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Biết $x_1,x_2$ là hai nghiệm của phương trình $\log_7\left(\dfrac{4x^2-4x+1}{2x}\right)+4x^2+1=6x$ và $x_1+2x_2=\dfrac{1}{4}\left(a+\sqrt{b}\right)$ với $a,b$ là hai số nguyên dương. Tính $a+b$.
+	\choice
+	{\True $a+b=14$}
+	{$a+b=13$}
+	{$a+b=16$}
+	{$a+b=11$}
+	\loigiai{
+		Điều kiện: $\heva{&x>0\\&x\ne \dfrac{1}{2}}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_7\left(\dfrac{(2x-1)^2}{2x}\right)+4x^2-4x+1=2x\\
+			&\Leftrightarrow&\log_7(2x-1)^2+(2x-1)^2=\log_72x+2x	
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log_7t+t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln 7}+1>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_7(2x-1)^2+(2x-1)^2=\log_72x+2x\\
+			&\Leftrightarrow&f\left((2x-1)^2\right)=f(2x)\\
+			&\Leftrightarrow&(2x-1)^2=2x\\
+			&\Leftrightarrow&\hoac{&x=\dfrac{3+\sqrt{5}}{4}\\&x=\dfrac{3-\sqrt{5}}{4}}
+		\end{eqnarray*}
+		\begin{itemize}
+			\item Trường hợp 1: $x_1=\dfrac{3+\sqrt{5}}{4},x_2=\dfrac{3-\sqrt{5}}{4}$, suy ra $x_1+2x_2=\dfrac{9-4\sqrt{5}}{4}$ (loại)
+			\item Trường hợp 2: $x_1=\dfrac{3-\sqrt{5}}{4},x_2=\dfrac{3+\sqrt{5}}{4}$, suy ra $x_1+2x_2=\dfrac{9+4\sqrt{5}}{4}$ (nhận)
+		\end{itemize}
+		Vậy $a=9,b=5$, suy ra $a+b=14$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Phương trình $\ln\dfrac{x^2+3x+4}{-x+2}+x^2+4x+2$ có hai nghiệm $x_1,x_2$. Khi đó $x_1+x_2$ bằng.
+	\choice
+	{$-2$}
+	{$2$}
+	{$4$}
+	{\True $-4$}
+	\loigiai{
+		Điều kiện: $x<2$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}	&&\ln(x^2+3x+4)-\ln(-x+2)+x^2+3x+4-(-x+2)\\
+			&\Leftrightarrow&\ln\left(x^2+3x+4\right)+(x^2+3x+4)=\ln(-x+2)+(-x+2)
+		\end{eqnarray*}
+		Xét hàm số $f(t)=t+\ln t$ trên $(0;+\infty)$, ta có $f'(t)=1+\dfrac{1}{t}>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\ln\left(x^2+3x+4\right)+(x^2+3x+4)=\ln(-x+2)+(-x+2)\\
+			&\Leftrightarrow&f\left(x^2+3x+4\right)=f(-x+2)\\
+			&\Leftrightarrow&x^2+3x+4=-x+2\\
+			&\Leftrightarrow&\hoac{&x=-2+\sqrt{2}\\&x=-2-\sqrt{2}}
+		\end{eqnarray*}
+		Vậy ta có $x_1+x_2=-4$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Biết $x_1,x_2,(x_1>x_2)$ là hai nghiệm của phương trình $\log_3\left(\dfrac{x^2-2x+1}{3x}\right)+x^2+2x=3x$ và $4x_1+2x_2=a+\sqrt{b}$, với $a,b$ là hai số nguyên dương. Tính $a+b$.
+	\choice
+	{\True $a+b=14$}
+	{$a+b=12$}
+	{$a+b=7$}
+	{$a+b=9$}
+	\loigiai{
+		Điều kiện: $\heva{&x>0\\&x\ne 1}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_3(x^2-2x+1)-\log_3(x)+x^2-2x+1=x\\
+			&\Leftrightarrow&\log_3(x-1)^2+(x-1)^2=\log_3(x)+x
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log_3t+t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln3}+1>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_3(x-1)^2+(x-1)^2=\log_3(x)+x\\
+			&\Leftrightarrow&f\left(\left(x-1\right)^2\right)=f(-x+2)\\
+			&\Leftrightarrow&(x-1)^2=x\\
+			&\Leftrightarrow&\hoac{&x=\dfrac{3+\sqrt{5}}{2}\\&x=\dfrac{3-\sqrt{5}}{2}}
+		\end{eqnarray*}
+		Vậy $4x_1+2x_2=9+\sqrt{5}$. Khi đó $a=9,b=5$, suy ra $a+b=14$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Cho phương trình $\dfrac{1}{2}\log_2(x+2)+x+3=\log_2\dfrac{2x+1}{x}+\left(1+\dfrac{1}{x}\right)^2+2\sqrt{x+2}$, gọi $S$ là tổng tất cả các nghiệm của nó. Khi đó, giá trị của $S$ là.
+	\choice
+	{\True $S=\dfrac{1+\sqrt{13}}{2}$}
+	{$S=\dfrac{1-\sqrt{13}}{2}$}
+	{$S=2$}
+	{$S=-2$}
+	\loigiai{
+		Điều kiện: $\hoac{&-2<x<-\dfrac{1}{2}\\&x>0}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{center}
+			$\log_2\sqrt{x+2}+\left(\sqrt{x+2}-1\right)^2=\log_2\left(2+\dfrac{1}{x}\right)+\left[\left(2+\dfrac{1}{x}\right)-1\right]^2$
+		\end{center}
+		Xét hàm số $f(t)=\log_2t+(t-1)^2$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln2}+2(t-1)>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2\sqrt{x+2}+\left(\sqrt{x+2}-1\right)^2=\log_2\left(2+\dfrac{1}{x}\right)+\left[\left(2+\dfrac{1}{x}\right)-1\right]^2\\	&\Leftrightarrow&f\left(\sqrt{x+2}\right)=f\left(2+\dfrac{1}{x}\right)\\
+			&\Leftrightarrow&\sqrt{x+2}=2+\dfrac{1}{x}\\
+			&\Leftrightarrow&\hoac{&x=-1\\&x=\dfrac{3-\sqrt{13}}{2}\\&x=\dfrac{3+\sqrt{13}}{2}}
+		\end{eqnarray*}
+		Kết hợp với điều kiện, ta được $\hoac{&x=-1\\&x=\dfrac{3+\sqrt{13}}{2}}$. Vậy $S=\dfrac{1+\sqrt{13}}{2}$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G6-5]
+	Số nghiệm nguyên của bất phương trình $\log_3\dfrac{3x^2+x+1}{2x^2+2x+3}+x^2-x-2\le 0$ là.
+	\choice
+	{$2$}
+	{\True $4$}
+	{$1$}
+	{$3$}
+	\loigiai{
+		Điều kiện: $\heva{&\dfrac{3x^2+x+1}{2x^2+2x+3}>0\\&2x^2+2x+3\ne 0}\Leftrightarrow 3x^2+x+1>0\Leftrightarrow x\in\mathbb{R}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_3(3x^2+x+1)-\log_3(2x^2+2x+3)+x^2-x-2\le 0\\
+			&\Leftrightarrow&\log_3(3x^2+x+1)+3x^2+x+1\le \log_3(2x^2+2x+3)+2x^2+2x+3
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log_3t+t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln3}+1>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_3(3x^2+x+1)+3x^2+x+1\le \log_3(2x^2+2x+3)+2x^2+2x+3\\
+			&\Leftrightarrow&f\left(3x^2+x+1\right)\le f(2x^2+2x+3)\\
+			&\Leftrightarrow&3x^2+x+1\le 2x^2+2x+3\\
+			&\Leftrightarrow&-1\le x\le 2
+		\end{eqnarray*}
+		Do $x\in\mathbb{Z}$ suy ra $x\in\left\{-1;0;1;2\right\}$. Vậy phương trình đã cho có $4$ nghiệm nguyên.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G6-5]
+	Tìm số nghiệm nguyên của bất phương trình $2^{2x^2-15x+100}-2^{x^2+10x-50}+x^2-25x+150<0$.
+	\choice
+	{$5$}
+	{$3$}
+	{$6$}
+	{\True $4$}
+	\loigiai{
+		Đặt $a=2x^2-15x+100,b=x^2+10x-50$ ta có bất phương trình
+		\begin{center}
+			$2^a-2^b+a-b<0\Leftrightarrow 2^a+a<2^b+b$
+		\end{center}
+		Xét hàm số $f(t)=2^t+t$ trên $(-\infty;+\infty)$, ta có $f'(t)=2^t\ln 2+1>0,\forall t\in(-\infty;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(-\infty;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&2^a+a<2^b+b\\
+			&\Leftrightarrow&f\left(a\right)\le f(b)\\
+			&\Leftrightarrow&a\le b\\
+			&\Leftrightarrow&2x^2-15x+100<x^2+10x-50\\
+			&\Leftrightarrow&10\le x\le 15
+		\end{eqnarray*}
+		Do $x\in\mathbb{Z}$ suy ra $x\in\left\{11;12;13;14\right\}$. Vậy phương trình đã cho có $4$ nghiệm nguyên.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Tìm tổng tất cả các nghiệm của phương trình $$\dfrac{1}{2}\log_2(x+3)=\log_2(x+1)+x^2-x-4+2\sqrt{x+3}.$$
+	\choice
+	{$S=2$}
+	{$S=-1$}
+	{$S=1-\sqrt{2}$}
+	{\True $S=1$}
+	\loigiai{
+		Điều kiện: $\hoac{&x+3>0\\&x+1>0}\Leftrightarrow x>-1$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{center}
+			$\log_2\sqrt{x+3}-2\sqrt{x+3}+x+3=\log_2(x+1)-2(x+1)+(x+1)^2$
+		\end{center}
+		Xét hàm số $f(t)=\log_2t-2t+t^2$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln2}-2+2t>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2\sqrt{x+3}-2\sqrt{x+3}+x+3=\log_2(x+1)-2(x+1)+(x+1)^2\\
+			&\Leftrightarrow&f\left(\sqrt{x+3}\right)=f\left(x+1\right)\\
+			&\Leftrightarrow&\sqrt{x+3}=x+1\\
+			&\Leftrightarrow&\hoac{&x=1\\&x=-2}
+		\end{eqnarray*}
+		Kết hợp với điều kiện, ta được $x=1$. Vậy $S=1$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Phương trình $2\log_3\left(\cot x\right)=\log_2(\cos x)$ có bao nhiêu nghiệm trong khoảng $(0;2018\pi)$.
+	\choice
+	{$2017$ nghiệm}
+	{$1009$ nghiệm}
+	{\True $2018$ nghiệm}
+	{$1008$ nghiệm}
+	\loigiai{
+		Điều kiện: $\heva{&\sin x>0\\&\cos x>0}$.
+		Khi đó, phương trình đã cho tương đương với
+		\begin{eqnarray*}
+			&&\log_3(\cot x)^2=\log_2(\cos x)\\
+			&\Leftrightarrow&\log_3\cos^2x-\log_3\sin^2x=\log_2\cos x	\\
+			&\Leftrightarrow&\log_3\cos^2x-\log_3(1-\cos^2x)=\log_2(\cos x)
+		\end{eqnarray*}
+		Đặt $t=\log_2\cos x\Rightarrow \cos x=2^t$, phương trình trở thành
+		\begin{eqnarray*}
+			&&\log_3\dfrac{2^{2t}}{1-2^{2t}}=t\\
+			&\Leftrightarrow&4^t=3^t-12^t\\
+			&\Leftrightarrow&\left(\dfrac{4}{3}\right)^t+4^t=1
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\left(\dfrac{4}{3}\right)^t+4^t$ trên $(-\infty;+\infty)$, ta có $f'(t)=\left(\dfrac{4}{3}\right)^t\ln\dfrac{4}{3}+4^t\ln4>0,\forall t\in(-\infty;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(-\infty;+\infty)$.\\
+		Mặt khác, $f(-1)=1$ nên $t=-1$ là nghiệm duy nhất của phương trình, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2\cos x=-1\\
+			&\Leftrightarrow&\cos x=\dfrac{1}{2}\\
+			&\Leftrightarrow&x=\pm\dfrac{\pi}{3}+k2\pi,(k\in\mathbb{Z})
+		\end{eqnarray*}
+		Do $x\in(0;2018\pi)\Rightarrow\hoac{&-\dfrac{1}{6}<k<\dfrac{6053}{6}\\&\dfrac{1}{6}<k<\dfrac{6055}{6}}$. Vậy trong khoảng $(0;2018\pi)$ có $1009.2=2018$ nghiệm.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Phương trình $\log_2\dfrac{x^2+3x+2}{3x^2-5x+8}=x^2-4x+3$ có nghiệm các nghiệm $x_1,x_2$. Hãy tính giá trị của biểu thức $A=x_1^2+x_2^2-3x_1x_2$.
+	\choice
+	{$-31$}
+	{\True $1$}
+	{$-1$}
+	{$31$}
+	\loigiai{
+		Điều kiện: $\dfrac{x^2+3x+2}{3x^2-5x+8}>0\Leftrightarrow\hoac{&x<-2\\&x>-1}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2(x^2+3x+2)-\log_2(3x^2-5x+8)=\dfrac{1}{2}\left[(3x^2-5x+9)-(x^2-3x+2)\right]\\
+			&\Leftrightarrow&\log_2(x^2+3x+2)+\dfrac{1}{2}(x^2+3x+2)=\log_2(3x^2-5x+8)+\dfrac{1}{2}(3x^2-5x+8)
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log_2t+\dfrac{1}{2}t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln2}+\dfrac{1}{2}>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2(x^2+3x+2)+\dfrac{1}{2}(x^2+3x+2)=\log_2(3x^2-5x+8)+\dfrac{1}{2}(3x^2-5x+8)\\
+			&\Leftrightarrow&f\left(x^2+3x+2\right)=f\left(3x^2-5x+8\right)\\
+			&\Leftrightarrow&x^2+3x+2=3x^2-5x+8\\
+			&\Leftrightarrow&\hoac{&x=1\\&x=3}
+		\end{eqnarray*}
+		Vậy $A=x_1^2+x_2^2-3x_1x_2=(x_1+x_2)^2-5x_1x_2=1$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Biết rằng phương trình $\log_2\left(1+x^{1009}\right)=2018\log_3x$ có nghiệm duy nhất $x_0$. Khẳng định nào sau đây là đúng.
+	\choice
+	{\True $1<x_0<3^{\frac{1}{1008}}$}
+	{$3^{\frac{1}{1007}}<x_0<1$}
+	{$3^{\frac{1}{1008}}<x_0<3^{\frac{1}{1006}}$}
+	{$x_0>3^{\frac{2}{1009}}$}
+	\loigiai{
+		Điều kiện: $x>0$.\\
+		Đặt $\log_2\left(1+x^{1009}\right)=2018\log_3x=t,(t>0)$. Khi đó, ta có
+		\begin{eqnarray*}
+			&&\heva{&1+x^{1009}=2^t\\&x^{2018}=3^t}\\
+			&\Rightarrow&\left(2^t-1\right)	^2=3^t\\
+			&\Leftrightarrow&2^t-1=\left(\sqrt{3}\right)^t\\
+			&\Leftrightarrow&(\sqrt{3})^t+1=2^t\\
+			&\Leftrightarrow&\left(\dfrac{\sqrt{3}}{2}\right)^t+\left(\dfrac{1}{2}\right)^t=1
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\left(\dfrac{\sqrt{3}}{2}\right)^t+\left(\dfrac{1}{2}\right)^t$ trên $(0;+\infty)$, ta có $f'(t)=\left(\dfrac{\sqrt{3}}{2}\right)^t\ln\dfrac{\sqrt{3}}{2}+\left(\dfrac{1}{2}\right)^t\ln\dfrac{1}{2}<0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ nghịch biến trên $(0;+\infty)$.\\
+		Mặt khác $f(2)=1$ nên $t=2$ là nghiệm duy nhất của phương trình, do đó
+		\begin{eqnarray*}
+			&&\log_2\left(1+x^{1009}\right)=2018\log_3x=2\\
+			&\Leftrightarrow&x^{1009}=3\\
+			&\Leftrightarrow&x_0=3^{\frac{1}{1008}}
+		\end{eqnarray*}
+		Mà $0<\dfrac{1}{1009}<\dfrac{1}{1008}$ nên $1<x_0<3^{\frac{1}{1008}}$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Biết $x_1,x_2$ là hai nghiệm của phương trình $\log_7\left(\dfrac{4x^2-4x+1}{2x}\right)+4x^2+1=6x$ và $x_1+2x_2=\dfrac{1}{4}\left(a+\sqrt{b}\right)$ với $a,b$ là hai số nguyên dương. Tính $a+b$.
+	\choice
+	{$a+b=13$}
+	{$a+b=16$}
+	{$a+b=11$}
+	{\True $a+b=14$}
+	\loigiai{
+		Điều kiện: $\heva{&x>0\\&x\ne\dfrac{1}{2}}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_7\left(\dfrac{(2x-1)^2}{2x}\right)+4x^2-4x+1=2x\\
+			&\Leftrightarrow&\log_7(2x-1)^2+(2x-1)^2=\log_72x+2x
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log_7t+t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln7}+1>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_7(2x-1)^2+(2x-1)^2=\log_72x+2x\\
+			&\Leftrightarrow&f\left((2x-1)^2\right)= f(2x)\\
+			&\Leftrightarrow&(2x-1)^2= 2x\\
+			&\Leftrightarrow&\hoac{&x=\dfrac{3+\sqrt{5}}{4}\\&x=\dfrac{3-\sqrt{5}}{4}}
+		\end{eqnarray*}
+		\begin{itemize}
+			\item Trường hợp 1: $x_1=\dfrac{3+\sqrt{5}}{4},x_2=\dfrac{3-\sqrt{5}}{4}$, suy ra $x_1+2x_2=\dfrac{9-4\sqrt{5}}{4}$ (loại)
+			\item Trường hợp 2: $x_1=\dfrac{3-\sqrt{5}}{4},x_2=\dfrac{3+\sqrt{5}}{4}$, suy ra $x_1+2x_2=\dfrac{9+4\sqrt{5}}{4}$ (nhận)
+		\end{itemize}
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Có bao nhiêu cặp số nguyên dương $(x;y)$ với $x\le 2020$ thỏa mãn $\log_2(x-1)+2x-2y=1+4^y$.
+	\choice
+	{$6$}
+	{$2020$}
+	{\True $5$}
+	{$1010$}
+	\loigiai{
+		Theo đề bài, ta có $\log_2(x-1)+2x-2y=1+4^y\Leftrightarrow \log_22(x-1)+2(x-1)=2y+2^{2y}$.\\
+		Đặt $t=\log_22(x-1)\Rightarrow 2(x-1)=2^t$.\\
+		Ta có
+		\begin{equation}\label{eq:14}
+			2^t+t=2^{2y}+2y
+		\end{equation}
+		Xét hàm số $f(t)=2^t+t$ trên $\mathbb{R}$, ta có $f'(t)=2^t\ln 2+1>0,\forall t\in\mathbb{R}$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $\mathbb{R}$. Do đó, ta có
+		\begin{eqnarray*}
+			\eqref{eq:14}&\Leftrightarrow&f(t)=f(2t)\\
+			&\Leftrightarrow&t=2y\\
+			&\Leftrightarrow&\log_22(x-1)=2y\\
+			&\Leftrightarrow&2(x-1)=2^{2y}\\
+			&\Leftrightarrow&x=2^{2y-1}+1
+		\end{eqnarray*}
+		Mà $x\le 2020\Rightarrow 2^{2y-1}+1\le 2020\Leftrightarrow y\le \dfrac{1}{2}\left(1+\log_22019\right)$.\\
+		Vì $y\in\mathbb{Z}^+\Rightarrow y\in\{1;2;3;4;5\}$. Vậy có $5$ cặp số nguyên dương $(x;y)$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Cho các số thực $x,y$ thỏa mãn $2x-y=e^x(2-e^x)+\ln(2e^x+y)$. Tìm giá trị nhỏ nhất của biểu thức $P=x^2+y^2=20y$.
+	\choice
+	{\True $-19$}
+	{$-21$}
+	{$-100$}
+	{$0$}
+	\loigiai{
+		Điều kiện: $2e^x+y>0$.\\
+		Ta có
+		\begin{equation}\label{eq:15}
+			2x-y=e^x(2-e^x)+\ln(2e^x+y)\Leftrightarrow e^{2x}+2x=\ln\left(2e^x+y\right)+2e^x+y
+		\end{equation}
+		Đặt $e^{2x}=u\Rightarrow 2x=\ln u$, phương trình \eqref{eq:15} viết lại thành
+		\begin{equation}\label{eq:16}
+			\ln u+u=\ln\left(2e^x+y\right)+2e^x+y
+		\end{equation}
+		Xét hàm số $f(t)=\ln t+t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t}+1>0,\forall t\in (0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$. Do đó
+		\begin{eqnarray*}
+			\eqref{eq:16}&\Leftrightarrow&u=2e^x+y\\
+			&\Leftrightarrow&e^{2x}=2e^x+y\\
+			&\Leftrightarrow&y=e^{2x}-2e^x\\
+			&\Rightarrow&y+1=\left(e^x-1\right)^2\\
+			&\Rightarrow&y\ge -1
+		\end{eqnarray*}
+		Khi đó $P=x^2+y^2+20y=x^2+(y+1)^2+18y-1\ge 0+0-18-1=-19$.\\
+		Đẳng thức xảy ra khi và chỉ khi $x=0,y=-1$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Cho phương trình $\log_2\dfrac{4x+2019}{x^2-2x+3}=x^2-6x-2016$. Tổng tất cả các nghiệm của phương trình là.
+	\choice
+	{$5$}
+	{\True $6$}
+	{$4$}
+	{$2$}
+	\loigiai{
+		Điều kiện: $\dfrac{4x+2019}{x^2-2x+3}>0\Leftrightarrow x>-\dfrac{2019}{4}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2\dfrac{4x+2019}{x^2-2x+3}=(x^2-2x+3)-(4x+2019)\\
+			&\Leftrightarrow&\log_2(4x+2019)-\log_2(x^2-2x+3)=(x^2-2x+3)-(4x+2019)\\
+			&\Leftrightarrow&\log_2(4x+2019)+(4x+2019)=\log_2(x^2-2x+3)+(x^2-2x+3)
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log_2t+t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln2}+1>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2(4x+2019)+(4x+2019)=\log_2(x^2-2x+3)+(x^2-2x+3)\\
+			&\Leftrightarrow&f\left(4x+2019\right)=f\left(x^2-2x+3\right)\\
+			&\Leftrightarrow&4x+2019=x^2-2x+3\\
+			&\Leftrightarrow&\hoac{&x=48\\&x=-42}
+		\end{eqnarray*}
+		Vậy $x_1+x_2=6$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Tính tổng tất cả các nghiệm của phương trình $$\log\dfrac{x^3+3x^2-3x-5}{x^2+1}+(x+1)^3=x^2+6x+7.$$
+	\choice
+	{$-2$}
+	{\True $0$}
+	{$-2-\sqrt{3}$}
+	{$-2+\sqrt{3}$}
+	\loigiai{
+		Điều kiện: $\dfrac{x^3+3x^2-3x-5}{x^2+1}>0\Leftrightarrow\hoac{&-1-\sqrt{6}<x<-1\\&-1+\sqrt{6}<x}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log(x^3+3x^2-3x-5)-\log(x^2+1)=x^2+6x+7-(x+1)^3\\
+			&\Leftrightarrow&\log(x^3+3x^2-3x-5)+(x^3+3x^2-3x-5)=\log(x^2+1)+x^2+1
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log t+t$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln10}+1>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log(x^3+3x^2-3x-5)+(x^3+3x^2-3x-5)=\log(x^2+1)+x^2+1\\
+			&\Leftrightarrow&f\left(x^3+3x^2-3x-5\right)=f\left(x^2+1\right)\\
+			&\Leftrightarrow&x^3+3x^2-3x-5=x^2+1\\
+			&\Leftrightarrow&\hoac{&x=-2\\&x=-\sqrt{3}\\&x=\sqrt{3}}
+		\end{eqnarray*}
+		Kết hợp với điều kiện suy ra phương trình có hai nghiệm $\hoac{&x=\sqrt{3}\\&x=-\sqrt{3}}$.\\
+		Vậy tổng hai nghiệm của phương trình bằng $0$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Cho phương trình $\dfrac{1}{2}\log_2(x+2)+x+3=\log_2\dfrac{2x+1}{x}+\left(1+\dfrac{1}{x}\right)^2+2\sqrt{x+2}$, gọi $S$ là tổng tất cả các nghiệm của nó. Khi đó, giá trị của $S$ là.
+	\choice
+	{$S=2$}
+	{\True $S=\dfrac{1+\sqrt{13}}{2}$}
+	{$S=-2$}
+	{$S=\dfrac{1-\sqrt{13}}{2}$}
+	\loigiai{
+		Điều kiện: $\hoac{&-2<x<-\dfrac{1}{2}\\&x>0}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{center}
+			$\log_2\sqrt{x+2}+\left(\sqrt{x+2}-1\right)^2=\log_2\left(2+\dfrac{1}{x}\right)+\left[\left(2+\dfrac{1}{x}\right)-1\right]^2$
+		\end{center}
+		Xét hàm số $f(t)=\log_2t+(t-1)^2$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln2}+2(t-1)>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2\sqrt{x+2}+\left(\sqrt{x+2}-1\right)^2=\log_2\left(2+\dfrac{1}{x}\right)+\left[\left(2+\dfrac{1}{x}\right)-1\right]^2\\
+			&\Leftrightarrow&f\left(\sqrt{x+2}\right)=f\left(2+\dfrac{1}{x}\right)\\
+			&\Leftrightarrow&\sqrt{x+2}=2+\dfrac{1}{x}\\
+			&\Leftrightarrow&\hoac{&x=-1\\&x=\dfrac{3-\sqrt{13}}{2}\\&x=\dfrac{3+\sqrt{13}}{2}}
+		\end{eqnarray*}
+		Kết hợp với điều kiện, ta được $\hoac{&x=-1\\&x=\dfrac{3+\sqrt{13}}{2}}$. Vậy $S=\dfrac{1+\sqrt{13}}{2}$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Cho phương trình $\log(x-3)+2\sqrt{x-3}+6x-16=2\log(x-4)+2(x-3)^3$ có một nghiệm có dạng $x=\dfrac{a+\sqrt{b}}{2}$, trong đó $a,b$ là hai số nguyên dương. Giá trị của biểu thức $a+b$ bằng.
+	\choice
+	{\True $14$}
+	{$5$}
+	{$9$}
+	{$10$}
+	\loigiai{
+		Điều kiện: $x>4$.\\
+		Khi đó, bất phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\dfrac{1}{2}\log(x-3)+(x-3)\sqrt{x-3}+3\sqrt{x-3}+3(x-3)+1=\log(x-4)+(x-4+1)^3\\
+			&\Leftrightarrow&\log\sqrt{x-3}+\left(\sqrt{x-3}+1\right)^3=\log(x-4)+(x-4+1)^3
+		\end{eqnarray*}
+		Xét hàm số $f(t)=\log t+t^3$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln10}+3t^2>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log\sqrt{x-3}+\left(\sqrt{x-3}+1\right)^3=\log(x-4)+(x-4+1)^3\\
+			&\Leftrightarrow&f\left(\sqrt{x-3}\right)=f\left(x-4\right)\\
+			&\Leftrightarrow&\sqrt{x-3}=x-4\\
+			&\Leftrightarrow&\hoac{&x=\dfrac{9+\sqrt{5}}{4}\\&x=\dfrac{9-\sqrt{5}}{4}}
+		\end{eqnarray*}
+		Kết hợp với điều kiện, ta được $x=\dfrac{9+\sqrt{5}}{2}$, suy ra $a=9,b=5$. Vậy $a+b=14$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Minh Huy]%[2D2G5-5]
+	Cho phương trình $\dfrac{1}{2}\log_2(x+2)+x+3=\log_2\dfrac{2x+1}{x}+\left(1+\dfrac{1}{x}\right)^2+2\sqrt{x+2}$, gọi $S$ là tổng tất cả các nghiệm của nó. Khi đó, giá trị của $S$ là.
+	\choice
+	{\True $S=\dfrac{1+\sqrt{13}}{2}$}
+	{$S=\dfrac{1-\sqrt{13}}{2}$}
+	{$S=2$}
+	{$S=-2$}
+	\loigiai{
+		Điều kiện: $\hoac{&-2<x<-\dfrac{1}{2}\\&x>0}$.\\
+		Khi đó, phương trình đã cho tương đương với
+		\allowdisplaybreaks
+		\begin{center}
+			$\log_2\sqrt{x+2}+\left(\sqrt{x+2}-1\right)^2=\log_2\left(2+\dfrac{1}{x}\right)+\left[\left(2+\dfrac{1}{x}\right)-1\right]^2$
+		\end{center}
+		Xét hàm số $f(t)=\log_2t+(t-1)^2$ trên $(0;+\infty)$, ta có $f'(t)=\dfrac{1}{t\ln2}+2(t-1)>0,\forall t\in(0;+\infty)$.\\
+		Suy ra hàm số $f(t)$ đồng biến trên $(0;+\infty)$, do đó
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\log_2\sqrt{x+2}+\left(\sqrt{x+2}-1\right)^2=\log_2\left(2+\dfrac{1}{x}\right)+\left[\left(2+\dfrac{1}{x}\right)-1\right]^2\\
+			&\Leftrightarrow&f\left(\sqrt{x+2}\right)=f\left(2+\dfrac{1}{x}\right)\\
+			&\Leftrightarrow&\sqrt{x+2}=2+\dfrac{1}{x}\\
+			&\Leftrightarrow&\hoac{&x=-1\\&x=\dfrac{3-\sqrt{13}}{2}\\&x=\dfrac{3+\sqrt{13}}{2}}
+		\end{eqnarray*}
+		Kết hợp với điều kiện, ta được $\hoac{&x=-1\\&x=\dfrac{3+\sqrt{13}}{2}}$.\\
+		 Vậy $S=\dfrac{1+\sqrt{13}}{2}$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+%======================
+\subsection{Bảng đáp án}
+\inputansbox{8}{ans/ANS-DANG-1}

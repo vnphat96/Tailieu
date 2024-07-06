@@ -1,0 +1,511 @@
+\section{Hai mặt phẳng vuông góc}
+\setcounter{dang}{0}
+\begin{dang}{Góc giữa hai mặt phẳng}
+	Cho hai mặt phẳng $(P)$ và $(Q)$. Lấy các đường thẳng $a, b$ tương ứng vuông góc với $(P),(Q)$. Khi đó, góc giữa $a$ và $b$ không phụ thuộc vào vị trí của $a, b$ và được gọi là góc giữa hai mặt phẳng $(P)$ và $(Q)$.
+\end{dang}
+\subsubsection{Ví dụ mẫu}
+\begin{vd}%[1K7BO-3]
+	Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có cạnh đáy bằng $a$ và cạnh bên bằng $\dfrac{3a}{2}$. Góc giữa hai mặt phẳng $(A'BC)$ và $(ABC)$ bằng
+	\choice
+	{$30^{\circ}$}
+	{\True $60^{\circ}$}
+	{$45^{\circ}$}
+	{$90^{\circ}$}
+	\loigiai{
+		\immini{Gọi $M$ là trung điểm của $BC\Rightarrow AM\perp BC$ (vì tam giác $ABC$ đều)\\
+			$ \Rightarrow AM=\sqrt{AB^2-BM^2}=\sqrt{a^2-\dfrac{a^2}{4}}=\dfrac{a\sqrt{3}}{2} $.\\
+			$\widehat{\left((A'BC),(ABC)\right)}=\widehat{AMA'}$.\\
+			Lại có $\tan\widehat{AMA'}=\dfrac{AA'}{AM}=\dfrac{\dfrac{3a}{2}}{\dfrac{a\sqrt{3}}{2}}=\sqrt{3}$. \\
+			$ \Rightarrow\widehat{AMA'}=60^{\circ}\Leftrightarrow\widehat{\left((A'BC),(ABC)\right)}=60^{\circ}$.
+		}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def\ac{4} % cạnh AC
+				\def\ab{2} % cạnh AB
+				\def\h{3} % chiều cao
+				\def\gocA{50} % góc A của đáy
+				\coordinate[label=left:$A$] (A) at (0,0);
+				\coordinate[label=right:$C$] (C) at (\ac,0);
+				\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+				\coordinate[label=left:$A'$] (A') at ($(A)+(90:\h)$);
+				\coordinate[label=below right:$B'$] (B') at ($(B)-(A)+(A')$);
+				\coordinate[label=right:$C'$] (C') at ($(C)-(A)+(A')$);
+				\coordinate[label=right:$M$] (M) at ($(B)!0.5!(C)$);
+				\draw (A')--(A)--(B)--(C)--(C')--(A')--(B')--(C') (A')--(B)--(B');
+				\draw[dashed] (A)--(C)--(A')--(M)--cycle;
+				\foreach \diem in {A,B,C,A',B',C',M} \fill (\diem)circle(1.5pt);
+				\draw pic[angle radius=3mm,draw=blue] {right angle = B--M--A};
+				
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+\begin{vd}%[1K7BO-3]
+	Cho hình lập phương $ABCD.A'B'C'D'$ có $O$, $O'$ lần lượt là tâm của các hình vuông $ABCD$ và $A'B'C'D'$. Góc giữa hai mặt phẳng $(A'BD)$ và $(ABCD)$ bằng
+	\choice
+	{$\widehat{A'AD}$}
+	{$\widehat{A'OC}$}
+	{\True $\widehat{A'OA}$}
+	{$\widehat{OA'A}$}
+	\loigiai{
+		\immini{Ta có $ABCD$ là hình vuông nên $AO\perp BD$, \\
+			đồng thời $BD\perp A'A\Rightarrow BD\perp(A'AO)\Rightarrow BD\perp A'O$.\\
+			Ta có $\heva{&(A'BD)\cap(ABCD)=BD\\&AO\perp BD\\&A'O\perp BD.}\\
+			\Rightarrow\left(\widehat{(A'BD);(ABCD)}\right)=\left(\widehat{A'O;AO}\right)=\widehat{A'OA}$.
+		}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def\bc{4} % cạnh BC
+				\def\ba{2} % cạnh BA
+				\def\h{3} % đường cao
+				\def\gocB{35} % góc B của đáy
+				\coordinate[label=below left:$B$] (B) at (0,0);
+				\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+				\coordinate[label=below:$C$] (C) at (\bc,0);
+				\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+				\coordinate[label=above left:$A'$] (A') at ($(A)+(90:\h)$);
+				\coordinate[label=left:$B'$] (B') at ($(B)-(A)+(A')$);
+				\coordinate[label=below right:$C'$] (C') at ($(C)-(A)+(A')$);
+				\coordinate[label=right:$D'$] (D') at ($(D)-(A)+(A')$);
+				\coordinate[label=below:$O$] (O) at (intersection cs:first line={(A)--(C)}, second line={(B)--(D)});
+				\draw (B')--(B)--(C)--(D)--(D')--(A')--(B')--(C')--(D') (C)--(C');
+				\draw[dashed] (A')--(A)--(D) (A)--(B)--(D)--(A')--(B) (A')--(O) (A)--(C);
+				\draw pic[angle radius=5mm,draw=blue] {angle = A'--O--A};
+				
+				\foreach \diem in {A,B,C,D,A',B',C',D',O}	\fill (\diem)circle(1.5pt);
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+\subsubsection{Bài tập rèn luyện}
+% \centerline{\fcolorbox{red}{yellow!50}{\bf {BÀI TẬP TỰ LUẬN }}}
+\begin{bt}%[1K7BO-3]
+	Cho hình chóp tứ giác đều $S.ABCD$ có cạnh đáy bằng $2a$ cạnh bên bằng $\sqrt{5}a$. Góc giữa mặt bên và mặt phẳng đáy bằng bao nhiêu?
+	\loigiai{
+		\immini{Gọi $O$ là tâm hình vuông $ABCD$. Khi đó $SO\perp(ABCD)$.\\
+			Gọi $H$ là trung điểm cạnh $CD$. Ta có: $OH\perp CD$ và $HD=OH=\dfrac{CD}{2}=a$.\\
+			Do $\triangle SCD$ cân tại $S$ nên $SH\perp CD$.\\
+			Vậy góc giữa mặt bên $(SCD)$ và mặt phẳng $(ABCD)$ là góc $\widehat{SHO}$.\\
+			Trong $\triangle SHD$ vuông tại $H$ ta có:\\
+			$SH=\sqrt{SD^2-HD^2}=\sqrt{5a^2-a^2}=2a$.\\
+			Khi đó $\cos\widehat{SHO}=\dfrac{OH}{SH}=\dfrac{a}{2a}=\dfrac{1}{2}\Rightarrow\widehat{SHO}=60^{\circ}$.
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def\bc{4} % cạnh BC
+				\def\ba{2} % cạnh BA
+				\def\h{4} % đường cao
+				\def\gocB{30} % góc B của đáy
+				\coordinate[label=below left:$B$] (B) at (0,0);
+				\coordinate[label=above right:$A$] (A) at (\gocB:\ba);
+				\coordinate[label=below:$C$] (C) at (\bc,0);
+				\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+				\coordinate[label=below:$O$] (O) at ($(A)!.5!(C)$);
+				\coordinate[label=above:$S$] (S) at ($(O)+(90:\h)$);
+				\coordinate[label=right:$H$] (H) at ($(C)!0.5!(D)$);
+				\draw (B)--(C)--(D)--(S)--cycle (H)--(S)--(C);
+				\draw[dashed] (C)--(A)--(D)--(B) (O)--(S)--(A)--(B) (O)--(H);
+				\draw pic[angle radius=2mm,draw=blue] {right angle = D--H--S};
+				\draw pic[angle radius=2mm,draw=blue] {right angle = C--H--O};
+				\draw pic[angle radius=2mm,draw=blue] {right angle = S--O--H};
+				\foreach \diem in {A,B,C,D,S,O,H}	\fill (\diem)circle(1.5pt);
+			\end{tikzpicture}
+		}
+	}
+\end{bt}
+\begin{bt}%[1K7BO-3]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông cân tại $A$, cạnh $AC=a$, các cạnh bên $SA=SB=SC=\dfrac{a\sqrt{6}}{2}$. Tính góc tạo bởi mặt bên $(SAB)$ và mặt phẳng đáy $(ABC)$.
+	\loigiai{
+		\immini{Gọi $H$ là trung điểm của $BC\\
+			\Rightarrow HA=HB=HC=\dfrac{1}{2}BC=\dfrac{1}{2}a\sqrt{2}$.\\
+			mà $SA=SB=SC=\dfrac{a\sqrt{6}}{2}$ nên $SH\perp BC$,\\
+			$\triangle SHA=\triangle SHB=\triangle SHC$.\\
+			suy ra $SH\perp(ABC)$.\\
+			Kẻ $HI\perp AB\Rightarrow\left(\widehat{(SAB),(ABC)}\right)=\left(\widehat{SI,HI}\right)=\widehat{SIH}$.\\
+			Ta có $HI=\dfrac{1}{2}AB=\dfrac{1}{2}AC=\dfrac{1}{2}a$ (do tam giác $ABH$ vuông cân tại $H$).\\
+			$SH=\sqrt{SC^2-HC^2}=\sqrt{\left(\dfrac{a\sqrt{6}}{2}\right)^2-\left(\dfrac{a\sqrt{2}}{2}\right)^2}=a$.\\
+			Xét tam giác $SIH$ vuông tại $H$, ta có\\
+			$\tan\widehat{SIH}=\dfrac{SH}{IH}=\dfrac{a}{\dfrac{1}{2}a}=2\Rightarrow\widehat{SIH}\approx 54{,}74^\circ$.
+		}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate[label=left:$B$] (B)at(0,0);
+				\coordinate[label=right:$C$] (C)at(5,0);
+				\coordinate[label=below:$A$] (A)at(2,-2);
+				\coordinate[label=above right:$H$] (H) at ($(B)!0.5!(C)$);
+				\coordinate[label=left:$S$] (S) at ($(H)!1.5!90:(C)$);
+				\coordinate[label=left:$I$] (I) at ($(A)!0.5!(B)$);
+				
+				\draw (S)--(B)--(A)--(C)--cycle (A)--(S)--(I);
+				\draw[dashed](S)--(H)--(A) (B)--(C) (H)--(I);
+				\foreach \diem in {A,B,C,S,H,I}	\fill (\diem)circle(1.5pt);
+			\end{tikzpicture}
+		}
+	}
+\end{bt}
+\begin{bt}%[1K7BO-3]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, $SA$ vuông góc với mặt phẳng $(ABCD)$ và $SA=\sqrt{3}a$. Gọi $\varphi$ là góc giữa hai mặt phẳng $(SBC)$ và $(ABCD)$. Giá trị $\tan\varphi$ là
+	\loigiai{
+		\immini{Ta có
+			$\heva{&(SBC)\cap(ABCD)=BC\\&SB\subset(SBC),SB\perp BC\\&AB\subset(ABCD),AB\perp BC.}\\
+			\Rightarrow\widehat{(SBC),(ABCD)}=\widehat{SB,AB}=\widehat{SBA}$.\\
+			$\tan\varphi=\tan\widehat{SBA}=\dfrac{SA}{AB}=\dfrac{\sqrt{3}a}{a}=\sqrt{3}$.
+		}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def\bc{4} % cạnh BC
+				\def\ba{2} % cạnh BA
+				\def\h{3} % đường cao
+				\def\gocB{30} % góc B của đáy
+				\coordinate[label=below left:$B$] (B) at (0,0);
+				\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+				\coordinate[label=below:$C$] (C) at (\bc,0);
+				\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+				\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+				\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+				\draw[dashed] (A)--(D) (S)--(A)--(B);
+				\foreach \diem in {A,B,C,D,S}	\fill (\diem)circle(1.5pt);
+				\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+				\gocv{S}{A}{D}
+			\end{tikzpicture}
+		}
+	}
+\end{bt}
+% \centerline{\fcolorbox{red}{yellow!50}{\bf {CÂU HỎI TRẮC NGHIỆM}}}
+% \Opensolutionfile{ans}[ans/ans-1K7-25-Dang4]
+% \begin{ex}%[1K7BO-3]
+% 	Cho hình chóp $S.ABC$ có đáy là tam giác vuông tại $B$, $AB=\sqrt{3}a$. Cạnh bên $SA=\sqrt{3}a$ vuông góc với đáy. Góc giữa hai mặt phẳng $(SBC)$ và $(ABC)$ bằng
+% 	\choice
+% 	{\True $45^{\circ}$}
+% 	{$90^{\circ}$}
+% 	{$30^{\circ}$}
+% 	{$60^{\circ}$}
+% 	\loigiai{
+% 		\immini{Ta có $\heva{&BC\perp(\quad SA \perp (ABC))\\&AB \perp BC} \Rightarrow BC \perp (SAB)$.\\
+% 			Mà $(SBC) \cap (ABC)=BC$ nên $\left( \widehat{(SBC),(ABC)} \right)=\widehat{SBA}=\alpha$.\\
+% 			Ta có $\tan \alpha =\dfrac{SA}{AB}=\dfrac{a\sqrt{3}}{a\sqrt{3}}=1 \Rightarrow \alpha =45^{\circ}$.}
+% 		{\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round]
+% 				\foreach \x\y\t in {0/3/S,0/0/B,1.2/-1.5/A,4/0/C}
+% 				\coordinate (\t) at (\x,\y);
+% 				\draw (S)--(A)--(B)--(S)--(C)--(A);
+% 				\draw[dashed](C)--(B);
+% 				\path pic[draw,angle radius=7]{right angle=S--B--A}
+% 				pic[draw,angle radius=7]{right angle=S--B--C};
+% 				\foreach \t/\g in {S/90,A/-90,B/180,C/0}
+% 				\draw[fill=black] (\t) circle(1pt)
+% 				node[shift={(\g:7pt)}]{$\t$};
+% 			\end{tikzpicture}
+% 		}
+% 	}
+% \end{ex}
+% \begin{ex}%[1K7BO-3]
+% 	Cho hình chóp $S . A B C$ có đáy là tam giác vuông tại $B$, $A B=\sqrt{3}a$. Cạnh bên $S A=\sqrt{3}a$ vuông góc với đáy. Góc giữa hai mặt phẳng $(S B C)$ và $(A B C)$ bằng
+% 	\choice
+% 	{\True $45^{\circ}$}
+% 	{$90^{\circ}$}
+% 	{$30^{\circ}$}
+% 	{$60^{\circ}$}
+% 	\loigiai{
+% 		\immini{
+% 			Ta có $\heva{&BC \perp AB\\&BC \perp SA} \Rightarrow BC \perp (SAB)$ hay $BC \perp SB$.\\
+% 			Góc giữa hai mặt phẳng $(S B C)$ và $(A B C)$ là góc $\widehat{SBA}$.\\
+% 			Tam giác $SAB$ vuông cân tại $A$ nên $\widehat{SBA}=45^{\circ}$.
+% 		}
+% 		{
+% 			\begin{tikzpicture}[scale=0.8,line join=round, line cap=round]
+% 				\coordinate (A) at (-2,0);
+% 				\coordinate (B) at (0,-2);
+% 				\coordinate (C) at (3,0);
+% 				\coordinate (S) at ($(A)+(0,4)$);
+% 				\draw(S)--(A)--(B)--(C)--(S)--(B);
+% 				\draw[dashed](A)--(C);
+% 				\foreach \d/\g in{S/90,A/180,B/-90,C/0}
+% 				\draw[fill=black](\d)circle(1pt)node[shift={(\g:0.35)}]{$\d$};
+% 				\pic[pic text= ,draw,thick,angle radius=3mm,angle eccentricity=1.5] {right angle = S--A--C};
+% 				\pic[pic text= ,draw,thick,angle radius=3mm,angle eccentricity=1.5] {right angle = A--B--C};
+% 				\pic[pic text= ,draw,thick,angle radius=6mm,angle eccentricity=1.5] {angle = S--B--A};
+% 				\pic[pic text= ,draw,thick,angle radius=2mm,angle eccentricity=1.5] {right angle = S--A--B};
+% 			\end{tikzpicture}
+% 		}
+% 	}
+% \end{ex}
+% \begin{ex}%[1K7BO-3]
+% 	Cho hình chóp tứ giác $S.ABCD$ có đáy là hình vuông cạnh $2a$, cạnh bên $SA=a\sqrt{2}$ vuông góc với đáy. Góc giữa hai mặt phẳng $\left( SBD \right)$ và $\left( ABCD \right)$ bằng
+% 	\choice
+% 	{ $30^{\circ} $}
+% 	{\True $45^{\circ} $}
+% 	{ $60^{\circ} $}
+% 	{ $90^{\circ} $}
+% 	\loigiai{
+% 		\begin{center}
+% 			\begin{tikzpicture}[scale=0.9,font=\footnotesize,line join=round,line cap=round,>=stealth]	
+% 				\def\a{4}
+% 				\def\h{4}
+% 				\path 	(0:0) coordinate (A)
+% 				++(0:\a) coordinate (D)
+% 				++(-130:\a/2) coordinate (C)
+% 				($(A)+(C)-(D)$) coordinate (B)
+% 				($(A)+(90:\h)$) coordinate (S)
+% 				(intersection of A--C and B--D) coordinate (I);%giao điểm O
+% 				\draw[dashed,thick] 	(B)--(A)--(D)	(I)--(A)--(S)--(I) (A)--(C) (B)--(D);
+% 				\draw[thick] 	(B)-- (C)--(D)
+% 				(B)--(S)	(C)--(S)	(D)--(S);
+% 				\foreach \x/\g in {A/135,B/-135,C/-45,D/45,S/90,I/-90}
+% 				\fill[black] 	(\x) circle (1.5pt)
+% 				($(\g:3mm)+(\x)$) node {$\x$};	
+% 				\draw pic[draw,angle radius=3mm]{right angle=D--A--S};%Theo chiều dương	
+% 			\end{tikzpicture}
+% 		\end{center}
+% 		Gọi $I$ là tâm của hình vuông.\\
+% 		Ta có $\heva{
+% 			& \left( SBD \right)\cap \left( ABCD \right)=BD \\
+% 			& BD\perp \left( SAC \right) \\
+% 			& \left( SAC \right)\cap \left( ABCD \right)=AC \\
+% 			& \left( SAC \right)\cap \left( SBD \right)=SI.}$\\
+% 		Suy ra $\widehat{\left( \left( SBD \right),\left( ABCD \right) \right)}=\widehat{\left( AC,SI \right)}=\widehat{SIA}$ (vì $\Delta SAI$ vuông tại $ A $).\\
+% 		Trong $\triangle SAI$ vuông tại $A$ có: $AI=SA=a\sqrt{2}$ nên $\Delta SAI$ vuông cân nên $\widehat{SIA}=45^{\circ} $.\\
+% 		Vậy $\widehat{\left( \left( SBD \right),\left( ABCD \right) \right)}=45^{\circ} $.}
+% \end{ex}
+% \begin{ex}%[1K7YO-3]
+% 	\immini{Cho hình chóp $S.ABCD$ có đáy ABCD là hình vuông, $SA$ vuông góc với mặt phẳng $(ABCD)$. Góc giữa hai mặt phẳng $(SCD)$ và mặt phẳng $(ABCD)$ là
+% 		\choice
+% 		{$\widehat{SDC}$}
+% 		{$\widehat{SCD}$}
+% 		{$\widehat{DSA}$}
+% 		{\True $\widehat{SDA}$}
+% 	}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+% 			\def\bc{4} % cạnh BC
+% 			\def\ba{2} % cạnh BA
+% 			\def\h{3} % đường cao
+% 			\def\gocB{30} % góc B của đáy
+% 			\coordinate[label=below left:$B$] (B) at (0,0);
+% 			\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+% 			\coordinate[label=below:$C$] (C) at (\bc,0);
+% 			\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+% 			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+% 			\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+% 			\draw[dashed] (A)--(D) (S)--(A)--(B);
+% 			\foreach \diem in {A,B,C,D,S}	\fill (\diem)circle(1.5pt);
+% 			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+% 			\gocv{S}{A}{D}
+% 		\end{tikzpicture}
+% 	}
+% 	\loigiai{
+% 		Ta có $(SCD)\cap (ABCD) = CD$.\\
+% 		Mặt khác $CD\perp (SAD)\Rightarrow CD\perp SD$, lại có $AD\perp CD$.\\
+% 		Vậy góc giữa hai mặt phẳng $(SCD)$ và mặt phẳng $(ABCD)$ là $\widehat{SDA}$.
+% 	}
+% \end{ex}
+% \begin{ex}%[1K7BO-3]
+% 	Cho hình chóp $S.ABC$ có đáy tam giác đều cạnh $a$. Cạnh bên $SA=a\sqrt{3}$ vuông góc với mặt đáy $(ABC)$. Gọi $\varphi$ là góc giữa hai mặt phẳng $(SBC)$ và $(ABC)$. Khi đó $\sin\varphi$ bằng
+% 	\choice
+% 	{$\dfrac{\sqrt{3}}{5}$}
+% 	{\True $\dfrac{2\sqrt{5}}{5}$}
+% 	{$\dfrac{2\sqrt{3}}{5}$}
+% 	{$\dfrac{\sqrt{5}}{5}$}
+% 	\loigiai{
+% 		\immini{Ta có $(SBC)\cap(ABC)=BC$; gọi $M$ là trung điểm $BC$ (1), tam giác $ABC$ đều nên $AM\perp BC$ (2).\\
+% 			$\heva{&BC\perp AM\\&BC\perp SA}\Rightarrow BC\perp SM$ (3).\\
+% 			Từ (1), (2) và (3) ta có $\varphi=\widehat{(SM,AM)}=\widehat{SMA}$.\\
+% 			$SM=\sqrt{SA^2+AM^2}=\sqrt{(a\sqrt{3})^2+\left(\dfrac{a\sqrt{3}}{2}\right)^2}=\dfrac{a\sqrt{15}}{2}$.\\
+% 			$\sin\varphi=\sin\widehat{SMA}=\dfrac{SA}{SM}=a\sqrt{3}:\dfrac{a\sqrt{15}}{2}=\dfrac{2\sqrt{5}}{5}$.
+% 		}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+% 				\def\ac{4} % cạnh AC
+% 				\def\ab{2} % cạnh AB
+% 				\def\h{3} % chiều cao
+% 				\def\gocA{50} % góc A của đáy
+% 				\coordinate[label=left:$A$] (A) at (0,0);
+% 				\coordinate[label=right:$C$] (C) at (\ac,0);
+% 				\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+% 				\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+% 				\coordinate[label=right:$M$] (M) at ($(B)!0.5!(C)$);
+				
+% 				\draw (A)--(B)--(C)--(S)--cycle (M)--(S)--(B);
+% 				\draw[dashed] (M)--(A)--(C);
+% 				\foreach \diem in {A,B,C,S,M}	\fill (\diem)circle(1.5pt);
+% 			\end{tikzpicture}
+% 		}
+% 	}
+% \end{ex}
+% \begin{ex}%[1K7BO-3]
+% 	Cho khối lăng trụ đứng $ABC.A'B'C'$ có đáy $ABC$ là tam giác cân, $AB=AC=2$, $\widehat{BAC}=120^\circ$. Mặt phẳng $(AB'C')$ tạo với mặt đáy một góc $60^\circ$. Khi đó $AA'$ bằng
+% 	\choice
+% 	{\True $\sqrt{3}$}
+% 	{$3$}
+% 	{$\sqrt{2}$}
+% 	{$2$}
+% 	\loigiai{
+% 		\immini{
+% 			Gọi $H$ là trung điểm $B'C'$.\\
+% 			Ta có $A'H\perp B'C'$, do đó góc giữa hai mặt phẳng $(AB'C')$ và $(ABC)$ là $\widehat{AHA'}=60^\circ$.\\
+% 			Có $A'H=A'B\cdot \cos 60^\circ =2\cdot \dfrac{1}{2}=1$.\\
+% 			Trong tam giác $A'B'C'$ có $S_{A'B'C'}=\dfrac{1}{2}A'B'\cdot A'C'\cdot \sin \widehat{B'A'C'}=\dfrac{1}{2}\cdot 2\cdot 2\cdot \sin 120^\circ =\sqrt{3}$.\\
+% 			Trong tam giác $AHA'$ vuông tại $A'$ ta có $AA'=A'H\cdot \tan 60^\circ =\sqrt{3}$.
+% 		}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+% 				\def\ac{4} % cạnh AC
+% 				\def\ab{2} % cạnh AB
+% 				\def\h{4} % chiều cao
+% 				\def\gocA{50} % góc A của đáy
+% 				\coordinate[label=left:$A$] (A) at (0,0);
+% 				\coordinate[label=right:$C$] (C) at (\ac,0);
+% 				\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+% 				\coordinate[label=left:$A'$] (A') at ($(A)+(90:\h)$);
+% 				\coordinate[label=below left:$B'$] (B') at ($(B)-(A)+(A')$);
+% 				\coordinate[label=right:$C'$] (C') at ($(C)-(A)+(A')$);
+% 				\coordinate[label=right:$H$] (H) at ($(B')!0.5!(C')$);
+% 				\draw (A')--(A)--(B)--(C)--(C')--(A')--(B')--(C') (B)--(B') (A')--(H);
+% 				\draw[dashed] (H)--(A)--(C);
+% 				\foreach \diem in {A,B,C,A',B',C',H} \fill (\diem)circle(1.5pt);
+% 			\end{tikzpicture}
+% 	}}
+% \end{ex}
+% \begin{ex}%[1K7BO-3]
+% 	Cho hình chóp tứ giác đều $S.ABCD$ có góc giữa cạnh bên với đáy một góc $45{}^\circ $. Tính cosin của góc giữa mặt bên và đáy của hình chóp đã cho.
+% 	\choice
+% 	{ $\dfrac{1}{3}$}
+% 	{ $\dfrac{1}{\sqrt{2}}$}
+% 	{ $\dfrac{1}{2}$}
+% 	{\True $\dfrac{1}{\sqrt{3}}$}
+% 	\loigiai{
+% 		\begin{center}
+% 			\begin{tikzpicture}[=>stealth,line join=round,line cap=round, font=\footnotesize, scale=.7]
+% 				\def\a{5}
+% 				\def\goc{210}
+% 				\def\b{3}
+% 				\def\h{4.5}
+% 				\path
+% 				(0,0)coordinate (A)++(0:\a)coordinate (D)++(\goc:\b)coordinate (C)++(180:\a)coordinate(B)
+% 				($(A)!.5!(C)$)coordinate (O)
+% 				(O)++(90:\h)coordinate (S)
+% 				($(D)!.5!(C)$)coordinate (M)
+% 				;
+% 				\draw (S)--(D)--(C)--(B)--cycle (S)--(C);
+% 				\draw[dashed] (O)--(S)--(A)--(C) (D)--(A)--(B)--(D)  (O)--(M)--(S);
+% 				\foreach \x/\g in{A/160,D/0,C/-90,S/90,O/-90,B/-90,M/-20
+% 				}
+% 				\fill[black](\x)circle(1pt) ($(\x)+(\g:4mm)$)node{$\x$}
+% 				;
+% 			\end{tikzpicture}
+% 		\end{center}
+% 		Gọi cạnh đáy bằng $a\Rightarrow BD=a\sqrt{2}$.\\
+% 		Góc giữa cạnh bên với đáy một góc $45^\circ \Rightarrow \Delta SBD$ là vuông cân $\Rightarrow SO=\dfrac{BD}{2}=\dfrac{a\sqrt{2}}{2}$\\
+% 		Gọi $M$ là trung điểm $CD$ $\Rightarrow CD\bot OM\Rightarrow $ góc giữa mặt bên và đáy là $\widehat{SMO}$.\\
+% 		Có $\cos \widehat{SMO}=\dfrac{OM}{SM}=\dfrac{OM}{\sqrt{OM^2+SO^2}}=\dfrac{1}{\sqrt{3}}$.}
+% \end{ex}
+% \begin{ex}%[1K7BO-3]
+% 	Cho hình chóp đều $S.ABCD$ có tất cả các cạnh bằng $a$. Gọi $\varphi $ là góc giữa hai mặt phẳng $\left( SBD \right)$ và $\left( SCD \right)$. Mệnh đề nào sau đây đúng?
+% 	\choice
+% 	{ $\tan \varphi =\sqrt{6}$}
+% 	{\True $\tan \varphi =\sqrt{2}$}
+% 	{ $\tan \varphi =\dfrac{\sqrt{2}}{2}$}
+% 	{ $\tan \varphi =\dfrac{\sqrt{3}}{2}$}
+% 	\loigiai{
+% 		\begin{center}
+% 			\begin{tikzpicture}[=>stealth,line join=round,line cap=round, font=\footnotesize, scale=.7]
+% 				\def\a{5}
+% 				\def\goc{210}
+% 				\def\b{3}
+% 				\def\h{4.5}
+% 				\path
+% 				(0,0)coordinate (A)++(0:\a)coordinate (D)++(\goc:\b)coordinate (C)++(180:\a)coordinate(B)
+% 				($(A)!.5!(C)$)coordinate (O)
+% 				(O)++(90:\h)coordinate (S)
+% 				($(S)!.5!(D)$)coordinate (M);
+% 				\draw pic[draw,angle radius=2mm] {right angle = O--M--S};
+% 				\draw (S)--(D)--(C)--(B)--cycle (S)--(C) (M)--(C);
+% 				\draw[dashed] (O)--(S)--(A)--(C) (D)--(A)--(B) (O)--(M) ;
+% 				\foreach \x/\g in{A/160,D/0,C/-90,S/90,O/-90,B/-90,M/60}
+% 				\fill[black](\x)circle(1pt) ($(\x)+(\g:3mm)$)node{$\x$}
+% 				;
+% 			\end{tikzpicture}
+% 		\end{center}
+% 		Ta có $\heva{&AC \perp BD\\&AC\perp SO} \Rightarrow AC\perp \left( SBD \right)\Rightarrow AC\perp SD$.\\
+% 		Do đó kẻ $OM\perp SD\Rightarrow SD\perp \widehat{\left( MOC \right)\Rightarrow \left( \left( SBD \right),\left( SDC \right) \right)}=\widehat{\left( MC,MO \right)}=\widehat{COM}=\varphi $.\\
+% 		Vì $AC\perp \left( SBD \right)\Rightarrow AC\perp OM\Rightarrow \Delta MOC$ vuông ở $O$.\\
+% 		$SB=SD=a;\,BD=a\sqrt{2}\Rightarrow \Delta SBD$ vuông cân tại $S$.\\
+% 		Suy ra $M$ là trung điểm của $SD\Rightarrow OM=\dfrac{a}{2}$.\\
+% 		$\tan \varphi =\dfrac{OC}{OM}=\dfrac{\frac{a\sqrt{2}}{2}}{\frac{a}{2}}=\sqrt{2}$.
+% 	}
+% \end{ex}
+% \begin{ex}%[1K7BO-3]
+% 	Cho khối lăng trụ đứng $ABC.A'B'C'$ có đáy $ABC$ là tam giác vuông cân tại $A$, cạnh bên $AA'=2 a$, góc giữa hai mặt phẳng $\left(A'BC\right)$ và $(ABC)$ bằng $30^{\circ}$. Độ dài cạnh $AI$ bằng
+% 	\choice
+% 	{\True $2a\sqrt{3}$}
+% 	{$a\sqrt{3}$}
+% 	{$2a $}
+% 	{$a$}
+% 	\loigiai{
+% 		\immini{
+% 			Gọi $I$ là trung điểm $BC$. Ta có $\widehat{\left((A'BC),(ABC)\right)}= \widehat{(AI,A'I)}=\widehat{AIA'}=30^\circ$.\\
+% 			Xét $\triangle AA'I$ ta có $\tan 30^\circ =\dfrac{AA'}{AI}\Rightarrow AI=2a\sqrt{3}$.
+% 		}	
+% 		{
+% 			\begin{tikzpicture}[line cap=round,line join=round,>=stealth,scale=0.7]
+% 				\path 
+% 				(0,0) coordinate (A)
+% 				(1,-2) coordinate (B)	
+% 				(7,0) coordinate (C)	
+% 				($(B)!.5!(C)$) coordinate (I)	
+% 				($(A)+(0,5)$) coordinate (A')
+% 				($(B)+(A')-(A) $) coordinate (B')	
+% 				($(C)+(B')-(B) $) coordinate (C')
+% 				;
+% 				\path pic["\scriptsize$30^\circ$", angle eccentricity=3,draw,angle radius=7pt, double]{angle= A'--I--A};
+% 				\draw (B)--(A)--(A') (A')--(C')--(B')--cycle (B)--(C) (B)--(B') (C)--(C') (A')--(B);
+% 				\draw[dashed] (A)--(C) (A)--(I)--(A')--(C)
+% 				;
+% 				\foreach \t/\g in {B/-90,A/180,C/0,B'/180,A'/180,C'/0,I/-90}{
+% 					\draw[fill=white] (\t) circle (1pt) node[shift={(\g:7pt)},font=\scriptsize]{$ \t $};
+% 				}
+% 			\end{tikzpicture} 
+% 		}
+% 	}
+% \end{ex}
+% \begin{ex}%[1K7KO-3]
+% 	\immini{Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có $AB=2\sqrt{3}$ và $AA'=2$. Gọi $M$, $N$, $P$ lần lượt là trung điểm các cạnh $A'B'$, $A'C'$ và $BC$ (tham khảo hình vẽ bên dưới). Côsin của góc tạo bởi hai mặt phẳng $(AB'C')$ và $(MNP)$ bằng
+% 		\choice
+% 		{$\dfrac{6\sqrt{13}}{65}$}
+% 		{\True $\dfrac{\sqrt{13}}{65}$}
+% 		{$\dfrac{17\sqrt{13}}{65}$}
+% 		{$\dfrac{18\sqrt{13}}{65}$}}
+% 	{\begin{tikzpicture}
+% 			\coordinate[label=right:{$A$}] (A) at (4,0);
+% 			\coordinate[label=left:{$B$}] (B) at (0,0);
+% 			\coordinate[label=right:{$C$}] (C) at (3,1.3);
+% 			\coordinate[label=right:{$A'$}] (A') at (4,3);
+% 			\coordinate[label=left:{$B'$}] (B') at ($(B)+(A')-(A)$);
+% 			\coordinate[label=above:{$C'$}] (C') at ($(C)+(A')-(A)$);
+% 			\coordinate[label=above:{$M$}] (M) at ($(B')!1/2!(A')$);
+% 			\coordinate[label=right:{$N$}] (N) at ($(A')!1/2!(C')$);
+% 			\coordinate[label=below:{$P$}] (P) at ($(B)!1/2!(C)$);
+% 			\draw (A')--(C')--(B')--(B)--(A)--(A')--(B')--(A) (M)--(N);
+% 			\draw[dashed] (B)--(C)--(C')--(A)--(C) (M)--(P)--(N);
+% 	\end{tikzpicture}}
+% 	\loigiai{
+% 		\immini{Gọi $I$, $Q$ lần lượt là trung điểm của $MN$, $B'C'$. Gọi $O=PI\cap AQ$. \\
+% 			Khi đó $\left\{\begin{aligned}
+% 				&O\in ~(AB'C')\cap (MNP) \\
+% 				&B'C'\ \parallel \ MN \\
+% 				&B'C'\subset (AB'C'),~MN\subset (MNP)
+% 			\end{aligned}\right. $\\
+% 			Suy ra  giao tuyến của $(AB'C')$ và $(MNP)$ là đường thẳng $d$ qua $O$ và $d \parallel MN \parallel B'C'$. \\
+% 			Tam giác $AB'C'$ cân tại $A$ nên $AQ\perp B'C' \Rightarrow AQ\perp d$. \\
+% 			Tam giác $PMN$ cân tại $P$ nên $PI\perp MN \Rightarrow PI\perp d$. \\
+% 			Vậy $(\widehat{(AB'C'),(MNP)})=(\widehat{AQ,PI})$.}
+% 		{\begin{tikzpicture}
+% 				\coordinate[label=right:{$A$}] (A) at (4,0);
+% 				\coordinate[label=left:{$B$}] (B) at (0,0);
+% 				\coordinate[label=right:{$C$}] (C) at (3,1.3);
+% 				\coordinate[label=right:{$A'$}] (A') at (4,4);
+% 				\coordinate[label=left:{$B'$}] (B') at ($(B)+(A')-(A)$);
+% 				\coordinate[label=above:{$C'$}] (C') at ($(C)+(A')-(A)$);
+% 				\coordinate[label=above:{$M$}] (M) at ($(B')!1/2!(A')$);
+% 				\coordinate[label=right:{$N$}] (N) at ($(A')!1/2!(C')$);
+% 				\coordinate[label=below:{$P$}] (P) at ($(B)!1/2!(C)$);
+% 				\coordinate[label=above:{$Q$}] (Q) at ($(B')!1/2!(C')$);
+% 				\coordinate[label=above:{$I$}] (I) at ($(Q)!1/2!(A')$);
+% 				\coordinate[label=below:{$O$}] (O) at ($(A)!2/3!(Q)$);
+% 				\draw (Q)--(A')--(C')--(B')--(B)--(A)--(A')--(B')--(A) (M)--(N);
+% 				\draw[dashed] (B)--(C)--(C')--(A)--(C) (M)--(P)--(N) (A)--(Q)--(P)--(I) ($(A)!2/3!(B')$)--($(A)!2/3!(C')$);
+% 		\end{tikzpicture}}
+% 		\noindent
+% 		Ta có $AP=3$, $AQ=\sqrt{13}$, $IP=\dfrac{5}{2}$. \\
+% 		Vì $\triangle OAP\backsim \triangle OQI$ và $\dfrac{AP}{IQ}=2$ nên $OA=\dfrac{2}{3}AQ=\dfrac{2\sqrt{13}}{3}$; $OP=\dfrac{2}{3}IP=\dfrac{5}{3}$. \\
+% 		$\cos \left(\widehat{(AB'C'),(MNP)}\right)=\cos (\widehat{AQ,PI})=\left|\cos (\widehat{AOP})\right|=\dfrac{OA^2+OP^2-AP^2}{2OA.OP}=\dfrac{\sqrt{13}}{65}$.
+% 	}
+% \end{ex}
+% \Closesolutionfile{ans}
+% \begin{indapan}{10}
+% 	{ans/ans-1K7-25-Dang4}
+% \end{indapan}

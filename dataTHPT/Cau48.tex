@@ -1,0 +1,922 @@
+\setcounter{section}{47}
+\setcounter{ex}{0}
+\section{Hình nón - Hình Trụ}
+\subsection{Kiến thức cần nhớ}
+\begin{khung}
+	Cho hình nón có đường cao $h$, bán kính đáy $R$ và đường sinh $\ell$.
+	\immini{	\begin{itemize}
+			\item Mối liên hệ $\ell^2=h^2+R^2$.
+			\item Thể tích khối nón $V=\dfrac{1}{3}\cdot \pi R^2 h$.
+			\item Diện tích xung quanh $S_{\text{xq}}=2\pi R h$.
+		\end{itemize} 
+	}{
+		\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\coordinate (X) at (-2.5,0);
+			\coordinate (O) at (0,0);
+			\coordinate (Y) at ($(O)-(X)$);
+			\coordinate (S) at ($(O)+(0,4.5)$);
+			\coordinate (A) at ($(S)!0.5!(Y)$);
+			\coordinate (B) at ($(S)!0.5!(O)$);
+			\coordinate (C) at ($(O)!0.5!(Y)$);
+			\draw (X) arc (180:360:2.5 and 0.5);
+			\draw[dashed] (Y) arc (0:180:2.5 and 0.5);
+			\draw (X)--(S)--(Y);
+			\draw[dashed] (X)--(Y) (S)--(O);
+			\path (A) node[right] {$\ell$}
+			(B) node[right] {$h$}
+			(C) node[above left] {$R$};
+		\end{tikzpicture}
+	}
+\end{khung}
+\subsection{Bài tập mẫu}
+\Opensolutionfile{ans}[ans/ANS-DANG-48]
+\begin{khung}
+	\begin{vd}[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-2]
+		Cho khối nón có đỉnh $S$, chiều cao bằng $8$ và thể tích bằng $\dfrac{800 \pi}{3}$. Gọi $A$ và $B$ là hai điểm thuộc đường tròn đáy sao cho $AB=12$, khoảng cách từ tâm của đường tròn đáy đến mặt phẳng $(SAB)$ bằng
+		\choice
+		{$8 \sqrt{2}$}
+		{$\dfrac{24}{5}$}
+		{\True $4 \sqrt{2}$}
+		{$\dfrac{5}{24}$}
+		\loigiai{
+			Gọi $O$ là tâm của đường tròn đáy và $R$ là bán kính của đường tròn đáy ($R>0$).
+			\immini{
+				Thể tích khối nón bằng $\dfrac{800 \pi}{3}$ nên
+				\[ \dfrac{1}{3}\cdot 8 \cdot \pi R^2 = \dfrac{800\pi}{3} \Leftrightarrow R = 10.\]
+				Kẻ $OI\perp AB$ tại $I$, suy ra $I$ là trung điểm của $AB$ và
+				\[ OI = \sqrt{OA^2-AI^2}=\sqrt{10^2-6^2}=8.\]
+			}{
+				\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+					\coordinate (X) at (-2.5,0);
+					\coordinate (O) at (0,0);
+					\coordinate (Y) at ($(O)-(X)$);
+					\coordinate (S) at ($(O)+(0,4.5)$);
+					\coordinate (A) at ($(O)+({2.5*cos(-80)},{0.4*sin(-80)})$);
+					\coordinate (B) at ($(O)+({2.5*cos(35)},{0.4*sin(35)})$);
+					\coordinate (I) at ($(A)!0.5!(B)$);
+					\coordinate (H) at ($(S)!0.7!(I)$);
+					\draw (X) arc (180:360:2.5 and 0.4);
+					\draw[dashed] (Y) arc (0:180:2.5 and 0.4);
+					\draw (X)--(S)--(Y) (S)--(A);
+					\draw[dashed] (A)--(B)--(S)--(O)--(A) (S)--(I)--(O)--(H);
+					\draw pic[draw, angle radius =2mm] {right angle = O--I--A};
+					\draw pic[draw, angle radius =2mm] {right angle = O--H--I};
+					\foreach \p/\g in {O/180, S/90, A/-90, B/-90, I/-10, H/-10}
+					\draw[fill=black] (\p) circle(1pt) node [shift={(\g:.3)}] {$\p$};
+				\end{tikzpicture}
+			}
+			\noindent
+			Kẻ $OH \perp SI$ tại $H$. Ta có
+			\[ \left. \begin{array}{l} AB \perp OI \\ AB \perp SO \end{array}\right\}\Rightarrow AB \perp (SOI).\]
+			Từ đó suy ra $AB \perp OH$ (do $OH \subset (SOI)$). Ta lại có
+			\[ \left. \begin{array}{l} OH \perp SI \\ OH \perp AB \end{array}\right\}\Rightarrow OH \perp (SAB).\]
+			Vậy khoảng cách từ $O$ đến $(SAB)$ bằng $OH$.\\
+			Xét tam giác $SOI$ vuông tại $O$ và $SO=OI=8$ nên tam giác $SOI$ vuông cân tại $O$, suy ra
+			\[ SI = 8\sqrt{2}; \quad OH=\dfrac{SI}{2}=4\sqrt{2}.\]
+			Vậy khoảng cách từ $O$ đến $(SAB)$ bằng $4\sqrt{2}$.
+		}
+	\end{vd}
+\end{khung}
+\subsection{Bài tập tương tự và phát triển}
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-2]
+	Cho khối nón có đỉnh $S$, chiều cao bằng $6$ và độ dài đường sinh $\ell = 2\sqrt{34}$. Gọi $A$ và $B$ là hai điểm thuộc đường tròn đáy sao cho $AB=12$, khoảng cách từ tâm của đường tròn đáy đến mặt phẳng $(SAB)$ bằng
+	\choice
+	{$\dfrac{12}{5}$}
+	{\True $\dfrac{24}{5}$}
+	{$\dfrac{12}{25}$}
+	{$\dfrac{24}{25}$}
+	\loigiai{
+		Gọi $O$ là tâm của đường tròn đáy và $R$ là bán kính của đường tròn đáy ($R>0$).
+		\immini{
+			Ta có $R=\sqrt{\ell^2-h^2}=\sqrt{136-36}=10$.\\
+			Kẻ $OI\perp AB$ tại $I$, suy ra $I$ là trung điểm của $AB$ và
+			\[ OI = \sqrt{OA^2-AI^2}=\sqrt{10^2-6^2}=8.\]
+			Kẻ $OH \perp SI$ tại $H$. Ta có
+			\[ \left. \begin{array}{l} AB \perp OI \\ AB \perp SO \end{array}\right\}\Rightarrow AB \perp (SOI).\]
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (X) at (-2.5,0);
+				\coordinate (O) at (0,0);
+				\coordinate (Y) at ($(O)-(X)$);
+				\coordinate (S) at ($(O)+(0,4.5)$);
+				\coordinate (A) at ($(O)+({2.5*cos(-80)},{0.4*sin(-80)})$);
+				\coordinate (B) at ($(O)+({2.5*cos(35)},{0.4*sin(35)})$);
+				\coordinate (I) at ($(A)!0.5!(B)$);
+				\coordinate (H) at ($(S)!0.7!(I)$);
+				\draw (X) arc (180:360:2.5 and 0.4);
+				\draw[dashed] (Y) arc (0:180:2.5 and 0.4);
+				\draw (X)--(S)--(Y) (S)--(A);
+				\draw[dashed] (A)--(B)--(S)--(O)--(A) (S)--(I)--(O)--(H);
+				\draw pic[draw, angle radius =2mm] {right angle = O--I--A};
+				\draw pic[draw, angle radius =2mm] {right angle = O--H--I};
+				\foreach \p/\g in {O/180, S/90, A/-90, B/-90, I/-10, H/-10}
+				\draw[fill=black] (\p) circle(1pt) node [shift={(\g:.3)}] {$\p$};
+			\end{tikzpicture}
+		}
+		\noindent
+		Từ đó suy ra $AB \perp OH$ (do $OH \subset (SOI)$). Ta lại có
+		\[ \left. \begin{array}{l} OH \perp SI \\ OH \perp AB \end{array}\right\}\Rightarrow OH \perp (SAB).\]
+		Vậy khoảng cách từ $O$ đến $(SAB)$ bằng $OH$.\\
+		Xét tam giác $SOI$ vuông tại $O$, đường cao $OH$ ta có
+		\[ OH=\sqrt{\dfrac{OS^2\cdot OI^2}{OS^2+OI^2}}=\sqrt{\dfrac{6^2\cdot 8^2}{6^2+8^2}}=\dfrac{24}{5}. \]
+		Vậy khoảng cách từ $O$ đến $(SAB)$ bằng $\dfrac{24}{5}$.
+	}
+\end{ex}
+
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-2]
+	Cho khối nón có đỉnh $S$, thiết diện qua trục của khối nón là tam giác đều cạnh $6$. Gọi $A$ và $B$ là hai điểm thuộc đường tròn đáy sao cho khoảng cách từ tâm $O$ của đường tròn đáy đến mặt phẳng $(SAB)$ bằng $\sqrt 3$. Độ dài đoạn thẳng $AB$ là 
+	\choice
+	{$\dfrac{3\sqrt{10}}{4}$}
+	{\True $\dfrac{3\sqrt{10}}{2}$}
+	{$\dfrac{2\sqrt{10}}{3}$}
+	{$\dfrac{4\sqrt{10}}{3}$}
+	\loigiai{
+		Gọi $R$ là bán kính của đường tròn đáy ($R>0$).\\
+		Thiết diện qua trục của khối nón là tam giác đều cạnh $6$ nên $R=3$ và $SO=\dfrac{6\sqrt 3}{2}=3\sqrt 3$.
+		\immini{
+			Kẻ $OI\perp AB$ tại $I$, suy ra $I$ là trung điểm của $AB$.\\
+			Kẻ $OH \perp SI$ tại $H$. Ta có
+			\[ \left. \begin{array}{l} AB \perp OI \\ AB \perp SO \end{array}\right\}\Rightarrow AB \perp (SOI).\]
+			Từ đó suy ra $AB \perp OH$ (do $OH \subset (SOI)$). Ta lại có
+			\[ \left. \begin{array}{l} OH \perp SI \\ OH \perp AB \end{array}\right\}\Rightarrow OH \perp (SAB).\]
+			Vậy khoảng cách từ $O$ đến $(SAB)$ bằng $OH=\sqrt{3}$.
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (X) at (-2.5,0);
+				\coordinate (O) at (0,0);
+				\coordinate (Y) at ($(O)-(X)$);
+				\coordinate (S) at ($(O)+(0,4.5)$);
+				\coordinate (A) at ($(O)+({2.5*cos(-80)},{0.4*sin(-80)})$);
+				\coordinate (B) at ($(O)+({2.5*cos(35)},{0.4*sin(35)})$);
+				\coordinate (I) at ($(A)!0.5!(B)$);
+				\coordinate (H) at ($(S)!0.7!(I)$);
+				\draw (X) arc (180:360:2.5 and 0.4);
+				\draw[dashed] (Y) arc (0:180:2.5 and 0.4);
+				\draw (X)--(S)--(Y) (S)--(A);
+				\draw[dashed] (A)--(B)--(S)--(O)--(A) (S)--(I)--(O)--(H);
+				\draw pic[draw, angle radius =2mm] {right angle = O--I--A};
+				\draw pic[draw, angle radius =2mm] {right angle = O--H--I};
+				\foreach \p/\g in {O/180, S/90, A/-90, B/-90, I/-10, H/-10}
+				\draw[fill=black] (\p) circle(1pt) node [shift={(\g:.3)}] {$\p$};
+			\end{tikzpicture}
+		}
+		\noindent
+		Xét tam giác $SOI$ vuông tại $O$, đường cao $OH$ ta có
+		$$\dfrac{1}{OI^2}= \dfrac{1}{OH^2}-\dfrac{1}{OS^2}=\dfrac{1}{3}-\dfrac{1}{27}=\dfrac{8}{27} \Rightarrow OI^2=\dfrac{27}{8}.$$
+		Trong tam giác $OAI$ ta có $AI=\sqrt{OA^2-OI^2}=\sqrt{3^2-\dfrac{27}{8}}=\dfrac{3\sqrt{10}}{4}$.\\
+		Vậy độ dài đoạn thẳng $AB$ là $2\cdot \dfrac{3\sqrt{10}}{4} = \dfrac{3\sqrt{10}}{2}$.
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-2]
+	Một hình nón có đỉnh $S$, bán kính đáy là $R=2a\sqrt 3$ và góc ở đỉnh $120^{\circ}$. Mặt phẳng $(P)$ qua đỉnh $S$, hợp với đáy góc $45^{\circ}$ cắt hình nón theo thiết diện là tam giác $SAB$. Diện tích tam giác $SAB$ là
+	\choice
+	{$2a^2$}
+	{$4a^2$}
+	{$6a^2$}
+	{\True $8a^2$}
+	\loigiai{
+		\immini{	Gọi $I$ là trung điểm $AB$. Suy ra, $OI\perp AB$. Khi đó, góc giữa $(P)$ và mặt đáy của hình nón là $\widehat{SIO}=45^{\circ}$. Do đó, $\triangle SIO$ vuông cân tại $O$.\\
+			Trong $\triangle SOA$ ta có $SO= OA \cot 60^{\circ} = 2a$.\\
+			Trong $\triangle SOI$ ta có $OI =SO = 2a$ và $SI=2a\sqrt 2$.\\
+			Trong $\triangle OIA$ ta có $AI=\sqrt{OA^2-OI^2}=\sqrt{12a^2-4a^2}=2a\sqrt 2$.\\
+			Diện tích tam giác $SAB$ là 
+			$$S=\dfrac{1}{2}\cdot SI \cdot AB = \dfrac{1}{2}\cdot 2a\sqrt 2 \cdot 4a\sqrt 2 = 8a^2.$$
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (A) at (-2.5,0);
+				\coordinate (O) at (0,0);
+				\coordinate (Y) at ($(O)-(X)$);
+				\coordinate (S) at ($(O)+(0,4.5)$);
+				\coordinate (B) at ($(O)+({2.5*cos(-80)},{0.5*sin(-80)})$);
+				\coordinate (I) at ($(A)!0.5!(B)$);
+				\draw (A) arc (180:360:2.5 and 0.5);
+				\draw[dashed] (Y) arc (0:180:2.5 and 0.5);
+				\draw (A)--(S)--(Y) (S)--(B);
+				\draw[dashed] (Y)--(O)--(I)--(S)--(O)--(A)--(B);
+				\draw pic[draw, angle radius =2mm] {angle = O--I--S};
+				\foreach \p/\g in {O/-90, S/90, A/-95, B/-90, I/-90}
+				\draw[fill=black] (\p) circle(1pt) node [shift={(\g:.3)}] {$\p$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}	
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%2H2G1-4]
+	Từ một đĩa phẳng hình tròn bằng thép bán kính $R$, người ta làm một cái phễu bằng cách cắt đi một hình quạt của đĩa này và gấp phần còn lại thành một hình nón. 
+	\begin{center}
+		\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			%Hình nón
+			\coordinate (X) at (-2.5,0);
+			\coordinate (H) at (0,0);
+			\coordinate (A) at ($(H)-(X)$);
+			\coordinate (O) at ($(H)-(0,3.5)$);
+			\draw (X) arc (-180:180:2.5 and 0.4);
+			\draw (X)--(O)--(A);
+			\draw[dashed] (X)--(A) (O)--(H);
+			\path (A) node[right]{$A\equiv B$}
+			(O) node[below] {$O$}
+			($(O)!0.5!(A)$) node[right] {$R$}
+			($(O)!0.5!(H)$) node[left] {$h$}
+			($(H)!0.5!(A)$) node[above] {$r$};
+			\foreach \p in {A,H,O} \draw[fill=black] (\p) circle(1pt);
+			%Hình tròn
+			\coordinate (Z) at (-9,-2);
+			\draw (Z) circle (2.5 cm);
+			\coordinate (U) at ($(Z)+({2.5*cos(-120)},{2.5*sin(-120)})$);
+			\coordinate (V) at ($(Z)+({2.5*cos(-60)},{2.5*sin(-60)})$);
+			\draw[->] ($(Z)+(3.5,0)$)--($(Z)+(5.5,0)$);
+			\draw[fill=black] (Z) circle(1pt) node[above] {$O$};
+			\draw (U) circle (1pt) node[below]{$A$}
+			(V) circle (1pt) node[below]{$B$};
+			\draw (U)--(Z)--(V);
+			\draw[pattern=north east lines] (Z) -- ($(Z)+(-120:2.5cm)$) arc (-120:-60:2.5cm);
+			\path ($(Z)+(0,3)$) node[below] {$x$};
+		\end{tikzpicture}
+	\end{center}
+	Gọi độ dài cung tròn của hình quạt còn lại là $x$. Thể tích khối nón tạo thành nhận giá trị lớn nhất khi 
+	\choice
+	{$x=\dfrac{\pi R \sqrt 6}{3}$}
+	{$x=\dfrac{2\pi R \sqrt 3}{3}$}
+	{$x=\dfrac{2\pi R \sqrt 2}{3}$}
+	{\True $x=\dfrac{2\pi R \sqrt 6}{3}$} 
+	\loigiai{
+		Gọi $r$ là bán kính đáy của hình nón và $h$ là chiều cao của hình nón ($r$, $h>0$).\\
+		Ta có $2\pi r = x \Rightarrow r = \dfrac{x}{2\pi}$. Do đó, $h=\sqrt{R^2-\dfrac{x^2}{4\pi^2}}$.\\
+		Thể tích khối nón là  \allowdisplaybreaks
+		\begin{eqnarray*}
+			V&=&\dfrac{1}{3}\pi\cdot r ^2 \cdot h \\
+			&=& \dfrac{1}{3}\pi\cdot \dfrac{x^2}{4\pi^2}\cdot \sqrt{R^2-\dfrac{x^2}{4\pi^2}}\\
+			&=& \dfrac{2}{3}\pi \cdot \sqrt{\left(R^2-\dfrac{x^2}{4\pi^2}\right) \cdot \dfrac{x^2}{8\pi^2}\cdot \dfrac{x^2}{8\pi^2}}\\
+			&\leq & \dfrac{2}{3}\pi \cdot \left(\dfrac{R}{\sqrt 3}\right)^3 ~ \text{(Bất đẳng thức Cauchy)}.
+		\end{eqnarray*}
+		Vậy thể tích khối nón lớn nhất là $\dfrac{2}{9\sqrt 3}\pi \cdot R^3$ khi $R^2-\dfrac{x^2}{4\pi^2} = \dfrac{x^2}{8\pi^2} \Leftrightarrow \dfrac{3x^2}{8\pi^2}=R^2\Leftrightarrow x = \dfrac{2\pi R \sqrt 6}{3}$. 
+	}
+\end{ex}	
+
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-5]
+	Cho mặt cầu tâm $I$ bán kính $R$. Mặt phẳng $(P)$ thay đổi cắt mặt cầu theo giao tuyến là đường tròn $(C)$. Hình nón có đỉnh $S$ nằm trên mặt cầu, đáy là đường tròn $(C)$ và chiều cao $h$ ($h>R$). Thể tích khối nón có giá trị lớn nhất khi
+	\choice
+	{$h=\sqrt 2 R$}
+	{$h=\sqrt 3 R$}
+	{\True $h=\dfrac{4}{3}R$}
+	{$h=\dfrac{3}{2}R$}
+	\loigiai{
+		\immini{
+			Gọi $r$ là bán kính đáy của hình nón ($r>0$).\\
+			Ta có $IO=h-R \Rightarrow r^2=R^2-IO^2=R^2-(R-h)^2=2Rh-h^2$.\\
+			Thể tích khối nón là \allowdisplaybreaks
+			\begin{eqnarray*}
+				V&=&\dfrac{1}{3}\pi\cdot r ^2 \cdot h \\
+				&=& \dfrac{1}{3}\pi\cdot (2Rh-h^2)\cdot h\\
+				&=& \dfrac{1}{3}\pi\cdot (2R-h)\cdot h^2\\
+				&=&\dfrac{4}{3}\pi\cdot (2R-h)\cdot \dfrac{h}{2}\cdot \dfrac{h}{2}\\
+				&\leq & \dfrac{4}{3}\pi \cdot \left(\dfrac{2R}{3}\right)^3 ~ \text{(Bất đẳng thức Cauchy)}.
+			\end{eqnarray*}
+		}{
+			\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (X) at (-2.5,0);
+				\coordinate (O) at (0,0);
+				\coordinate (A) at ($(O)-(X)$);
+				\coordinate (S) at ($(O)+(0,4.5)$);
+				\coordinate (I) at ($(O)+(0,1.5)$);
+				\draw (X) arc (180:360:2.5 and 0.5);
+				\draw[dashed] (A) arc (0:180:2.5 and 0.5);
+				\draw (X)--(S)--(A);
+				\draw[dashed] (X)--(A) (S)--(O) (I)--(A);
+				\path ($(S)!0.5!(O)$) node[right] {$h$}
+				($(O)!0.5!(A)$) node[above left] {$r$}
+				($(I)!0.5!(A)$) node[right] {$R$};
+				\foreach \p/\g in {O/-90, S/90, A/-95, B/-90, I/180}
+				\draw[fill=black] (\p) circle(1pt) node [shift={(\g:.3)}] {$\p$};
+			\end{tikzpicture}	
+		}
+		
+		Vậy thể tích khối nón lớn nhất là $\dfrac{32}{81}\pi R^3$ khi $\dfrac{h}{2}=2R-h \Leftrightarrow \dfrac{3}{2}h=2R \Leftrightarrow h = \dfrac{4}{3}R$.
+	}
+\end{ex}
+
+\begin{ex}%[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-4]
+	Một công ty sản xuất một loại cốc giấy hình nón có thể tích $27 $ cm$ ^3 $, với chiều cao $h$ và bán kính đáy $r$. Giá trị $r$ để lượng giấy tiêu thụ ít nhất
+	\choice
+	{\True $r=\sqrt[6]{\dfrac{3^8}{2 \pi^2}}$}
+	{$r=\sqrt[4]{\dfrac{3^8}{2 \pi^2}}$}
+	{$r=\sqrt[6]{\dfrac{3^6}{2 \pi^2}}$}
+	{$r=\sqrt[4]{\dfrac{3^6}{2 \pi^2}}$}
+	\loigiai{
+		Ta có thể tích cốc hình nón $V=\dfrac{1}{3} \pi \cdot r^2 \cdot h=27 \Rightarrow h=\dfrac{81}{\pi \cdot r^2}$, $r>0$.\\
+		Khi đó $l=\sqrt{\left(\dfrac{81}{\pi \cdot r^2}\right)^2+r^2}$. Suy ra
+		$$
+		S_{x q}=\pi \cdot r \cdot \sqrt{\left(\dfrac{81}{\pi \cdot r^2}\right)^2+r^2}=\pi \sqrt{r^2\left(\dfrac{3^8}{\pi^2 \cdot r^4}+r^2\right)}=\pi \sqrt{\dfrac{3^8}{\pi^2 \cdot r^2}+r^4}=\pi \sqrt{f(r)} .
+		$$
+		Lượng giấy tiêu thụ ît nhất $\Leftrightarrow$ diện tích xung quanh phải nhỏ nhất $\Leftrightarrow f(r)$ nhỏ nhất.\\
+		Ta có: $f(r)=\dfrac{3^8}{\pi^2 \cdot r^2}+r^4=\dfrac{3^8}{2 \pi^2 \cdot r^2}+\dfrac{3^8}{2 \pi^2 \cdot r^2}+r^4 \geq 3 \sqrt[3]{\dfrac{\left(3^8\right)^2}{4 \pi^4}}$.\\
+		Đẳng thức xảy ra khi và chỉ khi $\dfrac{3^8}{2 \pi^2 \cdot r^2}=r^4 \Leftrightarrow r^6=\dfrac{3^8}{2 \pi^2} \Leftrightarrow r=\sqrt[6]{\dfrac{3^8}{2 \pi^2}}$.\\
+		Vậy để lượng giấy tiêu thụ ít nhất thì $r=\sqrt[6]{\dfrac{3^8}{2 \pi^2}}$.\\
+		\textbf{Chú ý:} Ta có thể khảo sát hàm $f(r)=\dfrac{3^8}{\pi^2 \cdot r^2}+r^4, r>0$
+		$$
+		f'(r)=0 \Leftrightarrow r=\sqrt[6]{\dfrac{3^8}{2 \pi^2}}=r_0
+		$$
+		\begin{center}
+			\begin{tikzpicture}
+				\tkzTabInit[lgt=1.2,espcl=4]
+				{$r$/1,$f’(r)$/1,$f(r)$/2}
+				{$-\infty$,$r_0$,$+\infty$}
+				\tkzTabLine{ ,-,z,+, }
+				\tkzTabVar{+/$+\infty$,-/$f(r_0)$,+/$+\infty$}
+			\end{tikzpicture}
+		\end{center}
+		
+	}
+\end{ex}
+
+\begin{ex}%[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-5]
+	Cho hình nón đỉnh $S$ có đường cao $h=a$, đường sinh $l=2 a$. Một mặt phẳng đi qua đỉnh $S$ và cắt đường tròn đáy tại hai điểm $M$, $N$. Diện tích tam giác $S M N$ lớn nhất bằng
+	\choice
+	{$a^2 \sqrt{3}$}
+	{$\dfrac{a^2 \sqrt{3}}{2}$}
+	{\True $2 a^2$}
+	{$\dfrac{a^2 \sqrt{3}}{4}$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[line join=round,line cap=round,line width=.6pt,font=\footnotesize,scale=1]
+				\coordinate (A) at (3,0);
+				\coordinate[label=above left:$O$] (O) at (0,0);
+				\coordinate[label=above left:$S$] (S) at (0,5);
+				\coordinate[label=above right:$N$]  (N) at ($(0,0)+(60:3 and 3/4)$);
+				\coordinate[label=below:$M$]  (M) at ($(0,0)+(-120:3 and 3/4)$);
+				\draw (A) arc (0:-180:3 and 3/4)--(S)--cycle (S)--(M) ;
+				\draw[dashed] (S)--(O) (A) arc (0:180:3 and 3/4) (S)--(N)--(M) (-3,0)--(3,0);
+				\fill (O)circle(1.5pt) (S)circle(1.5pt)  (M)circle(1.5pt) (N)circle(1.5pt);
+			\end{tikzpicture}
+		\end{center}
+		Gọi $O$ là tâm đáy của hình nón; $I$ là trung điểm của $M N$.
+		Ta có $S M=l=2 a$.\\
+		Khi đó $O I \perp M N \Rightarrow S I \perp M N$.\\
+		Diện tích tam giác $S_{\triangle S M N}=\dfrac{1}{2} S I \cdot M N=\dfrac{1}{2} \sqrt{S M^2-\dfrac{M N^2}{4}} \cdot M N=\sqrt{\left(S M^2-\dfrac{M N^2}{4}\right) \cdot \dfrac{M N^2}{4}}$.\\
+		Áp dụng bất đẳng thức Cauchy, ta có:
+		$$
+		\sqrt{\left(S M^2-\dfrac{M N^2}{4}\right) \cdot \dfrac{M N^2}{4}} \leq \dfrac{S M^2-\frac{M N^2}{4}+\frac{M N^2}{4}}{2}=\dfrac{S M^2}{2}=2 a^2
+		$$
+		$S_{\triangle S M N}$ lớn nhất bằng $2 a^2$ khi $M N=\sqrt{2} S M=2 \sqrt{2} a$.
+	}
+\end{ex}
+
+\begin{ex}%[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-5]
+	Một hình nón đỉnh $S$ có bán kính đáy bằng $2 a \sqrt{3}$, tâm của đáy là $O$, góc ở đỉnh bằng $120^{\circ}$.  $A B$ là một đường kính cố định của đáy, $H$ là trung điểm của $O A$. Mặt phẳng luôn chứa $S H$ cắt khối nón theo một thiết diện có diện tích lớn nhất là bao nhiêu?
+	\choice
+	{$S_{\max }=4 a^2 \sqrt{2}$}
+	{\True $S_{\max }=3 \sqrt{7} a^2$}
+	{$S_{\max }=\dfrac{3 \sqrt{7}}{2} a^2$}
+	{$S_{\max}=8 a^2$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[line join=round,line cap=round,line width=.6pt,font=\footnotesize,scale=1]
+				\coordinate[label=left:$A$] (A) at (-4,0);
+				\coordinate[label=right:$B$] (B) at (4,0);
+				\coordinate[label=left:$O$] (O) at (0,0);
+				\coordinate[label=above left:$S$] (S) at (0,5);
+				\coordinate[label=above:$P$]  (P) at ($(0,0)+(160:4 and 4/3)$);
+				\coordinate[label=below:$Q$]  (Q) at ($(0,0)+(-100:4 and 4/3)$);
+				\coordinate[label=below:$M$]  (M) at ($(P)!1/2!(Q)$); 
+				\path[name path=ab] (A)--(B); % Đặt tên đoạn thẳng AB là ab
+				\path[name path=pq] (P)--(Q); % Đặt tên đoạn thẳng CD là cd
+				\path[name intersections={of= ab and pq,by=H}]; 
+				\path (H) node[below]{$H$};
+				\draw (B) arc (0:-180:4 and 4/3)--(S)--cycle (S)--(Q);
+				\draw[dashed] (S)--(O) (B) arc (0:180:4 and 4/3) (S)--(P)--(Q) (S)--(M) (O)--(M) (A)--(B);
+				\fill (O)circle(1.5pt) (S)circle(1.5pt) (B)circle(1.5pt) (M)circle(1.5pt) (P)circle(1.5pt) (Q)circle(1.5pt) (H)circle(1.5pt);
+			\end{tikzpicture}
+		\end{center}
+		Ta có: $S O=O A \cdot \cot 60^{\circ}=2 a$
+		Giả sử mặt phẳng chứa $S H$ cắt hình nón theo thiết diện là tam giác $S P Q$ và $M$ là trung điểm của $P Q$.\\
+		Đặt $O M=x$, với $0 \leq x \leq O H=a \sqrt{3}$.\\
+		Ta có  $S_{S P Q}=S M \cdot M P=\sqrt{S O^2+O M^2} \cdot \sqrt{O P^2-O M^2}=\sqrt{4 a^2+x^2} \sqrt{12 a^2-x^2}$.\\
+		Xét $f(t)=(4+t)(12-t)$, $t \in[0 ; 3] $ (ta đặt $t=\left(\dfrac{x}{a}\right)^2$), ta được giá trị lớn nhất của hàm số trên đoạn $[0;3]$ bằng $f(3)=63$.\\
+		Vậy $\max S_{S P Q}=3 \sqrt{7} a^2$ khi $x=O H=a \sqrt{3}$.
+	}
+\end{ex}
+
+\begin{ex}%[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-5]
+	Cho hình nón $(N)$ có đường cao $S O=h$ và bán kính đáy bằng $R$, gọi $M$ là điểm trên đoạn $S O$, đặt $O M=x$, $0<x<h$. $(C)$ là thiết diện của mặt phẳng $(P)$ vuông góc với trục $S O$ tại $M$, với hình nón $(N)$. Tìm $x$ để thể tích khối nón đỉnh $O$ đáy là $(C)$ lớn nhất.
+	\choice
+	{$\dfrac{h}{2}$}
+	{$\dfrac{h \sqrt{2}}{2}$}
+	{$\dfrac{h \sqrt{3}}{2}$}
+	{\True $\dfrac{h}{3}$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[line join=round,line cap=round,line width=.6pt,font=\footnotesize,scale=1]
+				\coordinate[label=left:$A$]  (A)at (-3,0);
+				\coordinate [label=right:$D$]  (D)at (3,0);
+				\coordinate[label=above left:$O$] (O) at (0,0);
+				\coordinate[label=above left:$S$] (S) at (0,5);
+				\coordinate[label= left:$B$] (B) at ($(S)!1/3!(A)$);
+				\coordinate[label=right:$C$] (C) at ($(S)!1/3!(D)$);
+				\coordinate[label=above left:$O$] (M) at ($(S)!1/3!(O)$);
+				\draw (D) arc (0:-180:3 and 3/4)--(S)--cycle (C) arc (0:-180:1 and 1/4) ;
+				\draw[dashed] (S)--(O)--(D) arc (0:180:3 and 3/4) (O)--(A) (C) arc (0:180:1 and 1/4) (O)--(B)--(C)--cycle ;
+				\fill (O)circle(1.5pt) (S)circle(1.5pt)  (D)circle(1.5pt) (B)circle(1.5pt) (C)circle(1.5pt) (M)circle(1.5pt) (A)circle(1.5pt);
+			\end{tikzpicture}
+		\end{center}
+		\loigiai{
+			Ta có $B M$ là bán kính đường tròn $(C)$.\\
+			Do tam giác $\triangle S B M \sim \triangle S A O$ nên $\dfrac{B M}{A O}=\dfrac{S M}{S O} \Leftrightarrow B M=\dfrac{A O \cdot S M}{S O}=\dfrac{R(h-x)}{h}$.\\
+			Thể tích của khối nón đỉnh $O$ đáy là $(C)$ là
+			$$
+			V=\frac{1}{3} \pi B M^2 . O M=\frac{1}{3} \pi\left(\frac{R(h-x)}{h}\right)^2 \cdot x=\frac{1}{3} \pi \frac{R^2}{h^2}(h-x)^2 \cdot x .
+			$$
+			Xét hàm số $f(x)=\dfrac{1}{3} \pi \dfrac{R^2}{h^2}(h-x)^2 \cdot x$, $(0<x<h)$.\\
+			Ta có $f'(x)=0 \Leftrightarrow \dfrac{1}{3} \pi \dfrac{R^2}{h^2}(h-x)(h-3 x)=0 \Leftrightarrow x=\dfrac{h}{3}$.\\
+			Lâp bảng biến thiên ta có
+			\begin{center}
+				\begin{tikzpicture}
+					\tkzTabInit[lgt=1.2,espcl=4]
+					{$x$/1.5,$f’(x)$/1,$f(x)$/2}
+					{$0$,$\dfrac{h}{3}$,$h$}
+					\tkzTabLine{ ,+,$0$,-, }
+					\tkzTabVar{-/,+/$\dfrac{4\pi R^2}{h}$,-/}
+				\end{tikzpicture}
+			\end{center}
+			Từ bảng biến ta có thể tích khối nón đỉnh  đáy là  lớn nhất khi  $ x=\dfrac{h}{3} $.
+		}
+	}
+\end{ex}
+
+\begin{ex}%[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-5]
+	Một công ty sản xuất một loại cốc giấy hình nón có thể tích bằng $27 $ cm$^3$. Tìm tỉ số $\dfrac{h}{r}$ của chiều cao $h$ và bán kính đáy $r$ của hình nón để lượng giấy tiêu thụ ít nhất.
+	\choice
+	{$ \dfrac{h}{r}=2 $}
+	{$ \dfrac{h}{r}=\dfrac{1}{2} $}
+	{\True $ \dfrac{h}{r}=\sqrt{2} $}
+	{$ \dfrac{h}{r}=\dfrac{1}{\sqrt{2}} $}
+	\loigiai{
+		Ta có: $V=\dfrac{1}{3} \pi r^2 h \Rightarrow h=\dfrac{3 V}{\pi r^2}$.\\
+		Suy ra độ dài đường sinh là $l=\sqrt{h^2+r^2}=\sqrt{\left(\dfrac{3 V}{\pi r^2}\right)^2+r^2}=\sqrt{\left(\dfrac{81}{\pi r^2}\right)^2+r^2}=\sqrt{\dfrac{3^8}{\pi^2 r^4}+r^2}$.\\
+		Lượng giấy tiêu thụ ít nhất khi diện tích xung quanh của hình nón đạt giá trị nhỏ nhất.\\
+		Diện tích xung quanh của hình nón là:
+		$$S_{x q}=\pi r l=\pi r \sqrt{\frac{3^8}{\pi^2 r^4}+r^2}=\pi \sqrt{\frac{3^8}{\pi^2 r^2}+r^4}=\pi \sqrt{\frac{3^8}{2 \pi^2 r^2}+\frac{3^8}{2 \pi^2 r^2}+r^4} \geq \pi \sqrt{3 \sqrt[3]{\frac{3^8}{2 \pi^2 r^2} \cdot \frac{3^8}{2 \pi^2 r^2} \cdot r^4}} $$
+		suy ra $ S_{x q} \geq \pi \sqrt[6]{\frac{3^{19}}{4 \pi^4}}$.\\
+		Suy ra giá trị nhỏ nhất của $S_{x q}$ là $\pi \sqrt[6]{\dfrac{3^{19}}{4 \pi^4}}$ khi $\dfrac{3^8}{2 \pi^2 r^2}=r^4$ hay $r=\sqrt[6]{\dfrac{3^8}{2 \pi^2}}$.\\
+		Vậy $\dfrac{h}{r}=\dfrac{3 V}{\pi r^3}=\sqrt{2}$.
+	}
+\end{ex}
+
+\begin{ex}%[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-5]
+	Một hình nón có đỉnh $S$ có bán kính đáý bằng $2 a \sqrt{3}$, góc ở đỉnh là $120^{\circ}$. Thiết diện qua đỉnh của hình nón là một tam giác. Diện tích lớn nhất $S_{\max }$ của tam giác đó bằng bao nhiêu?
+	\choice
+	{$S_{\max }=16 a^2$}
+	{$S_{\max }=4 a^2 \sqrt{2}$}
+	{$S_{\max }=4 a^2$}
+	{\True $S_{\max }=8 a^2$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[line join=round,line cap=round,line width=.6pt,font=\footnotesize,scale=1]
+				\coordinate[label=left:$A$] (A) at (-4,0);
+				\coordinate[label=right:$B$] (B) at (4,0);
+				\coordinate[label=left:$O$] (O) at (0,0);
+				\coordinate[label=above left:$S$] (S) at (0,5);
+				\coordinate[label=above:$C$]  (P) at ($(0,0)+(120:4 and 4/3)$);
+				\coordinate[label=below:$D$]  (Q) at ($(0,0)+(-100:4 and 4/3)$);
+				%\coordinate[label=below:$M$]  (M) at ($(P)!1/2!(Q)$); 
+				\path[name path=ab] (A)--(B); % Đặt tên đoạn thẳng AB là ab
+				\path[name path=pq] (P)--(Q); % Đặt tên đoạn thẳng CD là cd
+				\path[name intersections={of= ab and pq,by=H}]; 
+				\path (H) node[below]{$I$};
+				\draw (B) arc (0:-180:4 and 4/3)--(S)--cycle (S)--(Q);
+				\draw[dashed] (S)--(O) (B) arc (0:180:4 and 4/3) (S)--(P)--(Q) (S)--(H) (A)--(B);
+				\fill (O)circle(1.5pt) (S)circle(1.5pt) (B)circle(1.5pt)  (A)circle(1.5pt) (P)circle(1.5pt) (Q)circle(1.5pt) (H)circle(1.5pt);
+			\end{tikzpicture}
+		\end{center}
+		\textbf{Cách 1:} Gọi thiết diện của hình chóp là $\triangle S C D, I$ là trung điểm của $C D$.\\
+		Ta có $S O=\dfrac{O B}{\tan 60^{\circ}}=2 a$.\\
+		Đặt $O I=x$ suy ra $I C=\sqrt{O C^2-O I^2}=\sqrt{12 a^2-x^2}$ ; $S I=\sqrt{S O^2+O I^2}=\sqrt{4 a^2+x^2}$. $S_{\triangle S C D}=\dfrac{1}{2} C D \cdot S I=S I \cdot I C=\sqrt{\left(4 a^2+x^2\right)\left(12 a^2-x^2\right)} \Rightarrow\left(S_{\triangle S C D}\right)^2=-x^4+8 a^2 x^2+48 a^4$.\\
+		Xét hàm số $f(x)=-x^4+8 a^2 x^2+48 a^4$ với $0<x<2 \sqrt{3} a$.\\
+		$	f'(x)=-4 x^3+16 a^2 x $. Cho	$ f'(x)=0 \Leftrightarrow\hoac{
+			&x=0 \\
+			&x= \pm 2 a.}
+		$\\
+		Bảng biến thiên
+		\begin{center}
+			\begin{tikzpicture}
+				\tkzTabInit[lgt=1.2,espcl=3]
+				{$x$/1.2,$f’(x)$/1.2,$f(x)$/2.5}
+				{$-\infty$,$-2a$,$0$,$2a$,$2\sqrt{3}a$}
+				\tkzTabLine{ ,+,$0$,-,$0$,+,$0$,-, }
+				\tkzTabVar{-/$-\infty$,+/$64a^4$,-/$48a^4$,+/$64a^4$,-/$0$}
+			\end{tikzpicture}
+		\end{center}
+		Nhìn vào bảng biến thiên ta thấy $\left(S_{\max }\right)^2=64 a^4 \Rightarrow S_{\max }=8 a^2$.\\
+		\textbf{Cách 2:} Gọi thiết diện của hình chóp là $\triangle S C D$.\\
+		Vì $\triangle S O B$ vuông tại $O$, có $O B=r=2 a \sqrt{3}, \widehat{O S B}=60^{\circ}$ nên $l=S B=\dfrac{r}{\sin 60^{\circ}}=4 a$.\\
+		Khi đó, $S_{\triangle S C D}=\dfrac{1}{2} S C \cdot S D \cdot \sin \widehat{C S D} \leq \dfrac{1}{2} S C \cdot S D=8 a^2($ vì $\sin \widehat{C S D} \leq 1$ ).\\
+		Vậy diện tích lớn nhất $S_{\max }$ của thiết diện đó là $8 a^2$ khi $\widehat{C S D}=90^{\circ}$.
+	}
+\end{ex}
+
+\begin{ex}%[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-5]
+	Bạn An có một cốc giấy hình nón với đường kính đáy là $10 $ cm và độ dài đường sinh là $8 $ cm. Bạn dự định đựng một viên kẹo hình cầu sao cho toàn bộ viên kẹo nằm trong cốc (không phần nào của viên kẹo cao hơn miệng cốc). Hỏi bạn An có thể đựng được viên kẹo có đường kính lớn nhất bằng bao nhiêu?
+	\begin{center}
+		\begin{tikzpicture}[>=stealth,line join=round,line cap=round,line width=0.6pt,font=\footnotesize,scale=1]
+			\coordinate[label=left:$A$](B) at (0,0);
+			\coordinate[label=right:$B$](C) at (4,0);
+			\coordinate[label=below:$S$](A) at (2,-4);
+			\path[name path=aa] (A)--($(A)!4.5cm!($($(A)!5pt!(B)$)!.5!($(A)!5pt!(C)$)$)$);
+			\path[name path=bb] (B)--($(B)!4cm!($($(B)!5pt!(A)$)!.5!($(B)!5pt!(C)$)$)$);
+			\path[name path=cc] (C)--($(C)!4cm!($($(C)!5pt!(A)$)!.5!($(C)!5pt!(B)$)$)$);
+			\draw[name path=ab] (A)--(B);
+			\draw[name path=bc] (B)--(C);
+			\draw[name path=ac] (C)--(A);
+			\path[name intersections={of= aa and bc,by=D}];
+			\path[name intersections={of= bb and ac,by=E}];
+			\path[name intersections={of= cc and ab,by=F}];
+			\path[name intersections={of= aa and bb,by=I}];
+			\coordinate (I1) at ($(B)!(I)!(C)$);
+			%\draw[blue] (A)--(D) (B)--(E) (C)--(F);
+			\draw[dashed] let \p1=($(I1)-(I)$) in (I) circle ({veclen(\x1,\y1)});
+			\draw (C) arc (0:180:2 and 3/4) (C) arc (0:-180:2 and 3/4);
+			\fill (A) circle (1.5pt) (B) circle (1.5pt) (C) circle (1.5pt) (I)node[shift={(-60:10pt)}]{$O$} circle (1.5pt);
+		\end{tikzpicture}
+		
+	\end{center}
+	\choice
+	{$\dfrac{5 \sqrt{39}}{13}$ cm}
+	{$\dfrac{64}{\sqrt{39}}$ cm}
+	{\True $\dfrac{10 \sqrt{39}}{13}$ cm}
+	{$\dfrac{32}{\sqrt{39}}$ cm}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,line width=0.6pt,font=\footnotesize,scale=1]
+				\coordinate[label=left:$A$](B) at (0,0);
+				\coordinate[label=right:$B$](C) at (4,0);
+				\coordinate[label=below:$S$](A) at (2,-4);
+				\path[name path=aa] (A)--($(A)!4.5cm!($($(A)!5pt!(B)$)!.5!($(A)!5pt!(C)$)$)$);
+				\path[name path=bb] (B)--($(B)!4cm!($($(B)!5pt!(A)$)!.5!($(B)!5pt!(C)$)$)$);
+				\path[name path=cc] (C)--($(C)!4cm!($($(C)!5pt!(A)$)!.5!($(C)!5pt!(B)$)$)$);
+				\draw[name path=ab] (A)--(B);
+				\draw[name path=bc] (B)--(C);
+				\draw[name path=ac] (C)--(A);
+				\path[name intersections={of= aa and bc,by=D}];
+				\path[name intersections={of= bb and ac,by=E}];
+				\path[name intersections={of= cc and ab,by=F}];
+				\path[name intersections={of= aa and bb,by=I}];
+				\coordinate (I1) at ($(B)!(I)!(C)$);
+				\path (D) node[above]{$H$};
+				\draw[blue] (A)--(D) (B)--(E) (C)--(F);
+				\draw[dashed] let \p1=($(I1)-(I)$) in (I) circle ({veclen(\x1,\y1)});
+				\fill (A) circle (1.5pt) (B) circle (1.5pt) (C) circle (1.5pt) (I)node[shift={(-60:10pt)}]{$O$} circle (1.5pt);
+			\end{tikzpicture}
+		\end{center}
+		Để đường kính viên kẹo là lớn nhất thì viên kẹo phải tiếp xúc với mặt phẳng miệng cốc và mặt bên của cốc. Khi đó mặt phẳng đi qua đường cao của cốc sẽ cắt cốc và viên kẹo theo một hình như hình vẽ.\\
+		Bán kính mặt cầu bằng bán kính đường tròn tâm $O$ nội tiếp $\triangle S A B$ với $S A=S B=8$, $A B=10$.\\
+		Ta có $S H=\sqrt{S A^2-A H^2}=\sqrt{S A^2-\dfrac{A B^2}{4}}=\sqrt{39}$.\\
+		$\Rightarrow r=O H=\dfrac{S_{S A B}}{p}=\dfrac{S H \cdot A B}{S A+S B+A B}=\dfrac{5 \sqrt{39}}{13}$ (p là nửa chu vi tam giác $S A B$).\\
+		Vậy đường kính mặt cầu là $d=2 r=\dfrac{10 \sqrt{39}}{13}$.
+	}
+\end{ex}
+
+\begin{ex}%[Đề minh họa BGD 2022-2023]%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-5]
+	\immini{
+	Một chiếc ly hình nón chứa đầy rượu có chiều cao $9$ cm. Người ta uống đi một phần rượu sao cho chiều cao phần rượu còn lại bằng một phần ba chiều cao ban đầu. Số phần rượu đã được uống là
+	\choice
+	{$ \dfrac{8}{9} $ }
+	{$ \dfrac{1}{3} $ }
+	{\True $ \dfrac{26}{27} $}
+	{$ \dfrac{2}{3} $ }
+}{
+	\begin{tikzpicture}[line join=round,line cap=round,line width=.6pt,font=\footnotesize,scale=.6]
+		\coordinate  (A)at (-3,0);
+		\coordinate   (D)at (3,0);
+		\coordinate (O) at (0,0);
+		\coordinate (S) at (0,-5);
+		\coordinate (B) at ($(S)!1/3!(A)$);
+		\coordinate (C) at ($(S)!1/3!(D)$);
+		\draw (D) arc (0:-180:3 and 3/4)--(S)--cycle (D) arc (0:180:3 and 3/4)  (C) arc (0:-180:1 and 1/4) ;
+		\draw[dashed] (S)--(O)  (C) arc (0:180:1 and 1/4) ;
+		\fill (O)circle(1.5pt) (S)circle(1.5pt)  (D)circle(1.5pt) (B)circle(1.5pt) (C)circle(1.5pt) (A)circle(1.5pt);
+	\end{tikzpicture}
+}
+	\loigiai{
+		Gọi $h=9$ cm là chiều cao của ly, $R$ là bán kính miệng ly.\\
+		Thể tích ly hình nón: $V=\dfrac{1}{3} \pi R^2 \cdot 9=3 \pi R^2$.\\
+		Ký hiệu $h_1=\dfrac{1}{3} h=3 $ cm là chiều cao và $r$ là bán kính đường tròn tạo bởi mép rượu còn lại trong ly.\\
+		Thể tích phần rượu còn lại: $V_1=\dfrac{1}{3} \cdot \pi r^2 \cdot 3=\pi r^2$.\\
+		Ta có $\dfrac{V_1}{V}=\dfrac{\pi r^2}{3 \pi R^2}=\dfrac{1}{3}\left(\dfrac{r}{R}\right)^2$.\\
+		Mặt khác $\dfrac{r}{R}=\dfrac{h_1}{h}=\dfrac{1}{3} \Rightarrow \dfrac{V_1}{V}=\dfrac{1}{3}\left(\dfrac{r}{R}\right)^2=\dfrac{1}{27} \Leftrightarrow V_1=\dfrac{V}{27}$.\\
+		Thể tích phần rượu đã uống: $V_2=V-V_1=\dfrac{26}{27} V$.
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-1]
+	Cho hình nón $(N)$ có đường cao $h = a\sqrt{3}$, bán kính đáy $r =2a$. Cắt hình nón bởi một mặt phẳng $(P)$ qua đỉnh và tạo với mặt phẳng chứa đáy hình nón một góc $45^\circ$. Diện tích thiết diện tạo thành là
+	\choice
+	{$S = a^2\sqrt{3}$}
+	{\True $S = a^2\sqrt{6}$}
+	{$S=2a^2$}
+	{$S = 2a^2\sqrt{6}$}
+	\loigiai{\immini{Gọi hình nón $(N)$ có đỉnh là $S$ và đáy là đường tròn tâm $O$. \\
+			Khi đó $SO = h =a\sqrt{3}$ và $OA = r= 2a$.\\
+			Giả sử mặt phẳng $(P)$ đi qua đỉnh $S$ và cắt đường tròn đáy theo dây cung $AB$, khi đó thiết diện tạo thành là $\triangle SAB$ cân tại $S$.\\
+			Gọi $I$ là trung điểm của $AB$ suy ra $OI \perp AB$ mà $SO \perp AB \break \Rightarrow AB \perp (SOI)$ 
+			$\Rightarrow AB \perp SI$.
+		}
+		{\begin{tikzpicture}[line join=round, line cap=round,>=stealth,font=\footnotesize, scale=0.75]
+				\def\a{3}
+				\def\b{0.7}
+				\coordinate (M) at (\a,0); 
+				\coordinate (N) at (-\a,0); 
+				\coordinate (O) at ($(M)!.5!(N)$); 
+				\coordinate (S) at ($(O)+(0,4)$); 
+				\draw[dashed] (M) arc (0:180:\a cm and  \b cm); 
+				\draw (N) arc (180:360:\a cm and  \b cm); 
+				\draw (N)--(S)--(M); 
+				\coordinate (A) at ([shift={(O)}]45:\a cm and  \b cm); 
+				\coordinate (B) at ([shift={(O)}]-80:\a cm and  \b cm); 
+				\coordinate (I) at ($(A)!0.5!(B)$); 
+				\draw[dashed,fill=black] (S) circle(1pt)--(A) circle(1pt)--(B) circle(1pt) (S)--(O)circle(1pt) (O)--(I)circle(1pt)--(S) (O)--(B) (A)--(O);
+				\draw (S)--(B); 
+				\node[above] at (S){$S$}; 
+				\node[below] at (A){$A$}; 
+				\node[below] at (B){$B$}; 
+				\node[left] at (O){$O$}; 
+				\node[below] at (I){$I$}; 
+				\draw ($(I)!5pt!(B)$)--($(I)!2!($($(I)!5pt!(B)$)!.5!($(I)!5pt!(O)$)$)$)--($(I)!5pt!(O)$);
+		\end{tikzpicture}}
+		\noindent 	Do đó góc giữa mặt phẳng $(SAB)$ và mặt phẳng đáy là $\widehat{SIO} = 45^\circ$.\\
+		Ta có $OI  = SO = a\sqrt{3} \Rightarrow SI = a\sqrt{6}$.\\
+		Lại có $AI = \sqrt{OA^2 - OI^2} = a \Rightarrow AB = 2AI = 2a$.\\
+		Vậy diện tích thiết diện tạo thành là $S_{\triangle ABC} = \dfrac{1}{2}SI \cdot AB = \dfrac{1}{2}a\sqrt{6} \cdot 2a = a^2\sqrt{6}$.
+	}
+	
+\end{ex}
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-1]
+	Cho khối nón đỉnh $S$ có bán kính đáy bằng $a$ và chiều cao bằng $\dfrac{a}{2}$. Một mặt phẳng thay đổi nhưng luôn đi qua $S$ và cắt hình nón theo thiết diện là tam giác $SAB$. Giá trị lớn nhất của tam giác $SAB$ là
+	\choice
+	{\True $\dfrac{5a^2}{8}$}
+	{$\dfrac{a^2}{2}$}
+	{$\dfrac{3a^2}{8}$}
+	{$\dfrac{2a^2}{3}$}
+	\loigiai{
+		\immini{
+			Do bán kính $r$ lớn hơn chiều cao $h$ của hình nón nên góc ở đỉnh của hình nón lớn hơn $90^\circ$.\\
+			Gọi $O$ là tâm của đường tròn đáy, ta có $SO=h=\dfrac{a}{2}$.\\
+			Bán kính đáy $r=a$ nên đường sinh $$\ell=SA=SB=\sqrt{r^2+h^2}=\sqrt{a^2+\dfrac{a^2}{4}}=\dfrac{a\sqrt{5}}{2}.$$
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\def\a{3}%Bán trục lớn
+				\def\go{20}%Góc điểm tiếp xúc
+				\pgfmathsetmacro\b{\a/4}%Bán trục nhỏ
+				\pgfmathsetmacro\xo{\a *cos(\go)}%Hoành độ điểm tiếp xúc
+				\pgfmathsetmacro\yo{\b *sin(\go)}%Tung độ điểm tiếp xúc
+				\pgfmathsetmacro\h{(\b^2)/\yo}%Chiều cao nón
+				\def\gA{130}\def\gB{250}
+				\path %Khai báo các điểm
+				(0:0) coordinate (O)
+				(90:\h) coordinate (S)
+				(0:\a) arc (0:\gA:{\a} and {\b}) coordinate (A)
+				arc(\gA:\gB:{\a} and {\b}) coordinate (B)
+				%	($(A)!.5!(B)$) coordinate (I)
+				%	($(I)!(O)!(S)$) coordinate (K)
+				;
+				\draw[dashed] %Vẽ các nét đứt
+				(-\xo,\yo) arc(180-\go:\go:{\a} and {\b})
+				(S)--(O)
+				%	--(I)--cycle
+				(S)--(A)--(B) 
+				%	(O)--(K)
+				;
+				\draw%Vẽ các nét liền
+				(S)--(-\xo,\yo)
+				arc (180-\go:360+\go:{\a} and {\b})
+				--cycle
+				(S)--(B)
+				;
+				\foreach \x/\g in {A/-100,B/-90,S/90
+					%		,I/180,K/150
+					,O/-45}\fill[black] (\x) circle (1pt) ($(\x)+(\g:3mm)$)node{$\x$}; %Vẽ các ký hiệu điểm và hiển thị tên điểm.
+			\end{tikzpicture}
+		}
+		\noindent
+		Diện tích $\triangle SAB$ là $S=\dfrac{1}{2}\cdot SA\cdot SB\cdot \sin\widehat{ASB}$.\\
+		Diện tích $S$ lớn nhất khi và chỉ khi $\sin\widehat{ASB}$ lớn nhất, hay $\widehat{ASB}=90^\circ$.\\
+		Khi đó $S=\dfrac{1}{2}\cdot SA\cdot SB=\dfrac{1}{2}\cdot \dfrac{a\sqrt{5}}{2}\cdot\dfrac{a\sqrt{5}}{2}=\dfrac{5a^2}{8}$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-1]
+	\immini{Một bình đựng nước dạng hình nón (không có đáy), đựng đầy nước. Biết rằng chiều cao của bình gấp $3$ lần bán kính đáy của nó. Người ta thả vào đó một khối trụ và đo được thể tích nước tràn ra ngoài là $\dfrac{16 \pi}{9}$ (dm$^2$). Biết rằng một mặt của khối trụ nằm trên mặt đáy của nón (như hình bên) đồng thời khối trụ có chiều cao bằng đường kính đáy của hình nón. Tính diện tích xung quanh $S_{xq}$ của bình nước (giả sử khối trụ thả vào đặc và chìm hết trong nước).	
+		\choice
+		{$S_{xq}= 4 \pi$ dm$^2$}
+		{\True $S_{xq}= 4 \pi \sqrt{10}$ dm$^2$}
+		{$S_{xq}= \dfrac{4 \pi}{2}$ dm$^2$}
+		{$S_{xq}=\dfrac{9 \pi \sqrt{10}}{2}$ dm$^2$}
+	}{
+		\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def \x{1}
+			\def \y{0.4}
+			\pgfmathsetmacro{\z}{3*\x}
+			\pgfmathsetmacro{\t}{2*\x}
+			\tkzDefPoints{0/0/I,-\x/0/D,\x/0/C,\x/\z/F,0/-\z/O,-\t/\z/A,\t/\z/B,0/\z/H,-\x/\z/E}
+			\draw[dashed] (D) arc (180:0:{\x} and {\y});
+			\draw (D) arc (180:360:{\x} and {\y});
+			\draw (H) ellipse ({\x} and {\y});
+			\draw (H) ellipse ({\t} and {0.7});
+			\tkzDrawSegments[dashed](D,E C,F)
+			\tkzDrawSegments(O,A O,B A,B)
+		\end{tikzpicture}
+	}
+	\loigiai{
+		\immini{Theo đề ta có $AH=R$, $OH=3R$, $HI=2R$.\\
+			Theo định lý Ta-let, ta có $$\dfrac{ID}{AH}=\dfrac{OI}{OH}=\dfrac{OH-IH}{OH}=\dfrac{R}{3R}=\dfrac{1}{3}.$$
+			Do đó khối trụ có bán kính đáy là $ID=\dfrac{R}{3}$. Thể tích khối trụ là $$V=\pi \left(\dfrac{R}{3}\right)^2\cdot 2R=\dfrac{16\pi}{9}\Leftrightarrow R^3=8\Leftrightarrow R=2.$$
+			Suy ra $OH=6$, $OA=\sqrt{AH^2+OH^2}= 2\sqrt{10}$ và diện tích xung quanh bình nước là 
+			$S_{xq}= \pi R l = \pi \cdot 2 \cdot 2 \sqrt{10} = 4\pi \sqrt{10}$ dm$^2$.	
+		}
+		{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def \x{1}
+				\def \y{0.4}
+				\pgfmathsetmacro{\z}{3*\x}
+				\pgfmathsetmacro{\t}{2*\x}
+				\tkzDefPoints{0/0/I,-\x/0/D,\x/0/C,\x/\z/F,0/-\z/O,-\t/\z/A,\t/\z/B,0/\z/H,-\x/\z/E}
+				\draw[dashed] (D) arc (180:0:{\x} and {\y});
+				\draw (D) arc (180:360:{\x} and {\y});
+				\draw (H) ellipse ({\x} and {\y});
+				\draw (H) ellipse ({\t} and {0.7});
+				\foreach \p in {A,B,C,D,E,F,H,I,O} \fill (\p) circle(1pt);	
+				\tkzDrawSegments[dashed](D,E D,C C,F O,H)
+				\tkzDrawSegments(O,A O,B A,B)
+				\tkzLabelPoints[left](A,D)
+				\tkzLabelPoints[right](B,C)
+				\tkzLabelPoints[above left](E)
+				\tkzLabelPoints[above right](F)
+				\tkzLabelPoints[below](O)
+				\tkzLabelPoints[below right](I)
+				\tkzLabelPoints[above=0.1pt](H)
+		\end{tikzpicture}}	
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-1]
+	Cho khối nón đỉnh $S$ có đáy là hình tròn tâm $O$. Dựng hai đường sinh $SA$ và $SB$ sao cho tam giác $SAB$ vuông và có diện tích bằng $4a^2$, góc tạo bởi trục $SO$ và mặt phẳng $(SAB)$ bằng $30^{\circ}$. Thể tích của khối nón đã cho bằng 	
+	\choice
+	{$\dfrac{5a^3 \sqrt{2}\pi}{3}$}
+	{$\dfrac{a^3 \sqrt{15}\pi}{6}$}
+	{$\dfrac{a^3 \sqrt{15}\pi}{3}$}
+	{\True $\dfrac{5a^3 \sqrt{3} \pi}{3}$}
+	\loigiai{
+		\immini{
+			Ta có $S_{SAB}=\dfrac{1}{2} SA^2 = 4a^2 \Rightarrow SA=2a \sqrt{2}$.\\
+			Gọi $M$ là trung điểm $AB$ thì $AB \perp OM$ và $AB \perp SO$ nên $AB \perp (SOM)$.\\
+			Kẻ $OH \perp SM \Rightarrow OH \perp (SAB)$ nên $SM$ là hình chiếu của $SO$ trên $(SAB)$. Do đó góc giữa đường thẳng $SO$ và $(SAB)$	là góc giữa hai đường thẳng $SO$ và $SM$ bằng góc $\widehat{OSM}= 30^{\circ}$.
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\path
+				(0,0) coordinate (O)
+				(2.5,0) coordinate (B)
+				(-2.5,0) coordinate (C)
+				(0,3.5) coordinate (S)
+				($(O)+(-120:2.5 and 0.5)$) coordinate (A)
+				($(A)!1/2!(B)$) coordinate (M)
+				($(S)!4/5!(M)$) coordinate (H)
+				;
+				\draw[dashed](B) arc (0:180:2.5 and 0.5);
+				\draw(B) arc (0:-180:2.5 and 0.5);
+				\draw (B)--node[right] {$\ell$}(S)--(C) (S)--(A);
+				\draw[dashed]  (M)--(S)--node[left] {$h$}(O)--(A)--(B)--node[above] {$r$}(O)--(C) (M)--(O)--(H);
+				\foreach \d/\g in {A/-90,B/0,S/90,O/135,M/-30,H/60}{
+					\draw[fill=black](\d) circle (1pt) +(\g:.3)node{$\d$};}
+				\draw    pic[ draw=black, angle eccentricity=0.75, angle radius=0.2cm]
+				{right angle=O--H--M};
+			\end{tikzpicture}
+		}
+		\noindent Ta có $SM=\dfrac{1}{2} AB=2a$. Xét tam giác $SOM$ vuông tại $O$ có $$SO= SM \cdot \cos 30^{\circ} = 2a \cdot \dfrac{\sqrt{3}}{2}= a\sqrt{3}.$$ 
+		Xét tam giác $SOB$ có $OB=\sqrt{SB^2-SO^2}= a\sqrt{5}$. \\
+		Thể tích khối nón đã cho là $V=\dfrac{1}{3} \pi \cdot OB^2 \cdot SO = \dfrac{1}{3}\cdot  \pi \cdot 5a^2 \cdot a \sqrt{3} =\dfrac{5a^3 \sqrt{3} \pi}{3} $.	
+	}
+\end{ex} 
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-1]
+	Cắt hình nón $(\aleph)$ bởi mặt phẳng đi qua đỉnh và tạo với mặt phẳng chứa đáy một góc bằng $30^\circ$, ta được thiết diện là tam giác đều cạnh $4a$. Diện tích xung quanh của $\left(\aleph\right)$ bằng
+	\choice
+	{$4\sqrt{7}\pi a^2$}
+	{$8\sqrt{7}\pi a^2$}
+	{$8\sqrt{13}\pi a^2$}
+	{\True $4\sqrt{13}\pi a^2$}
+	\loigiai{
+		\immini{
+			Giả sử hình nón $\left(\aleph\right)$ có đỉnh $S$, đường tròn đáy có tâm $O$, thiết diện nói trên là tam giác đều $SAB$. Gọi $H$ là trung điểm đoạn $AB$. Khi đó $AB\perp (SHO)$ nên
+			\[ \widehat{SHO}=\left((SAB),(OAB)\right)=30^\circ. \]
+			Do đó
+		}{
+			\begin{tikzpicture}[line cap=round, line join=round, font=\footnotesize, >=stealth, scale=1]
+				\tikzset{label style/.style={font=\footnotesize}}
+				\def\a{3}
+				\def\b{1}
+				\def\h{2}
+				\pgfmathsetmacro{\t}{asin(\b/\h)}
+				\draw[dashed]
+				(\t:{\a} and {\b}) arc(\t:180-\t:{\a} and {\b});
+				\draw
+				(\t:{\a} and {\b})--(0,\h)--(180-\t:{\a} and {\b})
+				arc(180-\t:360+\t:{\a} and {\b});
+				\path (\t:{\a} and {\b}) coordinate (A)
+				(-70:{\a} and {\b}) coordinate (B)
+				($(A)!0.5!(B)$) coordinate (H)
+				(0,0) coordinate (O)
+				(0,\h) coordinate (S);
+				\draw[dashed] (S)--(O)--(B)--(A)--(O)--(H)--(S);
+				\draw (S)--(B);
+				\foreach\x/\y in {S/90,A/\t,B/-70,O/180,H/-30} \fill[black] (\x) circle (1pt)+(\y:0.3) node{$\x$};
+			\end{tikzpicture}
+		}
+		\begin{align*}
+			SO&=SH\sin 30^\circ= \frac{\sqrt{3}SA}{2}\cdot \frac{1}{2}=\sqrt{3}a,\\
+			OH&=SH\cos 30^\circ= \frac{\sqrt{3}SA}{2}\cdot \frac{\sqrt{3}}{2}=3a,\\
+			OA&=\sqrt{OH^2+HA^2}=\sqrt{OH^2+\frac{AB^2}{4}}=\sqrt{13}a.
+		\end{align*}
+		Vậy diện tích xung quay của hình nón $(\aleph)$ là
+		\begin{align*}
+			S_{\text{xq}}=\pi OA \cdot SA=4\sqrt{13}\pi a^2.
+		\end{align*}
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2K1-1]
+	Người thợ gia công của một cơ sở chất lượng cao X cắt một miếng tôn hình tròn  với bán kính $60$ cm thành ba miếng hình quạt bằng nhau. Sau đó người thợ quấn và hàn ba miếng tôn để được ba cái phễu. Hỏi thể tích $V$ của mỗi cái phễu đó là bao nhiêu?
+	\choice
+	{\True $V=\dfrac{16 \sqrt{2} \pi}{3}$ lít}
+	{$V=\dfrac{16 000 \sqrt{2} \pi}{3}$ lít}
+	{$V=\dfrac{160 \sqrt{2} \pi}{3}$ lít }
+	{$V=\dfrac{16 \sqrt{2}}{3}$ lít}
+	\loigiai{
+		\immini{
+			Đổi $60$ cm $=6$ dm.
+			Đường sinh của hình nón tạo thành là $l=6$ dm.\\
+			Chu vi đường tròn ban đầu là $C=2 \pi R=16 \pi$.\\
+			Gọi $r$ là bán kính đường tròn đáy của hình nón tạo thành.\\
+			Chu vi đường tròn đáy của hình nón tạo thành là $$2 \pi \cdot r=\dfrac{2 \pi \cdot 6}{3}=4 \pi \text{dm} \Rightarrow r=\dfrac{4 \pi}{2 \pi}=2 \text{dm}.$$
+			Đường cao của khối nón tạo thành là $$h=\sqrt{l^2-r^2}=\sqrt{6^2-2^2}=4 \sqrt{2}.$$
+			Thể tích của mỗi cái phễu là 
+			$$V=\dfrac{1}{3} \pi r^2 h=\dfrac{1}{3} \pi \cdot 2^2 \cdot 4 \sqrt{2}=\dfrac{16 \sqrt{2} \pi}{3} \text{dm}^3=\dfrac{16 \sqrt{2} \pi}{3}\text{ (lít)}.$$
+		}{
+			
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\path
+				(0,0) coordinate (O)
+				(2.5,0) coordinate (B)
+				(-2.5,0) coordinate (C)
+				(0,3.5) coordinate (S)
+				($(O)+(-120:2.5 and 0.5)$) coordinate (A)
+				($(A)!1/2!(B)$) coordinate (M)
+				($(S)!4/5!(M)$) coordinate (H)
+				;
+				\draw [dashed](B) arc (0:180:2.5 and 0.5);
+				\draw (B) arc (0:-180:2.5 and 0.5);
+				\draw (B)--node[right] {$\ell$}(S)--(C);
+				\draw[dashed](S)--node[left]{$h$}(O);
+				\draw[dashed](B)--node[above] {$r$}(O);
+		\end{tikzpicture} }
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Kiều Nhã Tú, ĐMH-LVĐ]%[2H2G1-1]
+	Bạn Hoàn có một tấm bìa hình tròn như hình vẽ. Hoàn muốn biến hình tròn đó thành một hình cái phễu hình nón. Khi đó Hoàn phải cắt bỏ hình quạt tròn $AOB$ rồi dán hai bán kính $OA$  và $OB$ lại với nhau (diện tích chỗ dán nhỏ không đáng kể). Gọi $x$  là góc ở tâm hình quạt tròn dùng làm phễu. Tìm  $x$ để thể tích phễu lớn nhất.
+	\choice
+	{$\dfrac{\pi}{4}$}
+	{$\dfrac{\pi}{3}$}
+	{\True $\dfrac{2\sqrt{6}\pi}{3}$}
+	{$\dfrac{\pi}{2}$}
+	\loigiai{
+		\immini{		Dựa vào hình vẽ, độ dài cung $AB$ lớn bằng $Rx$, bán kính hình nón $r=\dfrac{R x}{2 \pi}$.\\
+			Đường cao của hình nón $h=\sqrt{R^2-r^2}=\sqrt{R^2-\dfrac{R^2 x^2}{4 \pi^2}}=\dfrac{R}{2 \pi} \sqrt{4 \pi^2-x^2}$.\\
+			Thể tích khối nón (phễu) là
+			$$V=\dfrac{1}{3} \pi r^2 h=\dfrac{1}{3} \pi \cdot \dfrac{R^2 x^2}{4 \pi^2} \cdot \dfrac{R}{2 \pi} \sqrt{4 \pi^2-x^2}=\dfrac{R^3}{24 \pi^2} \sqrt{x^4\left(4 \pi^2-x^2\right)}.$$
+		}{	
+			\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def \x{1}
+				\def \y{0.4}
+				\pgfmathsetmacro{\z}{3*\x}
+				\pgfmathsetmacro{\t}{2*\x}
+				\tkzDefPoints{0/0/I,-\x/0/D,\x/0/C,\x/\z/F,0/-\z/O,-\t/\z/A,\t/\z/B,0/\z/H,-\x/\z/E}
+				%\draw[dashed] (D) arc (180:0:{\x} and {\y});
+				%\draw (D) arc (180:360:{\x} and {\y});
+				%\draw (H) ellipse ({\x} and {\y});
+				\draw (H) ellipse ({\t} and {0.7});
+				%\tkzDrawSegments[dashed](D,E C,F)
+				\tkzDrawSegments(O,A O,B A,B)
+		\end{tikzpicture}
+	}
+\noindent 	Theo Cauchy ta có $\dfrac{x^2}{2} \cdot \dfrac{x^2}{2} \cdot\left(4 \pi^2-x^2\right) \leq \dfrac{\left(4 \pi^2\right)^3}{27} \Rightarrow V \leq \dfrac{2 \sqrt{3} \pi R^3}{27}$.\\
+Dấu bằng xảy ra khi $\dfrac{x^2}{2}=4 \pi^2-x^2 \Leftrightarrow x=\dfrac{2 \sqrt{6}}{3} \pi$.\\ Vậy thể tích phễu lớn nhất khi $x=\dfrac{2 \sqrt{6}}{3} \pi$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+%======================
+\subsection{Bảng đáp án}
+\inputansbox{8}{ans/ANS-DANG-48}
+

@@ -1,0 +1,361 @@
+\section{Hình nón, hình trụ}
+\subsection{Kiến thức cần nhớ}
+\begin{khung}
+	\subsubsection{Hình nón, khối nón}
+\begin{center}
+	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+		\def\a{3}
+		\def\b{1}
+		\def\h{4}
+		\pgfmathsetmacro\g{asin(\b/\h)}
+		\pgfmathsetmacro\xo{\a *cos(\g)}
+		\pgfmathsetmacro\yo{\b *sin(\g)}
+		\draw[dashed] (\xo,\yo) arc (\g:180-\g:{\a} and
+		{\b}) (90:\h)node[above]{$S$}--(0,0)node[left]{$ O $}-- (0:\a) node[right]{$A$};
+		\draw (90:\h)--(-\xo,\yo) arc (180-\g:360+\g:{\a} and {\b})--cycle;
+		\draw (0,\h/2) node[left]{$h$} (\a/2,0)node[below]{$r$} (\a/2+.5,\h/2)node[left]{$l$};
+	\end{tikzpicture}
+\end{center}
+\begin{itemize}
+\item Công thức tính diện tích xung quanh của hình nón $S_\text{xq}=\pi rl$.
+\item Công thức tính diện tích toàn phần của hình nón $S_{\text{tp}}=S_\text{xq}+S_\text{đáy}=\pi rl+\pi r^2=\pi r(l+r)$.
+\item Công thức tính thể tích của khối nón $V_\text{nón}=\dfrac{1}{3}\pi r^2h$.
+\item Áp dụng Pitago và các hệ thức lượng giác trong tam giác vuông $ SOA $, ta có $$l^2=h^2+r^2;\cos\widehat{ASO}=\dfrac{h}{l};\sin\widehat{ASO}=\dfrac{r}{l};\tan\widehat{ASO}=\dfrac{r}{h}.$$
+\end{itemize}
+\subsubsection{Hình trụ, khối trụ}
+\begin{center}
+	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+		\def \x{1.8} %bán kính trục lớn elip
+		\def \y{0.8} %bán kính trục bé elip
+		\def \h{3.5} %chiều cao hình trụ
+		\path
+		(0,0) coordinate (A)
+		(2*\x,0) coordinate (B)
+		($(A)!0.5!(B)$) coordinate (O)
+		($(O)+(0,\h)$) coordinate (O')
+		($(A)+(0,\h)$) coordinate (A')
+		($(B)+(0,\h)$) coordinate (B')
+		%Lấy các điểm M,N trên elip
+		($(O)+({\x*cos(70)},{\y*sin(70)})$) coordinate (M)
+		($(O)+({\x*cos(-40)},{\y*sin(-40)})$) coordinate (N)
+		($(N)+(0,\h)$) coordinate (P)
+		($(M)+(0,\h)$) coordinate (Q)
+		;
+		\draw[dashed] (O)--(B) arc(0:180:\x cm and \y cm) (O)--(O');
+		\draw (B) arc(0:-180:\x cm and \y cm);
+		\draw (O') ellipse (\x cm and \y cm) (A)--(A')--(B')--(B);
+		\draw ($(O)!0.5!(O')$)node[left]{$h$} ($(O)!0.5!(B)$)node[below]{$r$} ($(B)!0.5!(B')$)node[right]{$l$};
+	\end{tikzpicture}
+\end{center}
+\begin{itemize}
+	\item Công thức tính diện tích xung quanh của hình trụ $S_\text{xq}=2\pi rl$.
+	\item Công thức tính diện tích toàn phần của hình trụ $S_{\text{tp}}=S_\text{xq}+2S_\text{đáy}=2\pi rl+2\pi r^2$.
+	\item Công thức tính thể tích của khối nón $V_\text{trụ}=\pi r^2h$.
+\end{itemize}	
+\end{khung}
+\subsection{Bài tập mẫu}
+\Opensolutionfile{ans}[ans/ANS-DANG-17]
+\setcounter{vd}{16}
+\begin{khung}
+	\begin{vd}[Đề minh họa BGD 2022-2023]%[Duong Xuan Loi]%[2H2B1-2]
+		Cho hình nón có đường kính đáy $2r$ và độ dài đường sinh $\ell$. Diện tích xung quanh của hình nón đã cho bằng
+		\choice
+		{$2 \pi r\ell$}
+		{$\dfrac{2}{3} \pi r\ell^2$}
+		{\True $\pi r\ell$}
+		{$\dfrac{1}{3} \pi r^2 \ell$}
+		\loigiai{
+			Công thức tính diện tích xung quanh hình nón là $S_\text{xq}=\pi r\ell$.
+		}
+	\end{vd}
+\end{khung}
+\subsection{Bài tập tương tự và phát triển}
+\begin{ex}%[2H2B1-2]
+	Cho hình nón có bán kính đáy $r=a$ và độ dài đường sinh $l=3a$. Diện tích xung quanh của hình nón đã cho bằng
+	\choice
+	{\True $3\pi a^2$}
+	{$\pi a^2$}
+	{$4\pi a^2$}
+	{$10\pi a^2$}
+	\loigiai{
+		Diện tích xung quanh của hình nón là $S_{\text{xq}}=\pi rl=\pi a\cdot 3a=3\pi a^2$.}
+\end{ex}
+\begin{ex}%[2H2B1-1]
+	Một khối nón có chiều cao bằng $3$, độ dài đường sinh bằng $5$. Thể tích của khối nón là
+	\choice
+	{$12\pi$}
+	{\True $16\pi$}
+	{$15\pi$}
+	{$\dfrac{80\pi}{3}$}
+	\loigiai{
+		\immini{
+			Bán kính đáy $r=\sqrt{l^2-h^2}=\sqrt{5^2-3^2}=4$.\\
+		Thể tích khối nón $V=\dfrac{1}{3}Bh=\dfrac{1}{3}\pi\cdot r^2\cdot h=\dfrac{1}{3}\pi\cdot 4^2\cdot 3=16\pi$.
+		}{
+			\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def \x{3} %bán kính trục lớn elip
+				\def \y{0.75} %bán kính trục bé elip
+				\def \h{4.5} %chiều cao hình nón
+				\path
+				(0,0) coordinate (O)
+				($(O)+(0,\h)$) coordinate (S)
+				(0:\x cm and \y cm) coordinate (A)
+				($(O)!-1!(A)$) coordinate (B)
+				(158:\x cm and \y cm) coordinate (l)
+				(22:\x cm and \y cm) coordinate (r)
+				;
+				\draw[dashed] (S)--(O) (A)--(B) (r) arc (22:158:\x cm and \y cm);
+				\draw (r) arc (22:-202:\x cm and \y cm) (A)--(S)--(B);
+				\foreach \p/\q in {O/-90,S/90}
+				\fill[black] (\p) circle (1.0pt)node[shift={(\q:3mm)}]{$\p$};
+				\draw pic[draw=black,angle radius=0.2cm] {right angle = S--O--A};
+				\node at ($(S)!0.55!(O)$)[right]{$h=3$};
+				\node at ($(S)!0.5!(A)$)[right]{$l=5$};
+			\end{tikzpicture}
+	}}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Cho khối nón có bán kính đáy bằng $R=1$, đường sinh $l=4$. Diện tích xung quanh của khối nón là
+	\choice
+	{$8\pi$}
+	{$12\pi$}
+	{\True $4\pi$}
+	{$6\pi$}
+	\loigiai{
+		$S_{\text{xq}}=\pi Rl=4\pi$.}
+\end{ex}
+\begin{ex}%[2H2B1-1]
+	Cho khối nón có bán kính đáy $r=\sqrt{3}$ và chiều cao $h=4$. Thể tích của khối nón đã cho bằng
+	\choice
+	{\True $4\pi$}
+	{$12\pi$}
+	{$12$}
+	{$4$}
+	\loigiai{
+		Thể tích của khối nón là $V=\dfrac{1}{3}\pi r^2h=\dfrac{1}{3}\pi(\sqrt{3})^2\cdot 4=4\pi$.}
+\end{ex}
+\begin{ex}%[2H2B1-1]
+	Cho khối nón có độ dài đường cao bằng $2a$ và bán kính đáy bằng $a$. Thể tích của khối nón đã cho bằng
+	\choice
+	{$2\pi a^3$}
+	{$\dfrac{4\pi a^3}{3}$}
+	{$\dfrac{\pi a^3}{3}$}
+	{\True $\dfrac{2\pi a^3}{3}$}
+	\loigiai{
+		\immini{
+			Thể tích khối nón: $V=\dfrac{1}{3}\cdot 2a\cdot\pi a^2=\dfrac{2\pi a^3}{3}$.
+		}{
+			\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def \x{3} %bán kính trục lớn elip
+				\def \y{0.75} %bán kính trục bé elip
+				\def \h{4.5} %chiều cao hình nón
+				\path
+				(0,0) coordinate (O)
+				($(O)+(0,\h)$) coordinate (S)
+				(0:\x cm and \y cm) coordinate (A)
+				($(O)!-1!(A)$) coordinate (B)
+				(158:\x cm and \y cm) coordinate (l)
+				(22:\x cm and \y cm) coordinate (r)
+				;
+				\draw[dashed] (S)--(O) (A)--(B) (r) arc (22:158:\x cm and \y cm);
+				\draw (r) arc (22:-202:\x cm and \y cm) (A)--(S)--(B);				
+				\draw pic[draw=black,angle radius=0.2cm] {right angle = S--O--A};
+				\node at ($(S)!0.55!(O)$)[left]{$2a$};
+				\node at ($(O)!0.5!(A)$)[below]{$a$};
+			\end{tikzpicture}
+	}}
+\end{ex}
+\begin{ex}%[2H2B1-1]
+	Cho khối nón có bán kính đáy $r=2$, chiều cao $h=\sqrt{3}$. Thể tích của khối nón đã cho là
+	\choice
+	{$\dfrac{2\pi\sqrt{3}}{3}$}
+	{$4\pi\sqrt{3}$}
+	{\True $\dfrac{4\pi\sqrt{3}}{3}$}
+	{$\dfrac{4\pi}{3}$}
+	\loigiai{
+		Áp dụng công thức tính thể tích khối nón, thể tích khối nón đã cho là\\
+		$V=\dfrac{1}{3}\pi r^2h =\dfrac{1}{3}\pi\cdot 2^2\sqrt{3} =\dfrac{4\pi\sqrt{3}}{3}$ (đvtt).}
+\end{ex}
+\begin{ex}%[2H2B1-1]
+	Cho khối nón có thể tích $V$. Khi tăng bán kính đường tròn đáy lên $2$ lần thì được khối nón mới có thể tích bằng
+	\choice
+	{\True $4V$}
+	{$2V$}
+	{$\dfrac{2V}{3}$}
+	{$\dfrac{4V}{3}$}
+	\loigiai{
+		Ta có thể tích khối nón ban đầu là $V=\dfrac{1}{3}\pi hr^2$.\\
+		Tăng bán kính đáy lên 2 lần thì thể tích khối nón mới là $V_m=\dfrac{1}{3}\pi h(2r)^2=4\left(\dfrac{1}{3}\pi hr^2\right)=4V$.}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Diện tích xung quanh của hình nón có độ dài đường sinh $l$ và bán kính đáy $\dfrac{r}{2}$ bằng
+	\choice
+	{\True $\dfrac{1}{2}\pi rl$}
+	{$\pi rl$}
+	{$\dfrac{1}{6}\pi rl$}
+	{$2\pi rl$}
+	\loigiai{
+		Diện tích xung quanh của hình nón đó là $S_{\text{xq}}=\pi\dfrac{r}{2}l=\dfrac{1}{2}\pi rl$.}
+\end{ex}
+\begin{ex}%[2H2B1-1]
+	Một khối trụ có chiều cao bằng $2a$ và diện tích đáy bằng $2a^2$. Tính thể tích khối lăng trụ?
+	\choice
+	{$V=\dfrac{4a^2}{3}$}
+	{$V=\dfrac{4a^3}{3}$}
+	{\True $V=4a^3$}
+	{$V=\dfrac{2a^3}{3}$}
+	\loigiai{
+		Thể tích khối trụ là $V=Bh=2a^2\cdot 2a=4a^3$.}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Diện tích xung quanh của hình trụ có độ dài đường sinh $l$ và bán kính đáy $r=\dfrac{1}{2}l$ là
+	\choice
+	{$l^2$}
+	{\True $\pi l^2$}
+	{$2\pi l^3$}
+	{$2\pi l$}
+	\loigiai{
+		Diện tích xung quanh hình trụ là $S=2\pi rl=2\pi\cdot\dfrac{1}{2}l\cdot l=\pi l^2$.}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Một hình trụ có bán kính đáy $r=5$ cm, chiều cao $h=7$ cm. Diện tích xung quanh của hình trụ này là
+	\choice
+	{\True $70\pi$ cm$^2$}
+	{$\dfrac{70}{3}\pi$ cm$^2$}
+	{$\dfrac{35}{3}\pi$ cm$^2$}
+	{$35\pi$ cm$^2$}
+	\loigiai{
+		Diện tích xung quanh của hình trụ là $S_{\text{xq}}=2\pi rh=2\cdot\pi\cdot 5\cdot 7=70\pi$ cm$^2$.}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Một hình trụ tròn có bán kính đáy $r=50$ cm và chiều cao $h=50$ cm. Diện tích xung quanh hình trụ bằng
+	\choice
+	{\True $5000\pi$ cm$^2$}
+	{$5000$ cm$^2$}
+	{$2500\pi$ cm$^2$}
+	{$2500$ cm$^2$}
+	\loigiai{
+		Diện tích xung quanh của hình trụ đó là $S_{\text{xq}}=2\pi rl=2\pi\cdot 50\cdot 50=5000\pi$ cm$^2$.}
+\end{ex}
+\begin{ex}%[2H2Y1-2]
+	Diện tích xung quanh của hình trụ có độ dài đường cao $h$ và bán kính đáy $r$ bằng
+	\choice
+	{$4\pi rh$}
+	{$\pi rh$}
+	{\True $2\pi rh$}
+	{$\dfrac{1}{3}\pi rh$}
+	\loigiai{
+		Diện tích xung quanh của hình trụ là $S_{\text{xq}}=2\pi rh$.}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Cho một khối trụ có độ dài đường sinh bằng $10 cm$. Biết thể tích khối trụ bằng $90\pi$  cm$^3$. Tính diện tích xung quanh của khối trụ. 
+	\choice
+	{$36\pi$ cm$^2$}
+	{$81\pi$ cm$^2$}
+	{\True $60\pi$ cm$^2$}
+	{$78\pi$ cm$^2$}
+	\loigiai{
+		Ta có $h=l=10$ cm.\\
+		$V=90\pi\Leftrightarrow\pi r^2\cdot h=90\pi\Leftrightarrow r^2=9\Leftrightarrow r=3$ cm.\\
+		Vậy $S_{\text{xq}}=2\pi rl=60\pi$ cm$^2$.}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Tính diện tích xung quanh của một hình trụ có chiều cao $20$ m, chu vi đáy bằng $5$ m. 
+	\choice
+	{$100\pi$ m$^2$}
+	{\True $100$ m$^2$}
+	{$50$ m$^2$}
+	{$50\pi$ m$^2$}
+	\loigiai{
+		Ta có chu vi đáy $C=2\pi R=5$ m.\\
+		Diện tích xung quanh của hình trụ là $S_{\text{xq}}=2\pi Rl=5\cdot 20=100$ m$^2$.}
+\end{ex}
+\begin{ex}%[2H2B1-1]
+	Cho khối trụ có bán kính đáy bằng $a$ và chiều cao bằng $3a\sqrt{3}$. Thể tích của khối trụ đó là
+	\choice
+	{$3\pi a^3$}
+	{\True $3\pi a^3\sqrt{3}$}
+	{$\pi a^3$}
+	{$\pi a^3\sqrt{3}$}
+	\loigiai{
+		Ta có $V=\pi R^2h=\pi a^2\cdot 3a\sqrt{3}=3\pi a^3\sqrt{3}$.}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Cho hình trụ có bán kính đáy bằng $a$, chu vi của thiết diện qua trục bằng $12a$. Thể tích của khối trụ đã cho bằng
+	\choice
+	{$\pi a^3$}
+	{\True $4\pi a^3$}
+	{$6\pi a^3$}
+	{$5\pi a^3$}
+	\loigiai{		
+		\immini{
+			Ta có bán kính $r=a$. Gọi $h$ là chiều cao của hình trụ.\\
+		Thiết diện qua trục của hình trụ là hình chữ nhật.\\
+		Theo bài ra ta có $2(h+2a)=12a\Leftrightarrow h=4a$.\\
+		Vậy thể tích của khối trụ bằng $V=\pi r^2h=\pi a^2(4a)=4\pi a^3$.
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round,>=stealth]
+				\def \x{1.8} %bán kính trục lớn elip
+				\def \y{0.8} %bán kính trục bé elip
+				\def \h{3} %chiều cao hình trụ
+				\path
+				(0,0) coordinate (A1)
+				(2*\x,0) coordinate (B1)
+				($(A1)!0.5!(B1)$) coordinate (O)
+				($(O)+(0,\h)$) coordinate (O')
+				($(A1)+(0,\h)$) coordinate (A')
+				($(B1)+(0,\h)$) coordinate (B')
+				%Lấy các điểm M,N trên elip
+				($(O)+({\x*cos(50)},{\y*sin(50)})$) coordinate (C)
+				($(O)+({\x*cos(230)},{\y*sin(230)})$) coordinate (D)
+				($(D)+(0,\h)$) coordinate (A)
+				($(C)+(0,\h)$) coordinate (B)
+				;
+				\draw[dashed] (B1) arc(0:180:\x cm and \y cm) (O)--(O') (B)--(C)--(D);
+				\draw (B1) arc(0:-180:\x cm and \y cm);
+				\draw (O') ellipse (\x cm and \y cm) (A1)--(A') (B1)--(B') (D)--(A)--(B);
+				\fill[pattern color=gray!40,opacity=.2] (A)--(B)--(C)--(D);
+				\foreach \p/\q in {O/-90,O'/90,A/100,B/80,C/20,D/-90}		
+				\fill[black] (\p)node[shift={(\q:3mm)}]{$\p$} circle (1.0pt);
+				\node at ($(A)!0.5!(D)$)[left]{$h$};
+				\node at ($(O)!0.5!(C)$)[below]{$a$};
+			\end{tikzpicture}
+	}}
+\end{ex}
+\begin{ex}%[2H2B1-2]
+	Cho khối trụ có đường sinh bằng $2$, thể tích $18\pi$. Diện tích toàn phần của khối trụ bằng
+	\choice
+	{$20\pi$}
+	{$10\pi$}
+	{$12\pi$}
+	{\True $30\pi$}
+	\loigiai{
+		Ta có hình trụ $l=h=2$.\\
+		Khối trụ có: $V=18\pi\Rightarrow\pi R^2h=18\pi\Rightarrow\pi R^2\cdot 2=18\pi\Rightarrow R^2=9\Rightarrow R=3$.\\
+		Ta có $S_{\text{tp}}=S_{\text{xq}}+S_{2\text{đáy}}=2\pi Rl+2\pi R^2=2\pi\cdot 3\cdot 2+2\cdot\pi\cdot 3^2=30\pi$.}
+\end{ex}
+\begin{ex}%[2H2B1-1]
+	Cho khối trụ có bán kính đáy bằng $2$, chiều cao bằng $3$. Thể tích của khối trụ đã cho bằng
+	\choice
+	{\True $12\pi$}
+	{$6\pi$}
+	{$4\pi$}
+	{$18\pi$}
+	\loigiai{
+		Ta có $V=\pi\cdot r^2\cdot h=\pi\cdot 2^2\cdot 3=12\pi$.}
+\end{ex}
+\begin{ex}%[2H2Y1-1]
+	Công thức tính thể tích khối trụ tròn xoay có bán kính $r$ và chiều cao $h$ là
+	\choice
+	{$V=\dfrac{1}{3}\pi r^2h$}
+	{$V=\pi rh$}
+	{\True $V=\pi r^2h$}
+	{$V=2\pi rh$}
+	\loigiai{
+		Công thức tính thể tích khối trụ tròn xoay có bán kính $r$ và chiều cao $h$ là $V=\pi r^2h$.
+		}
+\end{ex}
+\Closesolutionfile{ans}
+%======================
+\subsection{Bảng đáp án}
+\inputansbox{8}{ans/ANS-DANG-17}

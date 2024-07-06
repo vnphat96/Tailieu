@@ -1,0 +1,576 @@
+% Câu 14
+\setcounter {section} {13}
+\setcounter{ex}{0}
+\section{Thể tích khối chóp}
+\subsection{Kiến thức cần nhớ}
+\begin{khung}
+\subsubsection{Thể tích khối chóp}
+			$$V=\dfrac{1}{3}\cdot B\cdot h.$$			
+\immini{Trong đó:
+	\begin{itemize}
+		\item $B$ là diện tích đa giác đáy.
+		\item $h$ là chiều cao khối chóp.
+\end{itemize}}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=4;h=4;}]
+\path 	(0:0) coordinate (A)
+++(0:a) coordinate (B)
+++(-120:a/2) coordinate (C)
+($(C)!.5!(B)$) coordinate (M)
+($(A)!2/3!(M)$) coordinate (H)
+($(H)+(90:h)$) coordinate (S);
+\draw[thick] (S)--(A)--(C)--(B)--cycle (S)--(C) ;
+\draw[dashed,thick] (A)--(B) (S)--(H);
+\foreach \x / \goc in {A/180,B/0,C/-90,H/-90,S/90}
+\fill (\x) circle (1.5pt)
+($(\x)+(\goc:3mm)$) node {$\x$};
+\path pic[draw,angle radius=5pt]{right angle= M--H--S};
+\end{tikzpicture}}
+\subsubsection{Diện tích đa giác}
+\begin{minipage}[tl]{10cm}
+	\begin{itemize}
+		\item Diện tích tam giác vuông: $S_{\triangle ABC}=\dfrac{1}{2} AB\cdot AC$.\\
+		\\
+		\item  Diện tích tam giác đều: $S_{\triangle ABC}=\dfrac{AB^2\sqrt{3}}{4}$.\\
+		\\
+		\item Diện tích hình chữ nhật: $S_{ABCD}=\dfrac{1}{2}AB\cdot AD.$
+	\end{itemize}
+\end{minipage}
+\hspace*{2cm}
+\begin{minipage}[tr]{4cm}
+% Tam giác vuông
+\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={r=3;h=3;}]
+	\path (0:0) coordinate (A)
+	(0:r) coordinate (B)
+	(90:h) coordinate (C);
+	\draw[thick] (B)--(A)--(C)--cycle;
+	\path pic[draw,angle radius=5pt]{right angle= B--A--C};
+	\foreach \x/\g in {A/180,B/0,C/90}
+	\fill[black] 	(\x) circle (1pt)
+	($(\g:4mm)+(\x)$) node {$\x$};	
+\end{tikzpicture}
+% Tam giác đều
+\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={r=3;}]
+	\path (0:0) coordinate (B)
+	(0:r) coordinate (C)
+	(60:r) coordinate (A)
+	($(B)!.5!(C)$) coordinate (H);
+	\draw [thick](B)--(A)--(C)--cycle (A)--(H);
+	\path pic[draw,angle radius=5pt]{right angle= C--H--A};
+	\foreach \x/\g in {A/90,B/180,C/0,H/-90}
+	\fill[black] 	(\x) circle (1pt)
+	($(\g:4mm)+(\x)$) node {$\x$};	
+	\foreach \x/\y in {B/H,H/C}{
+		\path (\x)--(\y) node[midway,sloped]{\tikz{\draw [shift={(-0.65pt,0)}](-90:1pt)--(90:1pt) [shift={(0.65pt,0)}](-90:1pt)--(90:1pt);}};}
+\end{tikzpicture}
+% Hình chữ nhật
+\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={r=3;a=4;}]
+	\path (0,0) coordinate (A)
+	(a,0) coordinate (B)
+	(a,r) coordinate (C)
+	(0,r) coordinate (D);
+	\draw[thick] (A)--(B)--(C)--(D)--cycle;
+	\foreach \t/\g in {A/-90,B/-90,C/90,D/90}{
+		\path (\t) node[shift={(\g:7pt)}]{$ \t $};}
+	\path pic[draw,angle radius=5pt]{right angle= B--A--D};
+\end{tikzpicture}
+\end{minipage}\\
+\begin{minipage}[tl]{10cm}
+	\begin{itemize}
+		\item Diện tích hình thoi: $S_{ABCD}=\dfrac{1}{2}AC\cdot BD.$\\
+		\\
+		\item  Diện tích lục giác đều: $S_{ABCDEF}=6\cdot S_{\triangle OAB}$.
+	\end{itemize}
+\end{minipage}
+\hspace*{2cm}
+\begin{minipage}[t]{4cm}
+	% Hình thoi
+	\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={r=3;}]
+		\path (0:0) coordinate (A)
+		(-30:r) coordinate (B)
+		(30:r) coordinate (D)
+		($(B)+(D)-(A)$) coordinate (C);
+		\path (intersection of A--C and B--D) coordinate (I);
+		\draw [thick](A)--(B)--(C)--(D)--cycle (A)--(C) (B)--(D);
+		\foreach \t/\g in {A/180,B/-90,C/0,D/90}{
+			\path (\t) node[shift={(\g:7pt)}]{$ \t $};}
+		\path pic[draw,angle radius=5pt]{right angle= C--I--D};
+	\end{tikzpicture}
+	% Hình lục giác đều
+	\begin{tikzpicture}[scale=0.5, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={r=3;}]
+		\path (0,0) coordinate (A)
+		(r,0) coordinate (B)
+		($(B)!1!120:(A)$) coordinate (C)
+		($(C)!1!120:(B)$) coordinate (D)
+		($(D)!1!120:(C)$) coordinate (E)
+		($(E)!1!120:(D)$) coordinate (F);
+		\path (intersection of A--D and B--E) coordinate (O);
+		\draw[thick] (A)--(B)--(C)--(D)--(E)--(F)--cycle (A)--(D) (B)--(E) (C)--(F);
+		\foreach \t/\g in {A/90,B/90,C/0,D/-90,E/-90,F/180,O/-90}{
+			\path (\t) node[shift={(\g:8pt)},font=\scriptsize]{$ \t $};
+		}
+	\end{tikzpicture}
+\end{minipage}
+\end{khung}
+\subsection{Bài tập mẫu}
+\Opensolutionfile{ans}[ans/ANS-DANG-14]
+\begin{khung}
+	\begin{vd}%[Nguyễn Văn Hiệp]%[2H1B3-2]
+	[Đề minh họa BGD 2022-2023]
+			\immini{Cho khối chóp $S.ABC$ có đáy là tam giác vuông cân tại $A$, $AB=2$, $SA$ vuông góc với đáy và $SA=3$ (Tham khảo hình vẽ). Thể tích khối chóp đã cho bằng
+			\choice
+			{$12$}
+			{\True $2$}
+			{$6$}
+			{$4$}
+			}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=3;h=3;}]
+					\path 	(0:0) coordinate (A)
+					++(0:a) coordinate (C)
+					++(-160:1.4*a) coordinate (B)
+					($(A)+(90:h)$) coordinate (S);
+					\draw [thick] (B)--(C)--(S)--cycle;
+					\draw[thick,dashed] 	(S)--(A)--(C) (A)--(B);
+					\foreach \x /\g in {A/180,C/0,B/-90,S/90}
+					\fill[black] (\x) circle (1pt)
+					($(\x)+(\g:3mm)$) node {$\x$};
+					\foreach \x/\y/\z in {C/A/S,B/A/C}{
+						\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+			\end{tikzpicture}}
+			\loigiai{
+			Thể tích khối chóp là $V=\dfrac{1}{3}\cdot S_{\triangle ABC}\cdot SA=\dfrac{1}{3}\cdot \dfrac{1}{2}\cdot AB \cdot AC\cdot SA=\dfrac{1}{6}\cdot 2\cdot 2\cdot 3=2$.
+			}
+	\end{vd}
+\end{khung}
+\subsection{Bài tập tương tự và phát triển}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 1.
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$. Cạnh bên $SA$ vuông góc với mặt phẳng đáy, $SA=AB=2a$, $BC=3a$. Thể tích của khối chóp $S.ABC$ là
+	\choice
+	{$a^3$}
+	{$3a^3$}
+	{$4a^3$}
+	{\True $2a^3$}
+	\loigiai{
+	\begin{minipage}[c]{10cm}
+		$V=\dfrac {1}{3}\cdot \dfrac {1}{2}\cdot AB\cdot BC\cdot SA=2a^3$.
+	\end{minipage}
+	\hspace*{1cm}\begin{minipage}[l]{4cm}
+		\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=3;h=3;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (C)
+				++(-150:3*a/4) coordinate (B)
+				($(A)+(90:h)$) coordinate (S);
+				\draw[thick] (A)--(B)--(C)--(S)--cycle (S)--(B);
+				\draw[thick,dashed] 	(A)--(C);
+				\foreach \x /\g in {A/180,C/0,B/-135,S/90}
+				\fill[black] (\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node {$\x$};
+				\foreach \x/\y/\z in {C/B/A,C/A/S}{
+					\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+			\end{tikzpicture}
+		\end{minipage}
+			}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 2.
+	Cho khối chóp $S.ABCD$ có đường cao $SA$ và đáy $ABCD$ là hình thoi. Thể tích khối chóp đã cho được tính theo công thức nào sau đây?
+	\choice
+	{$\dfrac {1}{3} \,SA\cdot AB^2$}
+	{$\dfrac {1}{3} \,SA\cdot AC\cdot BD$}
+	{\True $\dfrac {1}{6} \,SA\cdot AC\cdot BD$}
+	{$\dfrac {1}{2}\, SA\cdot AB^2 $}
+		\loigiai{\immini{Diện tích đáy của hình chóp là $S_{ABCD}=\dfrac {1}{2}AC\cdot BD$.\\
+				Ta có thể tích khối chóp $S.ABCD$ là\\
+				$V=\dfrac {1}{3}\cdot S_{ABCD}\cdot SA=\dfrac {1}{3}\cdot \dfrac {1}{2}\cdot AC\cdot BD\cdot SA=\dfrac{1}{6}\,SA\cdot AC\cdot BD$.}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=3;h=3;}]
+					\path 	(0:0) coordinate (A)
+					++(0:a) coordinate (B)
+					++(-130:a/2) coordinate (C)
+					($(A)+(C)-(B)$) coordinate (D)
+					($(A)+(90:h)$) coordinate (S)
+					(intersection of A--C and B--D) coordinate (O);
+					\draw[thick,dashed] 	(B)--(A)--(S) (A)--(C) (B)--(D)	(D)--(A);
+					\draw[thick] (D)-- (C)--(B)--(S)--cycle (C)--(S);
+					\foreach \x/\g in {A/160,D/-135,C/-45,B/20,S/90,O/-90}
+					\fill[black] 	(\x) circle (1pt)
+					($(\g:3mm)+(\x)$) node {$\x$};	
+					\foreach \x/\y/\z in {B/A/S,C/O/B}{
+						\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+			\end{tikzpicture}}}
+\end{ex}
+	\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 3}
+	Cho hình chóp $S.ABC$ có $SA$ vuông góc với mặt phẳng $(ABC)$. Biết $SA=2a$ và tam giác $ABC$ vuông tại $A$ có $AB=3a$, $AC=4a$. Tính thể tích khối chóp $S.ABC$ theo $a$.
+	\choice
+	{$6a^3$}
+	{$8a^3$}
+	{\True $4a^3$}
+	{$12a^3$}
+	\loigiai{\immini{Ta có $S_{\triangle ABC}=\dfrac {1}{2}\cdot 3a\cdot 4a=6a^2$.\\
+			$V_{SABC}=\dfrac {1}{3}\cdot SA\cdot S_{\triangle ABC}=\dfrac {1}{3}\cdot 2a\cdot 6a^2=4a^3$.}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=4;h=2.5;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (C)
+				++(-150:3*a/4) coordinate (B)
+				($(A)+(90:h)$) coordinate (S);
+				\draw[thick] (A)--(B)--(C)--(S)--cycle (S)--(B);
+				\draw[thick,dashed] 	(A)--(C);
+				\foreach \x /\g in {A/180,C/0,B/-135,S/90}
+				\fill[black] (\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node {$\x$};
+				\foreach \x/\y/\z in {B/A/C,C/A/S}{
+					\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+		\end{tikzpicture}}}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 4.
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$, cạnh bên $SA$ vuông góc với đáy, $SA=a$ . Thể tích của khối chóp $S.ABC$ bằng
+	\choice
+	{\True $\dfrac {a^3\sqrt {3}}{12}$}
+	{$\dfrac {a^3\sqrt {3}}{4}$}
+	{$\dfrac {a^3\sqrt {3}}{6}$}
+	{$\dfrac {a^3}{4}$}
+	\loigiai{\immini{Thể tích của khối chóp $S.ABC$ bằng\\
+			$V=\dfrac {1}{3}\cdot S_{\triangle ABC}\cdot SA=\dfrac {1}{3}\cdot \dfrac {a^2 \sqrt{3}}{4} \cdot a=\dfrac {a^3\sqrt {3}}{12}$.}{	\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=4;h=3;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (C)
+				++(-130:5*a/6) coordinate (B)
+				($(A)+(90:h)$) coordinate (S);
+				\draw[thick] (A)--(B)--(C)--(S)--cycle (S)--(B);
+				\draw[thick,dashed] 	(A)--(C);
+				\foreach \x /\g in {A/180,C/0,B/-90,S/90}
+				\fill[black] (\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node {$\x$};
+				\foreach \x/\y/\z in {C/A/S}{
+					\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+		\end{tikzpicture}}}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 5.
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$. Biết $SA\perp (ABCD)$ và $SA=a\sqrt {3}$. Thể tích của khối chóp $S.ABCD$ là
+	\choice
+	{$ a^3\sqrt {3}$}
+	{$\dfrac {a^3\sqrt {3}}{12}$}
+	{\True $\dfrac {a^3\sqrt {3}}{3}$}
+	{$\dfrac {a^3}{4}$}
+	\loigiai{\immini{Ta có $h=SA=a\sqrt {3}$; $B=S_{ABCD}=a^2$.\\
+			Thể tích khối chóp là $V=\dfrac {1}{3}Bh=\dfrac {a^3\sqrt {3}}{3}$.}{\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=4;h=4;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (B)
+				++(-130:3*a/4) coordinate (C)
+				($(A)+(C)-(B)$) coordinate (D)
+				($(A)+(90:h)$) coordinate (S)
+				(intersection of A--C and B--D) coordinate (O);
+				\draw[thick,dashed] 	(B)--(A)--(S) (A)--(C) (B)--(D)	(D)--(A);
+				\draw[thick] (D)-- (C)--(B)--(S)--cycle (C)--(S);
+				\foreach \t/\g in {A/160,D/-135,C/-45,B/20,S/90,O/-100}{
+					\draw[fill=white] (\t) circle (1pt) node[shift={(\g:7pt)},font=\scriptsize]{$ \t $};
+					\foreach \x/\y/\z in {B/A/S}{
+						\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+				}
+		\end{tikzpicture}}}
+\end{ex}
+%Thay C6 vì trùng đề C5
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 6.
+	Cho khối chóp $S.ABC$ có chiều cao bằng $3$, đáy $ABC$ có diện tích bằng $10$. Thể tích của khối chóp $S.ABC$ bằng
+	\choice
+	{$2$}
+	{$15$}
+	{\True $10$}
+	{$30$}
+	\loigiai{
+		Thể tích khối khóp $S.ABC$ là $V=\dfrac {1}{3}Bh=\dfrac {1}{3}10\cdot 3=10$.}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 7.
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$, $AB=a$, $BC=2a$, $SA\perp (ABC)$, $SA=3a$. Thể tích của khối chóp $S.ABC$ bằng
+	\choice
+	{\True $a^3$}
+	{$\dfrac {1}{3}a^3$}
+	{$3a^3$}
+	{$\dfrac {1}{6}a^3$}
+	\loigiai{\immini{Thể tích khối chóp là\\
+			$V_{S.ABC}=\dfrac {1}{3}S_{\triangle ABC}\cdot SA=\dfrac {1}{3}\cdot \dfrac {1}{2}BA\cdot BC\cdot SA=\dfrac {1}{6} a\cdot 2a\cdot 3a=a^3$.}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=3;h=4;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (C)
+				++(-150:3*a/4) coordinate (B)
+				($(A)+(90:h)$) coordinate (S);
+				\draw[thick] (A)--(B)--(C)--(S)--cycle (S)--(B);
+				\draw[thick,dashed] 	(A)--(C);
+				\foreach \x /\g in {A/180,C/0,B/-135,S/90}
+				\fill[black] (\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node {$\x$};
+				\foreach \x/\y/\z in {C/B/A,C/A/S}{
+					\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+		\end{tikzpicture}}}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 8.
+	Cho hình chóp $S.ABC$ có các cạnh $SA,SB,SC$ đôi một vuông góc với nhau. Biết $SA=3$, $SB=4$, $SC=5$, thể tích khối chóp $S.ABC$ bằng
+	\choice
+	{$60$}
+	{\True $10$}
+	{$20$}
+	{$30$}
+	\loigiai{\immini{Dễ thấy $SA\perp (SBC)$\\
+			nên $V_{S.ABC}=\dfrac {1}{3}\cdot S_{\triangle SBC}\cdot SA=\dfrac {1}{3}\cdot \dfrac {1}{2}\cdot 4\cdot 5\cdot 3=10$.}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=3;h=3;}]
+				\path 	(0:0) coordinate (S)
+				++(0:a) coordinate (C)
+				++(-160:1.4*a) coordinate (B)
+				($(S)+(90:h)$) coordinate (A);
+				\draw [thick] (B)--(C)--(A)--cycle;
+				\draw[thick,dashed] 	(A)--(S)--(B) (S)--(C);
+				\foreach \x /\g in {S/180,C/0,B/-90,A/90}
+				\fill[black] (\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node {$\x$};
+				\foreach \x/\y/\z in {C/S/A,B/S/C}{
+					\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+		\end{tikzpicture}}}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 9.
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông cân tại $A$, $AC=2a$. Cạnh bên $SA$ vuông góc với mặt phẳng đáy và $SA=a$. Thể tích khối chóp $S.ABC$ bằng
+	\choice
+	{$4a^3$}
+	{\True $\dfrac {2a^3}{3}$}
+	{$2a^3$}
+	{$\dfrac {4a^3}{3}$}
+	\loigiai{\immini{
+			Diện tích đáy $S_{ABC}=\dfrac {1}{2}AB\cdot AC=\dfrac {1}{2}\cdot 2a\cdot 2a=2a^2$.\\
+			Thể tích khối chóp là $V=\dfrac {1}{3}\cdot SA\cdot S_{\triangle ABC}=\dfrac {1}{3}\cdot a\cdot 2a^2=\dfrac {2a^3}{3}$.
+	}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=5;h=3;}]
+		\path 	(0:0) coordinate (A)
+		++(0:a) coordinate (C)
+		++(-130:3*a/4) coordinate (B)
+		($(A)+(90:h)$) coordinate (S);
+		\draw[thick] (A)--(B)--(C)--(S)--cycle (S)--(B);
+		\draw[thick,dashed] 	(A)--(C);
+		\foreach \x /\g in {A/180,C/0,B/-90,S/90}
+		\fill[black] (\x) circle (1pt)
+		($(\x)+(\g:3mm)$) node {$\x$};
+		\foreach \x/\y/\z in {B/A/C,C/A/S}{
+		\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+		\path (A)--(S) node[midway,left]{$a$};
+		\path (A)--(B) node[midway,left]{$2a$};
+		\path (A)--(C) node[midway,above]{$2a$};
+	\end{tikzpicture}}}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 10.
+	Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $a,\,\ SA \perp (ABCD)$ và $SA=a$. Thể tích khối chóp $S.ABCD$ bằng
+	\choice
+	{\True $\dfrac {1}{3}a^3$}
+	{$2a^3$}
+	{$3a^3$}
+	{$a^3$}
+	\loigiai{
+		Ta có $V_{S.ABCD}=\dfrac {1}{3}\cdot SA\cdot S_{ABCD}=\dfrac {1}{3}\cdot a\cdot a^2=\dfrac {1}{3}a^3$.
+	}
+\end{ex}
+%Thay C11 vì trùng C13 
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 11.
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $AB=3a$ và $AD=4a$. Cạnh bên $SA$ vuông góc với mặt phẳng $( ABCD )$ và $SA=a\sqrt {2}$. Thể tích của khối chóp $S.ABCD$ bằng
+	\choice
+	{\True $4\sqrt {2}{a^3}$}
+	{$12\sqrt {2}{a^3}$}
+	{$\dfrac{4\sqrt {2}{a^3}}{3}$}
+	{$\dfrac{2\sqrt {2}{a^3}}{3}$}
+		\loigiai{\immini{Diện tích đáy hình chữ nhật là \\
+				$S_{ABCD}=AB\cdot AD=3a\cdot 4a =12a^2$.\\
+			Thể tích của khối chóp $S.ABCD$ là\\
+			 $V=\dfrac{1}{3}S_{ABCD}\cdot SA=\dfrac{1}{3}\cdot 12a^2\cdot a\sqrt{2}=4\sqrt{2}a^3$.}{\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=6;h=4;}]
+			 	\path 	(0:0) coordinate (A)
+			 	++(0:a) coordinate (D)
+			 	++(-120:3*a/5) coordinate (C)
+			 	($(A)+(C)-(D)$) coordinate (B)
+			 	($(A)+(90:h)$) coordinate (S);
+			 	\draw[thick,dashed] 	(B)--(A)--(S) (D)--(A);
+			 	\draw[thick] (D)-- (C)--(B)--(S)--cycle (C)--(S);
+			 	\foreach \t/\g in {A/180,D/0,C/-90,B/-90,S/90}{
+			 		\draw[fill=white] (\t) circle (1pt) node[shift={(\g:7pt)},font=\scriptsize]{$ \t $};
+			 		\foreach \x/\y/\z in {C/B/A,S/A/D}{
+			 			\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}}
+		 		\path (A)--(D) node[midway,above,sloped]{$4a$};
+		 		\path (A)--(B) node[midway,right]{$3a$};
+		 \end{tikzpicture}}
+			}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 12
+	Cho hình chóp $S.ABC$ có $SA$ vuông góc với đáy. Tam giác $ABC$ vuông cân tại $B$, biết $SA=AC=2a$. Tính thể tích khối chóp $S.ABC$.
+	\choice
+	{$\dfrac {2\sqrt {2}}{3} a^3$}
+	{$\dfrac {4}{3} a^3$}
+	{\True $\dfrac {2}{3} a^3$}
+	{$\dfrac {1}{3} a^3$}
+	\loigiai{\immini{Ta có $AB=BC=\dfrac {AC}{\sqrt {2}}=\dfrac {2a}{\sqrt {2}}=a\sqrt {2}$.\\
+			Thể tích khối chóp $S.ABC$ là\\
+			$V=\dfrac {1}{3}S_{\triangle ABC}\cdot SA=\dfrac {1}{3}\cdot \dfrac {1}{2}AB^2\cdot SA=\dfrac {1}{6}\cdot \left(a\sqrt {2} \right)^2\cdot 2a=\dfrac {2}{3}a^3$.}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=3;h=3;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (C)
+				++(-130:3*a/4) coordinate (B)
+				($(A)+(90:h)$) coordinate (S);
+				\draw[thick] (A)--(B)--(C)--(S)--cycle (S)--(B);
+				\draw[thick,dashed] 	(A)--(C);
+				\foreach \x /\g in {A/180,C/0,B/-90,S/90}
+				\fill[black] (\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node {$\x$};
+				\foreach \x/\y/\z in {C/B/A,C/A/S}{\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+		\end{tikzpicture}}}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 13.
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, $SA=3a$ và $SA$ vuông góc với mặt phẳng đáy. Tính thể tích khối chóp $S.ABCD$.
+	\choice
+	{$3a^3$}
+	{$\dfrac {a^3}{3}$}
+	{$9a^3$}
+	{\True $ a^3$}
+	\loigiai{\immini{Ta có $S_{ABCD}=a^2$, đường cao $SA=3a$.\\
+			Vậy thể tích khối chóp $S.ABCD$ là\\
+			 $V=\dfrac {1}{3}S_{ABCD}\cdot SA=\dfrac {1}{3}\cdot a^2\cdot 3a=a^3$.}{
+			\begin{tikzpicture}[scale=0.6, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=4;h=4;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (B)
+				++(-130:3*a/4) coordinate (C)
+				($(A)+(C)-(B)$) coordinate (D)
+				($(A)+(90:h)$) coordinate (S)
+				(intersection of A--C and B--D) coordinate (O);
+				\draw[thick,dashed] 	(B)--(A)--(S) (A)--(C) (B)--(D)	(D)--(A);
+				\draw[thick] (D)-- (C)--(B)--(S)--cycle (C)--(S);
+				\foreach \t/\g in {A/160,D/-135,C/-45,B/20,S/90,O/-100}{
+					\draw[fill=white] (\t) circle (1pt) node[shift={(\g:7pt)},font=\scriptsize]{$ \t $};
+					\foreach \x/\y/\z in {B/A/S,S/A/D}{
+						\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}}
+		\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 14.
+	Cho khối chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $A$, $AC=3$, $AB=4$, $SA$ vuông góc với mặt phẳng $(ABC)$ và $SA=3$. Thể tích của khối chóp đã cho bằng
+	\choice
+	{$12$}
+	{\True $6$}
+	{$18$}
+	{$20$}
+	\loigiai{
+		\begin{itemize}
+		\item Diện tích tam giác $ABC$ là $S_{\triangle ABC}=\dfrac {1}{2}AB\cdot AC=\dfrac {1}{2}\cdot 4\cdot 3=6$.
+		\item Thể tích khối chóp $S.ABC$ là $V=\dfrac {1}{3}S_{\triangle ABC}\cdot SA=\dfrac {1}{3}\cdot 6\cdot 3=6$.
+		\end{itemize}
+		}
+\end{ex}
+%Thay C15 vì trùng C13
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 15.
+	Cho khối chóp $S.ABC$ có $SA$ vuông góc với đáy, $SA=4$, $AB=6$, $BC=10$ và $CA=8$. Thể tích $V$ của khối chóp $S.ABC$
+	\choice
+	{\True $V=32$}
+	{$V=192$}
+	{$V=40$}
+	{$V=24$}
+	\loigiai{\immini{Ta có $10^2=8^2+6^2$ hay $BC^2=CA^2+AB^2$.\\
+			Suy ra $\triangle ABC$ vuông tại $A$.\\
+			Diện tích $\triangle ABC$ là $S_{\triangle ABC}=\dfrac{1}{2}\cdot AB\cdot AC=\dfrac{1}{2}\cdot 6\cdot 8=24.$\\
+			Thể tích của khối chóp $S.ABC$:\\
+			$V=\dfrac{1}{3}\cdot S_{ABC}\cdot SA=\dfrac{1}{3}\cdot 24\cdot 4=32$.}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=4;h=2.5;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (C)
+				++(-150:3*a/4) coordinate (B)
+				($(A)+(90:h)$) coordinate (S);
+				\draw[thick] (A)--(B)--(C)--(S)--cycle (S)--(B);
+				\draw[thick,dashed] 	(A)--(C);
+				\foreach \x /\g in {A/180,C/0,B/-135,S/90}
+				\fill[black] (\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node {$\x$};
+				\foreach \x/\y/\z in {B/A/C,C/A/S}{
+					\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};}
+		\end{tikzpicture}}
+	
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 16.
+	Cho hình chóp lục giác đều có cạnh đáy bằng $1$ chiều cao bằng $4$. Thể tích của khối chóp đã cho bằng
+	\choice
+	{\True $2\sqrt {3}$}
+	{$6\sqrt {3}$}
+	{$\dfrac{2\sqrt {3}}{3}$}
+	{$\dfrac{\sqrt {3}}{3}$}
+	\loigiai{
+		Giả sử đáy là hình lục giác đều ${ABCDEF}$ tâm $O$.\\
+		Ta có diện tích của hình lục giác đều là $S=6\cdot S_{\triangle OAB}=6\cdot \dfrac{1^{2} \sqrt{3}}{4}=\dfrac{3\sqrt {3}}{2}$.\\
+		Vậy thể tích của khối chóp là $V=\dfrac{1}{3}\cdot S\cdot h=\dfrac{1}{3}\cdot \dfrac{3\sqrt {3}}{2}\cdot 4=2\sqrt {3}$.
+		}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 17.
+	Cho khối chóp tam giác đều có cạnh đáy bằng $2$ và chiều cao $h=12$. Thể tích của khối chóp đã cho bằng
+	\choice
+	{$24\sqrt {3}$}
+	{$12\sqrt {3}$}
+	{$6\sqrt {3}$}
+	{\True $4\sqrt {3}$}
+	\loigiai{
+		Ta có thể tích của khối chóp tam giác đều là $V=\dfrac {1}{3}\cdot \dfrac {2^2\sqrt {3}}{4}\cdot 12=4\sqrt {3}$.}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 18.
+	Cho hình chóp tứ giác đều $S.ABCD$ có đáy là hình vuông cạnh bằng $ a\sqrt {3}$ và các cạnh bên bằng $a\sqrt {2}$. Thể tích khối chóp $S.ABCD$ bằng
+	\choice
+	{\True $\dfrac {a^3\sqrt {2}}{2}$}
+	{$\dfrac {a^3\sqrt {2}}{6}$}
+	{$\dfrac {a^3\sqrt {3}}{3}$}
+	{$\dfrac {a^3\sqrt {6}}{6}$}
+	\loigiai{\immini{Gọi $O$ là tâm của hình vuông $ABCD$.\\
+			Vì $S.ABCD$ là hình chóp đều nên $SO\perp (ABCD)$.\\
+			Ta có $S_{ABCD}=\left( a\sqrt {3} \right)^2=3a^2$; $OB=\dfrac {1}{2}BD=\dfrac {a\sqrt {6}}{2}$;\\ $SO=\sqrt {SB^2-OB^2}=\sqrt {2a^2-\dfrac {6a^2}{4}}=\dfrac {a\sqrt {2}}{2}$.\\
+			Thể tích khối chóp đều $S.ABCD$ là\\
+			$V=\dfrac {1}{3}S_{ABCD}\cdot SO=\dfrac {1}{3}\cdot 3a^2\cdot \dfrac {a\sqrt {2}}{2}=\dfrac {a^3\sqrt {2}}{2}$.}{\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round,>=stealth,declare function={a=4;h=4.5;}]
+				\path 	(0:0) coordinate (A)
+				++(0:a) coordinate (D)
+				++(-130:3*a/4) coordinate (C)
+				($(A)+(C)-(D)$) coordinate (B)
+				(intersection of A--C and B--D) coordinate (O)
+				($(O)+(90:h)$) coordinate (S)
+				($(S)!.5!(B)$) coordinate (M);
+				\draw[dashed,thick] 	(B)--(A)--(D)	(A)--(S)
+				(A)--(C)	(B)--(D)	(S)--(O)	;
+				\draw[thick] 			(B)--(C)--(D)
+				(B)--(S)	(C)--(S)	(D)--(S);
+				\foreach \x/\g in {A/135,B/-135,C/-45,D/45,S/90,O/-90}
+				\fill[black] 	(\x) circle (1.5pt)
+				($(\g:3mm)+(\x)$) node {$\x$};	
+				\draw pic[draw,angle radius=5pt]{right angle=D--O--S};
+				\path (B)--(S) node[midway,sloped,above,xslant=0.1]{$a\sqrt{2}$};
+				\path (B)--(C) node[midway,sloped,below]{$a\sqrt{3}$};
+		\end{tikzpicture}}}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 19.
+	Cho khối chóp tứ giác đều có cạnh đáy bằng $a$, có chiều cao bằng $\dfrac {a\sqrt {2}}{2}$. Thể tích của khối chóp đã cho bằng
+	\choice
+	{$\dfrac {a^3\sqrt {2}}{3}$}
+	{\True $\dfrac {a^3\sqrt {2}}{6}$}
+	{$\dfrac {\sqrt {2}a^3}{2}$}
+	{$\dfrac {\sqrt {3}a^3}{4}$}
+	\loigiai{
+		$ h=\dfrac {a\sqrt {2}}{2};S=a^2\Rightarrow V=\dfrac {1}{3}h\cdot S=\dfrac {1}{3}\cdot \dfrac {a\sqrt {2}}{2}\cdot a^2=\dfrac {a^3\sqrt {2}}{6}$.\\
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Văn Hiệp]%[2H1B3-2] % Câu 20.
+	Thể tích khối tứ diện đều có cạnh bằng $3$ là
+	\choice
+	{$\dfrac {4\sqrt {2}}{9}$}
+	{$2\sqrt {2}$}
+	{\True $\dfrac {9\sqrt {2}}{4}$}
+	{$\sqrt {2}$}
+	\loigiai{\immini{Cho $ABCD$ là tứ diện đều.\\
+			Gọi $F$ là trung điểm $CD$, $G$ là tâm của tam giác đều $BCD$, ta có $AG\perp (BCD)$; $BF=\sqrt {BC^2-CF^2}=\dfrac {3\sqrt {3}}{2}$.\\
+			Xét tam giác $ABG$ vuông tại $G$:\\
+			$AB=3$, $BG=\dfrac {2}{3}BF=\dfrac {2}{3}\cdot \dfrac {3\sqrt {3}}{2}=\sqrt {3}$,\\
+			$AG=\sqrt {AB^2-BG^2}=\sqrt {3^2-\left( \sqrt {3} \right)^2}=\sqrt {6}$.\\
+			Ta có $S_{\triangle BCD}=\dfrac {1}{2}BF\cdot CD=\dfrac {3^2\sqrt {3}}{4}=\dfrac {9\sqrt {3}}{4}$.\\
+			Vậy $V_{ABCD}=\dfrac {1}{3}AG\cdot S_{\triangle BCD}=\dfrac {1}{3}\cdot \sqrt {6}\cdot \dfrac {9\sqrt {3}}{4}=\dfrac {9\sqrt {2}}{4}$.}{\begin{tikzpicture}[scale=0.8,declare function={r=3;}]
+				\path (160:{r} and {r*0.35}) coordinate(B)
+				(260:{r} and {r*0.5}) coordinate (C)
+				(20:{r} and {r*0.35})coordinate (D)
+				(90:{r*1.25}) coordinate (A)
+				($(C)!.5!(D)$) coordinate (F)
+				($(B)!2/3!0:(F)$) coordinate (G);
+				\draw[thick,dash pattern=on 2pt off 2 pt] (B)--(D) (B)--(G)--(F) (A)--(G);
+				\draw[thick] (A)--(B)--(C)--(D)--cycle (A)--(C);
+				\foreach \x in {A,B,C,D,F,G} \draw[fill=white](\x) circle (1pt);
+				\foreach \t/\g in {A/90,B/180,C/-90,D/0,F/-30,G/-90}{
+					\path (\t) node[shift={(\g:7pt)},font=\scriptsize]{$ \t $};}
+				\foreach \x/\y/\z in {F/G/A,B/F/C}{
+					\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};
+				}
+		\end{tikzpicture}}
+		}
+\end{ex}
+\Closesolutionfile{ans}
+%======================
+\subsection{Bảng đáp án}
+\inputansbox{8}{ans/ANS-DANG-14}
+
+

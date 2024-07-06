@@ -1,0 +1,2812 @@
+\section{Hoán vị - chỉnh hợp - tổ hợp}
+\subsection{Tóm tắt lý thuyết}
+\subsubsection{Hoán vị}
+\begin{dn}{}
+	Một hoán vị của một tập hợp có $n$ phần tử là một cách sắp xếp có thứ tự $n$ phần tử đó (với $n$ là một số tự nhiên, $n \geq 1$ ).\\
+	Số các hoán vị của tập hợp có $n$ phần tử, kí hiệu là $\mathrm{P}$, được tính bằng công thức $$\mathrm{P}_{n}=n \cdot(n-1) \cdot(n-2) \cdots 2 \cdot 1.$$
+\end{dn}
+
+\begin{note}
+	Kí hiệu $n \cdot(n-1) \cdot(n-2) \cdots 2 \cdot 1$ là $n!$ (đọc là $n$ giai thừa), ta có $\mathrm{P}_{n}=n!$. Chẳng hạn $\mathrm{P}_{3}=3!=3 \cdot 2 \cdot 1=6$.\\
+	Quy ước $0 !=1$.
+\end{note}
+
+\subsubsection{Chỉnh hợp}
+\begin{dn}{}
+	Một chỉnh hợp chập $k$ của $n$ là một cách sắp xếp có thứ tự $k$ phần tử từ một tập hợp $n$ phần tử (với $k$, $n$ là các số tự nhiên, $1 \leq k \leq n$).\\
+	Số các chỉnh hợp chập $k$ của $n$, kí hiệu là $\mathrm{A}_{n}^{k}$, được tính bằng công thức
+	$$\mathrm{A}_{n}^{k}=n \cdot(n-1) \cdots(n-k+1) \text { hay } \mathrm{A}_{n}^{k}=\dfrac{n!}{(n-k)!}\,(1 \leq k \leq n).$$
+\end{dn}
+
+\begin{note}
+	\begin{itemize}
+		\item Hoán vị sắp xếp tất cả các phần tử của tập hợp, còn chỉnh hợp chọn ra một số phần tử và sắp xếp chúng.
+		\item Mỗi hoán vị của $n$ phần tử cũng chính là một chỉnh hợp chập $n$ của $n$ phần tử đó. Vì vậy $\mathrm{P}_{n}=\mathrm{A}_{n}^{n}$.
+	\end{itemize}
+\end{note}
+
+\subsubsection{Tổ hợp}
+\begin{dn}{}
+	Một tổ hợp chập $k$ của $n$ là một cách chọn $k$ phần tử từ một tập hợp $n$ phần tử (với $k$, $n$ là các số tự nhiên, $0 \leq k \leq n$).\\
+	Số các tổ hợp chập $k$ của $n$, kí hiệu là $\mathrm{C}_n^k$, được tính bằng công thức
+	$$\mathrm{C}_n^k=\dfrac{n!}{(n-k)!k!}\,(0 \leq k \leq n).$$
+\end{dn}
+
+\begin{note}
+	\begin{itemize}
+		\item $\mathrm{C}_{n}^{k}=\dfrac{\mathrm{A}_{n}^{k}}{k!}$.
+		\item Chỉnh hợp và tổ hợp có điểm giống nhau là đều chọn một số phần tử trong một tập hợp, nhưng khác nhau ở chỗ, chỉnh hợp là chọn có xếp thứ tự, còn tổ hợp là chọn không xếp thứ tự.
+	\end{itemize}
+\end{note}
+\subsection{CÁC DẠNG TOÁN}
+\setcounter{dang}{0}
+\begin{dang}{Các bài toán liên quan đến hoán vị}
+	\begin{itemize}
+		\item Sắp xếp $n$ phần tử theo một hàng $n!=n(n-1)\cdot(n-2)\ldots3\cdot2\cdot1$ cách sắp xếp.
+		\item Sắp xếp $ n $ phần tử theo một vòng tròn (bàn tròn) có $ (n-1)! $ cách. 
+	\end{itemize}
+	\begin{note} Casio: Bấm $ n! $ ta thao tác: $ n $ SHIFT $ x^{-1} $, chẳng hạn: $ 3 $ SHIFT $ x^{-1}=6 $, tức $ 3!=6 $. 
+	\end{note}
+\end{dang}
+\begin{vd}%[1D2K2-2]
+	Trên một kệ sách dài có $ 5 $ quyển sách Toán, $ 4 $ quyển sách Lí, $3$ quyển sách Văn. Các quyển sách đều khác nhau. Hỏi có bao nhiêu  cách sắp xếp các quyển sách trên nếu
+	\begin{listEX}[1]
+		\item Xếp một cách tùy ý.\dapso{$12!$}
+		\item Xếp theo từng môn.\dapso{$3!\cdot5!\cdot 4!\cdot 3!$}
+		\item Theo từng môn và sách Toán nằm ở giữa.\dapso{$2!\cdot5!\cdot 4!\cdot 3!$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Xếp một cách tùy ý.\\
+			Mỗi cách sắp xếp $12$ quyển sách trên kệ dài là một hoán vị của $12$ phần tử. Suy ra có $12!$ cách xếp.
+			\item Xếp theo từng môn.
+			\begin{center}
+				\begin{tabular}{|c|c|c|}
+					\hline 
+					$5$ sách Toán&  	$4$ sách Lí&	$3$ sách Văn  \\ 
+					\hline 
+				\end{tabular} 
+				\begin{itemize}
+					\item Nhóm $5$ sách Toán thành khối $A$, $4$ sách Lí thành khối $B$, $3$ sách Văn thành khối $C$. Xem đây là $3$ hoán vị của $3$ phần tử $A$, $B$, $C$. Suy ra, có $3!$ cách xếp.
+					\item Xếp $5$ sách Toán trong khối $A$ có $5!$ cách.
+					\item Xếp $4$ sách Lí trong khối $B$ có $4!$ cách.
+					\item  Xếp $3$ sách Văn trong khối $C$ có $3!$ cách.
+				\end{itemize}
+				\noindent Theo quy tắc nhân, có $3!\cdot 5!\cdot 4!\cdot 3!=103680$ cách xếp.
+			\end{center}
+		\item Xếp theo từng môn và sách toán nằm ở giữa.
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline 
+				$5$ sách Toán&  	$4$ sách Lí&	$3$ sách Văn  \\ 
+				\hline 
+			\end{tabular} 
+			\begin{itemize}
+				\item Nhóm $5$ sách Toán thành khối $A$, $4$ sách Lí thành khối $B$, $3$ sách Văn thành khối $C$. Do môn Toán nằm ở giữa nên ta hoán vị nhóm $B$, $C$. Suy ra, có $2!$ cách xếp.
+				\item Xếp $5$ sách Toán trong khối $A$ có $5!$ cách.
+				\item Xếp $4$ sách Lí trong khối $B$ có $4!$ cách.
+				\item  Xếp $3$ sách Văn trong khối $C$ có $3!$ cách.
+			\end{itemize}
+			\noindent Theo quy tắc nhân, có $2!\cdot 5!\cdot 4!\cdot 3!=103680$ cách xếp.
+		\end{center}
+		\end{listEX}
+	}
+\end{vd}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{vd}%[1D2K2-2]
+	Từ các chữ số $1$, $2$, $3$, $4$, $5 $, $6$ lập các số gồm sáu chữ số khác nhau. Hỏi
+	\begin{listEX}[1]
+		\item Có tất cả bao nhiêu số?	\dapso{$720$}
+		\item Có bao nhiêu số chẵn và bao nhiêu số lẻ?\dapso{$360$}
+		\item Có bao nhiêu số bé hơn $432000$?	\dapso{$414$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Có tất cả bao nhiêu số ?\\
+			Mỗi số gồm $6$ chữ số khác nhau lập từ các chữ số $1$, $2$, $3$, $4$, $5 $, $6$ là một hoán vị của $6$ số. Suy ra có $6!=720$ số.
+			\item Có bao nhiêu số chẵn và bao nhiêu số lẻ ?
+			\begin{itemize}
+				\item Gọi số chẵn có $6$ chữ số có dạng $\overline{a_1a_2a_3a_4a_5a_6}$.\\
+				+ Chọn $a_6\in \{2;4;6\}$ có $3$ cách chọn..\\
+				+ Xếp $5$ số còn lại vào $a_1$, $a_2$, $a_3$, $a_4$, $a_5$ và có thể thay đổi vị trí $5$ số này nên có $5!$ cách xếp.\\
+				+ Thêo quy tắc nhân có $3\cdot 5!=360$ số là số chẵn.
+				\item Số các số lẻ có $6$ chữ số là $720-360=360$ số.
+			\end{itemize}
+					\item Có bao nhiêu số bé hơn $432000$ ?\\
+			Gọi số cần tìm có dạng là $\overline{abcdef}$.
+			\begin{itemize}
+				\item Nếu $a<4$ thì $a\in \{1;2;3\}$, suy ra $a$ có $3$ cách chọn.\\
+				+ Các số còn lại xếp vào $5$ vị trí còn lại có $5!$ cách xếp.\\
+				+ Theo quy tắc nhân có $3\cdot 5!=360$ số.
+				\item Nếu $a=4$, $b<3$ thì \\
+				+ $a=4$ có một cách chọn.\\
+				+ $b\in \{1;2\}$ có hai cách chọn.\\
+				+ Xếp $4$ số còn lại có $4!$ cách xếp.\\
+				+ Theo quy tắc nhân có $48$ số.
+				\item Nếu $a=4$, $b=3$, $c=1$ thì xếp ba số $\{2;5;6\}$ vào ba vị trí $d$, $e$, $f$ có $3!=6$ cách. Vậy có $6$ số trong trường hợp này.
+			\end{itemize}
+			\noindent Theo quy tắc cộng có $360+48+6=414$ số.	
+		\end{listEX}
+	}
+\end{vd}
+
+%====================== Bài tập về nhà sử dụng môi trường {ex}
+\baitaptl
+%-----
+\begin{bt}%[1D2K2-2]
+	Từ các chữ số $1$, $2$, $3$, $4$, $5$, $6$ thiết lập tất cả các số có sáu chữ số khác nhau. Hỏi trong các số thiết lập được, có bao nhiêu số mà hai chữ số $1$ và $6$ không đứng cạnh nhau?\dapso{$480$}
+	\loigiai{
+		+ Số có $6$ chữ số khác nhau mà các chữ số được thiết lập từ $1$, $2$, $3$, $4$, $5$, $6$ là $6!=720$ số.\\
+		+ Ta xem số có sáu chữ số mà trong đó chữ số $1$ và chữ số $6$ đứng cạnh nhau là một số có $5$ chữ số, hai số $1$ và $6$ ghép với nhau thành chữ số $m$. Số các số này được tính như sau:\\
+		-) Hoán vị $5$ số $2$, $3$, $4$, $5$ và $m$ có $5!$ cách.\\
+		-) Hoán vị chữ số $1$ và chữ số $6$ có $2!$ cách.\\
+		Vậy có $2\cdot 5!=240$ số có sáu chữ số khác nhau, trong đó chữ số $1$ và chữ số $6$ đứng cạnh nhau.\\
+		Suy ra, số có $6$ chữ số khác nhau mà chữ số $1$, chữ số $6$ không đứng cạnh nhau là $720-240=480$ số. 
+		}
+\end{bt}
+
+\begin{bt}%[1D2K2-2]
+	Từ tập hợp $A=\{0;1;2;3;4;5;6\}$ lập được bao nhiêu số tự nhiên chia hết cho $5$, gồm năm chữ số khác nhau sao cho trong đó luôn có mặt các chữ số $1$, $2$, $3$ và chúng đứng cạnh nhau?\\\dapso{$66$}
+	\loigiai{
+		\begin{itemize}
+			\item Trường hợp 1: Số cần tìm có dạng $\overline{123de}$.\\
+			+ Chọn $e\{0;5\}$ có $2$ cách chọn.\\
+			+ Chọn $d\in \{0;4;6;5\}\setminus \{e\}$ có $3$ cách chọn.\\
+			+ Có $2\cdot 3\cdot 3!=36$ số cần tìm. 
+			\item Trường hợp 2: Số cần tìm có dạng $\overline{a123e}$.\\
+			+ Chọn $e=0$, $a=5$, trường hợp này có $1\cdot 3!\cdot 1=6$ số.\\
+			+ Chọn $e\in \{0;5\}$, $a\in \{6;4\}$, trường hợp này có $2\cdot 3!\cdot 2=24$ số.\\
+			Vậy trường hợp này có $6+24=30$ số.
+		\end{itemize}
+		Số các số cần tìm là $36+30=66$ số. }
+\end{bt}
+\begin{bt}%[1D2K2-2]
+	Cho tập $X=\{1;2;3;4;7\}$. Có bao nhiêu số tự nhiên gồm ba chữ số khác nhau chia hết cho $3$ được lập từ tập $X$?	\dapso{$24$}
+	\loigiai{
+		Gọi số có ba chữ số khác nhau cần tìm mà các chữ số lấy từ tập $X$ là $\overline{abc}$.
+		\begin{itemize}
+			\item Trường hợp 1: $a$, $b$, $c \in \{1;2;3\}$.\\
+			Số các số thỏa mãn yêu cầu bài toán trong trường hợp này là $3!=6$ số.
+			\item  Trường hợp 1: $a$, $b$, $c \in \{4;2;3\}$.\\
+			Số các số thỏa mãn yêu cầu bài toán trong trường hợp này là $3!=6$ số.
+			\item  Trường hợp 1: $a$, $b$, $c \in \{7;2;3\}$.\\
+			Số các số thỏa mãn yêu cầu bài toán trong trường hợp này là $3!=6$ số.
+			\item  Trường hợp 1: $a$, $b$, $c \in \{7;4;1\}$.\\
+			Số các số thỏa mãn yêu cầu bài toán trong trường hợp này là $3!=6$ số.
+		\end{itemize}
+		Vậy số các số cần tìm là $24$ số.
+	
+	}
+\end{bt}
+\begin{bt}%[1D2K2-2]
+	Cho tập $E=\{1;2;3;4;5;6;7;8;9\}$. Có bao nhiêu số tự nhiên có ba chữ số khác nhau, biết rằng tổng của ba chữ số này bằng $9$?	\dapso{$18$}
+	\loigiai{Bộ ba chữ số lấy từ tập $E$  mà tổng bằng $9$, được chia thành các bộ sau đây: $\{1;2;6\}$, $\{2;3;4\}$, $\{1;3;5\}$.\\
+		Mỗi bộ sẽ lập được $3!=6$ số có ba chữ số mà tổng các chữ số bằng $9$. Số các số cần tìm là $18$ số. }
+\end{bt}
+\begin{bt}%[1D2K2-2]
+	Từ các chữ số $2$, $3$, $4$, $5$, $6 $, $7$ lập các số gồm sáu chữ số khác nhau. Hỏi
+	\begin{listEX}[1]
+		\item Có tất cả bao nhiêu số?	\dapso{$720$}
+		\item Có bao nhiêu số chẵn và bao nhiêu số lẻ?\dapso{$360$}
+		\item Có bao nhiêu số bé hơn $432000$?\dapso{$270$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Có tất cả bao nhiêu số ?\\
+			Mỗi số gồm $6$ chữ số khác nhau lập từ các chữ số $7$, $2$, $3$, $4$, $5 $, $6$ là một hoán vị của $6$ số. Suy ra có $6!=720$ số.
+			\item Có bao nhiêu số chẵn và bao nhiêu số lẻ ?
+			\begin{itemize}
+				\item Gọi số chẵn có $6$ chữ số có dạng $\overline{a_1a_2a_3a_4a_5a_6}$.\\
+				+ Chọn $a_6\in \{2;4;6\}$ có $3$ cách chọn..\\
+				+ Xếp $5$ số còn lại vào $a_1$, $a_2$, $a_3$, $a_4$, $a_5$ và có thể thay đổi vị trí $5$ số này nên có $5!$ cách xếp.\\
+				+ Thêo quy tắc nhân có $3\cdot 5!=360$ số là số chẵn.
+				\item Số các số lẻ có $6$ chữ số là $720-360=360$ số. 	
+			\end{itemize}
+			\item Có bao nhiêu số bé hơn $432000$ ?\\
+			Gọi số cần tìm có dạng là $\overline{abcdef}$.
+			\begin{itemize}
+				\item Nếu $a<4$ thì $a\in \{2;3\}$, suy ra $a$ có $2$ cách chọn.\\
+				+ Các số còn lại xếp vào $5$ vị trí còn lại có $5!$ cách xếp.\\
+				+ Theo quy tắc nhân có $2\cdot 5!=240$ số.
+				\item Nếu $a=4$, $b=2$ thì \\
+				+ $a=4$ có một cách chọn.\\
+				+ $b=2$ có một cách chọn.\\
+				+ Xếp $4$ số còn lại có $4!$ cách xếp.\\
+				+ Theo quy tắc nhân có $24$ số.
+				\item Nếu $a=4$, $b=3$, $c=2$ thì xếp ba số $\{7;5;6\}$ vào ba vị trí $d$, $e$, $f$ có $3!=6$ cách. Vậy có $6$ số trong trường hợp này.
+			\end{itemize}
+			\noindent Theo quy tắc cộng có $240+24+6=270$ số.	
+		\end{listEX}
+	}
+\end{bt}
+\begin{bt}%[1D2K2-2]
+	Xét các số tự nhiên gồm năm chữ số khác nhau lập từ các chữ số $1$, $2$, $3$, $4$, $5$. Hỏi trong các số đó có bao nhiêu số
+	\begin{listEX}[2]
+		\item Bắt đầu bằng chữ số $5$?\dapso{$24$}
+		\item Không bắt đầu bằng chữ số $1$?\dapso{$96$}
+		\item Bắt đầu bằng $23$?\dapso{$6$}
+		\item Không bắt đầu bằng $234$?\dapso{$118$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Gọi số cần tìm có dạng $\overline{5bcde}$.\\
+			Xếp $4$ chữ số $1$, $2$, $3$, $4$ vào bốn vị trí còn lại có $4!$ cách xếp. Vậy có $24$ số. 	
+			\item Gọi số cần tìm có dạng $\overline{abcde}$, trong đó $a\neq 1$.\\
+			+ $a\in \{2;3;4;5\}$ có $4$ cách chọn.\\
+			+ Xếp $4$ số còn lại có $4!$ cách xếp.\\
+			+ Trường hợp này có $4\cdot 4!=96$ số. 	
+			\item Gọi số cần tìm có dạng $\overline{23cde}$. Xếp ba vị trí $c$, $d$, $e$ từ các số $1$, $4$, $5$ có $3!$ cách xếp. Trường hợp này có $6$ số.
+			\item Giả sử số bắt đầu bằng $234$, số dạng này có $2$ số là số $23415$, $23451$. Suy ra số không bắt đầu bằng $234$ có $5!-2=118$ số. 	
+		\end{listEX}
+	}
+\end{bt}
+\begin{bt}%[1D2B2-2]
+	Một THPT X có $4$ học sinh giỏi khối $12$, có $5$
+	học sinh giỏi khối $11$, có $6$ học sinh giỏi khối
+	$10$. Có bao nhiêu cách xếp $15$ học sinh trên
+	thành $1$ hàng ngang nhận thưởng nếu
+	\begin{enumerate}
+		\item Những học sinh đứng tùy ý.	\dapso{$15!$ cách xếp}
+		\item Các học sinh cùng khối đứng cạnh nhau.\dapso{$12441600$ cách xếp}
+		\item Cùng khối đứng cạnh và khối $11$ ở giữa.\dapso{$4147200$ cách xếp}
+	\end{enumerate}	
+\loigiai{\begin{enumerate}
+		\item Những học sinh đứng tùy ý.\\
+			Có $15!$ cách xếp.	
+		\item Các học sinh cùng khối đứng cạnh nhau.
+			\begin{enumerate}[Bước 1. ]
+				\item Xếp $4$ học sinh khối $12$ thành một nhóm có $4!=24$ cách.
+				\item Xếp $5$ học sinh khối $11$ thành một nhóm có $5!=120$ cách.
+				\item Xếp $6$ học sinh khối $10$ thành một nhóm có $6!=720$ cách.
+				\item Hoán vị $3$ nhóm học sinh có $3!=6$ cách.
+			\end{enumerate}
+			Theo quy tắc nhân có $24\cdot 120\cdot720\cdot6=12441600$ cách xếp.
+		\item Cùng khối đứng cạnh và khối $11$ ở giữa.
+			\begin{enumerate}[Bước 1. ]
+				\item Xếp $4$ học sinh khối $12$ thành một nhóm có $4!=24$ cách.
+				\item Xếp $5$ học sinh khối $11$ thành một nhóm có $5!=120$ cách.
+				\item Xếp $6$ học sinh khối $10$ thành một nhóm có $6!=720$ cách.
+				\item Xếp nhóm khối $11$ đứng giữa hai nhóm còn lại có $2!=2$ cách
+			\end{enumerate}
+			Theo quy tắc nhân có $24\cdot 120\cdot720\cdot2=4147200$ cách xếp.	
+\end{enumerate}	}
+\end{bt}
+
+\begin{bt}%[1D2K2-2]
+	Có hai dãy ghế, mỗi dãy $5$ ghế. Xếp 5 nam, $5$
+	nữ vào hai dãy ghế trên, có bao nhiêu cách xếp,
+	nếu:
+	\begin{enumerate}
+		\item Nam, nữ được xếp tùy ý.	
+		\dapso{$3628800$ cách xếp}
+		\item Nam 1 dãy ghế, nữ 1 dãy ghế.
+		\dapso{$28800$ cách xếp}
+	\end{enumerate}	
+\loigiai{
+\begin{enumerate}
+	\item Nam, nữ được xếp tùy ý.\\
+		Mỗi cách xếp 5 nam và 5 nữ vào hai dãy ghế một
+		cách tùy ý là một hoán vị của 10 người.\\
+		$\Rightarrow$ Có $10!=3628800$ cách xếp.
+	\item Nam 1 dãy ghế, nữ 1 dãy ghế.
+		\begin{itemize}
+			\item Chọn một dãy ghế trong hai dãy ghế để xếp
+			nam vào có $2$ cách.
+			\item Xếp $5$ nam vào dãy ghế đã chọn có $5!$ cách.
+			\item Xếp $5$ nữ vào dãy ghế còn lại có $5!$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $2\cdot 5! \cdot 5! =28800$ cách xếp.
+\end{enumerate}	
+}
+\end{bt}
+
+\begin{bt}%[1D2K2-2]
+	Có hai dãy ghế, mỗi dãy 4 ghế. Xếp 4 nam, 4
+	nữ vào hai dãy ghế trên, có bao nhiêu cách xếp,
+	nếu:
+	\begin{enumerate}
+		\item Nam, nữ được xếp tùy ý.
+		\dapso{$40320$ cách xếp}
+		\item Nam 1 dãy ghế, nữ 1 dãy ghế.
+		\dapso{$1152$ cách xếp}
+	\end{enumerate}	
+\loigiai{
+\begin{enumerate}
+	\item Nam, nữ được xếp tùy ý.\\
+		Mỗi cách xếp 4 nam và 4 nữ vào hai dãy ghế một
+		cách tùy ý là một hoán vị của 8 người.\\
+		$\Rightarrow$ Có $8!=40320$ cách xếp.
+	\item Nam 1 dãy ghế, nữ 1 dãy ghế.
+		\begin{itemize}
+			\item Chọn một dãy ghế trong hai dãy ghế để xếp
+			nam vào có $2$ cách.
+			\item Xếp $4$ nam vào dãy ghế đã chọn có $4!$ cách.
+			\item Xếp $4$ nữ vào dãy ghế còn lại có $4!$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $2\cdot 4! \cdot 4! =1152$ cách xếp.
+\end{enumerate}	
+}
+\end{bt}
+
+\begin{bt}%[1D2B2-2]
+	Cho một bàn dài có 10 ghế và 10 học sinh
+	trong đó có 5 học sinh nữ. Hỏi có bao nhiêu
+	cách sắp xếp chỗ ngồi cho 10 học sinh sao cho:
+	\begin{enumerate}
+		\item Nam và nữ ngồi xen kẻ nhau.
+		\dapso{$28800$ cách xếp}
+		\item Học sinh cùng giới thì ngồi cạnh nhau.
+		\dapso{$28800$ cách xếp}
+	\end{enumerate}
+		\loigiai{
+		\begin{enumerate}
+		\item Nam và nữ ngồi xen kẻ nhau.\\
+			Đánh số các vị trí xếp chỗ như hình dưới
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+					\hline
+					1&2&3&4&5&6&7&8&9&10\\
+					\hline
+					& & & & & & & & & \\
+					\hline	
+				\end{tabular}
+			\end{center}
+			\begin{enumerate}[TH1. ]
+				\item Xếp $5$ học sinh nam vào vị trí chẵn có
+				$5!$ cách, sau đó xếp $5$ học sinh nữ vào $5$ vị trí
+				lẻ còn lại có $5!$ cách.\\
+				Theo quy tắc nhân có $5!\cdot 5!$ cách.
+				\item Xếp $5$ học sinh nam vào vị trí lẻ có $5!$
+				cách, sau đó xếp $5$ học sinh nữ vào $5$ vị trí
+				chẵn còn lại có $5!$ cách.\\
+				Theo quy tắc nhân có $5!\cdot 5!$ cách.
+			\end{enumerate}
+			Theo quy tắc cộng có $5!\cdot 5!+5!\cdot 5!=28800$ cách.
+		\item Học sinh cùng giới thì ngồi cạnh nhau.
+			\begin{enumerate}[TH1. ]
+				\item Xếp $5$ học sinh nam vào vị trí $1,2,3,4,5$ có
+				$5!$ cách, sau đó xếp $5$ học sinh nữ vào $5$ vị trí
+				còn lại có $5!$ cách.\\
+				Theo quy tắc nhân có $5!\cdot 5!$ cách.
+				\item Xếp $5$ học sinh nữ vào vị trí $1,2,3,4,5$ có
+				$5!$ cách, sau đó xếp $5$ học sinh nữ vào $5$ vị trí
+				còn lại có $5!$ cách.\\
+				Theo quy tắc nhân có $5!\cdot 5!$ cách.
+			\end{enumerate}
+			Theo quy tắc cộng có $5!\cdot 5!+5!\cdot 5!=28800$ cách.
+	\end{enumerate}		
+	}	
+\end{bt}
+
+\begin{bt}%[1D2K2-2]
+	Cho một bàn dài có 8 ghế và 8 học sinh trong
+	đó có 4 học sinh nam. Hỏi có bao nhiêu cách
+	sắp xếp chỗ ngồi cho 8 học sinh sao cho:
+	\begin{enumerate}
+		\item Nam và nữ ngồi xen kẻ nhau.
+		\dapso{$32514048004$ cách xếp}
+		\item Học sinh cùng giới thì ngồi cạnh nhau.
+		\dapso{$32514048004$ cách xếp}
+	\end{enumerate}	
+\loigiai{
+	\begin{enumerate}
+	\item Nam và nữ ngồi xen kẻ nhau.\\
+		Đánh số các vị trí xếp chỗ như hình dưới
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16\\
+				\hline
+				& & & & & & & & & & & & & & &\\
+				\hline	
+			\end{tabular}
+		\end{center}
+		\begin{enumerate}[TH1. ]
+			\item Xếp $8$ học sinh nam vào vị trí chẵn có
+			$8!$ cách, sau đó xếp $8$ học sinh nữ vào $8$ vị trí
+			lẻ còn lại có $8!$ cách.\\
+			Theo quy tắc nhân có $8!\cdot 8!$ cách.
+			\item Xếp $8$ học sinh nam vào vị trí lẻ có $8!$
+			cách, sau đó xếp $8$ học sinh nữ vào $8$ vị trí
+			chẵn còn lại có $8!$ cách.\\
+			Theo quy tắc nhân có $8!\cdot 8!$ cách.
+		\end{enumerate}
+		Theo quy tắc cộng có $8!\cdot 8!+8!\cdot 8!=3251404800$ cách.
+	\item Học sinh cùng giới thì ngồi cạnh nhau.
+		\begin{enumerate}[TH1. ]
+			\item Xếp $8$ học sinh nam vào vị trí $1,2,3,4,5,6,7,8$ có
+			$8!$ cách, sau đó xếp $8$ học sinh nữ vào $8$ vị trí
+			còn lại có $8!$ cách.\\
+			Theo quy tắc nhân có $8!\cdot 8!$ cách.
+			\item Xếp $8$ học sinh nữ vào vị trí $1,2,3,4,5,6,7,8$ có
+			$8!$ cách, sau đó xếp $8$ học sinh nữ vào $8$ vị trí
+			còn lại có $8!$ cách.\\
+			Theo quy tắc nhân có $8!\cdot 8!$ cách.
+		\end{enumerate}
+		Theo quy tắc cộng có $8!\cdot 8!+8!\cdot 8!=3251404800$ cách.
+\end{enumerate}	
+}
+\end{bt}
+
+\begin{bt}%[1D2K2-2]
+	Xếp $6$ học sinh $A$, $B$, $C$, $D$, $E$, $F$ vào một
+	ghế dài, có mấy cách sắp xếp nếu:
+	\begin{enumerate}
+		\item 6 học sinh này ngồi bất kì.
+		\dapso{$720$ cách xếp}
+		\item $A$ và $F$ luôn ngồi ở hai đầu ghế.
+		\dapso{$48$ cách xếp}
+		\item $A$ và $F$ luôn ngồi cạnh nhau.
+		\dapso{$240$ cách xếp}
+		\item $A, B, C$ luôn ngồi cạnh nhau.
+		\dapso{$144$ cách xếp}
+		\item $A, B, C, D$ luôn ngồi cạnh nhau.
+		\dapso{$144$ cách xếp}	
+	\end{enumerate}
+\loigiai{
+	\begin{enumerate}
+	\item 6 học sinh này ngồi bất kì.
+		Có $6!=720$ cách xếp.
+	\item $A$ và $F$ luôn ngồi ở hai đầu ghế.
+		\begin{itemize}
+			\item Xếp $A$, $F$ ngồi ở hai đầu ghế có $2!=2$ cách.
+			\item Xếp $B, C, D, E$ vào 4 vị trí ở giữa có $4!=24$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $2\cdot 24=48$ cách xếp.	
+	\item $A$ và $F$ luôn ngồi cạnh nhau.
+		\begin{itemize}
+			\item Ghép $A$, $F$ thành một nhóm ($AF$ hoặc $FA$) và xem như $1$ học sinh đặc biệt có $2!=2$ cách.
+			\item Xếp $5$ học sinh (gồm $B, C, D, E$ và học sinh đặc biệt) vào $5$ vị trí có $5!=120$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $2\cdot 120=240$ cách xếp.	
+	\item $A, B, C$ luôn ngồi cạnh nhau.
+		\begin{itemize}
+			\item Ghép $A, B, C$ thành một nhóm và xem như 1 học sinh đặc biệt có $3!=6$ cách.
+			\item Xếp $4$ học sinh (gồm $D, E, F$ và học sinh đặc biệt) vào 4 vị trí có $4!=24$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $6\cdot 24=144$ cách xếp.	
+	\item $A, B, C, D$ luôn ngồi cạnh nhau.
+		\begin{itemize}
+			\item Ghép $A, B, C, D$ thành một nhóm và xem như 1 học sinh đặc biệt có $4!=24$ cách.
+			\item Xếp $3$ học sinh (gồm $E, F$ và học sinh đặc biệt) vào 3 vị trí có $3!=6$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $24\cdot 6=144$ cách xếp.		
+\end{enumerate}	
+}	
+\end{bt}
+
+\begin{bt}%[1D2K2-2]
+	Xếp $5$ học sinh $A$, $B$, $C$, $D$, $E$ vào một
+	ghế dài, có mấy cách sắp xếp nếu:
+	\begin{enumerate}
+		\item $5$ học sinh này ngồi bất kì.
+		\dapso{$120$ cách xếp}
+		\item $A$ và $E$ luôn ngồi ở hai đầu ghế.
+		\dapso{$12$ cách xếp}
+		\item $A$ và $E$ luôn ngồi cạnh nhau.
+		\dapso{$48$ cách xếp}
+		\item $A, B, C$ luôn ngồi cạnh nhau.
+		\dapso{$36$ cách xếp}
+		\item $A, B, C, D$ luôn ngồi cạnh nhau.
+		\dapso{$48$ cách xếp}	
+	\end{enumerate}	
+\loigiai{
+	\begin{enumerate}
+	\item $5$ học sinh này ngồi bất kì.
+		Có $5!=120$ cách xếp.
+	\item $A$ và $E$ luôn ngồi ở hai đầu ghế.
+		\begin{itemize}
+			\item Xếp $A$, $E$ ngồi ở hai đầu ghế có $2!=2$ cách.
+			\item Xếp $B, C, D$ vào 3 vị trí ở giữa có $3!=6$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $2\cdot 6=12$ cách xếp.	
+	\item $A$ và $E$ luôn ngồi cạnh nhau.
+		\begin{itemize}
+			\item Ghép $A$, $E$ thành một nhóm ($AE$ hoặc $EA$) và xem như 1 học sinh đặc biệt có $2!=2$ cách.
+			\item Xếp $4$ học sinh (gồm $B, C, D$ và học sinh đặc biệt) vào 4 vị trí có $4!=24$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $2\cdot 24=48$ cách xếp.	
+	\item $A, B, C$ luôn ngồi cạnh nhau.
+		\begin{itemize}
+			\item Ghép $A, B, C$ thành một nhóm và xem như $1$ học sinh đặc biệt có $3!=6$ cách.
+			\item Xếp $3$ học sinh (gồm $D, E$ và học sinh đặc biệt) vào 3 vị trí có $3!=6$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $6\cdot 6=36$ cách xếp.	
+	\item $A, B, C, D$ luôn ngồi cạnh nhau
+		\begin{itemize}
+			\item Ghép $A, B, C, D$ thành một nhóm và xem như 1 học sinh đặc biệt có $4!=24$ cách.
+			\item Xếp $2$ học sinh (gồm $E$ và học sinh đặc biệt) vào $2$ vị trí có $2!=2$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $24\cdot 2=48$ cách xếp.		
+\end{enumerate}	
+}
+\end{bt}
+\begin{dang}{Các bài toán liên quan đến hoán vị, tổ hợp và chỉnh hợp}
+	\begin{itemize}
+		\item Chọn $k$ trong $n$ và sắp xếp $\Rightarrow$ Sử dụng chỉnh hợp $\mathrm{A}_n^k=\dfrac{n!}{(n-k)!}$\\ $\left(Casio: n \quad SHIFT \times k\right)$
+		\item Chọn $k$ trong $n$ tuỳ ý $\Rightarrow$ Sử dụng tổ hợp $\mathrm{C}_n^k=\dfrac{n!}{(n-k)!k!}$\\ $\left(Casio: n \quad SHIFT \div k\right)$
+	\end{itemize}
+\end{dang}
+\begin{vd}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Trong không gian cho bốn điểm $A$, $B$, $C$, $D$ mà không có ba điểm nào thẳng hàng. Hỏi:
+	\begin{listEX}[1] % Số 2 là 2 cột
+		\item Có bao nhiêu đoạn thẳng được tạo thành? \dapso{$6$}
+		\item Có bao nhiêu vectơ được tạo thành? \dapso{$12$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1] % Số 2 là 2 cột
+			\item Số đoạn thẳng được tạo thành là $\mathrm{C}_4^2=\dfrac{4!}{(4-2)!2!}=6$
+			\item Số vectơ được tạo thành là $\mathrm{A}_4^2=\dfrac{4!}{(4-2)!}=12$
+		\end{listEX}
+	}
+\end{vd}
+%==============
+\begin{vd}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Từ các chữ số 1, 2, 3, 4, 5, 6 lập được bao nhiêu số tự nhiên. 
+	\begin{listEX}[1] % Số 2 là 2 cột
+		\item Gồm 4 chữ số.\dapso{$1296$}
+		\item Gồm 3 chữ số đôi một khác nhau.\dapso{$120$}
+		\item Gồm 4 chữ số khác nhau và nó là số chẵn.\dapso{$180$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1] % Số 2 là 2 cột
+			\item
+			Gọi số cần tìm có dạng $\overline{a_1a_2a_3a_4}$\\
+			\begin{center}
+				\begin{tabular}{c|c|c|c|c}
+					Phần tử &$a_1$  &$a_2$  &$a_3$&$a_4$  \\
+					\hline
+					Số cách chọn & 6 &6  &6&6  \\
+				\end{tabular}
+			\end{center}
+			Theo quy tắc nhân có $6\cdot6\cdot6\cdot6=6^4=1296$ số
+			\item Gọi số cần tìm có dạng $\overline{abc}$\\
+			Chọn 3 số trong 6 số 1, 2, 3, 4, 5, 6 và xếp vào 3 vị trí $a$, $b$, $c$ có $\mathrm{A}_6^3=120$ số
+			\item Gồm 4 chữ số khác nhau và nó là số chẵn.\\
+			Gọi số thoả mãn bài toán có dạng $\overline{b_1b_2b_3b_4}$\\
+			Chọn $b_4\in \{2;4;6\}:$ có 3 cách chọn\\
+			Chọn 3 số trong 5 số $\{1;2;3;4;5;6\}\setminus \{b_4\}$ và xếp vào các vị trí $b_1$, $b_2$, $b_3$ có $A_5^3$ cách chọn.\\
+			Theo quy tắc nhân có $3\cdot \mathrm{A}_5^3=180$ số
+		\end{listEX}
+	}
+\end{vd}
+%==============
+\begin{vd}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Từ các chữ số $1$, $2$, $3$, $4$, $5$, $6$, $7$ lập được bao nhiêu số tự nhiên. 
+	\begin{listEX}[1] % Số 2 là 2 cột
+		\item Gồm $5$ chữ số.\dapso{$16807$}
+		\item Gồm $4$ chữ số đôi một khác nhau.\dapso{$840$}
+		\item Gồm $5$ chữ số khác nhau và nó là số lẻ.\dapso{$1440$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1] % Số 2 là 2 cột
+			\item 
+			Gọi số cần tìm có dạng $\overline{a_1a_2a_3a_4a_5}$\\
+			\begin{center}
+				\begin{tabular}{c|c|c|c|c|c}
+					Phần tử &$a_1$  &$a_2$  &$a_3$&$a_4$&$a_5$  \\
+					\hline
+					Số cách chọn & 7 &7  &7&7&7  \\
+				\end{tabular}
+			\end{center}
+			Theo quy tắc nhân có $7\cdot7\cdot7\cdot7\cdot7=7^5=16807$ số
+			\item Gọi số cần tìm có dạng $\overline{abcd}$\\
+			Chọn 4 số trong 7 số 1, 2, 3, 4, 5, 6, 7 và xếp vào 4 vị trí $a$, $b$, $c$, $d$ có $\mathrm{A}_7^4=840$ số
+			\item Gồm 5 chữ số khác nhau và nó là số lẻ.\\
+			Gọi số thoả mãn bài toán có dạng $\overline{b_1b_2b_3b_4b_5}$\\
+			Chọn $b_5\in \{1;3;5;7\}:$ có 4 cách chọn\\
+			Chọn 4 số trong 6 số $\{1;2;3;4;5;6; 7\}\setminus \{b_5\}$ và xếp vào các vị trí $b_1$, $b_2$, $b_3$, $b_4$ có $\mathrm{A}_6^4$ cách chọn.\\
+			Theo quy tắc nhân có $4\cdot \mathrm{A}_6^4=1440$ số
+		\end{listEX}
+	}
+\end{vd}
+%========
+\begin{vd}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Cho $X=\{0;1;2;3;4;5;6;7;8;9\}$ có bao nhiêu số tự nhiên gồm 5 chữ số được tạo từ tập $X$, sao cho:
+	\begin{listEX}[1] % Số 2 là 2 cột
+		\item Khác nhau đôi một và là số lẻ.\dapso{$13440$}
+		\item Khác nhau đôi một và là số chẵn.\dapso{$13776$}
+		\item Khác nhau đôi một và luôn có mặt $1$, $2$, $3$.\dapso{$2376$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1] % Số 2 là 2 cột
+			\item Gọi số cần tìm là $\overline{a_1a_2a_3a_4a_5}$\\
+			Chọn $a_5\in \{1;3;5;7;9\}:$ có 5 cách chọn.\\
+			Nhận xét rằng $a_1\ne 0$ và $a_1\ne a_5$ nên $a_1$ có 8 cách chọn.\\
+			Chọn 3 số trong 8 số $\{0;1;2;3;4;5;6; 7;8;9\}\setminus \{a_1;a_5\}$ và xếp vào các vị trí $a_2$, $a_3$, $a_4$ có $A_8^3$ cách chọn.\\
+			Theo quy tắc nhân có $5\cdot 8\cdot \mathrm{A}_8^3=13440$ số
+			\item Gọi số cần tìm là $\overline{b_1b_2b_3b_4b_5}$\\
+			\textbf{Trường hợp 1:} Nếu $b_5=0$\\
+			Chọn 4 số trong 9 số $\{1;2;3;4;5;6; 7;8;9\}$ và xếp vào các vị trí $b_1$ $b_2$, $b_3$, $b_4$ có $\mathrm{A}_9^4$ cách chọn.\\
+			\textbf{Trường hợp 2:} Nếu $b_5\ne0$\\
+			Chọn $b_5\in \{2;4;6;8\}:$ có 4 cách chọn.\\
+			Nhận xét rằng $b_1\ne 0$ và $b_1\ne b_5$ nên $b_1$ có 8 cách chọn.\\
+			Chọn 3 số trong 8 số $\{0;1;2;3;4;5;6; 7;8;9\}\setminus \{b_1;b_5\}$ và xếp vào các vị trí $b_2$, $b_3$, $b_4$ có $\mathrm{A}_8^3$ cách chọn.\\
+			Theo quy tắc nhân có $4\cdot 8\cdot \mathrm{A}_8^3=13440$ số.\\
+			Như vậy có $\mathrm{A}_9^4+10752=13776$ số.
+			\item Gọi số cần tìm là $\overline{abcde}$\\
+			Ta tìm số có 5 chữ số trong đó có các chữ số 1; 2; 3 nên số cách chọn là $A_5^3\cdot \mathrm{A}_7^2$.\\
+			Nhưng số 0 vẫn có thể đứng đầu nên ta phải loại đi những số có số 0 đứng đầu.\\
+			Những số có 0 đứng đầu có dạng $\overline{0bcde}$ trong đó có chữ số 1, 2, 3. Vì vậy số cách chọn để loại bỏ là $\mathrm{A}_4^3\cdot A_6^1$.\\
+			Như vậy có $\mathrm{A}_5^3\cdot \mathrm{A}_7^2-\mathrm{A}_4^3\cdot \mathrm{A}_6^1=2376$ số
+		\end{listEX}
+	}
+\end{vd}
+%========
+\begin{vd}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Cho $X=\{0;1;2;3;4;5;6;7\}$ có bao nhiêu số tự nhiên gồm 5 chữ số được tạo từ tập $X$, sao cho:
+	\begin{listEX}[1] % Số 2 là 2 cột
+		\item Khác nhau đôi một và là số chẵn.\dapso{$3000$}
+		\item Khác nhau đôi một và chia hết cho $5$.\dapso{$1560$}
+		\item Khác nhau đôi một và luôn có mặt số $2$ và số $3$.\dapso{$2160$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Gọi số cần tìm là $\overline{a_1a_2a_3a_4a_5}$\\
+			\textbf{Trường hợp 1:} Nếu $a_5=0$\\
+			Chọn 4 số trong 7 số $\{1;2;3;4;5;6; 7\}$ và xếp vào các vị trí $a_1$ $a_2$, $a_3$, $a_4$ có $\mathrm{A}_7^4$ cách chọn.\\
+			\textbf{Trường hợp 2:} Nếu $a_5\ne0$\\
+			Chọn $a_5\in \{2;4;6\}:$ có 3 cách chọn.\\
+			Nhận xét rằng $a_1\ne 0$ và $a_1\ne a_5$ nên $a_1$ có 6 cách chọn.\\
+			Chọn 3 số trong 6 số $\{0;1;2;3;4;5;6;7\}\setminus \{a_1;a_5\}$ và xếp vào các vị trí $a_2$, $a_3$, $a_4$ có $\mathrm{A}_6^3$ cách chọn.\\
+			Theo quy tắc nhân có $3\cdot 6\cdot \mathrm{A}_6^3=2160$ số.\\
+			Như vậy có $\mathrm{A}_7^4+2160=3000$ số.
+			\item Gọi số cần tìm là $\overline{abcde}$\\
+			Số tự nhiên chia hết cho 5 sẽ có tận cùng là 0 hoặc 5.\\
+			\textbf{Trường hợp 1:} Số tự nhiên gồm 5 chữ số đôi một khác nhau có dạng $\overline{abcd0}$ trong đó $a, b, c, d$ đôi một khác nhau và thuộc tập hợp $X=\{1;2;3;4;5;6;7\}$ . Khi đó có $\mathrm{A}_7^4=840$ số dạng này \\
+			\textbf{Trường hợp 2:} Số tự nhiên gồm 5 chữ số đôi một khác nhau có dạng $\overline{abcd5}$ trong đó $a, b, c, d$ đôi một khác nhau và thuộc tập hợp $X=\{0;1;2;3;4;6;7\}$ riêng $a$ thêm điều kiện khác 0. Khi đó có 6 cách chọn a và có $\mathrm{A}_6^3$ cách chọn $\overline{bcd}$\\
+			Do đó có $6\cdot \mathrm{A}_6^3=720 $ số dạng này\\
+			Như vậy có $840+720=1560$ số
+			\item Gọi số cần tìm là $\overline{abcde}$\\
+			Ta tìm số có 5 chữ số trong đó có các chữ số 2; 3 nên số cách chọn là $\mathrm{A}_5^2\cdot \mathrm{A}_6^3$.\\
+			Nhưng số 0 vẫn có thể đứng đầu nên ta phải loại đi những số có số 0 đứng đầu.\\
+			Những số có 0 đứng đầu có dạng $\overline{0bcde}$ trong đó có chữ số 2, 3. Vì vậy số cách chọn để loại bỏ là $\mathrm{A}_4^2\cdot \mathrm{A}_5^2$.\\
+			Như vậy có $\mathrm{A}_5^2\cdot \mathrm{A}_6^3-\mathrm{A}_4^2\cdot \mathrm{A}_5^2=2400-240=2160$ số
+		\end{listEX}
+	}
+\end{vd}
+%================
+\begin{vd}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Có bao nhiêu số có $5$ chữ số mà các chữ số đôi một khác nhau và khác $0$, trong đó có đúng $3$ chữ số lẻ.\dapso{$7200$}
+	\loigiai{
+		Từ $1$ đến $9$ có $4$ chữ số chẵn và $5$ chữ số lẻ.\\
+		Xếp $5$ số thoả yêu cầu bài toán vào $5$ ô tương ứng.\\
+		Chọn $3$ số lẻ trong $5$ số lẻ và đặt vào $3$ ô tuỳ ý có $C_5^3$ cách.\\
+		Chọn $2$ số chẵn trong $4$ số chẵn để đặt vào $2$ ô còn lại có $C_4^2$ cách.\\
+		Những số đặt trong $5$ ô này có thể thay đổi vị trí cho nhau nên có $5!$ cách.\\
+		Theo quy tắc nhân có $\mathrm{C}_5^3\cdot \mathrm{C}_4^2\cdot 5!=7200$ số thoả yêu cầu bài toán.
+	}
+\end{vd}
+%===========
+\begin{vd}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Từ các số $1, 2, 3, 4, 5, 6, 7, 8, 9$ sẽ lập được bao nhiêu số có $6$ chữ số khác nhau mà có đúng bốn chữ số chẵn và 2 chữ số lẻ.\dapso{$7200$}
+	\loigiai{
+		Từ $1$ đến $9$ có $4$ chữ số chẵn và $5$ chữ số lẻ.\\
+		Xếp $6$ số thoả yêu cầu bài toán vào $6$ ô tương ứng.\\
+		Chọn $2$ số lẻ trong $5$ số lẻ và đặt vào $2$ ô tuỳ ý có $\mathrm{C}_5^2$ cách.\\
+		Chọn $4$ số chẵn trong $4$ số chẵn để đặt vào $4$ ô còn lại có $1$ cách.\\
+		Những số đặt trong $6$ ô này có thể thay đổi vị trí cho nhau nên có $6!$ cách.\\
+		Theo quy tắc nhân có $\mathrm{C}_5^2\cdot 6!=7200$ số thoả yêu cầu bài toán.
+	}
+\end{vd}
+%========
+\begin{vd}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Có bao nhiêu chữ số có 5 chữ số khác nhau biết rằng có đúng 3 chữ số chẵn và 2 chữ số lẻ còn lại đứng kề nhau?\dapso{$4080$}
+	\loigiai{
+		Từ 0 đến 9 có 5 chữ số chẵn và 5 chữ số lẻ.\\
+		Xếp 5 số thoả yêu cầu bài toán vào 5 ô tương ứng.\\
+		Chọn 2 số lẻ kề nhau trong 5 số lẻ đặt vào 2 vị trí mà 2 số này liền kề nhau có $\mathrm{A}_5^2$
+		Chọn 3 số chẵn trong 5 số chẵn và đặt vào 3 ô còn lại có $\mathrm{C}_5^3$ cách.\\
+		Có thể coi 2 số lẻ là một số có hai chữ số
+		Những số đặt trong 4 ô này có thể thay đổi vị trí cho nhau nên có $4!$ cách.\\
+		Theo quy tắc nhân có $\mathrm{A}_5^2\cdot \mathrm{C}_5^3\cdot 4!=4800$ số.\\
+		Nhưng ta phải loại bỏ trường hợp số có dạng $\overline{0bcde}$.
+		Số có dạng $\overline{0bcde}$ thoả yêu cầu đề bài có $\mathrm{A}_5^2\cdot \mathrm{C}_4^2\cdot 3!=720$ cách.\\
+		Như vậy có $4800-720=4080$ số thoả yêu cầu đề bài.
+	}
+\end{vd}
+\baitaptl
+%===========
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Một lớp học có $40$ học sinh, trong đó gồm $25$ nam và $15$ nữ. Giáo viên chủ nhiệm muốn chọn một ban cán sự lớp gồm $4$ em. Hỏi có bao
+	nhiêu cách chọn, nếu:
+	\begin{listEX}[1]
+		\item Gồm 4 học sinh tuỳ ý.\dapso{$91390$}
+		\item Có 1 nam và 3 nữ.\dapso{$11375$}
+		\item Có 2 nam và 2 nữ.\dapso{$31500$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Gồm 4 học sinh tuỳ ý thì có $\mathrm{C}_{40}^4=91390$ cách chọn.
+			\item Gồm 1 nam và 3 nữ thì có $25\cdot \mathrm{C}_{25}^3=11375$ cách chọn.
+			\item Gồm 2 nam và 2 nữ thì có $\mathrm{C}_{25}^2\cdot \mathrm{C}_{15}^2=31500$ cách chọn.
+		\end{listEX}
+	}
+\end{bt}
+%===========
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Một lớp học có 40 học sinh, trong đó gồm 25 nam và 15 nữ. Giáo viên chủ nhiệm muốn chọn 5 học sinh trực nhật. Hỏi có bao nhiêu cách chọn, nếu:
+	\begin{listEX}[2]
+		\item Gồm 5 học sinh tuỳ ý.\dapso{$658008$}
+		\item Có 3 nam và 2 nữ.\dapso{$241500$}
+		\item Có không quá 3 nữ.\dapso{$620880$}
+		\item Có ít nhất 1 nữ.\dapso{$604878$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Gồm 5 học sinh tuỳ ý thì có $\mathrm{C}_{40}^5=658008$ cách chọn.
+			\item Gồm 3 nam và 2 nữ thì có $\mathrm{C}_{25}^3\cdot \mathrm{C}_{15}^2=241500$ cách chọn.
+			\item Trường hợp chọn 5 học sinh mà có 4 nữ thì có $25\cdot \mathrm{C}_{15}^4=34125$ cách chọn.\\
+			Trường hợp chọn 5 học sinh toàn nữ thì có $\mathrm{C}_{15}5=3003$ cách chọn.\\
+			Như vậy có $658008-34125-3003=620880$ cách chọn thoả yêu cầu đề bài.
+			\item Chọn 5 học sinh có ít nhất một nữ thì có $658008-\mathrm{C}_{25}^5=604878$ cách chọn
+		\end{listEX}
+	}
+\end{bt}
+%=========
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Một lớp có 20 học sinh trong đó có 14 nam, 6 nữ. Hỏi có bao nhiêu cách lập một đội gồm 4 học sinh, trong đó có:
+	\begin{listEX}[2]
+		\item Số nam và số nữ bằng nhau.\dapso{$1365$}
+		\item Ít nhất một nữ.\dapso{$3844$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Gồm 2 nam và 2 nữ thì có $\mathrm{C}_{14}^2\cdot \mathrm{C}_{6}^2=1365$ cách chọn.
+			\item Có ít nhất một nữ thì có $\mathrm{C}_{20}^4-\mathrm{C}_{14}^4=3844$ cách chọn.
+		\end{listEX}
+	}
+\end{bt}
+%=======
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Một đội văn nghệ gồm 20 người, trong đó có 10 nam, 10 nữ. Hỏi có bao nhiêu cách chọn ra 5 người, sao cho:
+	\begin{listEX}[2]
+		\item Có đúng 2 nam.\dapso{$252$}
+		\item Có ít nhất 2 nam và 1 nữ.\dapso{$12900$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Có đúng 2 nam thì có $\mathrm{C}_{10}^2\cdot \mathrm{C}_{10}^3=5400$ cách chọn.
+			\item Trường hợp không có nữ thì có $\mathrm{C}_{10}^5=252$.\\
+			Trường hợp có không có nam hoặc có 1 nam thì có $\mathrm{C}_{10}^5+10\cdot \mathrm{C}_{10}^4=2352$.\\
+			Như vậy có $\mathrm{C}_{20}^5-252-2352=12900$ cách chọn thoả yêu cầu bài toán.
+		\end{listEX}
+	}
+\end{bt}
+%============
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Từ 5 bông hồng vàng, 3 bông hồng trắng, 4 bông hồng đỏ (các bông hồng xem như đôi một khác nhau). Người ta muốn chọn ra 1 bó hoa hồng gồm 7 bông. Có bao nhiêu cách chọn một đóa hoa sao cho:
+	\begin{listEX}[1]
+		\item Có đúng 1 bông hồng đỏ.\dapso{$112$}
+		\item Có ít nhất 3 bông vàng và ít nhất 3 bông đỏ.\dapso{$150$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Có đúng 1 bông hồng đỏ thì có $4\cdot \mathrm{C}_{8}^6=112$ cách chọn.
+			\item Trường hợp lấy 3 vàng, 3 đỏ và 1 trắng thì có $\mathrm{C}_{5}^3\cdot \mathrm{C}_{4}^3\cdot \mathrm{C}_{3}^1=120$.\\
+			Trường hợp lấy 4 vàng, 3 đỏ thì có $\mathrm{C}_{5}^4\cdot \mathrm{C}_{4}^3=20$.\\
+			Trường hợp lấy 3 vàng, 4 đỏ thì có $\mathrm{C}_{5}^3\cdot \mathrm{C}_{4}^4=10$.\\
+			Như vậy có $120+20+10=150$ cách chọn thoả yêu cầu bài toán.
+		\end{listEX}
+	}
+\end{bt}
+%=============
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Trông một hộp có 18 bi, trong đó có 9 viên bi xanh, 5 viên bi đỏ, 4 bi vàng có kích thước đôi một khác nhau. Có bao nhiêu cách chọn ra 6 viên bi sao cho những viên bi được chọn thỏa mãn:
+	\begin{listEX}[2]
+		\item Có đúng 2 viên bi màu đỏ?\dapso{$7150$}
+		\item Số bi xanh bằng số bi đỏ?\dapso{$3045$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Có đúng 2 viên bi đỏ thì có $\mathrm{C}_{13}^4\cdot \mathrm{C}_{5}^2=7150$ cách chọn.
+			\item \textbf{Trường hợp 1:} Lấy 3 xanh, 3 đỏ thì có $\mathrm{C}_{9}^3\cdot \mathrm{C}_{5}^3=840$.\\
+			\textbf{Trường hợp 2:} Lấy 2 xanh, 2 đỏ và 2 vàng thì có $\mathrm{C}_{9}^2\cdot \mathrm{C}_{5}^2\cdot \mathrm{C}_{4}^2=2160$.\\
+			\textbf{Trường hợp 3:} Lấy 1 xanh, 1 đỏ và 4 vàng thì có $\mathrm{C}_{9}^1\cdot \mathrm{C}_{5}^1\cdot \mathrm{C}_{4}^4=45$.\\
+			Như vậy có $840+2160+45=3045$ cách chọn thoả yêu cầu bài toán.
+		\end{listEX}
+	}
+\end{bt}
+%=======
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Trong ngân hàng đề kiểm tra 30 phút môn Vật Lí có 10 câu hỏi, trong đó có 4 câu lý thuyết và 6 bài tập. Người ta cấu tạo thành các đề thi. Biết rằng trong mỗi đề thi phải gồm 3 câu hỏi, trong đó nhất thiết phải có ít nhất 1 câu lý thuyết và 1 bài tập. Hỏi có thể tạo ra bao nhiêu đề thi có dạng như trên?\dapso{$96$}
+	\loigiai{
+		Thiết lập đề kiểm tra gồm 3 câu hỏi, trong đó có ít nhất một câu lý thuyết và ít nhất một câu bài tập.\\
+		Trường hợp không có câu lý thuyết thì có $\mathrm{C}_{6}^3$.\\
+		Trường hợp không có câu bài tập thì có $\mathrm{C}_{4}^3$.\\
+		Như vậy có $\mathrm{C}_{10}^3-\mathrm{C}_{6}^3-\mathrm{C}_{4}^3=96$ cách tạo ra đề kiểm tra thoả yêu cầu.
+	}
+\end{bt}
+%=======
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Trong một môn học, thầy giáo có 30 câu hỏi khác nhau gồm 5 câu hỏi khó, 10 câu hỏi trung bình, 15 câu hỏi dễ. Từ 30 câu hỏi đó có thể lập được bao nhiêu đề kiểm tra, mỗi đề gồm 5 câu hỏi khác nhau và nhất thiết phải có đủ 3 loại câu hỏi (khó, trung bình, dễ) và số câu hỏi dễ không ít hơn 2.\dapso{$56875$}
+	\loigiai{
+		\textbf{Trường hợp 1:} 3 dễ, 1 khó, 1 trung bình thì có $\mathrm{C}_{15}^3\cdot \mathrm{C}_{5}^1\cdot \mathrm{C}_{10}^1=22750$ cách.\\
+		\textbf{Trường hợp 2:} 2 dễ, 2 khó, 1 trung bình thì có $\mathrm{C}_{15}^2\cdot \mathrm{C}_{5}^2\cdot \mathrm{C}_{10}^1=10500$ cách.\\
+		\textbf{Trường hợp 3:} 2 dễ, 1 khó, 2 trung bình thì có $\mathrm{C}_{15}^2\cdot \mathrm{C}_{5}^1\cdot \mathrm{C}_{10}^2=23625$ cách.\\
+		Như vậy có $22750+10500+23625=56875$ cách chọn đề kiểm tra thoả yêu cầu.
+	}
+\end{bt}
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Đội thanh niên xung kích của một trường phổ thông có $12$ học sinh, gồm $5$ học sinh lớp $A$, $4$ học sinh lớp $B$ và $3$ học sinh lớp $C$. Cần chọn $4$ học sinh đi làm nhiệm vụ, sao cho $4$ học sinh này thuộc không quá $2$ trong $3$ lớp trên. Hỏi có bao nhiêu cách chọn như vậy?\dapso{$225$}
+	\loigiai{
+		Cách chọn lớp nào cũng có học sinh tham gia làm nhiệm vụ:\\
+		\textbf{Trường hợp 1:} $2$ lớp $ A $, $ 1 $ lớp $ B $,$  1 $ lớp $ C $ thì có $\mathrm{C}_{5}^2\cdot \mathrm{C}_{4}^1\cdot \mathrm{C}_{3}^1=120$ cách.\\
+		\textbf{Trường hợp 2:}$  1 $ lớp$  A $, $ 2 $ lớp $ B $, $ 1 $ lớp $ C $ thì có $\mathrm{C}_{5}^1\cdot \mathrm{C}_{4}^2\cdot \mathrm{C}_{3}^1=90$ cách.\\
+		\textbf{Trường hợp 3:} $ 1 $ lớp $  A $, $ 1 $ lớp $  B $, $ 2 $ lớp $ C  $thì có $\mathrm{C}_{5}^1\cdot \mathrm{C}_{4}^1 \cdot \mathrm{C}_{3}^2=60$ cách.\\
+		Như vậy có $\mathrm{C}_{12}^4-(120+90+60)=225$ cách chọn đề kiểm tra thoả yêu cầu.
+	}
+\end{bt}
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Hội đồng quản trị của một công ty gồm $12$ người, trong đó có $5$ nữ. Từ hội đồng quản trị đó người ta bầu ra $1$ chủ tịch hội đồng quản trị, $1$ phó chủ tịch hội đồng quản trị và $2$ ủy viên. Hỏi có bao nhiêu cách bầu sao cho trong $4$ người được bầu nhất thiết phải có nữ?\dapso{$5520$}
+	\loigiai{
+		Cách chọn $4$ người tuỳ ý làm Hội đồng quản trị có $\mathrm{C}_{12}^1\cdot \mathrm{C}_{11}^1\cdot \mathrm{C}_{10}^2$ cách.\\
+		Cách chọn $4$ người không có nữ thì có $\mathrm{C}_{7}^1 \cdot \mathrm{C}_{6}^1\cdot \mathrm{C}_{5}^2$ cách.\\
+		Như vậy cách chọn thoả yêu cầu bài toán là một hội đồng quản trị $4$ người trong đó luôn có nữ là: $\mathrm{C}_{12}^1 \cdot \mathrm{C}_{11}^1\cdot \mathrm{C}_{10}^2-\mathrm{C}_{7}^1\cdot \mathrm{C}_{6}^1\cdot \mathrm{C}_{5}^2=5520$ cách.	
+	}
+\end{bt}
+\begin{bt}%[Nguyễn Hiếu, dự án Tikpro 2.1 -LVD 11]%[1D2B2-2]
+	Lớp có 50 học sinh được chia thành 5 tổ, mỗi tổ có 10 học sinh. Hỏi có bao nhiêu cách chia tổ?\dapso{$\mathrm{C}_{50}^{10}\cdot \mathrm{C}_{40}^{10}\cdot \mathrm{C}_{30}^{10}\cdot \mathrm{C}_{20}^{10}\cdot \mathrm{C}_{10}^{10}$}
+	\loigiai{
+		Chọn 10 học sinh cho tổ 1 có $\mathrm{C}_{50}^{10}$ cách.\\
+		Chọn 10 học sinh cho tổ 2 có $\mathrm{C}_{40}^{10}$ cách.\\
+		Chọn 10 học sinh cho tổ 3 có $\mathrm{C}_{30}^{10}$ cách.\\
+		Chọn 10 học sinh cho tổ 4 có $\mathrm{C}_{20}^{10}$ cách.\\
+		Chọn 10 học sinh cho tổ 5 có $\mathrm{C}_{10}^{10}$ cách.\\
+		Như vậy theo quy tắc nhân có $\mathrm{C}_{50}^{10}\cdot \mathrm{C}_{40}^{10}\cdot \mathrm{C}_{30}^{10}\cdot \mathrm{C}_{20}^{10}\cdot \mathrm{C}_{10}^{10}$ cách chọn thoả yêu cầu bài toán.	
+	}
+\end{bt}
+\begin{bt}%[1D2B2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Một tổ có $8$ học sinh đi trồng cây. Khi trồng cây cần có $2$ em học sinh. Có bao nhiêu cách chia tổ thành những cặp như vậy?\dapso{$2520$}
+	\loigiai{Vì mỗi tổ gồm $2$ học sinh nên số cách chia tổ là
+		$\mathrm{C}_8^2\cdot \mathrm{C}_6^2\cdot \mathrm{C}_4^2\cdot \mathrm{C}_2^2=\dfrac{8!}{2!\cdot 2!\cdot 2!\cdot 2!}=2520$.}
+\end{bt}
+\begin{bt}%[1D2B2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Giải bóng truyền VTV Cup gồm $9$ đội bóng tham dự, trong đó có 6 đội nước ngoài và $3$ đội Việt Nam. Ban tổ chức bốc thăm chia làm $3$
+	bảng đấu $A$, $B$, $C$. Hỏi có bao nhiêu cách chia sao cho:
+	\begin{listEX}
+		\item[a)] Mỗi bảng ba đội?\dapso{$1680$}
+		\item[b)] Mỗi bảng ba đội và $3$ đội bóng của Việt Nam ở
+		ba bảng khác nhau?\dapso{$540$}
+	\end{listEX}
+	\loigiai{\begin{listEX}
+			\item[a)] Vì mỗi bảng gồm $3$ đội nên
+			\begin{itemize}
+				\item Số cách chọn $3$ đội vào bảng $A$: $\mathrm{C}_9^3=84$;
+				\item Số cách chọn $3$ đội vào bảng $B$: $\mathrm{C}_6^3=20$;
+				\item Số cách chọn $3$ đội vào bảng $C$: $\mathrm{C}_3^3=1$.
+			\end{itemize}
+			Theo quy tắc nhân, số cách chia bảng là $84\cdot 20\cdot 1=1680$.
+			\item[b)] Vì các đội bóng của Việt Nam ở các bảng khác nhau nên
+			\begin{itemize}
+				\item Số cách cách xếp 3 đội bóng Việt Nam vào $3$ bảng: $3!=6$;
+				\item Số xếp $6$ đội còn lại vào ba bảng, mỗi bảng hai đội: $\dfrac{6!}{2!\cdot 2!\cdot 2!}=90$.
+			\end{itemize}
+			Theo quy tắc nhân, số cách chia bảng là $6\cdot 90=540$.	
+	\end{listEX}}
+\end{bt}
+\begin{bt}%[1D2B2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Để sắp xếp $5$ bạn nữ và $15$ bạn nam thành bốn nhóm $A$, $B$, $C$, $D$, mỗi nhóm có $5$ bạn. Việc chia nhóm được thực hiện một cách ngẫu nhiên. Hỏi có bao nhiêu cách chia nhóm sao cho:
+	\begin{listEX}
+		\item[a)] Thành viên trong nhóm là bất kì?\dapso{$\mathrm{C}_{20}^5\cdot \mathrm{C}_{15}^5\cdot \mathrm{C}_{10}^5\cdot \mathrm{C}_{5}^5$}
+		\item[b)] $5$ bạn nữ ở cùng một nhóm.\dapso{$4\cdot \mathrm{C}_{15}^5\cdot \mathrm{C}_{10}^5\cdot \mathrm{C}_{5}^5$}
+	\end{listEX}
+	\loigiai{\begin{listEX}
+			\item[a)] Ta có
+			\begin{itemize}
+				\item Số cách chọn $5$ học sinh nhóm $A$: $\mathrm{C}_{20}^5$;
+				\item Số cách chọn $5$ học sinh nhóm $B$: $\mathrm{C}_{15}^5$;
+				\item Số cách chọn $5$ học sinh nhóm $C$: $\mathrm{C}_{10}^5$.
+				\item Số cách chọn $5$ học sinh nhóm $D$: $\mathrm{C}_5^5$.
+			\end{itemize}	
+			Theo quy tắc nhân, số cách chia nhóm thỏa yêu cầu bài toán là \[\mathrm{C}_{20}^5\cdot \mathrm{C}_{15}^5\cdot \mathrm{C}_{10}^5\cdot \mathrm{C}_{5}^5.\]
+			\item[b)] Vì $5$ bạn nữ ở cùng một nhóm nên
+			\begin{itemize}
+				\item Số cách xếp nhóm cho $5$ học sinh nữ là $4$;
+				\item Số cách xếp $15$ học sinh nam vào $3$ nhóm còn lại
+				\[\mathrm{C}_{15}^5\cdot \mathrm{C}_{10}^5\cdot \mathrm{C}_{5}^5.\]
+			\end{itemize}
+			Theo quy tắc nhân, số cách chia nhóm thỏa yêu cầu bài toán là \[4\cdot \mathrm{C}_{15}^5\cdot \mathrm{C}_{10}^5\cdot \mathrm{C}_{5}^5.\]	
+	\end{listEX}}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Trong một hộp có $50$ tấm thẻ được đánh số từ $1$ đến $50$. Có bao nhiêu cách lấy ra ba thẻ sao cho có đúng $2$ thẻ mang số chia hết cho $8$?\dapso{$660$}
+	\loigiai{Từ $1$ đến $50$ có đúng $\left[\dfrac{50}{8}\right]=6$ số chia hết cho $8$. Khi đó,
+		\begin{itemize}
+			\item Số cách chọn $2$ số chia hết cho $8$ là $\mathrm{C}_6^2=15$ cách;
+			\item Số cách chọn $1$ số không chia hết cho $8$ là $44$ cách.
+		\end{itemize}
+		Theo quy tắc nhân, ta có tất cả $44\cdot 15=660$ cách chọn $3$ thẻ thỏa yêu cầu bài toán.}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Có $30$ tấm thẻ được đánh số từ $1$ đến $30$. Có bao nhiêu cách chọn ra $10$ tấm thẻ sao cho có $5$ tấm thẻ mang số lẻ, $5$ tấm thẻ mang số chẵn trong đó chỉ có đúng một tấm thẻ mang số chia hết
+	cho $10$?\dapso{$4459455$}
+	\loigiai{Từ $1$ đến $30$ có $15$ số chẵn, $15$ số lẻ; trong $15$ số chẵn có 3 số chia hết cho $5$. Do đó,
+		\begin{itemize}
+			\item Số cách chọn $5$ số lẻ là $\mathrm{C}_{15}^5$ cách;
+			\item Số cách chọn $1$ số chẵn chia hết cho $5$ là $3$ cách;
+			\item Số cách chọn $4$ số chẵn trong các số chẵn còn lại là $\mathrm{C}_{12}^4$.
+		\end{itemize}
+		Theo quy tắc nhân, ta có tất cả $\mathrm{C}_{15}^5\cdot 3\cdot \mathrm{C}_{12}^4=4459455$ cách chọn $10$ thẻ thỏa yêu cầu bài toán.}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Trong một hộp có $20$ viên bi được đánh số từ $1$ đến $20$. Có bao nhiêu cách lấy ra $5$ viên bi sao cho có đúng $3$ viên bi mang số lẻ, $2$ viên bi mang số chẵn trong đó có đúng một viên bi mang số chia hết cho $4$?\dapso{$3000$}
+	\loigiai{Từ $1$ đến $20$ có $10$ số chẵn, $10$ số lẻ; trong $10$ số chẵn có $5$ số chia hết cho $4$. Do đó,
+		\begin{itemize}
+			\item Số cách chọn $3$ số lẻ là $\mathrm{C}_{10}^3$ cách;
+			\item Số cách chọn $1$ số chẵn chia hết cho $4$ là $5$ cách;
+			\item Số cách chọn $1$ số chẵn trong các số chẵn còn lại là $5$.
+		\end{itemize}
+		Theo quy tắc nhân, ta có tất cả $\mathrm{C}_{10}^3\cdot 5\cdot 5=3000$ cách chọn $5$ thẻ thỏa yêu cầu bài toán.}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Trong một hộp có $100$ viên bi được đánh số từ $1$ đến $100$. Có bao nhiêu cách chọn ra $3$ viên bi sao cho tổng ba số trên $3$ bi chia hết cho $2$.\dapso{$80850$}
+	\loigiai{Trong các số từ $1$ đến $100$ có $50$ số chẵn và $50$ số lẻ.
+		Để tổng ba số được chọn thỏa yêu cầu bài toán, ta có hai khả năng xảy ra
+		\begin{listEX}
+			\item[\textbf{TH 1.}] Ba số được chọn là ba số chẵn. Trong trường hợp này, chúng ta có tất cả $\mathrm{C}_{50}^3=19600$.
+			\item[\textbf{TH 2.}] Ba số được chọn gồm hai số lẻ và một số chẵn. Trong trường hợp này, chúng ta có tất cả $\mathrm{C}_{50}^1\cdot \mathrm{C}_{50}^2=61250$.
+		\end{listEX}
+		Theo quy tắc cộng, ta có $19600+61250=80850$ cách.}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Trong một hộp có $40$ tấm thẻ được đánh số từ $1$ đến $40$. Có bao nhiêu cách chọn $3$ tấm thẻ trong hộp sao cho tổng ba số trên $3$ thẻ chia hết cho $3$.\dapso{$3302$}
+	\loigiai{Trong các số từ $1$ đến $40$ có $13$ số chia hết cho $3$, $14$ số chia ba dư $1$ và $13$ số chia ba dư $2$.
+		Để tổng ba số được chọn thỏa yêu cầu bài toán, ta có hai khả năng xảy ra
+		\begin{listEX}
+			\item[\textbf{TH 1.}] Ba số được chọn là ba số chia hết cho $3$. Trong trường hợp này, chúng ta có tất cả $\mathrm{C}_{13}^3=286$.
+			\item[\textbf{TH 2.}] Ba số được chọn gồm ba số chia ba dư $1$. Trong trường hợp này, chúng ta có tất cả $\mathrm{C}_{14}^3=364$.
+			\item[\textbf{TH 3.}] Ba số được chọn gồm ba số chia ba dư $2$. Trong trường hợp này, chúng ta có tất cả $\mathrm{C}_{13}^3=286$.
+			\item[\textbf{TH 4.}] Ba số được chọn gồm ba số chia ba dư lần lượt $1$, $2$, $3$. Trong trường hợp này, chúng ta có tất cả $14\cdot 13\cdot 13=2366$.
+		\end{listEX}
+		Theo quy tắc cộng, ta có $286+364+286+2366=3302$ cách.}
+\end{bt}
+\begin{bt}%[1D2B2-3]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Cho hai đường thẳng $a\parallel b$. Trên đường thẳng $a$ có $5$ điểm phân biệt và trên đường thẳng $b$ có $10$ điểm phân biệt. Hỏi có thể tạo được bao nhiêu tam giác có các đỉnh là các điểm trên hai đường thẳng $a$ và $b$ đã cho?\dapso{$325$}
+	\loigiai{Gọi $\triangle$ là tam giác thỏa yêu cầu bài toán. Khi đó, vì $a\parallel b$ nên chỉ có hai khả năng xảy ra
+		\begin{itemize}
+			\item $\triangle$ có hai đỉnh thuộc $a$ và một đỉnh thuộc $b$. Trong trường hợp này, có tất cả $\mathrm{C}_5^2\cdot \mathrm{C}_{10}^1=100$.
+			\item $\triangle$ có hai đỉnh thuộc $b$ và một đỉnh thuộc $a$. Trong trường hợp này, có tất cả $\mathrm{C}_5^1\cdot \mathrm{C}_{10}^2=225$.	
+		\end{itemize}
+		Theo quy tắc cộng, số tam giác thỏa yêu cầu bài toán là $100+225=325$.}
+\end{bt}
+\begin{bt}%[1D2B2-3]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Cho hai đường thẳng song song $d_1$, $d_2$ . Trên $d_1$ lấy $17$ điểm phân biệt, trên $d_2$ lấy $20$ điểm phân biệt. Tính số tam giác có các đỉnh là $3$ điểm trong số $37$ điểm đã chọn trên $d_1$ và $d_2$ đã cho?\dapso{$5950$}
+	\loigiai{Gọi $\triangle$ là tam giác thỏa yêu cầu bài toán. Khi đó, vì $d_1\parallel d_2$ nên chỉ có hai khả năng xảy ra
+		\begin{itemize}
+			\item $\triangle$ có hai đỉnh thuộc $d_1$ và một đỉnh thuộc $d_2$. Trong trường hợp này, có tất cả $\mathrm{C}_{17}^2\cdot \mathrm{C}_{20}^1=2720$.
+			\item $\triangle$ có hai đỉnh thuộc $d_2$ và một đỉnh thuộc $d_1$. Trong trường hợp này, có tất cả $\mathrm{C}_{17}^1\cdot \mathrm{C}_{20}^2=3230$.	
+		\end{itemize}
+		Theo quy tắc cộng, số tam giác thỏa yêu cầu bài toán là $2720+3230=5950$.}
+\end{bt}
+\begin{bt}%[1D2K2-3]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Cho hai đường thẳng $d_1\parallel d_2$. Trên đường thẳng $d_1$ có $10$ điểm phân biệt, trên đường thẳng $d_2$ có
+	$n$ điểm phân biệt với $n\in \mathbb{N},n\ge 2$. Biết có $2800$ tam giác có đỉnh là các điểm đã cho. Hãy tìm $n$?\dapso{$n=20$}
+	\loigiai{Gọi $\triangle$ là tam giác thỏa yêu cầu bài toán. Khi đó, vì $d_1\parallel d_2$ nên chỉ có hai khả năng xảy ra
+		\begin{itemize}
+			\item $\triangle$ có hai đỉnh thuộc $d_1$ và một đỉnh thuộc $d_2$. Trong trường hợp này, có tất cả $\mathrm{C}_{10}^2\cdot \mathrm{C}_{n}^1=45n$.
+			\item $\triangle$ có hai đỉnh thuộc $d_2$ và một đỉnh thuộc $d_1$. Trong trường hợp này, có tất cả $\mathrm{C}_{10}^1\cdot \mathrm{C}_{n}^2=5n(n-1)$.	
+		\end{itemize}
+		Theo quy tắc cộng và giả thiết đề bài, ta có
+		\[45n+5n(n-1)=2800\Leftrightarrow n^2+8n-560=0\Leftrightarrow \hoac{&n=20\,(\mbox{nhận})\\&n=-28\,(\mbox{loại})}\]
+		Vậy $n=20$.}
+\end{bt}
+\begin{bt}%[1D2K2-3]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Cho hai đường thẳng $d_1\parallel d_2$. Trên đường thẳng $d_1$ có $10$ điểm phân biệt, trên đường thẳng $d_2$ có
+	$n$ điểm phân biệt với $n\in \mathbb{N},n\ge 2$. Biết có $1725$ tam giác có đỉnh là các điểm đã cho. Hãy tìm $n$?\dapso{$n=15$}
+	\loigiai{Gọi $\triangle$ là tam giác thỏa yêu cầu bài toán. Khi đó, vì $d_1\parallel d_2$ nên chỉ có hai khả năng xảy ra
+		\begin{itemize}
+			\item $\triangle$ có hai đỉnh thuộc $d_1$ và một đỉnh thuộc $d_2$. Trong trường hợp này, có tất cả $\mathrm{C}_{10}^2\cdot \mathrm{C}_{n}^1=45n$.
+			\item $\triangle$ có hai đỉnh thuộc $d_2$ và một đỉnh thuộc $d_1$. Trong trường hợp này, có tất cả $\mathrm{C}_{10}^1\cdot \mathrm{C}_{n}^2=5n(n-1)$.	
+		\end{itemize}
+		Theo quy tắc cộng và giả thiết đề bài, ta có
+		\[45n+5n(n-1)=1725\Leftrightarrow n^2+8n-345=0\Leftrightarrow \hoac{&n=15\,(\mbox{nhận})\\&n=-23\,(\mbox{loại})}\]
+		Vậy $n=15$.}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Từ các chữ số $0$, $1$, $2$, $3$, $4$ có thể lập được bao nhiêu số
+	\begin{listEX}
+		\item[a)] Có $9$ chữ số sao cho chữ số $0$ có mặt $2$ lần, chữ số
+		$2$ có mặt $3$ lần, chữ số $3$ có mặt $2$ lần các chữ số
+		còn lại có mặt đúng một lần.\dapso{$11760$}
+		\item[b)] Có $8$ chữ số sao cho chữ số $1$ có mặt $3$ lần, chữ
+		số $4$ có mặt $2$ lần, các chữ số còn lại có mặt
+		đúng $1$ lần.\dapso{$2940$}
+	\end{listEX}
+	\loigiai{\begin{listEX}
+			\item[a)] Xếp số vào $9$ ô trống thỏa yêu cầu đề bài.
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+					\hline
+					&&&&&&&&\\
+					\hline
+				\end{tabular}
+			\end{center}
+			\begin{itemize}
+				\item Chọn $2$ ô trong $8$ ô (bỏ ô đầu tiên) để xếp $2$ chữ
+				số $0$, có $\mathrm{C}_8^2=28$ cách.
+				\item Chọn $3$ ô trong $7$ ô còn lại để xếp $3$ chữ số $2$,
+				có $\mathrm{C}_7^3=35$ cách.
+				\item Chọn $2$ ô trong $4$ ô còn lại để xếp $2$ chữ số $3$,
+				có $\mathrm{C}_4^2=6$ cách.
+				\item Xếp $2$ chữ số còn lại $\{2; 4\}$ vào $2$ ô còn lại, có
+				$2!$ cách.
+			\end{itemize}
+			Theo quy tắc nhân có $28\cdot 35\cdot 6\cdot 2=11760$.
+			\item[b)] Xếp số vào $8$ ô trống thỏa yêu cầu đề bài.
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|c|c|}
+					\hline
+					&&&&&&&\\
+					\hline
+				\end{tabular}
+			\end{center}
+			\begin{description}
+				\item [Trường hợp ô đầu có thể chứa số $0$.]
+				\begin{itemize}
+					\item Chọn $3$ ô trong $8$ ô để xếp $3$ chữ số $1$, có $\mathrm{C}_8^3=56$ cách.
+					\item Chọn $2$ ô trong $5$ ô còn lại để xếp $2$ chữ số $4$,
+					có $\mathrm{C}_5^2=10$ cách.
+					\item Xếp $3$ chữ số còn lại vào $3$ ô còn lại, có
+					$3!$ cách.
+				\end{itemize}
+				Theo quy tắc nhân có $56\cdot 10\cdot 6=3360$ số thỏa yêu cầu, nhưng có những số có chữ số $0$ đứng vị trí đầu tiên.
+				\item [Trường hợp số $0$ ở ô đầu tiên.]
+				\begin{itemize}
+					\item Chọn $3$ ô trong $7$ ô để xếp $3$ chữ số $1$, có $\mathrm{C}_7^3=35$ cách.
+					\item Chọn $2$ ô trong $4$ ô còn lại để xếp $2$ chữ số $4$,
+					có $\mathrm{C}_4^2=6$ cách.
+					\item Xếp $2$ chữ số còn lại vào $2$ ô còn lại, có
+					$2!$ cách.
+				\end{itemize}
+				Theo quy tắc nhân có $35\cdot 6\cdot 2=420$ ssố mà có chữ số $0$ ở đầu.
+			\end{description}
+			Do đó, số chữ số thỏa yêu cầu bài toán là $3360-420=2940$.
+		\end{listEX}
+	}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Từ các chữ số $0$, $2$, $4$, $5$, $9$ có thể lập được bao nhiêu số
+	\begin{listEX}
+		\item[a)] Có $9$ chữ số sao cho chữ số $0$ có mặt $3$ lần, chữ
+		số $4$ có mặt $2$ lần, chữ số $5$ có mặt $2$ lần các chữ số còn lại có mặt đúng một lần.\dapso{$10080$}
+		\item[b)] Có $8$ chữ số sao cho chữ số $2$ có mặt $3$ lần, chữ số $9$ có mặt $3$ lần, các chữ số còn lại có mặt đúng $1$ lần.\dapso{$3080$}
+	\end{listEX}
+	\loigiai{\begin{listEX}
+			\item[a)] Xếp số vào $9$ ô trống thỏa yêu cầu đề bài.
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+					\hline
+					&&&&&&&&\\
+					\hline
+				\end{tabular}
+			\end{center}
+			\begin{itemize}
+				\item Chọn $3$ ô trong $8$ ô (bỏ ô đầu tiên) để xếp $3$ chữ
+				số $0$, có $\mathrm{C}_8^3$ cách.
+				\item Chọn $2$ ô trong $6$ ô còn lại để xếp $2$ chữ số $4$,
+				có $\mathrm{C}_6^2$ cách.
+				\item Chọn $2$ ô trong $4$ ô còn lại để xếp $2$ chữ số $5$,
+				có $\mathrm{C}_4^2$ cách.
+				\item Xếp $2$ chữ số còn lại $\{2; 9\}$ vào $2$ ô còn lại, có
+				$2!$ cách.
+			\end{itemize}
+			Theo quy tắc nhân có $\mathrm{C}_8^3\cdot \mathrm{C}_6^2\cdot \mathrm{C}_4^2\cdot 2=10080$.
+			\item[b)] Xếp số vào $8$ ô trống thỏa yêu cầu đề bài.
+			\begin{center}
+				\begin{tabular}{|c|c|c|c|c|c|c|c|}
+					\hline
+					&&&&&&&\\
+					\hline
+				\end{tabular}
+			\end{center}
+			\begin{description}
+				\item [Trường hợp ô đầu có thể chứa số $0$.]
+				\begin{itemize}
+					\item Chọn $3$ ô trong $8$ ô để xếp $3$ chữ số $2$, có $\mathrm{C}_8^3=56$ cách.
+					\item Chọn $3$ ô trong $5$ ô còn lại để xếp $2$ chữ số $9$,
+					có $\mathrm{C}_5^3=10$ cách.
+					\item Xếp $3$ chữ số còn lại vào $2$ ô còn lại, có
+					$\mathrm{A}_3^2=3!$ cách.
+				\end{itemize}
+				Theo quy tắc nhân có $56\cdot 10\cdot 6=3360$ số thỏa yêu cầu, nhưng có những số có chữ số $0$ đứng vị trí đầu tiên.
+				\item [Trường hợp số $0$ ở ô đầu tiên.]
+				\begin{itemize}
+					\item Chọn $3$ ô trong $7$ ô để xếp $3$ chữ số $2$, có $\mathrm{C}_7^3=35$ cách.
+					\item Chọn $3$ ô trong $4$ ô còn lại để xếp $3$ chữ số $9$,
+					có $\mathrm{C}_4^3=4$ cách.
+					\item Xếp $2$ chữ số còn lại vào $1$ ô còn lại, có
+					$\mathrm{A}_2^1=2!$ cách.
+				\end{itemize}
+				Theo quy tắc nhân có $35\cdot 4\cdot 2=280$ số mà có chữ số $0$ ở đầu.
+			\end{description}
+			Do đó, số chữ số thỏa yêu cầu bài toán là $3360-280=3080$ số.
+	\end{listEX}}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Từ các chữ số $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ có thể lập được bao nhiêu số có $12$ chữ số trong đó chữ số $5$ có mặt đúng $2$ lần; chữ số $6$ có mặt đúng $4$ lần, các chữ số còn lại có mặt đúng một lần?\dapso{$9979200$}
+	\loigiai{Xếp số vào $12$ ô trống thỏa yêu cầu đề bài.
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				&&&&&&&&&&&\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{itemize}
+			\item Chọn $2$ ô trong $12$ ô để xếp $2$ chữ
+			số $5$, có $\mathrm{C}_{12}^2$ cách.
+			\item Chọn $4$ ô trong $10$ ô còn lại để xếp $4$ chữ số $6$,
+			có $\mathrm{C}_{10}^4$ cách.
+			\item Xếp $8$ chữ số còn lại $\{1;2;3;4;7;8\}$ vào $6$ ô còn lại, có
+			$6!$ cách.
+		\end{itemize}
+		Theo quy tắc nhân có $\mathrm{C}_{12}^2\cdot \mathrm{C}_{10}^4\cdot 6!=9979200$ số.}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Từ các chữ số $0$, $1$, $2$, $3$, $4$, $5$ có thể lập được bao nhiêu số có $8$ chữ số trong đó chữ số $5$ có mặt $3$ lần, các chữ số còn lại có mặt đúng một lần?\dapso{$5880$}
+	\loigiai{Xếp số vào $8$ ô trống thỏa yêu cầu đề bài.
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|}
+				\hline
+				&&&&&&&\\
+				\hline
+			\end{tabular}
+		\end{center}
+		\begin{description}
+			\item[Trường hợp ô đầu có thể chứa số $0$]
+			\begin{itemize}
+				\item Chọn $3$ ô trong $8$ ô để xếp $3$ chữ số $5$, có $\mathrm{C}_8^3=56$ cách.
+				\item Xếp $5$ chữ số còn lại vào $5$ ô còn lại, có
+				$5!$ cách.
+			\end{itemize}
+			Theo quy tắc nhân có $56\cdot 5!=6720$ số thỏa yêu cầu, nhưng có những số có chữ số $0$ đứng vị trí đầu tiên.
+			\item[Trường hợp số $0$ ở ô đầu tiên.]
+			\begin{itemize}
+				\item Chọn $3$ ô trong $7$ ô để xếp $3$ chữ số $5$, có $\mathrm{C}_7^3=35$ cách.
+				\item Xếp $4$ chữ số còn lại vào $4$ ô còn lại, có
+				$4!$ cách.
+			\end{itemize}
+			Theo quy tắc nhân có $35\cdot 4!=840$ số mà có chữ số $0$ ở đầu.
+		\end{description}
+		Do đó, số chữ số thỏa yêu cầu bài toán là $6720-840=5880$ số.
+	}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Từ các chữ số $0$, $1$, $2$, $ 3$, $4$, $5$ có bao nhiêu số gồm $6$ chữ số phân biệt mà
+	\begin{listEX}
+		\item[a)] Các chữ số chẵn đứng cạnh nhau.\dapso{$132$}
+		\item[b)] Số chẵn đứng cạnh và số lẻ đứng cạnh nhau.\dapso{$60$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}
+			\item [a)] Các chữ số chẵn đứng cạnh nhau.\\
+			Đặt $a=024$, $b=042$, $c=204$, $d=240$, $
+			e=420$ và $f=402$.
+			\begin{itemize}
+				\item Từ $\{a;1;3;5\}$ ta lập được $3\cdot 3!=18$ số.
+				\item Từ $\{b;1;3;5\}$ ta lập được $3\cdot 3!=18$ số.
+				\item Từ $\{c;1;3;5\}$ ta lập được $4!=24$ số.
+				\item Từ $\{d;1;3;5\}$ ta lập được $4!=24$ số.
+				\item Từ $\{e;1;3;5\}$ ta lập được $4!=24$ số.
+				\item Từ $\{f ;1;3;5\}$ ta lập được $4!=24$ số.
+			\end{itemize}
+			Theo quy tắc cộng, ta có $18+18+24+24+24+24=132$.
+			\item[b)] Số chẵn đứng cạnh và số lẻ đứng cạnh nhau.\\
+			Gọi số cần lập là $\overline{a_1a_2a_3a_4a_5a_6}$. Có hai khả năng xảy ra
+			\begin{listEX}
+				\item[TH 1.] $a_1$, $a_2$, $a_3$ là các số chẵn và $a_4$, $a_5$, $a_6$ là các số lẻ. Khi đó
+				\begin{itemize}
+					\item $a_1$ có $2$ cách chọn;
+					\item $\overline{a_2a_3}$ có $2!$ cách chọn;
+					\item $\overline{a_4a_5a_6}$ có $3!$ cách chọn.
+				\end{itemize}
+				Theo quy tắc nhân, ta có $2\cdot 2!\cdot 3!=24$ số.
+				\item[TH 2.] $a_1$, $a_2$, $a_3$ là các số lẻ và $a_4$, $a_5$, $a_6$ là các số chẵn. Khi đó
+				\begin{itemize}
+					\item $\overline{a_1a_2a_3}$ có $3!$ cách chọn;
+					\item $\overline{a_4a_5a_6}$ có $3!$ cách chọn.
+				\end{itemize}
+				Theo quy tắc nhân, ta có $3!\cdot 3!=36$ số.
+			\end{listEX}
+			Theo quy tắc cộng, ta có $24+36=60$ số thỏa mãn yêu cầu bài toán.
+		\end{listEX}
+	}
+\end{bt}
+\begin{bt}%[1D2K2-1]%[Nguyễn Hữu Tín - DATeX-DS&GT11-HK1]
+	Từ các chữ số $0$, $1$, $2$, $ 3$, $4$ có bao nhiêu số gồm $5$ chữ số phân biệt mà
+	\begin{listEX}
+		\item Các chữ số chẵn đứng cạnh nhau.\dapso{$32$}
+		\item Số chẵn đứng cạnh và số lẻ đứng cạnh nhau.\dapso{$20$}
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}
+			\item [a)] Các chữ số chẵn đứng cạnh nhau.\\
+			Đặt $a=024$, $b=042$, $c=204$, $d=240$, $
+			e=420$ và $f=402$.
+			\begin{itemize}
+				\item Từ $\{a;1;3\}$ ta lập được $2\cdot 2!=4$ số.
+				\item Từ $\{b;1;3\}$ ta lập được $2\cdot 2!=4$ số.
+				\item Từ $\{c;1;3\}$ ta lập được $3!=6$ số.
+				\item Từ $\{d;1;3\}$ ta lập được $3!=6$ số.
+				\item Từ $\{e;1;3\}$ ta lập được $3!=6$ số.
+				\item Từ $\{f ;1;3\}$ ta lập được $3!=6$ số.
+			\end{itemize}
+			Theo quy tắc cộng, ta có $4+4+6+6+6+6=32$.
+			\item[b)] Số chẵn đứng cạnh và số lẻ đứng cạnh nhau.\\
+			Gọi số cần lập là $\overline{a_1a_2a_3a_4a_5a_6}$. Có hai khả năng xảy ra
+			\begin{listEX}
+				\item[TH 1.] $a_1$, $a_2$, $a_3$ là các số chẵn và $a_4$, $a_5$ là các số lẻ. Khi đó
+				\begin{itemize}
+					\item $a_1$ có $2$ cách chọn;
+					\item $\overline{a_2a_3}$ có $2!$ cách chọn;
+					\item $\overline{a_4a_5}$ có $2!$ cách chọn.
+				\end{itemize}
+				Theo quy tắc nhân, ta có $2\cdot 2!\cdot 2!=8$ số.
+				\item[TH 2.] $a_1$, $a_2$ là các số lẻ và $a_3$, $a_4$, $a_5$ là các số chẵn. Khi đó
+				\begin{itemize}
+					\item $\overline{a_1a_2}$ có $2!$ cách chọn;
+					\item $\overline{a_3a_4a_5}$ có $3!$ cách chọn.
+				\end{itemize}
+				Theo quy tắc nhân, ta có $2!\cdot 3!=12$ số.
+			\end{listEX}
+			Theo quy tắc cộng, ta có $8+12=20$ số thỏa mãn yêu cầu bài toán.
+		\end{listEX}
+	}
+\end{bt}
+
+\begin{dang}
+	{Giải phương trình, bất phương trình, hệ phương trình}
+	\begin{itemize}
+		\item Tìm điều kiện. Ta có các điều kiện thường gặp sau:
+		\begin{center}
+			\begin{tabular}{ l|c } 
+				Các kí hiệu và công thức & Điều kiện \\ 
+				\hline
+				$\bullet$ $n!=n(n-1)(n-2)\ldots3.2.1$ & $n\in\mathrm{N}$ \\ 
+				\hline
+				$\bullet$ $\mathrm{P}_n=n!$ & $n\in\mathbb{N}^*$ \\ 
+				\hline
+				$\bullet$ $\mathrm{A}_n^k=\dfrac{n!}{(n-k)!}$ & $\heva{&n,k\in\mathbb{N}\\&0\le k\le n}$ \\
+				\hline
+				$\bullet$ $\mathrm{C}_n^k=\dfrac{n!}{k!(n-k)!}$ & $\heva{&n,k\in\mathbb{N}\\&0\le k\le n}$ \\
+				\hline
+				$\bullet$ $\mathrm{C}_n^k=\mathrm{C}_n^{n-k}$ & $\heva{&n,k\in\mathbb{N}\\&0\le k\le n}$ \\
+				\hline
+				$\bullet$ $\mathrm{C}_{n+1}^k=\mathrm{C}_n^k+\mathrm{C}_n^{k-1}$ & $\heva{&n,k\in\mathbb{N}\\&1\le k\le n}$ \\
+			\end{tabular}
+		\end{center}
+		\item Thu gọn dựa vào những công thức trên và đưa về phương trình đại số. Giải phương trình đại số này tìm được ẩn.
+		\item So với điều kiện để nhận những giá trị cần tìm.
+	\end{itemize}
+\end{dang}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải phương trình $\mathrm{P}_2\cdot x^2-\mathrm{P}_3\cdot x=8$. \dapso{$\{-1;4\}$}
+	\loigiai{
+		\begin{center}
+			$\mathrm{P}_2\cdot x^2-\mathrm{P}_3\cdot x=8\Leftrightarrow 2!\cdot x^2-3!\cdot x=8\Leftrightarrow 2x^2-6x-8=0\Leftrightarrow\hoac{&x=4\\&x=-1.}$
+		\end{center}
+		Vậy tập nghiệm $S=\{-1;4\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải phương trình $\dfrac{\mathrm{P}_x-\mathrm{P}_{x-1}}{\mathrm{P}_{x+1}}=\dfrac{1}{6}$. \dapso{$\{2;3\}$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\dfrac{\mathrm{P}_x-\mathrm{P}_{x-1}}{\mathrm{P}_{x+1}}=\dfrac{1}{6}\quad \left(\text{ĐK: }x\ge1,x\in\mathbb{N}\right)\\
+			&\Leftrightarrow &\dfrac{x!-(x-1)!}{(x+1)!}=\dfrac{1}{6}\\
+			&\Leftrightarrow &\dfrac{x\cdot(x-1)!-(x-1)!}{(x+1)\cdot x\cdot (x-1)!}=\dfrac{1}{6}\\
+			&\Leftrightarrow & \dfrac{x-1}{(x+1)\cdot x}=\dfrac{1}{6}\\
+			&\Leftrightarrow &6x-6=x^2+x\\
+			&\Leftrightarrow &x^2-5x+6=0\\
+			&\Leftrightarrow &\hoac{&x=3\\&x=2.}
+		\end{eqnarray*}
+		Vậy tập nghiệm $S=\{2;3\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải phương trình $\dfrac{(n+1)!}{(n-1)!}=72$. \dapso{$n=8$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\dfrac{(n+1)!}{(n-1)!}=72\quad \left(\text{ĐK: }n\ge1,n\in\mathbb{N}\right)\\
+			&\Leftrightarrow &\dfrac{(n+1)\cdot n\cdot (n-1)!}{(n-1)!}=72\\
+			&\Leftrightarrow &n^2+n-72=0\\
+			&\Leftrightarrow &\hoac{&n=8&\text{(nhận)}\\&n=-9&\text{(loại)}.}
+		\end{eqnarray*}
+		Vậy tập nghiệm $S=\{8\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải phương trình $\dfrac{n!}{(n-2)!}-\dfrac{n!}{(n-1)!}=3$. \dapso{$n=3$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\dfrac{n!}{(n-2)!}-\dfrac{n!}{(n-1)!}=3\quad \left(\text{ĐK: }n\ge2,n\in\mathbb{N}\right)\\
+			&\Leftrightarrow &\dfrac{n\cdot(n-1)\cdot(n-2)!}{(n-2)!}-\dfrac{n\cdot(n-1)!}{(n-1)!}=3\\
+			&\Leftrightarrow & n^2-n-n=3\\
+			&\Leftrightarrow & n^2-2n-3=0\\
+			&\Leftrightarrow &\hoac{&n=3&\text{(nhận)}\\&n=-1&\text{(loại)}.}
+		\end{eqnarray*}
+		Vậy tập nghiệm $S=\{3\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải phương trình $\mathrm{A}_n^3=20n$. \dapso{$n=6$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\mathrm{A}_n^3=20n\quad \left(\text{ĐK: }n\ge3,n\in\mathbb{N}\right)\\
+			&\Leftrightarrow &\dfrac{n!}{(n-3)!}=20n\\
+			&\Leftrightarrow &\dfrac{n\cdot(n-1)\cdot(n-2)\cdot(n-3)!}{(n-3)!}=20n\\
+			&\Leftrightarrow & (n-1)(n-2)=20\\
+			&\Leftrightarrow & n^2-3n-18=0\\
+			&\Leftrightarrow &\hoac{&n=6&\text{(nhận)}\\&n=-3&\text{(loại)}.}
+		\end{eqnarray*}
+		Vậy tập nghiệm $S=\{6\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải phương trình $\mathrm{A}_n^3+2\mathrm{C}_n^2=16n$. \dapso{$n=5$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\mathrm{A}_n^3+2\mathrm{C}_n^2=20n\quad \left(\text{ĐK: }n\ge3,n\in\mathbb{N}\right)\\
+			&\Leftrightarrow &\dfrac{n!}{(n-3)!}+2\cdot\dfrac{n!}{2!\cdot(n-2)!}=16n\\
+			&\Leftrightarrow &\dfrac{n\cdot(n-1)\cdot(n-2)\cdot(n-3)!}{(n-3)!}+\dfrac{n\cdot(n-1)\cdot(n-2)!}{(n-2)!}=16n\\
+			&\Leftrightarrow & (n-1)(n-2)+n-1=16\\
+			&\Leftrightarrow & n^2-2n-15=0\\
+			&\Leftrightarrow &\hoac{&n=5&\text{(nhận)}\\&n=-3&\text{(loại)}.}
+		\end{eqnarray*}
+		Vậy tập nghiệm $S=\{5\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải phương trình $\mathrm{A}_x^3+\mathrm{C}_x^{x-2}=14x$. \dapso{$x=5$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\mathrm{A}_x^3+\mathrm{C}_x^{x-2}=14x\quad \left(\text{ĐK: }x\ge3,x\in\mathbb{N}\right)\\
+			&\Leftrightarrow &\dfrac{x!}{(x-3)!}+\dfrac{x!}{(x-2)!\cdot2!}=14x\\
+			&\Leftrightarrow &\dfrac{x\cdot(x-1)\cdot(x-2)\cdot(x-3)!}{(x-3)!}+\dfrac{x\cdot(x-1)\cdot(x-2)!}{(x-2)!\cdot2}=14x\\
+			&\Leftrightarrow & (x-1)(x-2)+\dfrac{x-1}{2}=14\\
+			&\Leftrightarrow & 2x^2-5x-25=0\\
+			&\Leftrightarrow &\hoac{&x=5&\text{(nhận)}\\&x=-\dfrac{5}{2}&\text{(loại)}.}
+		\end{eqnarray*}
+		Vậy tập nghiệm $S=\{5\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải phương trình $\mathrm{A}_{x-2}^2+\mathrm{C}_x^{x-2}=101$. \dapso{$x=10$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\mathrm{A}_{x-2}^2+\mathrm{C}_x^{x-2}=101\quad \left(\text{ĐK: }x\ge4,x\in\mathbb{N}\right)\\
+			&\Leftrightarrow &\dfrac{(x-2)!}{(x-4)!}+\dfrac{x!}{(x-2)!\cdot2!}=101\\
+			&\Leftrightarrow &\dfrac{(x-2)\cdot(x-3)\cdot(x-4)!}{(x-4)!}+\dfrac{x\cdot(x-1)\cdot(x-2)!}{(x-2)!\cdot2}=101\\
+			&\Leftrightarrow & (x-2)(x-3)+\dfrac{x^2-x}{2}=101\\
+			&\Leftrightarrow & 3x^2-11x-190=0\\
+			&\Leftrightarrow &\hoac{&x=10&\text{(nhận)}\\&x=-\dfrac{19}{3}&\text{(loại)}.}
+		\end{eqnarray*}
+		Vậy tập nghiệm $S=\{10\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Cho $n\in\mathbb{Z}^+$ thỏa $\mathrm{C}_{n+1}^2+2\mathrm{C}_{n+2}^2+2\mathrm{C}_{n+3}^2+\mathrm{C}_{n+4}^2=149$. Chứng minh: $\dfrac{\mathrm{A}_{n+1}^4+3\mathrm{A}_n^3}{(n+1)!}=\dfrac{3}{4}$.
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\mathrm{C}_{n+1}^2+2\mathrm{C}_{n+2}^2+2\mathrm{C}_{n+3}^2+\mathrm{C}_{n+4}^2=149\quad \left(\text{ĐK: }n\in\mathbb{Z}^+\right)\\
+			&\Leftrightarrow &\dfrac{(n+1)!}{2!\cdot(n-1)!}+2\cdot\dfrac{(n+2)!}{2!\cdot n!}+2\cdot\dfrac{(n+3)!}{2!\cdot(n+1)!}+\dfrac{(n+4)!}{2!\cdot(n+2)!}=149\\
+			&\Leftrightarrow  &\dfrac{1}{2}(n+1)n+(n+2)(n+1)+(n+3)(n+2)+\dfrac{1}{2}(n+4)(n+3)=149\\
+			&\Leftrightarrow & 6n^2+24n-270=0\\
+			&\Leftrightarrow & 3x^2-11x-190=0\\
+			&\Leftrightarrow &\hoac{&n=5&\text{(nhận)}\\&n=-9&\text{(loại)}.}
+		\end{eqnarray*}
+		Với $n=5$ ta có $\dfrac{\mathrm{A}_{n+1}^4+3\mathrm{A}_n^3}{(n+1)!}=\dfrac{\mathrm{A}_{6}^4+3\mathrm{A}_5^3}{6!}=\dfrac{3}{4}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải bất phương trình $\mathrm{A}_n^3+15<15n$. \dapso{$n=3$ hoặc $n=4$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\mathrm{A}_n^3+15<15n\quad \left(\text{ĐK: }n\ge3,n\in\mathbb{N}\right)\\
+			&\Leftrightarrow &\dfrac{n!}{(n-3)!}+15<15n\\
+			&\Leftrightarrow &\dfrac{n\cdot(n-1)\cdot(n-2)\cdot(n-3)!}{(n-3)!}+15<15n\\
+			&\Leftrightarrow & n(n-1)(n-2)+15<15n\\
+			&\Leftrightarrow & n^3-3n^2-13n+15<0\\
+			&\Leftrightarrow & (n-1)(n-5)(n+3)<0\\
+			&\Leftrightarrow & n-5<0\quad\left(\text{vì }n\ge 3 \text{ nên }\heva{&n-1>0\\&n+3>0}\right)\\
+			&\Leftrightarrow & n<5.
+		\end{eqnarray*}
+		So với điều kiện ta suy ra $\heva{&3\le n<5\\&n\in\mathbb{N}}\Rightarrow n\in\{3;4\}$.
+	}
+\end{vd}
+\begin{vd}%[1D2B2-6]%[Nguyễn Khánh Trọng - DATeX-DS&GT11-HK1]
+	Giải bất phương trình $2\mathrm{C}_{x+1}^2+3\mathrm{A}_x^2<30$. \dapso{$x=2$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&2\mathrm{C}_{x+1}^2+3\mathrm{A}_x^2<30\quad \left(\text{ĐK: }x\ge2,x\in\mathbb{N}\right)\\
+			&\Leftrightarrow &2\cdot\dfrac{(x+1)!}{2!\cdot(x-1)!}+3\cdot\dfrac{x!}{(x-2)!}<30\\
+			&\Leftrightarrow &\dfrac{(x+1)\cdot x\cdot(x-1)!}{(x-1)!}+3\cdot\dfrac{x\cdot(x-1)\cdot(x-2)!}{(x-2)!}<30\\
+			&\Leftrightarrow & (x+1)x+3x(x-1)<30\\
+			&\Leftrightarrow & 4x^2-2x-30<0\\
+			&\Leftrightarrow &-\dfrac{5}{2}<x<3.
+		\end{eqnarray*}
+		So với điều kiện ta suy ra $\heva{&2\le x<3\\&x\in\mathbb{N}}\Rightarrow x=2$.
+	}
+\end{vd}
+\subsubsection{CÂU HỎI TRẮC NGHIỆM}
+\Opensolutionfile{ans}[ans/hoanvi-chinhhop-tochop-de2]
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2Y2-1]
+	Với $k$ và $n$ là hai số nguyên dương tùy ý thỏa mãn $k \leq n$, mệnh đề nào đúng?
+	\choice
+	{\True $\mathrm{C}_{n}^{k}=\dfrac{n !}{k !(n-k) !}$}
+	{ $\mathrm{C}_{n}^{k}=\dfrac{n !}{k !}$}
+	{ $\mathrm{C}_{n}^{k}=\dfrac{n !}{(n-k) !}$}
+	{ $\mathrm{C}_{n}^{k}=\dfrac{k !(n-k) !}{n !}$}
+	\loigiai{
+		Ta có $\mathrm{C}_{n}^{k}=\dfrac{n !}{k !(n-k) !}$.\\
+		Các phương án còn lại sai.
+	}
+\end{ex} 
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2Y2-1]
+	Có bao nhiêu cách sắp xếp chỗ ngồi cho 5 học sinh vào 5 ghế xếp thành một dãy?
+	\choice
+	{$\True 120$}
+	{$240$}
+	{$ 90$}
+	{ $60$}
+	\loigiai{
+		Mỗi cách sắp xếp chỗ ngồi cho $ 5$ học sinh vào $5$ ghế kê thành dãy là $1$ hoán vị của $5$ phần tử.
+		\\
+		Số cách sắp xếp là $5!=120$ cách.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2Y2-2]
+	Trong một lớp học có 20 bạn học sinh, hỏi có bao nhiêu cách chọn ra một bạn để làm lớp trưởng và một bạn khác làm lớp phó?
+	\choice
+	{$\mathrm{A}_{20}^{18}$}
+	{\True $\mathrm{A}_{20}^{2}$}
+	{ $20^{2}$}
+	{ $\mathrm{C}_{20}^{2}$}
+	\loigiai{
+		Mỗi cách chọn ra một học sinh để làm lớp trưởng và một học sinh làm lớp phó là một chỉnh hợp chập $2$ của $20$ phẩn tử.
+		\\
+		Số cách chọn ra thỏa mãn yêu cầu đề bài là  $\mathrm{A}_{20}^{2}$.
+	}
+\end{ex}
+\begin{ex}%[0K8YN-1]%% ::Cau 1::
+	Công thức tính số hoán vị $\mathrm{P}_n$ là
+	\choice
+	{ $\mathrm{P}_n=\left( n-1 \right)!$}
+	{ $\mathrm{P}_n=\left( n+1 \right)!$}
+	{ $\mathrm{P}_n=\dfrac{n!}{n+1}$}
+	{\True $\mathrm{P}_n=n!$}
+	\loigiai{
+		Công thức tính số hoán vị $n$ phần tử là $\mathrm{P}_n=n!$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 2::
+	Số cách xếp $10$ học sinh thành một hàng dọc là
+	\choice
+	{ $5!\cdot5!$}
+	{\True $10!$}
+	{ $10$}
+	{ $25$}
+	\loigiai{
+		Số cách xếp $10$ học sinh thành một hàng dọc là $10!$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 3::
+	Có bao nhiêu số tự nhiên gồm $4$ chữ số đôi một khác nhau lập ra từ các chữ số $2$;$4$;$6$;$8$?
+	\choice
+	{ $4$}
+	{\True $4!$}
+	{ $\mathrm{C}_4^4$}
+	{ $4!-3!$}
+	\loigiai{
+		Số tự nhiên gồm $4$ chữ số đôi một khác nhau lập ra từ các chữ số $2$;$4$;$6$;$8$ là $\mathrm{P}_4=4!$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 4::
+	Có bao nhiêu cách sắp xếp $5$ học sinh đứng thành $1$ hàng dọc.
+	\choice
+	{ $5$}
+	{ $15$}
+	{ $25$}
+	{\True $120$}
+	\loigiai{
+		Mỗi cách sắp xếp $5$ học sinh đứng thành $1$ đường thẳng là một hoán vị của $5$ phần tử.\\
+		Nên có $5!=120$ cách sắp xếp $5$ học sinh đứng thành $1$ hàng dọc.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 5::
+	Từ các chữ số $1;2;3;5;6;7$ có thể lập được bao nhiêu số có 3 chữ số khác nhau
+	\choice
+	{ $\mathrm{C}_7^3$}
+	{ $\mathrm{A}_7^3$}
+	{\True $6\cdot5\cdot4$}
+	{ $6^3$}
+	\loigiai{
+		Chọn 3 trong 6 chữ số để sắp vào 3 vị trí (phân biệt thứ tự) là một chỉnh hợp chập 3 của 6 phần tử: $\mathrm{A}_6^3=\dfrac{6!}{3!}=6\cdot5\cdot4$}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 6::
+	Có bao nhiêu cách chọn một ban chấp hành gồm một trưởng ban, một phó ban, một thứ ký và một thủ quỹ từ $14$ thành viên
+	\choice
+	{\True $\mathrm{A}_{14}^4$}
+	{ $\mathrm{C}_{14}^4$}
+	{ $4!$}
+	{ ${4^{14}}$}
+	\loigiai{
+		Chọn $4$ trong $14$ thành viên để bầu ban chấp hành (phân biệt thứ tự) là một chỉnh hợp chập $4$ của $14$ phần tử: $\mathrm{A}_{14}^4$}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 7::
+	Có $10$ cuốn sách toán, số cách tặng cho $3$ bạn An, Thu, Minh mỗi bạn một cuốn sách toán từ số sách trên là
+	\choice
+	{ $\mathrm{C}_{10}^3$}
+	{\True $\mathrm{A}_{10}^3$}
+	{ ${3^{10}}$}
+	{ $3!$}
+	\loigiai{
+		Số cách lấy ra $3$ cuốn rồi tặng cho mỗi bạn một cuốn sách là $\mathrm{A}_{10}^3$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 8::
+	Một lớp có $20$ học sinh nam, $15$ học sinh nữ. Có bao nhiêu cách lấy ra cùng lúc $3$ học sinh bất kì trong lớp đó để phân công làm tổ trưởng của $3$ tổ khác nhau là
+	\choice
+	{ $\mathrm{C}_{35}^3$}
+	{\True $\mathrm{A}_{35}^3$}
+	{ $\mathrm{C}_{20}^1\mathrm{C}_{15}^2+\mathrm{C}_{20}^2\mathrm{C}_{15}^1$}
+	{ $\mathrm{C}_{20}^1\mathrm{C}_{15}^2+\mathrm{C}_{20}^3+\mathrm{C}_{15}^3$}
+	\loigiai{
+		Tổng số học sinh trong lớp là $35$. Số cách lấy ra $3$ học sinh bất kì rồi phân công làm tổ trưởng $3$ tổ khác nhau là $\mathrm{A}_{35}^3$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 9::
+	Cho tập hợp $X=\left\{ 1;2;4;5;8 \right\}$, một tổ hợp chập 2 của $X$ là
+	\choice
+	{ $\left\{ 2 \right\}$}
+	{ $1;2$}
+	{\True $\left\{ 1;5 \right\}$}
+	{ $\left\{ 5;6 \right\}$}
+	\loigiai{
+		Theo định nghĩa, trong các phương án trên, chỉ có phương án $\left\{ 1;5 \right\}$ là 1 tổ hợp chập 2 của $X$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 10::
+	Cho hình ngũ giác $ABCDE$. Ta nối các đỉnh của nó lại để được các tam giác, ta có thể coi mỗi tam giác như vậy là
+	\choice
+	{ Một chỉnh hợp chập $3$ của $5$ phần tử}
+	{\True Một tổ hợp chập $3$ của $5$ phần tử}
+	{ Một hoán vị của $3$ phần tử}
+	{ Một bộ gồm $3$ chỉnh hợp của $5$ phần tử}
+	\loigiai{
+		Vì $5$ đỉnh của ngũ giác đã cho không có $3$ điểm nào thẳng hàng nên với mỗi tập hợp $3$ điểm lấy ra từ $5$ điểm đó ta được đúng $1$ tam giác. Vậy mỗi tam giác có thể coi là một chỉnh hợp chập $3$ của $5$ phần tử.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 11::
+	Lớp 11A có $35$ học sinh. Hỏi có bao nhiêu cách chọn một đội $5$ bạn đi trực tuần?
+	\choice
+	{\True $\mathrm{C}_{35}^5$}
+	{ $\mathrm{A}_{35}^5$}
+	{ $5!$}
+	{ $5$}
+	\loigiai{
+		\\
+		Số cách chọn một đội $5$ bạn đi trực tuần trong $35$ bạn là $\mathrm{C}_{35}^5$.}
+\end{ex}
+\begin{ex}%[0K8BN-1]% ::Cau 12::
+	Một đội văn nghệ có $5$ bạn nam và $8$ bạn nữ. Số cách chọn $2$ bạn nam và $3$ bạn nữ đi biểu diễn là
+	\choice
+	{ $\mathrm{C}_{13}^5$}
+	{ $\mathrm{A}_{13}^5$}
+	{ $\mathrm{A}_5^2\cdot\mathrm{A}_8^3$}
+	{\True $\mathrm{C}_5^2\cdot\mathrm{C}_8^3$}
+	\loigiai{
+		Số cách chọn $2$ bạn nam và bạn nữ đi biểu diễn là $\mathrm{C}_5^2\cdot\mathrm{C}_8^3$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 13::
+	Với $k$, $n$ là hai số nguyên dương tùy ý thỏa mãn $k\le n$, mệnh đề nào dưới đây đúng?
+	\choice
+	{\True $\mathrm{C}_n^k=\mathrm{C}_n^{n-k}$}
+	{ $\mathrm{C}_n^k=\mathrm{C}_{n+k}^k$}
+	{ $\mathrm{C}_n^k=\mathrm{C}_n^{k+1}$}
+	{ $\mathrm{C}_n^k=\mathrm{C}_{n+1}^k$}
+	\loigiai{
+		Theo tính chất ta có $\mathrm{C}_n^k=\mathrm{C}_n^{n-k}$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 14::
+	Với $k$, $n$ là hai số nguyên dương tùy ý thỏa mãn $k<n$, mệnh đề nào dưới đây đúng?
+	\choice
+	{\True $\mathrm{C}_n^k=\mathrm{C}_{n-1}^k+\mathrm{C}_{n-1}^{k-1}$}
+	{$\mathrm{C}_n^k=\mathrm{C}_{n+1}^k+\mathrm{C}_{n+1}^{k-1}$}
+	{ $\mathrm{C}_n^k=\mathrm{C}_n^{k+1}$}
+	{ $\mathrm{C}_n^k=\mathrm{C}_{n+1}^k$}
+	\loigiai{
+		Theo tính chất ta có $\mathrm{C}_n^k=\mathrm{C}_{n-1}^k+\mathrm{C}_{n-1}^{k-1}$.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 15::
+	Số cách xếp $4$ bạn học sinh thành một hàng ngang là
+	\choice
+	{ $16$}
+	{ $4^4$}
+	{ $12$}
+	{\True $4!$}
+	\loigiai{
+		Số cách xếp $4$ bạn học sinh thành một hàng ngang là $4!=24$.}
+\end{ex}
+\begin{ex}%[0K8BN-1]% ::Cau 16::
+	Từ các chữ số $1;2;3;5;6;8$ có thể lập được bao nhiêu số tự nhiên có $6$ chữ số đôi một khác nhau biết rằng các số đó phải bắt đầu bằng chữ số $1$.
+	\choice
+	{ $6!$}
+	{\True $5!$}
+	{ $4!$}
+	{ $5^5$}
+	\loigiai{
+		Để lập được số tự nhiên có $6$ chữ số đôi một khác nhau từ các chữ số $1;2;3;5;6;8$ mà các chữ số
+		đó bắt đầu bằng chữ số $1$ ta chỉ cần sắp thứ thự 5 chữ số $2;3;5;6;8$ sau chữ số 1. Số cách sắp
+		xếp cần tìm là $5!$.
+	}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 17::
+	Lớp $11A$ có $30$ học sinh. Có bao nhiêu cách chọn ra $3$ học sinh phân vào $3$ vị trí Lớp trưởng, Lớp phó và Bí thư.
+	\choice
+	{ $\mathrm{C}_{30}^3$}
+	{\True $\mathrm{A}_{30}^3$}
+	{ $30$}
+	{ $3!$}
+	\loigiai{
+		Số cách chọn $3$ học sinh từ $30$ học sinh để phân vào $3$ vị trí Lớp trưởng, Lớp phó và Bí thư chính là số chỉnh hợp chập $3$ của $30$ phần tử.\\
+		Vậy có $\mathrm{A}_{30}^3$ cách chọn.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 18::
+	Có $5$ quyển sách Toán, Vật lý, Hóa học, Lịch sử, Địa lý. Có bao nhiêu cách chọn ra $3$ quyển sách để trao tặng cho $3$ em học sinh (mỗi em một quyển).
+	\choice
+	{\True $\mathrm{A}_5^3$}
+	{ $5!$}
+	{ $3!$}
+	{ $\mathrm{C}_5^3$}
+	\loigiai{
+		Số cách chọn ra $3$ quyển sách từ $5$ quyển sách để trao tặng cho $3$ em học sinh chính là số chỉnh hợp chập $3$ của $5$ phần tử. Vậy có $\mathrm{A}_5^3$ cách chọn.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 19::
+	Xét số nguyên $n\ge 1$ và số nguyên $k$ với $0\le k\le n$. Công thức nào sau đây đúng?
+	\choice
+	{ $\mathrm{C}_n^k=\dfrac{n!}{\left( n-k \right)!}$}
+	{\True $\mathrm{C}_n^k=\dfrac{n!}{k!\left( n-k \right)!}$}
+	{ $\mathrm{C}_n^k=\dfrac{n!}{k!}$}
+	{ $\mathrm{C}_n^k=\dfrac{n!}{n!\left( n-k \right)!}$}
+	\loigiai{
+	Ta có $\mathrm{C}_n^k=\dfrac{n!}{k!\left( n-k \right)!}$}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 20::
+	Cần phân công $3$ bạn từ một tổ $10$ bạn để làm trực nhật. Hỏi có bao nhiêu cách phân công khác nhau
+	\choice
+	{\True $\mathrm{C}_{10}^3$}
+	{ ${3^{10}}$}
+	{ $\mathrm{A}_{10}^3$}
+	{ ${{10}^3}$}
+	\loigiai{
+		Mỗi cách phân công 3 bạn từ một tổ 10 bạn để làm trực nhật là một tổ hợp chập 3 của 10 phần tử. Vậy số cách phân công khác nhau là $\mathrm{C}_{10}^3$.}
+\end{ex}
+\begin{ex}%[0K8BN-1]% ::Cau 21::
+	Có $5$ bạn học sinh trong đó có hai bạn là Thảo và Linh. Số cách xếp $5$ học sinh trên thành một hàng ngang sao cho hai bạn Thảo và Linh đứng cạnh nhau là
+	\choice
+	{\True $48$}
+	{ $120$}
+	{ $24$}
+	{ $6$}
+	\loigiai{
+		Ta coi hai bạn Thảo và Linh đứng cạnh nhau là một nhóm $X$.\\
+		Xếp $X$ và $3$ bạn còn lại thành một hàng ngang: có $4!$ cách xếp.\\
+		Ứng với mỗi cách xếp ở trên, có $2!$ cách xếp vị trí cho hai bạn Thảo và Linh trong nhóm $X$.\\
+		Theo quy tắc nhân, ta có $4!\cdot2!=48$ cách xếp thỏa mãn yêu cầu bài toán.}
+\end{ex}
+\begin{ex}%[0K8BN-1]% ::Cau 22::
+	Xếp sáu bạn A, B, C, D, E, F vào cùng một ghế dài. Hỏi có bao nhiêu cách xếp sao cho hai bạn A và F luôn ngồi cạnh nhau?
+	\choice
+	{ $720$}
+	{ $360$}
+	{ $120$}
+	{\True $240$}
+	\loigiai{
+		Cách xếp hai bạn A và F luôn ngồi cạnh là $2!=2$ cách.\\
+		Khi đó các bạn B, C, D, E và A, F xếp vào 5 vị trí trên ghế là hoán vị của 5 phần tử, nên số cách thực hiện là $5!=120$ cách.\\
+		Vậy có tất cả $2.120=240$ cách.}
+\end{ex}
+	\begin{ex}%[0K8BN-3]% ::Cau 23::
+	Cho hai đường thẳng song song $d_1$ và $d_2.$ Trên $d_1$ lấy 17 điểm phân biệt, trên $d_2$ lấy 20 điểm phân biệt. Tính số tam giác mà có các đỉnh được chọn từ $37$ điểm này.
+	\choice
+	{ $5690$}
+	{ $5960$}
+	{\True $5950$}
+	{ $5590$}
+	\loigiai{
+		Một tam giác được tạo bởi ba điểm phân biệt không thẳng hàng nên ta có 2 trường hợp sau\\
+		TH1: Chọn 1 điểm thuộc $d_1$ và 2 điểm thuộc $d_2$ có $\mathrm{C}_{17}^1\cdot\mathrm{C}_{20}^2$ tam giác.\\
+		TH2: Chọn 2 điểm thuộc $d_1$ và 1 điểm thuộc $d_2$ có $\mathrm{C}_{17}^2\cdot\mathrm{C}_{20}^1$ tam giác.\\
+		Vậy số tam cần tìm là $\mathrm{C}_{17}^1\cdot\mathrm{C}_{20}^2+\mathrm{C}_{17}^2\cdot\mathrm{C}_{20}^1=5950$ tam giác.}
+\end{ex}
+\begin{ex}%[0K8BN-1]% ::Cau 24::
+	Trên giá sách có $4$ quyển sách Toán khác nhau, $5$ quyển sách Văn khác nhau và $6$ quyển sách Tiếng Anh khác nhau. Có bao nhiêu cách lấy $4$ quyển sách từ giá sách này sao cho có đủ ba môn và số quyển sách Văn nhiều nhất?
+	\choice
+	{\True $\mathrm{C}_4^1\mathrm{C}_5^2\mathrm{C}_6^1$}
+	{ $\mathrm{C}_4^1\mathrm{C}_5^1\mathrm{C}_6^2$}
+	{ $\mathrm{C}_{10}^2\mathrm{C}_5^2$}
+	{ $\mathrm{C}_4^2\mathrm{C}_5^1\mathrm{C}_6^1$}
+	\loigiai{
+		Lấy $4$ quyển sách từ giá sách này sao cho có đủ ba môn và số quyển sách Văn nhiều nhất là lấy $1$ quyển sách Toán, $2$ quyển sách Văn và $1$ quyển sách Tiếng Anh.\\
+		Số cách lấy là $\mathrm{C}_4^1\mathrm{C}_5^2\mathrm{C}_6^1$ cách.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 25::
+	Trong trận chung kết bóng đá phải phân định thắng thua bằng đá luân lưu $11$ mét. Huấn luyện viên của mỗi đội cần trình với trọng tài một danh sách sắp thứ tự $5$ cầu thủ trong $11$ cầu thủ để đá luân lưu $5$ quả $11$ mét. Hỏi huấn luyện viên của mỗi đội sẽ có bao nhiêu cách chọn?
+	\choice
+	{\True $55440$}
+	{ $120$}
+	{ $462$}
+	{ $39916800$}
+	\loigiai{
+		Số cách chọn của huấn luyện viên của mỗi đội là $\mathrm{A}_{11}^5=55440$.}
+\end{ex}
+\begin{ex}%[0K8KN-2]% ::Cau 26::
+	Một lớp học có $36$ học sinh chụp ảnh lưu niệm. Lớp muốn trong bức ảnh có $10$ bạn ngồi ở hàng thứ nhất, $12$ bạn đứng ở hàng thứ hai và $14$ bạn đứng ở hàng thứ ba. Hỏi có bao nhiêu cách xếp vị trí chụp ảnh như vậy?
+	\choice
+	{$\mathrm{C}_{36}^{10}\cdot\mathrm{C}_{26}^{12}\cdot14!$}
+	{\True $\mathrm{A}_{36}^{10}\cdot\mathrm{A}_{26}^{12}\cdot14!$}
+	{ $\mathrm{A}_{36}^{10}\cdot\mathrm{A}_{26}^{12}$}
+	{ $\mathrm{C}_{36}^{10}\cdot\mathrm{C}_{26}^{12}$}
+	\loigiai{
+		Chọn $10$ bạn học sinh ngồi ở hàng thứ nhất trong $36$ học sinh và xếp thứ tự $10$ bạn đó, mỗi cách xếp là một chỉnh hợp chập $10$ của $36$, có $\mathrm{A}_{36}^{10}$ cách.\\
+		Chọn $12$ bạn học sinh đứng ở hàng thứ hai trong $26$ học sinh và xếp thứ tự $12$ bạn đó, mỗi cách xếp là một chỉnh hợp chập $12$ của $26$, có $\mathrm{A}_{26}^{12}$ cách.\\
+		Còn lại $14$ bạn đứng ở hàng thứ ba, có $14!$ cách xếp.\\
+		Vậy số cách xếp thỏa mãn yêu cầu bài toán là $\mathrm{A}_{36}^{10}\cdot\mathrm{A}_{26}^{12}\cdot14!$.}
+\end{ex}
+\begin{ex}%[0K8BN-6]% ::Cau 27::
+	Cho các số tự nhiên $m$, $n$ thỏa mãn đồng thời các điều kiện $\mathrm{C}_m^2=153$ và $\mathrm{C}_m^n=\mathrm{C}_m^{n+2}$. Khi đó $m+n$ bằng
+	\choice
+	{ $25$}
+	{ $24$}
+	{\True $26$}
+	{ $23$.
+	}
+	\loigiai{	Theo tính chất $\mathrm{C}_m^n=\mathrm{C}_m^{m-n}$ nên từ $\mathrm{C}_m^n=\mathrm{C}_m^{n+2}$ suy ra $2n+2=m$.\\
+		$\mathrm{C}_m^2=153\Leftrightarrow \dfrac{m\left( m-1 \right)}{2}=153\Rightarrow m=18$. Do đó $n=8$.\\
+		Vậy $m+n=26$.}
+\end{ex}
+\begin{ex}%[0K8BM-2]% ::Cau 28::
+	Từ các chữ số $\text{1; 2; 3; 4; 6}$ có thể lập được bao nhiêu số có ba chữ số đôi một khác nhau và chia hết cho $3$.
+	\choice
+	{ $12$}
+	{ $23$}
+	{ $18$}
+	{\True $24$}
+	\loigiai{
+		Từ $5$ chữ số đã cho ta có $4$ bộ gồm ba chữ số có tổng chia hết cho $3$ là $\left( 1;2;3 \right)$, $\left( 1;2;6 \right)$, $\left( 2;3;4 \right)$ và $\left( 2;4;6 \right)$. Mỗi bộ ba chữ số này ta lập được $3!=6$ số.\\
+		Vậy có $6\cdot4=24$ số cần tìm.}
+\end{ex}
+\begin{ex}%[0K8BN-1]% ::Cau 29::
+	Một tổ có $5$ học sinh nam và $4$ học sinh nữ. Số cách xếp học sinh trong tổ thành một hàng dọc sao cho nam nữ đứng xen kẽ là
+	\choice
+	{ $362880$}
+	{ $144$}
+	{\True $2880$}
+	{ $5760$}
+	\loigiai{
+		Xếp $5$ học sinh nam có $5!$ cách. $5$ học sinh nam tạo thành $4$ khoảng trống.\\
+		Xếp $4$ học sinh nữ vào $4$ khoảng trống có $4!$ cách.\\
+		Vậy có số cách xếp sao cho nam nữ đứng xen kẽ nhau là $5!\cdot4!=2880$ cách.}
+\end{ex}
+\begin{ex}%[0K8BN-1]% ::Cau 30::
+	Có bao nhiêu số tự nhiên gồm hai chữ số khác nhau mà hai chữ số này đều lẻ?
+	\choice
+	{\True $\mathrm{A}_5^2$}
+	{ $\mathrm{C}_5^2$}
+	{ $5!$}
+	{ $5^2$}
+	\loigiai{
+		Có $5$ chữ số lẻ là $\mathrm{A}=\left\{ 1,3,5,7,9 \right\}$.\\
+		Mỗi số có hai chữ số khác nhau được lập từ tập $\mathrm{A}$ là một chỉnh hợp chập $2$ của $5$ phần tử nên có $\mathrm{A}_5^2$ số thỏa mãn.}
+\end{ex}
+\begin{ex}%[0K8BN-2]% ::Cau 31::
+	Lớp 10A có $35$ học sinh trong đó có $15$ học sinh nam và $20$ học sinh nữ. Giáo viên chủ nhiệm lớp 10A muốn lập ra một ban cán sự lớp gồm $1$ lớp trưởng, $1$ lớp phó, $1$ bí thư và $4$ tổ trưởng. Biết các học sinh trong lớp 10A có thể đảm nhiệm được các chức vụ trong ban cán sự lớp. Hỏi giáo viên chủ nhiệm lớp 10A có bao nhiêu cách lập ban cán sự lớp như trên ?
+	\choice
+	{ $\mathrm{A}_{35}^7$}
+	{ $\mathrm{C}_{35}^7$}
+	{ $\mathrm{C}_{35}^3\cdot\mathrm{A}_{32}^4$}
+	{\True $\mathrm{A}_{35}^3\cdot\mathrm{C}_{32}^4$}
+	\loigiai{
+		Số cách chọn $3$ học sinh vào các vị trí lớp trưởng, lớp phó, bí thư là $\mathrm{A}_{35}^3$ cách chọn.\\
+		Số cách chọn $4$ học sinh vào vị trí tổ trưởng là $\mathrm{C}_{32}^4$ cách chọn.\\
+		Số cách chọn ban cán sự lớp thỏa yêu cầu bài toán là $\mathrm{A}_{35}^3\cdot\mathrm{C}_{32}^4$ cách chọn.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-3]
+	Có bao nhiêu đoạn thẳng được tạo thành từ $10$ điểm phân biệt khác nhau?
+	\choice
+	{\True $45$}
+	{$90$}
+	{$ 35$}
+	{ $55 $}
+	\loigiai{
+		Mỗi đoạn thẳng được tạo thành từ $2$ trong  $10$ điểm phân biệt khác nhau.
+		\\
+		Số đoạn thẳng là $\mathrm{C}_{10}^2=45$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-3]
+	Số véc-tơ khác $\overrightarrow{0}$ có điểm đầu, điểm cuối là hai trong $6$ đỉnh của lục giác bằng
+	\choice 
+	{ $\mathrm{P}_{6}$}
+	{ $\mathrm{C}_{6}^{2}$}
+	{ \True $\mathrm{A}_{6}^{2}$}
+	{ $36$ }
+	\loigiai{
+		Mỗi véc-tơ khác $\overrightarrow{0}$ có điểm đầu, điểm cuối là hai trong $6$ đỉnh của lục giác là một chỉnh hợp chập $2$ của $6$ phần tử.
+		\\
+		Số véc-tơ là $\mathrm{A}_{6}^{2}$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2Y2-1]
+	Cần chọn 3 người đi công tác từ một tổ có 30 người, khi đó số cách chọn là
+	\choice
+	{ $\mathrm{A}_{50}^{3}$}
+	{ $3^{30}$}
+	{ $10 $}
+	{ \True $\mathrm{C}_{30}^{3}$}
+	\loigiai{
+		Mỗi cách chọn 3 người đi công tác từ một tổ có 30 người là một tổ hợp chập $3$ của $30$ phần tử.
+		\\
+		Số cách chọn là $\mathrm{C}_{30}^{3}$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-1]
+	Trong một buổi khiêu vũ có 20 nam và 18 nữ. Hỏi có bao nhiêu cách chọn ra một đôi nam nữ để khiêu vũ ?
+	\choice 
+	{ $\mathrm{C}_{38}^{2}$}
+	{ $A^{2}$}
+	{ $\mathrm{C}_{20}^{2} \cdot \mathrm{C}_{18}^{1}$}
+	{ \True $\mathrm{C}_{20}^{1} \cdot \mathrm{C}_{18}^{1}$}
+	\loigiai{
+		\begin{itemize}
+			\item Chọn $1$ nam trong $20$ nam có $\mathrm{C}_{20}^1$ cách.
+			\item Chọn $1$ nữ trong $18$ nữ có $\mathrm{C}_{18}^1$ cách.
+		\end{itemize}
+		Vậy có $\mathrm{C}_{20}^1 \cdot \mathrm{C}_{18}^1$ cách chọn.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-2]
+	Có $3$ bạn nam và $3$ bạn nữ được xếp vào một ghế dài có $6$ vị trí. Hỏi có bao nhiêu cách xếp sao cho nam và nữ ngồi xen kẽ lẫn nhau?
+	\choice
+	{$48$}
+	{$72$}
+	{$24$}
+	{\True $36$}
+	\loigiai{
+		\begin{itemize}
+			\item [TH1:] Bạn nam ngồi đầu dãy, suy ra có $3 ! .3 !=36$ cách sãp xếp.
+			\item [TH2:] Ban nữ ngồi đầu dãy, suy ra có $3 ! .3 !=36$ cách sắp xếp.
+		\end{itemize}
+		Vậy có tất cả $36+36=72$ cách xếp nam, nữ ngồi xen kẽ.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-3]
+	Cho hai đường thằng song song. Trên đường thứ nhất có $10$ điểm, trên đường thứ hai có $15$ điểm. Hỏi có bao nhiêu tam giác được tạo thành từ các điểm đã cho?
+	\choice
+	{\True $ 1725$}
+	{$ 1050$}
+	{$ 675$}
+	{$ 1275$}
+	\loigiai{
+		Gọi $a,b$ là hai đường thẳng song song.
+		\\
+		Số tam giác lập được thuộc vào một trong hai loại sau:
+		\begin{itemize}
+			\addtolength{\itemindent}{0.5cm}
+			\item [Loại 1:] Gồm hai đỉnh thuộc vào $a$ và một đỉnh thuộc vào $b$. 
+			\begin{itemize}
+				\item Số cách chọn bộ hai điểm trong $10$ thuộc $a$: $\mathrm{C}_{10}^{2}$.
+				\item Số cách chọn một điểm trong $15$ điểm thuộc $b$: $\mathrm{C}_{15}^{1}$.
+			\end{itemize}
+			Loại này có: $\mathrm{C}_{10}^{2} \cdot \mathrm{C}_{15}^{1}$ tam giác.
+			\item [loại 2:] Gồm một đỉnh thuộc vào $a$ và hai đình thuộc vào $b$.
+			\begin{itemize}
+				\item Số cách chọn một điểm trong $10$ thuộc $a$: $\mathrm{C}_{10}^{1}$ 
+				\item Số cách chọn bộ hai điểm trong $15$ điểm thuộc $b$: $\mathrm{C}_{15}^{2}$.
+			\end{itemize}
+			Loại này có: $\mathrm{C}_{10}^{1} \cdot \mathrm{C}_{15}^{2}=$ tam giác.
+		\end{itemize}
+		Vậy có tất cả: $\mathrm{C}_{10}^{2} \cdot \mathrm{C}_{15}^{1}+\mathrm{C}_{10}^{1}\cdot \mathrm{C}_{15}^{2}=1725$ tam giác thỏa yêu cầu bài toán.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-3]
+	Trên đường thẳng $d_{1}$ cho $5$ điểm phân biệt, trên đường thẳng $d_{2} \parallel d_{1}$ cho $n$ điểm phân biệt. Biết có $175$ tam giác được tạo thành mà $3$ đỉnh lấy từ $n+5$ điểm trên thì $n$ là
+	\choice
+	{ $n=9$}
+	{ $n=8$}
+	{ $n=10$}
+	{\True  $n=7$}
+\end{ex}
+\loigiai{
+	Số tam giác lập được thuộc vào một trong hai loại sau:
+	\begin{itemize}
+		\addtolength{\itemindent}{0.5cm}
+		\item [Loại 1:] Gồm hai đỉnh thuộc vào $d_1$ và một đỉnh thuộc vào $d_2$. 
+		\begin{itemize}
+			\item Số cách chọn bộ hai điểm trong $5$ thuộc $d_1$: $\mathrm{C}_{5}^{2}$.
+			\item Số cách chọn một điểm trong $n$ điểm thuộc $d_2$: $\mathrm{C}_{n}^{1}$.
+		\end{itemize}
+		Loại này có: $\mathrm{C}_{5}^{2} \cdot \mathrm{C}_{n}^{1}$ tam giác.
+		\item [Loại 2:] Gồm một đỉnh thuộc vào $d_1$ và hai đỉnh thuộc vào $d_2$.
+		\begin{itemize}
+			\item Số cách chọn một điểm trong $5$ thuộc $d_1$: $\mathrm{C}_{5}^{1}$ 
+			\item Số cách chọn bộ hai điểm trong $n$ điểm thuộc $d_2$: $\mathrm{C}_{n}^{2}$.
+		\end{itemize}
+		Loại này có: $\mathrm{C}_{5}^{1} \cdot \mathrm{C}_{n}^{2}$ tam giác.
+	\end{itemize}
+	Vậy có tất cả: $\mathrm{C}_{5}^{2} \cdot \mathrm{C}_{n}^{1}+\mathrm{C}_{5}^{1} \cdot \mathrm{C}_{n}^{2}$ tam giác.
+	\\
+	Theo đề bài ta có 
+	\begin{eqnarray*}
+		&&\mathrm{C}_{5}^{2} \cdot \mathrm{C}_{n}^{1}+\mathrm{C}_{5}^{1} \cdot \mathrm{C}_{n}^{2}=175\\
+		&\Leftrightarrow& 10\dfrac{n!}{1!(n-1)!}+5\dfrac{n!}{2!(n-2)!}=175\\
+		&\Leftrightarrow& 10n+\dfrac{5}{2}n(n-1)=175\\
+		&\Leftrightarrow& 5n^2+15n-350=0\\
+		&\Leftrightarrow&\hoac{&n=7\\&n=-10 \text{  (loại)}.}
+	\end{eqnarray*}
+	Vậy $n=7$.
+}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-3]
+	Trong một đa giác lồi $n$ cạnh, số đường chéo của đa giác là
+	\choice
+	{ $\mathrm{C}_{n}^{2}$}
+	{ $\mathrm{A}_{n}^{2}$}
+	{ $A^{2}-n$}
+	{\True  $\mathrm{C}_{n}^{2}-n$}
+	\loigiai{
+		Mỗi đoạn thẳng nối $2$ đỉnh của một đa giác lồi $n$ là một tổ hợp chập $2$ của $n$ phần tử nên có $\mathrm{C}_{n}^{2}$ đoạn thẳng.
+		\\
+		Mỗi đoạn thẳng trên hoặc là cạnh, hoặc là đường chéo của đa giác.
+		\\
+		Vậy trong một đa giác lồi $n$ cạnh, số đường chéo của đa giác là $\mathrm{C}_{n}^{2}-n$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2Y2-1]
+	Có bao nhiêu số có bốn chữ số khác nhau được tạo thành từ các chữ số $1,2,3,4,5$.
+	\choice 
+	{ \True $\mathrm{A}_{5}^{4}$}
+	{ $\mathrm{P}_{5}$}
+	{ $\mathrm{C}_{5}^{4}$}
+	{ $\mathrm{P}_{4}$}
+	\loigiai{
+		Mỗi số có bốn chữ số khác nhau được tạo thành từ các chữ số $1,2,3,4,5$ là một chỉnh hợp chập $4$ của $5$ phần tử.
+		\\
+		Số các số cần tìm là $\mathrm{A}_{5}^{4}$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2Y2-1]
+	Cho tập $A=\{1 ; 2 ; 3 ; 5 ; 7 ; 9\}$. Từ tập $A$ có thể lập được bao nhiêu số tự nhiên gồm bốn chữ số đôi một khác nhau?
+	\choice 
+	{ $720$ }
+	{\True $360$ }
+	{ $120$ }
+	{ $24$ }
+	\loigiai{
+		Mỗi số có bốn chữ số khác nhau được tạo thành từ $A=\{1 ; 2 ; 3 ; 5 ; 7 ; 9\}$ là một chỉnh hợp chập $4$ của $6$ phần tử.
+		\\
+		Số các số cần tìm là $\mathrm{A}_{6}^{4}=360$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-1]
+	Cho tập $A=\{0 ; 1 ; 2 ; 3 ; 4 ; 5 ; 6 ; 7 ; 8 ; 9\}$. Có bao nhiêu số tự nhiên gồm $5$ chữ số khác nhau được tạo từ tập $A$?
+	\choice 
+	{ $\mathrm{A}_{10}^{4}$}
+	{ $9 \cdot \mathrm{C}_{9}^{4}$}
+	{ \True $9 \cdot \mathrm{A}_{9}^{4}$}
+	{ $\mathrm{C}_{10}^{4}$}
+	\loigiai{
+		\begin{itemize}
+			\item Số các số có dạng $\overline{abcde}$ (kể cả số $0$ đầu) và các chữ số đôi một khác nhau là $\mathrm{A}_{10}^{5}$.
+			\item Số các số có dạng $\overline{0bcde}$ và các chữ số đôi một khác nhau là $\mathrm{A}_{9}^{4}$.
+		\end{itemize}
+		Vậy số các số cần tìm là $\mathrm{A}_{10}^{5}-\mathrm{A}_{9}^{4} = 9 \cdot \mathrm{A}_{9}^{4}$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2K2-6]
+	Nghiệm của phưong trình $\mathrm{A}_{n}^{3}=20 n$ là
+	\choice 
+	{\True $n=6$}
+	{ $n=5$}
+	{ $n=8$}
+	{ $n=-3$}
+	\loigiai{
+		Điều kiện $n\in \mathbb{N}, n\geq 3$.
+		\begin{eqnarray*}
+			&& \mathrm{A}_{n}^{3}=20 n\\
+			&\Leftrightarrow& \dfrac{n!}{(n-3)!}-20n=0\\
+			&\Leftrightarrow& n(n-1)(n-2)-20n=0\\
+			&\Leftrightarrow& n[(n-1)(n-2)-20]=0\\
+			&\Leftrightarrow& n(n^2-3n-18)=0\\
+			&\Leftrightarrow& \hoac{&n=0 \text{ (loại)}\\&n=6\\&n=-3 \text{ (loại)}.}
+		\end{eqnarray*}
+		Vậy $n=6$.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2K2-6]
+	Cho $n \in \mathbb{N}^{*}$ thóa mãn $\mathrm{C}_{n}^{5}=2002 .$ Tính $\mathrm{A}_{n}^{5}$
+	\choice 
+	{$2007$}
+	{$10010$}
+	{$40040$}
+	{\True $240240$}
+	\loigiai{
+		$\mathrm{A}_{n}^{5}=5!\mathrm{C}_{n}^{5}= 240240$.
+	}
+\end{ex}
+\begin{ex}
+	Tổng các nghiệm của bất phưong trình $\mathrm{A}_{x}^{3}+15<15 x$ bằng
+	\choice 
+	{\True $7$ }
+	{ $9 $}
+	{ $14$ }
+	{ $20$ }
+	\loigiai{
+		Điều kiện $x\in \mathbb{N}, x\geq 3$.
+		\begin{eqnarray*}
+			&& \mathrm{A}_{x}^{3}+15<15 x\\
+			&\Leftrightarrow& \dfrac{x!}{(x-3)!}-15x+15<0\\
+			&\Leftrightarrow& x(x-1)(x-2)-15x+15<0\\
+			&\Leftrightarrow& (x-1)(x^2-2x-15)<0\\
+			&\Leftrightarrow& \hoac{&x<-3 \text{ (loại)}\\& 1<x<5.}
+		\end{eqnarray*}
+		So với điều kiện thì bất phương trình đã cho có $2$ nghiệm là $x=3, x=4$.
+		\\
+		Tổng các nghiệm của bất phương trình đã cho là $3+4=7$
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-1]
+	Có bao nhiêu cách chia hết 4 đồ vật khác nhau cho 3 người, biết rằng mỗi người nhận được ít nhất 1 đồ vật?
+	\choice 
+	{$72$}
+	{$18$}
+	{$12$}
+	{\True $36$}
+	\loigiai{
+		\begin{itemize}
+			\item Chọn $2$ đồ vật trong $4$ đồ vật khác nhau chia cho người thứ nhất có $\mathrm{C}_4^2=6$ cách.
+			\item Có $2$ cách chia $2$ đồ vật còn lại cho $2$ người còn lại.
+		\end{itemize}
+		Theo quy tắc nhân ta có $6 \cdot 2=12$ cách.
+		\\
+		Lý luận tương tự như trên cho trường hợp người thứ hai và người thứ ba nhận được hai đồ vật có $12+12=24$ cách.
+		\\
+		Vậy có tất cả $12+24=36$ cách.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2B2-3]
+	Cho đa giác đều $2 n$ đỉnh $(n \geq 2, n \in \mathbb{N}) $. Biết số hình chữ nhật được tạo thành từ $2 n$ đỉnh của đa giác đó là $45$. Tìm $n$.
+	\choice 
+	{ $n=12$}
+	{\True $n=10$}
+	{ $n=9$}
+	{ $n=45$}
+	\loigiai{
+		Đa giác đều $2n$ đỉnh có $n$ đường chéo qua tâm.
+		\\
+		Cứ mỗi $2$ đường chéo qua tâm thì ta có $1$ hình chữ nhật.
+		\\
+		Nên có tất cả $\mathrm{C}_n^2$ hình chữ nhật.
+		\\
+		Theo đề bài ta có $\mathrm{C}_n^2=45 \Leftrightarrow n=10$.
+	}
+\end{ex}
+\begin{ex}%[0K8KN-6]% ::Cau 32::
+	Có $10$ đội bóng thi đấu theo thể thức vòng tròn một lượt, thắng được $3$ điểm, hòa $1$ điểm, thua $0$ điểm. Kết thúc giải đấu, tổng cộng số điểm của tất cả $10$ đội là $130$. Hỏi có bao nhiêu trận hòa?
+	\choice
+	{ $7$}
+	{ $8$}
+	{\True $5$}
+	{ $6$}
+	\loigiai{
+		Vì $10$ đội bóng thi đấu theo thể thức vòng tròn một lượt nên số trận đấu là $C_{10}^2=45$ (trận).\\
+		Gọi số trận hòa là $x$, số trận không hòa là $45-x$ (trận).\\
+		Tổng số điểm mỗi trận hòa là $2$, tổng số điểm của trận không hòa là $3\left( 45-x \right)$.\\
+		Theo đề bài ta có phương trình $2x+3\left( 45-x \right)=130\Leftrightarrow x=5$.}
+\end{ex}
+\begin{ex}%[0K8KN-1]% ::Cau 33::
+	Trong một hộp đựng $4$ bi xanh, $4$ bi vàng và $12$ bi đỏ. Hỏi có bao nhiêu cách lấy ra từ hộp $10$ viên bi sao cho trong $10$ bi lấy ra có đủ $3$ loại?
+	\choice
+	{ $184690$}
+	{\True $168806$}
+	{ $168674$}
+	{ $176682$}
+	\loigiai{
+		Số cách lấy ra $10$ bi từ $20$ bi trong hộp là $\mathrm{C}_{20}^{10}$.\\
+		Số cách lấy ra $10$ bi có đúng $1$ loại là $\mathrm{C}_{12}^{10}$.\\
+		Số cách lấy ra $10$ bi có đúng $2$ loại xanh, đỏ là $\mathrm{C}_{16}^{10}-\mathrm{C}_{12}^{10}$.\\
+		Số cách lấy ra $10$ bi có đúng $2$ loại vàng, đỏ là $\mathrm{C}_{16}^{10}-\mathrm{C}_{12}^{10}$.\\
+		Do đó, số cách lấy ra $10$ bi có đủ $3$ loại là $\mathrm{C}_{20}^{10}-\mathrm{C}_{12}^{10}-2\left( \mathrm{C}_{16}^{10}-\mathrm{C}_{12}^{10} \right)=168806$.}
+\end{ex}
+\begin{ex}%[0K8BN-6]% ::Cau 34::
+	Cho các số nguyên dương $k,n\left( k<n \right)$. Tính tổng $T=\mathrm{C}_n^k+\mathrm{C}_n^{k+1}+\mathrm{C}_{n+1}^{k+2}$
+	\choice
+	{ $T=\mathrm{C}_n^{k+2}$}
+	{ $T=\mathrm{C}_{n+1}^{k+2}$}
+	{ $T=\mathrm{C}_{n+1}^{k+1}$}
+	{\True $T=\mathrm{C}_{n+2}^{n-k}$}
+	\loigiai{
+		Ta có $T=\left( \mathrm{C}_n^k+\mathrm{C}_n^{k+1} \right)+\mathrm{C}_{n+1}^{k+2}=\mathrm{C}_{n+1}^{k+1}+\mathrm{C}_{n+1}^{k+2}=\mathrm{C}_{n+2}^{k+2}=\mathrm{C}_{n+2}^{\left( n+2 \right)-\left( k+2 \right)}=\mathrm{C}_{n+2}^{n-k}$.}
+\end{ex}
+\begin{ex}%[0K8BM-2]% ::Cau 35::
+	Từ các chữ số $0;1;2;3$ có thể lập được bao nhiêu số tự nhiên có $4$ chữ số đôi một khác nhau?
+	\choice
+	{ $24$}
+	{ $6$}
+	{\True $18$}
+	{ $12$}
+	\loigiai{
+		Gọi số tự nhiên cần tìm là $n=\overline{abcd}$ trong đó $a,b,c,d$ đôi một khác nhau, được chọn từ $4$ số đã cho và $a\ne 0$.\\
+		Do đó số các số tự nhiên cần tìm là $3\cdot\mathrm{P}_3=3\cdot 3!=18$ số.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 36::
+	Từ các chữ số $1, 2, 3, 4, 5, 6, 7$ lập được bao nhiêu số tự nhiên gồm ba chữ số đôi một khác nhau ?
+	\choice
+	{ $\mathrm{C}_7^3$}
+	{ $7^3$}
+	{\True $\mathrm{A}_7^3$}
+	{ $3^7$}
+	\loigiai{
+		Chọn $3$ số trong $7$ số đã cho và hoán vị chúng ta được $\mathrm{A}_7^3$ số tự nhiên gồm ba chữ số đôi một khác nhau.}
+\end{ex}
+\begin{ex}%[0K8KN-1]% ::Cau 37::
+	
+	Tổ $1$ lớp 10A1 có $6$ học sinh nam và $5$ học sinh nữ. Giáo viên chủ nhiệm cần chọn ra $4$ học sinh của tổ $1$ để tham gia đội kịch sinh hoạt ngoại khóa. Hỏi có bao nhiêu cách chọn $4$ học sinh trong đó có ít nhất một học sinh nam?
+	\choice
+	{ $120$}
+	{ $625$}
+	{\True $325$}
+	{ $35$}
+	\loigiai{
+		Trường hợp 1: Chọn $1$ nam và $3$ nữ.\\
+		Trường hợp 2: Chọn $2$ nam và $2$ nữ.\\
+		Trường hợp 3: Chọn $3$ nam và $1$ nữ.\\
+		Trường hợp 4: Chọn $4$ nam.\\
+		Số cách chọn cần tìm là $\mathrm{C}_6^1\mathrm{C}_5^3+\mathrm{C}_6^2\mathrm{C}_5^2+\mathrm{C}_6^3\mathrm{C}_5^1+\mathrm{C}_6^4=325$ cách chọn.}
+\end{ex}
+\begin{ex}%[0K8YN-1]% ::Cau 38::
+	Có $3$ vận động viên thi chạy ngắn cự ly $100\mathrm{m}$. Hỏi có bao nhiêu thứ tự về đích của $3$ vận động viên đó.
+	\choice
+	{ $3$}
+	{\True $6$}
+	{ $9$}
+	{ $4$}
+	\loigiai{
+		Mỗi thứ tự về đích của $3$ vận động viên chính là một hoán vị của $3$ người. Do đó, số thứ tự về đích của $3$ vận động viên là $3!=6.$}
+\end{ex}
+\begin{ex}%[0K8KN-1]% ::Cau 39::
+	Có bao nhiêu số tự nhiên gồm $5$ chữ số đôi một khác nhau?
+	\choice
+	{ $\mathrm{C}_{10}^5$}
+	{\True $9\cdot\mathrm{A}_9^4$}
+	{ $\mathrm{A}_{10}^5$}
+	{ $9\cdot\mathrm{C}_9^4$}
+	\loigiai{
+		Kí hiệu $E=\left\{ 0;1;2;3;4;5;6;7;8;9 \right\}$.\\
+		Mỗi cách lập ra số tự nhiên $\overline{abcde}$ gồm $5$ chữ số đôi một khác nhau từ tập $E$ được thực hiện qua hai công đoạn\\
+		Công đoạn 1: Chọn $a\in E\setminus \left\{ 0 \right\}$. Có 9 cách chọn.\\
+		Công đoạn 2: Chọn $b,c,d,e\in E\setminus \left\{ a \right\}$, đôi một khác nhau. Có $\mathrm{A}_9^4$ cách chọn.\\
+		Theo quy tắc nhân, số cách chọn số tự nhiên thỏa đề bài là $9\cdot\mathrm{A}_9^4$ cách.\\
+		Vậy có tất cả $9\cdot\mathrm{A}_9^4=27216$ số tự nhiên gồm $5$ chữ số đôi một khác nhau.}
+\end{ex}
+\begin{ex}%[0K8KN-1]% ::Cau 40::
+	Trong một môn học, thầy giáo có $30$ câu hỏi khác nhau, trong đó có $5$ câu khó, $10$ câu trung bình và $15$ câu dễ. Thầy giáo muốn chọn ra $1$ đề kiểm tra gồm $5$ câu, có đủ ba loại câu hỏi và có ít nhất $2$ câu dễ. Hỏi thầy giáo có bao nhiêu cách chọn đề kiểm tra?
+	\choice
+	{$34125$}
+	{ $33250$}
+	{ $46375$}
+	{\True $56875$}
+	\loigiai{
+		Ta có các trường hợp sau\\
+		TH1: Đề kiểm tra gồm $2$ câu dễ, $1$ câu trung bình và $2$ câu khó.\\
+		Có $\mathrm{C}_{15}^2\cdot\mathrm{C}_{10}^1\cdot\mathrm{C}_5^2=10500$ cách.\\
+		TH2: Đề kiểm tra gồm $2$ câu dễ, $2$ câu trung bình và $1$ câu khó.\\
+		Có $\mathrm{C}_{15}^2\cdot\mathrm{C}_{10}^2\cdot\mathrm{C}_5^1=23625$ cách.\\
+		TH3: Đề kiểm tra gồm $3$ câu dễ, $1$ câu trung bình và $1$ câu khó.\\
+		Có $\mathrm{C}_{15}^3\cdot\mathrm{C}_{10}^1\cdot
+		\mathrm{C}_5^1=22750$ cách.\\
+		Vậy thầy giáo có tất cả $10500 + 23625 + 22750 = 56875$ cách chọn đề kiểm tra.}
+\end{ex}
+\begin{ex}%[0K8BN-1]% ::Cau 41::
+	Một tổ có $8$ học sinh trong đó có An và Bình. Tính số cách xếp $8$ bạn trong tổ thành hàng ngang sao cho An và Bình luôn đứng cạnh nhau?
+	\choice
+	{ $1440$}
+	{ $5040$}
+	{\True $10080$}
+	{ $40320$}
+	\loigiai{
+		Số cách xếp hai bạn An và Bình đứng cạnh nhau là $2!=2$.\\
+		Số cách để xếp $8$ bạn trong tổ đứng cạnh nhau sao cho An, Bình luôn đứng cạnh nhau là $2!\cdot7!=10080$.}
+\end{ex}
+\begin{ex}%[0K8KN-1]% ::Cau 42::
+	Cho tập hợp $A=\left\{ \text{0; 1; 2; 3; 4; 5; 6; 7} \right\}$. Có bao nhiêu số tự nhiên lẻ có $6$ chữ số đôi một khác nhau được lập từ các chữ số của tập $A$ mà chữ số đứng ở vị trí thứ ba luôn chia hết cho $6.$
+	\choice
+	{ $2880$}
+	{ $5040$}
+	{\True $2640$}
+	{ $2886$}
+	\loigiai{
+		Gọi số cần tìm có dạng $\overline{a_1{a_2}{a_3}{a_4}{a_5}{a_6}}$.\\
+		Vì số được chọn là một số lẻ và chữ số đứng ở vị trí thứ ba luôn chia hết cho $6.$ Suy ra $a_6\in \left\{ 1;3;5;7 \right\}$ và $a_3\in \left\{ 0;6 \right\}$.\\
+		Trường hợp 1: Với $a_3=0$: chữ số $a_6$ có 4 cách chọn, $a_1$ có 6 cách chọn, ba chữ số còn lại có $\mathrm{A}_5^3$ cách chọn. Do đó trong tường hợp này có $4\cdot6\cdot\mathrm{A}_5^3$ số.\\
+		Trường hợp 2: Với $a_3=6$: chữ số $a_6$ có 4 cách chọn, $a_1$ có 5 cách chọn, ba chữ số còn lại có $\mathrm{A}_5^3$ cách chọn. Do đó trong tường hợp này có $4\cdot5\cdot\mathrm{A}_5^3$ số.\\
+		Vậy số số tự nhiên thỏa mãn yêu cầu bài toán là $4\cdot6\cdot\mathrm{A}_5^3+4\cdot5\cdot\mathrm{A}_5^3=~2640.$}
+\end{ex}
+\begin{ex}%[0K8KN-3]% ::Cau 43::
+	Cho tam giác $ABC$. Trên mỗi cạnh $AB,BC,CA$ lấy $10$ điểm phân biệt và không có điểm nào trùng với $3$ đỉnh $A,B,C$. Hỏi từ $33$ điểm đã cho (tính cả các điểm $A,B,C$) lập được bao nhiêu tam giác.
+	\choice
+	{ $3565$}
+	{\True $4796$}
+	{$5456$}
+	{ $4060$}
+	\loigiai{
+		Để tạo ra một tam giác ta lấy $3$ điểm không thẳng hàng.\\
+		Ta xét cách lấy ba điểm thẳng hàng thì có ba trường hợp là $3$ điểm thuộc đoạn $AB$, hoặc $3$ điểm thuộc đoạn $BC$, hoặc $3$ điểm thuộc đoạn $AC$.Trên mỗi đoạn thẳng có $12$ điểm nên số cách lấy $3$ điểm trên mỗi đoạn là $\mathrm{C}_{12}^3$.\\
+		Số cách lấy $3$ điểm bất kì trong $33$ điểm là $\mathrm{C}_{33}^3$.\\
+		Vậy số tam giác được tạo ra từ 33 điểm trên là $\mathrm{C}_{33}^3-3.\mathrm{C}_{12}^3=4796$.}
+\end{ex}
+\begin{ex}%[0K8KN-6]% ::Cau 44::
+	Tìm $x$ thoả mãn đẳng thức sau:$\mathrm{C}_x^2\mathrm{C}_x^{x-2}+2\mathrm{C}_x^2\mathrm{C}_x^3+\mathrm{C}_x^3\mathrm{C}_x^{x-3}=100$.
+	\choice
+	{ $3$}
+	{\True $4$}
+	{ $5$}
+	{ $6$}
+	\loigiai{
+		Điều kiện $\heva{&x\in \mathbb{N} \\	& x\ge 3.}$\\
+		Ta có $\mathrm{C}_x^{x-2}=\mathrm{C}_x^2$ và $\mathrm{C}_x^{x-3}=\mathrm{C}_x^3.$
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&\mathrm{C}_x^2\mathrm{C}_x^{x-2}+2\mathrm{C}_x^2\mathrm{C}_x^3+\mathrm{C}_x^3\mathrm{C}_x^{x-3}=100\\
+			&\Leftrightarrow&{{\left( \mathrm{C}_x^2 \right)}^2}+2\mathrm{C}_x^2\mathrm{C}_x^3+{{\left( \mathrm{C}_x^3 \right)}^2}=100\\
+			&\Leftrightarrow& {{\left( \mathrm{C}_x^2+\mathrm{C}_x^3 \right)}^2}=100\Leftrightarrow \mathrm{C}_x^2+\mathrm{C}_x^3=10\\
+			&\Leftrightarrow&\dfrac{x(x-1)}{2}+\dfrac{x(x-1)(x-2)}{6}=10\\
+			&\Leftrightarrow& {x^3}-x-60=0\\
+			&\Leftrightarrow& (x-4)(x^2+4x+15)=0\\
+			&\Leftrightarrow& x=4.
+		\end{eqnarray*}
+		 }
+\end{ex}
+\begin{ex}%[0K8KN-2]% ::Cau 45::
+	Xếp ngẫu nhiên $3$ bạn lớp A, $2$ bạn lớp B và $1$ bạn lớp C vào dãy gồm $6$ ghế được xếp ngang. Hỏi có bao nhiêu cách để xếp bạn lớp C ngồi giữa $2$ bạn lớp A ?
+	\choice
+	{ $108$}
+	{ $72$}
+	{\True $144$}
+	{ $36$}
+	\loigiai{
+		Đánh số ghế từ 1 đến 6, để bạn lớp C ngồi giữa $2$ bạn lớp A thì bạn lớp C chỉ được ngồi ghế số $2, 3, 4, 5$ có $4$ cách.\\
+		Với mỗi vị trí bạn lớp C đã chọn, sắp xếp $2$ bạn lớp A vào $2$ vị trí bên cạnh có $\mathrm{A}_3^2$ cách.\\
+		Các bạn còn lại sắp xếp vào các ghế trống có $3!$ cách.\\
+		Số cách để xếp bạn lớp C ngồi giữa $2$ bạn lớp A là: $4\cdot\mathrm{A}_3^2\cdot3!=144$ cách.}
+\end{ex}
+\begin{ex}%[0K8KN-2]% ::Cau 46::
+	Một nhóm học sinh gồm $15$ nam và $5$ nữ. Người ta muốn chọn từ nhóm ra $5$ người để lập thành một đội cờ đỏ sao cho phải có $1$ đội trưởng nam, $1$ đội phó nam và có ít nhất $1$ nữ. Hỏi có bao nhiêu cách lập đội cờ đỏ?
+	\choice
+	{$131444$}
+	{$141666$}
+	{$241561$}
+	{\True$111300$}
+	\loigiai{
+		Vì trong $5$ người được chọn phải có ít nhất $1$ nữ và ít nhất phải có $2$ nam nên số học sinh nữ gồm $1$ hoặc $2$ hoặc $3$ nên ta có các trường hợp sau
+		\begin{itemize}
+			\item Chọn $1$ nữ và $4$ nam.\\
+			Số cách chọn $1$ nữ: $5$ cách\\
+			Số cách chọn $2$ nam làm đội trưởng và đội phó: $\mathrm{A}_{15}^2$\\
+			Số cách chọn $2$ nam còn lại: $\mathrm{C}_{13}^2$\\
+			Suy ra có $5\mathrm{A}_{15}^2\cdot\mathrm{C}_{13}^2$ cách chọn cho trường hợp này.
+			\item Chọn $2$ nữ và $3$ nam.\\
+			Số cách chọn $2$ nữ: $\mathrm{C}_5^2$ cách.\\
+			Số cách chọn $2$ nam làm đội trưởng và đội phó: $\mathrm{A}_{15}^2$cách.\\
+			Số cách chọn $1$ nam còn lại: $13$ cách.\\
+			Suy ra có $13\mathrm{A}_{15}^2\cdot\mathrm{C}_5^2$ cách chọn cho trường hợp này.
+			\item Chọn $3$ nữ và $2$ nam.\\
+			Số cách chọn $3$ nữ: $\mathrm{C}_5^3$ cách.\\
+			Số cách chọn $2$ nam làm đội trưởng và đội phó: $\mathrm{A}_{15}^2$ cách.\\
+			Suy ra có $\mathrm{A}_{15}^2\cdot\mathrm{C}_5^3$ cách chọn cho trường hợp 3.\\
+			Vậy có $5\mathrm{A}_{15}^2\cdot\mathrm{C}_{13}^2+13\mathrm{A}_{15}^2\cdot\mathrm{C}_5^2+\mathrm{A}_{15}^2\cdot\mathrm{C}_5^3=111300$ cách.
+		\end{itemize}
+		}
+\end{ex}
+\begin{ex}%[0K8GN-2]% ::Cau 47::
+	Hỏi có bao nhiêu cách sắp xếp $2$ quyển sách Ngữ Văn, $3$ quyển sách Tiếng Anh và $5$ Quyển sách Toán (tất cả các quyển sách khác nhau) thành hàng ngang lên một kệ sách để hai quyển sách cùng môn thì không được sắp xếp kề nhau?
+	\choice
+	{\True $63360$}
+	{ $120960$}
+	{ $14400$}
+	{ $144000$}
+	\loigiai{
+		Vì số sách Ngữ Văn, Tiếng Anh và Toán lần lượt là $2; 3; 5$ nên ta chỉ cần xét hai trường hợp
+		\begin{itemize}
+			\item Trường hợp 1: Ở giữa hai quyển sách Toán bất kỳ có đúng một quyển sách ở mộn học khác\\
+			Bước 1: Hoán vị 5 quyển sách Toán có $5!$ cách.\\
+			Bước 2: Sắp xếp 5 quyển sách còn lại vào giữa hai quyển sách Toán và ở một bên ngoài cùng có $2\cdot5!$ cách.\\
+			Suy ra có $5!\cdot2\cdot5!=28800$.
+			\item Trường hợp 2: Có hai quyển sách Toán mà giữa nó một quyển sách Ngữ Văn và một quyển sách Tiếng Anh.\\
+			Bước 1: Hoán vị $5$ quyển sách Toán có $5!$ cách.\\
+			Bước 2: Chọn một quyển sách Ngữ Văn và một quyển sách Tiếng Anh và sắp xếp vào giữa hai quyển sách Toán có $\mathrm{C}_3^1\cdot\mathrm{C}_2^1\cdot\mathrm{C}_4^1\cdot2!$ cách.\\
+			Bước 3: Sắp xếp $3$ quyển sách còn lại có $3!$ cách.\\
+			Suy ra có $5!\cdot\left( \mathrm{C}_3^1\cdot\mathrm{C}_2^1\cdot\mathrm{C}_4^1\cdot2! \right)\cdot3!=34560$.\\
+			Vậy có tất cả $63360$ cách sắp xếp.
+		\end{itemize}
+		}
+\end{ex}
+\begin{ex}%[0K9GQ-4]
+	Có hai hộp, mỗi hộp chứa các quả cầu trắng và đen. Từ mỗi hộp lấy ngẫu nhiên ra 1 quả cầu. Biết rằng xác suất để lấy được 2 quả cầu màu trắng là 0,54. Tính xác suất lấy được 2 quả cầu đen. Biết rằng có 25 quả cầu trong cả hai hộp.
+	\choice
+	{ $0,01$}
+	{\True $0,04$}
+	{ $0,02$}
+	{ $0,05$}
+	\loigiai{
+		Giả sử $m_1,m_2$ lần lượt là số quả cầu tương ứng trong hộp $1$ và hộp $2$ $\left( {m_1}\le {m_2} \right)$.
+		$k_1,k_2$ lần lượt là các quả cầu trắng trong hộp $1$ và $2.$
+		Khi đó xác suất để lấy được hai quả cầu trắng là $\dfrac{k_1}{m_1}\cdot\dfrac{k_2}{m_2}=0,54=\dfrac{27}{50}$ và $m_1+m_2=25$.\\ 
+		Vì $27m_1{m_2}=50k_1{k_2}$ nên một trong hai số $m_1,m_2$ phải chia hết cho $5$ nhưng $m_1+m_2$ chia hết cho $5$ nên cả $m_1,m_2$ chia hết cho $5$. Từ đó có hai khả năng: $m_1=5,m_2=20$ hoặc $m_1=10,m_2=15$.
+		TH1: $m_1=5,m_2=20$ thì do $k_1{k_2}=54$ với $0\le {k_1}\le 5;0\le {k_2}\le 20$ suy ra $k_1=3,k_2=18$. Từ đó xác suất để lấy được hai quả cầu đen là $\dfrac{2}{5}.\dfrac{2}{20}=0,04$.\\
+		TH2: $m_1=10,m_2=15$. Lập luận tương tự suy ra kết quả tương tự.
+		}
+\end{ex}
+\begin{ex}%[0K9GQ-3]% ::Cau 49::
+	Trong chương trình trò chơi thực tế, có $2$ đội tham gia bốc thăm trúng thưởng. Các lá thăm được đánh số từ $1$ đến $20.$ Mỗi lần bốc $1$ lá thăm và đội chơi được quyền chọn $1$ hoặc $2$ lần bốc. Điểm số của đội chơi được tính như sau
+	\begin{itemize}
+		\item Nếu đội chơi chọn bốc thăm $1$ lần thì điểm của đội chơi là điểm bốc được.
+		\item Nếu đội chơi chọn bốc thăm $2$ lần và tổng điểm có được không lớn hơn $20$ thì điểm của đội chơi là tổng điểm bốc được.
+		\item Nếu đội chơi chọn bốc thăm $2$ lần và tổng điểm lớn hơn $20$ thì điểm của đội chơi là tổng điểm bốc được trừ đi $20$
+	\end{itemize}
+	Trong mỗi lượt chơi, đội nào có điểm số cao hơn sẽ thắng cuộc, hòa nhau sẽ chơi lại lượt khác. Đội A và đội B cùng tham gia một lượt chơi, đội A chơi trước và có điểm số là $15$. Tính xác suất để đội B thắng cuộc ngay ở lượt chơi này.
+	\choice
+	{ $\mathrm{P}=\dfrac{1}{4}$}
+	{\True $\mathrm{P}=\dfrac{7}{16}$}
+	{ $\mathrm{P}=\dfrac{19}{40}$}
+	{ $\mathrm{P}=\dfrac{3}{16}$}
+	\loigiai{
+		Ta có $n\left( \Omega \right)=20$.\\
+		Để đội B thắng, ta chỉ có 2 trường hợp như sau
+		\begin{itemize}
+			\item Trường hợp 1: Đội B bốc một lần ra điểm số lớn hơn $15$, ta có $5$ khả năng thuộc tập hợp $\left\{ 16;17;18;19;20 \right\}$. Do đó xác suất là $\mathrm{P}_1=\dfrac{5}{20}=\dfrac{1}{4}.$
+			\item Trường hợp 2: Đội B bốc thăm lần đầu ra điểm số là $a\le 15$, ta có $15$ khả năng.\\
+			Do đó xác suất là $\mathrm{P}_2=\dfrac{15}{20}=\dfrac{3}{4}.$\\
+			Khi đó để thắng thì đội B cần phải có tổng hai lần bốc lớn hơn $15$, ta có $5$ khả năng thuộc tập hợp $\left\{ 16-a;17-a;18-a;19-a;20-a \right\}$ cho lần bốc thứ $2$ với xác suất là $\mathrm{P}_3=\dfrac{5}{20}=\dfrac{1}{4}.$\\
+			Do đó, xác suất cho trường hợp $2$ là $\mathrm{P}_2\cdot\mathrm{P}_3=\dfrac{3}{4}.\cdot\dfrac{1}{4}=\dfrac{3}{16}$\\
+		\end{itemize}
+		Vậy xác suất để đội B thắng ngay trong lượt là $\mathrm{P}=\dfrac{1}{4}+\dfrac{3}{16}=\dfrac{7}{16}.$}
+\end{ex}
+\begin{ex}%[0K9GQ-5]% ::Cau 50::
+	Xếp ngẫu nhiên $10$ học sinh gồm $2$ học sinh lớp $\text{10A}$, $3$ học sinh lớp $\text{10B}$ và $5$ học sinh lớp $\text{10C}$ thành một hàng ngang. Tính số cách xếp để trong $10$ học sinh trên không có $2$ học sinh cùng lớp đứng cạnh nhau.
+	\choice
+	{\True $63360$}
+	{ $86400$}
+	{ $41260$}
+	{ $95364$}
+	\loigiai{
+		Sắp xếp $5$ học sinh lớp 10C vào $5$ vị trí, có $5!$ cách.\\
+		Ứng mỗi cách xếp $5$ học sinh lớp 10C sẽ có $6$ khoảng trống gồm $4$ vị trí ở giữa và hai vị trí hai đầu để xếp các học sinh còn lại.\\
+		TH1: Xếp $3$ học sinh lớp 10B vào $4$ vị trí trống ở giữa (không xếp vào hai đầu), có $A_4^3$ cách.\\
+		Ứng với mỗi cách xếp đó, chọn lấy $1$ trong $2$ học sinh lớp 10A xếp vào vị trí trống thứ $4$ (để hai học sinh lớp 10C không được ngồi cạnh nhau), có $2$ cách.\\
+		Học sinh lớp 10A còn lại có $8$ vị trí để xếp, có $8$ cách.\\
+		Theo quy tắc nhân, ta có $5!\cdot\mathrm{A}_4^3\cdot2\cdot8$ cách.\\
+		TH2: Xếp $2$ trong $3$ học sinh lớp 10B vào $4$ vị trí trống ở giữa và học sinh còn lại xếp vào hai đầu, có $\mathrm{C}_3^1\cdot2\cdot\mathrm{A}_4^2$ cách.\\
+		Ứng với mỗi cách xếp đó sẽ còn $2$ vị trí trống ở giữa, xếp $2$ học sinh lớp 10A vào vị trí đó, có $2$ cách.\\
+		Theo quy tắc nhân, ta có $5!\cdot\mathrm{C}_3^1\cdot2\cdot\mathrm{A}_4^2\cdot2$ cách.\\
+		Do đó số cách xếp không có học sinh cùng lớp ngồi cạnh nhau là\\
+		$5!\cdot\mathrm{A}_4^3\cdot2\cdot8+5!\cdot\mathrm{C}_3^1\cdot2\cdot\mathrm{A}_4^2\cdot2=63360$ cách.}
+\end{ex}
+\begin{ex}%[0K9GQ-4]% ::Cau 51::
+	Có mười con thỏ được đánh số từ 1 đến 10 và ba cái chuồng khác nhau. Hỏi có bao nhiêu cách nhốt số thỏ trên vào chuồng sao cho không có hai con thỏ mang số nguyên liên tiếp nào được nhốt chung trong một cái chuồng và chuồng nào cũng có thỏ?
+	\choice
+	{\True $150$ cách}
+	{ $160$ cách}
+	{ $170$ cách}
+	{ $180$ cách}
+	\loigiai{
+		\begin{itemize}
+			\item Công đoạn 1. Đặt tên ba cái chuồng là $A$, $B$, $C$, có 3! = 6 cách
+			\item Công đoạn 2. Với mỗi cách đặt tên chuồng như trên ta thực hiện các bước sau
+			\begin{itemize}
+				\item Nhốt con thỏ số $1$ vào chuồng $A$, nhốt con thỏ số $2$ vào chuồng $B$.
+				\item Nhốt số con thỏ số $3$ vào chuồng có $2$ cách (loại chuồng $B$ vì $B$ chứa con thỏ số $2$).
+				\item Nhốt con thỏ số $4$ vào chuồng có $2$ cách (loại chuồng chứa con thỏ số $3$).
+				\item Tiếp tục nhốt các con thỏ từ số $5$ đến số $10$ vào ba chuồng $A$, $B$, $C$ theo cách như trên mỗi con có $2$ cách nhốt. Vậy số cách nhốt $10$ con thỏ vào ba chuồng $A$, $B$, $C$ như trên có $2^8$ cách.\\
+				Xét trường hợp chồng C không có con thỏ nào. Khi đó, chuồng A chứa các con thỏ số $1;3;5;7;9$ và chuồng B chứa các con thỏ số $2;4;6;8;10$, có $1$ cách.\\
+				Do đó số cách nhốt $10$ con thỏ vào ba chuồng đã được đặt tên như trên sao cho không có hai con thỏ mang số nguyên liên tiếp nào được nhốt chung trong một cái chuồng và chuồng nào cũng có thỏ là $2^8-1$.
+			\end{itemize}
+		\end{itemize}
+		Theo quy tắc nhân, ta có $6\cdot(2^8-1)=1530$ cách.\\
+		}
+	\end{ex}
+
+\begin{ex}%[Nguyễn Thành Sang,dự án Tikzpro 2.1 -LVD 11]%[1D2K2-1]
+	Có $4 $ cặp vợ chồng được xếp ngồi trên một chiếc ghế dài có $8$ chỗ. Biết rằng mỗi người vợ chỉ ngồi cạnh chồng của mình hoặc ngồi cạnh một người phụ nữ khác. Hỏi có bao nhiêu cách sắp xếp chỗ ngồi thỏa mãn?
+	\choice 
+	{\True $816$}
+	{$18$}
+	{$8!$}
+	{$604$}
+	\loigiai{
+		\begin{itemize}
+			\item [TH1:] Xếp $4$ người vợ ngồi cạnh nhau có $4!$ cách
+			\begin{itemize}
+				\item Xếp 4 người chồng ngồi cạnh nhau VVV\underline{VC}CCC hoặc CCC\underline{CV}VVV có 2 cách.
+				\\
+				Vợ chỉ được ngồi cạnh chồng của mình nên, xếp 3 người chồng (không được gạch chân) có 3! cách xếp.
+				\\
+				Suy ra có $4!\cdot 2\cdot 3!$ cách.
+				\item Xếp 3 người chồng ngồi cạnh nhau \underline{CV}VV\underline{VC}CC hoặc CC\underline{CV}VV\underline{VC} có 2 cách xếp.
+				\\
+				Xếp 2 người chồng (không được gạch chân) có 2 cách xếp.
+				\\
+				Suy ra có $4!\cdot 2\cdot 2$ cách.
+				\item Xếp 2 người chồng ngồi cạnh nhau C\underline{CV}VV\underline{VC}C có 1 cách.
+				\\
+				Xếp 2 người chồng (không được gạch chân) có 2 cách xếp.
+				\\
+				Suy ra có $4!\cdot 2$ cách.
+			\end{itemize}
+			Vậy trường hợp 1 có $4!\cdot 2\cdot 3!+4!\cdot 2\cdot 2+4!\cdot 2=432$ cách.
+			\item [TH2:] Xếp $3$ người vợ ngồi cạnh nhau.
+			\\
+			Xếp $4$ người vợ vào $4$ vị trí có $4!$ cách.
+			\begin{itemize}
+				\item $4$ người chồng ngồi cạnh nhau: \underline{VC}CC\underline{CV}VV hoặc VV\underline{VC}CC\underline{CV} có $2$ cách.
+				\\
+				Xếp $2$ người chồng không được gạch chân có $2$ cách xếp.
+				\\
+				Suy ra có $4!\cdot 2\cdot 2$ cách.
+				\item $3$ người chồng ngồi cạnh nhau: \underline{VC}C\underline{CV}V\underline{VC} hoặc \underline{CV}V\underline{VC}C\underline{CV} có $2$ cách.
+				\\
+				Suy ra có $4!\cdot 2$ cách.
+				\item $2$ người chồng ngồi cạnh nhau: \underline{VC}\underline{CV}V\underline{VC}C hoặc C\underline{CV}V\underline{VC}\underline{CV} có $2$ cách xếp.
+				\\
+				Suy ra $4!\cdot 2$ cách.
+			\end{itemize}
+			Vậy trường hợp này có $4!\cdot 2\cdot 2+4!\cdot 2+4!\cdot 2=192 $ cách.
+			\item [TH3:] Xếp $2$ người vợ ngồi cạnh nhau.
+			\\
+			Xếp $4$ người vợ vào $4$ vị trí có $4!$ cách.
+			\begin{itemize}
+				\item 4 người chồng ngồi cạnh nhau V\underline{VC}CC\underline{CV}V có $1$ cách.
+				\\
+				Có $2$ cách xếp $2$ người chồng không có gạch chân.
+				\\
+				Suy ra có $4!\cdot 2$ cách.
+				\item 3 người chồng ngồi cạnh nhau V\underline{VC}C\underline{CV}\underline{VC} hoặc \underline{CV}\underline{VC}C\underline{CV}V có $2$ cách.
+				\\
+				Suy ra có $4!\cdot 2$ cách.
+				\item $2$ người chồng ngồi cạnh nhau \underline{CV}\underline{VC}\underline{CV}\underline{VC} hoặc V\underline{VC}\underline{CV}\underline{VC}C hoặc C\underline{CVVCCV}V hoặc \underline{VCCVVCCV} có $4$ cách xếp.
+				\\
+				Suy ra có $4!\cdot 4$ cách.
+			\end{itemize}
+			Vậy trường hợp này có $4!\cdot 2+4!\cdot 2+4!\cdot 4=192 $ cách.
+		\end{itemize}
+		Vậy có tất cả số cách là $432+192+192=816$ cách.
+	}
+\end{ex}
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2Y2-2]
+	Mệnh đề nào đúng trong các mệnh đề sau ?
+	\choice
+	{\True $\mathrm A_n^k = k! \cdot \mathrm C_n^{n-k}  $}
+	{$\mathrm C_n^k = k! \cdot \mathrm A_n^k  $}
+	{$\mathrm A_n^k = k \cdot \mathrm C_n^k  $}
+	{$\mathrm C_n^k = k \cdot \mathrm A_n^k  $}
+	\loigiai{
+		Ta có $\mathrm A_n^k = k! \cdot \mathrm C_n^k = k! \cdot \mathrm C_n^{n-k}$.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2Y2-1]
+	Có $n$ phần tử $(n>0)$, lấy ra $k$ phần tử $(0 \le k \le n)$ đem sắp xếp theo một thứ tự nhất định mà khi thay đổi thứ tự ta được cách sắp xếp mới. Khi đó số cách sắp xếp là
+	\choice
+	{$\mathrm C_n^k $}
+	{$\mathrm A_k^n $}
+	{\True $ \mathrm A_n^k $}
+	{$ \mathrm P_n$}
+	\loigiai{
+		Mỗi cách lấy ra $k$ phần tử từ $n$ phần tử và sắp xếp chúng theo một thứ tự là một chỉnh hợp chập $k$ của $n$.\\
+		Khi đó số cách lấy ra như vậy là $\mathrm A_n^k$.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2Y2-1]
+	Từ các số $1$, $2$, $3$, $4$ có thể tạo ra bao nhiêu số tự nhiên có $4$ chữ số đôi một khác nhau?
+	\choice
+	{$ 12$}
+	{\True $ 24$}
+	{$ 42$}
+	{$ 4^4$}
+	\loigiai{
+		Mỗi cách hoán đổi vị trí của $4$ số $1$, $2$, $3$, $4$ sẽ tạo thành một số tự nhiên có bốn chữ số đôi một khác nhau.\\
+		Khi đó có $4!=24$ số tự nhiên thoả mãn yêu cầu bài toán.}
+	
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2Y2-1]
+	Có bao nhiêu cách chọn ra $5$ cầu thủ từ $11$ cầu thủ để thực hiện quả đá luân lưu $11$ m theo thứ tự từ quả thứ nhất đến quả thứ $5$ ?
+	\choice
+	{\True $\mathrm A_{11}^5 $}
+	{$\mathrm C_{11}^5 $}
+	{$\mathrm A_{11}^5 \cdot 5! $}
+	{$\mathrm C_{10}^5 $}
+	\loigiai{
+		Mỗi cách chọn ra  $5$ cầu thủ từ $11$ cầu thủ để thực hiện quả đá luân lưu $11$ m theo thứ tự từ quả thứ nhất đến quả thứ $5$ là một chỉnh hợp chập $5$ của $11$.\\
+		Khi đó có $\mathrm A_{11}^5$ cách chọn thoả mãn yêu cầu đề bài.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2Y2-1]
+	Cho tập hợp $M$ có $10$ phần tử. Số tập con có $2$ phần tử của $M$ là
+	\choice
+	{$\mathrm A_{10}^8 $}
+	{$\mathrm A_{10}^2 $}
+	{\True $ \mathrm C_{10}^2$}
+	{$10^{2} $}
+	\loigiai{
+		Mỗi tập con có $2$ phần tử của $M$ là một tổ hợp chập $2$ của $10$.\\
+		Khi đó có $\mathrm C_{10}^2 $ tập con có hai phần tử của $M$.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2Y2-1]
+	Nhân dịp lễ sơ kết học kì $1$, để thưởng cho $3$ học sinh có thành tích tốt nhất lớp, cô An đã mua $10$ cuốn sách khác nhau và chọn ra $3$ cuốn để phát thưởng cho $3$ học sinh đó mỗi học sinh nhận $1$ cuốn. Hỏi cô An có bao nhiêu cách phát thưởng.
+	\choice
+	{$\mathrm C_{10}^3 $}
+	{\True $\mathrm A_{10}^3 $}
+	{$10^{3} $}
+	{$3 \cdot \mathrm C_{10}^3 $}
+	\loigiai{Mỗi cách lấy ra $3$ quyển sách từ $10$ quyển sách và phát cho $3$ học sinh là một chỉnh hợp chập $3$ của $10$.\\
+		Khi đó có $\mathrm A_{10}^3$ cách chọn ra và phát tập cho học sinh thoả mãn yêu cầu đề bài.
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2Y2-1]
+	Có bao nhiêu cách xếp $5$ học sinh thành một hàng dọc ?
+	\choice
+	{$ 5^5$}
+	{\True $ 5!$}
+	{$ 4!$}
+	{$5 $}
+	\loigiai{
+		Mỗi cách xếp $5$ học sinh vào một hàng ngang là một hoán vị của $5$.\\
+		Khi đó có $5!$ cách xếp thoả mãn yêu cầu bài toán.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-1]
+	Có bao nhiêu cách chia $10$ người thành hai nhóm, một nhóm $6$ người và một nhóm $4$ người ?
+	\choice
+	{\True $210 $}
+	{$ 120$}
+	{$ 100$}
+	{$140 $}
+	\loigiai{
+		Chọn ra $6$ người từ $10$ người để thành lập nhóm thứ nhất: có $\mathrm C_{10}^6=210$ cách.\\
+		Còn $4$ người còn lại tạo thành nhóm thứ hai.\\
+		Theo quy tắc nhân có $210 \cdot 1 =210$ cách chia nhóm thoả mãn yêu cầu đề bài.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-1]
+	Trong kho đèn trang trí đang còn $5$ bóng đèn loại I, $7$ bóng đèn loại II, các bóng đèn đều khác nhau về màu sắc và hình dáng. Lấy ra $5$ bóng đèn bất kỳ. Hỏi có bao nhiêu khả năng xảy ra số bóng đèn loại I nhiều hơn số bóng đèn loại II ?
+	\choice
+	{\True $246 $}
+	{$ 3480$}
+	{$245 $}
+	{$3360 $}
+	\loigiai{
+		\begin{itemize}
+			\item Trường hợp $1 \colon$ lấy ra $3$ bóng loại I, $2$ bóng loại II: có $\mathrm C_5^3 \cdot \mathrm C_7^2=210$ cách.
+			\item Trường hợp $2 \colon$ lấy ra $4$ bóng loại I, $1$ bóng loại II: có $\mathrm C_5^4 \cdot \mathrm C_7^1=35$ cách.
+			\item Trường hợp $3 \colon$ lấy ra $5$ bóng loại I, $0$ bóng loại II: có $\mathrm C_5^5 =1$ cách.
+			
+			\item Theo quy tắc cộng có $210+ 35+1 = 246$ cách.
+		\end{itemize}
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-1]
+	Có $5$ nhà toán học nam, $3$ nhà toán học nữ và $4$ nhà vật lý nam. Lập một đoàn công tác gồm $3$ người cần có cả nam và nữ, có cả nhà toán học và vật lý thì có bao nhiêu cách ?
+	\choice
+	{$120 $}
+	{\True $ 90$}
+	{$80 $}
+	{$ 220$}
+	\loigiai{
+		Ta xét các trường hợp sau
+		\begin{itemize}
+			\item Trường hợp $1 \colon$ chọn $1$ nhà Toán học nữ, $1$ nhà Toán học nam, $1$ nhà vật lý nam: có $5 \cdot 3 \cdot 4 =60$ cách.
+			\item Trường hợp $2 \colon $ chọn $1$ nhà Toán học nữ, $2$ nhà Vật lý nam: có $\mathrm C_3^1 \cdot \mathrm C_4^2 =18$ cách.
+			\item Trường hợp $3 \colon$ chọn $2$ nhà Toán học nữ, $1$ nhà vật lý nam: có $\mathrm C_3^2  \cdot \mathrm C_4^1=12$ cách.
+			\item Theo quy tắc cộng, ta có $60 + 18 + 12 =90$ cách.  
+		\end{itemize}
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-1]
+	Tổ $1$ lớp $11A$ có $6$ học sinh nam và $5$ học sinh nữ. Giáo viên chủ nhiệm cần chọn ra $4$ học sinh của tổ $1$ để lao động vệ sinh cùng cả trường. Hỏi có bao nhiêu cách chọn như vậy nếu có ít nhất một học sinh nam ?
+	\choice
+	{$ 600$}
+	{$25 $}
+	{\True $ 325$}
+	{$ 30$}
+	\loigiai{
+		Số cách chọn ra bốn học sinh tuỳ ý trong tổ $1$ là $\mathrm C_{11}^4=330$ cách.\\
+		Số cách chọn ra $4$ học sinh không có nam là $\mathrm C_5^4 = 5$ cách.\\
+		Suy ra số cách chọn ra $4$ học sinh mà có ít nhất một nam là $330- 5 =325$ cách.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-1]
+	Có $9$ tấm thẻ được đánh số từ $1$ đến $9$. Có bao nhiêu cách chọn ra hai tấm thẻ rồi nhân hai số ghi trên đó lại với nhau sao cho kết quả thu được là một số chẵn ?
+	\choice
+	{$ 10$}
+	{\True $ 26$}
+	{ $ 36$}
+	{$ 27$}
+	\loigiai{
+		Có $\mathrm C_9^2 $ cách rút ra $2$ tấm thẻ bất kỳ. \\
+		Có $\mathrm C_5^2 $ cách rút ra hai tấm thẻ ghi số lẻ để nhân hai số ra một số lẻ.\\
+		Suy ra có $\mathrm C_9^2 - \mathrm C_5^2 = 26$ cách rút ra được hai tấm thẻ và nhân hai số ghi trên hai thẻ để được kết quả là một số chẵn.
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-1]
+	Cho tập hợp $A=\{0;1;2;\ldots; 7\}$. Hỏi từ $A$ có thể lập được bao nhiêu số tự nhiên có $5$ chữ số đôi một khác nhau sao cho một trong  ba chữ số đầu tiên phải là $1$ ?
+	\choice
+	{$ 65$}
+	{\True $ 2280$}
+	{$ 2520$}
+	{$2802 $}
+	\loigiai{
+		Gọi $\overline{abcde}$ là số tự nhiên cần tìm ($a \neq 0$).
+		\begin{itemize}
+			\item Trường hợp $1 \colon $ $a= 1$. Khi đó có $A_7^4 = 840$ cách chọn $b$, $c$, $d$, $e$.
+			\item Trường hợp $2 \colon a \neq 1$.\\
+			Khi đó chọn $a \in A \setminus \{1; 0\} \colon $ có $6$ cách chọn.\\
+			Xếp $1$ vào một trong hai vị trí $b$ hoặc $c \colon$ có $2$ cách.\\
+			Chọn $3$ trong $6$ số thuộc tập $A \setminus \{a; 1\}$ để xếp vào ba vị trí còn lại: có $\mathrm A_6^3=120$ cách.\\
+			Theo quy tắc nhân có $6 \cdot 2 \cdot 120 =1440$ số.
+			\item Vậy có $840 + 1440 = 2280$ số. 
+		\end{itemize}
+	} 
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-1]
+	Có bao nhiêu số chẵn mà mỗi số có bốn chữ số đôi một khác nhau ?
+	\choice
+	{$ 2520$}
+	{$ 50000$}
+	{$4500 $}
+	{\True $ 2296$}
+	\loigiai{
+		Đặt $X=\{0;1;2; \ldots ; 9 \}$.\\
+		Gọi $\overline{abcd}$ là số tự nhiên cần tìm.
+		\begin{itemize}
+			\item Trường hợp $1 \colon d = 0$.\\
+			Chọn $3$ trong $9$ số thuộc $X \setminus \{0\}$ để xếp vào vị trí $a$, $b$, $c \colon$ có $\mathrm A_9^3=504$ cách.\\
+			Suy ra có $504$ số.
+			\item Trường hợp $2 \colon $ $d \in \{2 ; 4; 6;8\}$ có $4$ cách chọn.\\
+			Chọn $a \in X \setminus \{0; d\} \colon $ có $8$ cách chọn.\\
+			Chọn $2$ trong số $8$ số thuộc $ X \setminus \{d; a\}$  để xếp vào hai vị trí $b$, $c$ có $ \mathrm A_8^2 =56$ cách.\\
+			Theo quy tắc nhân có $ 4 \cdot 8 \cdot 56 =1792$ số.
+			\item Vậy có $504 + 1792 =2296$ số.
+		\end{itemize}
+	}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-1]
+	Từ các số $0$, $1$, $2$, $3$, $5$ có thể lập được bao nhiêu số tự nhiên có bốn chữ số đôi một khác nhau và không chia hết cho $5$ ?
+	\choice
+	{$ 72$}
+	{$ 120$}
+	{\True $ 54$}
+	{$ 69$}
+	\loigiai{
+		Đặt $X=\{0;1;2; 3; 5 \}$.\\
+		Gọi $\overline{abcd}$ là số tự nhiên cần tìm.\\
+		Chọn $d \in X \setminus \{0;5\}$ có $ 3$ cách.\\
+		Chọn $a \in X \setminus \{0; e\} \colon $ có $3$ cách.\\
+		Chọn $2$ trong $3$ số từ $X \setminus \{a, d\}$ để xếp vào các vị trí $b$, $c$ có $\mathrm A_3^2 = 6$ cách.\\
+		Vậy có $3 \cdot 3 \cdot 6 = 54$ số.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-3]
+	Cho hai đường thẳng $d_1$ và $d_2$ song song nhau. Trên $d_1$ lấy $5$ điểm phân biệt. Trên $d_2$ lấy $n$ điểm phân biệt. Biết rằng có $175$ tam giác được tạo thành mà ba đỉnh của tam giác là ba trong $n+5$ điểm kể trên. Giá trị của $n$ là
+	\choice
+	{$10 $}
+	{\True $ 7$}
+	{$ 8$}
+	{$ 9$}
+	\loigiai{
+		Số tam giác được tạo thành thoả mãn yêu cầu bài toán là $ \mathrm C_5^1 \cdot \mathrm C_n^2 + \mathrm C_5^2 \cdot \mathrm C_n^1 $ với $n \ge 2$, $n \in \mathbb{N}$.\\
+		Theo đề bài  
+		\begin{eqnarray*}
+			& & \mathrm C_5^1 \cdot \mathrm C_n^2 + \mathrm C_5^2 \cdot \mathrm C_n^1 = 175\\
+			& \Leftrightarrow &  5 \cdot \dfrac{n (n-1)}{2} +10 \cdot  n = 175 \\
+			& \Leftrightarrow & 5n^2 + 15n - 350 =0\\
+			& \Leftrightarrow & \hoac{& n=7 \\ & n=-10} \\ & \Leftrightarrow & n=7. 
+		\end{eqnarray*} \vspace{-1cm}}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-3]
+	Cho đa giác đều $A_1A_2A_3 \cdots A_{30}$ nội tiếp đường tròn tâm $O$. Tính số hình chữ nhật mà bốn đỉnh là bốn trong $30$ đỉnh của đa giác ?
+	\choice
+	{\True $ 105$}
+	{$ 27405$}
+	{$ 27406$}
+	{$106 $}
+	\loigiai{
+		Đa giác đều $30$ đỉnh có $15$ đường chéo đi qua tâm.\\
+		Cứ hai đường chéo đi qua tâm sẽ tạo thành hai đường chéo của một hình chữ nhật.\\
+		Vậy số hình chữ nhật được tạo thành thoả mãn yêu cầu bài toán là $\mathrm C_{15}^2 = 105$.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2B2-3]
+	\immini{Cho một tam giác. Trên ba cạnh của tam giác lấy $9$ điểm như hình vẽ. Có bao nhiêu tam giác có ba đỉnh là ba trong $9$ điểm kể trên?
+		\choice
+		{\True $79 $}
+		{$48 $}
+		{$ 55$}
+		{$24 $}}{
+		\begin{tikzpicture}[>=stealth, line join=round, line cap = round,scale=0.7]
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (6,0);
+		\coordinate (C) at (2,4);
+		\coordinate (C1) at ($(A)!1/5!(B)$);
+		\coordinate (C2) at ($(A)!2/5!(B)$);
+		\coordinate (C3) at ($(A)!3/5!(B)$);
+		\coordinate (C4) at ($(A)!4/5!(B)$);
+		\coordinate (A1) at ($(B)!1/4!(C)$);
+		\coordinate (A2) at ($(B)!2/4!(C)$);
+		\coordinate (A3) at ($(B)!3/4!(C)$);
+		\coordinate (B1) at ($(A)!1/3!(C)$);
+		\coordinate (B2) at ($(A)!2/3!(C)$);
+		\draw (A)--(B)--(C)--cycle;
+		\draw[fill] (C1) circle(1pt) node[below]{$C_1$};
+		\draw[fill] (C2) circle(1pt) node[below]{$C_2$};
+		\draw[fill] (C3) circle(1pt) node[below]{$C_3$};
+		\draw[fill] (C4) circle(1pt) node[below]{$C_4$};
+		\draw[fill] (B1) circle(1pt) node[left]{$B_1$};
+		\draw[fill] (B2) circle(1pt) node[left]{$B_2$};
+		\draw[fill] (A1) circle(1pt) node[right]{$A_1$};
+		\draw[fill] (A2) circle(1pt) node[right]{$A_2$};
+		\draw[fill] (A3) circle(1pt) node[right]{$A_3$};
+		\end{tikzpicture}}
+	\loigiai{
+		Số tam giác được tạo thành thoả mãn yêu cầu bài toán là $$\mathrm C_9^3 - \mathrm C_3^3 - \mathrm C_4^3 =79.$$}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2K2-2]
+	Có bao nhiêu số tự nhiên có ba chữ số đôi một khác nhau lấy từ tập $A=\{1;2;3;4;5\}$ sao cho mỗi số lập được luôn có mặt của số $3$ ?
+	\choice
+	{$ 72$}
+	{\True $ 36$}
+	{$ 32$}
+	{$48 $}
+	\loigiai{
+		Gọi $\overline{abc}$ là số tự nhiên cần tìm.\\
+		Đặt $3$ vào một trong ba vị trí $a$, $b$, $c \colon$ có $3$ cách.\\
+		Chọn $2$ trong bốn số $1$, $2$, $4$, $5$ để xếp vào hai vị trí còn lại: có $\mathrm A_4^2$ cách.\\
+		Theo quy tắc nhân có $3 \cdot \mathrm A_4^2 =36$ số.}
+\end{ex}
+
+\begin{ex}%[Nguyễn Trần Phong, dự án Tikpro 2.1 -LVD 11]%[1D2K2-2]
+	Có bao nhiêu số tự nhiên có $7$ chữ số đôi một khác nhau sao cho chữ số $2$ đứng liền giữa chữ số $1$ và chữ số $3$ ?
+	\choice
+	{$ 2942$}
+	{$5880 $}
+	{\True $ 7440$}
+	{$ 3204$}
+	\loigiai{
+		Đặt $X =\{0;1;2;\ldots; 9 \}$.\\
+		Xem $1$, $2$, $3$ như một phần tử kép.\\
+		Có $2!$ cách hoán đổi vị trí của $1$ và $3$ để $2$ luôn liền giữa $1$ và $3$.\\
+		Chọn ra $4$ trong $7$ số thuộc $X \setminus \{1;2;3\}$ có $\mathrm C_7^4$ cách.\\
+		Có $5!$ cách hoán đổi vị trí của bốn số vừa được chọn và phần tử kép $1$, $2$, $3$.\\
+		Suy ra có $2!\cdot \mathrm C_7^4 \cdot 5! =8400$ số có dạng $\overline{a_1 a_2 \ldots a_7}$ trong đó các chữ số đôi một khác nhau, chữ số $2$ đứng liền giữa chữ số $1$ và $3$ (số được tạo thành có thể  có chữ số $0$ đứng đầu).\\
+		Lập luận tương tự như trên, ta có $2! \cdot \mathrm C_6^3 \cdot 4!=960$ số có dạng $\overline{0a_2a_3 \ldots a_7}$ trong đó các chữ số đôi một khác nhau, chữ số $2$ đứng liền giữa chữ số $1$ và $3$. \\
+		Vậy có $8400-960=7440$ số thoả mãn yêu cầu đề toán.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+
+
+
+

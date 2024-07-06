@@ -1,0 +1,3424 @@
+\setcounter{section}{1}
+\Opensolutionfile{ans}[ans/ans2H2-2]
+\section{MẶT CẦU}
+\subsection{Kiến thức sách giáo khoa cần cần nắm}
+\subsubsection{Định nghĩa.}
+\begin{dn}
+	Tập hợp các điểm $M$ trong không gian cách điểm $O$ cố định một khoảng $R$ gọi là mặt cầu tâm $O$, bán kính $R$, kí hiệu là: $S(O;R)$. Khi đó $S(O;R)=\{M|OM=R\}$.
+\end{dn}
+\subsubsection{Vị trí tương đối của một điểm đối với mặt cầu.}
+Cho mặt cầu $S(O;R)$ và một điểm $A$ bất kì, khi đó:
+\immini{
+	\begin{itemize}
+		\item Nếu $OA=R\Leftrightarrow A\in S(O;R)$. Khi đó $OA$ gọi là bán kính mặt cầu. Nếu $OA$ và $OB$ là hai bán kính sao cho $\overrightarrow{OA}=-\overrightarrow{OB}$ thì đoạn thẳng $AB$ gọi là một đường kính của mặt cầu.
+		\item Nếu $OA<R\Leftrightarrow A$ nằm trong mặt cầu.
+		\item Nếu $OA>R\Leftrightarrow A$ nằm ngoài mặt cầu.\\
+		$ \Rightarrow $ Khối cầu $S(O;R)$ là tập hợp tất cả các điểm $M$ sao cho $OM\leq R$.\\
+	\end{itemize}
+}
+{
+	\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+	\def\R{2}
+	\def\r{\R/2}
+	\coordinate[label=above left:$O$] (O) at (0,0);
+	\coordinate (A') at (\R,0);
+	\draw (O) circle (\R) (A') arc (0:-180: {\R} and {\r});
+	\draw[dashed] (A') arc (0:180: {\R} and {\r});
+	\coordinate (B) at ($(0,0)+(60:{\R} and {\r})$);
+	\coordinate (A1) at ($(0,0)+(240:{\R} and {\r})$);
+	\coordinate (A2) at (0.75,-0.4);
+	\coordinate (A3) at (-1,-1.4);
+	\draw[dashed] (A1)--(B);
+	\foreach \x/\g in {A1/90,A2/-45,A3/-45}\fill[black] (\x) circle (1pt)+(\g:3mm) node{$A$};
+	\fill[black] (B) circle (1pt) node[above]{$B$};
+	\fill[black] (O) circle (1pt);
+	\end{tikzpicture}
+}
+\subsubsection{Vị trí tương đối của mặt phẳng và mặt cầu.}
+Cho mặt cầu $S(O;R)$ và một mp $(P)$. Gọi $d$ là khoảng cách từ tâm $O$ của mặt cầu đến mp $(P)$ và $H$ là hình chiếu của $O$ trên mp $(P)\Rightarrow \mathrm{d}=OH$.
+\begin{itemize}
+	\item Nếu $d<R\Leftrightarrow \text{mp }(P)$ cắt mặt cầu $S(O;R)$ theo giao tuyến là đường tròn nằm trên mp $(P)$ có tâm là $H$ và bán kính $r=HM=\sqrt{R^2-d^2}=\sqrt{R^2-OH^2}$ (hình a).
+	\item Nếu $d>R\Leftrightarrow \text{mp }(P)$ không cắt mặt cầu $S(O;R)$ (hình b).
+	\item Nếu $d=R\Leftrightarrow \text{mp }(P)$ có một điểm chung duy nhất. Ta nói mặt cầu $S(O;R)$ tiếp xúc mp $(P)$. Do đó, điều kiện cần và đủ để mp $(P)$ tiếp xúc với mặt cầu $S(O;R)$ là $\mathrm{d}\left(O,(P)\right)=R$ (hình c).
+\end{itemize}
+\begin{center}
+	\begin{tabular}{c c c }
+		\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+		\def\a{5}
+		\def\b{0.75}
+		\def\h{2}
+		\def\r{2}
+		\def\hdt{2}
+		\path
+		(0,0) coordinate (A)
+		(\a,0) coordinate (B)
+		(\b,\h) coordinate (C)
+		($(B)+(C)-(A)$) coordinate (D)
+		($(B)!.5!(C)$) coordinate (I)
+		($(I)+(0,\hdt)$) coordinate (O)
+		($(O)+(-40:\r)$) coordinate (M)
+		($(O)+(-140:\r)$) coordinate (N)
+		($(M)!.5!(N)$) coordinate (H)
+		;
+		\draw (O) circle[radius=\r cm];
+		\tkzCalcLength[cm](M,N) \tkzGetLength{dtMN}
+		\draw[dashed] (M) arc (0:180:{\dtMN/2} and {\dtMN/8});
+		\draw (M) arc (0:-180:{\dtMN/2} and {\dtMN/8});
+		\draw[dashed]
+		(O)--(H)--(M)--cycle
+		;
+		\draw (B)--(A)--(C);
+		\draw pic[draw,angle radius=6mm] {angle = B--A--C};
+		\path
+		(A) node[above right] {$P$}
+		($(O)!.5!(H)$) node[left] {$d$}
+		($(O)!.5!(M)$) node[above] {$R$}
+		;
+		\foreach \x/\g in {O/90,H/-135,M/-45}\fill[black] (\x) circle (1pt)+(\g:3mm) node{$ \x $};
+		\end{tikzpicture}
+		&
+		\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+		\def\a{5}
+		\def\b{0.75}
+		\def\h{2}
+		\def\r{2}
+		\def\hdt{3.5}
+		\path
+		(0,0) coordinate (A)
+		(\a,0) coordinate (B)
+		(\b,\h) coordinate (C)
+		($(B)+(C)-(A)$) coordinate (D)
+		($(B)!.5!(C)$) coordinate (I)
+		($(I)+(0,\hdt)$) coordinate (O)
+		($(O)+(-40:\r)$) coordinate (M)
+		($(O)+(-140:\r)$) coordinate (N)
+		($(M)!.5!(N)$) coordinate (H)
+		;
+		\draw (O) circle[radius=\r cm];
+		\draw
+		(B)--(A)--(C)--(D)--cycle
+		(I)--(O)--(N)
+		;
+		\draw pic[draw,angle radius=6mm] {angle = B--A--C};
+		\path
+		(A) node[above right] {$P$}
+		;
+		\fill[black] (N);
+		\fill[black] (O) circle (1pt)+(90:3mm) node{$O$};
+		\fill[black] (I) circle (1pt)+(-90:3mm) node{$H$};
+		\path
+		($(O)!.5!(I)$) node[right] {$d$}
+		($(O)!.5!(N)$) node[above left] {$R$}
+		;
+		\end{tikzpicture}
+		&
+		\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+		\def\a{5}
+		\def\b{0.75}
+		\def\h{2}
+		\def\r{2}
+		\def\hdt{2}
+		\path
+		(0,0) coordinate (A)
+		(\a,0) coordinate (B)
+		(\b,\h) coordinate (C)
+		($(B)+(C)-(A)$) coordinate (D)
+		($(B)!.5!(C)$) coordinate (I)
+		($(I)+(0,\hdt)$) coordinate (O)
+		($(O)+(-40:\r)$) coordinate (M)
+		($(O)+(-140:\r)$) coordinate (N)
+		($(M)!.5!(N)$) coordinate (H)
+		;
+		\draw (O) circle[radius=\r cm];
+		\draw
+		(I)--(O)
+		;
+		\draw pic[draw,angle radius=6mm] {angle = B--A--C};
+		\path
+		(A) node[above right] {$P$}
+		;
+		\path[name path=cd] (C)--(D);
+		\path[name path=circleO] (O)circle(\r cm);
+		\path[name intersections={of= cd and circleO}] coordinate (E) at (intersection-1) coordinate (F) at (intersection-2);
+		\draw (C)--(A)--(B)--(D) (C)--(E) (F)--(D);
+		\draw[dashed] (E)--(F);
+		\fill[black] (N);
+		\fill[black] (O) circle (1pt)+(90:3mm) node{$O$};
+		\fill[black] (I) circle (1pt)+(-90:3mm) node{$H$};
+		\path
+		($(O)!.5!(I)$) node[above left] {$d=R$}
+		;
+		\end{tikzpicture}
+		\\
+		Hình a& Hình b& Hình c\\
+	\end{tabular}
+\end{center}
+\subsubsection{Vị trí tương đối của đường thẳng và mặt cầu.}
+\begin{dl}
+	Cho mặt cầu $S(O;R)$ và một đường thẳng $\Delta$. Gọi $H$ là hình chiếu của $O$ trên đường thẳng $\Delta$ và $d=OH$ là khoảng cách từ tâm $O$ của mặt cầu đến đường thẳng $\Delta$. Khi đó
+	\begin{itemize}
+		\item Nếu $d>R\Leftrightarrow\Delta$ không cắt mặt cầu $S(O;R)$.
+		\item Nếu $d<R\Leftrightarrow\Delta$ cắt mặt cầu $S(O;R)$ tại hai điểm phân biệt.
+		\item Nếu $d=R\Leftrightarrow\Delta$ và mặt cầu tiếp xúc nhau (tại một điểm duy nhất). Do đó: điều kiện cần và đủ để đường thẳng $\Delta$ tiếp xúc với mặt cầu là $d=\mathrm{d}(O,\Delta)=R$.
+	\end{itemize}
+\end{dl}
+\begin{dl}
+	Nếu điểm $A$ nằm ngoài mặt cầu $S(O;R)$ thì:
+	\begin{itemize}
+		\item Qua $A$ có vô số tiếp tuyến với mặt cầu $S(O;R)$.
+		\item Độ dài đoạn thẳng nối $A$ với các tiếp điểm đều bằng nhau.
+		\item Tập hợp các điểm này là một đường tròn nằm trên mặt cầu $S(O;R)$.
+	\end{itemize}
+\end{dl}
+\subsubsection{Diện tích và thể tích mặt cầu.}
+\begin{itemize}
+	\item Diện tích mặt cầu: $S_C=4\pi R^2$.
+	\item Thể tích mặt cầu: $V_C=\dfrac{4}{3}\pi R^3$.
+\end{itemize}
+\subsubsection{Mặt cầu ngoại tiếp khối đa diện}
+\begin{enumerate}
+\item Các khái niệm cơ bản
+\begin{itemize}
+	\item \textbf{Trục của đa giác đáy:} là đường thẳng đi qua tâm đường tròn ngoại tiếp của đa giác đáy và vuông góc với mặt phẳng chứa đa giác đáy.\\
+	$ \Rightarrow $ Bất kì một điểm nào nằm trên trục của đa giác thì cách đều các đỉnh của đa giác đó.
+	\item \textbf{Đường trung trực của đoạn thẳng:} là đường thẳng đi qua trung điểm của đoạn thẳng và vuông góc với đoạn thẳng đó.\\
+	$ \Rightarrow $ Bất kì một điểm nào nằm trên đường trung trực thì cách đều hai đầu mút của đoạn thẳng.
+	\item \textbf{Mặt trung trực của đoạn thẳng:} là mặt phẳng đi qua trung điểm của đoạn thẳng và vuông góc với đoạn thẳng đó.\\
+	$ \Rightarrow $ Bất kì một điểm nào nằm trên mặt trung trực thì cách đều hai đầu mút của đoạn thẳng.
+\end{itemize}
+\item Tâm và bán kính mặt cầu ngoại tiếp hình chóp
+\begin{itemize}
+	\item \textbf{Tâm mặt cầu ngoại tiếp hình chóp:} là điểm cách đều các đỉnh của hình chóp. Hay nói cách khác, nó chính là giao điểm $ I $ của trục \textit{đường tròn ngoại tiếp mặt phẳng đáy} và \textit{mặt phẳng trung trực của một cạnh bên} hình chóp.
+	\item \textbf{Bán kính:} là khoảng cách từ $ I $ đến các đỉnh của hình chóp.
+\end{itemize}
+\item Cách xác định tâm và bán kính mặt cầu của một số hình đa diện cơ bản
+\begin{enumerate}[1)]
+	\item \textbf{Hình hộp chữ nhật, hình lập phương.}
+	\immini
+	{ \begin{itemize}
+			\item \textbf{Tâm:} trùng với tâm đối xứng của hình hộp chữ nhật (hình lập phương)
+			$ \Rightarrow $ Tâm là $I$, là trung điểm của $AC’$.
+			\item \textbf{Bán kính:} bằng nửa độ dài đường chéo hình hộp chữ nhật (hình lập phương)\\
+			$ \Rightarrow $ Bán kính: $R=\dfrac{AC’}{2}$.
+		\end{itemize}
+	}
+	{
+		\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+		\def\ab{3}
+		\def\ad{2}
+		\def\gd{-130}
+		\def\aa{2.5}
+		\path
+		(0,0) coordinate (A')
+		(0:\ab) coordinate (B')
+		(\gd:\ad) coordinate (D')
+		($ (B')+(D')-(A') $) coordinate (C')
+		($ (A')+(90:\aa) $) coordinate (A)
+		($ (B')+(90:\aa) $) coordinate (B)
+		($ (C')+(90:\aa) $) coordinate (C)
+		($ (D')+(90:\aa) $) coordinate (D)
+		($ (A)!.5!(C') $) coordinate (I);
+		\draw (D)--(D')--(C')--(B')--(B)--(A)--(D)--(C)--(B) (C)--(C');
+		\draw[dashed] (D')--(A')--(B') (A')--(A)--(C');
+		\foreach \x/\g in {A/90,B/0,C/-30,D/180,A'/180,B'/0,C'/-90,D'/-90,I/200}\fill[black] (\x) circle (1pt)+(\g:3mm) node{$ \x $};
+		\end{tikzpicture}
+	}
+	\item \textbf{Hình lăng trụ đứng có đáy nội tiếp đường tròn.}
+	\immini
+	{
+		Xét hình lăng trụ đứng $A_1A_2A_3\cdots A_n\cdot A_1’A_2’A_3’\cdots A_n’$, trong đó có 2 đáy $A_1A_2A_3\cdots A_n$ và $A_1’A_2’A_3’\cdots A_n’$ nội tiếp đường tròn $(O)$ và $(O’)$. Lúc đó, mặt cầu nội tiếp hình lăng trụ đứng có:
+		\begin{itemize}
+			\item \textbf{Tâm:} $I$ với $I$ là trung điểm của $OO’$.
+			\item \textbf{Bán kính:} $R=IA_1=IA_2=\cdots =IA_n’$.
+		\end{itemize}
+	}
+	{
+		\begin{tikzpicture}[scale=.6, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\coordinate[label=left:$O$] (O) at (0,0);
+		\coordinate[label=above left:$A_1$] (A1) at ($(O)+(160:3)$);
+		\coordinate[label=left:$A_2$] (A2) at ($(O)+(-150:2)$);
+		\coordinate[label=below right:$A_3$] (A3) at ($(O)+(-50:2)$);
+		\coordinate[label=above right:$A_n$] (An) at ($(O)+(30:3)$);
+		
+		\coordinate[label=above left:$O'$] (O') at ($(O)+(-90:4)$);
+		\coordinate[label=above left:$A'_1$] (A'1) at ($(A1)+(-90:4)$);
+		\coordinate[label=left:$A'_2$] (A'2) at ($(A2)+(-90:4)$);
+		\coordinate[label=below right:$A'_3$] (A'3) at ($(A3)+(-90:4)$);
+		\coordinate[label=above right:$A'_n$] (A'n) at ($(An)+(-90:4)$);
+		\coordinate[label=above left:$I$] (I) at ($(O)!.5!(O')$);
+		
+		\draw (A1)--(A2)--(A'2)--(A'1)--cycle (A3)--(An)--(A'n)--(A'3)--cycle (A2)--(A3) (A'2)--(A'3);
+		\draw[dashed] (A1)--(An) (A'1)--(A'n) (O)--(O');
+		\foreach \d in {O,A1,A2,A3,An,O',A'1,A'2,A'3,A'n,I} {\draw[fill=black] (\d)circle(1pt);}
+		\end{tikzpicture}
+	}
+	
+	\item \textbf{Hình chóp có các đỉnh nhìn đoạn thẳng nối 2 đỉnh còn lại dưới 1 góc vuông.}\\
+	\immini
+	{
+		Hình chóp $S.ABC$ có $\widehat{SAC}=\widehat{SBC}=90^{\circ}$.
+		\begin{itemize}
+			\item \textbf{Tâm:} $I$ là trung điểm của $SC$.
+			\item \textbf{Bán kính:} $R=\dfrac{SC}{2}=IA=IB=IC$.
+		\end{itemize}
+		
+	}
+	{
+		\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\coordinate[label=left:$A$] (A) at (0,0);
+		\coordinate[label=above left:$S$] (S) at ($(A)+(90:4)$);
+		\coordinate[label=below left:$B$] (B) at ($(A)+(-60:1.7)$);
+		\coordinate[label=right:$C$] (C) at ($(A)+(0:4.5)$);
+		\coordinate[label=above right:$I$] (I) at ($(S)!.5!(C)$);
+		
+		\draw (S)--(A)--(B)--cycle (S)--(C)--(B)--(I);
+		\draw[dashed] (I)--(A)--(C);
+		\foreach \d in {S,A,B,C,I} {\draw[fill=black] (\d)circle(1pt);}
+		\end{tikzpicture}
+	}
+	\immini
+	{
+		-Hình chóp $S.ABCD$ có
+		$\widehat{SAC}=\widehat{SBC}=\widehat{SDC}=90^{\circ}$.
+		\begin{itemize}
+			\item \textbf{Tâm:} $I$ là trung điểm của $SC$.
+			\item \textbf{Bán kính:} $R=\dfrac{SC}{2}=IA=IB=IC=ID$.
+		\end{itemize}
+		
+	}
+	{
+		\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\coordinate[label=left:$A$] (A) at (0,0);
+		\coordinate[label=above left:$S$] (S) at ($(A)+(90:4)$);
+		\coordinate[label=below left:$B$] (B) at ($(A)+(-120:2)$);
+		\coordinate[label=right:$D$] (D) at ($(A)+(0:5)$);
+		\coordinate[label=below right:$C$] (C) at ($(B)+(D)-(A)$);
+		\coordinate[label=above right:$I$] (I) at ($(S)!.5!(C)$);
+		
+		\draw (S)--(B)--(C)--(D)--(S)--(C) (B)--(I);
+		\draw[dashed] (S)--(A)--(B) (D)--(A)--(I);
+		\foreach \d in {S,A,B,C,D,I} {\draw[fill=black] (\d)circle(1pt);}
+		\end{tikzpicture}
+	}
+	\item \textbf{Hình chóp đều.}\\
+	Cho hình chóp đều $S.ABC$.
+	\immini
+	{
+		\begin{itemize}
+			\item Gọi $O$ là tâm của đáy $\Rightarrow SO$ là trục của đáy.
+			\item Trong mặt phẳng xác định bởi $SO$ và một cạnh bên,\\
+			chẳng hạn như $mp(SAO)$, ta vẽ đường trung trực của cạnh $SA$.
+			là $\triangle$ cắt $SA$ tại $M$ và cắt $SO$ tại $I\Rightarrow I$ là tâm của mặt cầu.\\
+			\item \textbf{Bán kính:}\\
+			Ta có: $\triangle SMI\sim\triangle SOA\Rightarrow\dfrac{SM}{SO}=\dfrac{SI}{SA}\Rightarrow$ Bán kính là:\\
+			$R=IS=\dfrac{SM\cdot SA}{SO}=\dfrac{SA^2}{2SO}=IA=IB=IC=\cdots$.
+		\end{itemize}
+	}
+	{
+		\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\coordinate[label=right:$O$] (O) at (0,0);
+		\coordinate[label=above:$S$] (S) at ($(O)+(90:4)$);
+		\coordinate[label=left:$A$] (A) at ($(O)+(165:2)$);
+		\coordinate[label=left:$B$] (B) at ($(O)+(-160:1.5)$);
+		\coordinate[label=below right:$C$] (C) at ($(O)+(-50:1.5)$);
+		\coordinate[label=right:$D$] (D) at ($(O)+(0:2)$);
+		\coordinate (E) at ($(O)+(30:1.5)$);
+		\coordinate (F) at ($(O)+(140:1.5)$);
+		\coordinate[label=left:$M$] (M) at ($(S)!0.5!(A)$);
+		\coordinate[label=below left:$I$] (I) at ($(S)!0.6!(O)$);
+		\coordinate[label=above:$\Delta$] (N) at ($(I)!2!(M)$);
+		
+		\draw (S)--(A)--(B)--(C)--(D)--(S)--(C) (S)--(B) (M)--(N);
+		\draw[dashed] (F)--(A)--(O) (D)--(E) (S)--(O) (I)--(M);
+		\foreach \d in {S,A,B,C,D,O,M,I} {\draw[fill=black] (\d)circle(1pt);}
+		\def\gv(#1,#2,#3,#4){\path
+			($(#2)!#4 mm!(#1)$) coordinate (#2#1)
+			($(#2)!#4 mm!(#3)$) coordinate (#2#3);
+			\draw (#2#1)--($(#2#1)+(#2#3)-(#2)$)--(#2#3);}
+		\gv(S,O,A,2) \gv(S,M,I,1.5)
+		\end{tikzpicture}
+	}
+\end{enumerate}
+\item Kỹ thuật xác định mặt cầu ngoại tiếp hình chóp
+Cho hình chóp $S.A_1A_2\ldots A_n$ (thoả mãn điều kiện tồn tại mặt cầu ngoại tiếp). Thông thường, để xác định mặt cầu ngoại tiếp hình chóp ta thực hiện theo ba bước
+\immini
+{
+	\begin{enumerate}[\bf Bước 1.]
+		\item Xác định tâm của đường tròn ngoại tiếp đa giác đáy.
+		\item Dựng $\triangle$: trục đường tròn ngoại tiếp đa giác đáy.
+		\item Lập mặt phẳng trung trực $(\alpha)$ của một cạnh bên.
+	\end{enumerate}
+	Lúc đó
+	\begin{itemize}
+		\item Tâm O của mặt cầu: $\triangle\cap mp(\alpha)=\{O\}$.
+		\item Bán kính: $R=SA(=SO)$. Tuỳ vào từng trường hợp.
+	\end{itemize}
+}
+{
+	\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+	\def\h{4}
+	\def\a{3}
+	\pgfmathsetmacro{\b}{\a/6}
+	\path
+	(0,0) coordinate (H)
+	(90:\h) coordinate (S)
+	(0:\a) coordinate (C)
+	(180:\a) coordinate (A)
+	($ (H)+(50:\a cm and \b cm) $) coordinate (D)
+	($ (H)+(-70:\a cm and \b cm) $) coordinate (B)
+	($ (S)!.5!(A) $) coordinate (I)
+	($ (I)!1!-90:(S) $) coordinate (K)
+	(intersection of I--K and S--H) coordinate (O);
+	\fill[black!10] (A)--(B)--(C)--(D)--cycle;
+	\draw[dashed] (A) arc (-180:-360:\a cm and \b cm) (H)--(S)--(D)--(C)--(B)--(A)--(D) (A)--(O)--(I);
+	\draw (A) arc (-180:0:\a cm and \b cm) (B)--(S)--(A) (C)--(S);
+	\draw pic[draw,angle radius=3mm] {right angle = S--H--C};
+	\foreach \x/\g in {A/180,B/-90,C/0,D/60,I/180,O/0,H/200,S/90}\fill[black] (\x) circle (1pt)+(\g:3mm) node{$ \x $};
+	\end{tikzpicture}
+}
+\end{enumerate}
+\begin{note}{\textit{Lưu ý: Kỹ năng xác định trục đường tròn ngoại tiếp đa giác đáy.}}
+	\begin{enumerate}[1)]
+		\item \textbf{Trục đường tròn ngoại tiếp đa giác đáy:} là đường thẳng đi qua tâm đường tròn ngoại tiếp đáy và vuông góc với mặt phẳng đáy.
+		\immini
+		{Tính chất $\forall M\in\triangle\colon MA=MB=MC$.\\
+			Suy ra $MA=MB=MC\Leftrightarrow M \in \triangle$.
+			\item \textbf{Các bước xác định trục}
+			\begin{enumerate}[\bf Bước 1.]
+				\item Xác định tâm $ H $ của đường tròn ngoại tiếp đa giác đáy.
+				\item Qua $ H $ dựng $\triangle$ vuông góc với mặt phẳng đáy.
+		\end{enumerate}}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\def\h{4}
+			\def\a{3}
+			\pgfmathsetmacro{\b}{\a/4}
+			\path
+			(0,0) coordinate (H)
+			(90:\h) coordinate (M)
+			(0:\a) coordinate (C)
+			($ (H)+(130:\a cm and \b cm) $) coordinate (A)
+			($ (H)+(-110:\a cm and \b cm) $) coordinate (B);
+			\foreach \x/\y in {A/M,B/M,C/M}\path (\x)--(\y)node[midway,sloped]{$ | $};
+			\fill[black!10] (A)--(B)--(C)--cycle;
+			\draw (H) ellipse (\a cm and \b cm) (A)--(M)--(B) (C)--(M);
+			\draw[dashed] (A)--(B)--(C)--cycle (A)--(H)--(M) (B)--(H)--(C);
+			\draw pic[draw,angle radius=3mm] {right angle = M--H--C};
+			\foreach \x/\g in {A/150,B/-120,C/0,M/90,H/-60}\fill[black] (\x) circle (1pt)+(\g:3mm) node{$ \x $};
+			\end{tikzpicture}
+		}
+		\textbf{Ví dụ 1.} Một số trường hợp đặc biệt.
+		\begin{enumEX}{3}
+			\item Tam giác vuông\\
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.6]
+			\def\r{3}
+			\path
+			(0,0) coordinate (H)
+			(0:\r) coordinate (C)
+			(180:\r) coordinate (B)
+			(-40:\r) coordinate (A)
+			(90:\r-2) coordinate (E)
+			(intersection of H--E and A--B) coordinate (F)
+			($ (F)+(-90:\r-2.5) $) coordinate (K);
+			\draw (A)--(B)--(C)--cycle (H)--(A) (F)--(K);
+			\draw[line width=.6pt] (F)--(K) (E)--(H);
+			\draw[dashed,line width=.6pt] (H)--(F);
+			\foreach \x/\y/\z in {C/H/E,C/A/B}\draw pic[draw,angle radius =2mm] {right angle = \x--\y--\z};
+			\foreach \x/\g in {A/-30,B/90,C/90,H/140}\fill[black] (\x) circle (1pt)+(\g:3mm) node{\tiny $ \x $};
+			\end{tikzpicture}
+			\item Tam giác đều\\
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.6]
+			\def\r{3}
+			\def\gc{10}
+			\path
+			(0,0) coordinate (H)
+			(\gc:\r) coordinate (C)
+			(180-\gc:\r) coordinate (B)
+			(-130:\r-.5) coordinate (A)
+			(intersection of A--H and C--B) coordinate (K)
+			($ (H)+(90:\r-1.5) $) coordinate (E)
+			(intersection of E--H and A--C) coordinate (F);
+			\draw (A)--(B)--(C)--cycle (B)--(H) (A)--(K) (H)--(C);
+			\draw[line width=.6pt] (H)--(E)node[below right]{$\triangle$} (F)--++(-90:1);
+			\draw[dashed,line width=.6pt] (H)--(F);
+			\foreach \x/\y/\z in {B/H/E,A/K/C}\draw pic[draw,angle radius =2mm] {right angle = \x--\y--\z};
+			\foreach \x/\g in {A/-30,B/90,C/90,H/-30}\fill[black] (\x) circle (1pt)+(\g:3mm) node{\tiny $ \x $};
+			\end{tikzpicture}
+			\item Tam giác bất kì\\
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.6]
+			\path
+			(0,0) coordinate (H)
+			(140:2.5) coordinate (B)
+			(0:3) coordinate (C)
+			(-120:2) coordinate (A)
+			($ (B)!.5!(C) $) coordinate (M)
+			($ (A)!.5!(C) $) coordinate (N)
+			($ (H)+(90:2) $) coordinate (F)
+			(intersection of H--F and A--C) coordinate (E);
+			\draw (A)--(B)--(C)--cycle (H)--(F)node[left]{$\triangle$};
+			\draw[shorten <= -0.5cm, shorten >= -0.5cm] (M)--(H);
+			\draw[shorten <= -0.5cm, shorten >= -0.5cm] (N)--(H);
+			\draw (E)--++(-90:1);
+			\draw[dashed] (H)--(E);
+			\foreach \x/\y/\z in {C/M/H,H/N/C}\draw pic[draw,angle radius =1mm] {right angle = \x--\y--\z};
+			\foreach \x/\y/\z in {B/M/||,M/C/||,C/N/|,N/A/|}\path (\x)--(\y) node[midway,sloped]{$\z$};
+			\foreach \x/\g in {A/-30,B/90,C/90,H/10}\fill[black] (\x) circle (1pt)+(\g:3mm) node{\tiny $ \x $};
+			\end{tikzpicture}
+		\end{enumEX}
+		\immini
+		{
+			\item \textbf{Lưu ý:} Kỹ năng tam giác đồng dạng\\
+			$\triangle SMO$ đồng dạng với $\triangle SIA \Rightarrow \dfrac{SO}{SA}=\dfrac{SM}{SI}$.
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.6]
+			\path
+			(0,0) coordinate (I)
+			(0:2) coordinate (A)
+			(90:4) coordinate (S)
+			($ (A)!.5!(S) $) coordinate (M)
+			($ (M)!1!90:(S) $) coordinate (K)
+			(intersection of M--K and S--I) coordinate (O);
+			\draw (A)--(I)--(S)--cycle (M)--(O);
+			\foreach \x/\y in {A/M,S/M}\path (\x)--(\y)node[midway,sloped]{$ || $};
+			\foreach \x/\y/\z in {A/M/O,A/I/O}\draw pic[draw,angle radius =2mm] {right angle = \x--\y--\z};
+			\foreach \x/\g in {A/0,S/90,I/180,M/60,O/180}\fill[black] (\x) circle (1pt)+(\g:3mm) node{\tiny $ \x $};
+			\end{tikzpicture}
+		}
+		\item \textbf{Nhận xét quan trọng}
+		$\exists M$, $S\colon\heva{&MA=MB=MC\\&SA=SB=SC}\Rightarrow SM$ là trục đường tròn ngoại tiếp $\triangle ABC$.
+		\item \textbf{Ví dụ:} Tìm tâm và bán kính mặt cầu ngoại tiếp hình chóp.
+	\end{enumerate}
+\end{note}
+\subsection{PHÂN LOẠI VÀ PHƯƠNG PHÁP GIẢI BÀI TẬP}
+
+\begin{dang}{Chóp có các điểm cùng nhìn một đoạn dưới một góc vuông}
+\end{dang}
+\begin{vd}%Ví dụ 1.%[2H2B2-2]
+	Cho $S.ABC$ có $SA \perp (ABC)$ và $\triangle ABC$ vuông tại $B$. Xác định tâm mặt cầu ngoại tiếp hình chóp.
+	\loigiai{
+		\immini
+		{
+			$\heva{&BC \perp AB &\text{(giả thuyết)} \\& BC \perp SA &(SA \perp (ABC))}$\\
+			$ \Rightarrow BC \perp (SAB) \Rightarrow BC \perp SB$.
+			Ta có $B$ và $A$ nhìn $SC$ dưới một góc vuông.\\
+			Suy ra nên $B$ và $A$ cùng nằm trên một mặt cầu có đường kính là $SC$.\\
+			Gọi $I$ là trung điểm $SC\Rightarrow I$ là tâm mặt cầu ngoại tiếp chóp khối chóp $S.ABC$ và bán kính $R=SI$.
+			
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\path
+			(0,0) coordinate (A)
+			(0:3) coordinate (C)
+			(-50:1.5) coordinate (B)
+			(90:2) coordinate (S)
+			($ (S)!.5!(C) $) coordinate (I)
+			;
+			\draw (S)--(A)--(B)--(C)--cycle (I)--(B)--(S);
+			\draw[dashed] (C)--(A)--(I);
+			\foreach \x/\y in {S/I,I/C,I/B,I/A}\path (\x)--(\y)node[midway,sloped]{$ | $};
+			\foreach \x/\g in {A/180,B/-90,C/0,S/90,I/90}\fill[black] (\x) circle (1pt)+(\g:3mm) node{$ \x $};
+			\end{tikzpicture}}}
+%<MyLT>
+\end{vd}
+\begin{vd}%Ví dụ 2.%[2H2B2-2]
+	Cho hình chóp $S.ABCD$ có đáy là hình chữ nhật, $SA$ vuông góc với đáy, $SA=a, AD=5a, AB=2a$. Điểm $E$ thuộc cạnh $BC$ sao cho $CE=a$. Tính theo $a$ bán kính mặt cầu ngoại tiếp tứ diện $SAED$.
+	\loigiai{
+		\immini
+		{
+			Ta có $AE^2=AB^2+BE^2=4a^2+(4a)^2=20a^2$,\\
+			$ DE^2=DC^2+CE^2=4a^2+a^2=5a^2$.\\
+			Do đó $AE^2+DE^2=AD^2=25a^2$.\\
+			Suy ra tam giác $AED$ suy ra tam giác $AED$ vuông ở $E$.\\
+			Suy ra $ED\perp(SAE)\Rightarrow ED\perp SE$.\\
+			Vậy $A$ và $E$ đều nhìn $SD$ dưới một góc vuông.\\
+			Do đó mặt cầu ngoại tiếp tứ diện $SAED$ có bán kính là\\
+			$R=\dfrac{SD}{2}=\dfrac{1}{2}\sqrt{SA^2+AD^2}=\dfrac{a\sqrt{26}}{2}$.
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.9]
+			\def\ad{5}
+			\def\ab{2}
+			\def\gb{-120}
+			\def\hh{1}
+			\path
+			(90:\hh) coordinate (S)
+			(0,0) coordinate (A)
+			(0:\ad) coordinate (D)
+			(\gb:\ab) coordinate (B)
+			($ (D)+(B)-(A) $) coordinate (C)
+			(90:3) coordinate (S)
+			($ (B)+(0:\ad-1) $) coordinate (E);
+			\draw (C)--(S)--(B)--(C)--(D)--(S)--(E);
+			\draw[dashed] (S)--(A)--(D)--(E)--(A)--(B);
+			\foreach \x/\g in {A/180,B/-90,C/-90,D/00,S/90,E/-90}\fill[black] (\x) circle (1pt)+(\g:3mm) node{$ \x $};
+			\end{tikzpicture}
+		}
+	}
+%<MyLT>
+\end{vd}
+\begin{vd}%Ví dụ 3%[2H2B2-2]
+	Cho hình chóp $S.ABCD$ có đáy là hình thang vuông tại $A$, $B$. Biết $SA \perp (ABCD)$, $AB=BC=a$, $AD=2a$, $SA=a\sqrt{2}$. Gọi $E$ là trung điểm của $AD$. Tính bán kính mặt cầu đi qua các điểm $S$, $A$, $B$, $C$, $E$.
+	\loigiai{\immini{
+			$SA\perp(ABCD)\Rightarrow SA\perp AC\Rightarrow\widehat{SAC}=90^{\circ}$.\\
+			$BC\perp(SAB)\Rightarrow BC\perp SC\Rightarrow\widehat{SBC}=90^{\circ}$.\\
+			$CE\parallel AB\Rightarrow CE\perp(SAD)\Rightarrow CE\perp SE\Rightarrow\widehat{SEC}=90^{\circ}$.\\
+			Suy ra các điểm $A$, $B$, $E$ cùng nhìn đoạn $SC$ dưới một góc vuông nên mặt cầu đi qua các điểm $S$, $A$, $B$, $C$, $E$ là mặt cầu đường kính $SC$.\\
+			Bán kính mặt cầu đi qua các điểm $S$, $A$, $B$, $C$, $E$ là $R=\dfrac{SC}{2}$.\\
+			Xét tam giác $SAC$ vuông tại $A$ ta có:\\ $AC=AB\sqrt{2}=a\sqrt{2}\Rightarrow SC=AC\sqrt{2}=2a$ \\
+			$ \Rightarrow R=\dfrac{SC}{2}=a $.}{
+			\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{3}
+			\def\ba{2}
+			\def\sa{4}
+			\def\gocB{50}
+			\coordinate[label=below left:$B$] (B) at (0,0);
+			\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+			\coordinate[label=below:$C$] (C) at (\bc,0);
+			\coordinate[label=right:$D$] (D) at ($2*(C)-2*(B)+(A)$);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\sa)$);
+			\coordinate[label=above:$E$] (E) at ($(A)!.5!(D)$);
+			\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+			\draw[dashed] (A)--(D) (S)--(A)--(B) (A)--(C)--(E)--(S);
+			\foreach \diem in {A,B,C,D,S,E}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C} \gocv{S}{B}{C} \gocv{S}{E}{C}
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+\begin{vd}%Ví dụ 4.%[2H2B2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật với độ dài đường chéo bằng $\sqrt{2}a$, cạnh $SA$ có độ dài bằng $2a$ và vuông góc với mặt phẳng đáy. Tính bán kính mặt cầu ngoại tiếp hình chóp $S.ABCD$.
+	\loigiai{
+		\immini{
+			Ta có $SA \perp (ABCD)$ nên $SA \perp AC$ hay $\triangle SAC$ vuông tại $A$ và $SA \perp BC$, $SA \perp CD$.\\
+			$BC \perp AB$ nên $BC \perp SB$ hay $\triangle SBC$ vuông tại $B$.\\
+			$CD \perp AD$ nên $CD \perp SD$ hay $\triangle SCD$ vuông tại $D$.\\
+			Khi đó $\triangle SAC$, $\triangle SBC$, $\triangle SCD$ cùng nhìn cạnh huyền $SC$ dưới một góc vuông nên các đỉnh $S$, $A$, $B$, $C$, $D$ cùng nằm trên mặt cầu đường kính $SC$.\\
+			Bán kính mặt cầu ngoại tiếp hình chóp $S.ABCD$ là\\
+			$R=\dfrac{1}{2}SC=\dfrac{1}{2}\sqrt{SA^2+AC^2}=\dfrac{1}{2}\sqrt{4a^2+2a^2}=\dfrac{a\sqrt{6}}{2}$.
+		}{
+			\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{4}
+			\def\ba{2}
+			\def\sa{4}
+			\def\gocB{30}
+			\coordinate[label=below left:$B$] (B) at (0,0);
+			\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+			\coordinate[label=below:$C$] (C) at (\bc,0);
+			\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\sa)$);
+			\coordinate[label=above:$I$] (I) at ($(S)!.5!(C)$);
+			\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+			\draw[dashed] (A)--(D) (S)--(A)--(B) (I)--(A)--(C);
+			\foreach \diem in {A,B,C,D,S,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C}
+			\end{tikzpicture}}
+	}
+\end{vd}
+\begin{vd}%Ví dụ 5.%[2H2B2-2]
+	Cho hình chóp $S.ABCD$ có $\widehat{ABC}=\widehat{ADC}=90^\circ$, cạnh bên $SA$ vuông góc với $(ABCD)$, góc tạo bởi $SC$ và đáy $ABCD$ bằng $60^\circ$, $CD=a$ và tam giác $ACD$ có diện tích bằng $\dfrac{a^2 \sqrt{3}}{2}$. Tính diện tích mặt cầu $S_{mc}$ ngoại tiếp hình chóp $S.ABCD$.
+	\loigiai{
+		\immini{
+			Giả thiết $SA \perp (ABCD) \Rightarrow AC$ là hình chiếu của $SC$ lên $(ABCD)$.\\
+			Do đó: $(SC,(ABCD))=(SC,AC)=\widehat{SCA}=60^\circ$.\\
+			Xét tam giác $ADC$ vuông tại $D$, có:\\
+			$S_{ADC}=\dfrac{1}{2} \cdot AD \cdot DC =\dfrac{a^2 \sqrt{3}}{2} \Leftrightarrow AD=a\sqrt{3}$.\\
+			Khi đó: $AC=\sqrt{AD^2+DC^2}=\sqrt{\left( a\sqrt{3} \right)^2+a^2}=2a$.\\
+			$\triangle SAC$ vuông tại $A$, có: $\tan \widehat{SAC}=\dfrac{SA}{AC} \Rightarrow SA=AC \cdot \tan 60^\circ=2a\sqrt{3}$.\\
+			Gọi $I$ là trung điểm $SC$, $H$ là trung điểm $AC$. \hfill (1)\\
+			Khi đó $IH \parallel SA \Rightarrow IH \perp (ABCD)$.\\
+			Tứ giác $ABCD$ có $\widehat{B}=\widehat{D}=90^\circ$, $H$ là trung điểm $AC$ nên $H$ là tâm đường tròn ngoại tiếp tứ giác $ABCD$.\\
+			Suy ra $LA=IB=IC=ID$. \hfill (2)\\
+			Từ (1) và (2) suy ra $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$. Bán kính mặt cầu: $R=\dfrac{1}{2} SC=\dfrac{1}{2}\sqrt{4a^2+12a^2}=2a$.\\
+			Diện tích mặt càu: $S=4\pi R^2=16 \pi a^2$.
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=above left:$ S$] (S) at ($(A)+(90:3.5)$);
+			\coordinate[label=right:$D$] (D) at ($(A)+(0:4)$);
+			\coordinate[label=below left:$B$] (B) at ($(A)+(-60:2.1)$);
+			\coordinate[label=below right:$C$] (C) at ($(A)+(-25:3.2)$);
+			\coordinate[label=above:$I$] (I) at ($(S)!.5!(C)$);
+			\coordinate[label=below:$H$] (H) at ($(A)!.5!(C)$);
+			\draw (A)--(B)--(C)--(D)--(S)--cycle (B)--(S)--(C) (B)--(I)--(D);
+			\draw[dashed] (D)--(A)--(C) (H)--(I)--(A);
+			\foreach \diem in {A,B,C,D,S,I,H}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C} \gocv{A}{B}{C} \gocv{A}{D}{C}
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+\subsubsection{Câu hỏi trắc nghiệm}
+\begin{ex}%Câu 1%[2H2Y2-2]
+	Trong các mệnh đề sau, mệnh đề nào đúng?
+	\choice
+	{Hình chóp có đáy là hình thang vuông thì luôn có mặt cầu ngoại tiếp}
+	{Hình chóp có đáy là hình thoi thì luôn có mặt cầu ngoại tiếp}
+	{Hình chóp có đáy là hình tứ giác thì luôn có mặt cầu ngoại tiếp}
+	{\True Hình chóp có đáy là hình tam giác thì luôn có mặt cầu ngoại tiếp}
+	\loigiai{
+		Điều kiện để một hình chóp có mặt cầu ngoại tiếp là đa giác đáy là đa giác nội tiếp đường tròn. Do đó: Đáy là tam giác thì luôn có tâm đường tròn ngoại tiếp.}
+\end{ex}
+\begin{ex}%Câu 2%[2H2Y2-2]
+	Trong các hình đa diện sau, hình nào \textbf{không} nội tiếp được trong một mặt cầu?
+	\choice
+	{Hình tứ diện}
+	{Hình hộp chữ nhật}
+	{Hình chóp ngũ giác đều}
+	{\True Hình chóp có đáy là hình thang vuông}
+	\loigiai{
+		Vì hình thang vuông không nội tiếp được trong một đường tròn nên hình chóp có đáy là hình thang vuông không nội tiếp được trong một mặt cầu.}
+\end{ex}
+\begin{ex}%Câu 3%[2H2Y2-2]
+	Chọn mệnh đề đúng trong các mệnh đề sau.
+	\choice
+	{Hình có đáy là hình bình hành thì có mặt cầu ngoại tiếp}
+	{Hình có đáy là hình tứ giác thì có mặt cầu ngoại tiếp}
+	{Hình có đáy là hình thang thì có mặt cầu ngoại tiếp}
+	{\True Hình có đáy là hình thang cân thì có mặt cầu ngoại tiếp}
+	\loigiai{
+		Một hình chóp có mặt cầu ngoại tiếp khi và chỉ khi đáy của nó là một đa giác nội tiếp được đường tròn.\\
+		Như vậy đáy là hình bình hành, hình tứ giác, hình thang bất kỳ chưa chắc đã nội tiếp được một mặt cầu nên đáp án $ A $, $ B $,$ C $ (loại).}
+\end{ex}
+\begin{ex}%Câu 4%[2H2B2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $SA$ vuông góc với đáy, $I$ là tâm mặt cầu ngoại tiếp hình chóp. Khẳng định nào sau đây là \textbf{đúng}?
+	\choice
+	{\True $I$ là trung điểm $SC$}
+	{$I$ là tâm đường tròn ngoại tiếp tam giác $SBD$}
+	{$I$ là giao điểm của $AC$ và $BD$}
+	{$I$ trung điêm $SA$}
+	\loigiai{
+		\immini{
+			Gọi $I$ là trung điểm $SC$.\\
+			Ta có $SA \perp(ABCD) \Rightarrow SA \perp AC$.\\
+			Suy ra tam giác $SAC$ vuông tại $A$.\\
+			Do đó $\Rightarrow IA=IC=IS$.\hfill$(1)$\\
+			Lại có: $AB, AD$ là hình chiếu vuông góc của $SB, SD$ lên mặt phằng $(ABCD)$.\\
+			Mà $BC \perp AB$, $CD \perp AD$ nên $BC \perp SB$, $CD \perp SD$ (định lí ba đường vuông góc).\\
+			$\Rightarrow$ các tam giác $SBC$ và $SAD$ vuông tại $B$ và $D$\\
+			$\Rightarrow\heva{&IB=IC=IS \\& IC=ID=IS.}$ \hfill$(2)$\\
+			Tù $(1)$ và $(2)$ suy ra $I$ là tâm mặt cầu ngoại tiếp hình chóp.\\
+			Vậy tâm của mặt cầu ngoại tiếp hình chóp là trung điểm $I$ của $SC$.
+		}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=above left:$ S$] (S) at ($(A)+(90:3.5)$);
+			\coordinate[label=right:$D$] (D) at ($(A)+(0:4)$);
+			\coordinate[label=below left:$B$] (B) at ($(A)+(-150:2.5)$);
+			\coordinate[label=below right:$C$] (C) at ($(B)+(D)-(A)$);
+			\coordinate[label=above:$I$] (I) at ($(S)!.5!(C)$);
+			\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+			\draw[dashed] (S)--(A) (D)--(A)--(B);
+			\foreach \diem in {A,B,C,D,S,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C} \gocv{A}{B}{C} \gocv{A}{D}{C}
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 5%[2H2Y2-2]
+	Chọn mệnh đề đúng trong các mệnh đề sau.
+	\choice
+	{Hình có đáy là hình bình hành thì có mặt cầu ngoại tiếp}
+	{\True Hình chóp có đáy là hình thang cân thì có mặt cầu ngoại tiếp}
+	{Hình chóp có đáy là hình thang vuông thì có mặt cầu ngoại tiếp}
+	{Hình chóp có đáy là tứ giác thì có mặt cầu ngoại tiếp}
+	\loigiai{
+		Trong các đáp án chỉ có đáp án B có đáy là hình thang cân mới có đường tròn ngoại tiếp đáy, suy ra có mặt cầu ngoại tiếp.}
+\end{ex}
+\begin{ex}%Câu 6%[2H2Y2-2]
+	Trong các mệnh đề sau, mệnh đề nào \textbf{sai}?
+	\choice
+	{\True Bất kì một hình hộp nào cũng có một mặt cầu ngoại tiếp}
+	{Bất kì một hình tứ diện nào cũng có một mặt cầu ngoại tiếp}
+	{Bất kì một hình chóp đều nào cũng có một mặt cầu ngoại tiếp}
+	{Bất kì một hình hộp chữ nhật nào cũng có một mặt cầu ngoại tiếp}
+	\loigiai{
+		Điều kiện cần để một hình hộp có một mặt cầu ngoại tiếp là đáy của hình hộp là đa giác nội tiếp.}
+\end{ex}
+%--------------------------------------------------------------------------------------------------------
+%\Opensolutionfile{ans}[ans/ans2H2]
+%\setcounter{ex}{6}
+\begin{ex}%Câu 7.%[Paul Hieu Nguyen]%[2H2B2-2]
+	Cho hình chóp $S.ABC$ có tam giác $ABC$ vuông tại $B$, $SA$ vuông góc với mặt phẳng $(ABC)$, $SA=5$, $AB=3$, $BC=4$. Tính bán kính $R$ của mặt cầu ngoại tiếp hình chóp $S.ABC$.
+	\choice
+	{$R=\dfrac{5 \sqrt{2}}{2}$}
+	{$R=\dfrac{5 \sqrt{2}}{3}$}
+	{\True $R=\dfrac{5 \sqrt{3}}{3}$}
+	{$R=\dfrac{5 \sqrt{3}}{2}$}
+	\loigiai{
+		\immini{
+			Ta có $BC \perp SA$ và $BC \perp AB$ nên $BC \perp(SAB) \Rightarrow BC \perp SB$. Vậy hai điểm $A$, $B$ cùng nhìn cạnh $S C$ dưới một góc vuông. Điều đó chứng tỏ $SC$ là đường kính của mặt cầu ngoại tiếp hình chóp $S.ABC$. Do đó bán kính
+			$$R=\dfrac{SC}{2}=\dfrac{1}{2} \sqrt{SA^2+AC^2}=\dfrac{1}{2}\sqrt{SA^2+AB^2+BC^2}=\dfrac{1}{2} \sqrt{5^2+3^2+4^2}=\dfrac{5\sqrt{2}}{2}.
+			$$}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (2,-1);
+			\coordinate (C) at (3,0);
+			\coordinate (S) at ($(A)+(0,2.5)$);
+			\coordinate (I) at ($(S)!.5!(C)$);
+			\draw (S)--(A)--(B)--(C)--(S)--(B)--(I);
+			\draw[dashed] (I)--(A)--(C);
+			\foreach \d/\g in {A/180,B/-90,C/0,S/90,I/45}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\foreach \a/\b/\c/\t in {A/B/C/6,S/A/B/5,S/A/C/6}{\def\k{\t pt}\draw ($(\b)!\k!(\a)$)--($(\b)!2!($($(\b)!\k!(\a)$)!.5!($(\b)!\k!(\c)$)$)$)--($(\b)!\k!(\c)$);}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 8.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh bằng $a$. Cạnh bên $SA$ vuông góc với mặt đáy và $SA=a\sqrt{2}$. Tính thể tích khối cầu ngoại tiếp hình chóp $S.ABCD$ theo $a$. 
+	\choice
+	{$\dfrac{8\pi a^3\sqrt{2}}{3}$}
+	{$4\pi a^3$}
+	{\True $\dfrac{4}{3}\pi a^3$}
+	{$8\pi a^3$}
+	\loigiai{
+		\immini{
+			Ta chứng minh được các tam giác $SBC$, $SAC$ và $SCD$ là các tam giác vuông lần lượt tại $B$, $A$, $D$.\\
+			Suy ra các điểm $B$, $A$, $D$ nhìn cạnh $SC$ dưới một góc vuông.\\
+			Gọi $I$ là trung điểm $SC$ $\Rightarrow I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$.\\
+			Khi đó bán kính mặt cầu ngoại tiếp hình chóp $S.ABCD$ là\\
+			$R=AI=\dfrac{1}{2} \sqrt{SA^2+AC^2}=\dfrac{1}{2}\sqrt{(a \sqrt{2})^2+(a \sqrt{2})^2}=a$.\\
+			Vậy thể tích khối cầu ngoại tiếp hình chóp $S.ABCD$ là: $$V =\dfrac{4}{3}\pi R^3=\dfrac{4}{3}\pi \cdot a^3=\dfrac{4\pi a^3}{3}.$$}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (D) at (-1.5,-1.5);
+			\coordinate (C) at ($(B)+(D)-(A)$);
+			\coordinate (S) at ($(A)+(0,2.5)$);
+			\coordinate (I) at ($(S)!.5!(C)$);
+			\draw (S)--(D)--(C)--(B)--(S)--(C);
+			\draw[dashed] (A)--(D)--(B)--(A)--(C) (S)--(A)--(I);
+			\foreach \d/\g in {A/180,B/0,C/-80,D/200,S/90,I/45}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\foreach \a/\b/\c/\t in {S/A/C/6,S/B/C/5,S/D/C/6}{\def\k{\t pt}\draw ($(\b)!\k!(\a)$)--($(\b)!2!($($(\b)!\k!(\a)$)!.5!($(\b)!\k!(\c)$)$)$)--($(\b)!\k!(\c)$);}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 9.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp tam giác đều $S.ABC$ có cạnh đáy bằng $a$ và mỗi cạnh bên bằng $a\sqrt{2}$. Khi đó bán kính mặt cầu ngoại tiếp hình chóp $S.ABC$ là 
+	\choice
+	{\True $\dfrac{a \sqrt{15}}{5}$}
+	{$\dfrac{3a}{5}$}
+	{$\dfrac{a \sqrt{3}}{5}$}
+	{$\dfrac{a \sqrt{6}}{4}$}	
+	\loigiai{
+		\immini{
+			Gọi $H$ là trọng tâm tam giác đều $ABC$, khi đó $SH\perp(ABC)$ và là trục đường tròn ngoại tiếp
+			mặt đáy.\\
+			Gọi $N$ là trung điểm $SA$, mặt phẳng trung trực của cạnh $SA$ cắt $SH$ tại $I$. Khi đó $IS=IA=IB=IC$ nên $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$.\\
+			Bán kính mặt cầu là $$R=SI=\dfrac{SN\cdot SA}{SH}=\dfrac{\dfrac{1}{2}SA^2}{\sqrt{SA^2-AH^2}}=\dfrac{1}{2}\dfrac{(a\sqrt{2})^2}{\sqrt{(a\sqrt{2})^2-\left(\dfrac{2}{3}\dfrac{a\sqrt{3}}{2}\right)^2}}=\dfrac{a\sqrt{15}}{5}.$$}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\coordinate (A) at (0,0);
+			\coordinate (C) at (3,0);
+			\coordinate (B) at (1,-1);
+			\coordinate (M) at ($(B)!.5!(C)$);
+			\coordinate (H) at ($(A)!2/3!(M)$);
+			\coordinate (S) at ($(H)+(0,2.5)$);
+			\coordinate (N) at ($(S)!.5!(A)$);
+			\coordinate (I) at ($(S)!.7!(H)$);
+			\draw (S)--(A)--(B)--(C)--(S)--(B);
+			\draw[dashed] (C)--(A)--(M) (S)--(H) (N)--(I);
+			\foreach \d/\g in {A/180,B/-90,C/0,H/-90,S/90,M/-45,N/150,I/0}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 10.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Hình chóp $S.ABCD$ có đáy là hình vuông cạnh $a$, $SA$ vuông góc với mặt phẳng $(ABCD)$ và $SA=2a$. Diện tích mặt cầu ngoại tiếp hình chóp $S.ABCD$ bằng
+	\choice
+	{$2 \pi a^2$}
+	{$\pi a^2$}
+	{$3\pi a^2$}
+	{\True $6 \pi a^2$}	
+	\loigiai{
+		\immini{
+			Ta chứng minh được:\\
+			$\bullet$ $BC \perp(SAB) \Rightarrow BC \perp SB \Rightarrow \Delta SBC$ vuông tại $B$.\\
+			$\bullet$ $CD \perp(SAD) \Rightarrow CD \perp SD \Rightarrow \Delta SCD$ vuông tại $D$.\\
+			$\bullet$ $SA \perp(ABCD) \Rightarrow SA\perp AC \Rightarrow \Delta SAC$ vuông tại $A$.\\
+			Gọi $O$ là trung điểm cạnh $SC$.\\
+			Khi đó $OA=OC=OD=OB=OS=\dfrac{1}{2} SC$. Do đó $O$ là tâm mặt cầu ngoại tiếp khối chóp $S.ABCD$.\\
+			Bán kính mặt cầu là: $R=\dfrac{1}{2} SC=\dfrac{1}{2} \sqrt{SA^2+AC^2}=\dfrac{1}{2} \sqrt{4a^2+2a^2}=\dfrac{a \sqrt{6}}{2}$.\\
+			Diện tích mặt cầu: $S=4 \pi R^2=4\pi \cdot \dfrac{3a^2}{2}=6\pi a^2$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (D) at (-1.5,-1.5);
+			\coordinate (C) at ($(B)+(D)-(A)$);
+			\coordinate (S) at ($(A)+(0,2.5)$);
+			\coordinate (O) at ($(S)!.5!(C)$);
+			\draw (S)--(D)--(C)--(B)--(S)--(C);
+			\draw[dashed] (B)--(A)--(D) (S)--(A)--(C);
+			\foreach \d/\g in {A/180,B/0,C/-80,D/200,S/90,O/45}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 11.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy là hình chữ nhật. Biết $SA=AB=a$, $AD=2a$, $SA\perp(ABCD)$. Tính bán kính mặt cầu ngoại tiếp hình chóp $S.ABCD$.
+	\choice
+	{$\dfrac{2 a \sqrt{39}}{13}$}
+	{$\dfrac{a \sqrt{3}}{2}$}
+	{$\dfrac{3 a \sqrt{3}}{4}$}
+	{\True $\dfrac{a \sqrt{6}}{2}$}
+	\loigiai{
+		\immini{
+			Dễ thấy $\widehat{SAC}=\widehat{SBC}=\widehat{SDC}=90^{\circ}$.\\
+			Suy ra mặt cầu ngoại tiếp hình chóp $S.ABCD$ có đường kính là cạnh $SC=\sqrt{SA^2+AC^2}=a\sqrt{6}$.\\
+			Vậy bán kính $R=\dfrac{a\sqrt{6}}{2}$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (D) at (-1.5,-1.5);
+			\coordinate (C) at ($(B)+(D)-(A)$);
+			\coordinate (S) at ($(A)+(0,2.5)$);
+			\coordinate (I) at ($(S)!.5!(C)$);
+			\draw (S)--(D)--(C)--(B)--(S)--(C);
+			\draw[dashed] (B)--(A)--(D) (S)--(A)--(C);
+			\foreach \d/\g in {A/180,B/0,C/-80,D/200,S/90,I/45}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\foreach \a/\b/\c/\t in {A/D/C/5,S/A/B/5,S/A/D/5}{\def\k{\t pt}\draw ($(\b)!\k!(\a)$)--($(\b)!2!($($(\b)!\k!(\a)$)!.5!($(\b)!\k!(\c)$)$)$)--($(\b)!\k!(\c)$);}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 12.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp tứ giác $S.ABCD$ có đáy $ABCD$ là hình thang vuông tại $A$ và $B$, $AB = BC =a$, $A D=2 a$, $SA \perp(ABCD)$ và $SA=a\sqrt{2}$. Gọi $E$ là trung điểm của $AD$. Kẻ $EK\perp SD$ tại $K$. Bán kính mặt cầu đi qua sáu điểm $S$, $A$, $B$, $C$, $E$, $K$ là
+	\choice
+	{$R=\dfrac{1}{2} a$}
+	{$R=\dfrac{\sqrt{3}}{2} a$}
+	{$\True R=a$}
+	{$R=\dfrac{\sqrt{6}}{2} a$}	
+	\loigiai{
+		\immini{
+			Vì $E$ là trung điểm của $AD$, $ABCD$ là hình thang vuông tại $A$ và $B$ và $AB=B C=a$, $AD=2a$ nên $AB=BC=CE=AE=ED=a$ và $CE \parallel AB$.\\
+			Khi đó $CE \perp AD$, $CE\perp SA$ (do $SA \perp(ABCD)$) nên $CE \perp SE$ hay $\widehat{SEC}=90^{\circ}$ và $CE \perp SD$.\\
+			Mặt khác $EK \perp SD$, do đó $SD \perp(CEK)$ suy ra $CK\perp SD$ hay $\widehat{SCK}=90^{\circ}$.\\
+			Ta có $CB \perp AB$, $CB\perp SA$ nên $CB\perp SB$ hay $\widehat{SBC}=90^{\circ}$.\\
+			Ta cũng có $CA\perp SA$ nên $\widehat{SAC}=90^{\circ}$.\\
+			Vậy các góc $\widehat{SEC}$, $\widehat{SCK}$, $\widehat{SBC}$, $\widehat{SAC}$ cùng nhìn cạnh $S C$ dưới một góc không đổi $90^{\circ}$ nên các điểm $S$, $A$, $B$, $C$, $E$, $K$ nằm trên mặt cầu đường kính $SC$, bán kính $R=\dfrac{S C}{2}$.\\
+			Ta có $AC=\sqrt{AB^2+BC^2}=a\sqrt{2}$; $SC=\sqrt{AC^2+SA^2}=2a$, suy ra $R=a$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (-1.5,-1.5);
+			\coordinate (D) at (5,0);
+			\coordinate (E) at ($(A)!.5!(D)$);
+			\coordinate (C) at ($(B)+(E)-(A)$);
+			\coordinate (S) at ($(A)+(0,3)$);
+			\coordinate (K) at ($(S)!.6!(D)$);
+			\draw (S)--(B)--(C)--(D)--(S)--(C)--(K);
+			\draw[dashed] (B)--(A)--(D) (S)--(A)--(K)--(E)--(C);
+			\foreach \d/\g in {A/180,B/200,C/-80,D/0,S/90,K/45,E/-90}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\foreach \a/\b/\c/\t in {E/K/D/5}{\def\k{\t pt}\draw ($(\b)!\k!(\a)$)--($(\b)!2!($($(\b)!\k!(\a)$)!.5!($(\b)!\k!(\c)$)$)$)--($(\b)!\k!(\c)$);}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 13.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho khối tứ diện $OABC$ với $OA$, $OB$, $OC$ từng đôi một vuông góc và $OA=OB=OC =6$. Tính bán kính $R$ của mặt cầu ngoại tiếp tứ diện $OABC$.
+	\choice
+	{$R=4 \sqrt{2}$}
+	{$R=2$}
+	{$R=3$}
+	{\True $R=3 \sqrt{3}$}	
+	\loigiai{
+		\immini{
+			Gọi $M$ là trung điểm của $BC$, do tam giác $OBC$ vuông tại $O$ nên $M$ là tâm đường tròn ngoại tiếp tam giác $OBC$.\\
+			Qua $M$ dựng đường thẳng $d$ song song với $OA$. Khi đó $d$ là trục đường tròn ngoại tiếp tam giác $OBC$.\\
+			Gọi $\Delta$ là đường trung trực của cạnh $OA$ và $I$ là giao điểm của $\Delta$ và $d$.\\
+			Khi đó $I$ là tâm mặt cầu ngoại tiếp tứ diện $OABC$.\\
+			Ta có $OM=\dfrac{1}{2} BC=\dfrac{1}{2}\sqrt{OB^2+OC^2}=3\sqrt{2}$; $ON=IM=\dfrac{1}{2} OA=3$.\\
+			Tam giác $OMI$ vuông tại $M$ nên 
+			$$IM=\sqrt{OM^2+IM^2}=\sqrt{(3\sqrt{2})^2+3^2}=3\sqrt{3}.$$
+			Vậy bán kính mặt cầu ngoại tiếp tứ diện $OABC$ là $R=3\sqrt{3}$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\coordinate (O) at (0,0);
+			\coordinate (B) at (1,-1);
+			\coordinate (C) at (3,0);
+			\coordinate (A) at ($(O)+(0,2.5)$);
+			\coordinate (M) at ($(B)!.5!(C)$);
+			\coordinate (N) at ($(A)!.5!(O)$);
+			\coordinate (M1) at ($(M)-(0,.5)$);
+			\coordinate (M2) at ($(M)+(0,2.5)$);
+			\coordinate (I) at ($(M)+(N)-(O)$);
+			\coordinate (K) at (intersection of N--I and A--M);
+			\coordinate (G) at (intersection of O--I and A--M);
+			\draw (M)--(A)--(O)--(B)--(C)--(A)--(B) (K)--(I)--(G) (M1)--(M2);
+			\draw[dashed] (C)--(O)--(M) (O)--(G) (N)--(K);
+			\foreach \d/\g in {O/180,B/-90,C/0,A/90,I/0,M/-45,N/180,I/0}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 14.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho bốn điểm $A$, $B$, $C$, $D$ cùng thuộc một mặt cầu và $DA$, $DB$, $DC$ đôi một vuông góc, $G$ là trọng tâm tam giác $ABC$, $D'$ là điểm thỏa mãn $\overrightarrow{DD'}=3\overrightarrow{DG}$. Một đường kính của mặt cầu đó là
+	\choice
+	{$AB$}
+	{$AC$}
+	{\True $DD’$}
+	{$BC$}	
+	\loigiai{
+		\immini{
+			Gọi $M$ là trung điểm của $BC$. Dựng $d$ qua $M$ và vuông góc với mặt phẳng $(BCD)$.\\
+			Khi đó $d\parallel AD$\\
+			Gọi $J$ là trung điểm $AD$. Dựng mặt phẳng trung trực của đoạn thẳng $AD$ cắt $d$ tại $I$, khi đó $I$ là tâm mặt cầu ngoại tiếp tứ diện $ABCD$. Ta có:\\
+			$\overrightarrow{ID}=\overrightarrow{IJ}+\overrightarrow{IM}.\quad (1)$
+			\begin{eqnarray*}
+				\overrightarrow{IG}&=&\overrightarrow{IM}+\overrightarrow{MG}=\overrightarrow{IM}+\dfrac{1}{3} \overrightarrow{MA}= \overrightarrow{IM}+\dfrac{1}{3}(\overrightarrow{MD}+\overrightarrow{DA})\\
+				&=&\overrightarrow{IM}+\dfrac{1}{3}\overrightarrow{MD}-\dfrac{1}{3}\cdot 2\overrightarrow{IM}=\dfrac{1}{3} \overrightarrow{IM}+\dfrac{1}{3} \overrightarrow{MD}=\dfrac{1}{3}\overrightarrow{IM}+\dfrac{1}{3}\overrightarrow {IJ}\\
+				&=&\dfrac{1}{3}(\overrightarrow{IM}+\overrightarrow{IJ})
+			\end{eqnarray*}
+			$\Rightarrow \overrightarrow{IM}+\overrightarrow{IJ}=3 \overrightarrow{IG}.\quad(2)$\\
+			Từ $(1)$, $(2)$ suy ra: $\overrightarrow{ID}=3 \overrightarrow{IG}$ hay ba điểm $D$, $I$, $G$ thẳng hàng.\\
+			Mặt khác: $IM \parallel AD$ (cùng vuông góc với mặt phẳng đáy)\\
+			$\Rightarrow \dfrac{DG}{GI}=\dfrac{AG}{GM}=2 \Rightarrow \overrightarrow{DG}=2 \overrightarrow{GI} \Leftrightarrow \overrightarrow{DG}=2(\overrightarrow{DI}-\overrightarrow{DG})$\\
+			$\Leftrightarrow 3 \overrightarrow{DG}=2 \overrightarrow{DI} \Leftrightarrow \overrightarrow{DD’}=2 \overrightarrow{DI}$
+			$\Rightarrow I$ là trung điểm của $DD’$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\coordinate (D) at (0,0);
+			\coordinate (B) at (2,-1);
+			\coordinate (C) at (3,0);
+			\coordinate (A) at ($(D)+(0,2.5)$);
+			\coordinate (M) at ($(B)!.5!(C)$);
+			\coordinate (J) at ($(A)!.5!(D)$);
+			\coordinate (M1) at ($(M)-(0,.5)$);
+			\coordinate (M2) at ($(M)+(0,2.5)$);
+			\coordinate (I) at ($(M)+(J)-(D)$);
+			\coordinate (K) at (intersection of J--I and A--M);
+			\coordinate (G) at ($(A)!2/3!(M)$);
+			\coordinate (D') at ($(D)!3!(G)$);
+			\draw (M)--(A)--(D)--(B)--(C)--(A)--(B) (K)--(I) (M1)--(M2) (G)--(D');
+			\draw[dashed] (C)--(D)--(M) (J)--(K) (D)--(G);
+			\foreach \d/\g in {D/180,B/-90,C/0,A/90,I/45,M/-45,J/180,G/-90,D'/30}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 15.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Tính theo $a$ bán kính của mặt cầu ngoại tiếp hình chóp tam giác đều $S.ABC$, biết các cạnh đáy có độ dài bằng $a$, cạnh bên $SA=a \sqrt{3}$.
+	\choice
+	{\True $\dfrac{3a\sqrt{6}}{8}$}
+	{$\dfrac{3a\sqrt{3}}{2\sqrt{2}}$}
+	{$\dfrac{2a\sqrt{3}}{\sqrt{2}}$}
+	{$\dfrac{a\sqrt{3}}{8}$}	
+	\loigiai{
+		\immini{
+			Gọi $H$ là trung điểm của $SA$. Trong mặt phẳng ($SAO$) kẻ đường thẳng qua $H$ và vuông góc với $SA$ cắt $SO$ tại $I$. Khi đó $IS=IA=IB=IC$.\\
+			Ta có: $AM=\dfrac{a\sqrt{3}}{2}$; $AO=\dfrac{a\sqrt{3}}{3}$; $SO=\sqrt{SA^2-OA^2}=\dfrac{2\sqrt{6}a}{3}$.\\
+			Do $\triangle SHI\backsim\triangle SOA$ ta có: $\dfrac{SI}{SA}=\dfrac{SH}{SO}\Rightarrow SI=\dfrac{SH\cdot SA}{SO}=\dfrac{3\sqrt{6}a}{8}$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\coordinate (A) at (0,0);
+			\coordinate (C) at (3,0);
+			\coordinate (B) at (1,-1);
+			\coordinate (M) at ($(B)!.5!(C)$);
+			\coordinate (O) at ($(A)!2/3!(M)$);
+			\coordinate (S) at ($(O)+(0,2.5)$);
+			\coordinate (H) at ($(S)!.5!(A)$);
+			\coordinate (I) at ($(S)!.7!(O)$);
+			\draw (S)--(A)--(B)--(C)--(S)--(B);
+			\draw[dashed] (C)--(A)--(M) (S)--(O) (H)--(I);
+			\foreach \d/\g in {A/180,B/-90,C/0,O/-90,S/90,M/-45,H/150,I/0}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 16.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$ và $BA=BC=a$. Cạnh bên $SA=2a$ và vuông góc với mặt phẳng $(ABC)$. Bán kính mặt cầu ngoại tiếp khối chóp $S.ABC$ là
+	\choice
+	{$3a$}
+	{$\dfrac{a\sqrt{2}}{2}$}
+	{$a\sqrt{6}$}
+	{\True $\dfrac{a\sqrt{6}}{2}$}	
+	\loigiai{
+		\immini{
+			Gọi $I$ là trung điểm cạnh $SC$.\\
+			$SA\perp(ABC)\Rightarrow SA\perp AC\Rightarrow\triangle SAC$ vuông tại $A$. Suy ra: $LA=IC=IS$\\
+			$SA\perp(ABC)\Rightarrow SA\perp BC$ và $BC\perp AB$ (do $\triangle ABC$ vuông tại $B$).\\
+			Suy ra: $BC\perp(SAB)$ nên $BC\perp SB\Rightarrow\triangle SBC$ vuông tại $B$.\\
+			Do đó $IB=IC=IS$.\\
+			Vậy $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$. Khi đó 
+			\begin{eqnarray*}
+				R=IS&=&\dfrac{1}{2}SC=\dfrac{1}{2}\sqrt{SA^2+AC^2}=\dfrac{1}{2}\sqrt{SA^2+AB^2+BC^2}\\
+				&=&\dfrac{1}{2}\sqrt{4a^2+a^2+a^2}=\dfrac{a\sqrt{6}}{2}.
+			\end{eqnarray*}
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (2,-1);
+			\coordinate (C) at (3,0);
+			\coordinate (S) at ($(A)+(0,2.5)$);
+			\coordinate (I) at ($(S)!.5!(C)$);
+			\draw (S)--(A)--(B)--(C)--(S)--(B);
+			\draw[dashed] (A)--(C);
+			\foreach \d/\g in {A/180,B/-90,C/0,S/90,I/45}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 17.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có cạnh bên $SA$ vuông góc với đáy, $AB=a\sqrt{2}$, $BC=a$, $SC=2a$ và $\widehat{SCA}=30^{\circ}$. Tính bán kính $R$ của mặt cầu ngoại tiếp tứ diện $S.ABC$.
+	\choice
+	{$R=a\sqrt{3}$}
+	{$R=\dfrac{a\sqrt{3}}{2}$}
+	{\True $R=a$}
+	{$R=\dfrac{a}{2}$}	
+	\loigiai{
+		\immini{
+			Ta có:\\
+			$AC=SC\cdot\cos30^{\circ}=a\sqrt{3}$\\
+			$AB^2+BC^2=2a^2+a^2=3a^2=AC^2\Rightarrow\triangle ABC$ là tam giác vuông ở $B$.\\
+			Gọi $H,I$ lần lượt là trung điểm của $AC,SC$. Khi đó ta có:
+			$H$ là tâm đường tròn ngoại tiếp $\triangle ABC$.\\
+			$IH\perp (ABC)$\\
+			Do đó $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$. Suy ra $R=\dfrac{1}{2}SC=a$.\\
+			Vậy $R=a$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (1,-1);
+			\coordinate (C) at (3,0);
+			\coordinate (S) at ($(A)+(0,2.5)$);
+			\coordinate (I) at ($(S)!.5!(C)$);
+			\coordinate (H) at ($(A)!.5!(C)$);
+			\draw (S)--(A)--(B)--(C)--(S)--(B)--(I);
+			\draw[dashed] (A)--(C) (I)--(H)--(B);
+			\foreach \d/\g in {A/180,B/-90,C/0,S/90,I/45,H/-60}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\draw[blue](C)+(140:.45)arc(150:188:.45);
+			\draw (2.3,-.07) node[above]{$30^\circ$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 18.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ đều có đáy $ABCD$ là hình vuông cạnh $a$, cạnh bên hợp với đáy một góc bằng $60^{\circ}$. Gọi $(S)$ là mặt cầu ngoại tiếp hình chóp $S.ABCD$. Tính thể tích $V$ của khối cầu $(S)$.
+	\choice
+	{\True $V=\dfrac{8 \sqrt{6} \pi a^{3}}{27}$}
+	{$V=\dfrac{4 \sqrt{6} \pi a^{3}}{9}$}
+	{$V=\dfrac{4 \sqrt{3} \pi a^{3}}{27}$}
+	{$V=\dfrac{8 \sqrt{6} \pi a^{3}}{9}$}	
+	\loigiai{
+		\immini{
+			Gọi $O$ là tâm của hình vuông $ABCD$. Do $S.ABCD$ là hình chóp đều nên $SO\perp (ABCD)$ hay $SO$ là trục của đường tròn ngoại tiếp đáy.\\
+			Trong mặt phẳng $(SBO)$ kẻ đường trung trực $\Delta$ của cạnh $SB$ và gọi $I =\triangle\cap SO$ khi đó ta có\\
+			$I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$.\\
+			Theo giả thiết ta có $S.ABCD$ là hình chóp đều và góc giữa cạnh bên với mặt phẳng đáy bằng $60^{\circ}$ nên $\widehat{SBO}=60^{\circ}$\\
+			Ta có $\triangle SMI\backsim\triangle SOB$ nên $\dfrac{SM}{SO}=\dfrac{SI}{SB}\Leftrightarrow SI=\dfrac{SM\cdot SB}{SO}$.\\
+			Với $SO=OB\tan60^{\circ}\Leftrightarrow SO=\dfrac{a\sqrt{6}}{3}$;\\
+			$SB=OB\cos60^{\circ}\Leftrightarrow SB=a\sqrt{2};SM=\dfrac{a\sqrt{2}}{2}$.\\
+			Vậy $SI=\dfrac{SM\cdot SB}{SO}=\dfrac{a\sqrt{6}}{2}$.\\
+			Thể tích khối cầu ngoại tiếp hình chóp $S.ABCD$ là $$V=\dfrac{4}{3}\pi R^3=\dfrac{4}{3}\pi\left(\dfrac{a\sqrt{6}}{2}\right)^3=\dfrac{8\sqrt{6}\pi a^3}{27}.$$}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\coordinate (A) at (0,0);
+			\coordinate (D) at (3,0);
+			\coordinate (B) at (-1.5,-1.5);
+			\coordinate (C) at ($(B)+(D)-(A)$);
+			\coordinate (O) at ($(A)!.5!(C)$);
+			\coordinate (S) at ($(O)+(0,3.5)$);
+			\coordinate (M) at ($(S)!.5!(B)$);
+			\coordinate (I) at ($(S)!.7!(O)$);
+			\draw (S)--(B)--(C)--(D)--(S)--(C);
+			\draw[dashed] (B)--(A)--(D)--(B) (O)--(S)--(A)--(C) (M)--(I);
+			\foreach \d/\g in {A/160,B/200,C/-60,D/0,S/90,O/-105,M/150,I/0}
+			\fill[black](\d) circle (1pt)+(\g:.25)node{$\d$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 19.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp đều $S.ABCD$ có cạnh đáy $2a$ và cạnh bên $a\sqrt{6}$. Tính diện tích của mặt cầu ngoại tiếp hình chóp $S.ABCD$.
+	\choice
+	{$8\pi a^2$}
+	{$18a^2$}
+	{$9a^2$}
+	{\True $9\pi a^2$}	
+	\loigiai{
+		\immini{
+			Gọi $O$ là tâm hình vuông $ABCD$, $M$ là trung điểm của $SC$.\\
+			Trong mặt phẳng $(SOC)$ dựng đường thẳng qua $M$ và vuông góc với $SC$ cắt $SO$ tại $I$.\\
+			Khi đó $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$ và bán kính $r=SI$.\\
+			Xét tam giác vuông $ABC$ ta có: $AC=2\sqrt{2}a$.\\
+			Xét tam giác vuông $SOC$ ta có: $SO = \sqrt{SC^2-OC^2}=2a$.\\
+			Xét $\Delta SMI \backsim \Delta SOC$ ta có: $\dfrac{SM}{SO}=\dfrac{SI}{SC} \Rightarrow SI=\dfrac{SM \cdot SC}{SO}=\dfrac{3a}{2}$.\\
+			Vậy diện tích mặt cầu cần tìm là $S=4\pi\left(\dfrac{3a}{2}\right)^2=9\pi a^2$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\coordinate (A) at (0,0);
+			\coordinate (D) at (3,0);
+			\coordinate (B) at (-1.3,-1.5);
+			\coordinate (C) at ($(B)+(D)-(A)$);
+			\coordinate (O) at ($(A)!.5!(C)$);
+			\coordinate (S) at ($(O)+(0,3.5)$);
+			\coordinate (M) at ($(S)!.5!(C)$);
+			\coordinate (I) at ($(S)!.65!(O)$);
+			\draw (S)--(B)--(C)--(D)--(S)--(C);
+			\draw[dashed] (B)--(A)--(D)--(B) (O)--(S)--(A)--(C) (M)--(I);
+			\foreach \d/\g in {A/160,B/200,C/-60,D/0,S/90,O/-105,M/35,I/180}
+			\fill[black](\d) circle (1pt)+(\g:.25)node{$\d$};
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 20.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$ với $AB = a$, $BC = a\sqrt{3}$. Cạnh $SA$ vuông góc với mặt phẳng đáy và $SA=a\sqrt{3}$. Tính bán kính $R$ của mặt cầu ngoại tiếp hình chóp $S.ABC$.
+	\choice
+	{$R=a$}
+	{$R=3a$}
+	{$R=4a$}
+	{\True $R=2a$}	
+	\loigiai{
+		\immini{
+			Ta có $SA\perp(ABC)$ nên tam giác $SAC$ vuông tại $A\Rightarrow$ điểm $A$ thuộc mặt cầu tâm $I$ đường kính $SC.\quad(1)$\\
+			Mặt khác ta lại có:
+			$\heva{&BC\perp AB\\&BC\perp SA}\Rightarrow BC\perp(SAB)\Rightarrow BC\perp SB$ hay tam giác $SBC$ vuông tại $B\Rightarrow$ điểm $B$ thuộc mặt cầu tâm $I$ đường kính $SC.\quad(2)$\\
+			Từ $(1)$ và $(2)$ ta có bốn điểm $A$, $B$, $S$, $C$ cùng thuộc mặt cầu tâm $I$ đường kính $SC$.\\
+			Xét tam giác vuông $ABC$ ta có $AC^2=AB^2+BC^2=2a$.\\
+			Xét tam giác vuông $SAC$ có $SC^2=SA^2+AC^2=16a^2\Rightarrow SC=4a$.\\
+			Vậy bán kính mặt cầu ngoại tiếp hình chóp $S.ABC$ là $R=\dfrac{SC}{2}=2a$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (1,-1);
+			\coordinate (C) at (3,0);
+			\coordinate (S) at ($(A)+(0,2.5)$);
+			\coordinate (I) at ($(S)!.5!(C)$);
+			\draw (S)--(A)--(B)--(C)--(S)--(B)--(I);
+			\draw[dashed] (I)--(A)--(C);
+			\foreach \d/\g in {A/180,B/-90,C/0,S/90,I/45}
+			\fill[black](\d) circle (1pt)+(\g:.3)node{$\d$};
+			\foreach \a/\b/\c/\t in {A/B/C/6,S/A/B/5,S/A/C/6}{\def\k{\t pt}\draw ($(\b)!\k!(\a)$)--($(\b)!2!($($(\b)!\k!(\a)$)!.5!($(\b)!\k!(\c)$)$)$)--($(\b)!\k!(\c)$);}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 21.%[Paul Hieu Nguyen]%[2H2K2-2]
+	Cho hình chóp đều $S.ABCD$ có $AB=2$ và $SA=3\sqrt{2}$. Bán kính của mặt cầu ngoại tiếp hình chóp đã cho bằng
+	\choice
+	{$\dfrac{\sqrt{33}}{4}$}
+	{$\dfrac{7}{4}$}
+	{$2$}
+	{\True $\dfrac{9}{4}$}
+	\loigiai{
+		\immini{
+			Gọi $H$ là tâm hình vuông $ABCD$ thì $SH$ là trục của $ABCD$.\\
+			Gọi $M$ là trung điểm của $SD$, trong mp $(SDH)$ kẻ đường trung trực của đoạn $SD$ cắt $SH$ tại $O$ thì $OS=OA=OB=OC=OD$ nên $O$ chính là tâm của mặt cầu ngoại tiếp hình chóp $S.ABCD$. Bán kính mặt cầu là $R=SO$.
+			Ta có $\triangle SMO\backsim\triangle SHD$ nên $\dfrac{SO}{SD}=\dfrac{SM}{SH}\Leftrightarrow R=SO=\dfrac{SD\cdot SN}{SH}=\dfrac{SD^2}{2SH}$.\\
+			Với $SH^2=SD^2-HD^2=16\Rightarrow SH=4$.\\
+			Vậy $R=\dfrac{SD^2}{2SH}=\dfrac{9}{4}$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (D) at (-1.5,-1.5);
+			\coordinate (C) at ($(B)+(D)-(A)$);
+			\coordinate (H) at ($(A)!.5!(C)$);
+			\coordinate (S) at ($(H)+(0,3.7)$);
+			\coordinate (M) at ($(S)!.5!(D)$);
+			\coordinate (O) at ($(S)!.72!(H)$);
+			\draw (S)--(B)--(C)--(D)--(S)--(C);
+			\draw[dashed] (B)--(A)--(D)--(B) (H)--(S)--(A)--(C) (M)--(O);
+			\foreach \d/\g in {A/160,B/0,C/-60,D/200,S/90,H/-105,M/150,O/30}
+			\fill[black](\d) circle (1pt)+(\g:.25)node{$\d$};
+			\foreach \a/\b/\c/\t in {S/M/O/6}{\def\k{\t pt}\draw ($(\b)!\k!(\a)$)--($(\b)!2!($($(\b)!\k!(\a)$)!.5!($(\b)!\k!(\c)$)$)$)--($(\b)!\k!(\c)$);}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+%\Closesolutionfile{ans}
+%\begin{indapan}
+%	{10}{ans/ansCD2D3-3.1-2}
+%\end{indapan}
+%--------------------------------------------------------------------------------------------------------
+%\Opensolutionfile{ans}[ans/ansGV19]
+\begin{ex}%Câu 22.%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $AB=3, AD=4$ và các cạnh bên của hình chóp tạo với đáy một góc $60^\circ$. Tính thể tích của khối cầu ngoại tiếp hình chóp đã cho. 
+	\choice
+	{$V=\dfrac{250\sqrt 3}3\pi$}
+	{$V=\dfrac{125\sqrt 3}6\pi$}
+	{\True $V=\dfrac{500\sqrt 3}{27}\pi$}
+	{$V=\dfrac{50\sqrt 3}{27}\pi$}
+	\loigiai{
+		\immini{
+			Gọi $O=A C\cap B D$. Do các cạnh bên của hình chóp tạo với đáy một góc $60^\circ$ nên $SO\perp(ABCD)$ hay $SO$ là trục của đường tròn ngoại tiếp đa giác đáy.\\
+			Gọi $M$ là trung điểm của cạnh $SB$, trong mặt phẳng $(SBO)$ kẻ đường thẳng qua $M$ và vuông góc với $SB$, cắt $SO$ tại $I$. Khi đó ta có $I A=I B=I C=I D=I S $ hay $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$.\\
+			Theo giả thiết ta có $A B=3, A D=4 $ nên $B O=\dfrac 52$. Mà góc giữa $SB$ và mặt phẳng $(ABCD)$ bằng $60^\circ$ hay $\widehat{S B O}=60^{\circ}$. Suy ra $SB=\dfrac{B O}{\cos 60^{\circ}}=5 \Rightarrow S O=\dfrac{5\sqrt 3}2$.\\
+			Ta có $\Delta S M I\backsim\Delta S O B$ nên $S I=\dfrac{S M\cdot S B}{S O}=\dfrac{5\cdot\dfrac 52}{5\sqrt 3}=\dfrac{5\sqrt 3}3$.\\
+			Vậy thể tích của khối cầu ngoại tiếp hình chóp $S.ABCD$ là $V=\dfrac 43\pi\left(\dfrac{5\sqrt 3}3\right)^3=\dfrac{500\sqrt 3}{27}\pi$.}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{4} % cạnh BC
+			\def\ba{2} % cạnh BA
+			\def\h{4} % đường cao
+			\def\gocB{30} % góc B của đáy
+			\coordinate[label=below left:$B$] (B) at (0,0);
+			\coordinate[label=above right:$A$] (A) at (\gocB:\ba);
+			\coordinate[label=below:$C$] (C) at (\bc,0);
+			\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+			\coordinate[label=below:$O$] (O) at ($(A)!.5!(C)$);
+			\coordinate[label=above:$S$] (S) at ($(O)+(90:\h)$);
+			\coordinate[label=left:$M$] (M) at ($(S)!0.5!(B)$);
+			\coordinate[label=right:$I$] (I) at ($(S)!0.7!(O)$);
+			\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+			\draw[dashed] (C)--(A)--(D)--(B) (O)--(S)--(A)--(B) (M)--(I);
+			\foreach \diem in {A,B,C,D,S,O,M,I}	\fill (\diem)circle(1.5pt);
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 23.%[2H2B2-2]
+	Cho khối chóp $S.ABC$ có đáy là tam giác vuông tại $B$, $AB=1$, $BC=\sqrt{2}$, cạnh bên $SA$ vuông góc với đáy và $SA=\sqrt 3$. Diện tích mặt cầu ngoại tiếp hình chóp $S.ABC$ bằng
+	\choice
+	{\True $6\pi$}
+	{$\dfrac{3\pi}{2}$}
+	{$12\pi$}
+	{$2\pi$}
+	\loigiai{
+		\immini{
+			Gọi $I$ là trung điểm của $SC$. Tam giác $SAC$ vuông tại $A$.\\
+			Suy ra $I A=I S=I C=\dfrac 12S C$ $(1)$.\\
+			Dễ dàng chứng minh được $B C\perp(SAB)\Rightarrow BC\perp SB $ hay tam giác $SBC$ vuông tại $B$.\\
+			$\Rightarrow I B=I S=I C=\dfrac 12S C$ $(2)$.\\
+			Từ $(1)$ và $(2)$ suy ra $I A=I B=I C=I S=\dfrac 12S C$ hay $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$ có bán kính $R=\dfrac 12S C=\dfrac 12\sqrt{S A^2+A C^2}=\dfrac 12\sqrt{S A^2+A B^2+B C^2}=\dfrac{\sqrt 6}2$.\\
+			Vậy diện tích mặt cầu cần tìm là $S=4\pi R^2=6\pi$.}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{4} % cạnh AC
+			\def\ab{2} % cạnh AB
+			\def\h{3.5} % chiều cao
+			\def\gocA{50} % góc A của đáy
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+			\coordinate[label=above right:$I$] (I) at ($(S)!0.5!(C)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B)--(I);
+			\draw[dashed] (I)--(A)--(C);
+			\foreach \diem in {A,B,C,S,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C} 
+			\gocv{A}{B}{C} 
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 24.%[2H2B2-2]
+	Cho hình chóp $S.ABCD$ có $\triangle ABC$ vuông tại $B$, $BA=a$, $BC=a\sqrt 3$. Cạnh bên $SA$ vuông góc với đáy và $SA=a$. Tính bán kính của mặt cầu ngoại tiếp hình chóp $S.ABC$. 
+	\choice
+	{\True $R=\dfrac{a\sqrt 5}2$}
+	{$R=\dfrac{a\sqrt 5}4$}
+	{$R=2a\sqrt 5$}
+	{$R=a\sqrt 5$}
+	\loigiai{
+		\immini{
+			Tâm của mặt cầu ngoại tiếp chóp $S.ABC$ là trung điểm $I$ của $SC$.\\ 
+			Ta có $A C=\sqrt{A B^2+B C^2}=2a$.\\
+			Khi đó $S C=\sqrt{S A^2+A C^2}=\sqrt{a^2+4a^2}=a\sqrt 5$.\\
+			Vậy $R=S I=\dfrac{S C}2=\dfrac{a\sqrt 5}2$.}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{4} % cạnh AC
+			\def\ab{2} % cạnh AB
+			\def\h{3.5} % chiều cao
+			\def\gocA{50} % góc A của đáy
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+			\coordinate[label=above right:$I$] (I) at ($(S)!0.5!(C)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B)--(I);
+			\draw[dashed] (I)--(A)--(C);
+			\foreach \diem in {A,B,C,S,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C} 
+			\gocv{A}{B}{C} 
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 25.%[2H2B2-2]
+	Cho tứ diện $ABCD$ có $AD$ vuông góc với mặt phẳng $(ABC)$, tam giác $ABC$ vuông cân tại $A$, $AD=2a$, $AB=a$. Bán kính mặt cầu ngoại tiếp tứ diện $ABCD$ bằng 
+	\choice
+	{$\dfrac{a\sqrt 6}3$}
+	{\True $\dfrac{a\sqrt 6}2$}
+	{$\dfrac{a\sqrt 6}4$}
+	{$\dfrac{a\sqrt 2}2$}
+	\loigiai{
+		\immini{
+			Bán kính đường tròn ngoại tiếp tam giác $ABC$ là $r=\dfrac{B C}2=\dfrac{a\sqrt 2}2$.\\
+			Bán kính mặt cầu ngoại tiếp tứ diện $ABCD$
+			\[R=\sqrt{\left(\dfrac{A D}2\right)^2+r^2}=\sqrt{a^2+\dfrac{a^2}2}=\dfrac{a\sqrt 6}2.\]}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{4} % cạnh AC
+			\def\ab{2} % cạnh AB
+			\def\h{3} % chiều cao
+			\def\gocA{50} % góc A của đáy
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=above:$D$] (D) at ($(A)+(90:\h)$);
+			\draw (A)--(B)--(C)--(D)--cycle (D)--(B);
+			\draw[dashed] (A)--(C);
+			\foreach \diem in {A,B,C,D}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{D}{A}{C}
+			\gocv{B}{A}{C}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 26.%[2H2K2-2]
+	\immini{
+		Cho khối chóp $S.ABC$ có $SA$ vuông góc với $(ABC)$ và $SA=a$. Đáy $ABC$ nội tiếp trong đường tròn tâm $I$ có bán kính bằng $2a$ (hình vẽ). Tính bán kính mặt cầu ngoại tiếp khối chóp $S.ABC$. 	
+		\choice
+		{$\dfrac{a\sqrt 5}2$}
+		{\True $\dfrac{a\sqrt{17}}2$}
+		{$a\sqrt 5$}
+		{$\dfrac{a\sqrt 5}3$}}
+	{\begin{tikzpicture}[line cap=round,line join=round]
+		\def\a{2}
+		\def\b{0.8}
+		\def\c{3}
+		\coordinate[label=below:{$I$}] (I) at (0,0);
+		\coordinate[label=above right:{$C$}] (C) at (20:\a cm and \b cm);
+		\coordinate[label=left:{$A$}] (A) at (180:\a cm and \b cm);
+		\coordinate[label=below:{$B$}] (B) at (260:\a cm and \b cm);
+		\coordinate[label=above:{$S$}] (S) at ($(A)+(0,\c)$);
+		\tkzDefPointBy[rotation = center I angle 180](A)\tkzGetPoint{M}
+		\draw[dashed] (A)--(C) ($(I)-(\a,0)$) arc (180:20:\a cm and \b cm);
+		\draw(S)--(A)--(B)--(C)--(S)--(B) ($(I)-(\a,0)$) arc (-180:20:\a cm and \b cm);
+		\foreach \diem in {A,B,C,S,I}	\fill (\diem)circle(1.5pt);
+		\end{tikzpicture}}
+	\loigiai{
+		\immini{
+			Gọi $\Delta$ là đường thẳng qua $I$ và $\Delta\perp(A B C)$. Gọi $M$ là trung điểm của $SA$, mặt phẳng trung trực của đoạn thẳng $SA$ cắt $\Delta$ tại $O$.\\
+			Khi đó $O$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$, bán kính $R=OA$.\\ 
+			\[O A=\sqrt{A I^2+O I^2}=\sqrt{4a^2+\dfrac{a^2}4}=\dfrac{a\sqrt{17}}2.\]}
+		{\begin{tikzpicture}[line cap=round,line join=round]
+			\def\a{2}
+			\def\b{0.8}
+			\def\c{3}
+			\coordinate[label=below:{$I$}] (I) at (0,0);
+			\coordinate(D) at (0,1);
+			\coordinate(E) at (0,2.5);
+			\coordinate(F) at (-0.4,1.44);
+			\coordinate(G) at (0.5,1.42);
+			\coordinate[label=left:{$M$}](M) at (-2,1.5);
+			\coordinate[label=left:{$\Delta$}](K) at (0.6,2.4);
+			\coordinate[label=above right:{$C$}] (C) at (20:\a cm and \b cm);
+			\coordinate[label=left:{$A$}] (A) at (180:\a cm and \b cm);
+			\coordinate[label=below:{$B$}] (B) at (260:\a cm and \b cm);
+			\coordinate[label=above:{$S$}] (S) at ($(A)+(0,\c)$);
+			\coordinate[label=above right:{$O$}](O) at (0,1.42);
+			\draw[dashed] (M)--(F) (A)--(I)--(D) (A)--(C) ($(I)-(\a,0)$) arc (180:20:\a cm and \b cm);
+			\draw (F)--(G) (E)--(D) (S)--(A)--(B)--(C)--(S)--(B) ($(I)-(\a,0)$) arc (-180:20:\a cm and \b cm);
+			\foreach \diem in {A,B,C,S,I,M,O}	\fill (\diem)circle(1.5pt);
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 27.%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thoi cạnh $a$, góc $\widehat{B A D}=120^{\circ}$. Cạnh bên $SA$ vuông góc với đáy và $SA=3a$. Tính bán kính $R$ của mặt cầu ngoại tiếp khối chóp $S.BCD$. 
+	\choice
+	{$R=\dfrac{\sqrt 3a}3$}
+	{$R=\dfrac{\sqrt 5a}3$}
+	{\True $R=\dfrac{5a}3$}
+	{$R=\dfrac{4a}3$}
+	\loigiai{
+		\immini{
+			Xét hình thoi $ABCD$ có $\widehat{B A D}=120^{\circ}$ nên $A D=A C=A B$, suy ra $A$ là tâm đường tròn ngoại tiếp đa giác đáy $BCD$.\\
+			Theo giả thiết $SA$ vuông góc với đáy $(ABCD)$ nên đường thẳng $SA$ là trục của đáy $(BCD)$.\\
+			Gọi $M$ là trung điểm $SD$, trong mặt phẳng $(SAD)$ kẻ đường thẳng $d$ vuông góc với $SD$ tại $M$, $d$ cắt $SA$ tại $I$.\\
+			Ta có $I$ là tâm mặt cầu ngoại tiếp khối chóp $S.BCD$. Khi đó $R=IS$.\\
+			Ta có $\Delta I S M\backsim\Delta D S A\Rightarrow\dfrac{I S}{D S}=\dfrac{S M}{S A}$\\
+			$\Rightarrow I S=\dfrac{S M\cdot D S}{S A}=\dfrac{\dfrac{a\sqrt{10}}2\cdot a\sqrt{10}}{3a}=\dfrac{5a}3$.}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{4} % cạnh BC
+			\def\ba{2} % cạnh BA
+			\def\h{4} % đường cao
+			\def\gocB{30} % góc B của đáy
+			\coordinate[label=below left:$B$] (B) at (0,0);
+			\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+			\coordinate[label=below:$C$] (C) at (\bc,0);
+			\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+			\coordinate[label=above right:$M$] (M) at ($(S)!0.5!(D)$);
+			\coordinate[label=above left:$I$] (I) at ($(S)!0.7!(A)$);
+			\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+			\draw[dashed] (A)--(D) (S)--(A)--(B)--(D) (M)--(I);
+			\foreach \diem in {A,B,C,D,S,M,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{D}
+			\gocv{S}{M}{I}
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 28.%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có $SA$ vuông góc với $(ABC)$, $AB=a$, $AC=a\sqrt 2$, $\widehat{BAC}=45^\circ$. Gọi $B_1$, $C_1$ lần lượt là hình chiếu vuông góc của $A$ lên $SB$, $SC$. Tính thể tích mặt cầu ngoại tiếp hình chóp $A.BCC_1B_1$. 
+	\choice
+	{\True $V=\dfrac{\pi a^3\sqrt 2}3$}
+	{$V=\pi a^3\sqrt 2$}
+	{$V=\dfrac 43\pi a^3$}
+	{$V=\dfrac{\pi a^3}{\sqrt 2}$}
+	\loigiai{
+		\immini{
+			Ta có $B C^2=a^2+2a^2-2\cdot a\cdot a\sqrt 2\cdot\cos 45^{\circ}=a^2\Rightarrow B C=a$.\\
+			Suy ra tam giác $A B C $ vuông tại $B$. \\
+			Ta có \\
+			$\heva{&BC\perp AB\\ &BC\perp SA}\Rightarrow BC\perp(SAB)\Rightarrow BC\perp AB_1$.\\
+			$\heva{&AB_1\perp CB\\ &AB_1\perp SB}\Rightarrow AB_1\perp(SBC)\Rightarrow AB_1\perp CB_1$.\\
+			Gọi $I$ là trung điểm $AC$, suy ra $IC=IA=IB$.\\
+			Tam giác $AB_1C$ vuông tại $B_1$ suy ra $IC=IA=IB_1$.\\
+			Tam giác $AC_1C$ vuông tại $C_1$ suy ra $IC=IA=IC_1$.\\
+		}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{4} % cạnh AC
+			\def\ab{2.5} % cạnh AB
+			\def\h{3.5} % chiều cao
+			\def\gocA{45} % góc A của đáy
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+			\coordinate[label=above left:$B_1$] (B_1) at ($(S)!0.6!(B)$);
+			\coordinate[label=above right:$C_1$] (C_1) at ($(S)!0.4!(C)$);
+			\coordinate[label=below right:$I$] (I) at ($(A)!0.5!(C)$);
+			\draw (C_1)--(B_1)--(A) (A)--(B)--(C)--(S)--cycle (S)--(B) (B_1)--(C);
+			\draw[dashed] (C_1)--(A)--(C) (B_1)--(I)--(C_1) (I)--(B);
+			\foreach \diem in {A,B,C,S,B_1,C_1,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C}
+			\gocv{B}{B_1}{A}
+			\gocv{S}{C_1}{A}
+			\end{tikzpicture}
+		}
+		\noindent Do đó hình chóp $A.BCC_1B_1$ nội tiếp mặt cầu tâm $I$, bán kính $R=IA=\dfrac{a\sqrt 2}{2}$.\\
+		Vậy thể tích mặt cầu ngoại tiếp hình chóp $A.BCC_1B_1$ là \[V=\dfrac 43\pi\left(\dfrac{a\sqrt 2}2\right)^3=\dfrac{a^3\pi\sqrt 2}3.\]
+	}
+\end{ex}
+\begin{ex}%Câu 29.%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$. Cạnh bên $SA$ vuông góc với mặt đáy và $SA=a$. Gọi $E$ là trung điểm của cạnh $CD$. Mặt cầu đi qua bốn điểm $S$, $A$, $B$, $E$ có bán kính là
+	\choice
+	{\True $\dfrac{a\sqrt{41}}8$}
+	{$\dfrac{a\sqrt{41}}{24}$}
+	{$\dfrac{a\sqrt{41}}{16}$}
+	{$\dfrac{a\sqrt 2}{16}$}
+	\loigiai{
+		\immini{
+			Gọi $H$, $M$ lần lượt là trung điểm của $AB$, $SA$.\\
+			Gọi $I$ là tâm của đường tròn ngoại tiếp $\triangle ABE$, $d$ là trục của đường tròn ngoại tiếp $\triangle ABE$.\\
+			Suy ra $d\parallel SA$, $A I\cap B C=K $.\\
+			Giả sử $d\cap S K=O $ thì $O$ là giao của mặt phẳng trung trực của cạnh bên $SA$ và trục $d$ của đáy $ABE$ nên $O$ là trung điểm của $SK$ và là tâm mặt cầu ngoại tiếp hình chóp $S.ABE$.\\
+			Do đó tứ giác $MOIA$ là hình chữ nhật nên $IA=MO$.\\
+			Ta có $A E=B E=\sqrt{a^2+\left(\dfrac a2\right)^2}=\dfrac{a\sqrt 5}2$ nên trong $\triangle ABE$, $S_{\Delta A B E}=\dfrac 12a^2=\dfrac{A B\cdot A E\cdot B E}{4R}$ với $R$ là bán kính đường tròn ngoại tiếp tam giác $ABE$.\\
+		}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{4} % cạnh BC
+			\def\ba{2} % cạnh BA
+			\def\h{3.5} % đường cao
+			\def\gocB{30} % góc B của đáy
+			\coordinate[label=below left:$B$] (B) at (0,0);
+			\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+			\coordinate[label=below:$C$] (C) at (\bc,0);
+			\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+			\coordinate[label=left:$H$] (H) at ($(A)!0.5!(B)$);
+			\coordinate[label=left:$M$] (M) at ($(A)!0.5!(S)$);
+			\coordinate[label=below right:$E$] (E) at ($(D)!0.5!(C)$);
+			\coordinate[label=below:$K$] (K) at ($(B)!0.7!(C)$);			
+			\coordinate[label=right:$O$] (O) at ($(K)!0.5!(S)$);
+			\tkzInterLL(A,K)(H,E) \tkzGetPoint{I} \tkzLabelPoints[below](I)	
+			\draw (B)--(C)--(D)--(S)--cycle (K)--(S)--(C);
+			\draw[dashed] (A)--(D) (S)--(A)--(B)--(E)--(H) (E)--(A)--(K) (I)--(O)--(M);
+			\foreach \diem in {A,B,C,D,S,H,M,E,K,I,O}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{D}
+			\end{tikzpicture}
+		}
+		\noindent Suy ra $R=\dfrac{A B\cdot A E\cdot B E}{2a^2}=\dfrac{5a}8=I A$.\\
+		Xét $SMO$ vuông tại $M$ có 
+		$r=S O=\sqrt{S M^2+M O^2}=\sqrt{\left(\dfrac{S A}2\right)^2+IA^2}=\sqrt{\dfrac{a^2}4+\dfrac{25a^2}{64}}=\dfrac{a\sqrt{41}}8$ là bán kính mặt cầu ngoại tiếp hình chóp $S.ABE$.
+	}
+\end{ex}
+\begin{ex}%Câu 30.%[2H2G2-2]
+	Cho tứ diện $ABCD$ có $AB=4a$, $CD=6a$, các cạnh còn lại có độ dài $a\sqrt{22}$. Tính bán kính $R$ của mặt cầu ngoại tiếp tứ diện $ABCD$. 
+	\choice
+	{$R=\dfrac{a\sqrt{79}}3$}
+	{$R=\dfrac{5a}2$}
+	{\True $R=\dfrac{a\sqrt{85}}3$}
+	{$R=3a$}
+	\loigiai{
+		\immini{
+			Gọi $M$, $N$ lần lượt là trung điểm của $CD$ và $AB$.\\
+			Ta có $\heva{&AB\perp CN\\ &AB\perp DN}\Rightarrow AB\perp (NCD) \Rightarrow AB\perp MN$. \\
+			Tương tự $CD\perp MN$.\\
+			Suy ra $MN$ là đoạn vuông góc chung của $AB$ và $CD$.\\
+			Gọi $I$ là tâm mặt cầu ngoại tiếp tứ diện $ABCD$ thì $I$ thuộc $MN$.\\
+			Xét tam giác $NAC$ vuông tại $N$ có \\$C N=\sqrt{A C^2-N A^2}=\sqrt{22a^2-4a^2}=3\sqrt 2a$.\\
+			Xét tam giác $CMN$ vuông tại $M$ có \\$M N=\sqrt{C N^2-C M^2}=\sqrt{18a^2-9a^2}=3a$.\\
+		}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{4} % cạnh AC
+			\def\ab{2} % cạnh AB
+			\def\as{4} % cạnh AS
+			\def\gocA{50} % góc A của đáy
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=above:$D$] (D) at (60:\as);
+			\coordinate[label=above right:$M$] (M) at ($(C)!0.5!(D)$);
+			\coordinate[label=left:$N$] (N) at ($(A)!0.5!(B)$);
+			\coordinate[label=left:$I$] (I) at ($(M)!0.2!(N)$);
+			\draw (A)--(B)--(C)--(D)--cycle (D)--(B);
+			\draw[dashed] (A)--(C) (M)--(N);
+			\foreach \diem in {A,B,C,D,M,N,I}\fill (\diem)circle(1.5pt);
+			\end{tikzpicture}
+		}
+		\noindent Lại có
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			\heva{&I M+I N=3a\\ &I M^2+M C^2=I N^2+N A^2}&\Leftrightarrow&\heva{&I M+I N=3a\\ &I M^2-I N^2=N A^2-M C^2}\\
+			&\Leftrightarrow& \heva{&I M+I N=3a\\ &(I M+I N)(I M-I N)=-5a^2}\\
+			&\Leftrightarrow& \heva{&I M+I N=3a\\ &I M-I N=-\dfrac 53a}\Leftrightarrow\heva{&I M=\dfrac 23a\\ &I N=\dfrac 73a.}
+		\end{eqnarray*}
+		Vậy bán kính cần tìm là $R=IC=\sqrt{I M^2+M C^2}=\sqrt{\dfrac 49a^2+9a^2}=\dfrac{\sqrt{85}}3a$.
+	}
+\end{ex}
+\begin{ex}%Câu 31.%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có $S A\perp(ABC)$ và $SA=2a$. Biết tam giác $ABC$ cân tại $A$ có $BC=2a\sqrt 2$, $\cos\widehat{ACB}=\dfrac 13$. Tính diện tích mặt cầu ngoại tiếp hình chóp $S.ABCD$. 
+	\choice
+	{$S=\dfrac{65\pi a^2}4$}
+	{$S=13\pi a^2$}
+	{\True $S=\dfrac{97\pi a^2}4$}
+	{$S=4\pi a^2$}
+	\loigiai{
+		\immini{
+			Gọi $M$, $N$ lần lượt là trung điểm $BC$ và $SA$, $O$ là tâm đường tròn ngoại tiếp tam giác $ABC$.\\
+			Do $\triangle ABC$ cân tại $A$ nên $O\in AM$.\\
+			Qua $O$ dựng $\Delta$ là trục đường tròn ngoại tiếp tam giác $\triangle ABC$ $(\Delta\parallel SA)$.\\
+			Trong $(SAM)$, kẻ đường thẳng qua $N$ vuông góc với $SA$ cắt $\Delta$ tại $I$. Khi đó $IS=IA=IB=IC$ nên $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$.\\
+			$\triangle AMC$ có $\cos\overrightarrow{A C M}=\dfrac{M C}{A C}\Rightarrow A B=A C=3a\sqrt 2$. \\
+			$S_{\triangle A B C}=\dfrac 12\cdot C A\cdot C B\cdot\sin\widehat{A C B}=\dfrac 12\cdot 3a\sqrt 2\cdot 2a\sqrt 2\cdot\sqrt{1-\left(\dfrac 13\right)^2}=4a^2\sqrt 2$.\\
+			Mà $S_{A B C}=\dfrac{A B\cdot A C\cdot B C}{4\cdot O A}\Rightarrow O A=\dfrac 94a$.\\
+		}
+		{\begin{tikzpicture}[scale=0.7, line join = round, line cap = round]
+			\tikzset{label style/.style={font=\footnotesize}}
+			\tkzDefPoints{0/0/A,7/0/C,3/-3/B,3/1.5/I}
+			\coordinate (S) at ($(A)+(0,5)$);
+			\coordinate (M) at ($(B)!0.5!(C)$);
+			\coordinate (N) at ($(A)!0.5!(S)$);
+			\coordinate (O) at ($(A)!0.6!(M)$);			
+			\tkzDrawPolygon(S,A,B,C)
+			\tkzDrawSegments(S,B)
+			\tkzDrawSegments[dashed](A,C N,I O,I A,M)
+			\tkzDrawPoints(A,B,C,S,O,I,M,N)
+			\tkzLabelPoints[above](S,I)
+			\tkzLabelPoints[below](B,O)
+			\tkzLabelPoints[left](A)
+			\tkzLabelPoints[right](C)
+			\tkzLabelPoints[below right](M)
+			\tkzLabelPoints[left](N)
+			\end{tikzpicture}}
+		\noindent Tứ giác $NAOI$ là hình chữ nhật nên $AI=\sqrt{N A^2+A O^2}=\dfrac{\sqrt{97}a}4$.\\
+		Suy ra bán kính mặt cầu $R=\dfrac{\sqrt{97}a}4$.\\
+		Vậy diện tích mặt cầu là $S=4\pi R^2=\dfrac{97\pi a^2}4$.
+	}
+\end{ex}
+\begin{ex}%Câu 32.%[2H2G2-2]
+	Cho hình chóp $S.ABC$ có đáy là tam giác vuông tại $A$, $AB=a$, $AC=2a$. Mặt bên $SAB$, $SAC$ lần lượt là các tam giác vuông tại $B$, $C$. Biết thể tích khối chóp $S.ABC$ bằng $\dfrac 23a^3$. Bán kính mặt cầu ngoại tiếp hình chóp $S.ABC$ là
+	\choice
+	{$R=a\sqrt 2$}
+	{$R=a$}
+	{\True $R=\dfrac{3a}2$}
+	{$R=\dfrac{\sqrt 3a}2$}
+	\loigiai{
+		\immini{
+			Gọi $H$ là hình chiếu của $S$ trên mặt phẳng $(ABC)$ thì $SH$ là đường cao của hình chóp.\\
+			Do $H,\,B,\,C$ cùng nhìn $SA$ dưới một góc vuông nên năm điểm $A,\, B,\, H,\, C,\, S $ cùng thuộc mặt cầu ngoại tiếp hình chóp $S.ABC$ có tâm $I$ là trung điểm của $SA$.\\
+			Mặt khác thể tích khối chóp $S.ABC$ bằng $\dfrac 23a^3$ nên ta có\\
+			$\dfrac 13\cdot \dfrac 12\cdot AB\cdot AC\cdot SH=\dfrac 23a^3\Leftrightarrow S H=2a$.\\
+			
+			Mặt khác $A,\,B,\,H,\,C$ cùng thuộc một mặt phẳng nên tứ giác $ABHC$ nội tiếp đường tròn.\\
+			Mà $\widehat{B A C}=90^{\circ}\Rightarrow\widehat{B H C}=90^{\circ}\Rightarrow H M=\dfrac{B C}2=\dfrac{a\sqrt 5}2$\\
+			$\Rightarrow S M=\sqrt{H M^2+S H^2}=\dfrac{a\sqrt{21}}2$.\\
+		}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ad{4} % cạnh AD
+			\def\ab{2} % cạnh AB
+			\def\bc{2} % chéo AC
+			\def\as{3.5} % cạnh AS
+			\def\gocA{50} % góc A của đáy
+			\def\gocB{120} % góc B của đáy
+			\coordinate[label=left:$H$] (H) at (0,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=below right:$A$] (A) at ($(B)+(180-\gocA-\gocB:\bc)$);
+			\coordinate[label=right:$C$] (C) at (\ad,0);
+			\coordinate[label=above:$S$] (S) at (90:\as); 
+			\coordinate[label=below:$M$] (M) at ($(B)!0.5!(C)$);
+			\coordinate[label=above:$I$] (I) at ($(S)!0.5!(A)$);
+			\draw (H)--(B)--(A)--(C)--(S)--cycle (B)--(S)--(A) (I)--(C) (I)--(B);
+			\draw[dashed] (H)--(C)--(B) (S)--(M)--(H);
+			\foreach \diem in {H,B,C,A,S,M,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{B}{A}{C}
+			\gocv{B}{H}{C}
+			\gocv{S}{H}{C}	\gocv{S}{B}{A} \gocv{S}{C}{A}
+			\end{tikzpicture}
+		}
+		\noindent Áp dụng công thức đường trung tuyến ta có\\
+		$S M^2=\dfrac{S B^2+S C^2}2-\dfrac{B C^2}4\Rightarrow\dfrac{S B^2+S C^2}2=S M^2+\dfrac{B C^2}4=\dfrac{13a^2}2$.\\
+		$R^2=C I^2=\dfrac{C A^2+S C^2}2-\dfrac{S A^2}4\Leftrightarrow R^2=\dfrac{4a^2+S C^2}2-R^2$.\\
+		$R^2=B I^2=\dfrac{B A^2+S B^2}2-\dfrac{S A^2}4\Leftrightarrow R^2=\dfrac{a^2+S B^2}2-R^2$.\\
+		Suy ra $4R^2=\dfrac{a^2+S B^2}2+\dfrac{4a^2+S C^2}2=\dfrac{5a^2}2+\dfrac{S B^2+S C^2}2=\dfrac{5a^2}2+\dfrac{13a^2}2=9a^2
+		\Rightarrow R=\dfrac{3a}2$.
+	}
+\end{ex}
+\begin{ex}%Câu 33.%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông cân tại đỉnh $B$. Biết $AB=BC=a\sqrt 3$, $\widehat{S A B}=\widehat{S C B}=90^{\circ}$ và khoảng cách từ $A$ đến mặt phẳng $(SBC)$ bằng $a\sqrt 2$. Tính diện tích mặt cầu ngoại tiếp hình chóp $S.ABC$. 
+	\choice
+	{$16\pi a^2$}
+	{\True $12\pi a^2$}
+	{$8\pi a^2$}
+	{$2\pi a^2$}
+	\loigiai{
+		\immini{
+			Ta có $\widehat{S A B}=\widehat{S C B}=90^{\circ}$ nên $A,$ $C$ cùng nhìn $SB$ dưới một góc vuông.\\
+			Suy ra $S,\,A,\,B,\,C$ cùng nội tiếp mặt cầu đường kính $SB$.\\
+			Gọi $D$ là hình chiếu của $S$ trên $(ABCD)$.\\
+			Ta có $\heva{&A B\perp S A\\ &A B\perp S D}\Rightarrow A B\perp A D$\\ và $\heva{&B C\perp S C\\ &B C\perp S D}\Rightarrow B C\perp C D$.\\
+			Tam giác $ABC$ vuông cân tại $B$, suy ra $ABCD$ là hình vuông.\\
+			Trong $\triangle SCD$, kẻ $DH\perp S C$ $(H\in S C)$.\\
+			Ta có $B C\perp S D$ và $B C\perp S C$ nên $B C\perp D H$.\\
+			Suy ra $D H\perp(S B C)$ hay $\mathrm{d}(D,(S B C))=D H$.\\
+		}
+		{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{4} % cạnh BC
+			\def\ba{2} % cạnh BA
+			\def\h{4} % đường cao
+			\def\gocB{30} % góc B của đáy
+			\coordinate[label=below left:$C$] (C) at (0,0);
+			\coordinate[label=above right:$D$] (D) at (\gocB:\ba);
+			\coordinate[label=below:$B$] (B) at (\bc,0);
+			\coordinate[label=right:$A$] (A) at ($(B)-(C)+(D)$);
+			\coordinate[label=above:$S$] (S) at ($(D)+(90:\h)$);
+			\coordinate[label=left:$H$] (H) at ($(S)!0.7!(C)$);
+			\draw (C)--(B)--(A)--(S)--cycle (S)--(B);
+			\draw[dashed] (A)--(D) (S)--(D)--(C) (D)--(H);
+			\foreach \diem in {A,B,C,D,S,H}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{D}{A} \gocv{S}{A}{B} \gocv{S}{C}{B}
+			\gocv{S}{H}{D}
+			\end{tikzpicture}
+			
+		}
+		\noindent Ta có $AD\parallel (SBC)$ suy ra $\mathrm{d}(A,(S B C))=\mathrm{d}(D,(S B C))=DH=a\sqrt 2$.\\ 
+		$\dfrac 1{D H^2}=\dfrac 1{D C^2}+\dfrac 1{S D^2}\Rightarrow S D=a\sqrt 6$, $S C=\sqrt{S D^2+C D^2}=\sqrt{6a^2+3a^2}=3a$.\\
+		$S B=\sqrt{S C^2+B C^2}=\sqrt{9a^2+3a^2}=2a\sqrt 3$.\\
+		Khi đó bán kính mặt cầu ngoài tiếp hình chóp $S.ABC$ là $R=\dfrac{S B}2=a\sqrt 3$.\\
+		Vậy diện tích mặt cầu bằng $S=4\pi R^2=12\pi a^2$.
+	}
+\end{ex}
+%\Closesolutionfile{ans}
+%--------------------------------------------------------------------------------------------------------
+%\Opensolutionfile{ans}[ans/ansCD2D2-6.1]
+%%\subsubsection{Câu hỏi trắc nghiệm}
+\begin{ex}%Câu 35.%[Phạm Văn Long]%[2H2B2-2]
+	\textbf{(THPT Yên Lạc-Vĩnh Phúc-lần 4 - năm 2017-2018)} \\Cho hình chóp S.ABC có $AB=3$. Hình chiếu của $S$ lên mặt phẳng $(ABC)$ là điểm $H$ thuộc miền trong tam giác $ABC$ sao cho $\widehat{AHB}=120^{\circ}$. Tính bán kính $R$ của mặt cầu ngoại tiếp hình chóp $S.HAB$, biết $SH=4 \sqrt{3}$. 
+	\choice
+	{$R=\sqrt{5}$}
+	{$R=3 \sqrt{5}$}
+	{\True $R=\sqrt{15}$}
+	{$R=2 \sqrt{3}$}
+	\loigiai{
+		\immini{
+			Gọi $O$ là tâm đường tròn ngoại tiếp tam giác $AHB$ và $r$ là bán kính đường tròn ngoại tiếp tam giác $AHB$.\\
+			Áp dụng định lí sin trong tam giác $AHB$ ta có \\$\dfrac{AB}{\sin \widehat{AHB}}=2r \Rightarrow r=\dfrac{AB}{2 \sin \widehat{AHB}}=\sqrt{3}$.\\
+			Qua $O$ dựng đường thẳng $d$ vuông góc với mặt phẳng $(AHB)$. Gọi $M$ là trung điểm của $SH$. Trong mặt phẳng $(SHO)$ dựng đường trung trực của đoạn SH cắt $d$ tại $I$. \\
+			Khi đó $I$ là tâm của mặt cầu ngoại tiếp hình chóp $S.HAB$ và có bán kính $R=HI=\sqrt{OI^2+HO^2}=\sqrt{(2 \sqrt{3})^{2}+(\sqrt{3})^2}=\sqrt{15}$.}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{6} 
+			\def\ab{3} 
+			\def\h{5} 
+			\def\gocA{50} 
+			\coordinate[label=left:$H$] (A) at (0,0);
+			\coordinate[label=right:$B$] (C) at (\ac,0);
+			\coordinate[label=below left:$A$] (B) at (-\gocA:\ab);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+			\coordinate[label=right:$O$] (O) at (3,-0.6);
+			\coordinate[label=right:$d$] (E) at ($(O)+(90:\h)$);
+			\coordinate[label=left:$M$] (M) at ($(S)!0.5!(A)$);
+			\coordinate[label=right:$I$] (I) at ($(O)!0.5!(E)$);
+			\path
+			(intersection of I--E and C--S) coordinate (K);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (K)--(E);
+			\draw[dashed] (A)--(C) (A)--(O) (M)--(I) (O)--(I) (I)--(K);
+			\foreach \diem in {A,B,C,S,O,M,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C}
+			\gocv{I}{M}{A}
+			\gocv{I}{O}{A}
+			\end{tikzpicture}}}
+\end{ex}
+\begin{ex}%Câu 36.%[Phạm Văn Long]%[2H2B2-2]
+	\textbf{(THPT Hồng Bàng - Hải Phòng - năm 2017 - 2018)}\\
+	Cho hình chóp $S.ABC$ có đáy là tam giác đều cạnh bằng $1$, $SA$ vuông góc với đáy, góc giữa mặt bên $(SBC)$ và đáy bằng $60^{\circ}$. Diện tích mặt cầu ngoại tiếp hình chóp $S.ABC$ bằng
+	\choice
+	{$\dfrac{4 \pi a^3}{12}$ }
+	{$\dfrac{43 \pi}{36}$ }
+	{$\dfrac{43 \pi}{4}$ }
+	{\True $\dfrac{43 \pi}{12}$}
+	\loigiai{
+		\immini{
+			Gọi $M$ là trung điềm của $BC$ thì $A M \perp BC$ (1). Mặt khác $SA \perp(ABC)$ nên $SA \perp BC$ (2).\\
+			Từ (1) và (2) suy ra $BC \perp(SAM)$. Do đó góc giữa $(SBC)$ và $(ABC)$ là góc $SMA \Rightarrow \widehat{SMA}=60^{\circ}$.\\
+			Trong tam giác vuông $SAM$ có $SA=AM \cdot \tan \widehat{SMA}=\dfrac{\sqrt{3}}{2} \cdot \sqrt{3}=\dfrac{3}{2}$.\\
+			Gọi $G$ là trọng tâm của tam giác $ABC$. Qua $G$ dựng đường thẳng song song với $SA$ cắt mặt phẳng trung trực của đoạn $SA$ tại $I$ thì $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$. \\
+			Ta có $IG=\dfrac{1}{2} SA=\dfrac{3}{4}$.\\
+			Trong tam giác vuông $AIG$ ta có\\ $IA^2=IG^2+GA^2=\left(\dfrac{3}{4}\right)^{2}+\left(\dfrac{2}{3} \cdot \dfrac{\sqrt{3}}{2}\right)^{2}=\dfrac{9}{16}+\dfrac{1}{3}=\dfrac{43}{48}$.\\
+			Vậy mặt cầu ngoại tiếp hinh chóp $S.ABC$ có diện tích \\
+			$S=4 \pi \cdot IA^{2}=4 \pi\cdot \dfrac{43}{48}=\dfrac{43 \pi}{12}$.}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{6} 
+			\def\ab{3} 
+			\def\h{5} 
+			\def\gocA{50} 
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+			\coordinate[label= below right:$M$] (M) at ($(B)!0.5!(C)$);
+			\coordinate[label=below:$G$] (G) at ($(A)!2/3!(M)$);
+			\coordinate (F) at ($(S)!0.5!(A)$);
+			\coordinate (E) at ($(G)+(90:\h)$);
+			\coordinate[label=right:$I$] (I) at ($(G)!0.5!(E)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (S)--(M);
+			\draw[dashed] (A)--(C) (G)--(I) (F)--(I) (A)--(M);
+			\foreach \diem in {A,B,C,S,M,G,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C}
+			\gocv{I}{F}{A}
+			\gocv{I}{G}{A}
+			\gocv{A}{M}{B}
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 37.%[Phạm Văn Long]%[2H2B1-1]
+	Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh bằng $2$, cạnh bên $SA$ vuông góc với đáy, góc giữa cạnh bên $SC$ và đáy bằng $60 ^{\circ}$. Tính thể tích của khối trụ có một đáy là đường tròn ngoại tiếp hình vuông $ABCD$ và chiều cao bằng chiều cao của khối chóp $S.ABCD$.
+	\choice
+	{\True $V=4 \sqrt{6} \pi$}
+	{$V=\dfrac{2 \sqrt{6} \pi}{3}$}
+	{$V=2 \sqrt{6} \pi$}
+	{$V=\dfrac{4 \sqrt{3} \pi}{3}$}
+	\loigiai{
+		\immini{
+			Ta có $AC=2 \sqrt{2}$ và góc giữa $SC$ với $(ABCD)$ là góc $SCA$.\\ $\Rightarrow \widehat{SCA}=60^{\circ}$.\\ 
+			Suy ra $SA=AC \cdot \tan 60^{\circ}=2 \sqrt{2} \cdot \sqrt{3}=2 \sqrt{6}$.\\
+			Bán kính đường tròn ngoại tiếp hình vuông $ABCD$ bằng $\dfrac{AC}{2}=\sqrt{2}$. \\
+			$\Rightarrow V=\pi(\sqrt{2})^{2} \cdot 2 \sqrt{6}=4 \sqrt{6} \pi$.}
+		{\begin{tikzpicture}[scale=.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{4} % cạnh BC
+			\def\ba{2} % cạnh BA
+			\def\h{3.5} % đường cao
+			\def\gocB{30} % góc B của đáy
+			\coordinate[label=below left:$B$] (B) at (0,0);
+			\coordinate[label=above right:$A$] (A) at (\gocB:\ba);
+			\coordinate[label=below:$C$] (C) at (\bc,0);
+			\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+			\coordinate[label=above left:$S$] (S) at ($(A)+(90:\h)$);
+			\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+			\draw[dashed] (A)--(D)--(S)--(A)--(B) (A)--(C);
+			\foreach \diem in {A,B,C,D,S}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{B}
+			\draw pic [draw, angle radius = 6 mm] {angle = S--C--A}; 
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 38.%[Phạm Văn Long]%[2H2K2-2]
+	Cho hình chóp tứ giác $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$. Tam giác $SAB$ vuông cân tại $S$ và tam giác $SCD$ đều. Tính bán kính mặt cầu ngoại tiếp hình chóp $S.ABCD$.
+	\choice
+	{$R=\dfrac{a}{2}$}
+	{\True $R=a \sqrt{\dfrac{7}{12}}$}
+	{$R=\dfrac{a}{\sqrt{3}}$}
+	{$R=a \sqrt{\dfrac{3}{4}}$}
+	\loigiai{
+		\immini{
+			Gọi $I$, $K$ lần lượt là trung điểm của $AB$ và $CD$, $O$ là tâm của hình vuông $ABCD$, $H$ là hình chiếu của $S$ trên $IK$. Ta có:\\
+			$\left.\begin{array}{l}A B \perp S I \\ A B \perp I K\end{array}\right\} \Rightarrow A B \perp(S I K)$.\\
+			$\left.\begin{array}{l}S H \perp A B \\ S H \perp I K\end{array}\right\} \Rightarrow S H \perp(A B C D)$.\\
+			Qua $O$ dựng đường thẳng song song với $SH$ cắt $SK$ tại $J$.\\
+			Mặt khác ta có:\\
+			$SI=\dfrac{1}{2} AB=\dfrac{a}{2}, SK=\dfrac{a \sqrt{3}}{2} \Rightarrow SK^2+SI^2=a^2=KI^2.$\\ $\Rightarrow \triangle SIK$ vuông ở $S$ $\Rightarrow SK \perp(SAB)$.\\
+			Qua $I$ dựng đường thẳng song song với $SK$ cắt $OJ$ tại $M$. Khi đó, điểm $M$ là tâm của mặt cầu ngoại tiếp hình chóp $S.ABCD$. Theo cách dựng ở trên thì tứ giác $IJKM$ là hình binh hành $\Rightarrow MB=JB$.\\
+			Lại có $\tan \widehat{OKJ}=\dfrac{SI}{SK}=\dfrac{1}{\sqrt{3}}$.\\ $\Rightarrow JO=OK \cdot \tan \widehat{OKJ}=\dfrac{a}{2 \sqrt{3}}$.\\
+			$\Rightarrow JB^2=JO^2+OB^2=\dfrac{7 a^2}{12} \Rightarrow JB=a \sqrt{\dfrac{7}{12}}$.\\
+			Vậy bán kính mặt cầu ngoại tiếp hình chóp bằng $a \sqrt{\dfrac{7}{12}}$.}
+		{\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{5} % cạnh BC
+			\def\ba{3} % cạnh BA
+			\def\h{5} % đường cao
+			\def\gocB{30} % góc B của đáy
+			\coordinate[label=below left:$D$] (B) at (0,0);
+			\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+			\coordinate[label=below:$C$] (C) at (\bc,0);
+			\coordinate[label=right:$B$] (D) at ($(C)-(B)+(A)$);
+			\path
+			(intersection of A--C and B--D) coordinate[label=left:$O$] (O);
+			\coordinate[label=below:$K$] (K) at ($(B)!0.5!(C)$);
+			\coordinate[label=above right:$I$] (I) at ($(A)!0.5!(D)$);
+			\coordinate[label=left:$H$] (H) at ($(O)!0.62!(I)$);
+			\coordinate[label=above left:$S$] (S) at ($(H)+(90:\h)$);
+			\coordinate[label=right:$J$] (J) at ($(K)!0.62!(S)$);
+			\coordinate[label= left:$M$] (M) at ($(J)!2!(O)$);
+			\path
+			(intersection of O--M and B--C) coordinate (T);
+			\path
+			(intersection of I--M and B--C) coordinate (R);
+			\draw (B)--(C)--(D)--(S)--cycle (S)--(C) (S)--(K) (T)--(M) (M)--(R);
+			\draw[dashed] (A)--(D)--(S)--(A)--(B) (A)--(C) (B)--(D) (S)--(H) (I)--(K) (J)--(O) (S)--(I) (T)--(O) (R)--(I);
+			\foreach \diem in {A,B,C,D,S,O,I,K,H,J,M}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{H}{I}
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 39.%[Phạm Văn Long]%[2H2K2-2]
+	Cho tứ diện đều $ABCD$ cạnh bằng $a$. Gọi $H$ là hình chiếu vuông góc của $A$ trên mặt phẳng $(BCD)$ và $I$ là trung điểm của $AH$. Tính bán kính $R$ của mặt cầu ngoại tiếp tứ diện $IBCD$.
+	\choice
+	{\True $R=\dfrac{a \sqrt{6}}{4}$}
+	{$R=\dfrac{a \sqrt{3}}{4}$}
+	{$R=\dfrac{a \sqrt{6}}{2}$}
+	{$R=\dfrac{a \sqrt{3}}{2}$}
+	\loigiai{
+		\immini{
+			Tứ diện đều $ABCD$ cạnh bằng $a$ nên $AH=\sqrt{AB^2-BH^2}=\sqrt{a^2-\left(\dfrac{a \sqrt3}{3}\right)^{2}}=\dfrac{a \sqrt{6}}{3}$.\\
+			$I$ là trung điểm của $AH$ nên $BI=\sqrt{IH^2+BH^2}=\dfrac{a \sqrt2}{2}$.\\
+			Do $I \in AH \Rightarrow IB=IC=ID=\dfrac{a \sqrt{2}}{2}$ nên $IBCD$ là hình chóp tam giác đều. Do đó bán kính $R$ của mặt cầu ngoại tiểp tứ diện $IBCD$ là $R=\dfrac{IB^{2}}{2\cdot IH}=\dfrac{a \sqrt{6}}{4}$.}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{7} 
+			\def\ab{3} 
+			\def\h{5} 
+			\def\gocA{50} 
+			\coordinate[label=left:$B$] (A) at (0,0);
+			\coordinate[label=right:$D$] (C) at (\ac,0);
+			\coordinate[label=below left:$C$] (B) at (-\gocA:\ab);
+			\coordinate (M) at ($(B)!0.5!(C)$);
+			\coordinate[label=below:$H$] (H) at ($(A)!2/3!(M)$);
+			\coordinate[label=above:$A$] (S) at ($(H)+(90:\h)$);
+			\coordinate[label=above right:$I$] (I) at ($(H)!0.5!(S)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B);
+			\draw[dashed] (A)--(C) (S)--(H) (A)--(M) (I)--(A) (I)--(B) (I)--(C);
+			\foreach \diem in {A,B,C,S,H,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{H}{A}
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 40.%[Phạm Văn Long]%[2H2G2-2]
+	\textbf{(THPT Chuyên Lam-Thanh Hóa-lần 1-năm 2017-2018)}\\
+	Tính thể tích $V$ của khối cầu tiếp xúc với tất cả các cạnh của tứ diện đều $ABCD$ cạnh bằng $1$.
+	\choice
+	{\True$V=\dfrac{\sqrt{2} \pi}{24}$}
+	{$V=\dfrac{\sqrt{2} \pi}{12}$}
+	{$V=\dfrac{\sqrt{2} \pi}{8}$ }
+	{$V=\dfrac{\sqrt{2} \pi}{3}$}
+	\loigiai{
+		\immini{
+			Gọi $I$ là tâm mặt cầu ngoại tiếp tứ diện đều $ABCD$. Ta có các tam giác cân $IAD$, $IAB$, $IAC$, $IBD$, $IBC$, $ICD$ bằng nhau nên khoảng cách từ $I$ đến các cạnh của tứ diện đều cũng bằng nhau. Ta được tâm mặt cầu tiếp xúc với tất cả các cạnh của tứ diện trùng với I.\\
+			Ta có $HA=\dfrac{\sqrt3}{3}$, $HD=\sqrt{1-\dfrac{1}{3}}=\dfrac{\sqrt{6}}{3}$.\\
+			Từ hai tam giác $DMI$ và $DHA$ đồng dạng, ta có:\\
+			$\dfrac{MI}{AH}=\dfrac{DM}{DH} \Rightarrow MI=\dfrac{AH \cdot DM}{DH}=\dfrac{\sqrt{3}}{3} \cdot \dfrac{1}{2} \cdot \dfrac{3}{\sqrt{6}}=\dfrac{\sqrt{2}}{4}$.\\
+			Thể tích mặt cầu tiếp xúc với tất cả các cạnh của tứ diện là \\$V=\dfrac{4}{3} \pi R^{3}=\dfrac{\sqrt{2} \pi}{24}$.}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{7} 
+			\def\ab{3} 
+			\def\h{5} 
+			\def\gocA{50} 
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=below right:$N$] (N) at ($(B)!0.5!(C)$);
+			\coordinate[label=below:$H$] (H) at ($(A)!2/3!(N)$);
+			\coordinate[label=above:$D$] (S) at ($(H)+(90:\h)$);
+			\coordinate[label=left:$M$] (M) at ($(A)!0.5!(S)$);
+			\coordinate[label=above right:$I$] (I) at ($(S)!0.7!(H)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (S)--(N);
+			\draw[dashed] (A)--(C) (S)--(H) (A)--(N) (I)--(M);
+			\foreach \diem in {A,B,C,S,H,M,I,N}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{H}{A}
+			\gocv{I}{M}{A}
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 41.%[Phạm Văn Long]%[2H2G2-2]
+	\textbf{(SGD Ninh Bình năm 2017-2018)}\\
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$, cạnh bên $SA$ vuông góc với mặt phẳng đáy. Gọi $B_1$, $C_1$ lần lượt là hình chiếu của $A$ trên $SB, SC$. Tính theo $a$ bán kính $R$ của mặt cầu đi qua năm điểm $A$, $B$, $C$, $B_1$, $C_1$.
+	\choice
+	{$R=\dfrac{a \sqrt{3}}{6}$}
+	{$R=\dfrac{a \sqrt{3}}{2}$}
+	{$R=\dfrac{a \sqrt{3}}{4}$ }
+	{\True $R=\dfrac{a \sqrt{3}}{3}$}
+	\loigiai{
+		\immini{
+			Đặt $SA=x$, gọi $I$ là tâm đường tròn ngoại tiếp tam giác $ABC$, $H$ là hình chiếu của $B_1$ trên cạnh $AB$, $M$ là trung điểm của $AB$.\\
+			Ta có $SA^2=SB_1 \cdot SB \Rightarrow \dfrac{SB_1}{SB}=\dfrac{SA^2}{SB^2}=\dfrac{x^2}{a^2+x^2}$.\\ Tương tự ta cũng có $\dfrac{SC_1}{SC}=\dfrac{SA^2}{SC^2}=\dfrac{x^2}{a^2+x^2}$.\\
+			Suy ra $B_1C_1 \parallel BC$ mà $B_1H \parallel SA$ nên $\dfrac{BB_1}{SB}=\dfrac{HB_{1}}{SA}=\dfrac{BH}{AB}=\dfrac{a^2}{x^2+a^2}$\\
+			$\Rightarrow HB_{1}=\dfrac{x a^2}{x^2+a^2}, HB=\dfrac{a x^2}{x^2+a^2}$.\\
+			Ta chỉ cần chứng minh $IA=IB_1=\dfrac{a \sqrt{3}}{3}$. \\
+			Giả sử $x>a$ ($x \leq a$ ta làm tương tự).\\
+			Khi đó $HB=\dfrac{a x^2}{x^2+a^2}>BM=\dfrac{a}{2}$. \\
+			Suy ra $HM=\dfrac{a x^2}{x^2+a^2}-\dfrac{a}{2}=\dfrac{a\left(x^2-a^2\right)}{2\left(x^2+a^2\right)}$.\\
+			$IB_1^2=HI^2+B_1H^2=HM^2+IM^2+B_1H^2=\dfrac{a^2}{3}.$\\
+			$\Rightarrow IB_1=IA=\dfrac{a \sqrt{3}}{3}$.\\
+			Vậy $IA=IB=IC=IB_{1}=IC_{1}=\dfrac{a \sqrt{3}}{3}$ là bán kính mặt cầu đi qua năm điểm $A$, $B$, $C$, $B_1$, $C_{1}$.}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{8} 
+			\def\ab{4} 
+			\def\h{5} 
+			\def\gocA{40} 
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=above:$S$] (S) at ($(A)+(90:\h)$);
+			\coordinate (N) at ($(B)!0.5!(C)$);
+			\coordinate[label=left:$M$] (M) at ($(B)!0.5!(A)$);
+			\coordinate[label=below:$I$] (I) at ($(A)!2/3!(N)$);
+			\coordinate[label=left:$B_1$] (B_1) at ($(S)!1/2.8!(B)$);
+			\coordinate[label=right:$C_1$] (C_1) at ($(S)!1/2.8!(C)$);
+			\coordinate[label=left:$H$] (H) at ($(A)!2/3!(M)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (B_1)--(C_1) (A)--(B_1) (B_1)--(H);
+			\draw[dashed] (A)--(C) (A)--(N) (C)--(M) (A)--(C_1) (I)--(B_1) (I)--(C_1) (H)--(I);
+			\foreach \diem in {A,B,C,S,N,I,M,B_1,C_1,H}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C}
+			\gocv{S}{A}{B}
+			\gocv{C}{M}{B}
+			\gocv{A}{N}{B}
+			\gocv{A}{B_1}{B}
+			\gocv{A}{C_1}{C}
+			\gocv{B_1}{H}{B}
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 42.%[Phạm Văn Long]%[2H2G2-2]
+	\textbf{(THPT Chuyên Biên Hòa-Hà Nam-lần 1 năm 2017-2018)}\\
+	Cho hình chóp $S.ABC$ có đáy là tam giác $ABC$ đều, đường cao $SH$ với $H$ nằm trong $\triangle ABC$ và $2SH=BC$, mặt phẳng $(SBC)$ tạo với mặt phẳng $(ABC)$ một góc $60^\circ$. Biết có một điểm $O$ nằm trên đường cao $SH$ sao cho $\mathrm{d}(O; AB)=\mathrm{d}(O;AC)=\mathrm{d}(O;(SBC))=1$. Tính thể tích khối cầu ngoại tiếp hình chóp đã cho.
+	\choice
+	{$\dfrac{256 \pi}{81}$}
+	{$\dfrac{125 \pi}{162}$}
+	{$\dfrac{500 \pi}{81}$ }
+	{\True$\dfrac{343 \pi}{48}$}
+	\loigiai{
+		\immini{
+			Giả sử $E$, $F$ là chân đường vuông góc hạ từ $O$ xuống $AB$, $AC$. Khi đó ta có $HE \perp AB$, $HF \perp AC$. \\
+			Do $OE=OF=1$ nên $HE=HF$. Do đó $AH$ là phân giác của góc $\widehat{BAC}$. Khi đó $AH \cap BC=D$ là trung điểm của $BC$.\\ 
+			Do $BC \perp AD \Rightarrow BC \perp(SAD)$. \\
+			Trong $(SAD)$ kẻ $OK \perp SD$ thì $OK \perp(SBC)$. Do đó $OK=1$ và $\widehat{SDA}=60^\circ$.\\
+			Đặt $AB=BC=CA=2a$ $(a>0)$ thì $SH=a$, $HD=a \cdot \cot 60^\circ=\dfrac{a}{\sqrt{3}}$.\\
+			Ta có $AD$ là đường cao trong tam giác đều $ABC$.
+			Do đó $AD=a \sqrt{3}=3 HD$ nên $H$ là tâm tam giác đều $ABC \Rightarrow S.ABC$ là hình chóp tam giác đều và $E$, $F$ là trung điềm $AB$, $AC$.\\
+			Mặt khác trong tam giác $SOK$ có $SO=\dfrac{OK}{\sin 30^\circ}=2$. Do $\triangle DEF$ đều có $OH \perp(DFE)$ nên $OE=OF=OD=1 \Rightarrow K \equiv D$.
+		}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{8} 
+			\def\ab{4} 
+			\def\h{6} 
+			\def\gocA{60} 
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=below right:$D$] (D) at ($(B)!0.5!(C)$);
+			\coordinate[label=above left:$H$] (H) at ($(A)!2/3!(D)$);
+			\coordinate[label=above:$S$] (S) at ($(H)+(90:\h)$);
+			\coordinate[label=left:$E$] (E) at ($(A)!0.5!(B)$);
+			\coordinate[label=above:$F$] (F) at ($(A)!0.5!(C)$);
+			\coordinate[label=below:$O$] (O) at ($(S)!1.5!(H)$);
+			\coordinate[label=right:$K$] (K) at ($(S)!0.8!(D)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (S)--(D) (O)--(B) (O)--(C) (O)--(D);
+			\draw[dashed] (A)--(C) (S)--(H) (A)--(D) (C)--(E) (B)--(F) (H)--(O) (O)--(F) (O)--(E) (O)--(K);
+			\foreach \diem in {A,B,C,S,H,D,E,F,O,K}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{H}{A}
+			\gocv{O}{K}{D}
+			\gocv{O}{E}{B}
+			\gocv{O}{F}{C}
+			\gocv{H}{E}{A}
+			\end{tikzpicture}}
+		Khi đó $\triangle DSO$ vuông tại $D$ và có $DH \perp SO$.\\
+		Từ đó $DH^2=HS \cdot HO \Rightarrow \dfrac{a^2}{3}=a\cdot (2-a) \Rightarrow a=\dfrac{3}{2} \Rightarrow AB=3$, $SH=\dfrac{3}{2}$.\\
+		Gọi $R$ là bán kính mặt cầu ngoại tiếp hình chóp $S.ABC$ thì $R=\dfrac{SA^2}{2SH}=\dfrac{7}{4}$. \\
+		Vậy $V=\dfrac{4}{3} \pi \cdot\left(\dfrac{7}{4}\right)^{3}=\dfrac{343}{48} \pi$.}
+\end{ex}
+\begin{ex}%Câu 43.%[Phạm Văn Long]%[2H2K2-2]
+	Trong không gian cho hai đường thẳng $d$ và $\Delta$ chéo nhau và vuông góc nhau, nhận $AB=a$ làm đoạn vuông góc chung, $A \in d$; $B \in \Delta$. Trên $d$ lấy điểm $M$, trên $\Delta$ lấy điểm $N$ sao cho $AM=2a$, $BN=4a$. Goi $I$ là tâm mặt cầu ngoại tiếp tứ diện $ABMN$. Khoảng cách giữa hai đường thẳng $AM$ và $BI$ là
+	\choice
+	{\True$\dfrac{4 a}{\sqrt{17}}$}
+	{$a$}
+	{$\dfrac{4 a}{5}$ }
+	{$\dfrac{2 a \sqrt{2}}{3}$}
+	\loigiai{
+		\immini{
+			Ta có $MA \perp(ABN)$ suy ra $MA \perp AN$ và $NB \perp(ABM)$ suy ra $NB \perp BM$.\\
+			Do đó, tâm mặt cầu ngoại tiếp tứ diện $ABMN$ là trung điểm $I$ của $MN$.\\
+			Gọi $F$ là trung điểm của $AN$ suy ra $IF \parallel AM$.\\
+			Do đó $\mathrm{d}(AM, BI)=\mathrm{d}(AM,(BIF))=\mathrm{d}(A,(BIF))$
+			và $IF \perp(A B N)$.\\
+			Gọi $H$ là hình chiếu của $A$ lên $BF$, $P$ đối xứng với $B$ qua $F$ suy ra $ABNP$ là hình chữ nhật. \\
+			Ta có $\left\{\begin{array}{l}AH \perp BF \\ 
+			AH \perp IF\end{array} \Rightarrow AH \perp(BIF) \Rightarrow \mathrm{d}(AM, BI)=AH\right.$.\\
+			Xét tam giác $ABP$ vuông tại $A$ có $AH$ là đường cao nên\\ $\mathrm{d}(AM, BI)=AH=\sqrt{\dfrac{AB^2 \cdot AP^2}{AB^2+AP^2}}=\sqrt{\dfrac{a^2 \cdot 16 a^2}{a^2+4 a^2}}=\dfrac{4a}{\sqrt{17}}$.}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{9} 
+			\def\ab{4} 
+			\def\h{5} 
+			\def\gocA{40} 
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$N$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=left:$M$] (S) at ($(A)+(90:\h)$);
+			\coordinate[label=left:$d$] (S_1) at ($(A)+(90:\h+1)$);
+			\coordinate[label= below right:$F$] (F) at ($(A)!0.5!(C)$);
+			\coordinate[label= right:$H$] (H) at ($(F)!0.6!(B)$);
+			\coordinate[label= right:$P$] (P) at ($(B)!2!(F)$);
+			\coordinate[label=below:$\Delta $] (K) at ($(B)!0.5!(C)$);
+			%
+			\path
+			(intersection of A--P and C--S) coordinate (A_1);
+			\path
+			(intersection of B--P and C--S) coordinate (B_1);
+			\coordinate[label= above right:$I$] (I) at ($(S)!0.5!(C)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (C)--(P) (A_1)--(P) (B_1)--(P) (B)--(I) (S)--(S_1);
+			\draw[dashed] (A)--(C) (B)--(B_1) (A)--(H) (A)--(A_1) (I)--(F);
+			\foreach \diem in {A,B,C,S,F,P,I}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{A}{C}
+			\gocv{A}{B}{C}
+			\gocv{A}{H}{F}
+			\gocv{I}{F}{A}
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{dang}{Chóp có các cạnh bên bằng nhau}.
+\end{dang}
+\subsubsection{Các ví dụ}
+\begin{vd}%VD1.%[Phạm Văn Long]%[2H2B2-2]
+	Cho hình chóp tam giác đều $S.ABC$. Xác định tâm và bán kính mặt cầu ngoại tiếp khối chóp $S.ABC$.
+	\loigiai{
+		\immini{
+			\begin{itemize}
+				\item Vẽ $SH \perp(ABC)$ thì $H$ là tâm đường tròn ngoại tiếp $ \triangle ABC$.
+				\item Trên mặt phẳng $(SHA)$, vẽ đường trung trực của $SA$, đường này cắt $SH$ tại $I$ thì $I$ là tâm mặt cầu ngoại tiếp $S.ABC$ và bán kính $R=IS$. 
+				\item Ta có $\triangle SHA \sim \triangle SMI$ (g-g) $\Rightarrow \dfrac{SH}{SM}=\dfrac{SA}{SI}$.\\ $\Rightarrow R=\dfrac{SA\cdot SM}{SH}=\dfrac{SA^2}{2\cdot SH}$.
+		\end{itemize}}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{7} 
+			\def\ab{3} 
+			\def\h{5} 
+			\def\gocA{50} 
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=below right:$N$] (N) at ($(B)!0.5!(C)$);
+			\coordinate[label=below:$H$] (H) at ($(A)!2/3!(N)$);
+			\coordinate[label=above:$S$] (S) at ($(H)+(90:\h)$);
+			\coordinate[label=left:$M$] (M) at ($(A)!0.5!(S)$);
+			\coordinate[label=above right:$I$] (I) at ($(S)!0.7!(H)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (S)--(N);
+			\draw[dashed] (A)--(C) (S)--(H) (A)--(N) (I)--(M);
+			\foreach \diem in {A,B,C,S,H,M,I,N}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{H}{A}
+			\gocv{I}{M}{A}
+			% \gocv{I}{G}{A}
+			\end{tikzpicture}}}	
+\end{vd}
+\begin{vd}%VD2%[Phạm Văn Long]%[2H2B2-2]
+	Cho hình chóp tam giác đều $S.ABC$ có cạnh đáy bằng $3a$, góc giữa cạnh bên và mặt đáy bằng $45^\circ$. Tính thể tích khối cầu ngoại tiếp khối chóp $S.ABC$?
+	\loigiai{
+		\immini{
+			Ta có: $AH=\dfrac{2}{3} \cdot \dfrac{3a \sqrt3}{2}=a \sqrt{3}$.\\
+			$\triangle SAH$ vuông cân $\Rightarrow SH=AH=a \sqrt{3}$.\\	
+			Bán kính mặt cầu ngoại tiếp khối chóp $S.ABC$ là\\ $R=\dfrac{SA^2}{2\cdot SH}=\dfrac{6a^2}{2a \sqrt3}=a \sqrt{3}$.\\
+			Vậy $V=\dfrac{4}{3} \pi R^3=\dfrac{4}{3} \pi(a \sqrt3)^{3}=4 \pi a^{3} \sqrt{3}$.}
+		{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\ac{7} 
+			\def\ab{3} 
+			\def\h{5} 
+			\def\gocA{50} 
+			\coordinate[label=left:$A$] (A) at (0,0);
+			\coordinate[label=right:$C$] (C) at (\ac,0);
+			\coordinate[label=below left:$B$] (B) at (-\gocA:\ab);
+			\coordinate[label=below right:$N$] (N) at ($(B)!0.5!(C)$);
+			\coordinate[label=below:$H$] (H) at ($(A)!2/3!(N)$);
+			\coordinate[label=above:$S$] (S) at ($(H)+(90:\h)$);
+			\coordinate[label=left:$M$] (M) at ($(A)!0.5!(S)$);
+			\coordinate[label=above right:$I$] (I) at ($(S)!0.7!(H)$);
+			\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (S)--(N);
+			\draw[dashed] (A)--(C) (S)--(H) (A)--(N) (I)--(M);
+			\foreach \diem in {A,B,C,S,H,M,I,N}	\fill (\diem)circle(1.5pt);
+			\newcommand{\gocv}[4][black]{\draw[#1] ($(#3)!5pt!(#2)$)--($(#3)!2!($($(#3)!5pt!(#2)$)!.5!($(#3)!5pt!(#4)$)$)$)--($(#3)!5pt!(#4)$);}
+			\gocv{S}{H}{A}
+			\gocv{I}{M}{A}
+			% \gocv{I}{G}{A}
+			\end{tikzpicture}}
+	}
+\end{vd}
+\begin{vd}%VD3%[Phạm Văn Long]%[2H2B2-2]
+	Cho hình chóp đều $S.ABCD$ có cạnh đáy bằng $a \sqrt2$, góc giữa cạnh bên và mặt đáy bằng $45^\circ$. Tính diện tích mặt cầu ngoại tiếp hình chóp?
+	\loigiai{
+		\immini{
+			Gọi $O$ là tâm hình vuông $ABCD$. \\
+			Ta có góc giữa cạnh bên và mặt đáy là góc $\widehat{SAO}=45^{\circ}$.\\ $\Rightarrow SO=OA=\dfrac{AC}{2}=\dfrac{AB \sqrt{2}}{2}=a$.\\
+			Suy ra $OA=OB=OC=OD=OS$ nên $O$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$ có bán kính $R=OA=a$. \\
+			Vậy diện tích mặt cầu ngoại tiếp hình chóp $S.ABCD$ là\\ $S=4 \pi R^{2}=4 \pi a^{2}$.}
+		{\begin{tikzpicture}[scale=.9, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\def\bc{4} % cạnh BC
+			\def\ba{2} % cạnh BA
+			\def\h{3.5} % đường cao
+			\def\gocB{30} % góc B của đáy
+			\coordinate[label=below left:$B$] (B) at (0,0);
+			\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+			\coordinate[label=below:$C$] (C) at (\bc,0);
+			\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+			\path
+			(intersection of A--C and B--D) coordinate[label=below:$O$] (O);
+			\coordinate[label=above left:$S$] (S) at ($(O)+(90:\h)$);
+			\draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+			\draw[dashed] (A)--(D)--(S)--(A)--(B) (A)--(C) (B)--(D) (S)--(O);
+			\foreach \diem in {A,B,C,D,S,O}	\fill (\diem)circle(1.5pt);
+			\end{tikzpicture}}
+	}
+\end{vd}
+\Closesolutionfile{ans}
+% \DAPAN
+\inputansbox{10}{ans/ans2H2-2}
+%--------------------------------------------------------------------------------------------------------
+\Opensolutionfile{ans}[ans/ans2H2-2]
+\begin{dang}{Chóp có các cạnh bên bằng nhau}
+\end{dang}
+\subsubsection{Các ví dụ}		
+\begin{vd}%Ví dụ 4.%[2H2B2-2]%[Đặng Tấn Phát]
+	Cho hình chóp tam giác đều có cạnh đáy bằng $a$, góc giữa cạnh bên và mặt đáy bằng $60^\circ$. Tính bán kính mặt cầu ngoại tiếp hình chóp đã cho. 
+	\loigiai{
+		\immini{
+			Gọi hình chóp đều đó là $ABCD$.\\
+			Gọi $H$ là trung điểm $BC$, $G$ là tâm đường tròn ngoại tiếp $\triangle ABC$. Suy ra $SG\perp (ABC)$ và $SG$ là trục của đường tròn ngoại tiếp tam giác $ABC$.\\
+			Gọi $I$ là trung điểm $SA$, đường trung trực của $SA$ cắt $SG$ tại $O$.\\
+			$\Rightarrow$ $O$ là tâm mặt cầu ngoại tiếp hình chóp và bán kính mặt cầu $R=SO$.\\
+			Ta có $\widehat{(SA,(ABC))}=\widehat{SAG}=60^\circ;\quad AG=\dfrac{2}{3}AH=\dfrac{a\sqrt{3}}{3}$.\\
+			Khi đó \[SG=\tan 60^\circ\cdot AG=\dfrac{a\sqrt{3}}{3}\cdot\sqrt{3}=a;\quad SA=\dfrac{SG}{\sin 60^\circ}=\dfrac{2a}{\sqrt{3}}.\]
+			Ta có $\triangle SIO\backsim \triangle SGA$ nên suy ra
+			\[\dfrac{SI}{SO}=\dfrac{SG}{SA}\Rightarrow SO=\dfrac{SI\cdot SA}{SG}\Rightarrow SO=\dfrac{\dfrac{a}{\sqrt{3}}\cdot \dfrac{2a}{\sqrt{3}}}{a}=\dfrac{2a}{3}\]
+			Vậy bán kính mặt cầu ngoại tiếp hình chóp đã cho là $R=\dfrac{2a}{3}$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1.2]
+			\def\h{3.5}
+			\def\ac{3.25}
+			\def\xb{2.5}
+			\def\yb{-1}
+			\coordinate[label=left:{$A$}] (A) at (0,0);
+			\coordinate[label=below:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=right:{$C$}] (C) at (\ac,0);
+			\coordinate[label=below:{$G$}] (G) at ($($(B)!0.5!(C)$)!1/3!(A)$);
+			\coordinate[label=above:{$S$}] (S) at ($(G)+(0,\h)$);
+			\coordinate[label=left:{$I$}] (I) at ($(S)!0.5!(A)$);
+			\coordinate[rotate around={-90:(I)}] (x) at (0,0);
+			\coordinate[label=below right:{$H$}] (H) at ($(B)!0.5!(C)$);
+			\coordinate[label=below left:{$O$}] (O) at (intersection of I--x and S--G);
+			\draw (S)--(A)--(B)--(C)--cycle
+			(S)--(B);
+			\draw[dashed] (A)--(C) (A)--(H) (S)--(G) (I)--(O);
+			\pic[draw,pic text=$60^\circ$,angle radius=4mm,angle eccentricity=1.8] {angle = G--A--S};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = S--G--A};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = O--I--S};
+			
+			\foreach \point in {A,B,C,S,G,O,I,H}
+			\fill (\point) circle (1pt);
+			
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+\begin{vd}%Ví dụ 5.%[2H2K2-3]%[Đặng Tấn Phát]
+	Tính thể tích khối cầu nội tiếp tứ diện đều có cạnh bằng $a$.
+	\loigiai{
+		\immini{
+			Gọi tứ diện đều đó là $ABCD$.\\
+			Gọi $H$ là trọng tâm tam giác $BCD$ và $G$ là tâm mặt cầu nội tiếp tứ diện $ABCD$.\\
+			Khi đó bán kính mặt cầu nội tiếp tứ diện $ABCD$ là
+			\[r=\mathrm{d}\left(G,(ABC)\right)=\mathrm{d}\left(G,(BCD)\right)=\mathrm{d}\left(G,(ACD)\right)=\mathrm{d}\left(G,(ABD)\right)\]
+			Ta có \[V_{G.BCD}=\dfrac{1}{3}\cdot S_{BCD}\cdot \mathrm{d}\left(G,(BCD)\right)\Rightarrow \mathrm{d}\left(G,(BCD)\right)=\dfrac{3V_{G.BCD}}{S_{BCD}}.\]
+			Vì $ABCD$ là tứ diện đều nên $S_{BCD}=S_{ABC}=S_{ABD}=S_{ACD}$.\\
+			$\Rightarrow V_{G.BCD}=V_{G.ABC}=V_{G.ABD}=V_{G.ACD}$
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1.1]
+			\def\h{4}
+			\def\cd{4}
+			\def\xc{1.5}
+			\def\yc{-1.25}
+			
+			\coordinate[label=left:{$B$}] (B) at (0,0);
+			\coordinate[label=below:{$C$}] (C) at (\xc,\yc);
+			\coordinate[label=right:{$D$}] (D) at (\cd,0);
+			\coordinate (M) at ($(C)!0.5!(D)$);
+			\coordinate (N) at ($(B)!0.5!(C)$);
+			\coordinate[label=below:{$H$}] (H) at (intersection of B--M and D--N);
+			\coordinate[label=above:{$A$}] (A) at ($(H)+(0,\h)$);
+			\draw (A)--(B)--(C)--(D)--cycle
+			(A)--(C);
+			\draw[dashed] (B)--(M) (D)--(N) (B)--(D)
+			(A)--(H);
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = D--H--A};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = H--D--B};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = D--N--B};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--M--D};
+			\foreach \point in {A,B,C,D,H}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+		\noindent Mặt khác vì $V_{G.BCD}+V_{G.ABC}+V_{G.ABD}+V_{G.ACD}=V_{ABCD}$ nên suy ra $V_{G.BCD}=\dfrac{1}{4}V_{ABCD}$.\\
+		Ta có $BH=\dfrac{a\sqrt{3}}{3};\quad AH=\sqrt{AB^2-BH^2}=\dfrac{a\sqrt{6}}{3}$.\\
+		Khi đó
+		\[V_{ABCD}=\dfrac{1}{3}\cdot \dfrac{a^2\sqrt{3}}{4}\cdot\dfrac{a\sqrt{6}}{3}=\dfrac{a^3\sqrt{2}}{12}\Rightarrow V_{G.BCD}=\dfrac{1}{4}\cdot V_{ABCD}=\dfrac{a^3\sqrt{2}}{48}.\]
+		Suy ra
+		\[r=\mathrm{d}\left(G,(BCD)\right)=\dfrac{3V_{G.BCD}}{S_{BCD}}=\dfrac{3\cdot \dfrac{a^3\sqrt{2}}{48}}{\dfrac{a^2\sqrt{3}}{4}}=\dfrac{a\sqrt{6}}{12}.\]
+		Vậy thể tích khối cầu nội tiếp tứ diện là $V=\dfrac{4}{3}\pi r^3=\dfrac{a^3\pi\sqrt{6}}{216}$.
+	}
+\end{vd}
+
+\subsubsection{Câu hỏi trắc nghiệm}
+\begin{ex}%Câu 1.%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có $SA=SB=SC=a$ và $\widehat{ASB}=90^{\circ}$, $\widehat{BSC}=60^{\circ}$, $ \widehat{CSA}=120^{\circ}$. Diện tích mặt cầu ngoại tiếp của hình chóp $S.ABC$ là 
+	\choice
+	{\True $4\pi a^2$}
+	{$2\pi a^2$}
+	{$\pi a^2$}
+	{$\dfrac{4}{3}\pi a^3$}
+	\loigiai{
+		\immini{Áp dụng định lí cosin cho tam giác $SAB$ ta được
+			\begin{eqnarray*}
+				AB^2&=&SA^2+SB^2-2SA\cdot SB\cdot \cos\widehat{ASB}\\
+				&=&a^2+a^2-2a\cdot a\cdot\cos90^\circ=2a^2\\
+				\Rightarrow AB&=&a\sqrt{2}.
+			\end{eqnarray*}
+			Áp dụng định lí cosin cho tam giác $SAC$ ta được
+			\begin{eqnarray*}
+				AC^2&=&SA^2+SC^2-2SA\cdot SC\cdot \cos\widehat{ASC}\\
+				&=&a^2+a^2-2a\cdot a\cdot\cos120^\circ=3a^2\\
+				\Rightarrow AC&=&a\sqrt{3}.
+			\end{eqnarray*}
+			Áp dụng định lí cosin cho tam giác $SBC$ ta được
+			\begin{eqnarray*}
+				BC^2&=&SB^2+SC^2-2SB\cdot SC\cdot \cos\widehat{BSC}\\
+				&=&a^2+a^2-2a\cdot a\cdot\cos60^\circ=a^2\\
+				\Rightarrow BC&=&a.
+		\end{eqnarray*}}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1.2]
+			\def\h{3}
+			\def\ac{4}
+			\def\xb{3}
+			\def\yb{-1}
+			\coordinate[label=left:{$A$}] (A) at (0,0);
+			\coordinate[label=below:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=right:{$C$}] (C) at (\ac,0);
+			\coordinate[label=below:{$O$}] (O) at ($(A)!0.5!(C)$);
+			\coordinate[label=above:{$S$}] (S) at ($(O)+(0,\h)$);
+			\coordinate[label=above right:{$E$}] (E) at ($(S)!0.5!(C)$);
+			\coordinate[rotate around={-90:(A)}] (x) at (0,0);
+			\coordinate[label=below left:{$I$}] (I) at (intersection of S--O and E--x);
+			\draw (S)--(A)--(B)--(C)--cycle (S)--(B);
+			\draw[dashed] (S)--(O) (A)--(C) (E)--(I);
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = I--E--S};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = S--O--C};
+			\pic[draw,angle radius=2.5mm,angle eccentricity=1.5] {right angle = B--S--A};
+			\foreach \point in {A,B,C,S,E,I,O}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+		\noindent Từ đó ta có $AB^2+BC^2=AC^2$ nên suy ra $\triangle ABC$ vuông tại $B$.\\
+		Gọi $O$ là trung điểm của $AC$. Ta có $O$ là tâm đường tròn ngoại tiếp $\triangle ABC$.\\
+		Vì $SA=SB=SC$ và $OA=OB=OC$ nên $SO$ là trục đường tròn ngoại tiếp tam giác $ABC$.\\
+		$\Rightarrow SO\perp (ABC)$.\\
+		Dựng mặt phẳng trung trực của $SC$ cắt $SO$ tại $I$. Khi đó $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$.\\
+		Với $E$ là trung điểm AC ta có $\triangle SEI\backsim\triangle SOC$ (góc-góc) nên suy ra $\dfrac{SI}{SC}=\dfrac{SE}{SO}.\qquad (1)$\\
+		Áp dụng định lí Pi-ta-go cho tam giác $SOC$ vuông tại $O$ ta được
+		\[SO^2=SB^2-BO^2=\dfrac{a^2}{4}\Rightarrow SO=\dfrac{a}{2}.\]
+		Mặt khác ta có $SE=\dfrac{a}{2}$ và $SC=a$ nên từ $(1)$ suy ra $SI=a$.\\
+		Vậy bán kính mặt cầu ngoại tiếp hình chóp $S.ABC$ là $a$.\\
+		Suy ra diện tích mặt cầu ngoại tiếp hình chóp $S.ABC$ là $4\pi a^2$.\\
+		\textbf{Chú ý:} Sau khi chứng minh $SO\perp (ABC)$ tại $O$ ta có thể áp dụng $R=\dfrac{SA^2}{2\cdot SO}=\dfrac{a^2}{2\dfrac{AC}{2}}=a$.
+	}
+\end{ex}
+\begin{ex}%Câu 2.%[2H2B2-2]%[Đặng Tấn Phát]
+	Cho hình chóp tam giác đều có cạnh đáy bằng $\sqrt{6}$ và chiều cao $h=1$. Diện tích của mặt cầu ngoại tiếp của hình chóp đó là 
+	\choice
+	{\True $S=9\pi$}
+	{$=6\pi$}
+	{$S=5\pi$}
+	{$S=27\pi$}
+	\loigiai{
+		\immini{
+			Gọi $O$ là tâm của tam giác $ABC$. Suy ra $SO\perp (ABC)$.\\
+			Khi đó
+			\[SO=h=1;\quad OA=\dfrac{2}{3}\cdot\sqrt{6}\cdot\dfrac{\sqrt{3}}{2}=\sqrt{2}.\]
+			Xét tam giác vuông $SAO$ ta có $SA=\sqrt{SO^2+OA^2}=\sqrt{1+2}=\sqrt{3}$.\\
+			Trong $(SAO)$ dựng đường trung trực của đoạn $SA$ cắt $SO$ tại $I$.\\
+			$\Rightarrow IS=IA=IB=IC$ nên $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$.\\
+			Gọi $H$ là trung điểm $SA$, ta có $\triangle SHI$ đồng dạng với $\triangle SOA$ nên
+			\[R=IS=\dfrac{SH\cdot SA}{SO}=\dfrac{\dfrac{\sqrt{3}}{2}\cdot\sqrt{3}}{1}=\dfrac{3}{2}\]
+			Vậy diện tích mặt cầu ngoại tiếp hình chóp là $S=4\pi R^2=9\pi$.}{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{1.75}
+			\def\ac{4.5}
+			\def\xb{3.5}
+			\def\yb{-1}
+			\coordinate[label=left:{$A$}] (A) at (0,0);
+			\coordinate[label=below:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=right:{$C$}] (C) at (\ac,0);
+			\coordinate[label=right:{$O$}] (O) at ($($(B)!0.5!(C)$)!1/3!(A)$);
+			\coordinate[label=above:{$S$}] (S) at ($(O)+(0,\h)$);
+			\coordinate[label=above:{$H$}] (H) at ($(S)!0.5!(A)$);
+			\coordinate[rotate around={-90:(H)}] (x) at (0,0);
+			\coordinate[label=below:{$I$}] (I) at (intersection of S--O and H--x);
+			\coordinate (gd1) at (intersection of H--I and A--B); % giao điểm HI và BC để hiển thị nét đứt-nét liền
+			\coordinate (gd2) at (intersection of S--O and A--B); % giao điểm SO và BC để hiển thị nét đứt-nét liền
+			\draw 
+			(S)--(A)--(B)--(C)--cycle
+			(S)--(B)
+			(gd1)--(I) (gd2)--(I);
+			
+			\draw[densely dashed] (S)--(O) (A)--(C) (H)--(gd1) (S)--(gd2) (A)--(O);
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = A--O--S};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = I--H--S};
+			
+			\foreach \point in {A,B,C,S,O,I,H}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 3.%[2H2K2-2]%[Đặng Tấn Phát]
+	Cho tứ diện $ABCD$ có $ABC$ và $DBC$ là các tam giác đều cạnh $a$, $AD=\dfrac{4}{3}a$. Tính bán kính mặt cầu ngoại tiếp tứ diện $ABCD$. 
+	\choice
+	{\True $\dfrac{\sqrt{55}}{11}a$}
+	{$\dfrac{\sqrt{57}}{11}a$}
+	{$\dfrac{\sqrt{59}}{11}a$}
+	{$\dfrac{\sqrt{61}}{11}a$}
+	\loigiai{
+		\immini{
+			Gọi $M$ là trung điểm $BC$.\\
+			Vì $\triangle ABC$ và $\triangle DBC$ là tam giác đều nên suy ra $BC\perp AM, BC\perp DM, AM=DM$.\\
+			Do đó $BC\perp (AMD)$. Suy ra $(AMD)$ là mặt phẳng trung trực của $BC$.\\
+			Trong $(AMD)$ dựng $AH\perp MD$ thì $AH\perp (BCD)$.\\
+			Dựng $d\perp (BCD)$ tại $G$ là trọng tâm của $\triangle ABC$. Khi đó $d$ là trục của đáy $BCD$.\\
+			Trong $(AMD)$ gọi $O$ là giao điểm của $d$ và $MK$ với $K$ là trung điểm $AD$.\\
+			Vì $\triangle AMD$ cân tại $M$ nên $MK$ là đường trung trực của $AD$.\\
+			$\Rightarrow OA=OB=OC=OD$ hay $O$ là tâm mặt cầu ngoại tiếp tứ diện $ABCD$.\\
+			Ta có $AM=DM=\dfrac{a\sqrt{3}}{2};\quad DK=\dfrac{1}{2}AD=\dfrac{2}{3}a$ nên 
+			\[MK^2=MD^2-DK^2=\left(\dfrac{a\sqrt{3}}{2}\right)^2-\left(\dfrac{2}{3}a\right)^2\Rightarrow MK=\dfrac{a\sqrt{11}}{6}.\]
+			Ta có $\tan\widehat{KMD}=\dfrac{DK}{MK}=\dfrac{OG}{MG}\Rightarrow OG=\dfrac{DK\cdot MG}{MK}=\dfrac{2a\sqrt{33}}{33}$.\\
+			Vì $GD=\dfrac{2}{3}MD=\dfrac{a\sqrt{3}}{3}$ nên $R=OD=\sqrt{OG^2+GD^2}=\dfrac{a\sqrt{55}}{11}$.
+		}{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{3.5}
+			\def\bd{3.75}
+			\def\xc{0.75}
+			\def\yc{-1.5}
+			\coordinate[label=left:{$B$}] (B) at (0,0);
+			\coordinate[label=below:{$C$}] (C) at (\xc,\yc);
+			\coordinate[label=below:{$D$}] (D) at (\bd,0);
+			\coordinate[label=below left:{$M$}] (M) at ($(B)!0.5!(C)$);
+			\coordinate[label=below:{$H$}] (H) at ($(M)!0.2!(D)$);
+			\coordinate[label=below:{$G$}] (G) at ($(M)!1/3!(D)$);
+			\coordinate[label=above:{$A$}] (A) at ($(H)+(0,\h)$);
+			\coordinate[label=above right:{$K$}] (K) at ($(A)!0.5!(D)$);
+			
+			\coordinate (x) at ($(G)+(A)-(H)$);
+			\coordinate[label=above:{$O$}] (O) at (intersection of G--x and M--K);
+			
+			\draw (A)--(B)--(C)--(D)--cycle
+			(A)--(M) (A)--(C);
+			\draw[dashed] (B)--(D) (M)--(D) (O)--(G) (M)--(K) (A)--(H) 
+			(O)--(D);
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = D--G--O};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = O--K--D};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = D--H--A};
+			
+			\foreach \point in {A,B,C,D,O,G,H,K,M}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 4.%[2H2K2-3]%[Đặng Tấn Phát]
+	Tính thể tích $V$ của khối chóp tứ giác đều có chiều cao là $h$ và bán kính mặt cầu nội tiếp là $r$ ($h>2r>0$). 
+	\choice
+	{$V=\dfrac{4r^2h^2}{3(h+2r)}$}
+	{$V=\dfrac{4r^2h^2}{h+2r}$}
+	{\True $V=\dfrac{4r^2h^2}{3(h-2r)}$}
+	{$V=\dfrac{3r^2h^2}{4(h-2r)}$}
+	\loigiai{
+		\immini{
+			Gọi $M$ và $M'$ lần lượt là trung điểm của $AB$ và $CD$. \\
+			Gọi $O$ là tâm của hình vuông $ABCD$ và $I$ là giao điểm ba đường phân giác trong của tam giác $SMM'$. Khi đó $I$ là tâm đường tròn nội tiếp tam giác $SMM'$.\\
+			Mặt khác vì $S.ABCD$ là hình chóp tứ giác đều nên $I$ là tâm mặt cầu nội tiếp hình chóp.\\
+			Xét $\triangle SMO$ có $MI$ là đường phân giác, ta có
+			\[\dfrac{SM}{MO}=\dfrac{SI}{IO}\Rightarrow \dfrac{\sqrt{h^2+x^2}}{x}=\dfrac{h-r}{r}\Rightarrow x^2=\dfrac{hr^2}{h-2r}.\quad(\text{Với } x=OM)\]
+			Vậy thể tích cần tìm là $V=\dfrac{1}{3}h\cdot4x^2=\dfrac{h^2r^2}{3(h-2r)}$.}{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{4}
+			\def\ad{3.5}
+			\def\xb{-2.5}
+			\def\yb{-0.5}
+			\coordinate[label=below:{$O$}] (O) at (0,0);
+			\coordinate[label=left:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=below:{$C$}] (C) at ($(B)+(\ad,0)$);
+			\coordinate[label=right:{$D$}] (D) at ($-1*(B)$);
+			\coordinate[label=above left:{$A$}] (A) at ($-1*(C)$);
+			\coordinate[label=above:{$S$}] (S) at (0,\h);
+			
+			\coordinate[label={[label distance=-0.2cm]above left:$M'$}] (M') at ($(A)!0.5!(B)$);
+			\coordinate[label=below right:{$M$}] (M) at ($(C)!0.5!(D)$);
+			\coordinate[label=above right:{$I$}] (I) at ($(S)!0.75!(O)$);
+			\coordinate (x) at (intersection of M--I and S--M');
+			
+			\draw (S)--(B)--(C)--(D)--cycle
+			(S)--(C) (S)--(M);
+			\draw[dashed] (D)--(A)--(B) (M')--(M)--(x) (A)--(C) (B)--(D) (S)--(O) (S)--(A) (S)--(M');
+			
+			\foreach \point in {A,B,C,D,S,M,M',I,O}
+			\fill (\point) circle (1pt);
+			
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 5.%[2H2K2-2]%[Đặng Tấn Phát]
+	Cho hình chóp $S.ABC$ có $\widehat{BSC}=120^{\circ}$, $\widehat{CSA}=60^{\circ}$, $\widehat{ASB}=90^{\circ}$ và $SA=SB=SC$. Gọi $I$ là hình chiếu vuông góc của $S$ lên mặt phẳng $(ABC)$. Khẳng định nào sau đây đúng?
+	\choice
+	{$I$ là trung điểm $AB$}
+	{$I$ là trọng tâm tam giác $ABC$}
+	{$I$ là trung điểm $AC$}
+	{\True $I$ là trung điểm $BC$}
+	\loigiai{
+		\immini{
+			Ta có $SA=SB=SC$ nên hình chiếu của $S$ lên $(ABC)$ là tâm đường tròn ngoại tiếp $\triangle ABC$.\\
+			Đặt $SA=SB=SC=a$.\\
+			Theo giả thiết ta có tam giác $SAC$ đều cạnh $a$, tam giác $SAB$ vuông cân tại $S$ nên $AC=a$ và $AB=a\sqrt{2}$.\\
+			Xét tam giác $SBC$ ta có\\
+			$BC^2=SB^2+SC^2-2SB\cdot SC\cdot\cos\widehat{BSC} =a^2+a^2-2\cdot a\cdot a\cdot\cos 120^{\circ}=3a^2$.\\
+			Do đó $AB^2+AC^2 =3a^2=BC^2$ nên tam giác $ABC$ vuông tại $A$.\\
+			Khi đó tâm đường tròn ngoại tiếp $\triangle ABC$ là trung điểm $BC$.\\
+			Vậy $I$ là trung điểm $BC$.}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{3}
+			\def\bc{4}
+			\def\xa{1}
+			\def\ya{-1.25}
+			\coordinate[label=left:{$B$}] (B) at (0,0);
+			\coordinate[label=right:{$C$}] (C) at (\bc,0);
+			\coordinate[label=below:{$A$}] (A) at (\xa,\ya);
+			\coordinate[label=below:{$I$}] (I) at ($(B)!0.7!($(A)!0.5!(C)$)$);
+			\coordinate[label=above:{$S$}] (S) at ($(I)+(0,\h)$);
+			
+			\draw (S)--(B)--(A)--(C)--cycle 
+			(S)--(A);
+			\draw[dashed] (S)--(I) (B)--(C);
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = C--I--S};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--S--A};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--A--C};
+			\foreach \point in {S,A,B,C,I}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}}
+	}
+\end{ex}
+\begin{ex}%Câu 6.%[2H2K2-2]%[Đặng Tấn Phát]
+	Cho hình chóp tứ giác đều có góc giữa mặt bên và mặt đáy bằng $60^{\circ}$. Biết rằng mặt cầu ngoại tiếp hình chóp đó có bán kính $R=a\sqrt{3}$. Tính độ dài cạnh đáy của hình chóp tứ giác đều nói trên. 
+	\choice
+	{$\dfrac{9}{4}a$}
+	{$2a$}
+	{$\dfrac{3}{2}$a}
+	{\True $\dfrac{12}{5}a$}
+	\loigiai{
+		\immini{
+			Gọi $N$ là trung điểm của $BC$. Suy ra góc giữa hai mặt phẳng $(SBC)$ và $(ABCD)$ là $\widehat{SNO}$. Vậy $\widehat{SNO}=60^\circ$.\\
+			Gọi $M$ là trung điểm $SB$, dựng $MI\perp SB$ ($I\in SO$).\\
+			Suy ra $I$ là tâm mặt cầu ngoại tiếp hình chóp.\\
+			Đặt $CD=2x \Rightarrow SO=x\sqrt{3}, SB=x\sqrt{5}$.\\
+			Ta có $\triangle SMI$ đồng dạng với $\triangle SOB$ nên suy ra
+			\[SI=\dfrac{SM\cdot SB}{SO}=\dfrac{\dfrac{SB}{2}\cdot SB}{SO}=\dfrac{5x\sqrt{3}}{6}=a\sqrt{3}\Rightarrow x=\dfrac{6a}{5}.\]
+			Vậy độ dài cạnh đáy là $2x=\dfrac{12a}{5}$.}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{4}
+			\def\ab{3.5}
+			\def\xd{-2.5}
+			\def\yd{-0.5}
+			\coordinate[label=below:{$O$}] (O) at (0,0);
+			\coordinate[label=left:{$D$}] (D) at (\xd,\yd);
+			\coordinate[label=below:{$C$}] (C) at ($(D)+(\ab,0)$);
+			\coordinate[label=right:{$B$}] (B) at ($-1*(D)$);
+			\coordinate[label=above left:{$A$}] (A) at ($-1*(C)$);
+			\coordinate[label=above:{$S$}] (S) at (0,\h);
+			
+			\coordinate[label=above right:{$M$}] (M) at ($(S)!0.5!(B)$);
+			\coordinate[label=below right:{$N$}] (N) at ($(B)!0.5!(C)$);
+			\coordinate[label=left:{$I$}] (I) at ($(S)!0.65!(O)$);
+			
+			\draw (S)--(D)--(C)--(B)--cycle
+			(S)--(C) (S)--(N);
+			\draw[dashed] (D)--(A)--(B) (A)--(C) (B)--(D) (A)--(S)--(O)--(N) (I)--(M);
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = I--M--S};
+			\pic[draw,angle radius=3mm,angle eccentricity=1.5] {angle = S--N--O};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--O--S};
+			\foreach \point in {A,B,C,D,S,M,N,I,O}
+			\fill (\point) circle (1pt);	
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\begin{ex}%Câu 7.%[2H2G2-2]%[Đặng Tấn Phát]
+	Cho hình chóp $S.ABC$ có $SA=SB=SC=2a$, tam giác $ABC$ có góc $A$ bằng $120^\circ, BC=2a$. Tính bán kính mặt cầu ngoại tiếp hình chóp tho $a$. 
+	\choice
+	{$\dfrac{a\sqrt{3}}{2}$}
+	{$\dfrac{2a\sqrt{3}}{3}$}
+	{$\dfrac{a\sqrt{6}}{6}$}
+	{\True $\dfrac{a\sqrt{6}}{2}$}
+	\loigiai{
+		\immini{
+			Gọi $I$ là tâm đường tròn ngoại tiếp $\triangle ABC$.\\
+			Do $SA=SB=SC$ nên ta có $SI\perp (ABC)$.\\
+			Gọi $K$ là trung điểm $SA$. Dựng $OK$ là đường trung trực của $SA$ với $O\in SI$.\\
+			Khi đó $O$ là tâm của mặt cầu ngoại tiếp hình chóp $S.ABC$.\\
+			Ta có $S_{ABC}=\dfrac{1}{2}AB\cdot AC\cdot\sin A$ và $S_{ABC}=\dfrac{AB\cdot AC \cdot BC}{4IA}$. Khi đó
+			\[\dfrac{1}{2}AB\cdot AC\cdot\sin 120^\circ=\dfrac{AB\cdot AC\cdot 2a}{4IA}\Rightarrow IA=\dfrac{4a}{4\sin 120^\circ}=\dfrac{2a\sqrt{3}}{3}.\]
+			Xét tam giác $SIA$ vuông tại $I$ ta có
+			\[SI=\sqrt{SA^2-IA^2}=\sqrt{4a^2-\dfrac{4a^2}{3}}=\dfrac{2a\sqrt{6}}{3}.\]
+			Vì $\triangle SKO$ đồng dạng với $\triangle SIA$ nên ta có
+			\[\dfrac{SK}{SI}=\dfrac{SO}{SA}\Rightarrow SO=\dfrac{SK\cdot SA}{SI}=\dfrac{SA^2}{2SI}=\dfrac{4a^2}{2\cdot \dfrac{2a\sqrt{6}}{3}}=\dfrac{a\sqrt{6}}{2}\]}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{4}
+			\def\bc{4}
+			\def\xa{0.75}
+			\def\ya{-1.25}
+			\coordinate[label=left:{$B$}] (B) at (0,0);
+			\coordinate[label=right:{$C$}] (C) at (\bc,0);
+			\coordinate[label=below:{$A$}] (A) at (\xa,\ya);
+			\coordinate[label=below:{$I$}] (I) at ($(B)!0.7!($(A)!0.5!(C)$)$);
+			\coordinate[label=above:{$S$}] (S) at ($(I)+(0,\h)$);
+			\coordinate[label=left:{$K$}] (K) at ($(S)!0.5!(A)$);
+			\coordinate[label=right:{$O$}] (O) at ($(S)!0.65!(I)$);
+			\draw (S)--(B)--(A)--(C)--cycle 
+			(S)--(A);
+			\draw[dashed] (S)--(I) (B)--(C)
+			(O)--(K) (I)--(A);
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = A--I--S};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = O--K--S};
+			\foreach \point in {S,A,B,C,I,O}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+\Closesolutionfile{ans}
+% \DAPAN
+\inputansbox{10}{ans/ans2H2-2}
+\Opensolutionfile{ans}[ans/ans2H2-2]	
+\begin{dang}{Chóp có một mặt bên vuông góc với đáy}
+\end{dang}
+\subsubsection{Các ví dụ}		
+\begin{vd}%Ví dụ 1.%[2H2B2-2]%[Đặng Tấn Phát]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $A$. Mặt bên $(SAB)\perp (ABC)$ và $\triangle SAB$ đều. Tìm tâm và tính bán kính khối cầu ngoại tiếp hình chóp.
+	\loigiai{
+		\immini{Gọi $H,M$ lần lượt là trung điểm của $AB,AC$.\\
+			Ta có $M$ là tâm đường tròn ngoại tiếp $\triangle ABC$ (do $MA=MB=MC$).\\
+			Dựng $d_1$ là trục đường tròn ngoại tiếp $\triangle ABC$ ($d_1$ qua $M$ và song song $SH$).\\
+			Gọi $G$ là tâm đường tròn ngoại tiếp $\triangle SAB$ và $d_2$ là trục đường tròn ngoại tiếp $\triangle SAB$. $d_1$cắt $d_2$ tại $I$.\\
+			Khi đó $I$ là tâm mặt cầu ngoại tiếp khối chóp $S.ABC$.\\
+			Bán kính $R=SI$. Xét $\triangle SGI$ suy ra $SI=\sqrt{GI^2+SG^2}$.}{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1.2]
+			\def\h{4}
+			\def\ac{4}
+			\def\xb{0.6}
+			\def\yb{-0.6}
+			\coordinate[label=below left:{$H$}] (H) at (0,0);
+			\coordinate[label=below:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=left:{$A$}] (A) at ($-1*(B)$);
+			\coordinate[label=right:{$C$}] (C) at ($(A)+(\ac,0)$);
+			\coordinate[label=above:{$S$}] (S) at (0,\h);
+			
+			\coordinate[label=below right:{$M$}] (M) at ($(B)!0.5!(C)$);
+			\coordinate[label=left:{$G$}] (G) at ($(S)!2/3!(H)$);
+			\coordinate[label=above right:{$I$}] (I) at ($(G)+(M)-(H)$);
+			\coordinate (x) at ($(G)+2/3*(M)-2/3*(H)$);
+			\draw (S)--(A)--(B)--cycle
+			(B)--(C)--(S) (S)--(I) (S)--(H);
+			\draw[dashed] (A)--(M)--(H) (A)--(C) (G)--(x); 
+			\draw[shorten >=-1.5cm] (x)--(I)node[above,xshift=1cm]{$d_2$};
+			\draw[shorten >=-1.5cm] (M)--(I)node[right,yshift=1cm]{$d_1$};
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--A--C};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = M--H--S};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = H--M--I};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--H--S};
+			\foreach \point in {S,A,B,C,H,M,I,G}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+\begin{vd}%Ví dụ 2.%[2H2B2-2]%[Đặng Tấn Phát]]
+	Cho hình chóp $S.ABCD$ có đáy là hình vuông và $BD=2a$. Tam giác $SAC$ vuông cân tại $S$ và nằm trong mặt phẳng vuông góc với đáy. Tính thể tích của khối cầu ngoại tiếp hình chóp. 
+	\loigiai{
+		\immini{
+			Vì $\triangle SAC$ vuông cân tại $S$ nên $OS=OA=OC \quad (1)$\\
+			Mặt khác vì $ABCD$ là hình vuông nên \[OA=OC=OB=OD=\dfrac{BD}{2}=a\quad (2)\]
+			Từ $(1)$ và $(2)$ suy ra $O$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$. Do đó $R=OA=a$.\\
+			Thể tích khối cầu $V=\dfrac{4}{3}\pi R^3=\dfrac{4}{3}\pi a^3$. }
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\def\h{4}
+			\def\ad{4}
+			\def\xb{-3}
+			\def\yb{-0.75}
+			\coordinate[label=below:{$O$}] (O) at (0,0);
+			\coordinate[label=below:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=below:{$C$}] (C) at ($(B)+(\ad,0)$);
+			\coordinate[label=right:{$D$}] (D) at ($-1*(B)$);
+			\coordinate[label=left:{$A$}] (A) at ($-1*(C)$);
+			\coordinate[label=above:{$S$}] (S) at (0,\h);
+			
+			\draw (S)--(B)--(C)--(D)--cycle
+			(S)--(C);
+			\draw[dashed] (S)--(A)--(B)--(D)--(A)--(C)
+			(S)--(O);
+			
+			\foreach \point in {S,A,B,C,D,O}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+\begin{vd}%Ví dụ 3.%[2H2K2-2]%[Đặng Tấn Phát]
+	Cho hình chóp tam giác đều $S.ABC$ có $AB=a$, góc tạo bởi $(SAB)$ và $(ABC)$ bằng $60^\circ$. Tính diện tích xung quanh của hình nón đỉnh $S$ và có đường tròn đáy ngoại tiếp tam giác $ABC$.
+	\loigiai{
+		\immini{
+			Gọi $M$ là trung điểm $AB$ và $O$ là tâm của $\triangle ABC$.\\
+			Khi đó $\heva{&AB\perp CM\\&AB\perp SO}\Rightarrow AB\perp (SCM)\Rightarrow AB\perp SM$ và $AB\perp CM$.\\
+			Do đó góc giữa $(SAB)$ và $(ABC)$ là $\widehat{SMO}=60^\circ$.\\
+			Mặt khác tam giác $ABC$ đều cạnh $a$ nên $CM=\dfrac{a\sqrt{3}}{2}$.\\
+			Suy ra $OM=\dfrac{1}{3}CM=\dfrac{a\sqrt{3}}{6}$.\\
+			Khi đó
+			\[SO=OM\cdot\tan60^\circ=\dfrac{a\sqrt{3}}{6}\cdot\sqrt{3}=\dfrac{a}{2}.\]
+		}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{4}
+			\def\ac{4}
+			\def\xb{1.5}
+			\def\yb{-1}
+			\coordinate[label=left:{$A$}] (A) at (0,0);
+			\coordinate[label=below:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=right:{$C$}] (C) at (\ac,0);
+			\coordinate[label=below:{$M$}] (M) at ($(A)!0.5!(B)$);
+			\coordinate (x) at ($(B)!0.5!(C)$);
+			\coordinate[label=below:{$O$}] (O) at ($(M)!1/3!(C)$);
+			\coordinate[label=above:{$S$}] (S) at ($(O)+(0,\h)$);
+			
+			\draw (S)--(A)--(B)--(C)--cycle
+			(S)--(M) (S)--(B);
+			\draw[dashed] (S)--(O) (A)--(x) (A)--(C) (C)--(M);
+			
+			\foreach \point in {A,B,C,M,O,S}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}}
+		\noindent Hình nón đã cho có chiều cao $h=SO=\dfrac{a}{2}$, bán kính đáy $R=OA=\dfrac{a\sqrt{3}}{3}$ và độ dài đường sinh $l=\sqrt{h^2+R^2}=\dfrac{a\sqrt{21}}{6}$.\\
+		Vậy diện tích xung quanh của hình nón là $S_{xq}=\pi Rl=\pi\cdot \dfrac{a\sqrt{3}}{3}\cdot\dfrac{a\sqrt{21}}{6}=\dfrac{\sqrt{7}\pi a^2}{6}$.
+	}
+\end{vd}
+\begin{vd}%Ví dụ 4.%[2H2K2-2]%[Đặng Tấn Phát]
+	Cho hình chóp $S.ABC$ có đáy là tam giác đều cạnh $1$. Tam giác $SAB$ đều và nằm trong mặt phẳng vuông góc với mặt phẳng đáy. Tính thể tích của khối cầu ngoại tiếp hình chóp đã cho. 
+	\loigiai{
+		\immini{
+			Gọi $M$ là trung điểm $AB$.\\
+			Vì $\triangle SAB$ đều và nằm trong mặt phẳng vuông góc với mặt phẳng đáy nên $SM\perp (ABC)$.\\
+			Gọi $I$ là trọng tâm của tam giác $ABC$.\\
+			Vì $\triangle ABC$ đều nên $I$ là tâm đường tròn ngoại tiếp $\triangle ABC$.\\
+			Dựng đường thẳng $d$ qua $I$ và vuông góc với $(ABC)$.\\
+			Gọi $J$ là tâm đường tròn ngoại tiếp $\triangle SAB$. Dựng đường thẳng $d'$ qua $J$ và vuông góc với $(SAB)$.\\
+			Gọi $O$ là giao điểm của $d$ và $d'$. Khi đó $O$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$ với $R=OC$.\\
+			Vì $\triangle SAB$ và $\triangle ABC$ là những tam giác đều cạnh bằng 1 nên 
+			\[JM=\dfrac{1}{3}\cdot\dfrac{\sqrt{3}}{2}=\dfrac{\sqrt{3}}{6};\quad IC=\dfrac{2}{3}\cdot\dfrac{\sqrt{3}}{2}=\dfrac{\sqrt{3}}{3}.\]
+		}
+		{
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1.2]
+			\def\h{4}
+			\def\ac{4}
+			\def\xb{0.6}
+			\def\yb{-0.6}
+			\coordinate[label=below left:{$M$}] (M) at (0,0);
+			\coordinate[label=below:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=left:{$A$}] (A) at ($-1*(B)$);
+			\coordinate[label=right:{$C$}] (C) at ($(A)+(\ac,0)$);
+			\coordinate[label=above:{$S$}] (S) at (0,\h);
+			
+			\coordinate[label=left:{$J$}] (J) at ($(S)!2/3!(H)$);
+			\coordinate[label=above right:{$I$}] (I) at ($(M)!1/3!(C)$);
+			\coordinate (x) at ($(G)+2/3*(I)-2/3*(M)$);
+			\coordinate (y) at ($(I)+2/3*(J)-2/3*(M)$);
+			\coordinate[label=below right:{$O$}] (O) at ($(J)+(I)-(M)$);
+			
+			\draw (S)--(A)--(B)--cycle
+			(B)--(C)--(S) (S)--(M);
+			\draw[dashed] (A)--(C)--(M) (J)--(x) (I)--(y); 
+			\draw[shorten >=-1.5cm] (y)--($3/2*(O)-1/2*(I)$)node[above,xshift=0.8cm,yshift=-0.7cm]{$d'$};
+			\draw[shorten >=-1.5cm] (x)--(O)node[right,yshift=1cm]{$d$};
+			
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--M--S};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = C--M--S};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = M--I--O};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = M--J--O};
+			\foreach \point in {S,A,B,C,J,M,I,O}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+		\noindent Xét $\triangle ABC$ vuông tại $I$ có $OC=\sqrt{IC^2+OC^2}=\sqrt{\left(\dfrac{\sqrt{3}}{3}\right)^2+\left(\dfrac{\sqrt{3}}{6}\right)^2}=\dfrac{\sqrt{15}}{6}$.\\
+		Vậy thể tích khối cầu ngoại tiếp hình chóp đã cho là
+		\[V=\dfrac{4}{3}\pi\cdot\left(\dfrac{\sqrt{15}}{6}\right)^3=\dfrac{5\sqrt{15}\pi}{54}.\]
+	}
+\end{vd}
+\begin{vd}%Ví dụ 5.%[2H2G2-2]%[Đặng Tấn Phát]
+	Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $a$, $SAD$ là tam giác đều và nằm trong mặt phẳng vuông góc với đáy. Gọi $M,N$ lần lượt là trung điểm của $BC$ và $CD$. Tính bán kính $R$ của khối cầu ngoại tiếp khối chóp $S.CMN$.
+	\loigiai{
+		\immini{
+			Gọi $I$ là trung điểm $MN$. Khi đó $I$ là tâm đường tròn ngoại tiếp tam giác $CMN$.\\
+			Dựng đường thẳng $d$ qua $I$ và vuông góc với mặt đáy.\\
+			Gọi $O$ là tâm mặt cầu ngoại tiếp hình chóp. Suy ra $O\in d$.\\
+			Gọi $H$ là trung điểm $AD$. Khi đó $SH\perp (ABCD)$, suy ra $SH\parallel d$.\\
+			Trong mặt phẳng $(SHOI)$ gọi $K$ là hình chiếu của $O$ lên $SH$.\\
+			Đặt $OI=x$. Vì $\triangle CMN$ vuông cân tại $C$, $\triangle OIC$ vuông tại I nên ta có:
+			\[CI=\dfrac{1}{2}MN=\dfrac{a\sqrt{2}}{4};\quad OC=\sqrt{IC^2+IO^2}=\sqrt{\dfrac{a^2}{8}+x^2}.\]
+			Gọi $E$ là hình chiếu của $I$ lên $AD$, ta có \[KO=HI=\sqrt{IE^2+EH^2}=\sqrt{\left(\dfrac{3a}{4}\right)^2+\left(\dfrac{a}{4}\right)^2}=\dfrac{a\sqrt{10}}{4}.\]
+		}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{4.5}
+			\def\ab{4}
+			\def\xa{-0.75}
+			\def\ya{-0.75}
+			\coordinate[label=left:{$H$}] (H) at (0,0);
+			\coordinate[label=below:{$A$}] (A) at (\xa,\ya);
+			\coordinate[label=above right:{$D$}] (D) at ($-1*(A)$);
+			\coordinate[label=below:{$B$}] (B) at ($(A)+(\ab,0)$);
+			\coordinate[label=right:{$C$}] (C) at ($(D)+(\ab,0)$);
+			\coordinate[label=above:{$S$}] (S) at (0,\h);
+			\coordinate[label=below:{$M$}] (M) at ($(B)!0.5!(C)$);
+			\coordinate[label=above:{$N$}] (N) at ($(D)!0.5!(C)$);
+			\coordinate[label=below:{$I$}] (I) at ($(M)!0.5!(N)$);
+			\coordinate[label=above right:{$K$}] (K) at ($(S)!3/5!(H)$);
+			\coordinate (x) at ($(I)+(H)-(M)$); %%% đường thẳng qua I song song HM
+			\coordinate[label=above:{$E$}] (E) at (intersection of A--D and I--x);
+			\coordinate[label=above right:{$O$}] (O) at ($(K)+(I)-(H)$);
+			\coordinate (gd1) at ($(K)+2/3*(I)-2/3*(H)$);
+			\coordinate (gd2) at ($(I)+2/3*(K)-2/3*(H)$);
+			
+			\draw (S)--(A)--(B)--(C)--cycle
+			(S)--(B) (gd1)--(O) (gd2)--($(O)+1/3*(K)-1/3*(H)$)node[above]{$d$};
+			\draw[dashed] (A)--(D)--(C) (S)--(H)--(M) 
+			(S)--(D) (K)--(gd1) (M)--(N) (C)--(I)--(H) (I)--(gd2) 
+			(I)--(E);
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = H--K--O};
+			\pic[draw,angle radius=1.5mm,angle eccentricity=1.5] {right angle = I--E--D};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = H--I--O};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = I--H--S};
+			\foreach \point in {A,B,C,D,S,O,I,M,N,H,K,E}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+		\noindent Khi đó
+		\[SO=\sqrt{SK^2+KO^2}=\sqrt{\left(\dfrac{a\sqrt{3}}{2}-x\right)^2+\left(\dfrac{a\sqrt{10}}{4}\right)^2}=\sqrt{x^2-\sqrt{3}ax+\dfrac{22a^2}{16}}.\]
+		Vì $O$ là tâm mặt cầu ngoại tiếp khối chóp $S.CMN$ nên $SO=OC$ nên ta có
+		\[\sqrt{\dfrac{a^2}{8}+x^2}=\sqrt{x^2-\sqrt{3}ax+\dfrac{22a^2}{16}}\Leftrightarrow \sqrt{3}ax=\dfrac{5}{4}a^2\Leftrightarrow x=\dfrac{5\sqrt{3}a}{12}.\]
+		Vậy $R=OC=\sqrt{\dfrac{a^2}{8}+\dfrac{25a^2}{48}}=\dfrac{\sqrt{93}}{12}a$.
+	}
+\end{vd}
+\subsubsection{Câu hỏi trắc nghiệm}
+\begin{ex}%Câu 1.%[2H2K2-2]%[Đặng Tấn Phát]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $6a$, tam giác $SBC$ vuông tại $S$ và mặt phẳng $(SBC)$ vuông góc với mặt phẳng $(ABC)$. Tính thể tích $V$ của khối cầu ngoại tiếp hình chóp $S.ABC$.
+	\choice
+	{$V=96\sqrt{3}\pi a^3$}
+	{\True $V=32\sqrt{3}\pi a^3$}
+	{$V=\dfrac{4\sqrt{3}}{27}\pi a^3$}
+	{$V=\dfrac{4\sqrt{3}}{9}\pi a^3$}
+	\loigiai{
+		\immini{
+			Gọi $H$ là trung điểm của $BC$.\\
+			Vì $\triangle ABC$ đều nên $AH\perp BC$.\\
+			Ta có $(SBC)\perp (ABC)$ và $(SBC)\cap(ABC)=BC$ nên $AH\perp (SBC)$.\\
+			Do $H$ là tâm đường tròn ngoại tiếp tam giác $SBC$ nên $AH$ là trục đường tròn ngoại tiếp $\triangle SBC$.\\
+			Vì $\triangle ABC$ đều nên có trọng tâm $G$ chính là tâm đường tròn ngoại tiếp.\\
+			Vậy ta có $GA=GB=GC$. Mà $G\in AH$ nên $GS=GB=GC$.\\
+			Suy ra $GS=GA=GB=GC$ hay $G$ là tâm mặt cầu ngoại tếp khối chóp $S.ABC$.\\
+			Bán kính $R=GA=\dfrac{2}{3}\cdot6a\cdot \dfrac{\sqrt{3}}{2}=2\sqrt{3}a$.\\
+			Thể tích khối cầu ngoại tiếp hình chóp là $V=\dfrac{4}{3}\pi\left(2\sqrt{3}a\right)^3=32\sqrt{3}\pi a^3$.
+		}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+			\def\h{3}
+			\def\ac{4}
+			\def\xb{3}
+			\def\yb{-1}
+			\coordinate[label=left:{$A$}] (A) at (0,0);
+			\coordinate[label=right:{$C$}] (C) at (\ac,0);
+			\coordinate[label=below:{$B$}] (B) at (\xb,\yb);
+			\coordinate[label=below:{$H$}] (H) at ($(B)!0.5!(C)$);
+			\coordinate[label=above:{$S$}] (S) at ($(H)+(0,\h)$);
+			\coordinate[label=below:{$G$}] (G) at ($(A)!2/3!(H)$);
+			
+			\draw (S)--(A)--(B)--(C)--cycle
+			(S)--(B) (S)--(H);
+			\draw[dashed] (S)--(G) (A)--(C) (A)--(H) (G)--(B) (G)--(C);
+			
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--H--A};
+			\pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = A--H--S};
+			\foreach \point in {A,B,C,S,H,G}
+			\fill (\point) circle (1pt);
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+%--------------------------------------------------------------------------------------------------------
+
+%\Opensolutionfile{ans}[ans/ans2H2-2]
+\begin{ex}%[Phạm Thế Sinh]%[2H2K2-2]
+	Cho tứ diện $ABCD$ có tam giác $ABC$ là tam giác cân với $\widehat{BAC}=120^\circ$, $AB=AC=a$. Hình chiếu của $D$ trên mặt phẳng $(ABC)$ là trung điểm $BC$. Tính bán kính $R$ của mặt cầu ngoại tiếp tứ diện $ABCD$ biết thể tích của tứ diện $ABCD$ là $V=\dfrac{a^3}{16}$.
+	\choice
+	{\True $R=\dfrac{\sqrt{91a}}{8}$}
+	{$R=\dfrac{a\sqrt{13}}{4}$}
+	{$R=\dfrac{13a}{2}$}
+	{$R=6a$}
+	\loigiai{
+		\immini{
+		Gọi $H$ là trung điểm $BC$.\\
+		Có $AB=a,\widehat{BAH}=60^\circ\Rightarrow AH=\dfrac{a}{2}; BH=\dfrac{a\sqrt{3}}{2}$ và $BC=a\sqrt{3}$.\\
+		$V_{ABCD}=\dfrac{1}{3}DH\cdot S_{ABC}\Leftrightarrow\dfrac{a^3}{16}=\dfrac{1}{3}DH\cdot\dfrac{1}{2}a^2\dfrac{\sqrt{3}}{2}\Leftrightarrow DH=\dfrac{a\sqrt{3}}{4}$.\\
+		Do đó $DA=\sqrt{AH^2+DH^2}=\dfrac{a\sqrt{7}}{4}$.\\
+		Gọi $O$ là tâm đường tròn ngoại tiếp tam giác $ABC$ thì bán kính đường tròn đó là $R=AO=\dfrac{BC}{2\cdot \sin A}=a$. Vậy $H$ là trung điểm $AO$.\\
+		Kẻ trục đường tròn ngoại tiếp tam giác $ABC$, đường thẳng này cắt $AD$ tại $S \Rightarrow D$ là trung điểm $SA$.\\
+		Suy ra $SO=2DH=\dfrac{a\sqrt{3}}{2},SA=2DA=\dfrac{a\sqrt{7}}{2}$
+		và $SM=\dfrac{3}{4}SA=\dfrac{3a\sqrt{7}}{8}$.	
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1]
+		\def\gvg[size=#1](#2,#3,#4){\draw[red,very thin]($(#3)!#1!(#2)$)--($($(#3)!#1!(#2)$)+($(#3)!#1!(#4)$)-(#3)$)--($(#3)!#1!(#4)$);}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (1,-1);
+		\coordinate (C) at (3,0);
+		\coordinate (H) at ($(B)!.5!(C)$);
+		\coordinate (D) at ($ (H)+(0,3) $);
+		\coordinate (O) at ($ (A)!2!(H)$);
+		\coordinate (S) at ($ (A)!2!(D)$);
+		\coordinate (M) at ($(A)!.5!(D)$);
+		\coordinate (I) at ($ (S)-(0,5) $);
+		\coordinate(N) at (intersection of M--I and D--H);
+		\draw (H)--(D)--(B)--(C)--(D)--(A) (H)--(O)--(S)--(D) (B)--(A) (N)--(I);
+		\draw[dashed] (H)--(A)--(C) (M)--(N);
+		\foreach \p/\g in {A/180,B/-90,C/0,D/120,H/-90,I/0,M/120,O/0,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\draw[fill=gray](N)circle (1pt);
+		\gvg[size=5pt](I,M,S);
+		\end{tikzpicture}
+		}
+		\noindent Từ trung điểm $M$ của đoạn $AD$ kẻ đường vuông góc với $AD$, cắt $SO$ tại $I$.\\
+		Dễ dàng có $I$ là tâm mặt cầu ngoại tiếp tứ diện $ABCD$.\\
+		Hai tam giác vuông $SAO$ và $SIM$ đồng dạng nên $\dfrac{MI}{OA}=\dfrac{SM}{SO}\Rightarrow MI=a\cdot \dfrac{3\sqrt{7}a}{8\cdot \dfrac{a\sqrt{3}}{2}}=\dfrac{a\sqrt{21}}{4}$.\\
+		Bán kính mặt cầu bằng $R=ID=\sqrt{MI^2+MD^2}=\dfrac{a\sqrt{91}}{8}$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy là hình chữ nhật $AB=3,AD=2$. Mặt bên $(SAB)$ là tam giác đều và nằm trong mặt phẳng vuông góc với đáy. Tính thể tích $V$ của khối cầu ngoại tiếp hình chóp đã cho. 
+	\choice
+	{\True $V=\dfrac{32\pi}{3}$}
+	{$V=\dfrac{20\pi}{3}$}
+	{$V=\dfrac{16\pi}{3}$}
+	{$V=\dfrac{10\pi}{3}$}
+	\loigiai{
+		\immini{
+		Gọi $E$ là trung điểm $AB$. 
+		Dễ thấy $SE \perp (ABCD)$.\\
+		Dựng trục $d$ của $ (ABCD) $qua $O$ và song song với $SE$.\\
+		Gọi $G$ là trọng tâm tam giác $ABC$. Đường thẳng đi qua $G$ vuông góc với mặt phẳng $(ABC)$ cắt $d$ tại $I$. $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$.\\
+		Ta có $ \triangle SEB $ đều cạnh $ AB=2 \Rightarrow SE=\dfrac{3\sqrt{3}}{2}\Rightarrow SG=\dfrac{2}{3}SE$=$\sqrt{3}$.\\
+		$GI=EO=\dfrac{1}{2}AD=1$.\\
+		$R=SI=\sqrt{SG^2+GI^2}=\sqrt{4}=2$.\\
+		Suy ra thể tích khối cầu ngoại tiếp là\\
+		$V=\dfrac{4}{3}\pi R^3=\dfrac{4}{3}\pi \cdot 8=\dfrac{32\pi }{3}$.	
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.5]
+		\def\gvg[size=#1](#2,#3,#4){\draw[red,very thin]($(#3)!#1!(#2)$)--($($(#3)!#1!(#2)$)+($(#3)!#1!(#4)$)-(#3)$)--($(#3)!#1!(#4)$);}
+		\coordinate (B) at (0,0);
+		\coordinate (A) at (1,1);
+		\coordinate (C) at (3,0);
+		\coordinate (D) at ($(A)+(C)$);
+		\coordinate (E) at ($(A)!.5!(B)$);
+		\coordinate (S) at ($(E)+(0,3)$);
+		\coordinate (F) at ($(S)!.5!(B)$);
+		\coordinate(G) at (intersection of A--F and S--E);
+		\coordinate (O) at ($(A)!.5!(C)$);
+		\coordinate (I) at ($(G)-(E)+(O)$);
+		\draw (S)--(B)--(C)--(D)--(S)--(C) (I)--($(I)!-2!(O)$) node[pos=.8,right]{$d$};
+		\draw[dashed] (E)--(S)--(A)--(B)--(I)--(G) (B)--(D)--(A)--(C) (A)--(F) (I)--($(I)!1.4!(O)$);
+		\foreach \p/\g in {A/180,B/-135,C/-45,D/0,E/170,F/160,G/-135,I/0,O/-125,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\gvg[size=5pt](S,E,A);
+		\end{tikzpicture}
+		}}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2G2-2]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác cân tại $A$, mặt bên $(SBC)$ vuông góc với mặt phẳng $(ABC)$ và $SA=SB=AB=AC=a$; $SC=a\sqrt{2}$. Diện tích mặt cầu ngoại tiếp hình chóp $S.ABC$ bằng 
+	\choice
+	{$2\pi a^2$}
+	{$\pi a^2$}
+	{$8\pi a^2$}
+	{\True $4\pi a^2$}
+	\loigiai{
+		\immini{
+		Gọi $D$ là trung điểm $BC$. Đặt $BC=x\;(x>0)$.\\
+		Kẻ $SH \perp BC,\;(H\in BC) \Rightarrow SH\perp (ABC)$.\\
+		Mà $SA=SB\Rightarrow HA=HB$.\\
+		Gọi $E$ là trung điểm $AB$.\\
+		Ta có $\triangle BHE$ đồng dạng $\triangle BAD$, suy ra $\dfrac{BH}{BA}=\dfrac{BE}{BD}\\
+		\Rightarrow BH=\dfrac{BA\cdot BE}{BD}=\dfrac{a^2}{x} \Rightarrow CH=x-\dfrac{a^2}{x}$.\\
+		Trong tam giác vuông $SBH$ có: $SH^2=SB^2-HB^2=a^2-\dfrac{a^4}{x^2}$.\\
+		Trong tam giác vuông $SHC$ có: $SC^2=SH^2+HC^2\\
+		\Rightarrow 2a^2=a^2-\dfrac{a^4}{x^2}+\left(x-\dfrac{a^2}{x}\right)^2\Rightarrow x=a\sqrt{3}$.\\
+		Do $SB=a;\;SC=a\sqrt{2};\;BC=a\sqrt{3} \Rightarrow \triangle SBC$ vuông tại S.\\
+		Mặt khác $\heva{&AD\perp BC\\&AD\perp SH}\Rightarrow AD\perp (SBC)$.
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.2]
+		\def\gvg[size=#1](#2,#3,#4){\draw[red,very thin]($(#3)!#1!(#2)$)--($($(#3)!#1!(#2)$)+($(#3)!#1!(#4)$)-(#3)$)--($(#3)!#1!(#4)$);}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (1,-1.8);
+		\coordinate (C) at (4.2,0);
+		\coordinate (S) at (2,3);
+		\coordinate (D) at ($(B)!.5!(C)$);
+		\coordinate (E) at ($ (A)!.5!(B)$);
+		\coordinate(H) at (intersection of B--C and S--{(2,-4)});
+		\draw (H)--(S)--(B)--(A)--(S)--(C)--(B);
+		\draw[dashed] (C)--(A)--(H)--(E) (A)--(D);
+		\foreach \p/\g in {A/180,B/-100,C/0,D/-30,E/170,H/-60,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\gvg[size=5pt](A,D,B);\gvg[size=5pt](B,E,H);
+		\tkzMarkSegments[mark=|](H,A H,B)
+		\tkzMarkSegments[mark=||](A,E A,C A,S B,S)
+		\end{tikzpicture}}
+		\noindent Suy ra $AD$ là trục đường tròn ngoại tiếp tam giác $SBC$.\\
+		Gọi $I$ là tâm đường tròn ngoại tiếp tam giác $ABC$, vì $ I \in AD \Rightarrow IA=IB=IC=IS$. Do đó $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABC$.\\
+		Ta có $AD=\sqrt{a^2-\left(\dfrac{a\sqrt{3}}{2}\right)^2}=\dfrac{a}{2}$, suy ra $S_{\triangle ABC}=\dfrac{1}{2}AD\cdot BC=\dfrac{1}{2}\cdot \dfrac{a}{2}\cdot a\sqrt{3}=\dfrac{a^2\sqrt{3}}{4}$.\\
+		Suy ra $IA=\dfrac{AB\cdot BC\cdot AC}{4\cdot S_{\triangle ABC}}=\dfrac{a\cdot a\cdot a\sqrt{3}}{a^2\sqrt{3}}=a$.\\
+		Vậy diện tích mặt cầu là $S_{mc}=4\pi \cdot IA^2=4\pi a^2$.
+		\immini{
+		\textbf{Cách khác:}\\
+		Do $AS=AB=AC$ nên $A$ thuộc trục đường tròn ngoại tiếp tam giác $SBC$.\\
+		Do $(ABC)\perp (SBC)$ nên hạ $AH\perp BC$ thì $AH\perp (SBC)$.\\
+		Vậy $AH$ là trục đường tròn ngoại tiếp đáy $(SBC)$, nên $H$ là tâm đường tròn ngoại tiếp tam giác $SBC$.\\
+		Suy ra $H$ là trung điểm $BC$ và $\triangle SBC$ vuông tại $S$,\\
+		suy ra $BC=a\sqrt{3}$ và $AH=\dfrac{a}{2}$.\\
+		Kẻ trung trực $MI$ của đoạn $AB$ thì $I$ chính là tâm mặt cầu ngoại tiếp $SABC$ và bán kính của nó bằng $R=\dfrac{AB^2}{2AH}=a$.\\
+		Vậy diện tích mặt cầu là $S_{mc}=4\pi \cdot IA^2=4\pi a^2$.	
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1]
+		\def\gvg[size=#1](#2,#3,#4){\draw[red,very thin]($(#3)!#1!(#2)$)--($($(#3)!#1!(#2)$)+($(#3)!#1!(#4)$)-(#3)$)--($(#3)!#1!(#4)$);}
+		\coordinate (S) at (0,0);
+		\coordinate (B) at (5,0);
+		\coordinate (C) at (1,-2);
+		\coordinate (H) at ($(B)!.5!(C)$);
+		\coordinate (A) at ($(H)+(0,3)$);
+		\coordinate (M) at ($ (A)!.5!(B)$);
+		\coordinate(I) at ($ (A)!2!(H)$);
+		\draw (M)--(I)--(A)--(C)--(B)node[pos=.75,right]{$a\sqrt{3}$}--(A)node[pos=.75,right]{$a$}--(S)--(C)node[pos=.5,left]{$a\sqrt{2}$};
+		\draw[dashed] (S)--(B);
+		\foreach \p/\g in {A/90,B/0,C/-100,H/-45,I/170,M/60,S/180}\draw[fill=gray](\p)circle (1.2pt)node[shift={(\g:.25)}]{$\p$};
+		\gvg[size=5pt](B,S,C);\gvg[size=5pt](A,H,B);\gvg[size=5pt](I,M,B);
+		\tkzMarkSegments[mark=|](M,A M,B)
+		\end{tikzpicture}	
+		}}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2B2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, tam giác $SAB$ đều và nằm trong mặt phẳng vuông góc với đáy. Tính thể tích khối cầu ngoại tiếp khối chóp $S.ABCD$. 
+	\choice
+	{\True $\dfrac{7\sqrt{21}}{54}\pi a^3$}
+	{$\dfrac{7\sqrt{21}}{162}\pi a^3$}
+	{$\dfrac{7\sqrt{21}}{216}\pi a^3$}
+	{$\dfrac{49\sqrt{21}}{36}\pi a^3$}
+	\loigiai{
+		\immini{
+		Gọi $H$ là trung điểm của $AB$, suy ra $AH \perp (ABCD)$.\\
+		Gọi $G$ là trọng tâm tam giác $\triangle SAB$ và $O$ là tâm hình vuông $ABCD$.\\
+		Từ $G$ kẻ $GI \parallel HO$ suy ra $GI$ là trục đường tròn ngoại tiếp tam giác $\triangle SAB$ và từ $O$ kẻ $OI \parallel SH$ thì $OI$ là trục đường tròn ngoại tiếp hình vuông $ABCD$.\\
+		Ta có hai đường này cùng nằm trong mặt phẳng và cắt nhau tại $I$.\\
+		Suy ra $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$.\\[3pt]
+		$R=SI=\sqrt{SG^2+GI^2}=\dfrac{a\sqrt{21}}{6}$.	
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.5]
+		\def\gvg[size=#1](#2,#3,#4){\draw[red,very thin]($(#3)!#1!(#2)$)--($($(#3)!#1!(#2)$)+($(#3)!#1!(#4)$)-(#3)$)--($(#3)!#1!(#4)$);}
+		\coordinate (B) at (0,0);
+		\coordinate (A) at (1,1);
+		\coordinate (C) at (3,0);
+		\coordinate (D) at ($(A)+(C)$);
+		\coordinate (H) at ($(A)!.5!(B)$);
+		\coordinate (S) at ($(H)+(0,2.5)$);
+		\coordinate (E) at ($(S)!.5!(B)$);
+		\coordinate (G) at (intersection of S--H and A--E);
+		\coordinate (O) at ($(A)!.5!(C)$);
+		\coordinate (I) at ($(G)-(H)+(O)$);
+		\coordinate (K) at ($(C)!.5!(D)$);
+		\draw (C)--(S)--(B)--(C)--(D)--(S)--(K);
+		\draw[dashed] (K)--(H)--(S)--(A)--(C) (B)--(A)--(D) (G)--(I)--(O);
+		\foreach \p/\g in {A/180,B/-135,C/-45,D/0,G/170,H/160,I/-10,K/-10,O/-100,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\gvg[size=4pt](S,G,I);\gvg[size=4pt](S,H,O);\gvg[size=4pt](S,H,B);\gvg[size=4pt](I,O,H);
+		\end{tikzpicture}	
+		}
+		\vspace{-10pt}\noindent Suy ra thể tích khối cầu ngoại tiếp khối chóp $S.ABCD$ là $V=\dfrac{4}{3}\pi R^3=\dfrac{7\sqrt{21}}{54}\pi a^3$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có đáy là tam giác $ABC$ vuông tại $B,AB=3,BC=4$. Hai mặt phẳng $(SAB),(SAC)$ cùng vuông góc với mặt phẳng đáy, đường thẳng $SC$ hợp với mặt phẳng đáy một góc $45^\circ$. Thể tích mặt cầu ngoại tiếp hình chóp $S.ABC$ là 
+	\choice
+	{$V=\dfrac{5\pi\sqrt{2}}{3}$}
+	{$V=\dfrac{25\pi\sqrt{2}}{3}$}
+	{$V=\dfrac{125\pi\sqrt{3}}{3}$}
+	{\True $V=\dfrac{125\pi\sqrt{2}}{3}$}
+	\loigiai{
+		\immini{
+		Hai mặt phẳng $(SAB),(SAC)$ cùng vuông góc với mặt phẳng đáy nên $SA\perp (ABC)$.\\
+		Ta cũng có $\heva{&BC\perp AB\\&BC\perp SA}\Rightarrow BC\perp SB$.\\
+		Suy ra $SAC$ và $SBC$ là hai tam giác vuông tại $A$ và $B$.\\
+		Gọi $I$ là trung điểm của $SC$ thì $\heva{&IA=IC=IS\\&IB=IC=IS}\\
+		\Rightarrow IA=IB=IC=IS\Rightarrow I$ là tâm mặt cầu $(S)$ ngoại tiếp hình chóp $S.ABC$.\\
+		Vì $SA\perp (ABC)$ nên $(SC,(ABC))=\widehat{SCA}=45^\circ$.\\
+		Ta lần lượt tính được: $AC=\sqrt{AB^2+BC^2}=5;\;SA=AC=5;\;SC=AC\sqrt{2}=5\sqrt{2}$.\\
+		Suy ra bán kính mặt cầu $(S)$ là $R=\dfrac{SC}{2}=\dfrac{5\sqrt{2}}{2}$.\\
+		Vậy thể tích khối cầu $(S)$ là $V=\dfrac{4}{3}\cdot\pi\cdot \left(\dfrac{5\sqrt{2}}{2}\right)^3=\dfrac{125\pi\sqrt{2}}{3}$.	
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.2]
+		\def\gvg[size=#1](#2,#3,#4){\draw[red,very thin]($(#3)!#1!(#2)$)--($($(#3)!#1!(#2)$)+($(#3)!#1!(#4)$)-(#3)$)--($(#3)!#1!(#4)$);}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (1.5,-1);
+		\coordinate (C) at (4,0);
+		\coordinate (S) at (0,3);
+		\coordinate (I) at ($(S)!.5!(C)$);
+		\draw (I)--(B)--(S)--(A) (A)--(B)--(C)--(S);
+		\draw[dashed] (I)--(A)--(C);
+		\foreach \p/\g in {A/180,B/-90,C/0,I/45,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\gvg[size=4pt](S,A,C);
+		\end{tikzpicture}
+		}}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2G2-5]
+	Trong tất cả các hình chóp tứ giác đều nội tiếp hình cầu có bán kính bằng $9$. Tính thể tích $V$ của khối chóp có thể tích lớn nhất. 
+	\choice
+	{$576\sqrt{2}$}
+	{\True $576$}
+	{$144\sqrt{2}$}
+	{$144$}
+	\loigiai{
+		\immini{
+		Gọi $(S)$ là mặt cầu có tâm $I$ và bán kính $R=9$.\\
+		Xét hình chóp tứ giác đều $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$, cạnh $a$, $(0<a\leq 9\sqrt{2})$.\\
+		Ta có $OA=\dfrac{AC}{2}=\dfrac{a\sqrt{2}}{2}\Rightarrow OI=\sqrt{IA^2-OA^2}=\sqrt{81-\dfrac{a^2}{2}}$.\\
+		Mặt khác ta lại có $SO=SI+IO=9+\sqrt{81-\dfrac{a^2}{2}}$.\\
+		Thể tích của khối chóp $S.ABCD$ là\\ $V=\dfrac{1}{3}a^2\left(9+\sqrt{81-\dfrac{a^2}{2}}\right)=3a^2+\dfrac{1}{3}a^2\sqrt{81-\dfrac{a^2}{2}}$.\\
+		Đặt $a^2=t$, do $0<a\leq 9\sqrt{2}$ nên $0<t\leq 162$.\\
+		Xét hàm số $f(t)=3t+\dfrac{1}{3}t\left(9+\sqrt{81-\dfrac{t}{2}}\right)$, với $0<t\leq 162$. 	
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.2]
+		\def\r{2.5}\def\alpha{25}
+		\pgfmathsetmacro{\a}{\r*cos(\alpha)}
+		\pgfmathsetmacro{\b}{\a/4}
+		\coordinate (I) at (0,0);
+		\coordinate (A) at (180+\alpha:\r);
+		\coordinate (C) at (-\alpha:\r);
+		\coordinate (S) at (90:\r);
+		\coordinate (O) at ($(A)!.5!(C)$);
+		\draw (A) arc (-180:0:{\a} and \b) coordinate[pos=0.35] (B);
+		\draw[dashed] (A) arc (180:0:{\a} and \b) coordinate[pos=0.65] (D);
+		\draw (0,0) circle (\r); 
+		\draw[dashed] (S)--(O) (I)--(A)--(B)--(C)--(D)--(B) (D)--(A)--(C) (A)--(S)--(C) (B)--(S)--(D);
+		\draw ($(I) + (-\alpha:\r)$) arc(0:-180:{\a} and {\b});
+		\foreach \p/\g in {A/180,B/-120,C/0,D/45,I/0,O/-90,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\end{tikzpicture}
+		}
+		\noindent Ta có $f'(t)=3+\dfrac{324-3t}{12\sqrt{81-\dfrac{t}{2}}}$;\\
+		$f'(t)=0\Leftrightarrow 
+		\sqrt{81-\dfrac{t}{2}}=\dfrac{t}{12}-9
+		\Leftrightarrow \heva{&t\geq 108\\&81-\dfrac{t}{2}=\left(\dfrac{t}{12}-9\right)^2}\Leftrightarrow \heva{&t\geq 108\\&\hoac{&t=0\\&t=144}}\Leftrightarrow t=144$.\\
+		Ta có bảng biến thiên.	
+		\begin{center}
+			\begin{tikzpicture}[yscale=.5,xscale=1.5]
+			\begin{scope}[shift={(-.5,.5)}]
+			\draw (0,0) rectangle +(5.9,-5) (0,-1)--+(0:5.9) (0,-2)--+(0:5.9) (1,0)--+(-90:5);
+			\end{scope}
+			\path(0,0) node{$t$} ++(0:1) node[left]{$0$}++(0:2) node{$144$}++(0:2) node{$162$} % <<< dòng 1
+			(0,-1) node{$f'(t)$} ++(0:2) node{$+$} ++(1,0) node{$0$} ++(1,0) node{$-$} ++(0:1) % <<< dòng 2
+			(0,-3) node{$f(t)$} ++(1,-.9) node[left] (A) {} ++(2,1.7)node (B) {$576$} ++(2,-1.8) node (C) {}; % <<< dòng 3
+			\draw[-stealth] (A)--(B);
+			\draw[-stealth] (B)--(C);
+			\end{tikzpicture}
+		\end{center}		
+		Từ bảng biến thiên ta có $V_{max}=576$ khi $t=144$ hay $a=12$.}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thoi cạnh $a$, $\widehat{ABC}=60^\circ$. Mặt bên $SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc với mặt phẳng đáy. Tính diện tích $S$ của mặt cầu ngoại tiếp hình chóp $S.ABCD$. 
+	\choice
+	{$S=\dfrac{13\pi a^2}{12}$}
+	{\True $S=\dfrac{5\pi a^2}{3}$}
+	{$S=\dfrac{13\pi a^2}{36}$}
+	{$S=\dfrac{5\pi a^2}{9}$}
+	\loigiai{
+		\immini{
+		Gọi $H$ là trung điểm của cạnh $AB$.\\
+		Vì $\triangle SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc với mặt phẳng đáy nên $SH\perp (ABCD)$.\\
+		Gọi $O, G$ lần lượt là tâm đường tròn ngoại tiếp các tam giác $ABC$ và $SAB$.\\
+		Ta có $\heva{&CH\perp AB\\&CH\perp SH}\Rightarrow CH\perp (SAB)$.\\
+		Từ $O$ kẻ đường thẳng $\Delta _1 \perp (ABC)\Rightarrow \Delta _1\parallel SH$.\\
+		Trong mặt phẳng $(\Delta _1;SH)$ từ G kẻ đường thẳng $\Delta _2\parallel CH$ và $\Delta _2 \cap \Delta _1 =I$.\\
+		Do $\Delta _2 \parallel CH\Rightarrow \Delta _2\perp (SAB)$.
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.4]
+		\coordinate (B) at (0,0);
+		\coordinate (A) at (1,1);
+		\coordinate (C) at (3,0);
+		\coordinate (D) at ($(A)+(C)$);
+		\coordinate (H) at ($(A)!.5!(B)$);
+		\coordinate (S) at ($(H)+(0,2.5)$);
+		\coordinate (G) at ($(H)!1/3!(S)$);
+		\coordinate (E) at ($(S)!.5!(B)$);
+		\coordinate (G) at (intersection of S--H and A--E);
+		\coordinate (O) at ($(H)!.4!(C)$);
+		\coordinate (I) at ($(G)-(H)+(O)$);
+		\draw (C)--(S)--(B)--(C)--(D)--(S);
+		\draw[dashed] (H)--(S)--(A)--(C)--(H) (B)--(A)--(D) (G)--(I)--(O) (S)--(I);
+		\foreach \p/\g in {A/180,B/-135,C/-45,D/0,G/170,H/160,I/10,O/-100,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\end{tikzpicture}	
+		}
+		\noindent Vì $I \in \Delta _1 \Rightarrow IA=IB=IC\;(1)$. Vì $I \in \Delta _2 \Rightarrow IA=IB=IS\;(2)$. Từ $(1)$, $(2)$ có $I$ là tâm của mặt cầu ngoại tiếp hình chóp $S.ABC$.\\
+		Các tam giác $ABC$ và $SAB$ đều cạnh $a$ nên $SG=\dfrac{a\sqrt{3}}{3}$ và $GI=OH=\dfrac{a\sqrt{3}}{6}$.\\
+		Bán kính của mặt cầu là $R=SI=\sqrt{SG^2+GI^2}=\sqrt{\dfrac{3a^2}{9}+\dfrac{3a^2}{36}}=\dfrac{a\sqrt{15}}{6}$.\\
+		Do đó diện tích $S$ của mặt cầu ngoại tiếp hình chóp $S.ABC$ là $S=4\pi R^2=\dfrac{5\pi a^2}{3}$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $AB=\sqrt{3}a,AD=a,\triangle SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc với đáy. Tính theo $a$ diện tích $S$ của mặt cầu ngoại tiếp hình chóp $S.ABCD$. 
+	\choice
+	{\True $S=5\pi a^2$}
+	{$S=10\pi a^2$}
+	{$S=4\pi a^2$}
+	{$S=2\pi a^2$}
+	\loigiai{
+		\immini{
+		Gọi $H$ là trung điểm $AB\Rightarrow SH\perp AB$ (vì $\triangle SAB$ đều).\\
+		Mặt khác $(SAB)\perp (ABCD)\Rightarrow SH \perp (ABCD)$.\\
+		Gọi $O$ là giao điểm của $AC,BD \Rightarrow O$ là tâm đường tròn ngoại tiếp hình chữ nhật $ABCD$.\\
+		Gọi $G$ là trọng tâm $\triangle SBC\Rightarrow G$ là tâm đường tròn ngoại tiếp tam giác đều $SBC$.\\
+		Qua $O$ dựng đường thẳng $d\parallel SH\Rightarrow d$ là trục của đường tròn $(O)$, qua $ G $ dựng đường thẳng $\Delta \parallel OH\Rightarrow \Delta$ là trục của đường tròn $(H)$.\\
+		$d\cap \Delta =I\Rightarrow IA=IB=IC=ID=IS\Rightarrow I$ là tâm của mặt cầu ngoại tiếp hình chóp $S.ABCD$.\\
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.5]
+		\coordinate (B) at (0,0);
+		\coordinate (A) at (1,1);
+		\coordinate (C) at (2.5,0);
+		\coordinate (D) at ($(A)+(C)$);
+		\coordinate (H) at ($(A)!.5!(B)$);
+		\coordinate (S) at ($(H)+(0,2.5)$);
+		\coordinate (G) at ($(H)!1/3!(S)$);
+		\coordinate (O) at ($(A)!.5!(C)$);
+		\coordinate (I) at ($(G)-(H)+(O)$);
+		\draw (S)--(B)--(C)--(D)--(S)--(C);
+		\draw[dashed] (O)--(H)--(S)--(A)--(B) (B)--(D)--(A)--(C)--(H) (G)--(I)--(O);
+		\foreach \p/\g in {A/180,B/-135,C/-45,D/0,H/170,G/-160,I/0,O/-100,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\end{tikzpicture}	
+		}
+		\noindent Xét tam giác đều $SAB$ có cạnh là $a\sqrt{3}\Rightarrow SH=\dfrac{3a}{2}\Rightarrow SG=a$.\\
+		Mặt khác $IG=OH=\dfrac{AD}{2}=\dfrac{a}{2}$.\\
+		Xét tam giác vuông $SIG$: $IS^2=SG^2+IG^2=a^2+\dfrac{a^2}{4}=\dfrac{5a^2}{4}\Rightarrow IS=\dfrac{a\sqrt{5}}{2}$.\\
+		Vậy diện tích mặt cầu ngoại tiếp hình chóp $S.ABCD$ là $S=4\pi R^2=5\pi a^2$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh bằng $1$, mặt bên $SAB$ là tam giác cân tại $S$ và nằm trong mặt phẳng vuông góc với mặt phẳng đáy. Tính thể tích $V$ của khối cầu ngoại tiếp hình chóp đã cho biết $\widehat{ASB}=120^\circ$. 
+	\choice
+	{\True $V=\dfrac{5\sqrt{15}\pi}{54}$}
+	{$V=\dfrac{4\sqrt{3}\pi}{27}$}
+	{$V=\dfrac{5\pi}{3}$}
+	{$V=\dfrac{13\sqrt{78}\pi}{27}$}
+	\loigiai{
+		\immini{
+		Gọi $H$ là trung điểm $AB$, do $(SAB)\perp (ABC)$, tam giác $ABC$ đều và tam giác $SAB$ cân tại $S$ nên $SH\perp (ABC)$ và $CH\perp (SAB)$.\\
+		Gọi $I$ và $J$ là tâm đường tròn ngoại tiếp các tam giác $ABC$ và tam giác $SAB$.\\
+		Dựng đường thẳng $Ix\parallel SH$ và $Jy\parallel CH$ thì $Ix\perp (ABC)$ và $Jy\perp (SAB)$ nên $Ix$ là trục của đường tròn ngoại tiếp tam giác $ABC$ và $Jy$ là trục đường tròn ngoại tiếp tam giác $SAB$. Khi đó $Ix\cap Jy=O$ thì $O$ là tâm mặt cầu ngoại tiếp hình chóp.\\
+		Ta có 
+		\begin{eqnarray*}
+			OJ&=&IH=\dfrac{\sqrt{3}}{6}\cdot R_{(SAB)}=SJ\\
+			&=&\dfrac{SA\cdot SB\cdot AB}{4\cdot\dfrac{1}{2}\cdot SA\cdot SB\cdot \sin 120^\circ}=\dfrac{AB}{\sqrt{3}}=\dfrac{\sqrt{3}}{3}. 
+		\end{eqnarray*}	
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1]
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (2,-2);
+		\coordinate (C) at (5,0);
+		\coordinate (H) at ($(A)!.5!(B)$);
+		\coordinate (S) at ($(H)+(0,5)$);
+		\coordinate (M) at ($ (B)!.5!(C)$);
+		\coordinate (I) at (intersection of A--M and C--H);
+		\coordinate (J) at ($(H)-(0,2)$);
+		\coordinate (O) at ($(I)-(H)+(J)$);
+		\coordinate (P) at (intersection of O--S and B--C);
+		\coordinate (Q) at (intersection of O--I and B--C);
+		\draw (Q)--(O)--(J)--(S)--(B) (O)--(P)--(B)--(A)--(S)--(C)--(P);
+		\draw[dashed] (M)--(A)--(C)--(H) (S)--(P) (I)--(Q);
+		\foreach \p/\g in {A/180,B/-100,C/0,H/-160,I/90,J/-100,M/-30,O/-60,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\end{tikzpicture}
+		}
+		\noindent Vậy $R=SO=\sqrt{\dfrac{1}{3}+\dfrac{1}{12}}=\dfrac{\sqrt{15}}{6}$ nên $V=\dfrac{4}{3}\pi R^3=\dfrac{4}{3}\pi\left(\dfrac{\sqrt{15}}{6}\right)^3=\dfrac{5\sqrt{15}\pi}{54}$.
+	}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2K2-2]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$, $BC=2a$. Mặt bên $(SAB)$ vuông góc với đáy, $\widehat{ASB}=60^\circ$, $SB=a$. Gọi $(S)$ là mặt cầu tâm $B$ và tiếp xúc với $(SAC)$. Tính bán kính $r$ của mặt cầu $(S)$. 
+	\choice
+	{$r=2a$}
+	{\True $r=2a\sqrt{\dfrac{3}{19}}$}
+	{$r=2a\sqrt{3}$}
+	{$r=a\sqrt{\dfrac{3}{19}}$}
+	\loigiai{
+		\immini{
+		Ta có $(SAB)\perp (ABC)$, $(SAB)\cap (ABC)=AB$, $BC\perp AB$ \\ 
+		$\Rightarrow BC\perp (SAB)$.\\
+		Vẽ $BM\perp SA$ tại $M \Rightarrow SA\perp (BMC)\Rightarrow (SAC)\perp (BMC)$, \\vẽ $BH\perp MC$ tại $H \Rightarrow BH\perp (SAC)\Rightarrow r=BH$.\\
+		Ta có $BM=\sin 60^\circ\cdot SB\Rightarrow BM=\dfrac{a\sqrt{3}}{2}$, \\
+		$BH=\dfrac{BC\cdot BM}{\sqrt{BC^2+BM^2}}=\dfrac{2a\cdot\dfrac{a\sqrt{3}}{2}}{\sqrt{4a^2+\dfrac{3a^2}{4}}}=2a\sqrt{\dfrac{3}{19}}$.\\
+		Vậy bán kính của mặt cầu $(S)$ bằng $2a\sqrt{\dfrac{3}{19}}$.	
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.2]
+		\def\gvg[size=#1](#2,#3,#4){\draw[red,very thin]($(#3)!#1!(#2)$)--($($(#3)!#1!(#2)$)+($(#3)!#1!(#4)$)-(#3)$)--($(#3)!#1!(#4)$);}
+		\coordinate (B) at (0,0);
+		\coordinate (A) at (1.5,-1.5);
+		\coordinate (S) at (4,0);
+		\coordinate (C) at (0,3);
+		\coordinate (M) at ($(A)!.3!(S)$);
+		\coordinate (H) at ($(C)!.6!(M)$);
+		\draw (M)--(C)--(A)--(B)--(C)node[left,pos=.5]{$2a$}--(S)--(A);
+		\draw[dashed] (B)--(S)node[above,pos=.5]{$a$} (H)--(B)--(M);
+		\foreach \p/\g in {A/-90,B/180,C/120,H/45,M/-45,S/0}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\gvg[size=4pt](C,B,S);
+		\end{tikzpicture}	
+		}}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2K2-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$. Mặt bên $SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc với mặt đáy. Bán kính của mặt cầu ngoại tiếp hình chóp $S.ABCD$ bằng
+	\choice
+	{\True $\dfrac{a\sqrt{21}}{6}$}
+	{$\dfrac{a\sqrt{11}}{6}$}
+	{$\dfrac{a\sqrt{3}}{6}$}
+	{$\dfrac{a\sqrt{7}}{3}$}
+	\loigiai{
+		\immini{
+		\textbf{Cách $1$:} Đây là mặt cầu ngoại tiếp hình chóp có mặt bên vuông góc với đáy nên:
+		\[R_{mc}=\sqrt{R_1^2+R_2^2-\dfrac{AB^2}{4}}=\sqrt{\left(\dfrac{a\sqrt{2}}{2}\right)^2+\left(\dfrac{a}{\sqrt{3}}\right)^2-\dfrac{a^2}{4}}=\dfrac{a\sqrt{21}}{6}.\]
+		(Với $R_1$ là bán kính đường tròn ngoại tiếp hình vuông $ABCD$ cạnh $a$, $R_2$ là bán kính đường tròn ngoại tiếp tam giác $SAB$ đều cạnh $a$ và $AB=(ABCD)\cap (SAB)$.
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.5]
+		\coordinate (B) at (0,0);
+		\coordinate (A) at (1,1);
+		\coordinate (C) at (2.5,0);
+		\coordinate (D) at ($(A)+(C)$);
+		\coordinate (H) at ($(A)!.5!(B)$);
+		\coordinate (S) at ($(H)+(0,2.5)$);
+		\coordinate (E) at ($(S)!.5!(B)$);
+		\coordinate (G) at (intersection of S--H and A--E);
+		\coordinate (O) at ($(A)!.5!(C)$);
+		\coordinate (I) at ($(G)-(H)+(O)$);
+		\coordinate (F) at ($(S)!.5!(B)$);
+		\draw (S)--(B)--(C)--(D)--(S)--(C) (I)--($(I)!-2!(O)$) node[pos=.8,right]{$x$};
+		\draw[dashed] (O)--(H)--(S)--(A)--(B)--(I)--(G) (B)--(D)--(A)--(C) (A)--(F) (I)--($(I)!1.4!(O)$);
+		\foreach \p/\g in {A/180,B/-135,C/-45,D/0,H/170,F/160,G/-135,I/0,O/-125,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\end{tikzpicture}
+		}
+		\noindent\textbf{Cách $2$:} 
+		Gọi $H$ là trung điểm $AB$, mặt bên $SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc với mặt đáy nên $SH\perp (ABCD)$.\\
+		Gọi $O=AC\cap BD$, dựng $Ox \perp (ABCD)\Rightarrow Ox\parallel SH$.\\
+		Gọi $G$ là trọng tâm tam giác $SAB$. Dựng $Gy\perp (SAB)\Rightarrow Gy\parallel HO$, $Gy\cap Ox=I$.\\
+		Ta có $\heva{&I \in Ox\Rightarrow IA=IB=IC\\&I \in Gy\Rightarrow IS=IA=IB}$ suy ra $I$ là tâm mặt cầu ngoại tiếp hình chóp $S.ABCD$.\\
+		Bán kính mặt cầu là $SI=\sqrt{SG^2+GI^2}=\sqrt{SG^2+HO^2}=\sqrt{\left(\dfrac{2}{3}\cdot\dfrac{a\sqrt{3}}{2}\right)^2+\left(\dfrac{a}{2}\right)^2}=\dfrac{a\sqrt{21}}{6}$.	
+		}
+\end{ex}
+\begin{ex}%[Phạm Thế Sinh]%[2H2G2-6]
+	Cho khối chóp $S.ABCD$ có đáy là hình vuông, tam giác $SAB$ đều và nằm trong mặt phẳng vuông góc với đáy. Mặt cầu ngoại tiếp khối chóp $S.ABCD$ có diện tích $84\pi$ (cm$^2$). Khoảng cách giữa hai đường thẳng $SA$ và $BD$ bằng 
+	\choice
+	{$\dfrac{2\sqrt{21}}{7}$ (cm)}
+	{$\dfrac{3\sqrt{21}}{7}$ (cm)}
+	{$\dfrac{\sqrt{21}}{7}$ (cm)}
+	{\True $\dfrac{6\sqrt{21}}{7}$ (cm)}
+	\loigiai{
+		\immini{
+		Gọi $M$ là trung điểm $ AB $ và $ G $ là tâm đường tròn ngoại tiếp tam giác đều $SAB$, $O$ là tâm của hình vuông $ABCD$.\\
+		Ta có $OM \perp (SAB)$.\\
+		Dựng trục của hình vuông $ABCD$ và trục tam giác $SAB$, khi đó chúng đồng phẳng và cắt nhau tại $I$ tức là $OI$, $GI$ là các trục hình vuông $ABCD$ và trục tam giác $SAB$.\\
+		Bán kính mặt cầu cần tìm là $R=SI$. Ta có $4\pi R^2=84\pi $ (cm$^2$) $\Rightarrow R=\sqrt{21}$ (cm).\\
+		Đặt $AB=x$ (cm).
+		}{
+		\begin{tikzpicture}[line join=round,line width=.6pt,font=\small,scale=1.4]
+		\coordinate (B) at (0,0);
+		\coordinate (A) at (1,1);
+		\coordinate (C) at (2.3,0);
+		\coordinate (D) at ($(A)+(C)$);
+		\coordinate (M) at ($(A)!.5!(B)$);
+		\coordinate (S) at ($(M)+(0,2.5)$);
+		\coordinate (F) at ($(S)!.5!(B)$);
+		\coordinate (G) at (intersection of S--M and A--F);
+		\coordinate (O) at ($(A)!.5!(C)$);
+		\coordinate (I) at ($(G)-(M)+(O)$);
+		\coordinate (E) at ($(C)!2!(B)$);
+		\coordinate (M') at ($(O)-(A)+(M)$);
+		\coordinate (M'') at (intersection of M--M' and O--B);
+		\coordinate (K) at ($(M'')!2!(M)$);
+		\coordinate (J) at (intersection of S--B and A--E);
+		\draw (S)--(B)--(C)--(D)--(S)--(C) (J)--(E)--(B);
+		\draw[dashed] (I)--(O)--(M)--(S)--(A)--(B)--(I)--(G) (B)--(D)--(A)--(C) (A)--(J) (M'')--(K);
+		\foreach \p/\g in {A/150,B/-90,C/-45,D/10,E/-135,G/-160,I/20,O/-100,K/160,M/180,S/90}\draw[fill=gray](\p)circle (1pt)node[shift={(\g:.25)}]{$\p$};
+		\draw[fill=gray](M'')circle (1pt);
+		\end{tikzpicture}	
+		}
+		\noindent Trong tam giác vuông $SGI$, ta có $SI^2=SG^2+GI^2$, tính ra $x=6$.\\
+		Dựng hình bình hành $ABDE$. Khoảng cách $d$ giữa $BD$ và $SA$ là $d=d(BD,(SAE))$.\\
+		$d=d(B,(SAE))=2d(M,(SAE))$.\\
+		Kẻ $MK \perp AE$ ta có $(SAE) \perp (SMK)$.\\		$d(M,(SAE))=d(M,(SK))=\dfrac{SM\cdot MK}{\sqrt{SM^2+MK^2}}\;(1)$.\\
+		Ta có $SM=\dfrac{x\sqrt{3}}{2}=3\sqrt{3}$, $MK=\dfrac{x\sqrt{2}}{4}=\dfrac{3\sqrt{2}}{2}$.\\
+		Thay các giá trị vào $(1)$ tính được $d(M,(SAE))=\dfrac{3\sqrt{21}}{7}$.\\
+		Vậy khoảng cách giữa $SA$ và $BD$ là $\dfrac{6\sqrt{21}}{7}$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+% \DAPAN
+\inputansbox{10}{ans/ans2H2-2}
+

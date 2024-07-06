@@ -1,0 +1,665 @@
+\setcounter{dang}{0}
+\section{Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng}
+% \subsection{Tóm tắt lý thuyết}
+\subsection{Các dạng toán thường gặp}
+
+\begin{dang}{Phép chiếu vuông góc}
+	\begin{itemize}
+		\item Áp dụng các tính chất đã biết của phép chiếu song song.
+		\item Áp dụng định lí ba đường vuông góc.
+	\end{itemize}
+\end{dang}
+
+\subsubsection{Ví dụ mẫu}
+\begin{vd}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7BN-2]
+	Cho hình chóp $S.ABCD$ có $SA\perp (ABC)$, tam giác $ABC$ vuông tại $B$.
+	\begin{enumerate}[a)]
+		\item Xác định hình chiếu của điểm $S$ trên mặt phẳng $(ABC)$.
+		\item Xác định hình chiếu của tam giác $SBC$ trên mặt phẳng $(ABC)$.
+		\item Xác định hình chiếu của tam giác $SBC$ trên mặt phẳng $(SAB)$. 
+		\item Xác định hình chiếu của điểm $A$ trên mặt phẳng $(SBC)$
+	\end{enumerate}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(2,-1) coordinate (B) 
+				(4,0) coordinate (C) 
+				(0,3) coordinate (S)
+				($(S)!0.6!(B)$) coordinate (H); 
+				\draw (S)--(A)--(B)--(C)--(S)--(B) (A)--(H); 
+				\draw[dashed] (A)--(C); 
+				\foreach \p/\g in {S/135,A/-135,B/-135,C/-45,H/45} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path[dashed] pic[draw,angle radius=3mm]{right angle=A--B--C};
+				\path pic[draw,angle radius=3mm]{right angle=A--H--B}; 
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}[a)]
+			\item Vì $SA\perp (ABC)$ nên hình chiếu của điểm $S$ trên mặt phẳng $(ABC)$ là điểm $A$.
+			\item Vì hình chiếu của các điểm $S$, $B$, $C$ trên mặt phẳng $(ABC)$ lần lượt là $A$, $B$ và $C$ nên hình chiếu của tam giác $SBC$ trên mặt phẳng $(ABC)$ là tam giác $ABC$.
+			\item Ta có $\heva{&CB\perp AB\text{ (gt)}\\&CB\perp SA \,(SA\perp (ABC))}\Rightarrow CB\perp (SAB)$.\\
+			Do đó hình chiếu của tam giác $SBC$ trên mặt phẳng $(SAB)$ là đoạn thẳng $SB$A.
+			\item Trong mặt phẳng $(SAB)$, kẻ $AH\perp SB$, ($H\in SB$).\\
+			Từ câu c ta có $CB\perp (SAB)$ mà $AH\subset (SAB)\Rightarrow CB\perp AH$.\\
+			Suy ra $AH\perp (SBC)$. Do đó hình chiếu của điểm $A$ trên mặt phẳng $(SBC)$ là điểm $H$.
+		\end{enumerate}
+	}
+\end{vd}
+
+\begin{vd}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7KN-2]
+	Cho hình chóp $S.ABCD$ có đáy là hình vuông $ABCD$, $SA\perp (ABCD)$. 
+	\begin{enumerate}[a)]
+		\item Hình chiếu của $SC$ trên mặt phẳng $(ABCD)$.
+		\item Hình chiếu của tam giác $SCD$ trên mặt phẳng $(ABCD)$.
+		\item Hình chiếu của điểm $C$ trên mặt phẳng $(SAD)$.
+		\item Hình chiếu của $SB$ trên mặt phẳng $(SAC)$.
+	\end{enumerate}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-1,-2) coordinate (B) 
+				($(A)+(4,0)$) coordinate (D) 
+				($(B)+(4,0)$) coordinate (C) 
+				($(A)+(0,3)$) coordinate (S)
+				(intersection of A--C and B--D) coordinate (O); 
+				\draw[dashed] (S)--(A)--(C) (B)--(A)--(D)--cycle (S)--(O); 
+				\draw (S)--(B)--(C)--(D)--(S)--(C); 
+				\foreach \p/\g in {S/135,A/135,B/-135,C/-45,D/45,O/-90} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path 
+				(A)--(B) node[pos=0.5,sloped,scale=0.7]{$/$}
+				(B)--(C) node[pos=0.51,sloped,scale=0.7]{$/$};
+				\path[dashed] pic[draw,angle radius=3mm]{right angle=A--B--C}; 
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}[a)]
+			\item Do $SA\perp (ABCD)$ nên hình chiếu của $SC$ trên mặt phẳng $(ABCD)$ là $AC$.
+			\item Ta thấy $A$, $C$, $D$ lần lượt là hình chiếu của các điểm $S$, $C$ và $D$ nên hình chiếu của tam giác $SCD$ trên mặt phẳng $(ABCD)$ là tam giác $ACD$.
+			\item Ta có $\heva{&CD\perp AD\text{ (do $ABCD$ là hình vuông)}\\&CD\perp SA\text{ (do $SA\perp (ABCD)$)}}\Rightarrow CD\perp (SAD)$.\\
+			Do đó hình chiếu của điểm $C$ trên mặt phẳng $(SAD)$ là điểm $D$.
+			\item Gọi $O=AC\cap BD$. Khi đó $BO\perp AC$.\\
+			Mặt khác $SA\perp (ABCD)$ mà $BO\subset (ABCD)\Rightarrow BO\perp SA$.\\
+			Do đó $BO\perp (SAC)$. Từ đó suy ra hình chiếu của $SB$ trên mặt phẳng $(SAC)$ là $SO$.
+		\end{enumerate}
+	}
+\end{vd}
+
+\begin{vd}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7KN-2]
+	Cho hình chóp tứ giác đều $S.ABCD$. Gọi $O$ là giao điểm của $AC$ và $BD$.
+	Xác định hình chiếu của điểm $O$ trên mặt phẳng $(SCD)$.
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-2.5,-2) coordinate (B) 
+				($(A)+(5,0)$) coordinate (D) 
+				($(B)+(5,0)$) coordinate (C) 
+				($(A)!0.5!(C)$) coordinate (O) 
+				($(O)+(0,4)$) coordinate (S)
+				($(C)!0.5!(D)$) coordinate (M)
+				($(S)!0.7!(M)$) coordinate (H); 
+				\draw[dashed] (O)--(S)--(A)--(B) (C)--(A)--(D)--(B) (M)--(O)--(H); 
+				\draw (S)--(B)--(C)--(D)--(S)--(C) (S)--(M); 
+				\foreach \p/\g in {S/90,A/135,B/-135,C/-45,D/45,O/-90,M/-45,H/45} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path 
+				(A)--(B) node[pos=0.5,sloped,scale=0.7]{$/$}
+				(B)--(C) node[pos=0.5,sloped,scale=0.7]{$/$}
+				(C)--(M) node[pos=0.5,sloped,scale=0.7]{$//$}
+				(D)--(M) node[pos=0.5,sloped,scale=0.7]{$//$};
+				\path[dashed] 
+				pic[draw,angle radius=3mm]{right angle=A--B--C}
+				pic[draw,angle radius=3mm]{right angle=S--H--O}
+				pic[draw,angle radius=3mm]{right angle=O--M--C}; 
+			\end{tikzpicture}
+		\end{center} 
+		\begin{itemize}
+			\item Do $S.ABCD$ là hình chóp tứ giác đều nên có $SO\perp (ABCD)$. 
+			\item Gọi $M$ là trung điểm của $CD$. Kẻ $OH\perp SM$ tại $H$.
+			\item Khi đó $OH\perp SM.\qquad (1)$
+			\item $\heva{&CD\perp OM\\&CD\perp SO}\Rightarrow CD\perp (SOM)$ mà $OH\subset (SOM)\Rightarrow OH\perp CD.\qquad (2)$
+			\item Từ $(1)$ và $(2)$ suy ra $OH\perp (SCD)$. 
+			\item Vậy hình chiếu của điểm $O$ trên mặt phẳng $(SCD)$ là điểm $H$.
+		\end{itemize}	
+	}
+\end{vd}
+
+\subsubsection{Bài tập rèn luyện}
+
+\centerline{\fcolorbox{red}{yellow!50}{\bf {BÀI TẬP TỰ LUẬN }}}
+
+\begin{bt}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7BN-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật và $SA\perp (ABCD)$. 
+	\begin{enumerate}[a)]
+		\item Chứng minh $BC\perp SB$.
+		\item Xác định hình chiếu của $A$ trên mặt phẳng $(SCD)$.
+	\end{enumerate} 
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-1,-2) coordinate (B) 
+				($(A)+(4,0)$) coordinate (D) 
+				($(B)+(4,0)$) coordinate (C) 
+				($(A)+(0,3)$) coordinate (S)
+				($(S)!0.6!(D)$) coordinate (H); 
+				\draw[dashed] (S)--(A)--(B) (D)--(A)--(H); 
+				\draw (S)--(B)--(C)--(D)--(S)--(C); 
+				\foreach \p/\g in {S/135,A/135,B/-135,C/-45,D/45,H/45} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path[dashed] 
+				pic[draw,angle radius=3mm]{right angle=A--B--C}
+				pic[draw,angle radius=3mm]{right angle=A--H--D}; 
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}[a)]
+			\item Ta thấy $BC\perp AB$ do $ABCD$ là hình chữ nhật.\\
+			Mà $AB$ là hình chiếu của $SB$ trên mặt phẳng $(ABCD)$ suy ra $BC\perp SB$ (đpcm).
+			\item Kẻ $AH\perp SD$ tại $H$. $\qquad (1)$\\
+			Dễ thấy $\heva{&CD\perp AD\\&CD\perp SA}\Rightarrow CD\perp (SAD)$, mà $AH\subset (SAD)\Rightarrow CD\perp AH$. $\qquad (2)$\\
+			Từ $(1)$ và $(2)$ suy ra $AH\perp (SCD)$. Hay $H$ là hình chiếu của điểm $A$ trên mặt phẳng $(SCD)$.
+		\end{enumerate}
+	}
+\end{bt}
+
+\begin{bt}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7BN-2]
+	Cho hình chóp $S.ABCD$, có đáy $ABCD$ là hình thoi tâm $O$ và $SA=SC$, $SB=SD$. 
+	\begin{enumerate}[a)]
+		\item Xác định hình chiếu của $S$ trên mặt phẳng $(ABCD)$.
+		\item Gọi $M$, $N$ lần lượt là trung điểm của $AB$ và $BC$. Chứng minh $MN\perp SD$.
+	\end{enumerate}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-2.5,-2) coordinate (B) 
+				($(A)+(5,0)$) coordinate (D) 
+				($(B)+(5,0)$) coordinate (C) 
+				($(A)!0.5!(C)$) coordinate (O) 
+				($(O)+(0,4)$) coordinate (S)
+				($(A)!0.5!(B)$) coordinate (M)
+				($(B)!0.5!(C)$) coordinate (N); 
+				\draw[dashed] (O)--(S)--(A)--(B) (C)--(A)--(D)--(B) (M)--(N); 
+				\draw (S)--(B)--(C)--(D)--(S)--(C); 
+				\foreach \p/\g in {S/90,A/135,B/-135,C/-45,D/45,O/-90,M/90,N/-90} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path 
+				(A)--(M) node[pos=0.5,sloped,scale=0.7]{$/$}
+				(M)--(B) node[pos=0.5,sloped,scale=0.7]{$/$}
+				(B)--(N) node[pos=0.5,rotate=30,scale=0.7]{$/$} node[pos=0.51,rotate=30,scale=0.7]{$/$}
+				(C)--(N) node[pos=0.5,rotate=30,scale=0.7]{$/$} node[pos=0.52,rotate=30,scale=0.7]{$/$}
+				;
+				\path[dashed] pic[draw,angle radius=3mm]{right angle=A--O--B}; 
+			\end{tikzpicture} 
+		\end{center}
+		\begin{enumerate}[a)]
+			\item Tam giác $SAC$ cân tại $S$ nên $SO\perp AC$.\\
+			Tam giác $SBD$ cân tại $S$ nên $SO\perp BD$.\\
+			suy ra $SO\perp (ABCD)$. Do đó hình chiếu của điểm $S$ trên mặt phẳng $(ABCD)$ là điểm $O$.
+			\item Vì $SO\perp (ABCD)$ nên hình chiếu của $SD$ trên mặt phẳng $(ABCD)$ là $OD$.\\
+			Dễ thấy $AC\perp OD$ mà $MN\parallel AC\Rightarrow MN\perp OD$.\\
+			Theo định lí ba đường vuông góc suy ra $MN\perp SD$.
+		\end{enumerate}	
+	}
+\end{bt}
+
+\begin{bt}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7KN-2]
+	Cho tứ diện $ABCD$ có $AB\perp CD$ và $AC\perp BD$.
+	\begin{enumerate}[a)]
+		\item Xác định hình chiếu của điểm $A$ trên mặt phẳng $(BCD)$.
+		\item Chứng minh $BC\perp AD$.
+	\end{enumerate}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (B) 
+				(1.5,-2) coordinate (C) 
+				(6,0) coordinate (D)
+				(C)--(D) coordinate[pos=0.4] (M) 
+				($(B)!0.7!(M)$) coordinate (H)
+				(H)--+(0,4) coordinate (A); 
+				\draw[dashed] (B)--(D)--(H)--(A) (C)--(H)--(B); 
+				\draw (A)--(B)--(C)--(D)--(A)--(C); 
+				\foreach \p/\g in {A/90,B/135,C/-90,D/45,H/-90} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path pic[draw,angle radius=3mm]{right angle=A--H--M}; 
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}[a)]
+			\item Hạ $AH\perp (BCD)$ tại $H$.\\
+			Khi đó $\heva{&CD\perp AB\\&CD\perp AH}\Rightarrow CD\perp BH$.\\
+			Tương tự $\heva{&BD\perp AC\\&BD\perp AH}\Rightarrow BD\perp CH$.\\
+			Do đó hình chiếu của điểm $A$ trên mặt phẳng $(BCD)$ là trực tâm $H$ của tam giác $BCD$.
+			\item Vì $H$ là trực tâm của tam giác $BCD$ nên $BC\perp HD$. Mà $HD$ là hình chiếu của $AD$ trên mặt phẳng $(BCD)$ suy ra $BC\perp AD$ (đpcm).
+		\end{enumerate}
+	}
+\end{bt}
+
+\begin{bt}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7KN-2]
+	Cho tứ diện $ABCD$ có $AB\perp (BCD)$, $BC\perp CD$. Gọi $M$, $N$ lần lượt là hình chiếu vuông góc của $B$ trên $AC$ và $AD$. Chứng minh rằng:
+	\begin{enumerate}[a)]
+		\item $CD\perp BM$.
+		\item $BM\perp MN$.
+	\end{enumerate}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (B) 
+				(2,-1) coordinate (C) 
+				(4,0) coordinate (D) 
+				(B)--+(0,3) coordinate (A)
+				($(A)!0.6!(C)$) coordinate (M)
+				($(A)!0.4!(D)$) coordinate (N); 
+				\draw (A)--(B)--(C)--(D)--(A)--(C) (B)--(M)--(N); 
+				\draw[dashed] (D)--(B)--(N); 
+				\foreach \p/\g in {A/135,B/-135,C/-135,D/-45,M/0,N/45} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path[dashed] 
+				pic[draw,angle radius=3mm]{right angle=B--C--D}
+				pic[draw,angle radius=3mm]{right angle=A--N--B};
+				\path pic[draw,angle radius=3mm]{right angle=B--M--C}; 
+			\end{tikzpicture}
+		\end{center}	
+		\begin{enumerate}[a)]
+			\item Ta có $\heva{&CD\perp AB\\&CD\perp BC}\Rightarrow CD\perp (ABC)$. Mà $BM\subset (ABC)$ suy ra $CD \perp BM$.
+			\item Ta có $\heva{&BM\perp AC\\&BM\perp CD}\Rightarrow BM\perp (ACD)\Rightarrow BM\perp MN$.
+		\end{enumerate}	
+	}
+\end{bt}
+
+\begin{bt}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7GN-2]
+	Cho hình chóp $S.ABCD$, có đáy $ABCD$ là hình thang vuông tại $A$ và $D$; Có $SA\perp (ABCD)$ và $SA=AB=BC=a$, $AD=2a$.
+	\begin{enumerate}[a)]
+		\item Chứng minh tam giác $SBC$ vuông và tính diện tích của nó.
+		\item Chứng minh tam giác $SCD$ vuông và tính diện tích của nó.
+	\end{enumerate}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-1,-1.5) coordinate (B) 
+				(1,-1.5) coordinate (C)
+				(4,0) coordinate (D) 
+				(A)--+(0,3) coordinate (S)
+				($(A)!0.5!(D)$) coordinate (E);
+				\draw[dashed] (S)--(A)--(B) (E)--(C)--(A)--(D); 
+				\draw (S)--(B)--(C)--(S)--(D)--(C); 
+				\foreach \p/\g in {S/135,A/180,B/-135,C/-45,D/0,E/45} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path[dashed] 
+				pic[draw,angle radius=3mm]{right angle=B--A--D}
+				pic[draw,angle radius=3mm]{right angle=A--B--C};
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}[a)]
+			\item Chứng minh tam giác $SBC$ vuông và tính diện tích của nó.\\
+			\begin{itemize}
+				\item Do $BC\perp AB$ (giả thiết) mà $AB$ là hình chiếu của $SB$ trên mặt phẳng $(ABCD)$ nên $BC\perp SB$. Do đó tam giác $SBC$ vuông tại $B$.
+				\item Vì $\triangle SAB$ vuông cân tại $A$ suy ra $SB=a\sqrt{2}$.\\
+				Khi đó $S_{\triangle SBC}=\dfrac{1}{2}\cdot SB\cdot BC=\dfrac{1}{2}\cdot a\sqrt{2} \cdot a=\dfrac{a^2\sqrt{2}}{2}$.
+			\end{itemize}
+			\item Chứng minh tam giác $SCD$ vuông và tính diện tích của nó.\\
+			\begin{itemize}
+				\item Gọi $E$ là trung điểm của $AD$ khi đó $ABCE$ là hình vuông suy ra $\widehat{ACE}=45^\circ$. $\qquad (1)$
+				\item Tam giác $CED$ vuông cân tại $E$ suy ra $\widehat{ECD}=45^\circ$. $\qquad (2)$
+				\item Từ $(1)$ và $(2)$ suy ra $\widehat{ACD}=90^\circ$ hay $CD\perp AC$. Mà $AC$ là hình chiếu của $SC$ trên mặt phẳng $(ABCD)$ nên $CD\perp SC$. Hay $\triangle SCD$ vuông tại $C$.
+				\item $\triangle SAC$ vuông tại $A$, có $SA=a$ và $AC=a\sqrt{2}$ suy ra $SC=\sqrt{SA^2+AC^2}=\sqrt{a^2+\left(a\sqrt{2}\right)^2}=a\sqrt{3}$.
+				\item $\triangle CED$ vuông cân tại $E$, có cạnh góc vuông bằng $a$ nên $CD=a\sqrt{2}$.
+				\item Vậy $S_{\triangle SCD}=\dfrac{1}{2} \cdot SC\cdot CD=\dfrac{1}{2} \cdot a\sqrt{3} \cdot a\sqrt{2}=\dfrac{a^2\sqrt{6}}{2}$.
+			\end{itemize}
+		\end{enumerate}	
+	}
+\end{bt}
+
+\centerline{\fcolorbox{red}{yellow!50}{\bf {CÂU HỎI TRẮC NGHIỆM}}}
+
+\Opensolutionfile{ans}[ans/ans-1K7-24-Dang3]
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7YN-2]
+	Cho hình chóp $S.ABC$ có $SA$ vuông góc với đáy. Gọi $M$ là trung điểm của $SC$. Khi đó hình chiếu của điểm $M$ trên mặt phẳng $(ABC)$ là
+	\choice
+	{điểm $A$}
+	{trung điểm của $AB$}
+	{\True trung điểm của $AC$}
+	{là trọng tâm của tam giác $ABC$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(1.5,-1.5) coordinate (B) 
+				(4,0) coordinate (C) 
+				(0,3) coordinate (S)
+				($(S)!0.5!(C)$) coordinate (M)
+				($(A)!0.5!(C)$) coordinate (N); 
+				\draw (S)--(A)--(B)--(C)--(S)--(B); 
+				\draw[dashed] (A)--(C) (M)--(N); 
+				\foreach \p/\g in {S/135,A/-135,B/-135,C/-45,M/45,N/-90} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+			\end{tikzpicture}
+		\end{center}
+		Gọi $N$ là trung điểm của $AC$. Khi đó $MN$ là đường trung bình của tam giác $SAC$. Suy ra $MN\parallel SA$.\\
+		Mà $SA\perp (ABC)$ nên suy ra $MN\perp (ABC)$.\\
+		Vậy hình chiếu của điểm $M$ trên mặt phẳng $(ABC)$ là trung điểm $N$ của cạnh $AC$.	
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7YN-2]
+	Cho hình lập phương $ABCD.A'B'C'D'$. Hình chiếu vuông góc của tam giác $AA'B'$ trên mặt phẳng $(ABCD)$ là
+	\choice
+	{tam giác $ABC$}
+	{tam giác $DD'C'$}
+	{\True đoạn thẳng $AB$}
+	{đoạn thẳng $AD$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0:0) coordinate (A) 
+				(-1.2,-0.6) coordinate (B) 
+				($(B)+(2,0)$) coordinate (C) 
+				($(A)+(2,0)$) coordinate (D) 
+				($(A)+(0,2)$) coordinate (A') 
+				($(B)+(0,2)$) coordinate (B') 
+				($(C)+(0,2)$) coordinate (C') 
+				($(D)+(0,2)$) coordinate (D'); 
+				\draw (A')--(B')--(C')--(D')--cycle (B')--(B)--(C)--(D)--(D') (C)--(C'); 
+				\draw[dashed] (B)--(A)--(D) (A)--(A');
+				\foreach \p/\g in {A/135,B/-90,C/-90,D/0,A'/90,B'/135,C'/-45,D'/45} \fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+			\end{tikzpicture} 
+		\end{center}
+		Do $AA'\perp (ABCD)$ nên hình chiếu vuông góc của tam giác $AA'B'$ trên mặt phẳng $(ABCD)$ là đoạn thẳng $AB$.	
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7YN-2]
+	Cho hình hộp chữ nhật $ABCD.A'B'C'D'$. Hình chiếu vuông góc của tam giác $AB'D'$ là
+	\choice
+	{\True tam giác $ABD$}
+	{tam giác $ABC$}
+	{tam giác $ACD$}
+	{tam giác $BCD$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0:0) coordinate (A) 
+				(-1,-1) coordinate (B) 
+				($(B)+(3,0)$) coordinate (C) 
+				($(A)+(3,0)$) coordinate (D) 
+				($(A)+(0,2)$) coordinate (A') 
+				($(B)+(0,2)$) coordinate (B') 
+				($(C)+(0,2)$) coordinate (C') 
+				($(D)+(0,2)$) coordinate (D'); 
+				\draw (A')--(B')--(C')--(D')--cycle (B')--(B)--(C)--(D)--(D') (C)--(C') (B')--(D'); 
+				\draw[dashed] (B)--(A)--(D)--(B) (A)--(A') (B')--(A)--(D');
+				\foreach \p/\g in {A/-45,B/-90,C/-90,D/0,A'/90,B'/135,C'/-45,D'/45} \fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+			\end{tikzpicture}
+		\end{center}
+		Do $AA'\perp (ABCD)$ nên hình chiếu vuông góc của tam $AB'D'$ trên mặt phẳng $(ABCD)$ là tam giác $ABD$.	
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7YN-2]
+	Cho hình chóp tứ giác đều $S.ABCD$, có $O$ là giao điểm của $AC$ và $BD$. Hình chiếu của tam giác $SAB$ trên mặt phẳng $(ABCD)$ là?
+	\choice
+	{\True Tam giác $OAB$}
+	{Tam giác $OBC$}
+	{Tam giác $OCD$}
+	{Tam giác $OAD$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-2.5,-2) coordinate (B) 
+				($(A)+(5,0)$) coordinate (D) 
+				($(B)+(5,0)$) coordinate (C) 
+				($(A)!0.5!(C)$) coordinate (O) 
+				($(O)+(0,4)$) coordinate (S); 
+				\draw[dashed] (O)--(S)--(A)--(B) (C)--(A)--(D)--(B); 
+				\draw (S)--(B)--(C)--(D)--(S)--(C); 
+				\foreach \p/\g in {S/90,A/135,B/-135,C/-45,D/45,O/-90} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path 
+				(A)--(B) node[pos=0.5,rotate=30,scale=0.7]{$//$}
+				(B)--(C) node[pos=0.5,rotate=-30,scale=0.7]{$//$};
+				\path[dashed] 
+				pic[draw,angle radius=3mm]{right angle=A--B--C} 
+				pic[draw,angle radius=3mm]{right angle=S--O--A}; 
+			\end{tikzpicture} 
+		\end{center}
+		Do $S.ABCD$ là hình chóp tứ giác đều nên $SO\perp (ABCD)$.\\
+		Suy ra hình chiếu của tam giác $SAB$ trên mặt phẳng $(ABCD)$ là tam giác $OAB$.	
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7BN-2]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông cân tại $B$ và $SA$ vuông góc với đáy. Hình chiếu vuông góc của điểm $B$ trên mặt phẳng $(SAC)$ là
+	\choice
+	{điểm $A$}
+	{điểm $S$}
+	{trung điểm $E$ của cạnh $SC$}
+	{\True trung điểm $M$ của cạnh $AC$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(1.5,-1.5) coordinate (B) 
+				(4,0) coordinate (C) 
+				(0,3) coordinate (S)
+				($(A)!0.5!(C)$) coordinate (M); 
+				\draw (S)--(A)--(B)--(C)--(S)--(B); 
+				\draw[dashed] (A)--(C) (B)--(M); 
+				\foreach \p/\g in {S/135,A/-135,B/-135,C/-45,M/45} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path[dashed] 
+				pic[draw,angle radius=3mm]{right angle=A--B--C}
+				pic[draw,angle radius=3mm]{right angle=A--M--B};
+				\path 
+				(A)--(B) node[pos=0.5,rotate=-30,scale=0.7]{$/$}
+				(B)--(C) node[pos=0.5,rotate=30,scale=0.7]{$/$};
+			\end{tikzpicture}
+		\end{center}
+		\begin{itemize}
+			\item Gọi $M$ là trung điểm của $AC$.
+			\item Do tam giác $ABC$ vuông cân tại $B$ nên $BM\perp AC$.
+			\item Mặt khác $BM\perp SA$ do $SA\perp (ABC)$.
+			\item Suy ra $BM\perp (SAC)$.
+			\item Vậy hình chiếu vuông góc của điểm $B$ trên mặt phẳng $(SAC)$ là trung điểm $M$ của cạnh $AC$.
+		\end{itemize}	
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7BN-2]
+	Cho hình chóp $S.ABCD$, có đáy $ABCD$ là hình thang vuông tại $A$ và $D$; Có $SA\perp (ABCD)$ và $SA=AB=BC=\dfrac{1}{2}AD$. Hình chiếu vuông góc của $SD$ trên mặt phẳng $(SAC)$ là đường
+	\choice
+	{$SA$}
+	{$AC$}
+	{\True $SC$}
+	{$AD$}
+	\loigiai{
+		\immini
+		{Gọi $E$ là trung điểm của $AD$. Khi đó $CE=AB=\dfrac{1}{2}\cdot AD$.\\
+			Suy ra tam giác $ACD$ vuông tại $C$ hay $CD\perp AC$.\\
+			Mặt khác $CD\perp SA$ do $SA\perp (ABCD)$. Suy ra $CD\perp (SAC)$.\\
+			Vậy hình chiếu vuông góc của $SD$ trên mặt phẳng $(SAC)$ là đường $SC$.
+		}{
+			\begin{tikzpicture}[scale=0.7,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-1,-1.5) coordinate (B) 
+				(1,-1.5) coordinate (C)
+				(4,0) coordinate (D) 
+				(A)--+(0,3) coordinate (S)
+				($(A)!0.5!(D)$) coordinate (E);
+				\draw[dashed] (S)--(A)--(B) (E)--(C)--(A)--(D); 
+				\draw (S)--(B)--(C)--(S)--(D)--(C); 
+				\foreach \p/\g in {S/135,A/180,B/-135,C/-45,D/0,E/45} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path[dashed] 
+				pic[draw,angle radius=3mm]{right angle=B--A--D}
+				pic[draw,angle radius=3mm]{right angle=A--B--C};
+		\end{tikzpicture}}
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7BN-2]
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều và $SA$ vuông góc với đáy. Gọi $G$ là trọng tâm của tam giác $ABC$. Khẳng định nào sau đây \textbf{sai}?
+	\choice
+	{$SA\perp AC$}
+	{\True $SG\perp AC$}
+	{$SA\perp AB$}
+	{$SG\perp BC$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(1.5,-1.5) coordinate (B) 
+				(4,0) coordinate (C) 
+				(0,3) coordinate (S)
+				($(B)!0.5!(C)$) coordinate (M)
+				($(A)!2/3!(M)$) coordinate (G); 
+				\draw (S)--(A)--(B)--(C)--(S)--(B); 
+				\draw[dashed] (A)--(C) (A)--(G)--(S); 
+				\foreach \p/\g in {S/135,A/-135,B/-135,C/-45,G/-90} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path 
+				(A)--(B) node[pos=0.5,rotate=-30,scale=0.7]{$/$}
+				(B)--(C) node[pos=0.7,rotate=30,scale=0.7]{$/$}
+				(A)--(C) node[pos=0.5,rotate=30,scale=0.7]{$/$};
+			\end{tikzpicture}
+		\end{center}
+		\begin{itemize}
+			\item Do $SA\perp (ABC)$ nên $SA\perp AB$ và $SA\perp AC$. 
+			\item Vì $G$ là trọng tâm của tam giác $ABC$ đều nên $BC\perp AG$.
+			\item Mặt khác $AG$ là hình chiếu của của $SG$ trên mặt phẳng $(ABC)$ nên suy ra $SG\perp BC$ (theo định lí ba đường cuông góc). 
+		\end{itemize}	
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7KN-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật và $SA$ vuông góc với đáy. Khẳng định nào sau đây \textbf{sai}?
+	\choice
+	{$SA\perp AC$}
+	{$BC\perp SB$}
+	{$CD\perp SD$}
+	{\True $CD\perp SC$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-2,-2) coordinate (B) 
+				($(A)+(4,0)$) coordinate (D) 
+				($(B)+(4,0)$) coordinate (C) 
+				($(A)+(0,3)$) coordinate (S); 
+				\draw[dashed] (S)--(A)--(B) (C)--(A)--(D); 
+				\draw (S)--(B)--(C)--(D)--(S)--(C); 
+				\foreach \p/\g in {S/135,A/135,B/-135,C/-45,D/45} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path[dashed] pic[draw,angle radius=3mm]{right angle=A--B--C}; 
+			\end{tikzpicture}
+			
+		\end{center}
+		Do $SA\perp (ABCD)$ nên $AC$ là hình chiếu của $SC$ trên mặt phẳng $(ABCD)$.\\
+		Giả sử $CD\perp SC$, theo định lí ba đường vuông góc suy ra $CD\perp AC$ (vô lý).\\
+		Vậy khẳng định $CD\perp SC$ là khẳng định sai.	
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7KN-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$. Mặt bên $SAB$ là tam giác đều có đường cao $SH$ vuông góc với $(ABCD)$. Gọi $K$ là hình chiếu vuông góc của điểm $H$ trên mặt phẳng $(SAD)$. Khi đó độ dài đoạn thẳng $HK$ theo $a$ bằng
+	\choice
+	{\True $\dfrac{a\sqrt{3}}{4}$}
+	{$\dfrac{a}{2}$}
+	{$\dfrac{a\sqrt{3}}{2}$}
+	{$\dfrac{a\sqrt{2}}{3}$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(-1.5,-2) coordinate (B) 
+				($(A)+(4,0)$) coordinate (D) 
+				($(B)+(4,0)$) coordinate (C)
+				($(A)!0.5!(B)$) coordinate (H)
+				($(H)+(0,4)$) coordinate (S)
+				($(S)!0.5!(A)$) coordinate (M)
+				($(A)!0.5!(M)$) coordinate (K); 
+				\draw[dashed] (S)--(A)--(B)--(M) (A)--(D) (S)--(H)--(K); 
+				\draw (S)--(B)--(C)--(D)--(S)--(C); 
+				\foreach \p/\g in {S/135,A/-45,B/-135,C/-45,D/45,H/-45,M/30,K/30} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path 
+				(A)--(B) node[pos=0.7,right]{$a$} 
+				(B)--(C) node[pos=0.5,below]{$a$}
+				(S)--(B) node[pos=0.5,left]{$a$}
+				(S)--(A) node[pos=0.5,left]{$a$}; 
+				\path[dashed] 
+				pic[draw,angle radius=3mm]{right angle=A--B--C}
+				pic[draw,angle radius=3mm]{right angle=S--H--B}
+				pic[draw,angle radius=3mm]{right angle=B--M--A}; 
+			\end{tikzpicture}
+			
+		\end{center}
+		Gọi $M$ là trung điểm của $SA$ và $K$ là trung điểm của $AM$.\\
+		Khi đó $HK\parallel BM$, mà $BM\perp SA$ (do tam giác $SAB$ đều). Suy ra $HK\perp SA$. $\qquad (1)$\\
+		Ta có $\heva{&AD\perp AB\\&AD\perp SH}\Rightarrow AD\perp (SAB)\Rightarrow AD\perp HK$. $\qquad (2)$\\
+		Từ $(1)$ và $(2)$ suy ra $HK\perp (SAD)$. Do đó $K$ là hình chiếu của điểm $H$ trên mặt phẳng $(SAD)$.\\
+		Vậy $HK=\dfrac{1}{2}\cdot BM=\dfrac{1}{2}\cdot \dfrac{a\sqrt{3}}{2}=\dfrac{a\sqrt{3}}{4}$.
+	}
+\end{ex}
+
+\begin{ex}%[DCHT Toán 11 - KNTT -Nguyễn TRần Vũ] %[1K7TN-2]
+	Cho tứ diện đều $OABC$ có $OA$, $OB$, $OC$ đôi một vuông góc với nhau. Gọi $H$ là hình chiếu vuông góc của điểm $O$ trên mặt phẳng $(ABC)$. Khi đó $H$ là
+	\choice
+	{trung điểm của cạnh $AB$}
+	{trung điểm của $BC$}
+	{trọng tâm của tam giác $ABC$}
+	{\True trực tâm của tam giác $ABC$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,font=\footnotesize,line join=round,line cap=round,>=stealth] 
+				\path 
+				(0,0) coordinate (A) 
+				(1.5,-2) coordinate (B) 
+				(6,0) coordinate (C)
+				(B)--(C) coordinate[pos=0.4] (M) 
+				($(A)!0.7!(M)$) coordinate (H)
+				(H)--+(0,4) coordinate (O); 
+				\draw[dashed] (A)--(C)--(H)--(O) (B)--(H)--(A); 
+				\draw (O)--(A)--(B)--(C)--(O)--(B); 
+				\foreach \p/\g in {O/90,A/135,B/-90,C/45,H/-90} 
+				\fill[black](\p) circle (1pt) ($(\p)+(\g:3mm)$) node{$\p$}; 
+				\path pic[draw,angle radius=3mm]{right angle=O--H--M}; 
+			\end{tikzpicture}
+		\end{center}
+		Do $H$ là hình chiếu vuông góc của điểm $O$ trên mặt phẳng $(ABC)$ nên $OH\perp (ABC)$. Suy ra $OH\perp AB$ và $OH\perp BC\qquad (1)$.\\
+		Theo đề bài ta có
+		\begin{itemize}
+			\item $\heva{&OC\perp OA\\&OC\perp OB}\Rightarrow OC\perp (OAB)\Rightarrow OC\perp AB\qquad (2)$.
+			\item $\heva{&OA\perp OB\\&OA\perp OC}\Rightarrow OA\perp (OBC)\Rightarrow OA\perp BC\qquad (3)$.
+		\end{itemize}	
+		Từ $(1)$ và $(2)$ suy ra $AB\perp (OHC)\Rightarrow AB\perp HC.\qquad (*)$\\
+		Từ $(1)$ và $(3)$ suy ra $BC\perp (OHA)\Rightarrow BC\perp HA.\qquad (**)$\\
+		Từ $(*)$ và $(**)$ suy ra $H$ là trực tâm của tam giác $ABC$.
+	}
+\end{ex}
+
+\Closesolutionfile{ans}
+\begin{indapan}{10}
+	{ans/ans-1K7-24-Dang3}
+\end{indapan}

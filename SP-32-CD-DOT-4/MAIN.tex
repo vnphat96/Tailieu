@@ -1,0 +1,565 @@
+\documentclass[12pt,a4paper,oneside]{extbook}
+\usepackage{graphicx}
+\usepackage{extsizes}
+\usepackage[utf8]{vietnam}
+\usepackage{amsmath,amssymb,yhmath,mathrsfs}
+\usepackage{pifont,fontawesome,pgfornament}
+\usepackage{tikz,xcolor}
+\usepackage{enumerate}
+\usepackage{tkz-euclide}
+\usepackage{tikz-3dplot}
+\usepackage{tikz,tkz-tab}
+\usetikzlibrary{calc,math,fadings,shadings,shapes,shadows}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=1.5cm]{geometry}
+\renewcommand{\baselinestretch}{1.4}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{currfile}
+\usepackage[loigiai]{ex_test}
+\usepackage{framed}
+\usepackage[many]{tcolorbox}
+\colorlet{tcbcol@back}{tcbcolback}
+\colorlet{tcbcol@frame}{tcbcolframe}
+\usepackage{varwidth}
+%%=== Thiết kế header, footer
+\newtheorem{bode}{Bổ đề}
+\newtheorem{menhde}{Mệnh đề}
+\newtheorem{bt}{\fontfamily{anttlc}\selectfont\color{teal}\faCalendar~Bài}
+\newtheorem{vd}{\color{teal}\fontfamily{anttlc}\selectfont\faArchive~Ví dụ}
+\def\beginbox{\begin{tcolorbox}[enhanced,colframe=teal,interior style={top color=teal!20!white,bottom color=teal!5!white},breakable,boxrule=0.75pt,arc=2mm,frame style={drop shadow}]}
+	\def\endbox{\end{tcolorbox}}
+\AtBeginEnvironment{vd}{
+	\beginbox
+	\renewcommand{\loigiai}[1]{
+		\renewcommand{\immini}[2]{
+			\setbox\imbox=\vbox{\hbox{##2}}
+			\widthimmini=\wd\imbox
+			\IMleftright{##1}{##2}}
+		\endbox
+		\begin{onlysolution}
+			#1
+		\end{onlysolution}
+		\def\endbox{}
+	}
+}
+\AtEndEnvironment{vd}{\endbox}
+
+
+\def\beginboxbt{\begin{tcolorbox}[enhanced,width=\linewidth-6pt,
+		enlarge top by=3pt,enlarge bottom by=3pt,
+		enlarge left by=3pt,enlarge right by=3pt,frame hidden,boxrule=0pt,top=1mm,bottom=1mm,
+		colframe=green!30!black,colback=green!25!white,
+		borderline={0.5pt}{-0.5pt}{green!75!blue},
+		borderline={1pt}{-3pt}{green!50!blue},frame style={drop shadow}]}
+	\def\endboxbt{\end{tcolorbox}}
+\AtBeginEnvironment{bt}{
+	\beginboxbt
+	\renewcommand{\loigiai}[1]{
+		\renewcommand{\immini}[2]{
+			\setbox\imbox=\vbox{\hbox{##2}}
+			\widthimmini=\wd\imbox
+			\IMleftright{##1}{##2}}
+		\endboxbt
+		\begin{onlysolution}
+			#1
+		\end{onlysolution}
+		\def\endboxbt{}
+	}
+}
+\AtEndEnvironment{bt}{\endboxbt}
+\theoremstyle{plain}
+\renewcommand{\nameex}{\fontfamily{pag}\selectfont\color{teal} Câu}
+\def\loigiaiEX{\color{teal}\fontfamily{qag}\bfseries\strut%\faFolderOpen\ Lời giải.
+	\centerline{\faCommenting\ Lời giải.}\vspace*{-7mm}
+}
+%\newtheorem{bt}{\fontfamily{pag}\selectfont\color{violet}Bài}
+%-----------------------------------Khoanh tròn đáp án khi sd tùy chọn Dethi
+\renewcommand{\TrueEX}{\stepcounter{dapan}
+	{\circEX{\textbf{\color{teal}\Alph{dapan}}}} \ignorespaces}
+\renewcommand{\FalseEX}{\stepcounter{dapan}
+	{\circled{\textbf{\color{teal}\Alph{dapan}}}} \ignorespaces}
+%------------------ DẠNG TOÁN
+\newcounter{dang}\setcounter{dang}{0}
+\renewcommand{\thedang}{\arabic{dang}}
+\newtcolorbox{dang}[1]{enhanced, before skip=2mm,after skip=2mm, colback=black!5,colframe=black!50,boxrule=0.2mm, attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight}, varwidth boxed title*=-3cm, boxed title style={frame code={ \path[fill=tcbcol@back!30!black] ([yshift=-1mm,xshift=-1mm]frame.north west) arc[start angle=0,end angle=180,radius=1mm] ([yshift=-1mm,xshift=1mm]frame.north east) arc[start angle=180,end angle=0,radius=1mm]; \path[left color=teal!60!black, right color=teal!60!black, middle color=teal!80!black] ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east) [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east) -- (frame.south east) -- (frame.south west) -- ([xshift=-1mm,yshift=-1mm]frame.north west) [sharp corners]-- cycle; },interior engine=empty, },
+	fonttitle=\bfseries, title={{\fontfamily{pbk}\selectfont\faFolderOpen \ Dạng~\stepcounter{dang}\thedang.\ #1}}
+	\addcontentsline{toc}{subsection}{\faFolderOpen~Dạng~\thedang.\ #1}
+}
+\newenvironment{tomtat}{
+	\begin{tcolorbox}[boxrule=0.5pt,arc=0mm,breakable,colback=white]
+	}{\end{tcolorbox}}
+\theorembodyfont{\it}
+\newtheorem{dl}{\color{blue}\faToggleOn\ Định lí}[section]
+\theoremseparator{.}
+\theorembodyfont{\rm}
+\newtheorem{cy}{\fontfamily{anttlc}\selectfont Chú ý}
+\newtheorem{hq}{\fontfamily{anttlc}\selectfont Hệ quả}[section]
+\newtheorem{tc}{\color{violet!80!black}\faGg\ Tính chất}[section]
+\newtheorem{dn}{\color{red}\faGg\ Định nghĩa}[section]
+\theoremstyle{nonumberplain}
+\newtheorem{kn}{\fontfamily{anttlc}\selectfont Khái niệm}
+
+%Định nghĩa các box lý thuyết
+\def\beginboxdn{\begin{tcolorbox}
+		[enhanced,breakable,pad at break*=1mm,
+		opacityback=0, %ko nền
+		boxrule=0pt,frame hidden, left=0.5cm, right=0.5cm, bottom=0pt, top=0cm,
+		borderline west={1.5mm}{0cm}{green},borderline east={1.5mm}{0cm}{green}]}%0mm lề trái}
+	\def\endboxdn{\end{tcolorbox}}
+\AtBeginEnvironment{dn}{
+	\beginboxdn
+	}
+\AtEndEnvironment{dn}{\endboxdn}
+
+
+\def\beginboxdl{\begin{tcolorbox}
+		[enhanced,breakable,pad at break*=1mm,
+		colback=yellow!5,
+%		opacityback=0, %ko nền
+		boxrule=0pt,frame hidden, left=0.5cm, right=0.5cm, bottom=0.5cm, top=0.5cm,
+		borderline west={0.75mm}{0mm}{red},borderline west={0.75mm}{0.75mm}{red!50!yellow},borderline west={0.75mm}{1.5mm}{yellow},borderline east={0.75mm}{0mm}{red},borderline east={0.75mm}{0.75mm}{red!50!yellow},borderline east={0.75mm}{1.5mm}{yellow}]}%0mm lề trái}
+	\def\endboxdl{\end{tcolorbox}}
+\AtBeginEnvironment{dl}{
+	\beginboxdl
+}
+\AtEndEnvironment{dl}{\endboxdn}
+
+\def\beginboxtc{\begin{tcolorbox}
+	[enhanced,colback=yellow!10!white,boxrule=0pt,frame hidden,
+	borderline north={1mm}{-2mm}{red},
+	borderline south={1mm}{-2mm}{blue},
+	borderline west={1mm}{-2mm}{green},
+	borderline east={1mm}{-2mm}{yellow}]}%0mm lề trái}
+	\def\endboxtc{\end{tcolorbox}}
+\AtBeginEnvironment{tc}{
+	\beginboxtc
+}
+\AtEndEnvironment{tc}{\endboxtc}
+
+
+
+\theoremseparator{}
+\theorembodyfont{\it}
+\usepackage{stackengine}
+\usepackage{scalerel}
+\newcommand\dangersign[1][2ex]{\renewcommand\stacktype{L}\scaleto{\stackon[1.3pt]{\color{red}$\triangle$}{\fontsize{4}{0}\selectfont !}}{#1}}
+
+%Note
+\newtcolorbox{note}[1][]{skin=enhancedlast jigsaw,interior hidden,
+	boxsep=0pt,top=0pt,colframe=red,coltitle=red!50!black,
+	fonttitle=\bfseries\sffamily,
+	attach boxed title to bottom center,
+	boxed title style={empty,boxrule=0.5mm},
+	varwidth boxed title=0.5\linewidth,
+	underlay boxed title={
+		\draw[white,line width=0.5mm]
+		([xshift=0.3mm-\tcboxedtitleheight*2,yshift=0.3mm]title.north west)
+		--([xshift=-0.3mm+\tcboxedtitleheight*2,yshift=0.3mm]title.north east);
+		\path[draw=red,top color=white,bottom color=red!50!white,line width=0.5mm]
+		([xshift=0.25mm-\tcboxedtitleheight*2,yshift=0.25mm]title.north west)
+		cos +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
+		sin +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
+		-- ([xshift=0.25mm,yshift=0.25mm]title.south west)
+		-- ([yshift=0.25mm]title.south east)
+		cos +(\tcboxedtitleheight,\tcboxedtitleheight/2)
+		sin +(\tcboxedtitleheight,\tcboxedtitleheight/2); },
+	title={Lưu ý quan trọng},#1}
+
+
+\newtheorem{nx}{Nhận xét.}
+\newtcolorbox{luuy}[1][]{enhanced,breakable,
+	before skip=2mm,after skip=3mm,
+	boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+	colback=yellow!50,colframe=yellow!20!black,sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+	underlay={
+		\path[fill=tcbcol@back!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+		\path[draw=tcbcol@frame,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+		\path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+	},
+	drop fuzzy shadow,#1}
+\usepackage{fancyhdr}
+%Thiết lập đánh số part, chapter, section, subsection, paragraph,subparagraph
+\renewcommand{\thepart}{\Roman{part}}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+
+%Thiết kế part, chapter, section, subsection, paragraph,subparagraph
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+\usepackage{titletoc}
+\usepackage[explicit]{titlesec}
+%===================Làm mục lục
+\usepackage{ifoddpage}
+%\titlecontents{section}
+%[0em]{\sffamily}
+%{\color{blue} Mức độ \contentslabel{2em}\color{blue}}{}
+%{\color{blue}\dotfill\contentspage\hspace*{1.3ex}}
+\titlecontents{section}[5pc]
+{\addvspace{8pt}\bfseries\color{blue!70!black}}
+{\fontsize{12pt}{18pt}\selectfont\sffamily\contentslabel[{Mức độ\,\,\thecontentslabel.}\,\,]{5pc}}
+{}
+{\dotfill
+	\thecontentspage\hspace*{1.3ex}
+}
+[]
+%\titlecontents{subsection}
+%[4.5em]{\sffamily}
+%{\color{violet}\contentslabel{2em}\color{violet}}{}
+%{\color{violet}\dotfill\contentspage\hspace*{1.3ex}}
+\titlecontents{subsection}[0pc]
+{\addvspace{8pt}\bfseries\color{blue!70!black}}
+{\fontsize{12pt}{18pt}\selectfont\sffamily\contentslabel[{}\,\,]{1pc}}
+{}
+{{\tiny\dotfill}
+	\thecontentspage\hspace*{1.3ex}
+}
+[]
+\makeatletter
+\renewcommand*\l@part[2]{%
+	\ifnum \c@tocdepth >\m@ne
+	\addpenalty{-\@highpenalty}%
+	\vskip 1.0em \@plus\p@
+	\setlength\@tempdima{1.5em}%
+	\begingroup
+	\parindent \z@ \rightskip \@pnumwidth
+	\parfillskip -\@pnumwidth
+	\leavevmode
+	\advance\leftskip\@tempdima
+	\hskip -\leftskip
+	\colorbox{violet}{\strut%
+		\makebox[\dimexpr\textwidth-1\fboxsep-6pt\relax][l]{%
+			%\fontsize{12pt}{1pt}
+			\color{white}\bfseries\fontfamily{qag}\selectfont PHẦN #1%
+			\nobreak\hfill\nobreak\hb@xt@\@pnumwidth{\hss #2}}}\par\smallskip
+	\penalty\@highpenalty
+	\endgroup
+	\fi}
+
+\renewcommand*\l@chapter[2]{%
+	\ifnum \c@tocdepth >\m@ne
+	\addpenalty{-\@highpenalty}%
+	\vskip 1.0em \@plus\p@
+	\setlength\@tempdima{1.5em}%
+	\begingroup
+	\parindent \z@ \rightskip \@pnumwidth
+	\parfillskip -\@pnumwidth
+	\leavevmode
+	\advance\leftskip\@tempdima
+	\hskip -\leftskip
+	\colorbox{violet!80}{\strut%
+		\makebox[\dimexpr\textwidth-1\fboxsep-6pt\relax][l]{%
+			\sffamily%\fontsize{12pt}{1pt}
+			\color{white}\bfseries\selectfont CHỦ ĐỀ #1%
+			\nobreak\hfill\nobreak\hb@xt@\@pnumwidth{\hss #2}}}\par\smallskip
+	\penalty\@highpenalty
+	\endgroup
+	\fi}
+
+
+
+
+% Thiết kế part
+\titlespacing{\part}{0cm}{-0.5cm}{1cm}[0cm]
+\titleformat{\part}[display]
+{\Large\bfseries\color{blue!60!black}}
+{
+		\begin{tikzpicture}[remember picture,overlay,line join=round,line cap=round]
+		\coordinate (A1) at ($(current page.north west)!0.15!(current page.south west)$);
+		\coordinate (B1) at ($(current page.north east)!0.05!(current page.south east)$);
+		\coordinate (A1B1) at ($(A1)!0.5!(B1)$);
+		\coordinate (tam) at ($(current page.north west)+(3.5,-3)$); % Tâm Elip
+		%------------------------viền cong
+		\fill[violet!50] % Xám
+		(current page.north west)--([yshift=-2.2cm]A1) to[out=48,in=-148]
+		([yshift=-0.5cm]tam) to[out=35,in=150] ([yshift=-3cm]B1)--(current page.north east)--cycle; %phủ trên 3
+		\fill[red] % Đỏ
+		(current page.north west)--([yshift=-1cm]A1) to[out=37,in=-150]
+		([yshift=-0.2cm]tam) to[out=33,in=158] ([yshift=-2.1cm]B1)--(current page.north east)--cycle; %phủ trên 2
+		\fill[cyan] % Xanh
+		(current page.north west)--([yshift=-0.2cm]A1) to[out=30,in=-150]
+		([yshift=0.2cm]tam) to[out=30,in=165] ([yshift=-1.3cm]B1)--(current page.north east)--cycle; %phủ trên 1
+		%-----------------------VÒNG ELIP
+		\begin{scope}[scale=0.65]
+			%	\draw [line width=4pt] ([yshift=-3.5cm]tam)--(tam)--([xshift=3.25cm]tam);
+			\def\x{0.7}
+			\draw[fill=yellow!50,scale=\x] (tam) circle (3.2cm);
+			\shade[even odd rule,top color=black,bottom color=black,middle color=cyan,shading angle=30,scale=\x]
+			(tam) circle (3.3cm) circle (3.7cm); % Viền ngoài
+			\shade[even odd rule,top color=black,bottom color=black,middle color=white,shading angle=-10,scale=\x]
+			(tam) circle (3.15cm) circle (3.3cm); % Viền trong
+		\end{scope}
+		%-----------------------Số chương
+		\draw ([yshift=-0.45cm]tam) node[red,yscale=2.5,xscale=2.8]{\fontfamily{qag}\selectfont\bfseries\thepart};
+		\draw (tam) node[violet,xscale=1,yscale=1,above=0.15cm]{\fontfamily{qag}\selectfont\bfseries PHẦN};
+	\end{tikzpicture}
+}
+{-0.5em}
+{\hspace*{0.5cm}\fontsize{35pt}{1pt}\fontfamily{qag}\selectfont\centering\MakeUppercase {#1}}
+[\vspace{-0.25em}\thispagestyle{empty}]% Nội dung văn bản
+
+% Thiết kế chapter
+\titleformat
+{\chapter}
+{\centering\normalfont\LARGE\sffamily\bfseries}
+{}
+{0em}% Khoảng cách giữa mục với tên tiêu đề
+{	\thispagestyle{empty}
+	\begin{tikzpicture}[baseline=0cm,overlay,remember picture]
+	\node[inner sep=0pt,text width=0.95\textwidth] (chapname) at ([yshift=-4cm]current page.north){\fontsize{20}{0}\selectfont\color{teal}{\MakeUppercase {#1}}};
+	\fill[teal] ([xshift=-2cm,yshift=-2.5cm]current page.north east) circle(0.9cm);
+	\node[inner sep=0pt] (chapnum) at ([xshift=-2cm,yshift=-2.5cm]current page.north east){\color{white}\fontsize{25}{0}\selectfont{\MakeUppercase\thechapter}};
+	\node[inner sep=0pt] (chapnumname) at ([xshift=-5cm,yshift=-2.4cm]current page.north east){\color{teal}\fontsize{20}{0}\selectfont{\MakeUppercase CHỦ ĐỀ}};
+	\draw[teal,thick,double] ([yshift=0.05cm]chapname.north west) --([xshift=1cm,yshift=0.05cm]chapname.north east);
+	\draw[teal,thick,double] ([yshift=-0.05cm]chapname.south west) --([xshift=1cm,yshift=-0.05cm]chapname.south east);
+	\end{tikzpicture}
+	\setcounter{ex}{0}
+	\setcounter{bt}{0}
+	\setcounter{vd}{0}
+	\setcounter{dang}{0}
+}% Nội dung văn bản
+\titlespacing*{\chapter}{0cm}{0cm}{1cm}
+
+% Thiết kế section
+\titleformat{\section}
+{\fontfamily{put}\selectfont\color{red!80!black}}
+{\fontfamily{put}\normalsize\selectfont\bfseries\color{red!80!black}\Large MỨC ĐỘ\, \Huge\textcolor{red!80!black}{\thesection.} }
+{0.5em}
+{
+	\LARGE\bfseries\filcenter\MakeUppercase{#1}
+}
+\titlespacing*{\section}{2cm}{0cm}{0cm}
+
+%Thiết kế subsection
+\titleformat
+{\subsection}
+{\normalfont\Large\sffamily\bfseries}
+{}
+{0em}% Khoảng cách giữa mục với tên tiêu đề
+{\begin{tikzpicture}[baseline=0cm]
+	\node[inner sep=0pt] (subsecname) {\color{teal}#1};
+	\draw[path picture={\node at ([xshift=-0.8cm]subsecname.west){\color{red}\thesubsection};},shading=ball,ball color=teal!30]  ([xshift=-0.8cm]subsecname.west) circle (0.6cm);
+	\draw[thick,teal] (subsecname.south east)--(subsecname.south west) arc (-30:-150:0.89cm);
+	\end{tikzpicture}}% Nội dung văn bản
+\titlespacing*{\subsection}{0cm}{0.7cm}{0.5cm}
+
+
+\newcommand{\nen}[1]{% Định nghĩa hình tròn
+	\begin{tikzpicture}[baseline=(A.base),scale=1.2]%
+		\node[circle,draw=blue!70!black,fill=white,inner sep=2pt,outer sep=1pt] (A) {\color{white} #1};
+		\node[circle,draw=none,fill=blue!70!black,inner sep=1pt,outer sep=1pt] (A) {\color{white} #1};
+	\end{tikzpicture}%
+}
+\titleformat{\subsubsection}{\large\bfseries\fontfamily{qag}\selectfont\color{blue!70!black}}
+{\hspace*{-1mm}\fontfamily{qag}\large\selectfont\nen{\thesubsubsection}\
+}{0.5em}{\bfseries\fontfamily{qag}\selectfont\color{blue!70!black}\setcounter{de}{0}\MakeUppercase{#1}
+}
+
+%-------------Mục lục - Chapter*
+%\def\mautheme{blue!50!green}
+%\makeatletter
+%\renewcommand{\tableofcontents}{
+%\thispagestyle{empty}
+%\vspace*{-4mm}
+%\noindent\tikz{\fill[yellow](0,-1) rectangle}
+%}
+%-------------Chapter*-Mục lục
+\titleformat{name=\chapter,numberless}[display]
+{\normalfont\color{blue!80!black}}
+{}
+{0ex}
+{\vspace*{0em}\hspace*{0cm}\huge\fontfamily{qag}\selectfont\bfseries\centering\MakeUppercase{#1}}
+[\vspace{-1em}\thispagestyle{empty}]
+%=============================
+
+
+
+
+
+\usepackage{esvect}
+\def\vec{\vv}
+\def\overrightarrow{\vv}
+%Lệnh của gói mathrsfs
+\DeclareSymbolFont{rsfs}{U}{rsfs}{m}{n}
+\DeclareSymbolFontAlphabet{\mathscr}{rsfs}
+%Lệnh cung
+\DeclareSymbolFont{largesymbols}{OMX}{yhex}{m}{n}
+\DeclareMathAccent{\wideparen}{\mathord}{largesymbols}{"F3}
+%Lệnh song song
+\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+\DeclareMathSymbol{\varparallel}{\mathrel}{symbolsC}{9}
+\DeclareMathSymbol{\parallel}{\mathrel}{symbolsC}{9}
+\newcommand{\hoac}[1]{\left[\begin{aligned}#1\end{aligned}\right.}
+\newcommand{\heva}[1]{\left\{\begin{aligned}#1\end{aligned}\right.}
+\renewcommand\labelitemi{\faCheckSquareO}
+\renewcommand\labelitemii{$\bullet$}
+\usepackage{sansmathaccent}
+\pdfmapfile{+sansmathaccent.map}
+
+\newcommand{\DAPAN}{\centerline{\fontfamily{qhv}\selectfont\color{teal}\textbf{\faGg\faGg\faGg~BẢNG ĐÁP ÁN\ \faGg\faGg\faGg}}}
+
+\newcommand{\indapan}[2]{
+	\begin{center}
+		{\fontfamily{qcs}\selectfont\color{red!70!black}\bfseries BẢNG ĐÁP ÁN}\vspace{-0.5cm}
+	\end{center}
+	\inputansbox{#1}{#2}
+}
+
+% Kiểu đánh enum
+\renewcommand{\labelenumi}[1][]{\begin{tikzpicture}[baseline=(1.base)]
+		\pgfmathsetmacro{\R}{255*rnd}
+		\pgfmathsetmacro{\G}{255*rnd}
+		\pgfmathsetmacro{\B}{255*rnd}
+		\definecolor{mau}{RGB}{\R,\G,\B}
+		\node[shape=circle,fill=mau,text=white,font=\bfseries,minimum size=5mm,inner sep=0mm](1){\arabic{enumi}}; \end{tikzpicture}}
+\renewcommand{\labelenumii}{\begin{tikzpicture}[baseline=(1.base)]
+		\pgfmathsetmacro{\R}{255*rnd}
+		\pgfmathsetmacro{\G}{255*rnd}
+		\pgfmathsetmacro{\B}{255*rnd}
+		\definecolor{mau}{RGB}{\R,\G,\B}
+		\node[shape=circle,fill=mau,text=white,font=\bfseries,minimum size=5mm,inner sep=0mm](1){\alph{enumii})}; \end{tikzpicture}}
+%\renewcommand\labelitemi{\begin{tikzpicture}[baseline=(1.base)]
+%		\pgfmathsetmacro{\R}{255*rnd}
+%		\pgfmathsetmacro{\G}{255*rnd}
+%		\pgfmathsetmacro{\B}{255*rnd}
+%		\definecolor{mau}{RGB}{\R,\G,\B}
+%		\node[font=\bfseries,minimum size=5mm,inner sep=0mm](1){\color{mau}\faFirstOrder}; \end{tikzpicture}}
+%\renewcommand\labelitemii{\begin{tikzpicture}[baseline=(1.base)]
+%		\pgfmathsetmacro{\R}{255*rnd}
+%		\pgfmathsetmacro{\G}{255*rnd}
+%		\pgfmathsetmacro{\B}{255*rnd}
+%		\definecolor{mau}{RGB}{\R,\G,\B}
+%		\node[font=\bfseries,minimum size=5mm,inner sep=0mm](1){\color{mau}\faEnvira}; \end{tikzpicture}}
+%%---------------
+%%Kí hiệu để liệt kê
+%\def\sao{\color{black} %\faCheckSquareO
+%	\small\faCheckCircleO}
+
+
+
+\newcounter{de}
+\newcommand{\boxde}[1]{%
+	\stepcounter{de}
+	\setcounter{ex}{0} % đặt bộ đếm Câu về 1
+	\addcontentsline{toc}{subsection}{#1~\thede} % đưa MT vào mục lục
+	\begin{center}
+		\begin{tikzpicture}[baseline=(A.base),scale=1]%
+		%	\node[diamond,draw=none,fill=violet,inneRsep=1pt,outer sep=2pt] (A) {#1};
+		%		\draw[thick, violet] (0,0)--++(2,0) (0,0)--++(-2,0);
+		\node[thick,scale=1,fill=teal!80,draw=teal,minimum width=2.5cm,minimum height=0.1cm,rounded corners=2mm] (A) {\bf\fontfamily{qag}\selectfont\color{white}#1~\thede};
+		\end{tikzpicture}%
+	\end{center}
+}
+% Hộp văn bản
+\newtcolorbox{hop}[1]{breakable,enhanced, colback=white,colframe=red!75!black, colbacktitle=red!50!yellow,fonttitle=\bfseries, title=#1, titlerule=1mm, titlerule style=yellow}
+%---------------------------
+%---------------------------
+
+\newcommand{\page}[1]{% Định nghĩa hình tròn
+	\begin{tikzpicture}[baseline=(A.base)]%
+		\node[circle,draw=cyan,line width=0.5pt,fill=white,inner sep=1.5pt,outer sep=0.5pt] (A) {\color{white}\small #1};
+		\node[circle,draw=none,fill=cyan,inner sep=1pt,outer sep=0.5pt] (A) {\color{white}\small #1};
+	\end{tikzpicture}%
+}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\footrule}{{\color{violet}\vskip-\footruleskip\vskip-\footrulewidth \hrule width\headwidth height\footrulewidth\vskip\footruleskip}}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\headrulewidth}{0.5pt}
+\lhead{\sf\fontsize{10pt}{15pt}\selectfont \leftmark}
+\rhead{\sf\fontsize{10pt}{1pt}\selectfont\color{violet}\rightmark}
+\lfoot{\sf\fontsize{13pt}{0pt}\vspace*{-0.5cm}\selectfont\color{blue}{\faFacebookOfficial~ GV. Võ Hoàng Nghĩa}}
+\cfoot{}
+\rfoot{\page{\small\thepage}}
+
+
+\usepackage[final]{pdfpages}
+\usepackage{lastpage}
+\def\canhgiua{\centering\arraybackslash}
+\def\vdm{\begin{center}
+		\color{teal}\textbf{VÍ DỤ MẪU}
+\end{center}}
+\def\bttl{\begin{center}
+		\color{teal}\textbf{BÀI TẬP TỰ LUYỆN}
+\end{center}}
+\begin{document}
+		\pagenumbering{gobble}%tắt đánh số trang
+%		\includepdf{bia/bia.pdf}%chèn bìa pdf
+		\pagenumbering{roman}%đánh số trang dạng i,ii,...
+		\thispagestyle{empty}
+		\tableofcontents %lệnh in mục lục chính
+		\cleardoublepage %tạo trang trống
+		\clearpage%đặt lại đánh số trang
+		\pagenumbering{arabic}%đánh số trang dạng 1,2,...
+
+
+	\pagenumbering{arabic}
+\setcounter{page}{1}
+\setcounter{chapter}{0}
+%\part{GIẢI TÍCH}
+\chapter{TÍNH ĐƠN ĐIỆU CỦA HÀM SỐ}
+\input{data/CD1/Muc_5_6}
+\input{data/CD1/Muc_7_8}
+\input{data/CD1/Muc_9_10}
+\chapter{CỰC TRỊ CỦA HÀM SỐ}
+\input{data/CD2/Muc_7_8}
+\input{data/CD2/Muc_9_10}
+\chapter{GIÁ TRỊ LỚN NHẤT - GIÁ TRỊ NHỎ NHẤT CỦA HÀM SỐ}
+\input{data/CD3/Muc_5_6}
+\input{data/CD3/Muc_7_8}
+\input{data/CD3/Muc_9_10}
+\chapter{TIỆM CẬN CỦA ĐỒ THỊ HÀM SỐ}
+\input{data/CD4/Muc_5_6}
+\input{data/CD4/Muc_7_8}
+\input{data/CD4/Muc_9_10}
+\chapter{ĐỌC ĐỒ THỊ CỦA HÀM SỐ}
+\input{data/CD5/Muc_5_6}
+\input{data/CD5/Muc_7_8}
+\chapter{TƯƠNG GIAO ĐỒ THỊ HÀM SỐ}
+\input{data/CD6/Muc_5_6}
+\input{data/CD6/Muc_7_8}
+\input{data/CD6/Muc_9_10}
+\chapter{GÓC - HÌNH HỌC KHÔNG GIAN}
+\input{data/CD7/Muc_9_10_DA2}
+\chapter{KHOẢNG CÁCH - GÓC TRONG KHÔNG GIAN}
+\input{data/CD8/Muc_9_10}
+\chapter{NHẬN DIỆN KHỐI ĐA DIỆN}
+\input{data/CD9/Muc_5_6}
+\chapter{THỂ TÍCH KHỐI CHÓP}
+\input{data/CD10/Muc_5_6}
+\input{data/CD10/Muc_7_8}
+\chapter{THỂ TÍCH KHỐI LĂNG TRỤ}
+\input{data/CD11/Muc_5_6}
+\input{data/CD11/Muc_7_8}
+\chapter{MỘT SỐ BÀI TOÁN KHÓ VỀ THỂ TÍCH}
+\input{data/CD12/Muc_9_10}
+\chapter{THỂ TÍCH KHỐI ĐA DIỆN KHÁC}
+\input{data/CD13/Muc_5_6}
+\input{data/CD13/Muc_7_8_9_10}
+\input{data/CD14/Muc_10}
+\chapter{CỰC TRỊ THỂ TÍCH KHỐI ĐA DIỆN}
+\input{data/CD15/Muc_9_10}
+\chapter{LŨY THỪA, HÀM SỐ LŨY THỪA}
+\input{data/CD16/Muc_5_6}
+\chapter{CÔNG THỨC, BIẾN ĐỔI LOGARIT}
+\input{data/CD17/Muc_5_6}
+\input{data/CD17/Muc_7_8}
+\input{data/CD17/Muc_9_10}
+\chapter{HÁM SỐ MŨ HÀM SỐ LOGARIT}
+\input{data/CD18/Muc_5_6}
+\input{data/CD18/Muc_7_8}
+\input{data/CD17/Muc_9_10}
+\chapter{CD20}
+\input{data/CD20/Muc_5_6}
+\input{data/CD20/Muc_7_8}
+\input{data/CD20/Muc_9_10}
+\chapter{KHỐI TRỤ}
+\input{data/CD22/Muc_5_6}
+\input{data/CD22/Muc_7_8}
+\input{data/CD22/Muc_9_10}
+\end{document}
+
+
+

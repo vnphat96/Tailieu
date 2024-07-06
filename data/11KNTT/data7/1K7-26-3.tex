@@ -1,0 +1,1109 @@
+\begin{dang}{Khoảng cách giữa hai điểm và khoảng cách từ một điểm đến một đường thẳng}
+\end{dang}
+\subsubsection{VÍ DỤ}
+\begin{vd}%[1K7BP-2]
+Cho hình chóp $ABCD$ có cạnh $AC \perp (BCD)$ và $BCD$ là tam giác đều cạnh bằng $a$. Biết $AC=a\sqrt{2}$ và $M$ là trung điểm của $BD$. Tính khoảng cách từ $A$ đến đường thẳng $BD$.
+\choice
+{\True $\dfrac{a\sqrt{11}}{2}$}
+{$\dfrac{2a\sqrt{3}}{3}$}
+{$\dfrac{3a\sqrt{2}}{2}$}
+{$\dfrac{4a\sqrt{5}}{3}$}
+\loigiai{
+\immini{Từ giả thiết ta có $AB=AD$, $M$ là trung điểm của $BC$ nên $AM\perp BD$.\\
+Hay $\mathrm{d}(A,BD)=AM$.\\
+Ta có $\triangle BCD$ đều cạnh bằng $a$ nên theo định lý Py-ta-go
+\begin{eqnarray*}
+CM^2=CD^2-\left(\dfrac{BD}{2}\right)^2=\dfrac{3}{4}a^2\Rightarrow CM=\dfrac{\sqrt{3}a}{2}.
+\end{eqnarray*}
+Xét $\triangle ACM$ vuông tại $C$, ta có
+$AM=\sqrt{AC^2+CM^2}=\dfrac{a\sqrt{11}}{2}$.}
+{\begin{tikzpicture}[line join = round, line cap = round,>=stealth,scale=.8, font=\footnotesize]
+\coordinate[label=above:$A$] (A) at (0,4);
+\coordinate[label=below:$B$] (B) at (1.5,-2);
+\coordinate[label=left:$C$] (C) at (0,0);
+\coordinate[label=right:$M$] (M) at (3,-1);
+\coordinate[label=right:$D$] (D) at (4.5,0);
+\draw (A)--(C)--(B)--(D)--cycle (A)--(M) (A)--(B);
+\draw[dashed](C)--(M)  (C)--(D);
+\draw pic[angle radius=2mm,draw=blue] {right angle = A--C--M};% vẽ góc vuông
+\foreach \diem in {A,B,C,D,M}\fill (\diem)circle(1.5pt);
+\end{tikzpicture}}
+}
+\end{vd}
+\begin{vd}%[1K7KP-2]
+Cho khối lăng trụ tam giác đều $ABC.A'B'C'$ có $AB = a$, $AA' = 2a$. Tính khoảng cách từ điểm $A'$ đến đường thẳng $BC$.
+\loigiai{
+\immini{Gọi $I$ là trung điểm $BC$.\\
+Khi đó ta có $AI \perp BC$ và $AA' \perp BC$ nên $A'I \perp BC$.\\
+Vậy $\mathrm{d}(A',BC) = A'I$.\\
+Do $\triangle ABC$ đều nên $AI = \dfrac{a\sqrt{3}}{2}$.\\
+Xét $\triangle A'AI$ vuông tại $A$, ta có
+$$A'I^2 = AA'^2 + AI^2 = \dfrac{3a^2}{4} + 4a^2 = \dfrac{19a^2}{4} \Rightarrow A'I = \dfrac{a\sqrt{19}}{2}.$$
+Vậy khoảng cách từ $A'$ đến $BC$ là $\dfrac{a\sqrt{19}}{2}$.}{	
+\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+
+\tikzset{
+pics/hinhLangTru/.style n args={6}{
+code={
+\tikzset{
+	declare function={a=4;b=2;goc=-50;h=3;}
+}
+\path 
+(0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#3)+(-90:h)coordinate (#4)
+;
+\foreach \pone/\pname in {#2/#5,#3/#6}{
+	\path 
+	($(\pone)+(#4)-(#1)$)coordinate (\pname)
+	;
+}
+\foreach \pointo/\pointt in {#4/#5}{
+	\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {#1/#2,#2/#3,#3/#1,#1/#4,#2/#5,#3/#6,#6/#4,#6/#5}{
+	\draw[fill=black](\pointo)--(\pointt);
+}
+}
+}
+}
+\path 
+(0,0) pic{hinhLangTru={A'}{C'}{B'}{A}{C}{B}}
+($(B)!.5!(C)$)coordinate (I)
+pic[draw,angle radius=1.5mm]{right angle=A'--I--C}
+;
+\foreach \pointo/\pointt in {A'/C,A/I,A'/I}{
+\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {A'/B}{
+\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \point/\goc in {A'/120,B'/80,C'/60,A/190,B/-10,C/-60,I/-60}{
+\draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+}
+\end{tikzpicture}
+}
+}
+\end{vd}
+\begin{vd}%[1K7KP-2]
+Cho tứ diện $ABCD$ có $AC=AD=BC=BD=a$, $(ACD)\perp (BCD)$ và $(ABC)\perp (ABD)$. Tính độ dài cạnh $CD$.
+\loigiai
+{
+\immini
+{
+Gọi $M$, $N$ lần lượt là trung điểm của $CD$, $AB$. $\triangle ACD$ và $\triangle BCD$ cân $\Rightarrow AM\perp CD$, $BM\perp CD$. Ta có
+\begin{align*}
+\heva{& (ACD)\cap (BCD) \\& CD\perp AM\subset (ACD) \\& CD\perp BM\subset (BCD)}\Rightarrow \widehat{((ACD);(BCD))}=\widehat{(AM;BM)}=90^\circ.
+\end{align*}
+Suy ra $AM\perp BM$.\\
+Và ta dễ dàng chứng minh được $\triangle ACD=\triangle BCD$ (c.c.c) $\Rightarrow AM=BM\Rightarrow \triangle ABM$ vuông cân tại $M\Rightarrow MN\perp AB$.
+}
+{
+\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+\tikzset{
+pics/chopTamGiac/.style n args={4}{
+code={
+\tikzset{declare function={a=4;b=3;h=3;goc=-20;}}
+\path 
+(0,0)coordinate (#1)+(0:a)coordinate (#3)+
+(goc:b)coordinate (#2)+(70:h)coordinate (#4)
+
+;
+\foreach \pointo/\pointt in {#4/#1,#1/#2,#2/#3,#3/#4,#4/#2}{
+	\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {#1/#3}{
+	\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+
+}
+}}
+\path 
+(0,0)coordinate (a)pic{chopTamGiac={B}{C}{D}{A}}
+($(A)!.5!(B)$)coordinate (N)
+($(C)!.5!(D)$)coordinate (M)
+;
+\foreach \pointo/\pointt in {M/N,N/D,B/M}{
+\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {C/N,A/M}{
+\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \point/\goc in {A/90,B/135,C/-90,D/-10,N/130,M/-60}{
+\draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+}
+\end{tikzpicture}	
+}
+\noindent
+Đặt $CD=x$. Áp dụng định lý Py-ta-go ta có $AM^2=a^2-\dfrac{x^2}{4}$.\\
+$\triangle ABM$ vuông cân tại $M\Rightarrow AB^2=2AM^2=2a^2-\dfrac{x^2}{2}\Rightarrow AN^2=\dfrac{1}{4}AB^2=\dfrac{a^2}{2}-\dfrac{x^2}{8}$.\\
+Áp dụng định lý Py-ta-go ta có: $DN^2=AD^2-AN^2=a^2-\dfrac{a^2}{2}+\dfrac{x^2}{8}=\dfrac{a^2}{2}+\dfrac{x^2}{8}$.\\
+$\triangle CDN$ vuông cân tại $N\Rightarrow CD^2=2DN^2=a^2+\dfrac{x^2}{4}=x^2\Leftrightarrow x = \dfrac{2a\sqrt{3}}{3}$.
+}
+\end{vd}
+
+\begin{vd}%[1K7BP-2]
+Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $a$. Tính khoảng cách từ $B$ tới đường thẳng $DB'$.
+\loigiai{
+\immini
+{Trong tam giác vuông $B'BD$ ta kẻ đường cao $BH$.\\ Khi đó $\mathrm{d}(B,B'D)=BH$.\\
+Áp dụng công thức tính đường cao trong tam giác vuông ta được
+$$BH=\dfrac{BD\cdot BB'}{\sqrt{BD^2+BB'^2}}=\dfrac{a\cdot a\sqrt{2}}{\sqrt{a^2+2a^2}}=\dfrac{a\sqrt{6}}{3}.$$
+}
+{
+\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+
+\tikzset{
+pics/hhChuNhat/.style n args={8}{
+code={
+\tikzset{
+	declare function={a=4;b=1.6;goc=-130;h=3;}
+}
+\path 
+(0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#4)+(90:h)coordinate (#5)
+($(#2)+(#4)-(#1)$)coordinate (#3)
+;
+\foreach \pone/\pname in {#2/#6,#3/#7,#4/#8}{
+	\path 
+	($(\pone)+(#5)-(#1)$)coordinate (\pname)
+	;
+}
+\foreach \pointo/\pointt in {#1/#2,#1/#4,#1/#5}{
+	\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {#2/#3,#3/#4,#5/#6,#6/#7,#7/#8,#8/#5,#2/#6,#3/#7,#4/#8}{
+	\draw[fill=black](\pointo)--(\pointt);
+}
+}
+}
+}
+\path 
+(0,0) pic{hhChuNhat={A}{D}{C}{B}{A'}{D'}{C'}{B'}}
+($(B')!.25!(D)$)coordinate (H)
+pic[draw,angle radius=1.8]{right angle=B--H--D}
+;
+\foreach \pointo/\pointt in {B'/D,B/D,B/H}{
+\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \point/\goc in {A/50,B/190,C/-10,D/10,A'/90,B'/180,C'/120,D'/80,H/45}{
+\draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+}
+\end{tikzpicture}
+}
+}
+\end{vd}
+\begin{vd}%[1K7KP-2]
+Cho hình chóp tam giác $ S.ABC $ với $ SA $ vuông góc với $ (ABC) $ và $ SA=3a $. Diện tích tam giác $ ABC $ bằng $ 2a^2 $, $ BC=a $. Tính khoảng cách từ $ S $ đến $ BC $.
+\loigiai{
+\immini{
+Gọi $ H $ là hình chiếu của $ A $ lên $ BC $, ta suy ra\\
+$ \heva{&BC \perp AH \\&BC \perp SA \,(\text{do }\, SA \perp (ABC))} \Rightarrow$
+$ SH\perp BC $\\ nên $ \mathrm{d}(S,BC)=SH $.\\
+Tam giác $ ABC $ có $ AH $ là đường cao ứng với cạnh đáy $ BC $ nên $$ AH=\dfrac{2S_{\Delta ABC}}{BC}=\dfrac{2\cdot2\cdot a^2}{a}=4a .$$\\
+Xét tam giác $ SAH $ vuông tại $ A $, ta có $$ SH=\sqrt{SA^2+AH^2}=5a. $$
+}{
+\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+\tikzset{
+pics/chopTamGiac/.style n args={4}{
+code={
+\tikzset{declare function={a=4;b=3;h=3;goc=-20;}}
+\path 
+(0,0)coordinate (#1)+(0:a)coordinate (#3)+
+(goc:b)coordinate (#2)+(90:h)coordinate (#4)
+
+;
+\foreach \pointo/\pointt in {#4/#1,#1/#2,#2/#3,#3/#4,#4/#2}{
+	\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {#1/#3}{
+	\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+
+}
+}}
+\path 
+(0,0)coordinate (a)pic{chopTamGiac={A}{C}{B}{S}}
+($(C)!.3!(B)$)coordinate (H)
+pic[draw,angle radius=2mm]{right angle=S--H--B}
+pic[draw,angle radius=2mm]{right angle=A--H--C}
+;
+\foreach \pointo/\pointt in {A/H}{
+\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {S/H}{
+\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \point/\goc in {S/90,A/135,C/-90,B/-10,H/-45}{
+\draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+}
+\end{tikzpicture}
+}
+}
+\end{vd}
+\subsubsection{BÀI TẬP TỰ LUYỆN}
+\begin{bt}%[1K7BP-2]
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, $SA$ vuông góc với mặt phẳng $(ABCD)$ và $SC=\sqrt{5}a$. Tính độ dài cạnh $SB$.
+\loigiai{
+\immini{
+Ta có $SA \perp (ABCD)$ suy ra $SA\perp AC$ và $SA\perp AB$.\\
+Do đó tam giác $SAC$, $SAB$ vuông tại $A$.\\
+Ta có $AC=a\sqrt{2}$, $SA^2=SC^2-AC^2=3a^2$.\\
+Vậy $SB=\sqrt{SA^2+AB^2}=2a$.
+}{
+\begin{tikzpicture}[>=stealth,line join=round,line cap=round,scale=.8]
+\tikzset{
+pics/hinhChopTuGiacDeu/.style  n args={5}{
+code={
+\tikzset{
+	declare function={a=4;b=1.5;h=2.5;goc=-140;}
+}	
+\path 
+(0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#4)+(90:h)coordinate (#5)
+($(#2)+(#4)-(#1)$)coordinate (#3)
+;
+}
+}}
+\path 
+(0,0)pic {hinhChopTuGiacDeu={A}{D}{C}{B}{S}}
+;
+\foreach \pointo/\pointt in {S/B,S/C,S/D,B/C,C/D}{
+\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {S/A,A/B,A/D,A/C}{
+\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \point/\goc in {S/90,A/170,B/190,C/-90,D/-10}{
+\draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+}
+\end{tikzpicture}
+}
+}
+\end{bt}
+
+\begin{bt}%[1K7BP-2]
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, $SA\perp (ABCD)$ và $SA=2a$. Gọi $O$ là tâm của hình vuông $ABCD$. Tính khoảng cách từ $O$ đến đường thẳng $SC$.
+\loigiai{
+\immini{
+Trong mặt phẳng $(SAC)$, kẻ $AH\perp SC$ tại $H$ và $OK\perp SC$ tại $K$.\\
+Khi đó $\mathrm{d}(O,SC)=OK$ và $AH\parallel OK$.\\
+Xét $\triangle AHC$ có $AH\parallel OK$ và $OA=OC\Rightarrow KH=KC\\ \Rightarrow OK$ là đường trung bình của $\triangle AHC\\ \Rightarrow OK=\dfrac{1}{2}AH=\dfrac{1}{2}\cdot\dfrac{SA\cdot AC}{\sqrt{SA^2+AC^2}}=\dfrac{a\sqrt{3}}{3}$.\\
+Vậy $\mathrm{d}(O,SC)=\dfrac{a\sqrt{3}}{3}$.
+}{
+\begin{tikzpicture}[>=stealth,line join=round,line cap=round,scale=.8]
+\tikzset{
+pics/hinhChopTuGiacDeu/.style  n args={5}{
+code={
+\tikzset{
+	declare function={a=3;b=1.5;h=2.5;goc=-140;}
+}	
+\path 
+(0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#4)+(90:h)coordinate (#5)
+($(#2)+(#4)-(#1)$)coordinate (#3)
+;
+}
+}}
+\path 
+(0,0)pic {hinhChopTuGiacDeu={A}{D}{C}{B}{S}}
+(intersection of A--C and B--D)coordinate (O)
+($(S)!.3!(C)$)coordinate (K)
+($(K)!.5!(C)$)coordinate (H)
+pic[draw,angle radius=1.5mm]{right angle =O--H--C}
+pic[draw,angle radius=1.5mm]{right angle =A--K--C}
+;
+\foreach \pointo/\pointt in {S/B,S/C,S/D,B/C,C/D}{
+\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {S/A,A/B,A/D,A/C,B/D,O/H,S/O,A/K}{
+\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \point/\goc in {S/90,A/150,B/190,C/-90,D/-10,H/45,O/-90,K/30}{
+\draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+}
+\end{tikzpicture}
+}
+}
+\end{bt}
+\begin{bt}%[1K7BP-2]
+Cho hình chóp tứ diện đều có cạnh đáy bằng $a$; góc tạo bởi một cạnh bên và đáy bằng $\alpha$. Tính khoảng cách từ tâm của đáy đến một cạnh bên. 
+\loigiai{
+Xét hình chóp tứ diện đều $S.ABCD$ với đáy là hình vuông $ABCD$ tâm $O$, cạnh bằng $a$.
+\immini{
+Vì $OD$ là hình chiếu vuông góc của $SD$ lên $(ABCD)$ \\$\Rightarrow\alpha =\widehat{\left(SA,(ABCD)\right) }=\widehat{\left(SD,OD\right) }=\widehat{SDO}$.\\
+Trong mặt phẳng $(SBD)$, kẻ $OH\perp SD$ tại $H$.\\
+Khi đó $\mathrm{d}(O,SD)=OH$.\\
+Ta có $OD=\dfrac{BD}{2}=\dfrac{\sqrt{BC^2+CD^2}}{2}=\dfrac{a\sqrt{2}}{2}$.\\
+$\triangle OHD$ vuông tại $H\Rightarrow OH=OD\cdot\sin\alpha =\dfrac{a\sqrt{2}}{2}\cdot\sin\alpha$.
+}{
+\begin{tikzpicture}[>=stealth,line join=round,line cap=round,scale=.8]
+\tikzset{
+pics/hinhChopTuGiacDeu/.style  n args={5}{
+code={
+\tikzset{
+	declare function={a=3;b=1.5;h=2.5;goc=-140;}
+}	
+\path 
+(0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#4)+(70:h)coordinate (#5)
+($(#2)+(#4)-(#1)$)coordinate (#3)
+;
+}
+}}
+\path 
+(0,0)pic {hinhChopTuGiacDeu={A}{D}{C}{B}{S}}
+(intersection of A--C and B--D)coordinate (O)
+($(S)!.5!(D)$)coordinate (H)
+pic[draw,angle radius=1.5mm]{right angle =O--H--D}
+;
+\foreach \pointo/\pointt in {S/B,S/C,S/D,B/C,C/D}{
+\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {S/A,A/B,A/D,A/C,B/D,O/H,S/O}{
+\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \point/\goc in {S/90,A/150,B/190,C/-90,D/-10,H/45,O/-90}{
+\draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+}
+\end{tikzpicture}
+}
+}
+\end{bt}
+\begin{bt}%[1K7BP-2]
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, $SA\perp (ABCD)$ và $SA=a$. Gọi $E$ là trung điểm của $CD$. Tính theo $a$ khoảng cách từ $S$ đến $BE$.
+\loigiai{
+\immini{
+Trong mặt phẳng $(ABCD)$, vẽ $AH\perp BE$ tại $H\Rightarrow SH\perp BE$ (định lý 3 đường vuông góc).\\
+Khi đó $\mathrm{d}(S,BE)=SH$.\\
+$\triangle BCE$ vuông tại $C\Rightarrow BE=\sqrt{BC^2+BE^2}=\dfrac{a\sqrt{5}}{2}$.\\
+Gọi $F$ là trung điểm của $AB\Rightarrow EF\perp AB$ và $EF=AD=a$.\\
+$\triangle ABE$ có $AB\cdot EF=BE\cdot AH\Rightarrow AH=\dfrac{AB\cdot EF}{BE}=\dfrac{2a\sqrt{5}}{5}$.\\
+$\triangle SAH$ vuông tại $A\Rightarrow SH=\sqrt{SA^2+AH^2}=\dfrac{3a\sqrt{5}}{5}$.\\
+Vậy $\mathrm{d}(S,BE)=\dfrac{3a\sqrt{5}}{5}$.
+}{
+\begin{tikzpicture}[>=stealth,line join=round,line cap=round,scale=.8]
+\tikzset{
+pics/hinhChopTuGiacDeu/.style  n args={5}{
+code={
+\tikzset{
+	declare function={a=4;b=2;h=3;goc=-140;}
+}	
+\path 
+(0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#4)+(90:h)coordinate (#5)
+($(#2)+(#4)-(#1)$)coordinate (#3)
+;
+}
+}}
+\path 
+(0,0)pic {hinhChopTuGiacDeu={A}{D}{C}{B}{S}}
+($(A)!.5!(B)$)coordinate (F)
+($(C)!.5!(D)$)coordinate (E)
+($(B)!.6!(E)$)coordinate (H)
+pic[draw,angle radius=1.8mm]{right angle=A--H--B}
+pic[draw,angle radius=1.8mm]{right angle=S--H--E}
+;
+\foreach \pointo/\pointt in {S/B,S/C,S/D,B/C,C/D}{
+\draw[fill=black](\pointo)--(\pointt);
+}
+\foreach \pointo/\pointt in {S/A,A/B,A/D,A/E,E/F,B/E,S/H,A/H}{
+\draw[fill=black,dashed](\pointo)--(\pointt);
+}
+\foreach \point/\goc in {S/90,A/170,B/190,C/-90,D/-10,H/-90,E/-60,F/150}{
+\draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+}
+\end{tikzpicture}
+}
+}
+\end{bt}
+% \subsubsection{Câu hỏi trắc nghiệm}
+% \Opensolutionfile{ans}[ans/ans-1K7-26-Dang3]%
+% \begin{ex}%[1K7KP-2]
+% Cho hình chóp $A.BCD$ có $AC\perp (BCD)$ và $BCD$ là tam giác đều cạnh bằng $a$, biết $AC=a\sqrt{2}$. Khoảng cách từ $A$ đến đường thẳng $BD$ bằng
+% \choice
+% {\True $\dfrac{a\sqrt{11}}{2}$}
+% {$\dfrac{2a\sqrt{3}}{3}$}
+% {$\dfrac{4a\sqrt{5}}{3}$}
+% {$\dfrac{3a\sqrt{2}}{2}$}
+% \loigiai{
+% \immini{Gọi $H$ là trung điểm $BD$, ta có $CH=\dfrac{a\sqrt{3}}{2}$.\\
+% Ta có $AH=\sqrt{AC^2+CH^2}=\sqrt{(a\sqrt{2})^2+\left(\dfrac{a\sqrt{3}}{2}\right)^2}=\dfrac{a\sqrt{11}}{2}$.\\
+% Từ $AC\perp (BCD)$ và $CB=CD=a$ suy ra $AB=AD$, do đó $AH\perp BD$.\\
+% Bởi vậy, khoảng cách từ $A$ đến đường thẳng $BD$ bằng $AH=\dfrac{a\sqrt{11}}{2}$.
+% }
+% {
+% \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+% \tikzset{
+% pics/chopTamGiac/.style n args={4}{
+% code={
+% \tikzset{declare function={a=4;b=3;h=3;goc=-20;}}
+% \path 
+% (0,0)coordinate (#1)+(0:a)coordinate (#3)+
+% (goc:b)coordinate (#2)+(90:h)coordinate (#4)
+
+% ;
+% \foreach \pointo/\pointt in {#4/#1,#1/#2,#2/#3,#3/#4,#4/#2}{
+% 	\draw[fill=black](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {#1/#3}{
+% 	\draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+
+% }
+% }}
+% \path 
+% (0,0)coordinate (a)pic{chopTamGiac={C}{B}{D}{A}}
+% ($(B)!.5!(D)$)coordinate (H)
+% pic[draw,angle radius=2mm]{right angle=A--H--D}
+% pic[draw,angle radius=2mm]{right angle=C--H--B}
+% ;
+% \foreach \pointo/\pointt in {C/H}{
+% \draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {A/H}{
+% \draw[fill=black](\pointo)--(\pointt);
+% }
+% \foreach \point/\goc in {A/90,C/135,B/-90,D/-10,H/-45}{
+% \draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+% }
+% \end{tikzpicture}
+% }
+% }
+% \end{ex}
+
+% \begin{ex}%[1K7BP-2]
+% Cho hình lăng trụ $ABC.A'B'C'$ có đáy $\triangle ABC$ đều cạnh $a$ tâm $O$. Hình chiếu của $C'$ lên mặt phẳng $(ABC)$ trùng với trọng tâm của $\triangle ABC$. Cạnh bên $CC'$ tạo với mặt phẳng đáy $(ABC)$ một góc $60^\circ$. Tính khoảng cách từ $O$ đến đường thẳng $A'B'$.
+% \choice
+% {$\dfrac{7a}{4}$}
+% {$\dfrac{7a}{2}$}
+% {$\dfrac{a}{2}$}
+% {\True $\dfrac{a\sqrt{7}}{2}$}
+% \loigiai{
+% \immini{
+% Gọi $N$ là trung điểm $A'B'$, ta có $A'B'\perp (OC'N)$ nên khoảng cách từ $O$ đến $A'B'$ chính là đoạn $ON$.\\
+% Ta có $C'N=\dfrac{a\sqrt{3}}{2}$, $OC=\dfrac{a\sqrt{3}}{3}$, $OC'=OC\cdot\tan 60^\circ=a$.\\
+% Mà $A'B'\perp (OC'N)$ nên $\triangle OC'N$ vuông tại $C'$, suy ra
+% $$ON=\sqrt{OC'^2+C'N^2}=\dfrac{a\sqrt{7}}{2}.$$
+% }
+% {
+% \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+
+% \tikzset{
+% pics/hinhLangTru/.style n args={6}{
+% code={
+% \tikzset{
+% 	declare function={a=3;b=1.5;goc=-50;h=3;}
+% }
+% \path 
+% (0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#3)+(-100:h)coordinate (#4)
+% ;
+% \foreach \pone/\pname in {#2/#5,#3/#6}{
+% 	\path 
+% 	($(\pone)+(#4)-(#1)$)coordinate (\pname)
+% 	;
+% }
+% \foreach \pointo/\pointt in {#4/#5}{
+% 	\draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {#1/#2,#2/#3,#3/#1,#1/#4,#2/#5,#3/#6,#6/#4,#6/#5}{
+% 	\draw[fill=black](\pointo)--(\pointt);
+% }
+% }
+% }
+% }
+% \path 
+% (0,0) pic{hinhLangTru={A'}{B'}{C'}{A}{B}{C}}
+% ($(A')!.5!(B')$)coordinate (N)
+% ($(A)!.5!(C)$)coordinate (I)
+% ($(B)!.5!(I)$)coordinate (O)
+% pic[draw,angle radius=2mm]{right angle=N--C'--O}
+% pic[draw,angle radius=2mm]{right angle=C'--N--A'}
+% ;
+% \foreach \pointo/\pointt in {C'/N}{
+% \draw[fill=black](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {N/O,C'/O,C/O}{
+% \draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \point/\goc in {A'/120,B'/80,C'/190,A/190,B/-10,C/-90,N/90,O/-90}{
+% \draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+% }
+% \end{tikzpicture}
+% }
+% }
+% \end{ex}
+% %
+% \begin{ex}%[1K7BP-2]
+% Cho hình chóp $S.ABCD$ có $SA$ vuông góc với $(ABCD)$, $ABCD$ là hình thang vuông có đáy lớn $AD$ gấp đôi đáy nhỏ $BC$, đồng thời đường cao $AB=BC=a$. Biết $SA=a\sqrt{3}$, khi đó khoảng cách từ đỉnh $B$ đến đường thẳng $SC$ là
+% \choice
+% {$a\sqrt{10}$}
+% {$2a$}
+% {$\dfrac{a\sqrt{10}}{5}$}
+% {\True $\dfrac{2a\sqrt{5}}{5}$}
+% \loigiai{
+% \immini{
+% Kẻ $BH\perp SC \; (H \in SC)$ thì $\mathrm{d}(B,SC)=BH$.\\
+% Ta có $\heva{&BC\perp AB\\&BC \perp SA}\Rightarrow BC \perp (SAB) \Rightarrow BC \perp SB$.\\
+% Suy ra $\triangle SBC$ vuông tại $B$.\\
+% Xét tam giác $SBC$, ta có\\
+% $\dfrac{1}{BH^2}=\dfrac{1}{SB^2}+\dfrac{1}{BC^2}=\dfrac{1}{SA^2+AB^2}+\dfrac{1}{BC^2}=\dfrac{5}{4a^2}$.\\
+% $\Rightarrow BH =\dfrac{2a\sqrt{5}}{5}$.
+% }{
+% \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+% \tikzset{
+% pics/hinhChopTuGiacHinhThang/.style  n args={5}{
+% code={
+% \tikzset{
+% 	declare function={a=4;b=1.5;h=3;goc=-120;}
+% }	
+% \path 
+% (0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#4)+(90:h)coordinate (#5)
+% ($(#2)+(#4)-(#1)$)coordinate (c)
+% ($(c)!.5!(#4)$)coordinate (#3)
+% ;
+% }
+% }}
+% \path 
+% (0,0)pic {hinhChopTuGiacHinhThang={A}{D}{C}{B}{S}}
+% ($(S)!.6!(C)$)coordinate (H)
+% ($(A)!.5!(D)$)coordinate (M)
+% pic[draw,angle radius=2mm]{right angle=B--H--C}
+% ;	
+% \foreach \pointo/\pointt in {S/B,S/C,S/D,B/C,C/D,B/H}{
+% \draw[fill=black](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {S/A,A/B,A/D,C/M,S/M,B/M}{
+% \draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \point/\goc in {A/180,S/90,B/190,M/60,D/10,C/-90,H/60}{
+% \draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+% }
+% \end{tikzpicture}
+% }
+% }
+% \end{ex}
+% %
+% \begin{ex}%[1K7KP-2]
+% Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $B$, cạnh bên $SA$ vuông góc với đáy và $SA=2a$, $AB=BC=a$. Gọi $M$ là điểm thuộc $AB$ sao cho $AM=\dfrac{2a}{3}$. Tính khoảng cách $d$ từ $S$ đến đường thẳng $CM$.
+% \choice
+% {$d=\dfrac{a\sqrt{10}}{5}$}
+% {\True $d=\dfrac{a\sqrt{110}}{5}$}
+% {$d=\dfrac{2a\sqrt{10}}{5}$}
+% {$d=\dfrac{2a\sqrt{110}}{5}$}
+% \loigiai{
+% \immini{
+% Trong $(SMC)$ kẻ $SH\perp MC$ tại $H.$\\
+% Có $\heva{& MC\perp SH\\& MC\perp SA}\Rightarrow MC\perp (SAH)\Rightarrow MC\perp AH$.\\
+% Diện tích tam giác $ABC$ là $S_{ABC}=\dfrac{1}{2}AB\cdot BC=\dfrac{a^2}{2}\cdot$\\
+% Diện tích tam giác $MBC$ là $S_{MBC}=\dfrac{1}{2}MB\cdot BC=\dfrac{a^2}{6}\cdot$\\
+% $\Rightarrow S_{AMC}=S_{ABC}-S_{MBC}=\dfrac{a^2}{2}-\dfrac{a^2}{6}=\dfrac{a^2}{3}\cdot$\\
+% Xét $\triangle BMC\Rightarrow MC=\sqrt{MB^2+BC^2}=\dfrac{\sqrt{10}a}{3}\cdot$\\
+% Độ dài cạnh $AH=\dfrac{2S_{AMC}}{MC}=\dfrac{2a\sqrt{10}}{10}\cdot$
+% }{
+% \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+% \tikzset{
+% pics/chopTamGiac/.style n args={4}{
+% code={
+% \tikzset{declare function={a=4;b=1.6;h=3;goc=-40;}}
+% \path 
+% (0,0)coordinate (#1)+(0:a)coordinate (#3)+
+% (goc:b)coordinate (#2)+(90:h)coordinate (#4)
+
+% ;
+% \foreach \pointo/\pointt in {#4/#1,#1/#2,#2/#3,#3/#4,#4/#2}{
+% 	\draw[fill=black](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {#1/#3}{
+% 	\draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+
+% }
+% }}
+% \path 
+% (0,0)coordinate (a)pic{chopTamGiac={A}{B}{C}{S}}
+% ($(A)!2/3!(B)$)coordinate (M)
+% ($(M)!.4!(C)$)coordinate (H)
+% pic[draw,angle radius=2mm]{right angle =S--H--C}
+% ;
+% \foreach \pointo/\pointt in {S/M}{
+% \draw[fill=black](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {S/H,M/C}{
+% \draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \point/\goc in {S/90,A/135,B/-90,C/-10,M/190,H/-80}{
+% \draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+% }
+% \end{tikzpicture}
+% }
+% Xét $\triangle AHS\Rightarrow SH=\sqrt{AH^2+SH^2}=\dfrac{a\sqrt{110}}{5}\cdot$
+% }
+% \end{ex}
+% \begin{ex}%[1K7KP-2]
+% Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. Khoảng cách từ điểm $A$ đến đường thẳng $B'D$ bằng
+% \choice
+% {$\dfrac{a\sqrt{3}}{3}$}
+% {$\dfrac{a\sqrt{6}}{2}$}
+% {\True $\dfrac{a\sqrt{6}}{3}$}
+% {$\dfrac{a\sqrt{3}}{2}$}
+% \loigiai{
+% \immini{Vì $\heva{&AD \perp AB \text{ }( ABCD \text{ là hình vuông}) \\&AD \perp AA' \text{ } (ADD'A'\text{ là hình vuông})}$\\$  \Rightarrow AD \perp (ABB'A') \Rightarrow AD \perp AB'$.\\
+% Trong $\triangle ADB'$ vuông tại $A$ ta vẽ đường cao $AH$.\\ Vậy $AH = \mathrm{d}\left( A , B'D \right)$.\\
+% Theo hệ thức lượng trong $\triangle ADB'$ $$\dfrac{1}{AH^2} = \dfrac{1}{AD^2} + \dfrac{1}{AB'^2} = \dfrac{1}{a^2}+ \dfrac{1}{2a^2}$$
+% Suy ra $AH = \dfrac{a\sqrt{6}}{3}$.}
+% {
+% \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+
+% \tikzset{
+% pics/hhChuNhat/.style n args={8}{
+% code={
+% \tikzset{
+% 	declare function={a=4;b=2;goc=-120;h=3;}
+% }
+% \path 
+% (0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#4)+(90:h)coordinate (#5)
+% ($(#2)+(#4)-(#1)$)coordinate (#3)
+% ;
+% \foreach \pone/\pname in {#2/#6,#3/#7,#4/#8}{
+% 	\path 
+% 	($(\pone)+(#5)-(#1)$)coordinate (\pname)
+% 	;
+% }
+% \foreach \pointo/\pointt in {#1/#2,#1/#4,#1/#5}{
+% 	\draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {#2/#3,#3/#4,#5/#6,#6/#7,#7/#8,#8/#5,#2/#6,#3/#7,#4/#8}{
+% 	\draw[fill=black](\pointo)--(\pointt);
+% }
+% }
+% }
+% }
+% \path 
+% (0,0) pic{hhChuNhat={D}{C}{B}{A}{D'}{C'}{B'}{A'}}
+% ($(D)!.4!(B')$)coordinate (H)
+% pic[draw,angle radius=2mm]{right angle=A--H--B'}
+% ;
+% \foreach \pointo/\pointt in {D/B',A/H}{
+% \draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {A/B'}{
+% \draw[fill=black](\pointo)--(\pointt);
+% }
+% \foreach \point/\goc in {A/-90,B/-60,C/10,D/190,A'/180,B'/-10,C'/60,D'/90,H/90}{
+% \draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+% }
+% \end{tikzpicture}
+% }
+% }
+% \end{ex}
+
+% \begin{ex}%[1K7BP-2]
+% Cho hình chóp đều $S.ABCD$ có  $AB=a$, $SA=a\sqrt{2}$. Tính khoảng cách $d$ từ điểm $B$ đến đường thẳng $SD$.
+% \choice
+% { $d=\dfrac{a\sqrt{2}}{6}$}
+% {$d=\dfrac{a\sqrt{6}}{6}$}
+% {\True$d=\dfrac{a\sqrt{6}}{2}$}
+% {$d=\dfrac{a\sqrt{6}}{3}$}
+% \loigiai{
+% \begin{center}
+% \begin{tikzpicture}[line join =round] %câu 72
+% \def\khvuong(#1,#2,#3){
+% \path
+% ($(#2)!2mm!(#1)$) coordinate (#2#1)
+% ($(#2)!2mm!(#3)$) coordinate (#2#3);
+% \draw (#2#1) -- ($(#2#1)+(#2#3)-(#2)$) -- (#2#3);}
+% \coordinate (B) at (0,0);
+% \coordinate (C) at (4,0);
+% \coordinate (A) at (1.5,1.5);
+% \coordinate (D) at ($(A)+(C)-(B)$);
+% \coordinate (S) at (2.75,5);
+% \coordinate (H) at (4.125,3.25);
+% \draw[dashed] (A)--(B) (D)--(A) (A)--(S)(B)--(D) (B)--(H);
+% \draw (S)--(D) (S)--(B) (S)--(C) (B)--(C)--(D);
+% \fill (S) circle(1.2pt) node[above]{$S$}
+% (A) circle(1.2pt) node[above left]{$A$}
+% (B) circle(1.2pt) node[below left]{$B$}
+% (C) circle(1.2pt) node[below]{$C$}
+% (D) circle(1.2pt) node[right]{$D$}
+% (H) circle(1.2pt) node[right]{$H$};
+% \khvuong(B,H,S);
+% \end{tikzpicture}
+% \end{center}
+% Ta có $ABCD$ là hình vuông cạnh $a$ nên $BD=a\sqrt{2}$.\\ Mặt khác ta cũng có $SB=SD=a\sqrt{2}$ nên $\triangle SBD$ đều.\\
+% Kẻ $BH \perp SD$. Khi đó $\text{d}(B;SD)=BH$.
+% \\Xét $\triangle SBD$ đều cạnh bằng $a\sqrt{2}$, có đường cao $BH$ nên $BH = a\sqrt 2 \cdot\dfrac{{\sqrt 3 }}{2} = \dfrac{{a\sqrt 6 }}{2}$
+% }
+% \end{ex}
+
+% \begin{ex}%%[1K7BP-2]
+% Cho hình chóp $S.ABCD$ có hai mặt bên $SAB$ và $SBC$ cùng vuông góc với đáy, $ABCD$ là hình chữ nhật. Biết $AB=3a$, $AD=5a$, $SB=4a$. Tính khoảng cách $d$ từ điểm $A$ đến đường thẳng $SD$.
+% \choice
+% { $d=\dfrac{5a\sqrt{3}}{2}$}
+% {$d=5a\sqrt{2}$}
+% {\True$d=\dfrac{5a\sqrt{2}}{2}$}
+% {$d=5a$}
+% \loigiai{
+% \begin{center}
+% \begin{tikzpicture}[line join =round] %câu 71
+% \coordinate (A) at (0,0);
+% \coordinate (D) at (4,0);
+% \coordinate (B) at (1.5,1.5);
+% \coordinate (C) at ($(B)+(D)-(A)$);
+% \coordinate (S) at (1.5,5);
+% \coordinate (H) at (3,2);
+% \draw[dashed] (A)--(B) (S)--(B) (B)--(C) ;
+% \draw (S)--(D)  (A)--(S) (S)--(C) (A)--(D)--(C) (A)--(H);
+% \fill (S) circle(1.2pt) node[above]{$S$}
+% (A) circle(1.2pt) node[left]{$A$}
+% (B) circle(1.2pt) node[ left]{$B$}
+% (C) circle(1.2pt) node[right]{$C$}
+% (D) circle(1.2pt) node[ right]{$D$}
+% (H) circle(1.2pt) node[ right]{$H$};
+% \def\khvuong(#1,#2,#3){
+% \path
+% ($(#2)!2mm!(#1)$) coordinate (#2#1)
+% ($(#2)!2mm!(#3)$) coordinate (#2#3);
+% \draw (#2#1) -- ($(#2#1)+(#2#3)-(#2)$) -- (#2#3);}
+% \khvuong(S,B,C);
+% \khvuong(D,C,B);
+% \khvuong(A,H,S);
+% \end{tikzpicture}
+% \end{center}
+% Ta có $\heva{&(SAB) \perp (ABCD) \\& (SBC) \perp (ABCD)\\ &(SAB)\cap(SBC)=SB} \Rightarrow SB \perp(ABCD ).$\\
+% Ta có $\heva{&AD \perp AB \\& AD \perp SB} \Rightarrow AD \perp(SA B )\Rightarrow AD \perp SA.$\\
+% Ta có $\triangle SAB$ vuông tại $B$ $ \Rightarrow SA=\sqrt{AB^2+SB^2}=\sqrt{(4a)^2+(3a)^2}=5a$.\\
+% Kẻ $AH \perp SD$. Khi đó $\text{d}(A;SD)=AH$.\\ Xét $\triangle SAD$ vuông tại $A$, đường cao $AH$, ta có $\dfrac{1}{{A{H^2}}} = \dfrac{1}{{S{A^2}}} + \dfrac{1}{{A{D^2}}} = \dfrac{1}{{{{\left( {5a} \right)}^2}}} + \dfrac{1}{{{{\left( {5a} \right)}^2}}} = \dfrac{2}{{25{a^2}}}$\\
+% $\Rightarrow A{H^2} = \dfrac{{25{a^2}}}{2} \Rightarrow AH = \dfrac{{5a\sqrt 2 }}{2}.
+% $
+% }
+% \end{ex}
+% \begin{ex}%[1K7KP-2]%
+% Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. Tính khoảng cách từ $A$ đến $CD'$.
+% \choice
+% {$a\sqrt{2}$}
+% {$a\sqrt{3}$}
+% {\True $\dfrac{a\sqrt{6}}{2}$}
+% {$\dfrac{a\sqrt{3}}{2}$}
+% \loigiai{
+% \immini{Gọi $H$ là trung điểm của $CD'$. Do $ABCD.A'B'C'D'$ là hình	lập phương nên $\triangle ACD'$ là tam giác đều cạnh $a\sqrt{2}$.\\
+% Khi đó $AH$ vừa là đường trung tuyến vừa là đường cao.\\
+% Suy ra $AH=\dfrac{a\sqrt{6}}{2}$. Hay khoảng cách từ $A$ đến $CD'$ bằng $\dfrac{a\sqrt{6}}{2}$.}{ \begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+% \path (0,0)coordinate(A)
+% --++(-1.5,-2) coordinate(B)
+% --++(5,0) coordinate(C)
+% (A)--+(5,0) coordinate (D)
+% (A)--+(0,4) coordinate (A')
+% (B)--+(0,4) coordinate (B')
+% (C)--+(0,4) coordinate (C')
+% (D)--+(0,4) coordinate (D')
+% (C)--(D') coordinate[pos=0.5] (H)
+% ;
+% \draw (B)--(C)--(D)  (A')--(B')--(C')--(D')--cycle (B)--(B') (C)--(C') (D)--(D')--(C)
+% pic[draw,angle radius=2mm]{right angle=A--H--C}
+% ;
+% \draw[dashed] (A')--(A)--(D') (A)--(B) (A)--(D) (H)--(A)--(C);
+% \foreach \p/\q in {A/180,B/-90,C/-90,D/0,A'/90,B'/90,C'/90,D'/90,H/0}{
+% \path (\p) node[shift={(\q:3mm)}]{$\p$};
+% \fill[black] (\p) circle (1.2pt);}
+% \end{tikzpicture}}}
+% \end{ex}
+
+% \begin{ex}%[1K7KP-2]
+% Cho hình chóp $S.ABCD$ có $SA \perp (ABCD)$, đáy $ABCD$ là hình thoi cạnh bằng $a$ và $\widehat{B}=60^{\circ}$. Biết $SA=2a$, tính khoảng cách từ $A$ đến $SC$.
+% \choice
+% {$\dfrac{4a\sqrt{3}}{3}$}
+% {\True $\dfrac{2a\sqrt{5}}{5}$}
+% {$\dfrac{3a\sqrt{2}}{2}$}
+% {$\dfrac{5a\sqrt{6}}{2}$}
+% \loigiai{
+% \immini{Kẻ $AH \perp SC$ suy ra $\mathrm{d}(A,SC)=AH$.\\
+% Do $ABCD$ là hình thoi nên $AB=BC$, mặt khác $\widehat{B}=60^{\circ}$.\\
+% Suy ra $\triangle ABC$ là tam giác đều cạnh $a$ $\Rightarrow AC=a$.\\
+% Ta có $\dfrac{1}{AH^2}=\dfrac{1}{SA^2}+\dfrac{1}{AC^2}=\dfrac{1}{4a^2}+\dfrac{1}{a^2}=\dfrac{5}{4a^2} \Rightarrow AH=\dfrac{2a\sqrt{5}}{5}$.}{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+% \path (0,0)coordinate(A)
+% --++(-1.5,-2) coordinate(B)
+% --++(4,0) coordinate(C)
+% ($(A)+(C)-(B)$) coordinate (D)
+% (A)--+(0,3) coordinate (S)
+% (S)--(C) coordinate[pos=0.5](H);
+% \draw (S)--(B)--(C)--(D)--cycle (S)--(C);
+% \draw[dashed] (S)--(A) (A)--(B) (A)--(D) (C)--(A)--(H)
+% pic[draw,angle radius=2mm]{right angle=A--H--C}
+% ;
+% \foreach \p/\q in {A/180,B/-90,C/-90,D/0,S/90,H/60}{
+% \path (\p) node[shift={(\q:3mm)}]{$\p$};
+% \fill[black] (\p) circle (1.2pt);}
+% \end{tikzpicture}}
+% }
+% \end{ex}
+
+% \begin{ex}%[1K7KP-2]
+% Cho hình chóp tứ giác đều $S.ABCD$ có $SA=a\sqrt{3}$, $ABCD$ là hình vuông cạnh bằng $2a$. Gọi $G$ là trọng tâm của tam giác $ABC$, tính khoảng cách từ $G$ đến $SD$.
+% \choice
+% {$\dfrac{a\sqrt{6}}{4}$}
+% {$\dfrac{5a\sqrt{6}}{12}$}
+% {\True $\dfrac{4a\sqrt{6}}{9}$}
+% {$\dfrac{a\sqrt{6}}{3}$}
+% \loigiai{
+% \immini{Gọi $O$ là tâm của đáy $ABCD$.\\
+% Do $S.ABCD$ là hình chóp tứ giác đều suy ra $SO \perp (ABCD)$.\\
+% Suy ra $SB=SC=SD=SA=a\sqrt{3}$, $AC=BD=2a\sqrt{2}$.\\
+% Ta có $SO=\sqrt{SA^2-OA^2}=\sqrt{SA^2-\dfrac{AC^2}{4}}$ $=\sqrt{3a^2-2a^2}=a$.\\
+% Kẻ $OK$ vuông góc với $SD$.\\
+% Khi đó $OK=\dfrac{SO \cdot OD}{SD}$ $=\dfrac{a \cdot a\sqrt{2}}{a\sqrt{3}}=\dfrac{a\sqrt{6}}{3}$.\\
+% Kẻ $GH \perp SD$ suy ra $GH \parallel OK$.\\
+% }{\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+% \path (0,0)coordinate(A)
+% --++(-1.5,-2) coordinate(B)
+% --++(5,0) coordinate(C)
+% (A)--+(5,0) coordinate (D)
+% (A)--(C)coordinate[pos=0.5](O)
+% (O)--+(0,5) coordinate (S)
+% (O)--(B) coordinate[pos=1/3] (G)
+% (S)--(D) coordinate[pos=0.6] (H)
+% (H)--(D) coordinate[pos=1/4] (K)
+% pic[draw,angle radius=1.2mm]{right angle=G--H--D}
+% pic[draw,angle radius=1.2mm]{right angle=O--K--D}
+% ;
+% \draw (S)--(B)--(C)--(D)--cycle (S)--(C);
+% \draw[dashed] (O)--(S)--(A) (A)--(B) (A)--(D) (A)--(C) (B)--(D) (G)--(H) (O)--(K);
+% \foreach \p/\q in {A/40,B/-90,C/-90,D/40,S/90,O/-90,H/60,K/60,G/-90}{
+% \path (\p) node[shift={(\q:3mm)}]{$\p$};
+% \fill[black] (\p) circle (1.2pt);}
+% \end{tikzpicture}}
+% Ta có $\dfrac{OK}{GH}=\dfrac{DO}{DG} \Rightarrow GH=\dfrac{OK \cdot (DO+OG)}{DO}$ $\Rightarrow GH=\dfrac{4}{3}OK=\dfrac{4a\sqrt{6}}{9}$ $\left(OG=\dfrac{1}{3}BO=\dfrac{1}{3}DO\right)$.}
+% \end{ex}
+
+% \begin{ex}%[1K7BP-2]
+% Cho tứ diện $SABC$, trong đó $SA$,$SB$,$SC$ vuông góc với nhau từng đôi một và $SA=3a$, $SB=a$, $SC=2a$. Tính khoảng cách từ điểm $A$ đến đường thẳng $BC$.
+% \choice
+% {\True$\dfrac{7a\sqrt{5}}{5}$}
+% {$\dfrac{8a\sqrt{3}}{3}$}
+% {$\dfrac{3a\sqrt{2}}{2}$}
+% {$\dfrac{5a\sqrt{6}}{6}$}
+% \loigiai{
+% \begin{center}
+% \begin{tikzpicture}[line join =round,scale=1] %câu 73
+% \def\khvuong(#1,#2,#3){
+% \path
+% ($(#2)!2mm!(#1)$) coordinate (#2#1)
+% ($(#2)!2mm!(#3)$) coordinate (#2#3);
+% \draw (#2#1) -- ($(#2#1)+(#2#3)-(#2)$) -- (#2#3);}
+% \coordinate (C) at (-2,-2);
+% \coordinate (A) at (0,5);
+% \coordinate (B) at (4,0);
+% \coordinate (S) at (0,0);
+% \coordinate (H) at (2.5,-0.5);
+% \draw[dashed]  (A)--(S)(S)--(B) (S)--(C) (S) -- (H)   ;
+% \draw   (A)--(B)--(C) -- (A)--(H);
+% \fill (S) circle(1.2pt) node[above left]{$S$}
+% (A) circle(1.2pt) node[above]{$A$}
+% (B) circle(1.2pt) node[right]{$B$}
+% (H) circle(1.2pt) node[below]{$H$}
+% (C) circle(1.2pt) node[left]{$C$};
+% \khvuong(A,H,B);
+% \khvuong(B,S,C);
+% \end{tikzpicture}
+% \end{center}
+% Kẻ $AH\perp BC$, $(H \in BC)$.\\
+% Ta có $\heva{SA \perp SB \\ SA \perp SC} \Rightarrow SA \perp(SBC )\Rightarrow SA \perp BC.$\\
+% Ta có $\heva{BC \perp AH \\ BC \perp SA} \Rightarrow BC \perp(SAH )\Rightarrow BC \perp SH.$\\
+% Xét $\triangle SBC$ vuông tại $S$, đường cao $SH$, ta có:
+% \begin{center}
+% $\heva{
+% &\dfrac{1}{{S{H^2}}} = \dfrac{1}{{S{B^2}}} + \dfrac{1}{{S{C^2}}} = \dfrac{1}{{{{\left( {a} \right)}^2}}} + \dfrac{1}{{{{\left( {2a} \right)}^2}}} = \dfrac{5}{{4{a^2}}}\\&
+% \Rightarrow S{H^2} = \dfrac{{4{a^2}}}{5} \Rightarrow SH = \dfrac{{2a\sqrt 5 }}{5}.
+% }$
+% \end{center}
+% Ta có $\triangle SAH$ vuông tại $S$ $ \Rightarrow AH=\sqrt{SA^2+SH^2}=\sqrt{(3a)^2+\left(\dfrac{{2a\sqrt 5 }}{5}\right)^2}=\dfrac{{7a\sqrt 5 }}{5}$.
+% \\Do đó $\text{d}(A;BC)=AH=\dfrac{{7a\sqrt 5 }}{5}$.
+% }
+% \end{ex}
+
+% \begin{ex}%[1K7BP-2]
+% Cho tứ diện $ABCD$ có cạnh $AC\perp (BCD)$ và $BCD$ là tam giác đều cạnh bằng $a$. Biết $AC=a\sqrt{2}$ và $M$ là trung điểm $BD$. Tính khoảng cách từ $C$ đến đường thẳng $AM$.
+% \choice
+% {\True $a\sqrt{\dfrac{6}{11}}$}
+% {$a\sqrt{\dfrac{4}{7}}$}
+% {$a\sqrt{\dfrac{2}{3}}$}
+% {$a\sqrt{\dfrac{7}{5}}$}
+% \loigiai{
+% \immini{
+% Trong $(ACM)$, vẽ $CK$ vuông góc với $AM$ tại $K$.\\
+% Khi đó $\mathrm{d}(C,AM)=CK$.\\
+% Ta có $\triangle BCD$ đều cạnh bằng $a$ nên theo định lý Py-ta-go
+% \begin{eqnarray*}
+% CM^2=CD^2-\left(\dfrac{BD}{2}\right)^2=\dfrac{3}{4}a^2\Rightarrow CM=\dfrac{\sqrt{3}a}{2}.
+% \end{eqnarray*}
+% Theo hệ thức lượng trong $\triangle ACM$ vuông tại $C$, ta có
+% \begin{eqnarray*}
+% \dfrac{1}{CK^2}=\dfrac{1}{CM^2}+\dfrac{1}{CA^2}=\dfrac{1}{2a^2}+\dfrac{4}{3a^2}\Rightarrow CK=a\sqrt{\dfrac{6}{11}}.
+% \end{eqnarray*}
+% }
+% {
+% \begin{tikzpicture}[line join = round, line cap = round,>=stealth,scale=.8, font=\footnotesize]
+% \coordinate[label=above:$A$] (A) at (0,4);
+% \coordinate[label=below:$B$] (B) at (1.5,-2);
+% \coordinate[label=left:$C$] (C) at (0,0);
+% \coordinate[label=right:$M$] (M) at (3,-1);
+% \coordinate[label=above right:$K$] (K) at (1.8,1);
+% \coordinate[label=right:$D$] (D) at (4.5,0);
+% \draw (A)--(C)--(B)--(D)--cycle (A)--(M) (A)--(B);
+% \draw[dashed](C)--(M) (C)--(K) (C)--(D);
+% \draw pic[angle radius=2mm,draw=blue] {right angle = A--C--M};% vẽ góc vuông
+% \draw pic[angle radius=2mm,draw=blue] {right angle = C--K--M};
+% \foreach \diem in {A,B,C,D,M,K}\fill (\diem)circle(1.5pt);
+% \end{tikzpicture}
+% }
+% }
+% \end{ex}
+% \begin{ex}%[1K7KP-2]
+% Cho hình chóp $S.ABCD$ có $SA \perp (ABCD)$. Đáy $ABCD$ là hình thoi cạnh bằng $a$ và $\widehat{B}=60^\circ$. Biết $SA=2a$, tính khoảng cách $d$ từ $A$ tới $SC$.
+% \choice
+% {\True $d=\dfrac{2a\sqrt{5}}{5}$}
+% {$d=\dfrac{5a\sqrt{6}}{2}$}
+% {$d=\dfrac{3a\sqrt{2}}{2}$}
+% {$d=\dfrac{4a\sqrt{3}}{3}$}
+% \loigiai{
+% \immini{
+% Tam giác $ABC$ đều nên $AC=a$. Hạ $AK \perp SC$ tại $K$. \\
+% Xét tam giác vuông $SAC$:\\ $\dfrac{1}{AK^2}=\dfrac{1}{SA^2}+\dfrac{1}{AC^2}=\dfrac{1}{4a^2}+\dfrac{1}{a^2}=\dfrac{5}{4a^2}$.\\
+% Vậy $d(A; SC)=AK=\dfrac{2a\sqrt{5}}{5}$.
+% }
+% {
+% \begin{tikzpicture}[scale=.8,thick]
+% \coordinate (a) at (0,0)node[left] {A};
+% \coordinate (b) at (4,0);
+% \coordinate (c) at (2,-2);
+% \coordinate (d) at (-2,-2);
+% \coordinate (s) at (0,5);
+% \coordinate (k) at (1,1.5);
+% \draw [dashed] (a)--(b)--(d)--cycle;
+% \draw [dashed] (s)--(a)--(c);
+% \draw (s)--(b)--(c)--(d)--cycle;
+% \draw [dashed] (a)--(k);
+% \draw (s)--(c);
+% \draw (1,-1) node[below] {O};
+% \draw (4,0) node[right] {B};
+% \draw (2,-2) node[right] {C};
+% \draw (-2,-2) node[left] {D};
+% \draw (0,5) node[above] {S};
+% \draw (1,1.5) node[above right] {K}
+% pic[draw,angle radius=2mm]{right angle=a--k--c}
+% ;
+% \end{tikzpicture}
+% }
+% }
+% \end{ex}
+% \begin{ex}%[1K7KP-2]
+% Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$, $SA =2a$, $ AB = a$ và $SA$ vuông góc với $(ABCD)$. Gọi $I$ là trung điểm $SC$ và $M$ là trung điểm của $AB$. Tính khoảng cách từ điểm $I$ đến đường thẳng $CM$.
+% \choice
+% {$\dfrac{a\sqrt{5}}{10}$}
+% {$\dfrac{a3\sqrt{5}}{10} $}
+% {$\dfrac{a\sqrt{75}}{10} $}
+% {\True $ \dfrac{a\sqrt{105}}{10} $}
+% \loigiai
+% {
+% \immini{
+% Ta có $OI \parallel SA \Rightarrow OI \perp (ABCD) \Rightarrow OI \perp MC$.\\
+% Kẻ $OK \perp MC, \left( K \in CM \right)$ thì $MC \perp (IOK) \Rightarrow IK \perp CM$.
+% $$\Rightarrow \mathrm{d}(I,CM)=IK.$$
+% Ta có $S_{\triangle OMC} = \dfrac{1}{2}OK \cdot MC$
+% $$\Rightarrow OK = \dfrac{2 S_{\triangle OMC}}{MC} = \dfrac{2\left(  \dfrac{a^2}{2}-\dfrac{a^2}{8}-\dfrac{a^2}{4} \right)}{\sqrt{a^2+\dfrac{a^2}{4}}}=\dfrac{a}{2\sqrt{5}}.$$
+% Suy ra $IK=\sqrt{a^2+\dfrac{a^2}{20}}=\dfrac{a\sqrt{105}}{10} $.
+% }
+% {
+% \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+% \tikzset{
+% pics/hinhChopTuGiacDeu/.style  n args={5}{
+% code={
+% \tikzset{
+% 	declare function={a=4;b=2.5;h=3;goc=-150;}
+% }	
+% \path 
+% (0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#4)+(90:h)coordinate (#5)
+% ($(#2)+(#4)-(#1)$)coordinate (#3)
+
+% ;
+% }
+% }}
+% \path 
+% (0,0)pic {hinhChopTuGiacDeu={A}{D}{C}{B}{S}}
+% ($(A)!.5!(B)$)coordinate (M)
+% ($(S)!.5!(C)$)coordinate (I)
+% ($(A)!.5!(C)$)coordinate (O)
+% ($(M)!.5!(C)$)coordinate (K)
+% pic[draw,angle radius=1.5mm]{right angle=I--O--K}
+% pic[draw,angle radius=1.5mm]{right angle=I--K--M}
+% pic[draw,angle radius=1.5mm]{right angle=O--K--C}
+% ;
+% \foreach \pointo/\pointt in {S/B,S/C,S/D,B/C,C/D}{
+% \draw[fill=black](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {S/A,A/B,A/D,A/C,I/O,M/O,M/C,I/K,O/K}{
+% \draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \point/\goc in {S/90,A/170,D/10,C/-60,B/190,M/135,O/30,K/-90,I/60}{
+% \draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+% }	
+% \end{tikzpicture}
+% }
+% }
+% \end{ex}
+% \begin{ex}%[1K7KP-2]
+% Cho lăng trụ tam giác đều $ABC.A'B'C'$ có $AB = a$. $M$ là điểm di động trên $AB$. Gọi $H$ là hình chiếu của $A'$ trên đường thẳng $CM$. Tính độ dài đoạn thẳng $BH$ khi tam giác $AHC$ có diện tích lớn nhất.
+% \choice
+% {$\dfrac{a}{2}$}
+% {$a\left(\dfrac{\sqrt 3}{2}-1\right)$}
+% {$\dfrac{a\sqrt 3}{3}$}
+% {\True $\dfrac{a\left(\sqrt 3-1\right)}{2}$}
+% \loigiai{
+% \immini{Ta có $ \heva{
+% &AA' \perp MC\\
+% &A'H \perp MC
+% } \Rightarrow MC \perp AH \Rightarrow \Delta AHC$ vuông tại $H$.\\
+% Trong $\left(ABC\right)$ có $\triangle AHC$ nội tiếp trong đường tròn đường kính $AC$.\\
+% $ \Rightarrow \triangle AHC$ có diện tích lớn nhất khi nó là tam giác vuông cân.\\
+% $ \Rightarrow AH = HC \Rightarrow B,H,I$ thẳng hàng và $HI = \dfrac{a}{2}$.\\
+% $ \Rightarrow BH = \dfrac{a\sqrt 3}{2}-\dfrac{a}{2} = \dfrac{a\left(\sqrt 3-1\right)}{2}$.}
+% {
+% \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+
+% \tikzset{
+% pics/hinhLangTru/.style n args={6}{
+% code={
+% \tikzset{
+% 	declare function={a=4;b=2;goc=-50;h=3;}
+% }
+% \path 
+% (0,0)coordinate (#1)+(0:a)coordinate (#2)+(goc:b)coordinate (#3)+(-90:h)coordinate (#4)
+% ;
+% \foreach \pone/\pname in {#2/#5,#3/#6}{
+% 	\path 
+% 	($(\pone)+(#4)-(#1)$)coordinate (\pname)
+% 	;
+% }
+% \foreach \pointo/\pointt in {#4/#5}{
+% 	\draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \pointo/\pointt in {#1/#2,#2/#3,#3/#1,#1/#4,#2/#5,#3/#6,#6/#4,#6/#5}{
+% 	\draw[fill=black](\pointo)--(\pointt);
+% }
+% }
+% }
+% }
+% \path 
+% (0,0) pic{hinhLangTru={A'}{B'}{C'}{A}{B}{C}}
+% ($(A)!.5!(B)$)coordinate (M)($(A)!.5!(C)$)coordinate (I)
+% (intersection of C--M and B--I)coordinate (H)
+% ;
+% \foreach \pointo/\pointt in {A/H,C/M,B/I,A'/H}{
+% \draw[fill=black,dashed](\pointo)--(\pointt);
+% }
+% \foreach \point/\goc in {A'/120,B'/80,C'/90,A/190,B/-10,C/-90,M/90,I/190,H/-45}{
+% \draw[fill=black](\point)circle(.8pt)+(\goc:2mm)node[scale=.8]{$\point$};
+% }
+% \end{tikzpicture}
+% }
+% }
+% \end{ex}
+
+% \Closesolutionfile{ans}
+% \begin{indapan}{10}
+% 	{ans/ans-1K7-26-Dang3}
+% \end{indapan}
+

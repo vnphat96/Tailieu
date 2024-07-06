@@ -1,0 +1,508 @@
+\setcounter{dang}{0}
+\section{Khoảng Cách}
+\subsection{Tóm tắt lý thuyết}
+\begin{tomtat}
+	\subsubsection{Khoảng cách từ một điểm đến một đường thẳng}
+	Ta đã biết khoảng cách từ một điểm đến một đường thẳng trong mặt phẳng. Trong không gian, khái niệm khoảng cách đó được định nghĩa tương tự như trong mặt phẳng.
+	\begin{dn}
+		\immini
+		{
+			Cho đường thẳng $\Delta$ và điểm $M$ không thuộc $\Delta$. Gọi $H$ là hình chiếu của điểm $M$ trên đường thẳng $\Delta$. Độ dài đoạn thẳng $M H$ gọi là khoảng cách từ điểm $M$ đến đường thẳng $\Delta$, kí hiệu $\mathrm{d}(M, \Delta)$.
+		}
+		{
+			\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (5,0);
+				\coordinate (H) at ($(A)!.3!(B)$);
+				\coordinate (M) at ($(H)+(0,3)$);
+				\foreach \x/\g in {H/-90,M/90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:3mm)$) node{$\x$};
+				\draw (A)--(B)node[above left]{$\Delta$}
+				(M)--(H);
+				\draw pic[draw,angle radius=2mm] {right angle = M--H--B}; 
+			\end{tikzpicture}
+		}
+	\end{dn}
+	
+	\begin{note}
+		Khi điểm $M$ thuộc đường thẳng $\Delta$ thì $\mathrm{d}(M, \Delta)=0$.
+	\end{note}
+	\subsubsection{Khoảng cách từ một điểm đến một mặt phẳng}
+	\begin{dn}
+		\immini
+		{
+			Cho mặt phẳng $(P)$ và điểm $M$ không thuộc mặt phẳng $(P)$. Gọi $H$ là hình chiếu của $M$ trên mặt phẳng $(P)$. Độ dài đoạn thẳng $M H$ gọi là khoảng cách từ điểm $M$ đến mặt phẳng $(P)$, kí hiệu $\mathrm{d}(M,(P))$.
+		}
+		{
+			\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (5,0);
+				\coordinate (D) at (2,3);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (H) at ($(A)!.5!(C)$);
+				\coordinate (M) at ($(H)+(0,3)$);
+				\coordinate (P) at ($(A)+(.6,.3)$);
+				\foreach \x/\g in {H/180,M/90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:3mm)$) node{$\x$};
+				\draw (A)--(B)--(C)--(D)--(A) (M)--(H);
+				\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$P$"]{angle=B--A--D};
+			\end{tikzpicture}
+		}
+	\end{dn}
+	
+	\begin{note}
+		Khi điểm $M$ thuộc mặt phẳng $(P)$ thì $\mathrm{d}(M,(P))=0$.
+	\end{note}
+	
+	\subsubsection{Khoảng cách giữa hai đường thẳng song song}
+	
+	\begin{dn}
+		Khoảng cách giữa hai đường thẳng song song $\Delta$, $\Delta'$ là khoảng cách từ một điểm bất kì thuộc đường thẳng này đến đường thẳng kia, kí hiệu $\mathrm{d}\left(\Delta,\Delta'\right)$. 
+	\end{dn}
+	\immini
+	{
+		Trong hình bên, ta có $\mathrm{d}\left(\Delta, \Delta'\right)=A B$ với $A \in \Delta$, $B \in \Delta'$, $A B \perp \Delta$, $A B \perp \Delta'$ và $\Delta \parallel  \Delta'$.
+	}
+	{
+		\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\coordinate (M) at (0,0);
+			\coordinate (N) at (5,0);
+			\coordinate (B) at ($(M)!.3!(N)$);
+			\coordinate (A) at ($(B)+(0,2)$);
+			\coordinate (M') at ($(M)+(0,2)$);
+			\coordinate (N') at ($(N)+(0,2)$);
+			\foreach \x/\g in {B/-90,A/90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:3mm)$) node{$\x$};
+			\draw (M)--(N)node[above left]{$\Delta'$}
+			(M')--(N')node[above left]{$\Delta$}
+			(A)--(B);
+			\draw pic[draw,angle radius=2mm] {right angle = M--B--A}; 
+			\draw pic[draw,angle radius=2mm] {right angle = M'--A--B}; 
+		\end{tikzpicture}
+	}
+	\subsubsection{Khoảng cách giữa đường thẳng và mặt phẳng song song}
+	\begin{dn}
+		Cho đường thẳng $\Delta$ song song song với mặt phẳng $(P)$. Khoảng cách giữa đường thẳng $\Delta$ và mặt phẳng $(P)$ là khoảng cách từ một điểm bất kì thuộc đường thẳng $\Delta$ đến mặt phẳng $(P)$, kí hiệu $\mathrm{d}(\Delta,(P))$.
+	\end{dn}
+	\immini
+	{
+		Trong hình bên, ta có $\mathrm{d}(\Delta,(P))=MH=h$, trong đó $M \in \Delta$, $H \in(P)$, $MH \perp(P)$ và $\Delta \parallel  (P)$.
+	}
+	{
+		\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (5,0);
+			\coordinate (D) at (2,2);
+			\coordinate (C) at ($(B)+(D)-(A)$);
+			\coordinate (H) at ($(A)!.5!(C)$);
+			\coordinate (M) at ($(H)+(0,3)$);
+			\coordinate (P) at ($(A)+(.6,.3)$);
+			\coordinate (N) at ($(M)+(-2,0)$);
+			\coordinate (N') at ($(M)+(3,0)$);
+			\coordinate (h) at ($(M)!0.5!(H)$);
+			\foreach \x/\g in {H/-90,M/90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:3mm)$) node{$\x$};
+			\draw (A)--(B)--(C)--(D)--(A)
+			(M)--(H)
+			(N)--(N')node[above left]{$\Delta$}
+			(h)node[right]{$h$};
+			\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$P$"]{angle=B--A--D};
+		\end{tikzpicture}
+	}
+	\subsubsection{Khoảng cách giữa hai mặt phẳng song song}
+	\begin{dn}
+		Khoảng cách giữa hai mặt phẳng song song $(P)$, $(Q)$ là khoảng cách từ một điểm bất kì thuộc mặt phẳng này đến mặt phẳng kia, kí kiệu $\mathrm{d}((P),(Q))$.
+	\end{dn}
+	\immini
+	{
+		Trong hình bên, ta có $\mathrm{d}((P),(Q))=I K=h$ với $I \in(P)$, $K \in(Q)$, $I K \perp(P)$, $I K \perp(Q)$ và $(P) \parallel (Q)$.
+	}
+	{
+		\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (5,0);
+			\coordinate (D) at (2,2);
+			\coordinate (C) at ($(B)+(D)-(A)$);
+			\coordinate (K) at ($(A)!.5!(C)$);
+			\coordinate (I) at ($(K)+(0,3)$);
+			\coordinate (G) at ($(I)!.32!(K)$);
+			\coordinate (Q) at ($(A)+(.6,.3)$);
+			\coordinate (h) at ($(I)!0.5!(K)$);
+			\coordinate (A') at ($(A)+(0,3)$);
+			\coordinate (B') at ($(B)+(0,3)$);
+			\coordinate (C') at ($(C)+(0,3)$);
+			\coordinate (D') at ($(D)+(0,3)$);			
+			\coordinate (P) at ($(A')+(.6,.3)$);
+			\foreach \x/\g in {K/-90,I/90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:4mm)$) node{$\x$};
+			\draw (A)--(B)--(C)--(D)--(A)
+			(A')--(B')--(C')--(D')--(A')
+			(h)node[right]{$h$}
+			(K)--(G);
+			\draw[dashed] (G)--(I);
+			\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$P$"]{angle=B--A--D};
+			\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$Q$"]{angle=B'--A'--D'};
+		\end{tikzpicture}
+	}
+	
+	\subsubsection{Khoảng cách giữa hai đường thẳng chéo nhau}
+	\begin{dn}
+		Cho hai đường thẳng $a$, $b$ chéo nhau.
+		\begin{itemize}
+			\item Đường thẳng $c$ vừa vuông góc, vừa cắt cả hai đường thẳng $a$ và $b$ được gọi là đường vuông góc chung của hai đường thẳng đó.
+			\item Đoạn thẳng có hai đầu mút là giao điểm của đường thẳng $c$ với hai đường thẳng $a$, $b$ được gọi là đoạn vuông góc chung của hai đường thẳng đó.
+			\item Độ dài đoạn vuông góc chung của hai đường thẳng $a$, $b$ gọi là khoảng cách giữa hai đường thẳng đó, kí hiệu $\mathrm{d}(a, b)$.
+		\end{itemize}
+	\end{dn}
+	
+	\begin{nx}
+		\immini
+		{
+			Gọi mặt phẳng chứa $b$ và song song với $a$ là $(P)$, hình chiếu của $a$ trên $(P)$ là $a'$, giao điểm của $a'$ và $b$ là $K$. Khi đó, $H K$ là đoạn vuông góc chung của hai đường thẳng chéo nhau $a, b$. Ngoài ra, ta cũng có $\mathrm{d}(a, b)=\mathrm{d}(a,(P))$.
+		}
+		{
+			\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				
+				\coordinate (A) at (-1,0);
+				\coordinate (B) at (6,0);
+				\coordinate (D) at (2,3);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (K) at ($(A)!.5!(C)$);
+				\coordinate (H) at ($(K)+(0,3)$);
+				\coordinate (P) at ($(A)+(.6,.3)$);
+				\coordinate (N) at ($(H)+(-2,0)$);
+				\coordinate (N') at ($(H)+(3,0)$);
+				\coordinate (n) at ($(K)+(-2.5,0)$);
+				\coordinate (n') at ($(K)+(2.5,0)$);
+				\coordinate (b) at ($(K)+(-2,1)$);
+				\coordinate (b') at ($(b)!2!(K)$);
+				\foreach \x/\g in {K/-90,H/90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:4mm)$) node{$\x$};
+				\draw (A)--(B)--(C)--(D)--(A)
+				(K)--(H)
+				(N)--(N')node[above left]{$a$}
+				(n)--(n')node[above left]{$a'$}
+				(b)--(b')node[above left]{$b$};
+				\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$P$"]{angle=B--A--D};
+				\draw pic[draw,angle radius=2mm] {right angle = H--K--b}; 
+				\draw pic[draw,angle radius=2mm] {right angle = H--K--n'}; 
+				\draw pic[draw,angle radius=2mm] {right angle = K--H--N'}; 
+			\end{tikzpicture}
+		}
+		\noindent
+		\immini
+		{
+			Khi $a \perp b$, ta có thể làm như sau: Gọi mặt phẳng đi qua $b$ và vuông góc với $a$ là $(P)$, giao điểm của $a$ và $(P)$ là $H$, hình chiếu của $H$ trên $b$ là $K$, $H$ là hình chiếu của $K$ trên $a$. Khi đó $HK$ là đoạn vuông góc chung của hai đường thẳng chéo nhau $a$, $b$.
+		}
+		{
+			\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (A) at (-1,0);
+				\coordinate (B) at (6,0);
+				\coordinate (D) at (2,3);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (H) at ($(A)!.4!(C)$);
+				\coordinate (K) at ($(H)+(1.5,-0.5)$);
+				\coordinate (a) at ($(H)+(0,4)$);
+				\coordinate (a') at ($(H)+(0,-1)$);
+				\coordinate (b) at ($(K)+(1,1.5)$);
+				\coordinate (b') at ($(b)!1.2!(K)$);
+				\foreach \x/\g in {K/-20,H/190} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:4mm)$) node{$\x$};
+				\draw (A)--(B)--(C)--(D)--(A)
+				(K)--(H)--(a)node[left]{$a$}
+				(b)node[right]{$b$}--(b');
+				\draw[dashed] (H)--(a');
+				\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$P$"]{angle=B--A--D};
+				\draw pic[draw,angle radius=2mm] {right angle = H--K--b}; 
+				\draw pic[draw,angle radius=2mm] {right angle = a--H--K}; 
+			\end{tikzpicture}
+		}
+	\end{nx}
+\end{tomtat}
+
+\subsection{Các dạng toán thường gặp}
+\begin{dang}{Câu hỏi lí thuyết}
+\end{dang}
+\subsubsection{Ví dụ mẫu}
+\begin{vd}%[1K7BP-1]
+	Cho hai đường thẳng chéo nhau $a$ và $b$ thoả mãn $a \perp b$. Gọi $(P)$ là mặt phẳng đi qua $b$ và vuông góc với $a$, giao điểm của $a$ và $(P)$ là $H$, hình chiếu của $H$ trên $b$ là $K$. Chứng minh rằng $HK$ là đoạn vuông góc chung của hai đường thẳng $a$, $b$.
+	\loigiai{
+		\immini{
+			Vì $a\perp (P)$ và $HK \in (P)$ nên $HK \perp a$.\\
+			Lại có $\heva{& b \perp HK \\& b \perp a} \Rightarrow b \perp (a,K)$.\\
+			Hơn nữa, $HK \in (a,K) \Rightarrow b \perp HK$.\\
+			Mặt khác $H\in a$, $K\in b$.\\
+			Vậy $HK$ là đoạn vuông góc chung của $a$ và $b$.
+		}{
+			\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (A) at (-1,0);
+				\coordinate (B) at (6,0);
+				\coordinate (D) at (2,3);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (H) at ($(A)!.4!(C)$);
+				\coordinate (K) at ($(H)+(1.5,-0.5)$);
+				\coordinate (a) at ($(H)+(0,4)$);
+				\coordinate (a') at ($(H)+(0,-1)$);
+				\coordinate (b) at ($(K)+(1,1.5)$);
+				\coordinate (b') at ($(b)!1.2!(K)$);
+				\foreach \x/\g in {K/-20,H/190} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:4mm)$) node{$\x$};
+				\draw (A)--(B)--(C)--(D)--(A)
+				(K)--(H)--(a)node[left]{$a$}
+				(b)node[right]{$b$}--(b');
+				\draw[dashed] (H)--(a');
+				\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$P$"]{angle=B--A--D};
+				\draw pic[draw,angle radius=2mm] {right angle = H--K--b}; 
+				\draw pic[draw,angle radius=2mm] {right angle = a--H--K}; 
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+\subsubsection{Bài tập rèn luyện} 
+\begin{bt}%[1K7BP-1]
+	Cho hai đường thẳng chéo nhau $a$ và $b$. Gọi $(P)$ là mặt phẳng chứa $b$ và song song với $a$; hình chiếu của $a$ trên $(P)$ là $a'$; giao điểm của $a'$ và $b$ là $K$; $H$ là hình chiếu của $K$ trên $a$.
+	\begin{enumerate}
+		\item Chứng minh $HK$ là đoạn vuông góc chung của hai đường thẳng chéo nhau $a, b$.
+		\item Chứng minh $\mathrm{d}(a, b)=\mathrm{d}(a,(P))$.
+	\end{enumerate}		
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				
+				\coordinate (A) at (-1,0);
+				\coordinate (B) at (6,0);
+				\coordinate (D) at (2,3);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (K) at ($(A)!.5!(C)$);
+				\coordinate (H) at ($(K)+(0,3)$);
+				\coordinate (P) at ($(A)+(.6,.3)$);
+				\coordinate (N) at ($(H)+(-2,0)$);
+				\coordinate (N') at ($(H)+(3,0)$);
+				\coordinate (n) at ($(K)+(-2.5,0)$);
+				\coordinate (n') at ($(K)+(2.5,0)$);
+				\coordinate (b) at ($(K)+(-2,1)$);
+				\coordinate (b') at ($(b)!2!(K)$);
+				\foreach \x/\g in {K/-90,H/90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:4mm)$) node{$\x$};
+				\draw (A)--(B)--(C)--(D)--(A)
+				(K)--(H)
+				(N)--(N')node[above left]{$a$}
+				(n)--(n')node[above left]{$a'$}
+				(b)--(b')node[above left]{$b$};
+				\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$P$"]{angle=B--A--D};
+				\draw pic[draw,angle radius=2mm] {right angle = H--K--b}; 
+				\draw pic[draw,angle radius=2mm] {right angle = H--K--n'}; 
+				\draw pic[draw,angle radius=2mm] {right angle = K--H--N'}; 
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}
+			\item Vì $\heva{&HK\perp a\\& a\parallel a'} \Rightarrow HK \perp a'$.\\
+			Mặt khác $a'$ là hình chiếu vuông góc của $a$ trên $(P)$ nên $HK\perp (P) \Rightarrow HK \perp b$.\\
+			Hơn nữa, $H\in a$, $K\in b$ nên $HK$ là đoạn vuông góc chung của $a$ và $b$.
+			\item Vì $HK$ là đoạn đoạn vuông góc chung của $a$ và $b$ nên $\mathrm{d}(a, b)=HK$.\\
+			Mặt khác $HK\perp (P), H\in a$ nên $\mathrm{d}(a,(P))=HK$.\\
+			Vậy $\mathrm{d}(a, b)=\mathrm{d}(a,(P))$.
+		\end{enumerate}
+	}
+\end{bt}
+\subsubsection{Câu hỏi trắc nghiệm}
+\Opensolutionfile{ans}[ans/ans-1K7-26-Dang1-2]
+\begin{ex}%[1K7YP-1]
+	Trong các mệnh đề sau, mệnh đề nào \textbf{sai}?
+	\choice
+	{Khoảng cách từ một điểm đến một đường thẳng là khoảng cách từ điểm đó đến hình chiếu vuông góc của nó trên đường thẳng kia}
+	{Khoảng cách từ một điểm đến một mặt phẳng là khoảng cách từ điểm đó đến hình chiếu vuông góc của nó trên mặt phẳng kia}
+	{\True Khoảng cách từ một điểm đến một mặt phẳng là khoảng cách từ điểm đó đến một điểm bất kì thuộc mặt phẳng kia}
+	{Khoảng cách giữa đường thẳng $a$ và mặt phẳng $(P)$ song song với $a$ là khoảng cách từ một điểm $A$ bất kì thuộc $a$ tới mặt phẳng $(P)$}
+	\loigiai{
+		Theo lí thuyết.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7YP-1]
+	Cho ba điểm $A$, $B$, $C$. Trong các khẳng định sau, khẳng định nào đúng?
+	\choice
+	{Khoảng cách từ $A$ đến đường thẳng $BC$ là $AB$}
+	{Khoảng cách từ $A$ đến đường thẳng $BC$ là $AC$}
+	{Khoảng cách từ $A$ đến đường thẳng $BC$ là $AM$, với $M$ là trung điểm $BC$}
+	{\True Khoảng cách từ $A$ đến đường thẳng $BC$ là $AH$, với $H$ là hình chiếu vuông góc của $A$ trên $BC$}
+	\loigiai{
+		Theo lí thuyết.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7YP-1]
+	Cho tứ diện $ABCD$. Trong các khẳng định sau, khẳng định nào đúng?
+	\choice
+	{Khoảng cách từ $A$ đến mặt phẳng $(BCD)$ là $AB$}
+	{Khoảng cách từ $A$ đến mặt phẳng $(BCD)$ là $AC$}
+	{Khoảng cách từ $A$ đến mặt phẳng $(BCD)$ là $AD$}
+	{\True Khoảng cách từ $A$ đến mặt phẳng $(BCD)$ là $AH$, với $H$ là hình chiếu vuông góc của $A$ trên $(BCD)$}
+	\loigiai{
+		Theo lí thuyết.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Trong các mệnh đề sau, mệnh đề nào \textbf{sai}?
+	\choice
+	{\True Khoảng cách giữa hai mặt phẳng song song là khoảng cách từ một điểm $M$ bất kỳ trên mặt phẳng này đến mặt phẳng kia}
+	{Nếu hai đường thẳng $a$ và $b$ chéo nhau và vuông góc với nhau thì đường vuông góc chung của chúng nằm trong mặt phẳng $(P)$ chứa đường này và $(P)$ vuông góc với đường kia}
+	{Khoảng cách giữa hai đường thẳng chéo nhau $a$ và $b$ là khoảng cách từ một điểm $M$ thuộc $(P)$ chứa $a$ và song song với $b$ đến một điểm $N$ bất kì trên $b$}
+	{Khoảng cách giữa đường thẳng $a$ và mặt phẳng $(P)$ song song với $a$ là khoảng cách từ một điểm $A$ bất kì thuộc $a$ tới mặt phẳng $(P)$}
+	\loigiai{
+		Theo lí thuyết.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Trong các mệnh đề sau, mệnh đề nào đúng?
+	\choice
+	{\True Đường vuông góc chung của hai đường thẳng chéo nhau thì vuông góc với mặt phẳng chứa đường thẳng này và song song với đường thẳng kia}
+	{Một đường thẳng là đường vuông góc chung của hai đường thẳng chéo nhau nếu nó vuông góc với cả hai đường thẳng đó}
+	{Đường vuông góc chung của hai đường thẳng chéo nhau thì nằm trong mặt phẳng chứa đường thẳng này và vuông góc với đường thẳng kia}
+	{Một đường thẳng là đường vuông góc chung của hai đường thẳng chéo nhau nếu nó cắt cả hai đường thẳng đó}
+	\loigiai{
+		Theo lí thuyết.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7YP-1]
+	Trong các mệnh đề sau, mệnh đề nào \textbf{sai}?
+	\choice
+	{Nếu hai đường thẳng $a$ và $b$ chéo nhau và vuông góc với nhau thì đường thẳng vuông góc chung của chúng nằm trong mặt phẳng $(P)$ chứa đường thẳng này và vuông góc với đường thẳng kia}
+	{Khoảng cách giữa đường thẳng $a$ và mặt phẳng $(P)$ song song với $a$ là khoảng cách từ một điểm $A $ bất kỳ thuộc $a$ tới $(P)$}
+	{\True Khoảng cách giữa hai đường thẳng chéo nhau $a$ và $b$ là khoảng cách từ một điểm $M$ thuộc mặt phẳng $(P)$ chứa $a$ và song song với $b$ đến một điểm $N$ bất kỳ trên $b$}
+	{Khoảng cách giữa hai mặt phẳng song song là khoảng cách từ một điểm $M$ bất kỳ trên mặt phẳng này đến mặt phẳng kia}
+	\loigiai{
+		Theo lí thuyết.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Cho điểm $M$ và đường thẳng $\Delta$ thoả mãn $M\not \in \Delta$. Với mọi điểm $N \in\Delta$, khẳng định nào sau đây đúng?
+	\choice
+	{\True $\mathrm{d}(M,\Delta) \le MN$}
+	{$\mathrm{d}(M,\Delta) < MN$}
+	{$\mathrm{d}(M,\Delta) \ge MN$}
+	{$\mathrm{d}(M,\Delta) > MN$}
+	\loigiai{
+		Với mọi điểm $N \in\Delta$ ta có $\mathrm{d}(M,\Delta) \le MN$.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Cho hai điểm cố định $A$ và $B$. Gọi $d$ là đường thẳng đi qua $B$ sao cho khoảng cách từ $A$ đến $d$ là lớn nhất. Khẳng định nào sau đây đúng?
+	\choice
+	{\True $d\perp AB$}
+	{$d$ tạo với đường thẳng $AB$ góc $30^\circ$}
+	{$d$ tạo với đường thẳng $AB$ góc $45^\circ$}
+	{$d$ tạo với đường thẳng $AB$ góc $60^\circ$}
+	\loigiai{
+		\immini{
+			Gọi $H$ là hình chiếu của $A$ trên $d$. Khi đó, ta luôn có $\mathrm{d} (A,d) =AH \le AB$.\\
+			Do đó $\mathrm{d} (A,d)$ đạt giá trị lớn nhất khi và chỉ khi $H\equiv B$, tức là $d \perp AB$.}
+		{\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (M) at (0,0);
+				\coordinate (N) at (5,0);
+				\coordinate (H) at ($(M)!.3!(N)$);
+				\coordinate (B) at ($(M)!.6!(N)$);
+				\coordinate (A) at ($(H)+(0,3)$);
+				\foreach \x/\g in {H/-90,A/90,B/-90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:3mm)$) node{$\x$};
+				\draw (M)--(N)node[above left]{$d$}
+				(A)--(H) (A)--(B);
+				\draw pic[draw,angle radius=2mm] {right angle = A--H--B}; 
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Cho hai điểm $M$, $N$ cố định. Gọi $(P)$ là mặt phẳng đi qua $N$ sao cho khoảng cách từ $M$ đến $(P)$ là lớn nhất. Khẳng định nào sau đây đúng?
+	\choice
+	{\True $(P)\perp MN$}
+	{$(P)$ tạo với đường thẳng $MN$ góc $30^\circ$}
+	{$(P)$ tạo với đường thẳng $MN$ góc $45^\circ$}
+	{$(P)$ tạo với đường thẳng $MN$ góc $60^\circ$}
+	\loigiai{
+		\immini{
+			Gọi $H$ là hình chiếu của $M$ trên $(P)$.\\
+			Khi đó, ta luôn có $\mathrm{d} (M,(P)) =MH \le MN$.\\
+			Do đó $\mathrm{d} (M,(P))$ đạt giá trị lớn nhất khi và chỉ khi $H\equiv N$, tức là $(P) \perp MN$.
+		}{
+			\begin{tikzpicture}[scale=.7,font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (5,0);
+				\coordinate (D) at (2,3);
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (H) at ($(A)!.5!(C)$);
+				\coordinate (T) at ($(B)!.5!(C)$);
+				\coordinate (N) at ($(H)!.7!(T)$);
+				\coordinate (M) at ($(H)+(0,3)$);
+				\coordinate (P) at ($(A)+(.6,.3)$);
+				\foreach \x/\g in {H/180,M/90,N/-90} \fill[black](\x) circle (1.5pt) ($(\x)+(\g:3mm)$) node{$\x$};
+				\draw (A)--(B)--(C)--(D)--(A) (M)--(H) (M)--(N)--(H);
+				\path pic[draw,angle radius=7mm,angle eccentricity=0.5,"$P$"]{angle=B--A--D};
+				\draw pic[draw,angle radius=2mm] {right angle = M--H--N}; 
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Cho điểm $M$ và mặt phẳng $(P)$ thoả mãn $M\not \in (P)$. Với mọi điểm $N \in (P)$, khẳng định nào sau đây đúng?
+	\choice
+	{\True $\mathrm{d}(M,(P)) \le MN$}
+	{$\mathrm{d}(M,(P)) < MN$}
+	{$\mathrm{d}(M,(P)) \ge MN$}
+	{$\mathrm{d}(M,(P)) > MN$}
+	\loigiai{
+		Với mọi điểm $N \in\Delta$ ta có $\mathrm{d}\mathrm{d}(M,(P)) \le MN$.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Cho đường thẳng $\Delta$ và mặt phẳng $(P)$ thoả mãn $\Delta \parallel (P)$. Với mọi điểm $M \in\Delta$ và $N \in (P)$, khẳng định nào sau đây đúng?
+	\choice
+	{\True $\mathrm{d}(\Delta, (P)) \le MN$}
+	{$\mathrm{d}(\Delta, (P)) < MN$}
+	{$\mathrm{d}(\Delta, (P)) \ge MN$}
+	{$\mathrm{d}(\Delta, (P)) > MN$}
+	\loigiai{
+		Với mọi điểm $M \in\Delta$ và $N \in (P)$ ta có $\mathrm{d}(\Delta, (P)) \le MN$.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Cho hai đường thẳng $\Delta_1$ và $\Delta_2$ thoả mãn $\Delta_1 \parallel \Delta_2$. Với mọi điểm $M \in\Delta_1$ và $N \in \Delta_2$, khẳng định nào sau đây đúng?
+	\choice
+	{\True $\mathrm{d}(\Delta_1,\Delta_2) \le MN$}
+	{$\mathrm{d}(\Delta_1,\Delta_2) < MN$}
+	{$\mathrm{d}(\Delta_1,\Delta_2) \ge MN$}
+	{$\mathrm{d}(\Delta_1,\Delta_2) > MN$}
+	\loigiai{
+		Với mọi điểm $M \in\Delta_1$ và $N \in \Delta_2$ ta có $\mathrm{d}(\Delta_1,\Delta_2) \le MN$.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Cho hai mặt phẳng $(P)$ và $(Q)$ thoả mãn $(P) \parallel (Q)$. Với mọi điểm $M\in (P)$ và $N\in (Q)$, khẳng định nào sau đây đúng?
+	\choice
+	{\True $\mathrm{d}((P),(Q)) \le MN$}
+	{$\mathrm{d}((P),(Q)) < MN$}
+	{$\mathrm{d}((P),(Q)) \ge MN$}
+	{$\mathrm{d}((P),(Q)) > MN$}
+	\loigiai{
+		Với mọi điểm $M\in (P)$ và $N\in (Q)$ ta có $\mathrm{d}((P),(Q)) \le MN$.
+	}
+\end{ex}
+%==================================
+\begin{ex}%[1K7BP-1]
+	Cho hai đường thẳng chéo nhau $\Delta_1$ và $\Delta_2$. Với mọi điểm $M \in\Delta_1$ và $N \in \Delta_2$, khẳng định nào sau đây đúng?
+	\choice
+	{\True $\mathrm{d}(\Delta_1,\Delta_2) \le MN$}
+	{$\mathrm{d}(\Delta_1,\Delta_2) < MN$}
+	{$\mathrm{d}(\Delta_1,\Delta_2) \ge MN$}
+	{$\mathrm{d}(\Delta_1,\Delta_2) > MN$}
+	\loigiai{
+		Với mọi điểm $M \in\Delta_1$ và $N \in \Delta_2$ ta có $\mathrm{d}(\Delta_1,\Delta_2) \le MN$.
+	}
+\end{ex}
+%==================================
+\Closesolutionfile{ans}
+\begin{indapan}{10}
+	{ans/ans-1K7-26-Dang1-2}
+\end{indapan}
+
+
