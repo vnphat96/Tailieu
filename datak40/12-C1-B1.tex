@@ -1,0 +1,3717 @@
+%\chapter{ỨNG DỤNG ĐẠO HÀM ĐỂ KHẢO SÁT VÀ VẼ ĐỒ THỊ HÀM SỐ}
+\section{TÍNH ĐƠN ĐIỆU VÀ CỰC TRỊ CỦA HÀM SỐ}
+\subsection{Trọng tâm kiến thức}
+    \subsubsection{Tính đơn điệu của hàm số}
+    \paragraph{Khái niệm tính đơn điệu của hàm số}
+    \begin{dn}
+        Giả sử $K$ là một khoảng, một đoạn hoặc một nửa khoảng và $y=f(x)$ là hàm số xác định trên $K$.
+        \begin{itemize}
+            \item Hàm số $y=f(x)$ được gọi là đồng biến trên $K$ nếu $\forall x_{1}, x_{2} \in K, x_{1}<x_{2} \Rightarrow f\left(x_{1}\right)<f\left(x_{2}\right)$.
+            \item Hàm số $y=f(x)$ được gọi là nghịch biến trên $K$ nếu $\forall x_{1}, x_{2} \in K, x_{1}<x_{2} \Rightarrow f\left(x_{1}\right)>f\left(x_{2}\right)$.
+        \end{itemize}
+    \end{dn}
+%        \begin{enumerate}[\bf ---]
+%            \item Nếu hàm số đồng biến trên $K$ thì đồ thị của hàm số đi lên từ trái sang phải (Hình a). Nếu hàm số nghịch biến trên $K$ thì đồ thị của hàm số đi xuống từ trái sang phải (Hình b).
+            \begin{center}
+                \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,yscale=0.8,thick]
+                    \tikzset{
+                        declare function={x2=5.5;y2=4.55;x1=-.5;y1=-.5;a=1;b=-3;c=-3;},
+                        declare function={f(\x)=a*(\x)^3+b*(\x)+c;}
+                    }
+                    \draw[fill=black,cyan](0,0)circle(1.2pt)node[above right]{$O$};
+                    %%%%%%%%
+                    \draw[dashed,thick]
+                    (1,0)coordinate (a)--(1,1)coordinate (a11)
+                    (4,0)coordinate (b)--(4,3)coordinate (b11)
+                    ;
+                    \path
+                    (a11)edge[bend right,orange,line width=1pt] node[midway,above left,cyan]{$f(x)$} (b11)
+                    ;
+                    \draw[thick,->] (x1,0)--(x2,0)node[above left,cyan]{$x$};
+                    \draw[thick,->] (0,y1)--(0,y2)node[below right,cyan]{$y$};
+                    \foreach \point/\goc in {a/-90,b/-90}{
+                        \draw(\point)circle(0pt)+(\goc:2mm)node[cyan]{$\point$};
+                    }
+                    \path (2.5,0)node[below=1cm]{a) Hàm số đồng biến trên $(a;b)$};
+                \end{tikzpicture}\hspace{2cm}
+                \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=0.8,thick]
+                    \tikzset{
+                        declare function={x2=5.5;y2=4.55;x1=-.5;y1=-.5;a=1;b=-3;c=-3;},
+                        declare function={f(\x)=a*(\x)^3+b*(\x)+c;}
+                    }
+                    \draw[fill=black,cyan](0,0)circle(1.2pt)node[above right]{$O$};
+                    %%%%%%%%
+                    \draw[dashed,thick]
+                    (1,0)coordinate (a)--(1,3)coordinate (a11)
+                    (4,0)coordinate (b)--(4,1)coordinate (b11)
+                    ;
+                    \path
+                    (a11)edge[bend left,orange,line width=1pt] node[midway,above right,cyan]{$f(x)$} (b11)
+                    ;
+                    \draw[thick,->] (x1,0)--(x2,0)node[above left,cyan]{$x$};
+                    \draw[thick,->] (0,y1)--(0,y2)node[below right,cyan]{$y$};
+                    \foreach \point/\goc in {a/-90,b/-90}{
+                        \draw(\point)circle(0pt)+(\goc:2mm)node[cyan]{$\point$};
+                    }
+                    \path (2.5,0)node[below=1cm]{a) Hàm số nghịch biến trên $(a;b)$};
+                \end{tikzpicture}
+            \end{center}
+%        \end{enumerate}
+    \begin{dn}
+        Cho hàm số $y=f(x)$ có đạo hàm trên khoảng $K$.
+        \begin{itemize}
+            \item  Nếu $f'(x)>0$ với mọi $x \in K$ thì hàm số $f(x)$ đồng biến trên khoảng $K$.
+            \item  Nếu $f'(x)<0$ với mọi $x \in K$ thì hàm số $f(x)$ nghịch biến trên khoảng $K$.
+        \end{itemize}
+    \end{dn}
+        \begin{enumerate}[\bf ---]
+            \item Định lí trên vẫn đúng trong trường hợp $f'(x)$ bằng $0$ tại một số hữu hạn điểm trong khoảng $K$.
+%            \item Người ta chứng minh được rằng, nếu $f'(x)=0$ với mọi $x \in K$ thì hàm số $f(x)$ không đổi trên khoảng $K$.
+        \end{enumerate}
+    \paragraph{Sử dụng bảng biến thiên xét tính đơn điệu hàm số}
+    \begin{dn}
+        Các bước để xét tính đơn điệu của hàm số $y=f(x)$:
+        \begin{itemize}
+            \item {\bf Bước 1.} Tìm tập xác định của hàm số.
+            \item {\bf Bước 2.} Tính đạo hàm $f^{\prime}(x)$. Tìm các điểm $x_i\,(i=1,2, \ldots)$ mà tại đó đạo hàm bằng $0$ hoặc không tồn tại.
+            \item {\bf Bước 3.} Sắp xếp các điểm $x_i$ theo thứ tự tăng dần và lập bảng biến thiên của hàm số.
+            \item {\bf Bước 4.} Nêu kết luận về khoảng đồng biến, nghịch biến của hàm số.
+        \end{itemize}
+    \end{dn}
+    %===========
+    \subsubsection{Cực trị của hàm số}
+    \paragraph{Khái niệm cực trị của hàm số}
+    \begin{dn}
+        Cho hàm số $y=f(x)$ xác định và liên tục trên khoảng $(a; b) $ ($a$ có thể là $-\infty$,  $b$ có thể là $+\infty$) và điểm $x_0 \in(a; b)$.
+        \begin{itemize}
+            \item Nếu tồn tại số $h>0$ sao cho $f(x)<f\left(x_0\right)$ với mọi $x \in\left(x_0-h, x_0+h\right) \subset(a; b)$ và $x \neq x_0$ thì ta nói hàm số $f(x)$ đạt cực đại tại $x_0$.
+            \item Nếu tồn tại số $h>0$ sao cho $f(x)>f\left(x_0\right)$ với mọi $x \in\left(x_0-h, x_0+h\right) \subset(a ; b)$ và $x \neq x_0$ thì ta nói hàm số $f(x)$ đạt cực tiểu tại $x_0$.
+        \end{itemize}
+    \end{dn}
+\begin{center}
+    \begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+        \def\a{0.8}
+        \draw[->] (-6,0)--(1,0) node [below]{$x$};
+        \draw[->] (0,-1.5)--(0,2.5) node [right]{$y$};
+        \draw[fill] (0,0) circle(1pt) node[below left]{$O$};
+        \draw[name path={c1}]
+        (-6,2.2)..controls +(0.2:0.5) and +(110:0.2)..
+        (-4.5,1) coordinate (C);
+        \draw (-4.5,1) ..controls +(82:0.2) and +(180:0.6)..
+        (-3.5,2) coordinate[pos=.6](A);
+        \draw (-3.5,2) coordinate (D)..controls +(0:1) and +(180:1)..
+        (-1,-1) coordinate[pos=.3](B);
+        \draw (-1,-1) coordinate (E)..controls +(0:1.2) and +(70:-0.5)..
+        (1,1)
+        ;
+        \path
+        (-6,0) coordinate (M)
+        (1,0) coordinate (N)
+        ($(M)!(C)!(N)$) coordinate (C')
+        ($(M)!(D)!(N)$) coordinate (D')
+        ($(M)!(E)!(N)$) coordinate (E')
+        ($(M)!(A)!(N)$) coordinate (A')
+        ($(M)!(B)!(N)$) coordinate (B')
+        ;
+        \draw[dashed] (A)--(A') (B)--(B') (C)--(C') (D)--(D') (E)--(E');
+        \draw (-3.5-\a,2)--(-3.5+\a,2) (-1-\a,-1)--(-1+\a,-1);
+        \draw[fill] (D) circle(1pt) node[above]{\text{tiếp tuyến}};
+        \draw[fill] (A') circle(1pt) node[above right]{$a$};
+        \draw[fill] (B') circle(1pt) node[below]{$b$};
+        \draw[fill] (D') circle(1pt) node[above right]{$x_0$};
+        \draw[fill] (E') circle(1pt) node[above,text width= 0.8cm,align=justify,rectangle,draw=gray!60,rounded corners=2mm]{Điểm cực tiểu};
+        \draw[fill] (C') circle(1pt) node[below,text width= 0.75cm,align=justify,rectangle,draw=gray!60,rounded corners=2mm]{Điểm cực tiểu};
+        \draw[fill] (D') circle(1pt) node[below,text width= 0.75cm,align=justify,rectangle,draw=gray!60,rounded corners=2mm]{Điểm\\ cực đại};
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+        %%Nhập giới hạn đồ thị và hàm số cần vẽ
+        \def \xmin{-3}
+        \def \xmax{3.5}
+        \def \ymin{-2.2}
+        \def \ymax{4.5}
+        %%Tự động
+        \draw[->] (\xmin,0)--(\xmax,0) node[below left] {$x$};
+        \draw[->] (0,\ymin)--(0,\ymax) node[below left] {$y$};
+        \draw[fill=black] (0,0) circle(1pt) node [below right] {$O$};
+        %%Vẽ các điểm trên 2 hệ trục
+        \draw[dashed] (0,3)--(-1,3)--(-1,0) (2,0)--(2,-1)--(0,-1);
+        \fill[black](-1,0) circle(1pt)++(0,-0.25)node(C)[text width=0.7cm,circle,draw,align=center,inner sep=1pt] {$x_{\text{CĐ}}$}++(150:3)node(C')[text width= 2cm,align=justify,rectangle,draw=gray!60,rounded corners=2mm]{Điểm cực đại của hàm số}
+        (0,3) circle(1pt)++(-0.1,0) node(F)[text width=0.4cm,right,circle,draw]{$y_{\text{CĐ}}$}++(30:2.5)node(F')[text width= 2.75cm,align=justify,rectangle,draw=gray!60,rounded corners=3mm]{Giá trị cực đại hàm số}
+        (-1,3) circle(1pt)++(0,0.1)node[inner sep=1pt](G){} ++(155:2.5)node(G')[text width= 2cm,align=justify,rectangle,draw=gray!60,rounded corners=3mm]{Điểm cực đại của đồ thị hàm số}
+        (2,0) circle(1pt)++(0,0.25) node(A)[text width=0.7cm,circle,draw,align=center,inner sep=1pt]{$x_{\text{CT}}$}++(-0,1.75)node(B)[text width=2.35cm,inner sep=1pt,align=center,draw=gray!60,rounded corners= 2mm]{Điểm cực tiểu của hàm số}(0,-1) circle(1pt)++(0.15,-.25) node(D)[text width=0.5cm,left,circle,draw]{$y_{\text{CT}}$}++(-170:3)node(D')[text width= 2.25cm,align=justify,rectangle,draw=gray!60,rounded corners=3mm]{Giá trị cực tiểu của hàm số}
+        (2,-1)circle(1pt)node[inner sep=1pt](E){}++(-35:2)node(E')[text width= 2.75cm,align=justify,rectangle,draw=gray!60,rounded corners=3mm]{Điểm cực tiểu của đồ thị hàm số};
+        %%Tự động
+        \begin{scope}
+            \clip (\xmin+0.01,\ymin+0.01) rectangle (\xmax-0.01,\ymax-0.01);
+            \draw[line width =1pt,samples=200,domain=\xmin+0.5:\xmax-0.01,smooth,variable=\x] plot (\x,{8/27*(\x)^3-4/9*(\x)^2-16/9*(\x)+53/27});
+        \end{scope}
+        \draw[double,-stealth](B)--(A);
+        \draw[-stealth,out=10,in=95,inner sep=0,bend left=1.25cm](C'.east)to(C);
+        \draw[-stealth,out=0,in=-90,inner sep=0](D'.east)to(D);
+        \draw[-stealth,out=90,in=-90,inner sep=0](E'.north)to(E);
+        \draw[-stealth,out=-90,in=0,inner sep=0](F'.south)to(F.east);
+        \draw[-stealth,out=0,in=90,inner sep=0](G'.east)to(G.south);
+    \end{tikzpicture}
+\end{center}
+    \paragraph{Cách tìm cực trị của hàm số}
+    \begin{dl}
+        Giả sử hàm số $y=f(x)$ liên tục trên khoảng $(a; b)$ chứa điểm $x_0$ và có đạo hàm trên các khoảng $\left(a; x_0\right)$ và $\left(x_0; b\right)$. Khi đó:
+    \begin{center}
+    \begin{tikzpicture}
+        \tkzTabInit[nocadre,lgt=1.2,espcl=2.5,deltacl=0.6]
+        {$x$ /0.6,$f'(x)$ /0.6,$f(x)$ /1.4}
+        {$a$,$x_0$,$b$}
+        \tkzTabLine{,-,,+,}
+        \tkzTabVar{+/,-/$f(x_0)$,+/}
+        \path (N23)+(0pt,-1pt)node{\footnotesize (Cực tiểu)};
+    \end{tikzpicture}\hspace*{1.5cm}
+    \begin{tikzpicture}
+        \tkzTabInit[nocadre,lgt=1.2,espcl=2.5,deltacl=0.6]
+        {$x$ /0.6,$f'(x)$ /0.6,$f(x)$ /1.4}
+        {$a$,$x_0$,$b$}
+        \tkzTabLine{,+,,-,}
+        \tkzTabVar{-/,+/$f(x_0)$,-/}
+        \path (N23)+(0pt,3pt)node[above]{\footnotesize (Cực đại)};
+    \end{tikzpicture}
+\end{center}
+    \end{dl}
+\begin{note}
+Từ định lí trên ta có các bước tìm cực trị của hàm số $y=f(x)$ như sau:
+\begin{itemize}
+\item {\bf Bước 1.} Tìm tập xác định của hàm số.
+\item {\bf Bước 2.} Tính đạo hàm $f^{\prime}(x)$. Tìm các điểm mà tại đó đạo hàm $f^{\prime}(x)$ bằng $0$ hoặc đạo hàm không tồn tại.
+\item {\bf Bước 2.} Lập bảng biến thiên của hàm số.
+\item {\bf Bước 3.} Từ bảng biên thiên suy ra các cực trị của hàm số.
+\end{itemize}
+\end{note}
+\subsection{Ví dụ và các dạng toán}
+\begin{dang}{Tìm khoảng đơn điệu của một hàm số cho bởi công thức}
+\end{dang}
+%%==========Ví dụ 1
+\begin{vd} Tìm các khoảng đơn điệu của hàm số $y=-2x^2+4x+3$.
+    \loigiai{
+        \begin{itemize}
+            \item Hàm số đã cho có tập xác định là $\mathbb{R}$.
+            \item Ta có:\\
+            $y'=-4x+4$;\\
+            $y'=0\Leftrightarrow -4x+4=0\Leftrightarrow x=1$.\\
+            Bảng biến thiêm của hàm số:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=3]
+                    {$x$ /0.6,$y'$ /0.6,$y$/1.5}
+                    {$-\infty$,$1$,$+\infty$}
+                    \tkzTabLine{,+, 0 ,-,}
+                    \tkzTabVar{-/$-\infty$,+/$5$,-/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên khoảng $\left(-\infty;1\right)$ và nghịch biến trên khoảng $\left(1;;+\infty\right)$.
+        \end{itemize}
+    }
+\end{vd}
+%%==========Ví dụ 2
+\begin{vd} Tìm các khoảng đơn điệu của mỗi hàm số sau:
+    \begin{listEX}[3]
+        \item $y=x^3-3x^2-9x+1$;
+        \item $y=-x^3+3x-4$;
+        \item $y=-\dfrac{1}{3}x^3+x^2-x+5$;
+        \item $y=\dfrac{4}{3}x^3-2x^2+x-1$;
+        \item $y=-\dfrac{x^3}{3}-x^2-2x+3$;
+        \item $y=x^3-x^2+2x-1$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item %a
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.\\
+            Ta có $y'=3x^2-6x-9$;\\
+            $y'=0\Leftrightarrow 3x^2-6x-9=-\Leftrightarrow x=-1$ hoặc $x=3$.\\
+            Bảng biến thiên của hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=2]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}{$-\infty$,$-1$,$3$,$+\infty$}
+                    \tkzTabLine{,+,0,-,0,+,}
+                    \tkzTabVar{-/$-\infty$,+/$6$,-/$-26$,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên mỗi khoảng $\left(-\infty;-1\right)$ và $\left(3;+\infty\right)$; nghịch biến trên khoảng $\left(-1;3\right)$.
+            \item %b
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.\\
+            Ta có $y'=-3x^2+3$, \\
+            $y'=0\Leftrightarrow -3x^2+3=0\Leftrightarrow x=\pm 1.$\\
+            Bảng biến thiên của hàm số:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=2]{$x$ /0.6,$y'$ /0.6,$y$/1.5}{$-\infty$,$-1$,$1$,$+\infty$}
+                    \tkzTabLine{,-,0,+, 0 ,-,}
+                    \tkzTabVar{+/$+\infty$ , -/$-8$ , +/$-2$ , -/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho đồng biến trên $(-1;1)$, nghịch biến trên $(-\infty,-1), (1;+\infty)$.
+            \item %c
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.\\
+            Ta có: $y'=-x^2+2x-1=-\left(x-1\right)^2$;\\
+            $y'\leq 0$ với mọi $x \in \mathbb{R}$ và $y'=0\Leftrightarrow x=1$.\\
+            Bảng biến thiên của hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=3]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}{$-\infty$,$1$,$+\infty$}
+                    \tkzTabLine{,-,0,-}
+                    \tkzTabVar{+/$+\infty$,R,-/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số nghịch biến trên $\mathbb{R}$.
+            \item %d
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.\\
+            Ta có:\\ $y'=4x^2-4x+1$;\\
+            $y'=0\Leftrightarrow 4x^2-4x+1=0\Leftrightarrow x=\dfrac{1}{2}$ .\\
+            Ta có bảng biến thiên:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=3]{$x$ /0.6,$y'$ /0.6,$y$ /1.5}{$-\infty$,$\frac{1}{2}$,$+\infty$}
+                    \tkzTabLine{,+, 0 ,+,}
+                    \tkzTabVar{-/$-\infty$,R,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $\mathbb{R}$.
+            \item %e
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.\\
+            Ta có: $y'=-x^2-2x-2$;\\
+            $y'=0$ vô nghiệm.\\
+            Bảng biến thiên của hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=6]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}{$-\infty$,$+\infty$}
+                    \tkzTabLine{,-,}
+                    \tkzTabVar{+/$+\infty$,R,-/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số nghịch biến trên $\mathbb{R}$.
+            \item %f
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.\\
+            Ta có:\\ $y'=3x^2-2x+2$;\\
+            $y'=0$ vô nghiệm.\\
+            Ta có bảng biến thiên:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=6]{$x$ /0.6,$y'$ /0.6,$y$ /1.5}{$-\infty$,$+\infty$}
+                    \tkzTabLine{,+,}
+                    \tkzTabVar{-/$-\infty$,R,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $\mathbb{R}$.
+        \end{enumerate}
+    }
+\end{vd}
+%%==========Ví dụ 3
+\begin{vd}%[2D1B1-1]
+    Hàm số nào sau đây luôn nghịch biến trên $\mathbb{R}$?
+    \choice
+    {$y=-x^3+4x$}
+    {\True $y=-x^3+3x^2-3x$}
+    {$y=x^4-2x^2$}
+    {$y=x^3-x^2+4x$}
+    \loigiai{
+        \begin{itemize}
+            \item Hàm số $y=x^4-2x^2$ là hàm số bậc $4$ trùng phương không nghịch biến trên $\mathbb{R}$ nên loại.
+            \item Hàm số $y=x^3-x^2+4x$ có hệ số $a = 1 > 0$ nên loại.
+            \item Xét hàm số $y=-x^3+4x$, ta có $y'=-3x^2+4$; $y'=0 \Leftrightarrow x=\pm \dfrac{2\sqrt{3}}{3}$.\\
+            Bảng biến thiên:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1,espcl=2.5,deltacl=0.5]
+                    {$x$/1.1, $y'$/.6, $y$/2}
+                    {$-\infty$,$-\dfrac{2\sqrt{3}}{3}$,$\dfrac{2\sqrt{3}}{3}$,$+\infty$}
+                    \tkzTabLine{,-,0,+,0,-,}
+                    \draw
+                    (N12) node[below] (A) {$+\infty$}
+                    (N23) node[above] (B) {$-\dfrac{16\sqrt{3}}{9}$}
+                    (N32) node[below] (C) {$\dfrac{16\sqrt{3}}{9}$}
+                    (N43) node[above] (D) {$-\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (C)--(D);
+                \end{tikzpicture}
+            \end{center}
+            Dựa vào bảng biến thiên hàm số không nghịch biến trên $\mathbb{R}$ nên loại.
+            \item Xét hàm số $y=-x^3+3x^2-3x$, ta có $y'=-3x^2+6x-3=-3(x-1)^2 \le 0, \forall x \in \mathbb{R}$ nên hàm số nghịch biến trên $\mathbb{R}$.
+        \end{itemize}
+    }
+\end{vd}
+%%==========Ví dụ 4
+\begin{vd}%[2D1B1-1]
+    Tìm các khoảng đơn điệu của mỗi hàm số sau:
+    \begin{listEX}[4]
+        \item $y=-x^{4} + 8x^{2}+6$;
+        \item $y=x^{4}-2x^2$;
+        \item $y=x^{4}+4 x^{2}+1$;
+        \item $y=-x^{4} - x^{2}$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=-4x^3+16x$.\\
+            Cho $y'=0 \Leftrightarrow -x^3+4x=0 \Leftrightarrow \hoac{& x=-2 \\& x= 0 \\& x=2.}$\\
+            Tại $x=-2 \Rightarrow y(-2)=22$; Tại $x=0 \Rightarrow y(0)=6$; Tại $x=2 \Rightarrow y(2)=22$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+                    {$x$/0.6,$y'$/0.6,$y$/2}
+                    {$-\infty$,$-2$,$0$,$2$,$+\infty$}
+                    \tkzTabLine{,+,0,-,0,+,0,-,}
+                    \tkzTabVar{-/$-\infty$,+/$22$,-/$6$,+/$22$,-/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho đồng biến trên $(-\infty;-2)$, $(0;2)$, nghịch biến trên $(-2,0), (2;+\infty)$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=4x^3-4x \Leftrightarrow y'=x^3-x$.\\
+            Cho $y'=0 \Leftrightarrow x^3-x = 0 \Leftrightarrow \heva{& x=-1 \\& x=0 \\& x=1.}$\\
+            Tại $x=-1 \Rightarrow y(-1)=-1$; Tại $x=0 \Rightarrow y(0)=0$; Tại $x=1 \Rightarrow y(1)=-1$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+                    {$x$/0.6,$y'$/0.6,$y$/2}
+                    {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+                    \tkzTabLine{,-,0,+,0,-,0,+,}
+                    \tkzTabVar{+/$+\infty$,-/$-1$,+/$0$,-/$-1$,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho đồng biến trên $(-1;0)$, $(1;+\infty)$, nghịch biến trên $(-\infty,-1), (0;1)$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=4x^3+8x$.\\
+            Cho $y'=0 \Leftrightarrow x^3+2x=0 \Leftrightarrow x=0$\\
+            Tại $x=0 \Rightarrow y(0)=1$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+                    {$x$/0.6,$y'$/0.6,$y$/2}
+                    {$-\infty$,$0$,$+\infty$}
+                    \tkzTabLine{,-,0,+,}
+                    \tkzTabVar{+/$+\infty$,-/$1$,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho đồng biến trên $(0;+\infty)$, nghịch biến trên $(-\infty;0)$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=-4x^3-2x$.\\
+            Cho $y'=0 \Leftrightarrow -2x^3-x = 0 \Leftrightarrow x=0$.\\
+            Tại $x=0 \Rightarrow y(0)=0$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+                    {$x$/0.6,$y'$/0.6,$y$/2}
+                    {$-\infty$,$0$,$+\infty$}
+                    \tkzTabLine{,+,0,-,}
+                    \tkzTabVar{-/$-\infty$,+/$0$,-/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho đồng biến trên $(-\infty;0)$, nghịch biến trên $(0;+\infty)$.
+        \end{enumerate}
+    }
+\end{vd}
+%%==========Ví dụ 5
+\begin{vd} Tìm các khoảng đơn điệu của mỗi hàm số sau
+    \begin{listEX}[4]
+        \item $y=\dfrac{2x-1}{x+2}$;
+        \item $y=\dfrac{x+1}{x-1}$;
+        \item $y=x+\dfrac{4}{x}$;
+        \item $y=x+\dfrac{4}{x+1}$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item
+            Tập xác định $D=\mathbb{R}$.
+            Ta có $y'=\dfrac{5}{\left(x+2\right)^2}>0,\forall x \in \mathbb{R}$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[ lgt=1, espcl=3]{$x$/0.6,$y'$ /0.6, $y$ /1.5}
+                    {$-\infty$ , $-2$ , $+\infty$}
+                    \tkzTabLine{,+, d ,+}
+                    \tkzTabVar {-/$2$ /, +D-/ $ +\infty $ / $ -\infty $ , +/$2$ / }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên khoảng $\left(-\infty;-2\right)$ và $\left(-2;+\infty\right)$.
+            \item
+            Điều kiện: $ x-1 \neq 0 \Leftrightarrow x \neq 1$.\\
+            Ta có: $y^{\prime}=\dfrac{-2}{(x-1)^{2}}<0, \forall x \neq 1$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1,espcl=3,deltacl=0.5]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}
+                    {$-\infty$,$1$,$+\infty$}
+                    \tkzTabLine{,-,d,-,}
+                    \tkzTabVar{+/$1$,-D+/$-\infty$/$+\infty$,-/$1$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số nghịch biến trên khoảng $\left(-\infty;1\right)$ và $\left(1;+\infty\right)$; nghịch biến trên $(-2;0)$ và $(0;2)$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}\setminus\{0\}$.\\
+            $y'=1-\dfrac{4}{x^2}=\dfrac{x^2-4}{x^2}$.\\
+            $y'=0\Leftrightarrow x=\pm 2$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.6,xscale=1.5,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(8,-5)
+                        (0,-1)--+(0:8) (0,-2)--+(0:8) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$-2$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$2$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:.5) node{$-$}
+                    ++(0:1) node{$-$}
+                    ++(0:.5) node{$0$}
+                    ++(0:1) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(-90:1) node (A) {$-\infty$}
+                    ++(0:2) ++(90:2) node (B) {$-4$}
+                    ++(0:1) ++(-90:2) node (C)[left]
+                    {$-\infty$}
+                    ++(90:2) node (D)[right]{$+\infty$}
+                    ++(0:1) ++(-90:2) node (E) {$4$}
+                    ++(0:2) ++(90:2) node (F) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (D)--(E);
+                    \draw[-stealth] (E)--(F);
+                    \draw[double] (4,-.5)--(4,-4.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên các khoảng $(-\infty;-2)$, $(2;+\infty)$; nghịch biến trên các khoảng $(-2;0)$ và $(0;2)$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}\setminus \{-1\}$.\\
+            $y'=1-\dfrac{4}{(x+1)^2}=\dfrac{(x+1)^2-4}{(x+1)^2}$.\\
+            $y'=0 \Leftrightarrow (x+1)^2=4\Leftrightarrow\hoac{&x=1\\&x=-3.}$\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.6,xscale=1.25,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(10,-5)
+                        (0,-1)--+(0:10) (0,-2)--+(0:10) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$-3$}
+                    ++(0:2) node{$-1$}
+                    ++(0:2) node{$1$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    ++(0:2) node{$-$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(-90:1) node (A) {$-\infty$}
+                    ++(0:2) ++(90:2) node (B) {$-5$}
+                    ++(0:2) ++(-90:2) node (C)[left]
+                    {$-\infty$}
+                    ++(90:2) node (D)[right]{$+\infty$}
+                    ++(0:2) ++(-90:2) node (E) {$3$}
+                    ++(0:2) ++(90:2) node (F) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (D)--(E);
+                    \draw[-stealth] (E)--(F);
+                    \draw[double] (5,-.5)--(5,-4.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho nghịch biến trên các khoảng $(-3;-1)$ và $(-1;1)$; đồng biến trên $(-\infty;-3)$ và $(1;\infty)$.
+        \end{enumerate}
+    }
+\end{vd}
+%%==========Ví dụ 6
+\begin{vd} Tìm các khoảng đơn điệu của mỗi hàm số sau:
+    \begin{listEX}[3]
+        \item $y=\dfrac{x^2+4}{x}$;
+        \item $y=\dfrac{x}{x^2+1}$;
+        \item $y=\dfrac{x^2-3x}{x+1}$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item %a
+            Hàm số đã cho có tập xác định là $\mathbb{R}\backslash\left\{0\right\}$.
+            Ta có: $y'=\dfrac{x^2-4}{x^2}$ với $x\neq 0$ ;\\
+            $y'=0\Leftrightarrow x^2-4=0\Leftrightarrow x=-2$ hoặc $x=2$.\\
+            Bảng biến thiên của hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tikzset{double style/.append style={double distance=2pt}}
+                    \tkzTabInit[ lgt=1, espcl=2.8]{$x$/0.6,$y'$ /0.6, $y$ /1.5}
+                    {$-\infty$ , $-2$ ,$0$,$2$, $+\infty$}
+                    \tkzTabLine{ ,+, 0,-,d ,-,0,+ }
+                    \tkzTabVar {-/$-\infty$ /, +/ $ -4 $ ,-D+/ $-\infty$ / $+\infty$,-/$4$,+/$ +\infty $}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên mỗi khoảng $\left(-\infty;-2\right)$ và $\left(2;+\infty\right)$; nghịch biến trên khoảng $\left(-2;0\right)$ và $\left(0;2\right)$.
+            \item %b
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            $y'=\dfrac{-x^2+1}{(x^2+1)^2}$.\\
+            $y'=0\Leftrightarrow x=\pm 1$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.65,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(8,-5)
+                        (0,-1)--+(0:8) (0,-2)--+(0:8) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$-1$}
+                    ++(0:2) node{$1$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$-$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(+90:1) node (A) {$0$}
+                    ++(0:2) ++(-90:2) node (B) {$-\dfrac{1}{2}$}
+                    ++(0:2) ++(+90:2) node (C) {$\dfrac{1}{2}$}
+                    ++(0:2) ++(-90:2) node (D) {$0$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (C)--(D);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên khoảng $(-1;1)$, nghịch biến trên khoảng $(-\infty;-1)$, $(1;+\infty)$.
+            \item %c
+            Tập xác định $\mathscr{D}=\mathbb{R}\setminus\{-1\}$.\\
+            $y'=\dfrac{x^2+2x-3}{(x+1)^2}$.\\
+            $y'=0\Leftrightarrow \hoac{&x=1\\&x=-3.}$\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.3,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(10,-5)
+                        (0,-1)--+(0:10) (0,-2)--+(0:10) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$-3$}
+                    ++(0:2) node{$-1$}
+                    ++(0:2) node{$1$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    ++(0:2) node{$-$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(-90:1) node (A) {$-\infty$}
+                    ++(0:2) ++(90:2) node (B) {$-9$}
+                    ++(0:2) ++(-90:2) node (C)[left]
+                    {$-\infty$}
+                    ++(90:2) node (D)[right]{$+\infty$}
+                    ++(0:2) ++(-90:2) node (E) {$-1$}
+                    ++(0:2) ++(90:2) node (F) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (D)--(E);
+                    \draw[-stealth] (E)--(F);
+                    \draw[double] (5,-.5)--(5,-4.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên các khoảng $(-\infty;-3)$, $(1;+\infty)$; nghịch biến trên các khoảng $(-3; -1)$ và $(-1;1)$.
+        \end{enumerate}
+    }
+\end{vd}
+%%==========Ví dụ 7
+\begin{vd}
+    Tìm các khoảng đơn điệu của mỗi hàm số sau:
+    \begin{listEX}[4]
+        \item $y=\sqrt{x^2+1}$;
+        \item $y=\sqrt{4x-x^2}$;
+        \item $y=\sqrt{x^2-6x+5}$;
+        \item $y=\sqrt{2x-x^2}-x$.
+    \end{listEX}
+    \loigiai{
+        \begin{listEX}
+            \item %a
+            Tập xác định $D=\mathbb{R}$.\\
+            Ta có $y'=\dfrac{x}{\sqrt{x^2+1}}$.\\
+            $y'=0\Leftrightarrow\dfrac{x}{\sqrt{x^2+1}}=0\Leftrightarrow x=0$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=2]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}{$-\infty$,$0$,$+\infty$}
+                    \tkzTabLine{,-,0,+,}
+                    \tkzTabVar{+/$+\infty$,-/$1$,+/$+\infty$,}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số nghịch biến trên khoảng $\left(-\infty;0\right]$ và đồng biến trên khoảng $\left[0;+\infty\right)$.
+            \item %b
+            Tập xác định $\mathscr{D}=[0;4]$.\\
+            $y'=\dfrac{4-2x}{2\sqrt{4x-x^2}}$.\\
+            $y'=0\Leftrightarrow x=2$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.25,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \fill[pattern=north east lines,pattern color=black](1,-1) rectangle +(1.5,-4) (6.5,-1) rectangle +(1.5,-4);
+                        \draw
+                        (0,0) rectangle +(8,-5)
+                        (0,-1)--+(0:8) (0,-2)--+(0:8) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:1) node{$0$}
+                    ++(0:2) node{$2$}
+                    ++(0:2) node{$4$}
+                    ++(0:1) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:3) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:2) ++(-90:1) node (A) {$0$}
+                    ++(0:2) ++(90:2) node (B) {$2$}
+                    ++(0:2) ++(-90:2) node (C) {$0$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[double] (2,-.5)--(2,-1.5) (6,-.5)--(6,-1.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên khoảng $(0;2)$; nghịch biến trên khoảng $(2;4)$.
+            \item %c
+            Tập xác định $\mathscr{D}=(-\infty;1]\cup [5;+\infty)$.\\
+            $y'=\dfrac{2x-6}{2\sqrt{x^2-6x+5}}$.\\
+            $2x-6=0\Leftrightarrow x=3$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.25,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \fill[pattern=north east lines,pattern color=black](3.5,-1) rectangle +(2,-4);
+                        \draw
+                        (0,0) rectangle +(8,-5)
+                        (0,-1)--+(0:8) (0,-2)--+(0:8) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$1$}
+                    ++(0:1) node{$3$}
+                    ++(0:1) node{$5$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$-$}
+                    ++(0:2)
+                    ++(0:2) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(+90:1) node (A) {$+\infty$}
+                    ++(0:2) ++(-90:2) node (B) {$0$}
+                    ++(0:2) node (C) {$0$}
+                    ++(0:2) ++(+90:2) node (D) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (C)--(D);
+                    \draw[double] (3,-.5)--(3,-1.5) (5,-.5)--(5,-1.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên khoảng $(5;+\infty)$; nghịch biến trên khoảng $(-\infty;1)$.
+            \item %d
+            Điều kiện $2x-x^2 \geq 0\Leftrightarrow 0\leq x\leq 2.
+            $.\\
+            Tập xác định $\mathscr{D}=[0;2]$.\\
+            Khi đó $y'=\dfrac{-x+1}{\sqrt{2x-x^2}}-1,\forall x\in(0 ; 2)$.\\
+            Xét $y'=0\Rightarrow \dfrac{-x+1 -\sqrt{2x-x^2}}{\sqrt{2x-x^2}}=0\\ \Rightarrow \sqrt{2x-x^2}=1-x \Leftrightarrow \heva{& x \le 1 \\ &2x^2-4x+1=0} \Leftrightarrow \heva{& x\le 1 \\ & \hoac{& x=\dfrac{2-\sqrt{2}}{2} \\ & x=\dfrac{2+\sqrt{2}}{2}}} \Leftrightarrow x=\dfrac{2-\sqrt{2}}{2}.$\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[>=stealth]
+                    \tkzTabInit[lgt=1,espcl=2,deltacl=0.5]{$x$/1 ,$y'$/.7,$y$/2}
+                    {$-\infty$, $0$, $\dfrac{2-\sqrt{2}}{2}$ , $2$, $+\infty$}
+                    \tkzTabLine{,h ,d ,+, z, -, d, h, }
+                    \tkzTabVar{+H/, -/ , +/ ,-H/, }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho đồng biến trên khoảng $\left(0;\dfrac{2-\sqrt{2}}{2}\right)$, nghịch biến trên $\left(\dfrac{2-\sqrt{2}}{2};2\right)$.
+        \end{listEX}
+    }
+\end{vd}
+%%==========Ví dụ 8
+\begin{vd}%[2D1B1-1]
+    Tìm các khoảng đơn điệu của hàm số $f(x)$,
+    biết:
+    \begin{listEX}[2]
+        \item $f'(x)=x(x+1)^2(x-1)^3,\forall x\in\mathbb{R}$;
+        \item $f'(x)=x^2\left(x^2-4\right)(x-2)^2,\forall x\in\mathbb{R}$.
+    \end{listEX}
+    \loigiai{
+        \begin{listEX}
+            \item
+            Cho $f'(x)=0 \Rightarrow x(x+1)^2(x-1)^3=0 \Leftrightarrow \hoac{&x=0\\ &x=-1\\ &x=1.} $\\
+            Bảng xét dấu $f'(x)$
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=2,espcl=2,deltacl=0.5]{$x$/0.6 ,$f'(x)$/0.7 }
+                    {$-\infty$ , $-1$ , $0$ , $1$ , $+\infty$}
+                    \tkzTabLine{ , + , z , + , z , - , z , + }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty;0)$, $(1;+\infty)$; nghịch biến trên $(0 ; 1)$.
+            \item
+            Cho $f'(x)=0 \Rightarrow x^2\left(x^2-4\right)(x-2)^2=0 \Leftrightarrow \hoac{&x=0\\ &x=-2\\ &x=2.} $\\
+            Bảng xét dấu $f'(x)$
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=2,espcl=2,deltacl=0.5]{$x$/0.6 ,$f'(x)$/0.7}
+                    {$-\infty$ , $-2$ , $0$ , $2$ , $+\infty$}
+                    \tkzTabLine{ , + , z , - , z , - , z , + }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty;-2)$, $(2;+\infty)$; nghịch biến trên $(-2; 2)$.
+        \end{listEX}
+    }
+\end{vd}
+\btvd
+%%==========Bài 1
+\begin{bt}
+    Tìm các khoảng đơn điệu của mỗi hàm số sau:
+    \begin{listEX}[3]
+        \item $y=x^{3}-3 x^{2}+1$;
+        \item $y=-x^3+3x^2+9x$;
+        \item $y=2 x^{3}+6 x^{2}+6 x-1$;
+        \item $y=-x^{3}+3 x^{2}-3 x+2$;
+        \item $y=\dfrac{1}{3} x^{3}+4 x+1$;
+        \item $y=-\dfrac{x^3}{3}+\dfrac{1}{2}x^2-x+3$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item
+            Tập xác định: $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=3 x^{2}-6 x ; y'=0 \Leftrightarrow 3 x^{2}-6 x=0 \Leftrightarrow\hoac{& x=0 \\ & x=2}$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[>=stealth]
+                    \tkzTabInit[lgt=1,espcl=2]{$x$/.6 ,$y'$/.6,$y$/1.5}
+                    {$-\infty$ , $0$ , $2$ , $+\infty$}
+                    \tkzTabLine{ , + , $0$ , - , $0$ , + , }
+                    \tkzTabVar{-/$-\infty$ , +/$1$ , -/$-3$ , +/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên các khoảng $(-\infty ; 0)$ và $(2 ;+\infty)$, nghịch biến trên khoảng $(0 ; 2)$.
+            \item
+            TXĐ: $\mathscr{D}=\mathbb{R}$.\\
+            Ta có $y'=-3x^2+6x+9$.\\
+            $y'=0\Leftrightarrow x=-1$ hoặc $x=3$.\\
+            Bảng biến thiên:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1,espcl=2,deltacl=0.5]
+                    {$x$/.6, $y'$/.6, $y$/1.5}
+                    {$-\infty$,$-1$,$3$,$+\infty$}
+                    \tkzTabLine{,-,0,+,0,-,}
+                    \draw
+                    (N12) node[below] (A) {$+\infty$}
+                    (N23) node[above] (B) {$-5$}
+                    (N32) node[below] (C) {$27$}
+                    (N43) node[above] (D) {$-\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (C)--(D);
+                \end{tikzpicture}
+            \end{center}
+            Hàm số nghịch biến trên các khoảng $(-\infty;-1)$ và $(3;+\infty)$; đồng biến trên khoảng $(-1;3)$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=6x^2+12x+6 \Leftrightarrow y'=x^2+2x+1$.\\
+            Cho $y'=0 \Leftrightarrow x^2+2x+1=0 \Leftrightarrow x=-1$.\\
+            Tại $x=-1 \Rightarrow y(-1)=-3$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1,espcl=3,deltacl=0.5]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}
+                    {$-\infty$,$-1$,$+\infty$}
+                    \tkzTabLine{,+,0,+,}
+                    \tkzTabVar{-/$-\infty$,R/,+/$+\infty$}
+                    \tkzTabVal{1}{3}{0.5}{}{$-3$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $\mathbb{R}$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=-3x^2+6x-3$.\\
+            Cho $y'=0 \Leftrightarrow -x^2+3x-1=0 \Leftrightarrow x=1$.\\
+            Tại $x=1 \Rightarrow y(1)=1$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1,espcl=3,deltacl=0.5]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}
+                    {$-\infty$,$1$,$+\infty$}
+                    \tkzTabLine{,-,0,-,}
+                    \tkzTabVar{+/$+\infty$,R/,-/$-\infty$}
+                    \tkzTabVal{1}{3}{0.5}{}{$1$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số nghịch biến trên $\mathbb{R}$.
+            \item
+            Tập xác định: $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=x^{2}+4>0, \forall x \in \mathbb{R}$.\\
+            Vậy hàm số đồng biến trên $\mathbb{R}$.
+            \item
+            Tập xác định: $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=-x^{2}+x-1<0, \forall x \in \mathbb{R}$.\\
+            Vậy hàm số nghịch biến trên $\mathbb{R}$.
+        \end{enumerate}
+    }
+\end{bt}
+%%==========Bài 2
+\begin{bt}%[2D1B1-1]
+    Hàm số nào sau đây luôn đồng biến trên $\mathbb{R}$?
+    \choice
+    {$y=x^3-3x$}
+    {$y=-x^3-2x$}
+    {$y=x^4+2x^2$}
+    {\True $y=x^3+x^2+4x$}
+    \loigiai{
+        \begin{itemize}
+            \item Hàm số $y=x^4+2x^2$ là hàm số bậc $4$ trùng phương không đồng biến trên $\mathbb{R}$ nên loại.
+            \item Hàm số $y=-x^3-2x$ có hệ số $a = -1 <0$ nên loại.
+            \item Xét hàm số $y=x^3-3x$, ta có $y'=3x^2-3$; $y'=0 \Leftrightarrow x=\pm 1$.\\
+            Bảng biến thiên:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.5,espcl=2,deltacl=0.5]
+                    {$x$/.6, $y'$/.6, $y$/1.5}
+                    {$-\infty$,$-1$,$1$,$+\infty$}
+                    \tkzTabLine{,+,0,-,0,+,}
+                    \draw
+                    (N13) node[above] (A) {$-\infty$}
+                    (N22) node[below] (B) {$2$}
+                    (N33) node[above] (C) {$-2$}
+                    (N42) node[below] (D) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (C)--(D);
+                \end{tikzpicture}
+            \end{center}
+            Dựa vào bảng biến thiên hàm số không đồng biến trên $\mathbb{R}$ nên loại.
+            \item Xét hàm số $y=x^3+x^2+4x$, ta có $y'=3x^2+2x+4 > 0, \forall x \in \mathbb{R}$ nên hàm số đồng biến trên $\mathbb{R}$.
+        \end{itemize}
+    }
+\end{bt}
+%%==========Bài 3
+\begin{bt} Tìm các khoảng đơn điệu của mỗi hàm số sau:
+    \begin{listEX}[4]
+        \item $y=-x^4+2x^2+2019$;
+        \item $y=x^4-2x^2-5$;
+        \item $y=x^4+2x^2-3$;
+        \item $f(x)=1-3x^4$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item %a
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=-4x^3+4x$.\\
+            Cho $y'=0 \Leftrightarrow -x^3+x=0 \Leftrightarrow \hoac{& x=-1 \\& x= 0 \\& x=1.}$\\
+            Tại $x=-1 \Rightarrow y(-1)=2020$; Tại $x=0 \Rightarrow y(0)=2019$; Tại $x=1 \Rightarrow y(1)=2020$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+                    {$x$/0.6,$y'$/0.6,$y$/2}
+                    {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+                    \tkzTabLine{,+,0,-,0,+,0,-,}
+                    \tkzTabVar{-/$-\infty$,+/$2020$,-/$2019$,+/$2020$,-/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty;-1)$, $(0;1)$; nghịch biến trên $(-1 ; 0)$, $(1;+\infty)$.
+            \item %b
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y' = 4 x^{3}-4x$.\\
+            Cho $y'=0 \Leftrightarrow -x^3+x=0 \Leftrightarrow \hoac{& x=-1 \\& x= 0 \\& x=1.}$\\
+            Tại $x=-1 \Rightarrow y(-1)=-6$; Tại $x=0 \Rightarrow y(0)=-5$; Tại $x=1 \Rightarrow y(1)=-6$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+                    {$x$/0.6,$y'$/0.6,$y$/2}
+                    {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+                    \tkzTabLine{,-,0,+,0,-,0,+,}
+                    \tkzTabVar{+/$+\infty$,-/$-6$,+/$-5$,-/$-6$,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số nghịch biến trên $(-\infty;-1)$, $(0;1)$; đồng biến trên $(-1 ; 0)$, $(1;+\infty)$.
+            \item %c
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.
+            Ta có:\\
+            $y'=4x^3+4x$;\\
+            $y'=0\Leftrightarrow 4x^3+4x=0 \Leftrightarrow 4x\cdot \left(x^2+1\right)=0\Leftrightarrow 4x=0\Leftrightarrow x=0$.\\
+            Ta có bảng xét dấu của $y'$ như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=3]{$x$ /0.7,$y'$ /0.7,$y$/1.5}{$-\infty$,$0$,$+\infty$}
+                    \tkzTabLine{,-, 0 ,+,}
+                    \tkzTabVar{+/$+\infty$,-/$-3$,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số nghịch biến trên khoảng $\left(-\infty;0\right)$ và đồng biến trên khoảng $\left(0;+\infty\right)$.
+            \item %d
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=-12x^3$.\\
+            Cho $y'=0 \Leftrightarrow -12x^3 = 0 \Leftrightarrow x=0$.\\
+            Tại $x=0 \Rightarrow y(0)=1$.\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+                    {$x$/0.6,$y'$/0.6,$y$/2}
+                    {$-\infty$,$0$,$+\infty$}
+                    \tkzTabLine{,+,0,-,}
+                    \tkzTabVar{-/$-\infty$,+/$1$,-/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên khoảng $\left(-\infty;0\right)$ và nghịch biến trên khoảng $\left(0;+\infty\right)$.
+        \end{enumerate}
+    }
+\end{bt}
+%%==========Bài 4
+\begin{bt} Tìm các khoảng đơn điệu của mỗi hàm số sau
+    \begin{listEX}[4]
+        \item $y=\dfrac{x-2}{x+1}$;
+        \item $y=\dfrac{3-x}{x+1}$;
+        \item $y=x+\dfrac{9}{x}$;
+        \item $y=2x-1+\dfrac{8}{x-1}$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item %a
+            Điều kiện: $ x+1 \neq 0 \Leftrightarrow x \neq -1$.\\
+            Ta có: $y^{\prime}=\dfrac{3}{(x+1)^{2}} >0, \forall x \neq -1$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1,espcl=3,deltacl=0.5]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}
+                    {$-\infty$,$-1$,$+\infty$}
+                    \tkzTabLine{,+,d,+,}
+                    \tkzTabVar{-/$1$,+D-/$+\infty$/$-\infty$,+/$1$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty;-1)$, $(-1;+\infty)$.
+            \item %b
+            Điều kiện: $ x+1 \neq 0 \Leftrightarrow x \neq -1$.\\
+            Ta có: $y^{\prime}=\dfrac{-4}{(x+1)^{2}} < 0, \forall x \neq -1$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1,espcl=3,deltacl=0.5]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}
+                    {$-\infty$,$-1$,$+\infty$}
+                    \tkzTabLine{,-,d,-,}
+                    \tkzTabVar{+/$-1$,-D+/$-\infty$/$+\infty$,-/$-1$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số nghịch biến trên $(-\infty;-1)$, $(-1;+\infty)$
+            \item %c
+            Tập xác định $\mathscr{D}=\mathbb{R}\setminus\{0\}$.\\
+            $y'=1-\dfrac{9}{x^2}=\dfrac{x^2-9}{x^2}$.\\
+            $y'=0\Leftrightarrow x=\pm 3$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.5,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(10,-5)
+                        (0,-1)--+(0:10) (0,-2)--+(0:10) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$-3$}
+                    ++(0:2) node{$0$}
+                    ++(0:2) node{$3$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    ++(0:2) node{$-$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(-90:1) node (A) {$-\infty$}
+                    ++(0:2) ++(90:2) node (B) {$-6$}
+                    ++(0:2) ++(-90:2) node (C)[left]
+                    {$-\infty$}
+                    ++(90:2) node (D)[right]{$+\infty$}
+                    ++(0:2) ++(-90:2) node (E) {$6$}
+                    ++(0:2) ++(90:2) node (F) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (D)--(E);
+                    \draw[-stealth] (E)--(F);
+                    \draw[double] (5,-.5)--(5,-4.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty; -3)$, $(3;+\infty)$; nghịch biến trên $(-3;0)$, $(0;3)$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}\setminus\{1\}$.\\
+            $y'=2-\dfrac{8}{(x-1)^2}=\dfrac{2(x-1)^2-8}{(x-1)^2}$.\\
+            $y'=0\Leftrightarrow (x-1)^2=4\Leftrightarrow\hoac{&x=3\\&x=-1.}$\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.5,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(10,-5)
+                        (0,-1)--+(0:10) (0,-2)--+(0:10) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$-1$}
+                    ++(0:2) node{$1$}
+                    ++(0:2) node{$3$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    ++(0:2) node{$-$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(-90:1) node (A) {$-\infty$}
+                    ++(0:2) ++(90:2) node (B) {$-7$}
+                    ++(0:2) ++(-90:2) node (C)[left]
+                    {$-\infty$}
+                    ++(90:2) node (D)[right]{$+\infty$}
+                    ++(0:2) ++(-90:2) node (E) {$9$}
+                    ++(0:2) ++(90:2) node (F) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (D)--(E);
+                    \draw[-stealth] (E)--(F);
+                    \draw[double] (5,-.5)--(5,-4.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty; -1)$, $(3;+\infty)$; nghịch biến trên $(-1;1)$, $(1;3)$.
+        \end{enumerate}
+    }
+\end{bt}
+%%==========Bài 5
+\begin{bt}
+    Tìm các khoảng đơn điệu của mỗi hàm số sau:
+    \begin{listEX}[3]
+        \item $f(x)=\dfrac{x^2+2x+2}{x+1}$;
+        \item $y=\dfrac{2}{x^2+1}$;
+        \item $f(x)=\dfrac{x^2-x+1}{x-1}$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item %a
+            Tập xác định $\mathscr{D}=\mathbb{R}\setminus\{-1\}$.\\
+            $y'=\dfrac{x^2+2x}{(x+1)^2}$.\\
+            $y'=0 \Leftrightarrow\hoac{&x=0\\&x=-2.}$\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.5]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(10,-5)
+                        (0,-1)--+(0:10) (0,-2)--+(0:10) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$-2$}
+                    ++(0:2) node{$-1$}
+                    ++(0:2) node{$0$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    ++(0:2) node{$-$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(-90:1) node (A) {$-\infty$}
+                    ++(0:2) ++(90:2) node (B) {$-2$}
+                    ++(0:2) ++(-90:2) node (C)[left]
+                    {$-\infty$}
+                    ++(90:2) node (D)[right]{$+\infty$}
+                    ++(0:2) ++(-90:2) node (E) {$2$}
+                    ++(0:2) ++(90:2) node (F) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (D)--(E);
+                    \draw[-stealth] (E)--(F);
+                    \draw[double] (5,-.5)--(5,-4.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty;-2)$, $(0;+\infty)$ và nghịch biến trên $(-2; -1)$, $(-1;0)$.
+            \item %b
+            Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+            $y'=-\dfrac{2x}{(x^2+1)^2}$.\\
+            $y'=0\Leftrightarrow x=0$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.5,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(6,-5)
+                        (0,-1)--+(0:6) (0,-2)--+(0:6) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$0$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(-90:1) node (A) {$-\infty$}
+                    ++(0:2) ++(90:2) node (B) {$2$}
+                    ++(0:2) ++(-90:2) node (C) {$-\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty;0)$ và nghịch biến trên khoảng $(0;+\infty)$.
+            \item
+            Tập xác định $\mathscr{D}=\mathbb{R}\setminus\{1\}$.\\
+            $y'=\dfrac{x^2-2x}{(x-1)^2}$.\\
+            $y'=0 \Leftrightarrow\hoac{&x=0\\&x=2.}$\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.5,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \draw
+                        (0,0) rectangle +(10,-5)
+                        (0,-1)--+(0:10) (0,-2)--+(0:10) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$0$}
+                    ++(0:2) node{$1$}
+                    ++(0:2) node{$2$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    ++(0:2) node{$-$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(-90:1) node (A) {$-\infty$}
+                    ++(0:2) ++(90:2) node (B) {$-1$}
+                    ++(0:2) ++(-90:2) node (C)[left]
+                    {$-\infty$}
+                    ++(90:2) node (D)[right]{$+\infty$}
+                    ++(0:2) ++(-90:2) node (E) {$3$}
+                    ++(0:2) ++(90:2) node (F) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[-stealth] (D)--(E);
+                    \draw[-stealth] (E)--(F);
+                    \draw[double] (5,-.5)--(5,-4.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-\infty;0)$, $(2;+\infty)$ và nghịch biến trên các khoảng $(0;1)$, $(1;2)$.
+        \end{enumerate}
+    }
+\end{bt}
+%%==========Bài 6
+\begin{bt}
+    Tìm các khoảng đơn điệu của mỗi hàm số sau:
+    \begin{listEX}[4]
+        \item $y=\sqrt{8+2x-x^2}$;
+        \item $y=\sqrt{x^2-4x+3}$;
+        \item $y=\sqrt{x^2-6x+5}$;
+        \item $y=x-2\sqrt x+2020$.
+    \end{listEX}
+    \loigiai{
+        \begin{listEX}
+            \item
+            Tập xác định $\mathscr{D}=[-2;4]$.\\
+            $y'=\dfrac{2-2x}{2\sqrt{8+2x-x^2}}$.\\
+            $y'=0\Leftrightarrow x=1$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.25,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \fill[pattern=north east lines,pattern color=black](1,-1) rectangle +(1.5,-4) (6.5,-1) rectangle +(1.5,-4);
+                        \draw
+                        (0,0) rectangle +(8,-5)
+                        (0,-1)--+(0:8) (0,-2)--+(0:8) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:1) node{$-2$}
+                    ++(0:2) node{$1$}
+                    ++(0:2) node{$4$}
+                    ++(0:1) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:3) node{$+$}
+                    ++(0:1) node{$0$}
+                    ++(0:1) node{$-$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:2) ++(-90:1) node (A) {$0$}
+                    ++(0:2) ++(90:2) node (B) {$3$}
+                    ++(0:2) ++(-90:2) node (C) {$0$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (B)--(C);
+                    \draw[double] (2,-.5)--(2,-1.5) (6,-.5)--(6,-1.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-2;1)$ và nghịch biến trên khoảng $(1;4)$.
+            \item
+            Tập xác định $\mathscr{D}=(-\infty;1]\cup [3;+\infty)$.\\
+            $y'=\dfrac{2x-4}{2\sqrt{x^2-4x+3}}$.\\
+            $2x-4=0\Leftrightarrow x=2$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[yscale=.65,xscale=1.25,]
+                    \begin{scope}[shift={(-.5,.5)}]
+                        \fill[pattern=north east lines,pattern color=black](3.5,-1) rectangle +(2,-4);
+                        \draw
+                        (0,0) rectangle +(8,-5)
+                        (0,-1)--+(0:8) (0,-2)--+(0:8) (1,0)--+(-90:5);
+                    \end{scope}
+                    \path
+                    (0,0) node{$x$} % <<< dòng 1
+                    ++(0:1) node{$-\infty$}
+                    ++(0:2) node{$1$}
+                    ++(0:1) node{$2$}
+                    ++(0:1) node{$3$}
+                    ++(0:2) node{$+\infty$}
+                    (0,-1) node{$y'$} % <<< dòng 2
+                    ++(0:2) node{$-$}
+                    ++(0:2)
+                    ++(0:2) node{$+$}
+                    (0,-3) node{$y$} % <<< dòng 3
+                    ++(0:1) ++(+90:1) node (A) {$+\infty$}
+                    ++(0:2) ++(-90:2) node (B) {$0$}
+                    ++(0:2) node (C) {$0$}
+                    ++(0:2) ++(+90:2) node (D) {$+\infty$};
+                    \draw[-stealth] (A)--(B);
+                    \draw[-stealth] (C)--(D);
+                    \draw[double] (3,-.5)--(3,-1.5) (5,-.5)--(5,-1.5);
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(3;+\infty)$ và nghịch biến trên khoảng $(-\infty;1)$.
+            \item
+            Điều kiện $x^2-6x+5 \geq 0\Leftrightarrow \hoac{& x\le 1 \\ & x\ge 5.}
+            $\\
+            Tập xác định $\mathscr{D}=(-\infty;1] \cup [5;+\infty)$.\\
+            Khi đó $y'=\dfrac{2x-6}{2\sqrt{x^2-6x+5}},\forall x\in (-\infty;1) \cup (5;+\infty)$ .\\
+            Xét $y'=0\Rightarrow 2x-6=0\Leftrightarrow x=3.$ (loại)\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[>=stealth]
+                    \tkzTabInit[lgt=1,espcl=2,deltacl=0.5]{$x$/.6 ,$y'$/.6,$y$/1.5}
+                    {$-\infty$, $1$, $3$ , $5$, $+\infty$}
+                    \tkzTabLine{, -, d , h, d, h , d , +, }
+                    \tkzTabVar{+/ , -H/ , +DH/ , -/,+/ }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho nghịch biến trên khoảng $(-\infty;1)$, đồng biến trên khoảng $(5;+\infty)$.
+            \item
+            Điều kiện $x \geq 0$.\\
+            Tập xác định $\mathscr{D}= [0;+\infty)$.\\
+            Khi đó $y'=1-\dfrac{1}{\sqrt{x}}=\dfrac{\sqrt{x}-1}{\sqrt{x}},\forall x\in (0;+\infty)$ .\\
+            Xét $y'=0\Rightarrow \sqrt{x}-1 =0\Rightarrow x=1.$\\
+            Ta có bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}[>=stealth]
+                    \tkzTabInit[lgt=1,espcl=2,deltacl=0.5]{$x$/.7 ,$y'$/.7,$y$/2}
+                    {$-\infty$, $0$ , $1$, $+\infty$}
+                    \tkzTabLine{, h, d , -, z, +, }
+                    \tkzTabVar{ +H/ , +/ , -/ ,+/ }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đã cho nghịch biến trên khoảng $(0;1)$, đồng biến trên $(1;+\infty)$.
+        \end{listEX}
+    }
+\end{bt}
+%%==========Bài 7
+\begin{bt}%[2D1B1-1]
+    Tìm các khoảng đơn điệu của hàm số $ f(x)$, biết:
+    \begin{listEX}[2]
+        \item $f'(x)=(x-2)(x+5)(x+1),\forall x\in\mathbb{R}$;
+        \item $f'(x)=(x+1)^2(x-1)^3(2-x),\forall x\in\mathbb{R}$.
+    \end{listEX}
+    \loigiai{
+        \begin{listEX}
+            \item
+            Cho $f'(x)=0 \Rightarrow (x-2)(x+5)(x+1)=0 \Leftrightarrow \hoac{&x=-5\\ &x=-1\\ &x=2.} $\\
+            Bảng xét dấu $f'(x)$
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=2,espcl=2,deltacl=0.5]{$x$/0.6 ,$f'(x)$/0.7 }
+                    {$-\infty$ , $-5$ , $-1$ , $2$ , $+\infty$}
+                    \tkzTabLine{ , - , z , + , z , - , z , + }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(-5;-1)$, $(2;+\infty)$ và nghịch biến trên $(-\infty;-5)$, $(-1;2)$.
+            \item
+            Cho $f'(x)=0 \Rightarrow (x+1)^2(x-1)^3(2-x)=0 \Leftrightarrow \hoac{&x=-1\\ &x=1\\ &x=2.} $\\
+            Bảng xét dấu $f'(x)$
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=2,espcl=2,deltacl=0.5]{$x$/0.6 ,$f'(x)$/0.7 }
+                    {$-\infty$ , $-1$ , $1$ , $2$ , $+\infty$}
+                    \tkzTabLine{ , - , z , - , z , + , z , - }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đồng biến trên $(1 ; 2)$ và nghịch biến trên $(-\infty;1)$, $(2;+\infty)$.
+        \end{listEX}
+    }
+\end{bt}
+\begin{dang}{Tìm khoảng đơn điệu của hàm số dựa vào BBT, đồ thị}
+    \begin{enumerate}[\itemKN]
+        \item Nếu đề bài cho đồ thị $y=f(x)$, ta chỉ việc nhìn các khoảng mà đồ thị "đi lên" hoặc "đi xuống".
+        \begin{itemize}
+            \item Khoảng mà đồ thị "đi lên": hàm đồng biến;
+            \item Khoảng mà đồ thị "đi xuống": hàm nghịch biến.
+        \end{itemize}
+        \item Nếu đề bài cho đồ thị $y=f'(x)$. Ta tiến hành lập bảng biến thiên của hàm $y=f(x)$ theo các bước:
+        \begin{itemize}
+            \item Tìm nghiệm của $f'(x)=0$ (hoành độ giao điểm với trục hoành);
+            \item Xét dấu $f'(x)$ (phần trên $Ox$ mang dấu dương; phần dưới $Ox$ mang dấu âm);
+            \item Lập bảng biến thiên của $y=f(x)$, suy ra kết quả tương ứng.
+        \end{itemize}
+    \end{enumerate}
+\end{dang}
+%--------------
+%%==========Ví dụ 9
+\begin{vd}%[2D1B1-2]
+    \immini{Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ và có đồ thị như hình bên. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    }{\vspace{-0.3cm}
+        \begin{tikzpicture}[>=stealth,line cap=round,line join=round,x=1cm,y=1cm,scale=0.7]
+            \draw[->] (-1,0)--(4,0) node[below] {$x$};
+            \draw[->] (0,-2.2)--(0,1.3) node[right] {$y$};
+            \node[below left](0,0){$O$};
+            \draw[thick,samples=1000,domain=-0.1:3.5] plot(\x,{(\x-1)^3-2*(\x-1)^2-(\x)+1.5});
+            \draw[dashed] (0.78,0.6) -- (0.78,0) node[below] {$2$};
+            \draw[dashed] (2.55,-2.13) -- (2.55,0) node[above] {$7$};
+    \end{tikzpicture}}
+    \loigiai{
+        Dựa vào đồ thị thấy hàm số nghịch biến trên khoảng $(2;7)$, đồng biến trên các khoảng $(-\infty;2)$, $(7;+\infty)$.
+    }
+\end{vd}
+%%==========Ví dụ 10
+\begin{vd}
+    Cho hàm số $y=f(x)$ có bảng xét dấu đạo hàm như hình bên dưới. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[lgt=1,espcl=2]
+            {$x$ /0.6,$y'$ /0.6}
+            {$-\infty$,$-2$,$1$,$+\infty$}
+            \tkzTabLine{,+,$0$,-,$0$,+,}
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{
+        Dựa vào bảng xét dấu ta thấy hàm số đồng biến trên các khoảng $\left(-\infty;-2\right)$, $\left(1;+\infty\right)$ và nghịch biến trên $\left(-2;1\right)$.
+    }
+\end{vd}
+%%==========Ví dụ 11
+\begin{vd}%[2D1B1-2]
+    Cho hàm số $y=f(x)$ có bảng biến thiên sau. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[ lgt=1.2, espcl=1.6]{$x$ /0.6,$f'(x)$ /0.6,$f(x)$ /1.5}{$-\infty$,$0$,$2$,$+\infty$}
+            \tkzTabLine{,+,$0$,-,$0$,+,}
+            \tkzTabVar{-/ $-\infty$/, +/$5$ , -/$3$ , +/$+\infty$/}
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{
+        Dựa vào bảng biến thiên hàm số $y=f(x)$ đồng biến trên các khoảng $(-\infty;0)$, $(2;+\infty)$ và nghịch biến trên khoảng $(0;2)$.
+    }
+\end{vd}
+%%==========Ví dụ 12
+\begin{vd}%[2D1B1-1]
+    Cho hàm số $y=a x^{4}+b x^{2}+c,$ $(a \neq 0)$ có bảng biến thiên bên dưới. Hỏi đó là hàm số nào?
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+            {$x$/0.6,$y'$/0.6,$y$/1.5}
+            {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+            \tkzTabLine{,+,0,-,0,+,0,-,}
+            \tkzTabVar{-/$-\infty$,+/$3$,-/$1$,+/$3$,-/$+\infty$}
+        \end{tikzpicture}
+    \end{center}
+    \choice
+    {$y=2 x^{4}-4 x^{2}+1$}
+    {$y=-2 x^{4}-4 x^{2}+1$}
+    {$y=-2 x^{4}+4 x^{2}-1$}
+    {\True $y=-2 x^{4}+4 x^{2}+1$}
+    \loigiai{Ta có: $y'=4ax^3+2bx$.\\
+        Dựa vào bảng biến thiên, ta thấy đồ thị đi qua các điểm $(-1;1)$, $(0;2)$, $(1;0)$, các điểm này là các điểm cực trị của hàm số.
+        $$\Rightarrow \heva{& y(0)=1\\& y(\pm 1)=3 \\& y'(\pm 1)=0} \Rightarrow \heva{ & c= 1 \\& a+b+c=3 \\& 2a+b=3} \Rightarrow \heva{& c=1 \\& b=4\\& a=-2.}$$
+    }
+\end{vd}
+%%==========Ví dụ 13
+\begin{vd}%[2D1B1-2]
+    \immini
+    {
+        Cho hàm số $f(x)$ xác định, liên tục trên $\mathbb{R}$ và có đồ thị của hàm số $y=f'(x)$ là đường cong như hình vẽ bên dưới. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    }
+    {\vspace{-0.5cm}
+        \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,xscale=0.5,yscale=0.42]
+            \def\a{-1} % Hệ số a phải khác 0
+            \def\b{3}
+            \def\c{0}
+            \def\d{-4}
+            \draw[->] (-2,0) -- (4.2,0)node[below]{\scriptsize $x$};
+            \draw[->] (0,-5) -- (0,2) node[left] {\scriptsize $y$};
+            \draw (0,0)node[below left]{\scriptsize $O$};
+            \draw[thin] (-1,1pt)--(-1,-1pt) node [above left] {$-1$} (1,1pt)--(1,-1pt) node [above] {$1$} (2,1pt)--(2,-1pt) node [above] {$2$} (3,1pt)--(3,-1pt) node [above] {$3$} (-1pt,-2)--(1pt,-2) node [left] {$-2$} (-1pt,-4)--(1pt,-4) node [left] {$-4$} ;
+            \draw[dashed] (1,0)--(1,-2)--(0,-2) (3,0)--(3,-4)--(0,-4);
+            \clip (-2,-4.2)rectangle(4,2.2);
+            \draw[thick,samples=150,smooth,domain=-1.2:5] plot(\x,{\a*(\x)^3+(\b)*(\x)^2+(\c)*\x+(\d)});
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Dựa vào đồ thị ta thấy
+        \begin{itemize}
+            \item $f'(x)> 0 $ trên $(-\infty; -1)$ nên đồng biến trên đó, \item $f'(x)<0$ trên các khoảng $(-1;2),(2;+\infty)$ nên nghịch biến các khoảng đó.
+        \end{itemize}
+    }
+\end{vd}
+%%==========Ví dụ 14
+\begin{vd}%[2D1B5-5]
+    \immini{Cho hàm số $y=f(x)$ có đạo hàm liên tục trên $\mathbb{R}$, hàm số $y=f'(x)$ có đồ thị như hình bên.
+        Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    }{\vspace{-0.5cm}
+        \begin{tikzpicture}[scale=.5, font=\footnotesize, line join=round, line cap=round, >=stealth]
+            \draw[->] (-3,0)--(0,0) node[below right]{$O$}--(2,0) node[below]{$x$};
+            \draw[->] (0,-1) --(0,5) node[left]{$y$};
+            \foreach \x in {-2,-1,1}{
+                \draw[fill] (\x,0) node[below]{$\x$} circle (1pt);
+            }
+            \foreach \y in {2,4}{
+                \draw[fill] (0,\y) node[right]{$\y$} circle (1pt);
+            }
+            \draw [domain=-2.1:2.05, samples=100] %
+            plot (\x, {((\x)+2)*((\x)-1)^2});
+            \draw [dashed] (-1,0)--(-1,4) --(0,4);%(2,0)--(2,-2)--(0,-2)--(-1,-2)--(-1,0);
+            \draw[fill] (0,0) circle (1pt);
+            \draw (0.3,5) node[right]{$y=f'(x)$};
+    \end{tikzpicture}}
+    \loigiai{
+        Dựa vào đồ thị ta thấy $f'(x)\geq 0 $ trên $(-2; +\infty)$ nên đồng biến trên đó, $f'(x)<0$ trên $(-\infty;-2)$ nên nghịch biến khoảng đó.
+    }
+\end{vd}
+%%==========Ví dụ 15
+\begin{vd}%[2D1B1-1]
+    \immini{
+        Cho hàm số đa thức $ f(x)$ có đồ thị $y=f'(x)$ như hình vẽ bên dưới. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    }{\vspace*{-3mm}
+        \begin{tikzpicture}[>=stealth,font=\footnotesize, xscale=1, yscale=0.3]
+            \draw[->] (-3,0) -- (1,0) node[below] {$x$};
+            \draw[->] (0,-3.5) -- (0,5) node[left] {$y$};
+            \filldraw (0,0) node[above left=-0.1] {$O$} circle (1.5pt);
+            %\draw[smooth,samples=100,domain=-2.43:0.43] plot(\x,{-5*(\x+1)^4+10*(\x+1)^2-2}) node[right] {\tiny $y=f(x+1)$};
+            \draw[line width=1.2pt, smooth,samples=100,domain=-2.08:0.4] plot(\x,{-7*(\x)^2*(\x+1)*(\x+2)});
+            \filldraw (-2,0) node[below left] {$-3$} circle (1.5pt);
+            \filldraw (-1,0) node[below left] {$-2$} circle (1.5pt);
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Dựa vào đồ thị ta thấy $f'(x)> 0 $ trên $(-3;-2)$ nên đồng biến trên đó, $f'(x)<0$ trên các khoảng $(-\infty; -3)$, $(-2;0)$, $(0;+\infty)$ nên nghịch biến trên đó.
+    }
+\end{vd}
+%------------------
+\btvd
+%%==========Bài 8
+\begin{bt}%[2D1B1-1]
+    \immini{
+        Cho hàm số $y=f(x)$ có đồ thị như hình vẽ. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    }{
+        \begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+            \def\xmin{-1.8}\def\xmax{2}\def\ymin{-0.7}\def\ymax{2.5}
+            \clip (\xmin-0.3,\ymin-0.3) rectangle (\xmax+0.3,\ymax+0.3);
+            \draw[->] (\xmin-0.2,0)--(\xmax+0.2,0) node[below] {\footnotesize $x$};
+            \draw[->] (0,\ymin-0.2)--(0,\ymax+0.2) node[right] {\footnotesize $y$};
+            \draw (0,0) node [below left] {\footnotesize $O$};
+            \foreach \x in {,-1,1,}\draw (\x,0.1)--(\x,-0.1) node [below,scale=0.7] {\footnotesize $\x$};
+            \foreach \y in {1}\draw (0.1,\y)--(-0.1,\y) node [right=0.2,scale=0.7] {\footnotesize $\y$};
+            \foreach \y in {2}\draw (0.1,\y)--(-0.1,\y) node [above right=0.2,scale=0.7] {\footnotesize $\y$};
+            \clip (-3,-3) rectangle (3,3);
+            \draw[smooth,samples=200,domain=-1.64:1.64] plot (\x,{-1*((\x)^4)+2*((\x)^2)+1});
+            \draw[fill=white] (0,0) circle (1pt) (-1,2) circle (1pt) (1,2) circle (1pt) ;
+            \draw[dashed] (-1,0)--(-1,2)--(0,2);
+            \draw[dashed] (1,0)--(1,2)--(0,2);
+        \end{tikzpicture}
+    }
+    \loigiai{
+        Dựa vào đồ thị hàm số ta thấy hàm số đồng biến trên $(-\infty;-1)$, $(0;1)$ và nghịch biến trên $(-1;0)$ và $(1;+\infty)$.
+    }
+\end{bt}
+%%==========Bài 9
+\begin{bt}%[2D1B1-2]
+    Cho hàm số $y=f(x)$ có bảng biến thiên sau.Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    \begin{center}
+        \begin{tikzpicture}
+            \tikzset{double style/.append style={double distance=2pt}}
+            \tkzTabInit[ lgt=1, espcl=2.8]{$x$/0.6,$y'$ /0.6, $y$ /1.5}
+            {$-\infty$ , $2$ , $+\infty$}
+            \tkzTabLine{ ,-, d ,-, }
+            \tkzTabVar {+/$2$ /, -D+/ $ -\infty $ / $ +\infty $ , -/$2$ / }
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{
+        Từ bảng biến thiên ta thấy hàm số nghịch biến trên các khoảng $\left(-\infty; 2\right)$, $\left(2; +\infty\right)$.
+    }
+\end{bt}
+%%==========Bài 11
+\begin{bt}%[2D1B1-1]
+    Cho hàm số $y=a x^{4}+b x^{2}+c,$ $(a \neq 0)$ có bảng biến thiên bên dưới. Hỏi đó là hàm số nào?
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+            {$x$/0.6,$y'$/0.6,$y$/2}
+            {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+            \tkzTabLine{,-,0,+,0,-,0,+,}
+            \tkzTabVar{+/$+\infty$,-/$1$,+/$2$,-/$1$,+/$+\infty$}
+        \end{tikzpicture}
+    \end{center}
+    \choice
+    {$y=-x^{4}+2 x^{2}+2$}
+    {\True $y=x^{4}-2 x^{2}+2$}
+    {$y=x^{4}-2 x-2$}
+    {$y=-x^{4}+2 x-2$}
+    \loigiai{Ta có: $y'=4ax^3+2bx$.\\
+        Dựa vào bảng biến thiên, ta thấy đồ thị đi qua các điểm $(-1;1)$, $(0;2)$, $(1;0)$, các điểm này là các điểm cực trị của hàm số.\\
+        $\Rightarrow \heva{& y(0)=2\\& y(\pm 1)=1 \\& y'(\pm 1)=0} \Leftrightarrow \heva{ & c= 2 \\& a+b+c=1\\&2a+b=0} \Leftrightarrow \heva{& c=2 \\& b=-2\\& a=1.}$}
+\end{bt}
+%%==========Bài 10
+\begin{bt}%[2D1B1-1]
+    Cho hàm số $y=f(x)$ có bảng xét dấu đạo hàm như hình bên dưới. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[lgt=1.2,espcl=2.5,deltacl=0.6]
+            {$x$/0.6,$y'$/0.6}{$-\infty$,$-2$,$0$,$+\infty$}
+            \tkzTabLine{,-,0,+,0,-,}
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{T
+        Dựa vào bảng xét dấu ta thấy hàm số nghịch biến trên các khoảng $\left(-\infty;-2\right)$, $\left(0;+\infty\right)$ và nghịch biến trên $\left(-2;0\right)$.
+    }
+\end{bt}
+%%==========Bài 12
+\begin{bt}%[2D1B1-2]
+    \immini
+    {
+        Cho hàm số $f(x)$ xác định trên $\mathbb{R}$ và có đồ thị hàm số $y=f'(x)$ là đường cong trong hình vẽ bên dưới. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    }
+    {
+        \begin{tikzpicture}[line join=round, line cap=round,>=stealth,thick,scale=0.4]
+            \def \hamso{1*((\x)^3)-4*(\x)}
+            \def \a{0} \def \b{1} \def \r{4}
+            \tikzset{label style/.style={font=\footnotesize}}
+            \draw[->] (-2.5,0)--(4,0) node[below] {$x$};
+            \draw[->] (0,-3)--(0,3.5) node[left] {$y$};
+            \draw (0,0) node [below left] {$O$};
+            \draw[thin] (-2,1pt)--(-2,-1pt) node [below left] {$-2$} (2,1pt)--(2,-1pt) node [below left] {$2$} ;
+            \clip (\a-4.2,\b-4.2) rectangle (\a+\r,\b+\r-1);
+            \draw[samples=200,domain=-2.3:2.3,smooth,variable=\x] plot (\x,{\hamso});
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Dựa vào đồ thị ta thấy $f'(x)> 0 $ trên các khoảng $(-2;0), (2,+\infty)$ nên đồng biến trên các khoảng đó, $f'(x)<0$ trên các khoảng $(-\infty;-2), (0,2)$ nên nghịch biến trên các khoảng đó.
+    }
+\end{bt}
+%%==========Bài 13
+\begin{bt}%[2D1B1-2]
+    \immini
+    {
+        Cho hàm số $f(x)$ xác định, liên tục trên $\mathbb{R}$ và có đồ thị của hàm số $y=f'(x)$ là đường cong như hình vẽ. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    }
+    {
+        \begin{tikzpicture}[>=stealth,x=1cm,y=1.2cm,scale=0.7]
+            \def\a{1} % Hệ số a phải khác 0
+            \def\b{-2}
+            \def\c{0}
+            \clip (-3,-1.5) rectangle (3.1,1.5);
+            %\draw[color=gray,dash pattern=on 1pt off 1pt,xstep=1.0cm,ystep=1.0cm] (-5.2,-5.2) grid (5.2,5.2);
+            \draw[->] (-3,0) -- (3,0) node[below] {\scriptsize $x$};
+            \draw[->] (0,-2) -- (0,3) node[left] {\scriptsize $y$};
+            \draw[thin] (2,0) node [above] {\scriptsize$2$} (-2,0) node [above] {\scriptsize$-2$};
+            \draw (0,0)node[above right]{\scriptsize $O$};
+            \clip (-3,-3)rectangle(3,3);
+            \draw[thick,samples=150,smooth,domain=-3:3] plot(\x,{\a*(\x)^4+(\b)*(\x)^2+(\c)});
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Dựa vào đồ thị ta thấy $f'(x)> 0 $ trên các khoảng $(-\infty;-2), (2,+\infty)$ nên đồng biến trên các khoảng đó, $f'(x)<0$ trên $(-2,2)$ nên nghịch biến trên đó.
+    }
+\end{bt}
+%%==========Bài 14
+\begin{bt}%[2D1B1-1]
+    \immini{
+        Cho hàm số đa thức $ f(x)$ có đồ thị $y=f'(x)$ như hình vẽ bên dưới. Tìm các khoảng đơn điệu của hàm số $f(x)$.
+    }{
+        \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=0.6]
+            \def\a{3} % Hệ số a phải khác 0
+            \def\b{0}
+            \def\c{-3}
+            \draw[->] (-2.5,0) -- (2.5,0) node[below] {\scriptsize $x$};
+            \draw[->] (0,-3.5) -- (0,2) node[left] {\scriptsize $y$};
+            \draw[thin] (-1,1pt)--(-1,-1pt) node [below left] {$-1$} (1,1pt)--(1,-1pt) node [below right] {$1$} (-1pt,-3 )--(1pt,-3) node [below left] {$-3$} ;
+            \clip (-2.5,-3.5) rectangle (2.5,2);
+            \draw (0,0)node[below left]{\scriptsize $O$};
+            \pgfmathsetmacro\xdinh{-(\b)/2*(\a)}
+            \pgfmathsetmacro\ydinh{(4*(\a)*(\c)-(\b)^2)/(4*(\a))}
+            \fill[dashed] (\xdinh,\ydinh)circle(2pt) edge (\xdinh,0) edge (0,\ydinh);
+            \clip (-3,-3.5)rectangle(3.6,4);
+            \draw[thick,samples=150,smooth,domain=-1.5:1.5] plot(\x,{\a*(\x)^2+(\b)*\x+(\c)});
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Dựa vào đồ thị ta thấy $f'(x)> 0 $ trên các khoảng $(-\infty; -1), (1;+\infty)$ nên đồng biến trên các khoảng đó, $f'(x)<0$ trên $(-1;1)$ nên nghịch biến trên đó.
+    }
+\end{bt}
+%==============
+\begin{dang}{Tìm tham số $m$ để hàm số đơn điệu trên miền xác định của nó}
+    \begin{enumerate}
+        \item Tìm tham số $m$ để hàm số bậc ba $y=a x^3+b x^2+c x+d$ đơn điệu trên tập xác định.
+        \begin{itemize}
+            \item \textbf{Bước 1: } Tìm tập xác định $\mathscr{D}=\mathbb{R}$. Tính đạo hàm $y'=3a x^2+2b x+c$.
+            \item \textbf{Bước 2: } Ghi điều kiện để hàm đơn điệu, chẳng hạn
+            \begin{itemize}
+                \item Để $f (x)$ đồng biến trên $\mathbb{R}\Rightarrow y'\geq 0,\forall x\in\mathbb{R}\Leftrightarrow\heva{&a_{y'}>0\\ &\Delta_{y'}\leq 0}\Rightarrow m$.
+                \item Để $f (x)$ nghịch biến trên $\mathbb{R}\Rightarrow y'\leq 0,\forall x\in\mathbb{R}\Leftrightarrow\heva{&a_{y'}<0\\ &\Delta_{y'}\leq 0}\Rightarrow m $.
+            \end{itemize}
+        \end{itemize}
+        \begin{note}
+            Dấu của tam thức bậc hai $f(x)=a x^2+b x+c$.
+            \begin{itemize}
+                \item $f(x)\geq 0,\forall x\in\mathbb{R}\Leftrightarrow\heva{&a>0\\ &\Delta\leq 0.}$
+                \item $f(x)\leq 0,\forall x\in\mathbb{R}\Leftrightarrow\heva{&a<0\\ &\Delta\leq 0.}$
+                \item Nếu hàm số $y=a x^3+b x^2+c x+d$ có $a$ chứa tham số thì chia ra hai trường hợp. Đó là trường hợp $a = 0$ để xét tính đúng sai (nhận, loại m) và trường hợp $a\ne 0$ (sử dụng dấu tam thức bậc hai). Sau khi giải xong, hợp hai trường hợp lại.
+            \end{itemize}
+        \end{note}
+        \item Tìm tham số $m$ để hàm số $y=\dfrac{a x+b}{c x+d}$ đơn điệu trên mỗi khoảng xác định của nó.
+        \begin{itemize}
+            \item \textbf{Bước 1: } Tìm tập xác định $\mathscr{D}=\mathbb{R}\backslash\left\{-\dfrac dc\right\}$.\\ Tính đạo hàm $y'=\dfrac{a\cdot d-b\cdot c}{(c x+d)^2}$.
+            \item \textbf{Bước 2: } Ghi điều kiện để hàm đơn điệu. Chẳng hạn
+            \begin{itemize}
+                \item Để $f (x)$ đồng biến trên mỗi khoảng xác định của nó $$\Rightarrow y'>0,\forall x\in\mathscr{D}\Leftrightarrow a d-b c>0\Rightarrow m. $$
+                \item Để $f (x)$ nghịch biến trên mỗi khoảng xác định của nó $$\Rightarrow y'<0,\forall x\in\mathscr{D}\Leftrightarrow a d-b c<0\Rightarrow m.$$
+            \end{itemize}
+        \end{itemize}
+        \item Tìm tham số $m$ để hàm số $y=\dfrac{a x+b}{c x+d}$ đồng biến trên $(\alpha ;\beta)$.
+        \begin{itemize}
+            \item \textbf{Bước 1: } Tìm điều kiện $x\neq-\dfrac dc$ và tính đạo hàm $y'=\dfrac{a d-c b}{(c x+d)^2}$.
+            \item \textbf{Bước 2: } Hàm số đồng biến trên $(\alpha ;\beta)$ $$\Rightarrow\heva{&y'>0\\ &x\neq-\dfrac dc\\ &x\in(\alpha ;\beta)} \Leftrightarrow\heva{&a d-c b>0\\ &-\dfrac dc\notin(\alpha ;\beta)} \Leftrightarrow\heva{&a d-c b>0\\ & \hoac{&-\dfrac dc\leq\alpha\quad\Rightarrow m.\\ &-\dfrac dc\geq\beta}}$$
+        \end{itemize}
+    \end{enumerate}
+\end{dang}
+%%==========Ví dụ 16
+\begin{vd}%[2D1B1-3]
+    Tìm tất cả giá trị $m$ để hàm số $y=\dfrac{mx+4m}{x+m}$ nghịch biến trên từng khoảng xác định ?
+    \loigiai{
+        Điều kiện $x \neq-m$. Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{-m\right\}$.\\
+        $y'=\dfrac{m^2-4m}{(x+m)^2}$.\\
+        Hàm số nghịch biến trên từng khoảng xác định
+        $\Leftrightarrow y'<0, \forall x \in \mathscr{D}\Leftrightarrow m^2-4 m<0 \Leftrightarrow 0<m<4$.
+    }
+\end{vd}
+%%==========Ví dụ 17
+\begin{vd}%[2D1B1-3]
+    Có bao nhiêu giá trị nguyên của $m$ để hàm số $y=\dfrac{x+m}{mx+4}$ đồng biến trên các khoảng xác định ?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{-\dfrac{4}{m}\right\}$.\\
+        $y'=\dfrac{-m^2+4}{(mx+4)^2}$.\\
+        Hàm số đồng biến trên từng khoảng xác định
+        $\Leftrightarrow y'>0, \forall x \in \mathscr{D}\Leftrightarrow -m^2+4>0 \Leftrightarrow -2<m<2$. \\
+        Vậy $m\in \left\{-1;0;1\right\}$ nên có $3$ giá trị nguyên của tham số $m$ thỏa bài toán.
+    }
+\end{vd}
+%%==========Ví dụ 18
+\begin{vd}%[2D1K1-3]
+    Tập hợp các giá trị thực của tham số $m$ để hàm số $y=\dfrac{x+5}{x+m}$ đồng biến trên $(-\infty;-8)$ là
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{-m\right\}$.\\
+        Hàm số đồng biến trên khoảng $(-\infty;-8)$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && y'=\dfrac{m-5}{(x+m)^2}>0, \forall x \in (-\infty;-8)\\
+            &\Leftrightarrow&\heva{&m-5>0 \\& -m \notin (-\infty;-8)}\\ &\Leftrightarrow&\heva{&m>5\\&-m\geq -8}\\
+            &\Leftrightarrow&5<m\leq 8.
+        \end{eqnarray*}
+    }
+\end{vd}
+%%==========Ví dụ 19
+\begin{vd}%[2D1K1-3]
+    Tập hợp $m$ để hàm số $y=\dfrac{(m+1)x+2m+2}{x+m}$ nghịch biến trên khoảng $(-1;+\infty)$ là
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{-m\right\}$.\\
+        Hàm số nghịch biến trên khoảng $(-1;+\infty)$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && y'=\dfrac{m^2-m-2}{(x+m)^2}<0, \forall x \in (-1;+\infty)\\
+            &\Leftrightarrow&\heva{&m^2-m-2<0 \\& -m \notin (-1;+\infty)}\\ &\Leftrightarrow&\heva{&-1<m<2\\&-m\geq -1}\\
+            &\Leftrightarrow&1\leq m<2.
+        \end{eqnarray*}
+    }
+\end{vd}
+%%==========Ví dụ 20
+\begin{vd}%[2D1K1-3]
+    Tìm tham số $m$ để hàm số $y=\dfrac{mx-3m+4}{x+m}$ nghịch biến trên khoảng $(-2;0)$ ?
+    \loigiai{
+        Điều kiện $x \neq-m$. Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{-m\right\}$.\\
+        Hàm số nghịch biến trên khoảng $(-2;0)$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && y'=\dfrac{m^2+3m-4}{(x+m)^2}<0, \forall x \in(-2;0)\\
+            &\Leftrightarrow&\heva{&m^2+3m-4<0 \\& -m \notin (-2;0)}\\ &\Leftrightarrow&\heva{&-4<m<1\\&\hoac{&m\leq 0\\&m\geq 2}}\\
+            &\Leftrightarrow&-4<m \leq 0 .
+        \end{eqnarray*}
+    }
+\end{vd}
+%%==========Ví dụ 21
+\begin{vd}%[2D1B1-3]
+    Có bao nhiêu giá trị nguyên của tham số $m$ sao cho hàm số $f(x)=\dfrac{1}{3}x^3+mx^2+4x+3$ đồng biến trên $\mathbb{R}$?
+    \loigiai{
+        Hàm số đã cho đồng biến trên $\mathbb{R}$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && f'(x)=x^2+2mx+4 \geq 0, \forall x \in \mathbb{R}\\
+            &\Leftrightarrow&\heva{&a=1>0\\& \Delta=4m^2-16 \leq 0}\\
+            &\Leftrightarrow&-2\leq m \leq 2.
+        \end{eqnarray*}
+        Vì $m \in \mathbb{Z}$ nên $m \in\{-2 ;-1;0;1;2\}$.\\
+        Vậy có $5$ giá trị nguyên của $m$.
+    }
+\end{vd}
+%%==========Ví dụ 22
+\begin{vd}%[2D1B1-3]
+    Tìm tất cả các giá trị thực của tham số $m$ để hàm số $y=-\dfrac{1}{3}x^3-mx^2+(2m-3)x-m+2$ nghịch biến trên $\mathbb{R}$.
+    \loigiai{
+        Ta có $y'=-x^2-2mx+(2m-3)$.\\
+        Hàm số nghịch biến trên $\mathbb{R}$ khi $y'\le0\Leftrightarrow \heva{a&=-1<0\\\Delta'& \le 0}\Leftrightarrow m^2+2m-3\le 0\Leftrightarrow -3\le m \le 1.$}
+\end{vd}
+%%==========Ví dụ 23
+\begin{vd}%[2D1K1-3]
+    Tìm các giá trị của $m$ để hàm số $f(x)=\left(m^2-4\right)x^3+3(m-2)x^2+3x-4$ đồng biến trên $\mathbb{R}$ ?
+    \loigiai{
+        $y'=3(m^2-4)x^2+6(m-2)x+3$.
+        \begin{enumerate}[Trường hợp 1.]
+            \item Với $m=2$ ta có $y'=3>0$ do đó hàm số đồng biến trên $\mathbb{R}$.
+            \item Với $m=-2$ ta có $y'=-24x+3>0 \Leftrightarrow x<\dfrac{1}{8}$ nên hàm số không đồng biến trên $\mathbb{R}$.
+            \item Hàm số đồng biến trên $\mathbb{R}$ khi và chỉ khi
+            \allowdisplaybreaks
+            \begin{eqnarray*}
+                &&\heva{&m^2-4>0\\&(m-2)^2-(m^2-4)\leq 0}\\
+                &\Leftrightarrow&\heva{&m^2-4>0\\&-4m+8\leq 0}\\
+                &\Leftrightarrow&\heva{&\hoac{&m<-2\\&m>2}\\&m\geq 2}\\
+                &\Leftrightarrow&m>2.
+            \end{eqnarray*}
+        \end{enumerate}
+        Vậy $m\geq 2$ thỏa mãn yêu cầu bài toán.
+    }
+\end{vd}
+%-------------------
+\btvd
+%%==========Bài 15
+\begin{bt}%[2D1B1-3]
+    Tìm các giá trị của tham số $m$ để hàm số $y=\dfrac{mx-5m+6}{x+m}$ nghịch biến trên các khoảng xác định ?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{-m\right\}$.\\
+        $y'=\dfrac{m^2+5m-6}{(x+m)^2}$.\\
+        HSNB trên từng khoảng xác định
+        $\Leftrightarrow y'<0, \forall x \in \mathscr{D}\Leftrightarrow m^2+5m-6<0 \Leftrightarrow -6<m<1$.
+    }
+\end{bt}
+%%==========Bài 16
+\begin{bt}%[2D1B1-3]
+    Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số $y=\dfrac{m^2x-4}{x-1}$ đồng biến trên từng khoảng xác định ?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{1\right\}$.\\
+        $y'=\dfrac{-m^2+4}{(x-1)^2}$.\\
+        Hàm số đồng biến trên từng khoảng xác định
+        $\Leftrightarrow y'>0, \forall x \in \mathscr{D}\Leftrightarrow -m^2+4>0 \Leftrightarrow -2<m<2$. \\
+        Vậy $m\in \left\{-1;0;1\right\}$ nên có $3$ giá trị nguyên của tham số $m$ thỏa bài toán.
+    }
+\end{bt}
+%%==========Bài 17
+\begin{bt}%[2D1K1-3]
+    Có bao nhiêu giá trị nguyên của tham số $m$ sao cho hàm số $y=\dfrac{x-2}{x-m}$ đồng biến trên $(-\infty ;-1)$ ?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{m\right\}$.\\
+        Hàm số đồng biến trên khoảng $(-\infty ;-1)$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && y'=\dfrac{-m+2}{(x-m)^2}>0, \forall x \in (-\infty ;-1)\\
+            &\Leftrightarrow&\heva{&-m+2>0 \\& m \notin (-\infty ;-1)}\\ &\Leftrightarrow&\heva{&m<2\\&m\geq -1}\\
+            &\Leftrightarrow&-1\leq m <2.
+        \end{eqnarray*}
+        Vậy $m\in \left\{-1;0;1\right\}$ nên có $3$ giá trị nguyên của tham số $m$ thỏa bài toán.
+    }
+\end{bt}
+%%==========Bài 18
+\begin{bt}%[2D1K1-3]
+    Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số $y=\dfrac{mx-2m-3}{x-m}$ đồng biến trên $(2;+\infty)$ ?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{m\right\}$.\\
+        Hàm số đồng biến trên khoảng $(2;+\infty)$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && y'=\dfrac{-m^2+2m+3}{(x-m)^2}>0, \forall x \in (2;+\infty)\\
+            &\Leftrightarrow&\heva{&-m^2+2m+3>0 \\& m \notin (2;+\infty)}\\ &\Leftrightarrow&\heva{&-1<m<3\\&m\leq 2}\\
+            &\Leftrightarrow&-1<m\leq 2.
+        \end{eqnarray*}
+        Vậy $m\in \left\{0;1;2\right\}$ nên có $3$ giá trị nguyên của tham số $m$ thỏa bài toán.
+    }
+\end{bt}
+%%==========Bài 19
+\begin{bt}%[2D1K1-3]
+    Tập họp tất cả các giá trị thực của tham số $m$ để hàm số $y=\dfrac{mx-4}{m-x}$ nghịch biến trên $(-3;1)$?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}\setminus \left\{m\right\}$.\\
+        Hàm số nghịch biến trên khoảng $(-3;1)$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && y'=\dfrac{m^2-4}{(x-m)^2}<0, \forall x \in(-3;1)\\
+            &\Leftrightarrow&\heva{&m^2-4<0 \\& m \notin (-3;1)}\\ &\Leftrightarrow&\heva{&-2<m<2\\&\hoac{&m\leq -3\\&m\geq 1}}\\
+            &\Leftrightarrow&1 \leq m<2 .
+        \end{eqnarray*}
+    }
+\end{bt}
+%%==========Bài 20
+\begin{bt}%[2D1B1-3]
+    Cho hàm số $y=-x^3-m x^2+(4 m+9) x+5$ với $m$ là tham số. Hỏi có bao nhiêu giá trị nguyên của $m$ để hàm số nghịch biến trên khoảng $(-\infty ;+\infty)$ ?
+    \loigiai{
+        Hàm số đã cho nghịch biến trên $(-\infty ;+\infty)$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && y'=-3x^2-2mx+4m+9 \leq 0, \forall x \in (-\infty ;+\infty)\\
+            &\Leftrightarrow&\heva{&a=-3<0\\& \Delta'=m^2+12m+27 \leq 0}\\
+            &\Leftrightarrow&-9\leq m \leq -3.
+        \end{eqnarray*}
+        Vì $m \in \mathbb{Z}$ nên $m \in\{-9 ;-8;-7;-6;-5;-4;-3\}$.\\
+        Vậy có $7$ giá trị nguyên của $m$.
+    }
+\end{bt}
+%%==========Bài 21
+\begin{bt}%[2D1B1-3]
+    Cho hàm số $y=x^3-(m+1)x^2+3 x+1$, với $m$ là tham số. Gọi $S$ là tập hợp các giá trị nguyên của $m$ để hàm số đồng biến trên khoảng $(-\infty; + \infty)$. Tìm số phần tử của $S$.
+    \loigiai{
+        Hàm số đã cho đồng biến trên $(-\infty ;+\infty)$ khi và chỉ khi
+        \allowdisplaybreaks
+        \begin{eqnarray*}
+            && y'=3x^2-2(m+1)x+3 \geq 0, \forall x \in (-\infty ;+\infty)\\
+            &\Leftrightarrow&\heva{&a=3>0\\& \Delta'=m^2+2m-8 \leq 0}\\
+            &\Leftrightarrow&-4\leq m \leq 2.
+        \end{eqnarray*}
+        Vì $m \in \mathbb{Z}$ nên $m \in\{-4;-3;-2;-1;-0;1;2\}$.\\
+        Vậy có $7$ giá trị nguyên của $m$.
+    }
+\end{bt}
+%%==========Bài 22
+\begin{bt}%[2D1K1-3]
+    Hỏi có bao nhiêu số nguyên của tham số $m$ để hàm số $y=\left(m^2-1\right)x^3+(m-1)x^2-x+4$ nghịch biến trên $\mathbb{R}$?
+    \loigiai{
+        $y'=3(m^2-1)x^2+2(m-1)x-1$.
+        \begin{enumerate}[Trường hợp 1.]
+            \item Với $m=1$ ta có $y'=-1<0$ do đó hàm số nghịch biến trên $\mathbb{R}$.
+            \item Với $m=-1$ ta có $y'=-4x-1<0 \Leftrightarrow x>-\dfrac{1}{4}$ nên hàm số không nghịch biến trên $\mathbb{R}$.
+            \item Hàm số nghịch biến trên $\mathbb{R}$ khi và chỉ khi
+            \allowdisplaybreaks
+            \begin{eqnarray*}
+                &&\heva{&m^2-1<0\\&(m-1)^2+3(m^2-1)\leq 0}\\
+                &\Leftrightarrow&\heva{&m^2-1<0\\&(m-1)^2+3(m^2-1)\leq 0}\\
+                &\Leftrightarrow&\heva{&-1<m<1\\&4m^2-2m-2\leq 0}\\
+                &\Leftrightarrow&\heva{&-1<m<1\\&-\dfrac{1}{2} \leq m\leq 1}\\
+                &\Leftrightarrow&-\dfrac{1}{2} \leq m<1.
+            \end{eqnarray*}
+        \end{enumerate}
+        Vì $m \in \mathbb{Z}$ nên $m \in\{0;1\}$.\\
+        Vậy có $2$ giá trị nguyên của $m$.
+    }
+\end{bt}
+%===================
+\begin{dang}{Một số bài toán đơn điệu liên quan đến hàm hợp}
+    Cho đồ thị $y=f'(x)$, hỏi tính đơn điệu của hàm hợp $y=f(u)$.
+    \begin{itemize}
+        \item Tính $y'=u' \cdot f'(u)$;
+        \item Giải phương trình $f'(u)=0 \Leftrightarrow \hoac{&u'=0\\&f'(u)=0 (\text{ \textit{Nhìn đồ thị, suy ra nghiệm.}})}$;
+        \item Lập bảng biến thiên của $y=f(u)$, suy ra kết quả tương ứng.
+    \end{itemize}
+\end{dang}
+
+%%==========Ví dụ 24
+\begin{vd}
+    Cho hàm số $y=f(x)$ có bảng biến thiên
+    \begin{center}
+        \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+            \tkzTabInit[lgt=1.2,espcl=3,deltacl=1]
+            {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+            {$-\infty$,$-1$,$3$,$+\infty$}
+            \tkzTabLine{ ,+,$0$,-,$0$,+, }
+            \tkzTabVar{-/,+/,-/,+/}
+        \end{tikzpicture}
+    \end{center}
+    Tìm các khoảng đồng biến của hàm số $y=f(2 x+1)$.
+    \loigiai
+    {
+        Đặt $g(x)=f(2 x+1)$. Ta có $g'(x)=2 \cdot f'(2 x+1)$.\\
+        $g'(x)=0\Leftrightarrow f'(2x+1)=0\Leftrightarrow\hoac{& 2x+1=-1 \\ & 2x+1=3}\Leftrightarrow\hoac{& x=-1 \\ & x=1}$.\\
+        Bảng biến thiên
+        \begin{center}
+            \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+                \tkzTabInit[lgt=1.2,espcl=3,deltacl=1]
+                {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+                {$-\infty$,$-1$,$1$,$+\infty$}
+                \tkzTabLine{ ,+,$0$,-,$0$,+, }
+                \tkzTabVar{-/,+/,-/,+/}
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số $y=f(2 x+1)$ đồng biến trên các khoảng $(-\infty ;-1)$ và $(1 ;+\infty)$.
+    }
+\end{vd}
+%%==========Ví dụ 25
+\begin{vd}
+    Cho hàm số $y=f(x)$ có bảng biến thiên
+    \begin{center}
+        \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+            \tkzTabInit[lgt=1.2,espcl=3,deltacl=1]
+            {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+            {$-\infty$,$6$,$+\infty$}
+            \tkzTabLine{ ,-,$0$,+, }
+            \tkzTabVar{+/,-/,+/}
+        \end{tikzpicture}
+    \end{center}
+    Hỏi hàm số $y=f\left(\dfrac{1}{2} x^{2}+3 x+6\right)$ nghịch biến trên các khoảng nào?
+    \loigiai{
+        Đặt $g(x)=f\left(\dfrac{1}{2} x^{2}+3 x+6\right)$. Ta có $g'(x)=(x+3) \cdot f'\left(\dfrac{1}{2} x^{2}+3 x+6\right)$.\\
+        $g'(x)=0\Leftrightarrow\hoac{& x+3=0 \\ & \dfrac{1}{2}x^2+3x+6=6}\Leftrightarrow\hoac{& x=-3 \\ & x=0 \\ & x=-6}$.\\
+        Bảng biến thiên
+        \begin{center}
+            \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+                \tkzTabInit[lgt=1.2,espcl=3,deltacl=1]
+                {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+                {$-\infty$,$-6$,$-3$,$0$,$+\infty$}\tkzTabLine{ ,-,$0$,+,$0$,-,$0$,+, }
+                \tkzTabVar{+/,-/,+/,-/,+/}
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số $y=f\left(\dfrac{1}{2} x^{2}+3 x+6\right)$ nghịch biến trên các khoảng $(-\infty ;-6)$ và $(-3;0)$.
+    }
+\end{vd}
+%%==========Ví dụ 26
+\begin{vd}
+    \immini{
+        Cho hàm số $y=f(x)$ có đạo hàm trên $\mathbb{R}$ và có đồ thị hàm số $y=f'(x)$ như hình bên. Tìm các khoảng đơn điệu của hàm số $y=g(x)=f(x)+3$.
+    }{
+        \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=.55]
+            \draw[->,>=stealth] (-3,0)--(0,0)node[below right]{$O$}--(5,0)node[below]{$x$};
+            \draw[->,>=stealth] (0,-2)--(0,2.5)node[right]{$y$};
+            \draw[samples=100,domain=-1.5:4.5,smooth,blue,thick] plot (\x, {0.25*(\x)^3-(\x)^2-0.24*(\x)+1});
+            \fill (-1,0)node[below]{$-1$} circle (1.5pt) (1,0)node[above]{$1$} circle (1.5pt) (4,0)node[below]{$4$} circle (1.5pt) (0,0) circle (1.5pt);
+        \end{tikzpicture}
+    }
+    \loigiai{
+        Ta có $g'(x)=f'(x)$.\\
+        $g'(x)>0 \Leftrightarrow f'(x)>0 \Leftrightarrow\hoac{& -1<x<1 \\ & x>4}$\\
+        $g'(x)<0 \Leftrightarrow f'(x)<0 \Leftrightarrow\hoac{& x<-1 \\ & 1<x<4}$.\\
+        Vậy hàm số $y=g(x)=f(x)+3$ đồng biến trên các khoảng $(-1 ; 1)$ và $(4 ;+\infty)$, nghịch biến trên các khoảng $(-\infty;-1)$ và $(1;4)$.
+    }
+\end{vd}
+%%==========Ví dụ 27
+\begin{vd}
+    Cho hàm số $y=f(x)$ có bảng biến thiên
+    \begin{center}
+        \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+            \tkzTabInit[lgt=1.2,espcl=2,deltacl=1]
+            {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+            {$-\infty$,$-2$,$0$,$2$,$+\infty$}
+            \tkzTabLine{ ,-,,-,$0$,+,,+, }
+            \tkzTabVar{+/,R,-/,R,+/}
+            \tkzTabIma[draw]{1}{3}{2}{$0$}
+            \tkzTabIma[draw]{3}{5}{4}{$0$}
+        \end{tikzpicture}
+    \end{center}
+    Hỏi hàm số $y=f(f(x))$ đồng biến trên những khoảng nào?
+    \loigiai
+    {
+        Đặt $g(x)=f(f(x))$. Ta có
+        $g'(x)=f'(x) \cdot f'(f(x))$.\\
+        $g'(x)=0\Leftrightarrow\hoac{& f'(x)=0 \\ & f'(f(x))=0}\Leftrightarrow\hoac{& x=0 \\ & f(x)=0}\Leftrightarrow\hoac{& x=0 \\ & x=\pm 2}$.\\
+        Xét $f'(f(x))>0 \Leftrightarrow f(x)>0 \Leftrightarrow\hoac{& x>2 \\ & x<-2}$.\\
+        Bảng xét dấu:
+        \begin{center}
+            \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+                \tkzTabInit[lgt=1.9,espcl=2]
+                {$x$ /0.6, $f’(x)$ /0.6, $f'(f(x))$ /0.6, $g'(x)$/0.6}
+                {$-\infty$,$-2$,$0$,$2$,$+\infty$}
+                \tkzTabLine{ ,-,d,-,$0$,+,d,+, }
+                \tkzTabLine{ ,+,$0$,-,d,-,$0$,+ }
+                \tkzTabLine{ ,-,$0$,+,$0$,-,$0$,+ }
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số đồng biến trên mỗi khoảng $(-2 ; 0)$ và $(2 ;+\infty)$.
+    }
+\end{vd}
+\btvd
+%%==========Bài 23
+\begin{bt}
+    Cho hàm số $y=f(x)$ có bảng biến thiên
+    \begin{center}
+        \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+            \tkzTabInit[lgt=1.2,espcl=2]
+            {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+            {$-\infty$,$0$,$2$,$+\infty$}
+            \tkzTabLine{ ,-,$0$,+,$0$,+, }
+            \tkzTabVar{+/,-/,R,+/}
+        \end{tikzpicture}
+    \end{center}
+    Tìm các khoảng nghịch biến của hàm số $y=f(-2 x+6)$
+    \loigiai
+    {
+        Đặt $g(x)=f(-2 x+6)$. Ta có
+        $g'(x)=-2 \cdot f'(-2 x+6)$\\
+        $g'(x)=0\Leftrightarrow f'(-2x+6)=0\Leftrightarrow\hoac{& -2x+6=0 \\ & -2x+6=2}\Leftrightarrow\hoac{& x=3 \\ & x=2}$.\\
+        Bảng biến thiên
+        \begin{center}
+            \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+                \tkzTabInit[lgt=1.2,espcl=2]
+                {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+                {$-\infty$,$2$,$3$,$+\infty$}
+                \tkzTabLine{ ,-,$0$,-,$0$,+, }
+                \tkzTabVar{+/,R,-/,+/}
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số $y=f(-2 x+6)$ nghịch biến trên khoảng $(-\infty ; 3)$.
+    }
+\end{bt}
+%%==========Bài 24
+\begin{bt}
+    Cho hàm số $y=f(x)$ có bảng biến thiên
+    \begin{center}
+        \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+            \tkzTabInit[lgt=1.2,espcl=2]
+            {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+            {$-\infty$,$0$,$1$,$4$,$+\infty$}
+            \tkzTabLine{ ,+,$0$,-,$0$,+,$0$,+, }
+            \tkzTabVar{-/,+/,-/,R,+/}
+        \end{tikzpicture}
+    \end{center}
+    Tìm các khoảng đồng biến của hàm số $y=f\left(-x^{2}+2 x\right)$?
+    \loigiai
+    {
+        Đặt $g(x)=f\left(-x^{2}+2 x\right) ; g'(x)=(-2 x+2) \cdot f'\left(-x^{2}+2 x\right)$.\\
+        $g'(x)=0 \Leftrightarrow(-2 x+2) \cdot f'\left(-x^{2}+2 x\right)=0 \Leftrightarrow\hoac{& -2x+2=0 \\ & f'(-x^2+2x)=0}\Leftrightarrow\hoac{& -2x+2=0 \\ & -x^2+2x=0 \\ & -x^2+2x=1 \\ & -x^2+2x=4}\Leftrightarrow\hoac{& x=0 \\ & x=1 \\ & x=2}$\\
+        Bảng biến thiên:
+        \begin{center}
+            \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+                \tkzTabInit[lgt=1.2,espcl=2]
+                {$x$ /0.6, $f’(x)$ /0.6, $f(x)$ /1.5}
+                {$-\infty$,$0$,$1$,$2$,$+\infty$}
+                \tkzTabLine{ ,+,$0$,-,$0$,+,$0$,-, }
+                \tkzTabVar{-/,+/,-/,+/,-/}
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số $y=f\left(-x^{2}+2 x\right)$ đồng biến trên các khoảng $(-\infty ; 0)$ và $(1 ; 2)$.
+    }
+\end{bt}
+%%==========Bài 25
+\begin{bt}
+    \immini{
+        Cho hàm số $y=f(x)$ có đạo hàm liên tục trên $\mathbb{R}$. Hàm số $y=f'(x)$ có đồ thị như hình vẽ sau. Tìm các khoảng đơn điệu của hàm số $g(x)=f(x)+x+1$.
+    }{
+        \begin{tikzpicture}[line join = round, line cap = round,>=stealth,xscale=.8,yscale=0.35]
+            \def\a{0.99}
+            \def\b{-8.86}
+            \def\c{22.47}
+            \def\d{-15.45}
+            \draw[->] (-1,0) -- (6,0)node[below]{\scriptsize $x$};
+            \draw[->] (0,-4.5) -- (0,3.5) node[left] {\scriptsize $y$};
+            \clip (-1,-4.5)rectangle(6,3);
+            \draw[dashed] (0,-1)node[left]{$-1$}-|(5,0) (1,0)--(1,-1) (3,0)--(3,-1) (5,0)--(5,-1);
+            \draw[thick,samples=150,smooth,domain=.6:5.5,blue,thick] plot(\x,{\a*(\x)^3+(\b)*(\x)^2+(\c)*\x+(\d)});
+            \fill (5,-1) circle (1.5pt) (1,-1) circle (1.5pt) (3,-1) circle (1.5pt) (1,0)node[above]{$1$} (3,0)node[above]{$3$} (5,0)node[above]{$5$} (0,0)node[above left]{$O$};
+        \end{tikzpicture}
+    }
+    \loigiai{
+        Ta có: $g'(x)=f'(x)+1$.
+        Dựa vào đồ thị $y=f'(x)$ ta có:\\
+        $f'(x)+1>0 \Leftrightarrow f'(x)>-1 \Leftrightarrow\hoac{& 1<x<3 \\ & x>5}$; $f'(x)+1<0\Leftrightarrow f'(x)<-1\Leftrightarrow\hoac{& x<1 \\ & 3<x<5.}$\\
+        Vậy hàm số $g(x)=f(x)+x+1$ đồng biển trên $(1 ; 3)$ và $(5 ;+\infty)$, nghịch biển trên $(-\infty ; 1)$ và $(3 ; 5)$.
+    }
+\end{bt}
+%%==========Bài 26
+\begin{bt}
+    Cho hàm số $y=f(x)$. Hàm số $y=f'(x)$ có đồ thị như hình vẽ.
+    \begin{center}
+        \begin{pgfinterruptboundingbox}
+            \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,xscale=.8,yscale=0.5]
+                \def\a{0.137} % Hệ số a phải khác 0
+                \def\b{-1.3647}
+                \def\c{4.2025}
+                \def\d{-2.9015}
+                \def\e{-4.4504}
+                \def\f{4.3589}
+                \fill (0,0) circle (1.5pt);
+                \foreach \x in {-1,1,2,4}
+                {\draw ([yshift=-0.5mm]\x,0)--([yshift=0.5mm]\x,0) (\x,0) node[below]{$\x$};}
+                \foreach \y in {-2,-1,1,2,3,4}
+                {\draw[shift={(0,\y)}] (2pt,0)--(-2pt,0) node[left]{\scriptsize $\y$};}
+                \draw[->] (-2,0) -- (5,0) node[below] {\scriptsize $x$};
+                \draw[->] (0,-2) -- (0,5.5) node[right] {\scriptsize $y$};
+                \draw (0,0)node[below left]{\scriptsize $O$};
+                \draw[thick,samples=150,smooth,domain=-1.1:4.8,blue,thick] plot(\x,{\a*(\x)^5+(\b)*(\x)^4+(\c)*(\x)^3+(\d)*(\x)^2+(\e)*(\x)+(\f)});
+            \end{tikzpicture}
+        \end{pgfinterruptboundingbox}
+    \end{center}
+    Hàm số $y=g(x)=f(2x-4)$ nghịch biến trên khoảng nào?
+    \loigiai
+    {
+        Ta có $g'(x)=2 \cdot f'(2 x-4)$.\\
+        $g'(x)=0\Leftrightarrow\hoac{& 2x-4=-1 \\ & 2x-4=1 \\ & 2x-4=2 \\ & 2x-4=4\;\left(\text{nghiệm bội chẵn}\right)}\Leftrightarrow\hoac{& x=\dfrac{3}{2} \\ & x=\dfrac{5}{2} \\ & x=3 \\ & x=4\;\left(\text{nghiệm bội chẵn}\right)}$.\\
+        Bảng biến thiên:
+        \begin{center}
+            \begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+                \tkzTabInit[lgt=1.2,espcl=2]
+                {$x$ /1, $f’(x)$ /0.6, $f(x)$ /1.5}
+                {$-\infty$,$\dfrac{3}{2}$,$\dfrac{5}{2}$,$3$,$4$,$+\infty$}
+                \tkzTabLine{ ,-,$0$,+,$0$,-,$0$,+,$0$,+, }
+                \tkzTabVar{+/,-/,+/,-/,R,+/,}
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số $y=g(x)$ nghịch biến trên các khoảng $\left(-\infty ; \dfrac{3}{2}\right)$ và $\left(\dfrac{5}{2};3\right)$.
+    }
+\end{bt}
+%%%%%%%%%%%
+\begin{dang}{Tìm điểm cực trị, giá trị cực trị của hàm số cho bởi công thức}
+\end{dang}
+%%==========Ví dụ 28
+\begin{vd} Tìm điểm cực trị, giá trị cực trị của mỗi hàm số sau:
+    \begin{listEX}[4]
+        \item $y=x^3-3x^2-9x+11$;
+        \item $y=-x^3-3x^2+1$;
+        \item $y=x^4-4x^2+3$;
+        \item $y=-x^4+2x^2+2$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.\\
+            Ta có: \\
+            $y'=3x^2-6x-9$;\\
+            $y'=0\Leftrightarrow 3x^2-6x-9=0\Leftrightarrow x=-1$ hoặc $x=3$.\\
+            Bảng biến thiên của hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1, espcl=2]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}{$-\infty$,$-1$,$3$,$+\infty$}
+                    \tkzTabLine{,+,0,-,0,+,}
+                    \tkzTabVar{-/$-\infty$,+/$16$,-/$-16$,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=-1$ và đạt cực tiểu tại $x=3$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-16$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=16$.
+            \item
+            Ta có $y'=3x^2-6x$.\\
+            Với $y'=0\Leftrightarrow 3x(x-2)=0\Leftrightarrow\hoac{&x=0\\&x=2.}$\\
+            Bảng biến thiên của hàm số $y=-x^3-3x^2+1$ như hình dưới.
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$/0.6, $y'$/0.6, $y$/1.5}
+                    {$-\infty$, $-2$, $0$, $\infty$}
+                    \tkzTabLine{,-,0,+,0,-,}
+                    \tkzTabVar{+/$+\infty$, -/$-3$, +/$1$, -/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=0$ và đạt cực tiểu tại $x=-2$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-3$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=1$.
+            \item
+            Ta có $y'=4x^3-8x$.\\
+            Với $y'=0\Leftrightarrow 4x(x^2-2)=0\Leftrightarrow\hoac{&x=0\\&x=\pm\sqrt{2}.}$\\
+            Bảng biến thiên của hàm số $y=x^4-4x^2+3$ như hình dưới.
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$/0.6, $y'$/0.6, $y$/1.5}
+                    {$-\infty$, $-\sqrt{2}$, $0$, $\sqrt{2}$, $\infty$}
+                    \tkzTabLine{,-,0,+,0,-,0,+,}
+                    \tkzTabVar{+/$+\infty$, -/$-1$, +/$3$, -/$-1$, +/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=0$ và đạt cực tiểu tại $x=-\sqrt{2}, x=\sqrt{2}$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-1$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=3$.
+            \item
+            Ta có $y'=-4x^3+4x$.\\
+            Với $y'=0\Leftrightarrow -4x(x^2-1)=0\Leftrightarrow\hoac{&x=0\\&x=\pm1.}$\\
+            Bảng biến thiên của hàm số $y=-x^4+2x^2+2$ như hình dưới.
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$/0.6, $y'$/0.6, $y$/1.5}
+                    {$-\infty$, $-1$, $0$, $1$, $\infty$}
+                    \tkzTabLine{,+,0,-,0,+,0,-,}
+                    \tkzTabVar{-/$-\infty$, +/$3$, -/$2$, +/$3$, -/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=-1, x=1$ và đạt cực tiểu tại $x=0$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=2$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=3$
+        \end{enumerate}
+    }
+\end{vd}
+%%==========Ví dụ 29
+\begin{vd} Tìm điểm cực trị, giá trị cực trị của mỗi hàm số sau:
+    \begin{listEX}[3]
+        \item $y=\dfrac{2x+1}{x+2}$;
+        \item $y=\dfrac{x^2+x+1}{x+1}$;
+        \item $y=\sqrt{3-2x-x^2}$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item
+            Hàm số đã cho có tập xác định $\mathscr{D}=\mathbb{R}\backslash \{-2\}$.\\
+            Ta có $y'=\dfrac{3}{(x+2)^2}>0, \, \forall x\in \mathscr{D}$.\\
+            Bảng biến thiên hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}[>=stealth]
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]{$x$/.6 ,$y'$/.6,$y$/1.5}
+                    {$-\infty$ , $-2$ , $+\infty$}
+                    \tkzTabLine{ , + , d , + , }
+                    \tkzTabVar{-/$2$ , +D-/$+\infty$/$-\infty$ , +/$2$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số không có điểm cực trị.
+            \item
+            Hàm số đã cho tập xác định $\mathbb{R}\setminus \left\{-1\right\}$.\\
+            Ta có: \\
+            $y'=\dfrac{x^2+2x}{\left(x+1\right)^2}$ với $x\neq -1$;
+            \\$y'=0\Leftrightarrow x^2+2x=0\Leftrightarrow x=-2$ hoặc $x=0$.\\
+            Bảng biến thiên của hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tikzset{double style/.append style={double distance=2pt}}
+                    \tkzTabInit[ lgt=1, espcl=2]{$x$/0.6,$y'$ /0.6, $y$ /1.5}
+                    {$-\infty$ , $-2$ ,$-1$,$0$, $+\infty$}
+                    \tkzTabLine{ ,+, 0,-,d ,-,0,+ }
+                    \tkzTabVar {-/$-\infty$ /, +/ $ -3 $ ,-D+/ $-\infty$ / $+\infty$,-/$1$,+/$ +\infty $}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=-2$ và đạt cực tiểu tại $x=0$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=1$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=-3$.
+            \item
+            Tập xác định của hàm số là $\mathscr{D}=[-3;1]$.\\
+            Ta có $y'=\dfrac{-2-2x}{2\sqrt{3-2x-x^2}}=-\dfrac{x+1}{\sqrt{3-2x-x^2}}$.\\
+            Với $y'=0\Leftrightarrow -\dfrac{x+1}{\sqrt{3-2x-x^2}}=0\Leftrightarrow x=-1\in\mathscr{D}$.\\
+            Bảng biến thiên của hàm số $y=\sqrt{3-2x-x^2}$ như hình dưới đây.
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$/0.6, $y'$/0.6, $y$/1.5}
+                    {$-3$, $-1$, $1$}
+                    \tkzTabLine{,+,0,-,}
+                    \tkzTabVar{-/$0$, +/$2$, -/$0$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=-1$.\\
+            Giá trị cực đại của hàm số là $y_{\text{CĐ}}=2$.
+        \end{enumerate}
+    }
+\end{vd}
+%%==========Ví dụ 30
+\begin{vd}%[2D1B2-1]
+    Tìm điểm cực trị của hàm số $ y = f(x)$ biết:
+    \begin{listEX}
+        \item $f'(x) = (x-1)\left(x^2-2 \right)\left(x^4-4 \right)$, $\forall x\in \mathbb{R}$;
+        \item $f'(x) = x^{2021}\cdot(x-1)^{2022}\cdot(x+1)$, $\forall x\in \mathbb{R}$;
+        \item $f'(x) = (x-1)\left(x^2-3 \right)\left(x^4-1 \right)$, $\forall x\in \mathbb{R}$.
+    \end{listEX}
+    \loigiai{
+        \begin{listEX}
+            \item
+            Ta có
+            \allowdisplaybreaks
+            $\begin{aligned}[t]
+                f'(x) = 0
+                &\Leftrightarrow (x-1)\left(x^2-2 \right)\left(x^4-4 \right) = 0\\
+                &\Leftrightarrow (x-1){{\left(x^2-2 \right)}^2}\left(x^2 + 2 \right) = 0\\
+                &\Leftrightarrow \left[\begin{aligned}
+                    & x = 1\\
+                    & x = \sqrt{2}\\
+                    & x = -\sqrt{2}.
+                \end{aligned} \right.
+            \end{aligned}$\\
+            Ta có bảng xét dấu $f'(x)$
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1.2,espcl=2]
+                    {$x$ /0.6, $f’(x)$ /0.6}
+                    {$-\infty$,$-\sqrt{2}$,$1$,$\sqrt{2}$,$+\infty$}
+                    \tkzTabLine{ ,-,0,-,0,+,0,+, }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực tiểu tại $x=1$.
+            \item Ta có
+            $f'(x) = 0
+            \Leftrightarrow x^{2021}\cdot(x-1)^{2022}\cdot(x+1) = 0
+            \Leftrightarrow \left[\begin{aligned}
+                & x = 0 \\
+                & x = 1 \\
+                & x = -1. \\
+            \end{aligned} \right.$\\
+            Bảng xét dấu đạo hàm
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1.2,espcl=2]
+                    {$x$ /0.6, $f’(x)$ /0.6}
+                    {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+                    \tkzTabLine{ ,+,0,-,0,+,0,+, }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=-1$ và đạt cực tiểu tại $x=0$.
+            \item
+            Ta có
+            \allowdisplaybreaks
+            $\begin{aligned}[t]
+                f'(x) = 0
+                &\Leftrightarrow (x-1)\left(x^2-3 \right)\left(x^4-1 \right) = 0\\
+                &\Leftrightarrow (x-1)\left(x + \sqrt{3} \right)\left(x-\sqrt{3} \right)\left(x^2-1 \right)\left(x^2 + 1 \right) = 0\\
+                &\Leftrightarrow (x-1)^2\left(x + \sqrt{3} \right)\left(x-\sqrt{3} \right)(x+1)\left(x^2 + 1 \right) = 0\\
+                &\Leftrightarrow
+                \left[\begin{aligned}
+                    & x = 1 \\
+                    & x = \pm \sqrt{3} \\
+                    & x = -1. \\
+                \end{aligned} \right.
+            \end{aligned}$\\
+            Bảng xét dấu đạo hàm
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1.2,espcl=2]
+                    {$x$ /0.6, $f’(x)$ /0.6}
+                    {$-\infty$,$-\sqrt{3}$,$-1$,$1$,$\sqrt{3}$,$+\infty$}
+                    \tkzTabLine{ ,-,0,+,0,-,0,-,0,+, }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=-1$ và đạt cực tiểu tại $x=-\sqrt{3}, x=\sqrt{3}$.
+        \end{listEX}
+    }
+\end{vd}
+%%==========Ví dụ 31
+\begin{vd}%[2D1K2-2]
+    \immini{
+        Đường cong trong hình vẽ bên là đồ thị hàm số $y=f'(x)$. Tìm số điểm cực trị của hàm số $y=f(x)$.
+    }{
+        \begin{tikzpicture}[yscale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+            %\draw[color=gray!50,dashed,step=1] (-1.5,-2) grid (2.2,2.2);
+            \draw[->] (-1.5,0) -- (2.2,0) node[below] {$x$};
+            \draw[->] (0,-2) -- (0,2.2) node[above] {$y$};
+            \filldraw (0,0) circle (1pt)node[above left]{$O$};
+            \draw(-1.2,-2)..controls +(85:0.5) and +(180:0.1)..(-1,0)..controls +(0:0.1) and +(180:0.2)..(-0.5,-1)..controls+(0:0.2) and+(180:0.3)..(0.5,0.5)..controls +(0:0.2) and +(180:0.2)..(1,0)..controls +(0:0.2) and +(180:0.15)..(1.5,2)..controls+(0:0.1)and+(95:0.1)..(1.8,-2);
+    \end{tikzpicture}}
+    \loigiai{
+        Ta thấy $f'(x)=0 \Leftrightarrow \hoac{ & x=x_1\\ & x=x_2 \\ & x=x_3\\ &x=x_4} (x_1<x_2<x_3<x_4)$\\
+        Từ đồ thị ta có bảng biến thiên
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[nocadre=false, lgt=1, espcl=2]{$x$ /0.6,$y'$ /0.6}{$-\infty$,$x_1$,$x_2$,$x_3$, $x_4$,$+\infty$}
+                \tkzTabLine{,-,$0$,-,$0$,+,$0$,+,$0$,-,}
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên ta thấy hàm số có $2$ cực trị.
+    }
+\end{vd}
+%%==========Ví dụ 32
+\begin{vd}%[2D1K2-2]
+    \immini{
+        Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ và có đồ thị hàm số $y=f'(x)$ như hình vẽ. Tìm điểm cực trị của hàm số $y=f(x)$.
+    }{
+        \begin{tikzpicture}[scale=0.8,line join=round, line cap=round,>=stealth,thick]
+            %	\draw[step=1,gray!50,very thin] (-1,-2) grid (4,2);
+            \draw[->] (-1,0)--(4.1,0) node[below left] {$x$};
+            \draw[->] (0,-2.1)--(0,2.1) node[below left] {$y$};
+            \draw (-0.3,0) node [below] {\footnotesize $O$};
+            \foreach \x in {1,2,3}
+            \draw[thin] (\x,1.5pt)--(\x,-1.5pt) node [below] {\scriptsize $\x$};
+            \foreach \y in {-1,1}
+            \draw[thin] (1.5pt,\y)--(-1.5pt,\y) node [left] {\scriptsize $\y$};
+            \clip (-1,-2) rectangle (4,2);
+            \draw[line width=1pt,smooth,domain=0:3.5] plot (\x,{(\x)^3-5*(\x)^2+7*(\x)-3});
+        \end{tikzpicture}
+    }
+    \loigiai{
+        Dựa vào đồ thị hàm số $y=f'(x)$ ta có $f'(x)=0\Leftrightarrow \hoac{&x=1\\ &x=3.}$\\
+        Bảng biến thiên của hàm số $f(x)$
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[lgt=1.2,espcl=2]{$x$ /0.6,$f'(x)$ /0.6}
+                {$-\infty$,$1$,$3$,$+\infty$}%
+                \tkzTabLine{,-,0,-,0,+ }
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số đạt cực tiểu tại $x=3$.
+    }
+\end{vd}
+%------------------
+\btvd
+%%==========Bài 27
+\begin{bt} Tìm điểm cực trị, giá trị cực trị của mỗi hàm số sau:
+    \begin{listEX}[4]
+        \item $y=x^3-12x-1$;
+        \item $y=-x^3+3x-4$;
+        \item $y=x^4-6x^2+8x+1$;
+        \item $y=-x^4+2x^2+5$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item
+            Ta có $y'=3x^2-12$.\\
+            Với $y'=0\Leftrightarrow 3(x^2-4)=0\Leftrightarrow\hoac{&x=2\\&x=-2.}$\\
+            Bảng biến thiên của hàm số $y=x^3-12x-1$ như hình dưới.
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$/0.6, $y'$/0.6, $y$/1.5}
+                    {$-\infty$, $-2$, $2$, $\infty$}
+                    \tkzTabLine{,+,0,-,0,+,}
+                    \tkzTabVar{-/$-\infty$, +/$15$, -/$-17$, +/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực tiểu tại $x=2$, đạt cực đại tại $x=-2$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-17$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=15$.
+            \item
+            Tập xác định: $\mathscr{D}=\mathbb{R}$.\\
+            Ta có: $y'=-3x^2+3$.\\
+            $y'=0 \Leftrightarrow x=\pm 1$.\\
+            Bảng biến thiên
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$ /0.6, $y'$ /0.6, $y$ /1.5}
+                    {$-\infty$,$-1$,$1$,$+\infty$}
+                    \tkzTabLine{,-,$0$,+,$0$,-,}
+                    \tkzTabVar{+/$+\infty$,-/$-6$,+/$-2$,-/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=1$ và đạt cực tiểu tại $x=-1$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-6$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=-2$.
+            \item
+            Hàm số đã cho có tập xác định là $\mathbb{R}$.\\
+            Ta có:\\ $y'=4x^3-12x+8$;\\
+            $y'=0\Leftrightarrow 4x^3-12x+8=0\Leftrightarrow x=-2$ hoặc $x=1$.\\
+            Bảng biến thiên của hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tikzset{double style/.append style={double distance=2pt}}
+                    \tkzTabInit[lgt=1, espcl=2]
+                    {$x$/0.6,$y'$/0.6,$y$/1.5}{$-\infty$,$-2$,$1$,$+\infty$}
+                    \tkzTabLine{,-,0,+,0,+,}
+                    \tkzTabVar{+/$-\infty$,-/$-23$,R,+/$+\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực tiểu tại $x=-2$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-23$.
+            \item
+            Ta có $y'=-4x^3+4x$.\\
+            Với $y'=0\Leftrightarrow -4x(x^2-1)=0\Leftrightarrow\hoac{&x=0\\&x=\pm1.}$\\
+            Bảng biến thiên của hàm số $y=-x^4+2x^2+5$ như hình dưới.
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$/0.6, $y'$/0.6, $y$/1.5}
+                    {$-\infty$, $-1$, $0$, $1$, $\infty$}
+                    \tkzTabLine{,+,0,-,0,+,0,-,}
+                    \tkzTabVar{-/$-\infty$, +/$6$, -/$5$, +/$6$, -/$-\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=-1, x=1$ và đạt cực tiểu tại $x=0$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=2$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=3$.
+        \end{enumerate}
+    }
+\end{bt}
+%%==========Bài 28
+\begin{bt} Tìm điểm cực trị, giá trị cực trị của mỗi hàm số sau:
+    \begin{listEX}[3]
+        \item $y=\dfrac{3x+5}{x-1}$;
+        \item $y=\dfrac{x^2+3x+3}{x+2}$;
+        \item $y=x\sqrt{1-x^2}$.
+    \end{listEX}
+    \loigiai{
+        \begin{enumerate}
+            \item
+            Hàm số đã cho có tập xác định $\mathbb{R}\setminus \left\{1\right\}$.\\
+            Ta có:\\
+            $y'=\dfrac{-8}{\left(x-1\right)^2}<0, \forall x \in \mathbb{R}\setminus \left\{1\right\}$.\\
+            Bảng biến thiên của hàm số như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tikzset{double style/.append style={double distance=2pt}}
+                    \tkzTabInit[ lgt=1, espcl=2]{$x$/0.6,$y'$ /0.6, $y$ /1.5}
+                    {$-\infty$ , $1$ , $+\infty$}
+                    \tkzTabLine{,-, d ,-}
+                    \tkzTabVar {+/$3$ /, -D+/ $ -\infty $ / $ +\infty $ , -/$3$ / }
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số không có điểm cực trị.
+            \item
+            Tập xác định của hàm số là $\mathscr{D}=\mathbb{R}\setminus\{-2\}$. Ta có
+            \[y'=\dfrac{(2x+3)(x+2)-(x^2+3x+3)}{(x+2)^2}=\dfrac{x^2+4x+3}{(x+2)^2}=\dfrac{(x+1)(x+3)}{(x+2)^2}.\]
+            Với $y'=0\Leftrightarrow\dfrac{(x+1)(x+3)}{(x+2)^2}=0\Leftrightarrow\hoac{&x=-1\in\mathscr{D}\\&x=-3\in\mathscr{D}.}$\\
+            Bảng biến thiên của hàm số $y=\dfrac{x^2+3x+3}{x+2}$ như hình dưới đây.
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$/0.6, $y'$/0.6, $y$/1.5}
+                    {$-\infty$, $-3$, $-2$, $-1$, $\infty$}
+                    \tkzTabLine{,+,0,-,d,-,0,+,}
+                    \tkzTabVar{-/$-\infty$, +/$-3$, -D+/$-\infty$/$+\infty$, -/$1$, +/$\infty$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=-3$ và đạt cực tiểu tại $x=-1$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=1$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=-3$.
+            \item
+            Tập xác định của hàm số là $\mathscr{D}=[-1;1]$.\\
+            Ta có $y'=\sqrt{1-x^2}+\dfrac{x\cdot(-2x)}{2\sqrt{1-x^2}}=\sqrt{1-x^2}-\dfrac{x^2}{\sqrt{1-x^2}}$.\\
+            Với $y'=0\Leftrightarrow \sqrt{1-x^2}-\dfrac{x^2}{\sqrt{1-x^2}}=0\Leftrightarrow 1-x^2-x^2=0\Leftrightarrow x^2=\dfrac{1}{2}\Leftrightarrow x=\pm\dfrac{\sqrt{2}}{2}\in\mathscr{D}$.\\
+            Bảng biến thiên của hàm số $y=x\sqrt{1-x^2}$ như hình dưới đây.
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1,espcl=2]
+                    {$x$/1, $y'$/0.6, $t$/1.5}
+                    {$-1$, $-\dfrac{\sqrt{2}}{2}$, $\dfrac{\sqrt{2}}{2}$, $1$}
+                    \tkzTabLine{,-,0,+,0,-,}
+                    \tkzTabVar{+/ $0$, -/$-\dfrac{1}{2}$, +/$\dfrac{1}{2}$, -/$0$}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=\dfrac{\sqrt{2}}{2}$ và đạt cực tiểu tại $x=-\dfrac{\sqrt{2}}{2}$.\\
+            Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-\dfrac{1}{2}$, giá trị cực đại của hàm số là $y_{\text{CĐ}}=\dfrac{1}{2}$.
+        \end{enumerate}
+    }
+\end{bt}
+%%==========Bài 29
+\begin{bt}%[2D1B2-1]
+    Tìm điểm cực trị của hàm số $f(x)$ biết:
+    \begin{listEX}[2]
+        \item $f'(x)=x^4(2x+1)^2(x-1)$, $\forall x\in \mathbb{R}$.;
+        \item $f'(x)=x(x-1)(x+2)^3, \forall x\in\mathbb{R}$;
+        \item! $f'(x)=-2022(x-1)(x+2)^5(x-3)^4$, $\forall x\in \mathbb{R}$.
+    \end{listEX}
+    \loigiai{
+        \begin{listEX}
+            \item
+            Ta có $f'(x)=0 \Leftrightarrow x^4(2x+1)^2(x-1)=0 \Leftrightarrow \hoac{& x=0\\& x=-\dfrac{1}{2}\\& x=1}.$
+            Bảng xét dấu
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2]
+                    {$x$ /1,$f'(x)$ /0.6}
+                    {$-\infty$,$-\dfrac{1}{2}$,$0$,$1$,$+\infty$}
+                    \tkzTabLine{,-,$0$,-,$0$,-,$0$,+,}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực tiểu tại $x=1$.
+            \item
+            Ta có $f'(x)=0 \Leftrightarrow x(x-1)(x+2)^3=0 \Leftrightarrow \hoac{& x=0 \\ & x=1 \\ &x=-2}.$
+            Bảng xét dấu đạo hàm
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[nocadre=false,lgt=1.2,espcl=2]
+                    {$x$ /0.6,$f'(x)$ /0.6}
+                    {$-\infty$,$-2$,$0$,$1$,$+\infty$}
+                    \tkzTabLine{,-,$0$,+,$0$,-,$0$,+,}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=0$ và đạt cực tiểu tại $x=-2, x=1$.
+            \item
+            Ta có $f'(x)=0\Leftrightarrow \hoac{&x=1\\&x=-2\\&x=3}$.
+            Bảng xét dấu của $y'$ như sau:
+            \begin{center}
+                \begin{tikzpicture}
+                    \tkzTabInit[lgt=1.2,espcl=2]
+                    {$x$/0.6,$y'$/0.6}{$-\infty$,$-2$,$1$,$3$,$+\infty$}
+                    \tkzTabLine{,-,0,+,0,-,0,-,}
+                \end{tikzpicture}
+            \end{center}
+            Vậy hàm số đạt cực đại tại $x=1$ và đạt cực tiểu tại $x=-2$.
+        \end{listEX}
+    }
+\end{bt}
+%%==========Bài 30
+\begin{bt}%[2D1K2-2]
+    \immini{
+        Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ và có đồ thị hàm số $y=f'(x)$ như hình vẽ. Tìm điểm cực trị của hàm số $y=f(x)$.
+    }
+    {
+        \begin{tikzpicture}[>=stealth,x=1cm,y=0.4cm]
+            \draw[->,line width = 0.5pt] (-1,0)--(4,0) node[below]{$x$};
+            \draw[->,line width = 0.5pt] (0,-3.5) --(0,3.5) node[right]{$y$};
+            \draw (0,0) node[below left]{$O$} [fill=black] circle (1pt);
+            \draw (2,0) node[below]{$2$} [fill=black] circle (1pt);
+            \draw (1,0) node[below]{$1$} [fill=black] circle (1pt);
+            \draw (3,0) node[below]{$3$} [fill=black] circle (1pt);
+            \draw [thick,samples=100, domain=0.25:3.7] plot (\x, {(\x-1)*(\x-2)*(\x-3)});
+        \end{tikzpicture}
+    }
+    \loigiai{
+        Từ đồ thị hàm số $y=f'(x)$ ta có bảng biến thiên của hàm số $y=f(x)$.
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[lgt=1.2,espcl=2]
+                {$x$ /.6, $f'(x)$ /.6}
+                {$-\infty$ , $1$ , $2$ , $3$ , $+\infty$}
+                \tkzTabLine{ ,-,0,+,0,-,0,+, }
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số đạt cực đại tại $x=2$ và đạt cực tiểu tại $x=1, x=3$.
+    }
+\end{bt}
+%%==========Bài 31
+\begin{bt}%[2D1B2-2]
+    \immini{
+        Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ và có đồ thị hàm số $y=f'(x)$ như hình vẽ. Tìm số điểm cực trị của hàm số $y=f(x)$.
+    }{
+        \begin{tikzpicture}[>=stealth,scale=0.7, line join=round, line cap=round]
+            \def\a{.25} \def\b{-2/3} \def\c{-1/2} \def\d{2} \def\e{-2/3}
+            {code}% Hệ số
+            \def\xt{-2.2} \def\xp{3} \def\yt{2.5} \def\yd{-2.5}
+            \draw[->] (\xt,0)--(\xp,0) node [below]{$x$};
+            \draw[->] (0,\yd)--(0,\yt) node [left]{$y$};
+            \draw (0,0) node [below left]{$O$} circle(1pt);
+            \draw (1,0) node [below ]{$1$} circle(1pt);
+            \draw (2,0) node [below ]{$2$} circle(1pt);
+            \draw (-1,0) node [below ]{$-1$} circle(1pt);
+            \draw (0,1) node [left ]{$1$} circle(1pt);
+            \draw (0,2) node [left ]{$2$} circle(1pt);
+            \draw (0,-1) node [right ]{$-1$} circle(1pt);
+            \draw (0,-2) node [left ]{$-2$} circle(1pt);
+            \clip (\xt-0.1,\yd+0.1) rectangle (\xp-0.1,\yt-0.1);
+            \draw[smooth,samples=300] plot(\x,{\a*(\x)^4+\b*(\x)^3+\c*(\x)^2+\d*(\x)+\e});
+    \end{tikzpicture}}
+    \loigiai{
+        Ta thấy $f'(x)=0 \Leftrightarrow \hoac{ & x=x_1<-1 \\ & x=x_2 \in (0;1)\\ & x=2.}$\\
+        Từ đồ thị ta có bảng biến thiên
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[nocadre=false, lgt=1, espcl=2]{$x$ /0.6,$y'$ /0.6}{$-\infty$,$x_1$,$x_2$,$2$,$+\infty$}
+                \tkzTabLine{,+,$0$,-,$0$,+,$0$,+,}
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên ta thấy hàm số có $2$ cực trị.
+    }
+\end{bt}
+%~~~~~~~~~~~~~~~~~~~~~
+\begin{dang}{Tìm điểm cực trị, giá trị cực trị của hàm số dựa vào BBT, đồ thị}
+\end{dang}
+%-----------
+%%==========Ví dụ 33
+\begin{vd}%[2D1Y2-2]
+    Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ bên dưới. Xác định các điểm cực trị, các giá trị cực trị của hàm số.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[nocadre=false,lgt=1.2,espcl=2]
+            {$x$ /0.6,$y'$ /0.6,$y$ /1.5}
+            {$-\infty$,$-1$,$2$,$+\infty$}
+            \tkzTabLine{,-,$0$,+,$0$,-,}
+            \tkzTabVar{+/$+\infty$, -/$-3$,+/$1$,-/$-\infty$}
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{
+        Hàm số đạt cực tiểu tại điểm $x=-1$, cực đại tại điểm $x=2$.\\
+        Giá trị cực đại của hàm số là $y_{\text{CĐ}}=1$. Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-3$.
+    }
+\end{vd}
+%%==========Ví dụ 34
+\begin{vd}%[2D1Y2-2]
+    Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ bên dưới. Xác định các điểm cực trị, các giá trị cực trị của hàm số.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[nocadre=false,lgt=1.2,espcl=2]
+            {$x$ /0.6,$y'$ /0.6,$y$ /1.5}
+            {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+            \tkzTabLine{,+,d,-,$0$,+,d,-,}
+            \tkzTabVar{-/$-\infty$, +/$1$,-/$-1$,+D+/$+\infty$/$+\infty$,-/$-\infty$}
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{
+        Hàm số đạt cực tiểu tại điểm $x=0$, cực đại tại điểm $x=-1$.\\
+        Giá trị cực đại của hàm số là $y_{\text{CĐ}}=1$.
+        Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-1$.
+    }
+\end{vd}
+%%==========Ví dụ 35
+\begin{vd}%[2D1Y2-2]
+    \immini{
+        Cho hàm số $y=f(x)$ có đồ thị như hình vẽ bên. Xác định các điểm cực trị, các giá trị cực trị của hàm số.
+    }{
+        \begin{tikzpicture}[xscale=0.6,yscale=0.5, font=\footnotesize, line join=round, line cap=round, >=stealth]
+            \draw[->,>=latex](-2.5,0)--(2.5,0)node[above]{$x$};
+            \draw[->,>=latex](0,-3)--(0,3)node[right]{$y$};
+            \node[below right] at (0,0){$O$};
+            \draw plot [samples=100,domain=-2.1:2.1] (\x,{(\x)^3-3*(\x)});
+            \foreach\i in{-1,2}{\node[below] at (\i,0){$\i$};}
+            \foreach\i in{2}{\node[right] at (0,\i){$\i$};}
+            \foreach\i in{-2}{\node[left] at (0,\i){$\i$};}
+            \foreach\i in{1,-2}{\node[above] at (\i,0){$\i$};}
+            \draw[dashed](-1,0)--(-1,2)--(0,2)(1,0)--(1,-2)--(0,-2);
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Hàm số đạt cực tiểu tại điểm $x=-1$, cực đại tại điểm $x=1$\\
+        Giá trị cực đại của hàm số là $y_{\text{CĐ}}=2$.
+        Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-2$.
+    }
+\end{vd}
+%%==========Ví dụ 36
+\begin{vd}%[2D1Y2-2]
+    \immini{
+        Cho hàm số $y=f(x)$ có đồ thị như hình vẽ bên. Xác định các điểm cực trị, các giá trị cực trị của hàm số.
+    }{
+        \begin{tikzpicture}[scale=0.5, font=\footnotesize, line join=round, line cap=round, >=stealth]
+            \draw[->,>=latex](-3.5,0)--(3.5,0)node[above]{$x$};
+            \draw[->,>=latex](0,-4)--(0,2)node[right]{$y$};
+            \node[below left] at (0,0){$O$};
+            \draw plot [samples=100,domain=-2.9:2.9] (\x,{0.25*(\x)^4-2*(\x)^2+1});
+            \foreach\i in{-2,2}{\node[above] at (\i,0){$\i$};}
+            \foreach\i in{1}{\node[above right] at (0,\i){$\i$};}
+            \foreach\i in{-3}{\node[below right] at (0,\i){$\i$};}
+            \draw[dashed](-2,0)--(-2,-3)--(2,-3)--(2,0);
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Hàm số đạt cực tiểu tại điểm $x=-2$ và $x=2$; đạt cực đại tại điểm $x=0$.\\
+        Giá trị cực đại của hàm số là $y_{\text{CĐ}}=1$.
+    }
+\end{vd}
+%%==========Ví dụ 37
+\begin{vd}%[2D1G2-2]
+    Cho hàm số $f(x)$ có bảng biến thiên của hàm
+    số $f'(x)$ bên dưới.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[nocadre=false, lgt=1.2,espcl=2]
+            {$x$/0.6, $f'(x)$ /1.5}
+            {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+            \path
+            (N11)node[below=0.1cm,fill=white](A){$+\infty$}
+            (N22)node[above=0.1cm,fill=white](B){$-3$}
+            (barycentric cs:N31=2,N32=1)node[fill=white](C){$2$}
+            (barycentric cs:N41=1,N42=2)node[fill=white](D){$-1$}
+            (N51)node[below=0.1cm,fill=white](E){$+\infty$}
+            ;
+            \draw[-stealth](A)--(B);
+            \draw[-stealth](B)--(C);
+            \draw[-stealth] (C)--(D);
+            \draw[-stealth] (D)--(E);
+        \end{tikzpicture}
+    \end{center}
+    Tìm số điểm cực trị của hàm số $y=f (x^2-2x)$.
+    \loigiai{
+        \immini{
+            Ta có $y'=(2x-2)f'(x^2-2x)$.\\
+            $y'=0\Leftrightarrow \hoac{&x=1\\&x^2-2x=a&(a<-1)\\&x^2-2x=b&(-1<b<0)\\&x^2-2x=c&(0<c<1)\\&x^2-2x=d&(d>1).}$}
+        {\begin{tikzpicture}[scale=0.7,>=stealth,font=\footnotesize]
+                \def\mx{-1.5} \def\max{3.5}
+                \def\my{-1.5} \def\may{3}
+                \def\hamso(#1,#2){plot [samples=200,smooth,domain=#1:#2](\x,{
+                        (\x)^2-2*(\x)
+                    })}
+                \draw[fill=black] (0,-1)circle (.7pt) node[shift={(180:.3)}]{$-1$}
+                (0,0)circle (.7pt) node [below left] {$O$}
+                (1,-1)circle (.7pt) (1,0)circle (.7pt)
+                ;
+                \draw[dashed,thin] (1,0)|-(0,-1);
+                %===========================================
+                \draw[->] (\mx,0)--(\max,0) node[below] {$x$};
+                \draw[->] (0,\my)--(0,\may) node[left] {$y$};
+                \clip (\mx,\my) rectangle (\max,\may);
+                \draw \hamso(\mx,\max)(2.4,2)node[rotate=70]{$y=4x^2+4x$};
+        \end{tikzpicture}}
+        \noindent
+        Dựa vào bảng biến thiên của hàm số $g(x)=x^2-2x$ ta có phương trình $y'=0$ có $7$ nghiệm đơn phân biệt.\\
+        Suy ra số điểm cực trị của hàm số $y=f (x^2-2x)$ là $7$.
+    }
+\end{vd}
+%----------
+\btvd
+%%==========Bài 32
+\begin{bt}%[2D1Y2-2]
+    Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ bên dưới. Xác định các điểm cực trị, các giá trị cực trị của hàm số.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[nocadre=false,lgt=1.2,espcl=2]
+            {$x$ /0.6,$y'$ /0.6,$y$ /1.5}
+            {$-\infty$,$1$,$2$,$+\infty$}
+            \tkzTabLine{,+,$0$,-,$0$,+,}
+            \tkzTabVar{-/$-\infty$, +/$3$,-/$-2$,+/$+\infty$}
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{
+        Hàm số đạt cực tiểu tại điểm $x=2$, cực đại tại điểm $x=1$.\\
+        Giá trị cực đại của hàm số là $y_{\text{CĐ}}=3$. Giá trị cực tiểu của hàm số là $y_{\text{CT}}=-2$.
+    }
+\end{bt}
+%%==========Bài 33
+\begin{bt}%[2D1Y2-2]
+    Cho hàm số $y=f(x)$ có bảng biến thiên như hình vẽ. Xác định các điểm cực trị, các giá trị cực trị của hàm số.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[nocadre=false,lgt=1.2,espcl=2]
+            {$x$ /0.6,$y'$ /0.6,$y$ /1.5}
+            {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+            \tkzTabLine{,+,$0$,-,d,-,$0$,+,}
+            \tkzTabVar{-/$-\infty$, +/$-4$,-D+/$+\infty$/$+\infty$,-/$4$,+/$+\infty$}
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{
+        Hàm số đạt cực tiểu tại điểm $x=1$, cực đại tại điểm $x=-1$.\\
+        Giá trị cực đại của hàm số là $y_{\text{CĐ}}=-4$.
+        Giá trị cực tiểu của hàm số là $y_{\text{CT}}=4$.
+    }
+\end{bt}
+%%==========Bài 34
+\begin{bt}%[2D1Y2-2]
+    \immini{
+        Cho hàm số $y=f(x)$ có đồ thị như hình vẽ bên. Xác định các điểm cực trị, các giá trị cực trị của hàm số.
+    }{
+        \begin{tikzpicture}[scale=0.55, font=\footnotesize, line join=round, line cap=round, >=stealth]
+            \draw[->,>=latex](-1.5,0)--(4,0)node[above]{$x$};
+            \draw[->,>=latex](0,-1)--(0,5)node[right]{$y$};
+            \node[below right] at (0,0){$O$};
+            \draw plot [samples=100,domain=-1.12:3.1] (\x,{-(\x)^3+3*(\x)^2});
+            \foreach\i in{-1,2}{\node[below] at (\i,0){$\i$};}
+            \foreach\i in{4}{\node[below right] at (0,\i){$\i$};}
+            \foreach\i in{3}{\node[below right] at (\i,0){$\i$};}
+            \draw[dashed](-1,0)--(-1,4)--(2,4)--(2,0);
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Hàm số đạt cực tiểu tại điểm $x=0$, cực đại tại điểm $x=2$.\\
+        Giá trị cực đại của hàm số là $y_{\text{CĐ}}=4$.
+        Giá trị cực tiểu của hàm số là $y_{\text{CT}}=0$.
+    }
+\end{bt}
+%%==========Bài 35
+\begin{bt}%[2D1Y2-2]
+    \immini{
+        Cho hàm số $y=f(x)$ có đồ thị như hình vẽ bên. Xác định các điểm cực trị, các giá trị cực trị của hàm số.
+    }{
+        \begin{tikzpicture}[scale=0.5, font=\footnotesize, line join=round, line cap=round, >=stealth]
+            \draw[->,>=latex](-3.5,0)--(3.5,0)node[above]{$x$};
+            \draw[->,>=latex](0,-2)--(0,4)node[right]{$y$};
+            \node[above left] at (0,0){$O$};
+            \draw plot [samples=100,domain=-2.9:2.9] (\x,{-0.25*(\x)^4+2*(\x)^2-1});
+            \foreach\i in{-2,2}{\node[below] at (\i,0){$\i$};}
+            \foreach\i in{-1}{\node[right] at (0,\i){$\i$};}
+            \foreach\i in{3}{\node[above right] at (0,\i){$\i$};}
+            \draw[dashed](-2,0)--(-2,3)--(2,3)--(2,0);
+        \end{tikzpicture}
+    }
+    \loigiai
+    {
+        Hàm số đạt cực tiểu tại điểm $x=0$; đạt cực đại tại điểm $x=-2$ và $x=2$.\\
+        Giá trị cực đại của hàm số là $y_{\text{CĐ}}=3$.
+    }
+\end{bt}
+%%==========Bài 36
+\begin{bt}%[2D1G2-2]
+    Cho hàm số $f(x)$, bảng biến thiên của hàm
+    số $f'(x)$ bên dưới.
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[nocadre=false, lgt=1.2,espcl=2]
+            {$x$/0.6, $f'(x)$ /1.5}
+            {$-\infty$,$-1$,$0$,$1$,$+\infty$}
+            \path
+            (N11)node[below=0.1cm,fill=white](A){$+\infty$}
+            (N22)node[above=0.1cm,fill=white](B){$-3$}
+            (barycentric cs:N31=2,N32=1)node[fill=white](C){$2$}
+            (barycentric cs:N41=1,N42=2)node[fill=white](D){$-1$}
+            (N51)node[below=0.1cm,fill=white](E){$+\infty$}
+            ;
+            \draw[-stealth](A)--(B);
+            \draw[-stealth](B)--(C);
+            \draw[-stealth] (C)--(D);
+            \draw[-stealth] (D)--(E);
+        \end{tikzpicture}
+    \end{center}
+    Tìm số điểm cực trị của hàm số $y=f(4x^2+4x)$.
+    \loigiai{
+        \immini{$y'=(8x+4)f'(4x^2+4x)$.\\
+            $y'=0\Leftrightarrow \hoac{&x=-\dfrac{1}{2}\\&4x^2+4x=a&(a<-1)\\&4x^2+4x=b&(-1<b<0)\\&4x^2+4x=c&(0<c<1)\\&4x^2+4x=d&(d>1).}$}
+        {\begin{tikzpicture}[xscale=1,yscale=0.85,>=stealth,font=\footnotesize]
+                \def\mx{-2.5} \def\max{2.5}
+                \def\my{-1.5} \def\may{3}
+                \def\hamso(#1,#2){plot [samples=200,smooth,domain=#1:#2](\x,{
+                        4*(\x)^2+4*(\x)
+                    })}
+                \draw[fill=black] (0,-1)circle (.7pt) node[shift={(0:.3)}]{$-1$}
+                (0,0)circle (.7pt) node [below right] {$O$}
+                (-0.5,0)circle (.7pt) (-0.5,-1)circle (.7pt)(-1,0)circle (.7pt)
+                ;
+                \draw[dashed,thin] (-0.5,0)|-(0,-1);
+                %===========================================
+                \draw[->] (\mx,0)--(\max,0) node[below] {$x$};
+                \draw[->] (0,\my)--(0,\may) node[left] {$y$};
+                \clip (\mx,\my) rectangle (\max,\may);
+                \draw \hamso(\mx,\max)(0.7,2)node[rotate=80]{$y=4x^2+4x$};
+        \end{tikzpicture}}
+        \noindent
+        Dựa vào đồ thị hàm số $g(x)=x^2-2x$ ta có phương trình $y'=0$ có $7$ nghiệm đơn phân biệt.\\
+        Suy ra số điểm cực trị của hàm số $y=f(4x^2+4x)$ là $7$.
+    }
+\end{bt}
+%%%%%%%%%%%%%%%%
+\begin{dang}{Tìm $m$ để hàm số có đúng số cực trị cho trước}
+\end{dang}
+%%==========Ví dụ 38
+\begin{vd}%[2D1K2-4]
+    Cho hàm số $y=x^3 - 3mx^2 + 3mx + m^2$. Có bao nhiêu giá trị nguyên của $m\in (-5;5)$ để hàm số có hai điểm cực trị?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 3x^2 - 6mx + 3m$.\\
+        Hàm số đã cho có hai điểm cực trị \\
+        $\Leftrightarrow y' = 3x^2 - 6mx + 3m =0$ có hai nghiệm phân biệt
+        $\Leftrightarrow \heva{&a = 3 \neq 0\\ &\Delta = (-6m)^2 - 36 m >0} \Leftrightarrow \hoac{&m < 0\\ &m > 1.}$\\
+        Vì $m\in \mathrm{Z}$ và $m\in (-5;5)$ nên $m\in \{-4;-3;-2-1;2;3;4\}$.}
+\end{vd}
+%%==========Ví dụ 39
+\begin{vd}%[2D1K2-4]
+    Cho hàm số $y = \dfrac{1}{3} x^3 + m x^2 + 4x + 2011$. Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số không có điểm cực trị?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= x^2 + 2mx+ 4$.\\
+        Hàm số không có điểm cực trị \\
+        $\Leftrightarrow y' = x^2 + 2mx+ 4 =0$ vô nghiệm hoặc có nghiệm kép
+        \[\Leftrightarrow \heva{&a = 1 \neq 0\\ &\Delta = (2m)^2 - 4\cdot 1 \cdot 4 \leq 0} \Leftrightarrow 4m^2 -16\leq 0 \Leftrightarrow -2\leq m \leq 2.\]\\
+        Vì $m\in \mathrm{Z}$ nên $m\in \{-2;-1;0;1;2\}$.}
+\end{vd}
+%%==========Ví dụ 40
+\begin{vd}%[2D1K2-4]
+    Tìm tất cả các giá trị của tham số $m$ sao cho hàm số $y = (m+2) x^3 + 3 x^2 + m x - 5$ có điểm cực tiểu nằm bên trái điểm cực đại.
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 3(m+2)x^2 +6 x+ m $.\\
+        Để hàm số có điểm cực tiểu nằm bên trái điểm cực đại, bảng biến thiên có dạng
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[lgt=1,espcl=2]
+                {$x$/0.6,%
+                    $y'$ /0.6,%
+                    $y$/1.5}%
+                {$-\infty$ , $x_1$ , $x_2$ , $+\infty$}%
+                \tkzTabLine{ ,-, 0 ,+, 0 ,-, }
+                %\tkzTabSlope{1//+\infty,3/-1 /+1}
+                \tkzTabVar %
+                {+ / $+\infty$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $y_{\text{CĐ}}$ ,
+                    - / $-\infty$ }
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên suy ra
+        \[ \heva{&a = 3(m+2) < 0\\ &\Delta' = (3)^2 - 3(m+2) \cdot m > 0}
+        \Leftrightarrow \heva{&m < -2 \\ &-3< m < 1}\Leftrightarrow -3<m<-2.\]\\
+        Vậy $-3<m<-2$.}
+\end{vd}
+%%==========Ví dụ 41
+\begin{vd}%[2D1K2-4]
+    Có bao nhiêu giá trị nguyên của $m\in (-5;5)$ để đồ thị hàm số $y= x^3 - 4x^2 + (1-m^2) x + 1$ có $2$ điểm cực trị nằm về hai phía so với trục tung $Oy$?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 3 x^2 - 8x +1-m^2$.\\
+        Để đồ thị hàm số có $2$ điểm cực trị nằm về hai phía so với trục tung $Oy$, phương trình $y'=0$ có hai nghiệm $x_1$, $x_2$ phân biệt trái dấu
+        \[\Leftrightarrow x_1\cdot x_2 <0 \Leftrightarrow \dfrac{1-m^2}{3} < 0 \Leftrightarrow \hoac{& m < -1\\ & m>1.}\]
+        Vì $m\in \mathbb{Z}$ và $m\in (-5;5)$ nên $m\in \{-4;-3;-2;2;3;4\}$. Vậy có $6$ giá trị $m$ thỏa mãn yêu cầu bài toán.
+    }
+\end{vd}
+%%==========Ví dụ 42
+\begin{vd}%[2D1K2-4]
+    Cho hàm số $ y = \dfrac{1}{3}x^3 - mx^2-x $. Tìm tham số $ m $ để hàm
+    số có $ 2 $ điểm cực trị $ x_1 $, $ x_2 $ thỏa mãn $ x_1^2+x_2^2 - x_1x_2=
+    7 $.
+    \loigiai{
+        Ta có $ y' = x^2-2mx-1.$ \\
+        $ \Delta' = m^2+1 > 0 $, $ \forall x \in \mathbb{R} $ nên hàm số
+        luôn có $ 2 $ cực trị.\\
+        Gọi $ x_1 $, $ x_2 $ là hai điểm cực trị của hàm số. Suy
+        ra $ \heva{& S = x_1+x_2 = 2m \\ & P = x_1x_2 = -1.} $\\
+        Khi	đó
+        \begin{eqnarray*}
+            x_1^2+x_2^2 - x_1x_2=7 &\Leftrightarrow& (x_1+x_2)^2-3x_1x_2 = 7
+            \\
+            &\Leftrightarrow& S^2 - 3P=7 \\
+            &\Leftrightarrow& 4m^2 + 3 =7 \\
+            &\Leftrightarrow& m = \pm 1.
+        \end{eqnarray*}
+    }
+\end{vd}
+%%==========Ví dụ 43
+\begin{vd}%[2D1K2-5]
+    Có bao nhiêu giá trị nguyên của $m\in (-9;9)$ sao cho hàm số $y=x^4 + (m+1)x^2 +4$ có $3$ điểm cực trị?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 4 x^3 + 2(m+1)x=0\Leftrightarrow \hoac{&x = 0 \\ & 4x^2 +2(m+1)=0.}$\\
+        Hàm số có $3$ điểm cực trị thì bảng biến thiên có dạng
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[lgt=1,espcl=2]%
+                {$x$/0.6,%
+                    $y'$ /0.6,%
+                    $y$/1.5}%
+                {$-\infty$ , $x_1$,0, $x_2$ , $+\infty$}%
+                \tkzTabLine{ ,-, 0,+,0,-, 0 ,+, }
+                %\tkzTabSlope{1//+\infty,3/-1 /+1}
+                \tkzTabVar %
+                {+ / $+\infty$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $y_{\text{CĐ}}$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $+\infty$ }
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên suy ra, để hàm số có $3$ điểm cực trị, phương trình $4x^2 +2(m+1)=0$ có hai nghiệm phân biệt khác $0$
+        \[\Leftrightarrow -\dfrac{2(m+1)}{4}>0 \Leftrightarrow m<-1.\]
+        Vì $m\in \mathbb{Z}$ và $m\in (-9;9)$ nên $m\in \{ -8;-7;-6;-5;-4;-3;-2\}$.\\
+        Vậy có $7$ giá trị $m$ thỏa mãn yêu cầu bài toán.
+    }
+\end{vd}
+%%==========Ví dụ 44
+\begin{vd}%[2D1B2-5]
+    Có bao nhiêu số nguyên $m$ để đồ thị của hàm số $y=(m-1)x^4+(6-m)x^2+m$ có đúng một cực trị?
+    \loigiai{
+        Xét $m=1$. Khi đó hàm số là $y=5x^2+1$, hàm số này có một cực trị là $1$.\\
+        Xét $m\ne 1$. Khi đó $y'=4(m-1)x^3+12(6-m)x$, $y'=0\Leftrightarrow 4x\left[(m-1)x^2+3(6-m)\right]=0$.\\
+        Hàm số luôn có một điểm cực trị là $x=0$.\\
+        Vậy yêu cầu bài toán tương đương phương trình $(m-1)x^2+3(6-m)=0$ có nghiệm kép $x=0$ hoặc vô nghiệm. Điều này tương đương
+        $$3(m-1)(6-m)\ge 0\Leftrightarrow 1<m\le 6.$$
+        Kết hợp hai trường hợp ta có $1\le m\le 6$. Mà $m\in\mathbb{Z}$ nên $m\in\{1;2;3;4;5;6\}$.
+    }
+\end{vd}
+%%==========Ví dụ 45
+\begin{vd}%[2D1K2-5]
+    Có bao nhiêu giá trị nguyên của $m\in (-5;5)$ sao cho hàm số $y= m^2 x^4 + (m - 4)x^2 + m$ có $2$ điểm cực tiểu và $1$ điểm cực đại?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 4m^2 x^3 + 2(m-4)x=0\Leftrightarrow \hoac{&x = 0 \\ & 4m^2 x^2 +2(m-4)=0.}$\\
+        Hàm số có $2$ điểm cực tiểu và $1$ điểm cực đại thì bảng biến thiên có dạng
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[lgt=1,espcl=2]%
+                {$x$/0.6,%
+                    $y'$ /0.6,%
+                    $y$/1.5}%
+                {$-\infty$ , $x_1$,0, $x_2$ , $+\infty$}%
+                \tkzTabLine{ ,-, 0,+,0,-, 0 ,+, }
+                %\tkzTabSlope{1//+\infty,3/-1 /+1}
+                \tkzTabVar %
+                {+ / $+\infty$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $y_{\text{CĐ}}$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $+\infty$ }
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên suy ra, để hàm số có $2$ điểm cực tiểu và $1$ điểm cực đại, phương trình $4m^2 x^2 +2(m-4)=0$ có hai nghiệm phân biệt khác $0$
+        \[\Leftrightarrow \heva{&m^2\neq 0\\ &-\dfrac{2(m-4)}{4m^2}>0} \Leftrightarrow m<0 \vee 0<m<4.\]
+        Vì $m\in \mathbb{Z}$ và $m\in (-5;5)$ nên $m\in \{-4;-3;-2;-1;1;2;3\}$. Vậy có $7$ giá trị $m$ thỏa mãn yêu cầu bài toán.
+    }
+\end{vd}
+\btvd
+%%==========Bài 37
+\begin{bt}%[2D1K2-4]
+    Cho hàm số $y = x^3 - 3x^2 +(m+1)x + 2$. Có bao nhiêu giá trị nguyên của $m \in (-10;10)$ để hàm số có 2 điểm cực trị?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 3x^2-6 x+m+1$.\\
+        Hàm số đã cho có hai điểm cực trị \\
+        $\Leftrightarrow y' = 3x^2-6 x+m+1 =0$ có hai nghiệm phân biệt
+        \[\Leftrightarrow \heva{&a = 3 \neq 0\\ &\Delta = (-6)^2 - 4\cdot 3\cdot (m+1) >0} \Leftrightarrow 24-12 m >0 \Leftrightarrow m <2.\]\\
+        Vì $m\in \mathrm{Z}$ và $m\in (-10;10)$ nên $m\in \{-9;-8;-7;-6;-5;-4;-3;-2;-1;0;1\}$.}
+\end{bt}
+%%==========Bài 38
+\begin{bt}%[2D1K2-4]
+    Cho hàm số $y = -\dfrac{1}{3} x^3 + m x^2 + (3m+2) x$. Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số không có điểm cực trị?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= -x^2 + 2mx+ 3m+2$.\\
+        Hàm số không có điểm cực trị \\
+        $\Leftrightarrow y' = -x^2 + 2mx+ 3m+2 =0$ vô nghiệm hoặc có nghiệm kép
+        \[\Leftrightarrow \heva{&a = -1 \neq 0\\ &\Delta = (2m)^2 - 4\cdot (-1) \cdot (3m+2) \leq 0} \Leftrightarrow 4 m^2+12 m+8 \leq 0 \Leftrightarrow -2\leq m \leq -1.\]\\
+        Vì $m\in \mathrm{Z}$ nên $m\in \{-2;-1\}$.}
+\end{bt}
+%%==========Bài 39
+\begin{bt}%[2D1K2-4]
+    Tìm tất cả các giá trị của tham số $m$ sao cho hàm số $y = m x^3 - 3 m x^2 + 3 x + 1$ có điểm cực đại nằm bên trái điểm cực tiểu.
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 3m x^2 - 6m x+ 3 $.\\
+        Để hàm số có điểm cực đại nằm bên trái điểm cực tiểu, bảng biến thiên có dạng
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[lgt=1,espcl=2]%
+                {$x$/0.6,%
+                    $y'$ /0.6,%
+                    $y$/1.5}%
+                {$-\infty$ , $x_1$ , $x_2$ , $+\infty$}%
+                \tkzTabLine{ ,+, 0 ,-, 0 ,+, }
+                %\tkzTabSlope{1//+\infty,3/-1 /+1}
+                \tkzTabVar %
+                {- / $-\infty$ ,
+                    + / $y_{\text{CĐ}}$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $+\infty$ }
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên suy ra
+        \[ \heva{&a = 3m > 0\\ &\Delta' = (-3m)^2 - 3 \cdot 3 m > 0}
+        \Leftrightarrow \heva{&m > 0 \\ & m < 0\vee m>1}\Leftrightarrow m>1.\]\\
+        Vậy $m>1$.}
+\end{bt}
+%%==========Bài 40
+\begin{bt}%[2D1K2-4]
+    Có bao nhiêu giá trị nguyên của tham số $m $ để đồ thị hàm số $y= - x^3 + x^2 - (m^2 - 3m ) x - 4$ có $2$ điểm cực trị nằm về hai phía so với trục tung $Oy$?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= -3 x^2 + 2x -( m^2 - 3m)$.\\
+        Để đồ thị hàm số có $2$ điểm cực trị nằm về hai phía so với trục tung $Oy$, phương trình $y'=0$ có hai nghiệm $x_1$, $x_2$ phân biệt trái dấu
+        \[\Leftrightarrow x_1\cdot x_2 <0 \Leftrightarrow \dfrac{-( m^2 - 3m)}{-3} < 0 \Leftrightarrow 0 < m < 3.\]
+        Vì $m\in \mathbb{Z}$ nên $m\in \{ 1;2\}$. Vậy có $2$ giá trị $m$ thỏa mãn yêu cầu bài toán.
+    }
+\end{bt}
+%%==========Bài 41
+\begin{bt}%[2D1K2-4]
+    Biết hàm số $ y = x^3-3x^2+mx-1 $ có $ 2 $ điểm cực trị $ x_1 $, $ x_2 $
+    sao cho $ x_1^2+x_2^2-x_1x_2=13 $. Tìm $m$.
+    \loigiai{
+        Ta có $ y' = 3x^2-6x+m$. \\
+        Để hàm số có hai cực trị thì phương trình $ y'=0 $ có $ 2 $ nghiệm phân
+        biệt \[ \Leftrightarrow \Delta' > 0 \Leftrightarrow 9-3m > 0
+        \Leftrightarrow m <3. \tag{$ * $}\]
+        Gọi $ x_1 $, $ x_2 $ là hai điểm cực trị của hàm số. Suy
+        ra $ \heva{& S = x_1+x_2 = 2 \\ & P = x_1x_2 = \dfrac{m}{3}.} $ \\
+        Khi	đó
+        \begin{eqnarray*}
+            x_1^2+x_2^2-x_1x_2=13 &\Leftrightarrow& (x_1+x_2)^2-3x_1x_2=13 \\
+            &\Leftrightarrow& S^2 - 3P=13 \\
+            &\Leftrightarrow& 4 - 3 \cdot \dfrac{m}{3} =13 \\
+            &\Leftrightarrow& m = -9.
+        \end{eqnarray*}
+        Kết hợp với $ (*) $ suy ra $ m = -9 \in (-15;-7) $.
+    }
+\end{bt}
+%%==========Bài 42
+\begin{bt}%[2D1K2-5]
+    Có bao nhiêu giá trị nguyên của $m $ sao cho hàm số $y=m x^4 + (m - 2)x^2 +1$ có $3$ điểm cực trị?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 4m x^3 + 2(m-2)x=0\Leftrightarrow \hoac{&x = 0 \\ & 4m x^2 +2(m-2)=0.}$\\
+        Hàm số có $3$ điểm cực trị thì bảng biến thiên có dạng
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[lgt=1,espcl=2]%
+                {$x$/0.6,%
+                    $y'$ /0.6,%
+                    $y$/1.5}%
+                {$-\infty$ , $x_1$,0, $x_2$ , $+\infty$}%
+                \tkzTabLine{ ,-, 0,+,0,-, 0 ,+, }
+                %\tkzTabSlope{1//+\infty,3/-1 /+1}
+                \tkzTabVar %
+                {+ / $+\infty$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $y_{\text{CĐ}}$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $+\infty$ }
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên suy ra, để hàm số có $3$ điểm cực trị, phương trình $4mx^2 +2(m-2)=0$ có hai nghiệm phân biệt khác $0$
+        \[\Leftrightarrow \heva{&m\neq 0\\ &-\dfrac{2(m-2)}{4m}>0} \Leftrightarrow 0<m<2.\]
+        Vì $m\in \mathbb{Z}$ nên $m\in \{ 1\}$. Vậy có $1$ giá trị $m$ thỏa mãn yêu cầu bài toán.
+    }
+\end{bt}
+%%==========Bài 43
+\begin{bt}%[2D1B2-5]
+    Tìm tất cả các giá trị của $ m $ để hàm số $y= (m^2-1)x^4 + (m-1)x^2+1-2m$ chỉ có một điểm cực trị.
+    \loigiai{
+        Với $m = 1$, hàm số trở thành $ y = -1 $. Hàm số $ y = -1 $ không có cực trị.\\
+        Với $ m \neq 1$, hàm số có $1$ điểm cực trị
+        \allowdisplaybreaks{
+            \begin{eqnarray*}
+                &\Leftrightarrow & (m^2 - 1)(m-1) \geq 0 \\
+                &\Leftrightarrow & (m-1)^2(m+1) \geq 0\\
+                &\Leftrightarrow & \heva{& m \neq 1 \\ & m \geq -1.}
+            \end{eqnarray*}
+        }
+    }
+\end{bt}
+%%==========Bài 44
+\begin{bt}%[2D1K2-5]
+    Có bao nhiêu giá trị nguyên của $m\in (-6;6)$ để hàm số $y= m x^4 + (m^2 - 9)x^2 + m^2$ có $2$ điểm cực đại và $1$ điểm cực tiểu?
+    \loigiai{
+        Tập xác định $\mathscr{D}=\mathbb{R}$.\\
+        $y’= 4m x^3 + 2(m^2-9)x=0\Leftrightarrow \hoac{&x = 0 \\ & 4m x^2 +2(m^2-9)=0.}$\\
+        Hàm số có $2$ điểm cực đại và $1$ điểm cực tiểu thì bảng biến thiên có dạng
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[lgt=1,espcl=2]%
+                {$x$/0.6,%
+                    $y'$ /0.6,%
+                    $y$/1.5}%
+                {$-\infty$ , $x_1$,0, $x_2$ , $+\infty$}%
+                \tkzTabLine{ ,+, 0,-,0,+, 0 ,-, }
+                %\tkzTabSlope{1//+\infty,3/-1 /+1}
+                \tkzTabVar %
+                {- / $-\infty$ ,
+                    + / $y_{\text{CĐ}}$ ,
+                    - / $y_{\text{CT}}$ ,
+                    + / $y_{\text{CĐ}}$ ,
+                    - / $-\infty$ }
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên suy ra, để hàm số có $2$ điểm cực đại và $1$ điểm cực tiểu, thì $m<0$ và phương trình $4m x^2 +2(m^2-9)=0$ có hai nghiệm phân biệt khác $0$
+        \[\Leftrightarrow \heva{&m < 0\\ &-\dfrac{2(m^2-9)}{4m}>0} \Leftrightarrow m<-3.\]
+        Vì $m\in \mathbb{Z}$ và $m\in (-6;6)$ nên $m\in \{-5;-4\}$. Vậy có $2$ giá trị $m$ thỏa mãn yêu cầu bài toán.
+    }
+\end{bt}
+%%%%%%%%%%%%%%%
+\begin{dang}
+    {Một số bài toán vận dụng và vận dụng cao về cực trị thường gặp}
+\end{dang}
+%%==========Ví dụ 46
+\begin{vd}%[2D1K2-6]
+    Cho hàm số $f(x)$ có bảng biến thiên bên dưới. Trên khoảng $(-\sqrt{5};\sqrt{5})$ thì hàm số $y=f(x^2)$ đạt cực đại tại điểm nào?
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[lgt=1,espcl = 2]
+            {$x$ /0.6, $f'(x)$ /0.6}
+            {$-\infty$,$0$,$2$,$+\infty$}
+            \tkzTabLine{ ,+,0,-,0, +, }
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{Đặt $g(x)=f(x^2)$.\\
+        Khi đó $g'(x)=2x \cdot f'(x^2)$.\\
+        Cho $g'(x)=0 \Leftrightarrow 2x \cdot f'(x^2) =0 \Leftrightarrow
+        \hoac{&x=0\\&f'(x^2)=0 \Leftrightarrow \hoac{x^2=0\\x^2=2} \Leftrightarrow \hoac{x=0\\x=\pm \sqrt{2}}}$\\
+        Bảng xét dấu
+        \begin{center}
+            \begin{tikzpicture}[every node/.style={circle,fill=white,inner sep=0pt},arrow/.style={>=stealth,->,shorten <= 0.3cm,shorten >= 0.3cm},font=\footnotesize,xscale=1,yscale=.6]
+                \def\mnumline{3} %Số dòng
+                \def\mnumcol{9} %Số cột
+                \foreach \j in {0,...,\mnumline}
+                \foreach \i in {0,...,\mnumcol}{
+                    \coordinate (\j\i) at (\i,-\j);
+                }
+                \pgfmathsetmacro\yline{\mnumline/2-1}
+                \path node at (00){$x$} node at (10){$x$} node at (20){$f'(x^2)$} node at (30){$g'(x)$};
+                \foreach \x/\mnamex in {01/$-\sqrt{5}$,03/$-\sqrt{2}$,05/$0$,07/$\sqrt{2}$,0\mnumcol/$\sqrt{5}$} \path node at (\x) {\mnamex};
+                \foreach \dy/\mnamedy in {12/$-$,13/$0$,14/$+$,16/$+$} \path node at (\dy) {\mnamedy};
+                \path node at ($(12)$){$-$} node at ($(13)$){$|$} node at ($(14)$){$-$} node at ($(15)$){$0$} node at ($(16)$){$+$} node at ($(17)$){$|$} node at ($(18)$){$+$} node at ($(22)$){$+$} node at ($(23)$){$0$} node at ($(24)$){$-$} node at ($(25)$){$0$} node at ($(26)$){$-$} node at ($(27)$){$0$} node at ($(28)$){$+$} node at ($(32)$){$-$} node at ($(33)$){$0$} node at ($(34)$){$+$} node at ($(35)$){$0$} node at ($(36)$){$-$} node at ($(37)$){$0$} node at ($(38)$){$+$};
+                \draw[thick] (-.5,.5)rectangle([xshift=0.5cm,yshift=-0.5cm]\mnumline\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]0\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]10)--([xshift=0.5cm,yshift=-0.5cm]1\mnumcol)
+                ([xshift=-0.5cm,yshift=-0.5cm]20)--([xshift=0.5cm,yshift=-0.5cm]2\mnumcol)
+                ([xshift=0.5cm,yshift=0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]\mnumline0); %Lệnh tự động kẻ bảng
+            \end{tikzpicture}
+        \end{center}
+        Dựa vào bảng xét dấu ta xác định được hàm số đạt cực đại tại $x=0$.
+    }
+\end{vd}
+%%==========Ví dụ 47
+\begin{vd}%[2D1K2-6]
+    \immini{
+        Cho hàm số $y=f(x)$ xác định trên $\mathbb{R}$ và hàm số $y=f'(x)$ có đồ thị như hình vẽ. Hàm số $y=f(1-x^2)$ đạt cực đại tại điểm nào?
+    }{
+        \begin{tikzpicture}[scale=0.3,>=stealth, font=\footnotesize, line join=round, line cap=round]
+            \def\a{1} \def\b{-2} \def\c{-2.5} % Hệ số
+            \def\xmin{-4} \def\xmax{5}
+            \def\ymin{-4} \def\ymax{5}
+            %\draw[color=gray!50,dashed] (\xmin,\ymin) grid (\xmax,\ymax);
+            \draw[->] (\xmin,0)--(\xmax,0);
+            \draw[->] (0,\ymin)--(0,\ymax);
+            \node at (0,0) [below right]{$O$};
+            \node at (-1,0) [below left]{$-1$};
+            \node at (3,0) [below right]{$3$};
+            \clip (\xmin+0.1,\ymin+0.1) rectangle (\xmax-0.5,\ymax-0.1);
+            \draw[smooth,samples=300] plot(\x,{\a*(\x)^2+\b*(\x)+\c});
+        \end{tikzpicture}
+    }
+    \loigiai{
+        Đặt $g(x)=f(1-x^2)$\\
+        Khi đó $g'(x)=-2x\cdot f'(1-x^2)$\\
+        Cho $g'(x)=0 \Leftrightarrow -2x \cdot f'(1-x^2) =0$
+        $$ \Leftrightarrow \hoac{&x=0\\&f'(1-x^2)=0 \Leftrightarrow \hoac{&1-x^2=-1\Leftrightarrow x^2=2 \Leftrightarrow x=\pm \sqrt{2}\\&1-x^2=3}}$$
+        Bảng xét dấu
+        \begin{center}
+            \begin{tikzpicture}[every node/.style={circle,fill=white,inner sep=0pt},arrow/.style={>=stealth,->,shorten <= 0.3cm,shorten >= 0.3cm},font=\footnotesize,xscale=1.4,yscale=.6]
+                \def\mnumline{3} %Số dòng
+                \def\mnumcol{9} %Số cột
+                \foreach \j in {0,...,\mnumline}
+                \foreach \i in {0,...,\mnumcol}{
+                    \coordinate (\j\i) at (\i,-\j);
+                }
+                \pgfmathsetmacro\yline{\mnumline/2-1}
+                \path node at (00){$x$} node at (10){$-x$} node at (20){\scriptsize $f'(1-x^2)$} node at (30){$g'(x)$};
+                \foreach \x/\mnamex in {01/$-\infty$,03/$-\sqrt{2}$,05/$0$,07/$\sqrt{2}$,0\mnumcol/$+\infty$} \path node at (\x) {\mnamex};
+                \foreach \dy/\mnamedy in {12/$-$,13/$0$,14/$+$,16/$+$} \path node at (\dy) {\mnamedy};
+                \path node at ($(12)$){$+$} node at ($(13)$){$|$} node at ($(14)$){$+$} node at ($(15)$){$0$} node at ($(16)$){$-$} node at ($(17)$){$|$} node at ($(18)$){$-$} node at ($(22)$){$+$} node at ($(23)$){$0$} node at ($(24)$){$-$} node at ($(25)$){$|$} node at ($(26)$){$-$} node at ($(27)$){$0$} node at ($(28)$){$+$} node at ($(32)$){$+$} node at ($(33)$){$0$} node at ($(34)$){$-$} node at ($(35)$){$0$} node at ($(36)$){$+$} node at ($(37)$){$0$} node at ($(38)$){$-$};
+                \draw[thick] (-.5,.5)rectangle([xshift=0.5cm,yshift=-0.5cm]\mnumline\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]0\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]10)--([xshift=0.5cm,yshift=-0.5cm]1\mnumcol)
+                ([xshift=-0.5cm,yshift=-0.5cm]20)--([xshift=0.5cm,yshift=-0.5cm]2\mnumcol)
+                ([xshift=0.5cm,yshift=0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]\mnumline0); %Lệnh tự động kẻ bảng
+            \end{tikzpicture}
+        \end{center}
+        Dựa vào bảng xét dấu ta xác định được hàm số đạt cực đại tại $x=\pm \sqrt{2}$.}
+\end{vd}
+%%==========Ví dụ 48
+\begin{vd}%[2D1K2-6]
+    Cho hàm $f(x)$ có đạo hàm $f'(x)=x^2-2x,\forall x\in \mathbb{R}$. Hàm số $y=f\left(1-\dfrac{1}{2}x\right)+4x$ có bao nhiêu điểm cực trị?
+    \loigiai{
+        Ta có $y'=-\dfrac{1}{2}f'\left(1-\dfrac{1}{2}x\right)+4$\\
+        $y'=0 \Leftrightarrow
+        f'\left(1-\dfrac{1}{2}x\right)=8\Leftrightarrow \left(1-\dfrac{1}{2}x\right)^2-2\left(1-\dfrac{1}{2}x\right)=8 \Leftrightarrow \dfrac{1}{4}x^2-9=0
+        \Leftrightarrow \hoac{&x=-6\\&x=6}$\\
+        Bảng xét dấu
+        \begin{center}
+            \begin{tikzpicture}[every node/.style={circle,fill=white,inner sep=0pt},arrow/.style={>=stealth,->,shorten <= 0.3cm,shorten >= 0.3cm},font=\footnotesize,xscale=1,yscale=0.6]
+                \def\mnumline{1} %Số dòng
+                \def\mnumcol{7} %Số cột
+                \foreach \j in {0,...,\mnumline}
+                \foreach \i in {0,...,\mnumcol}{
+                }
+                \pgfmathsetmacro\yline{\mnumline/2-1}
+                \path node at (00){$x$} node at (10){$y'$};
+                \foreach \x/\mnamex in {01/$-\infty$,03/$-6$,05/$6$,0\mnumcol/$+\infty$} \path node at (\x) {\mnamex};
+                \foreach \dy/\mnamedy in {12/$+$,13/$0$,14/$-$,15/$0$,16/$+$} \path node at (\dy) {\mnamedy};
+                \draw[thick] (-.5,.5)rectangle([xshift=0.5cm,yshift=-0.5cm]\mnumline\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]0\mnumcol) ([xshift=0.5cm,yshift=0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]\mnumline0); %Lệnh tự động kẻ bảng
+            \end{tikzpicture}
+        \end{center}
+        Vậy hàm số $y=f\left(1-\dfrac{1}{2}x\right)+4x$ có 2 điểm cực trị.}
+\end{vd}
+%%==========Ví dụ 49
+\begin{vd}%[2D1K2-6]
+    Cho hàm $f(x)$ có đạo hàm $f'(x)=(x^2-3)(x^2+1),\forall x\in \mathbb{R}$. Có bao nhiêu giá trị nguyên dương của tham số $m$ để hàm số $y=f(x)-mx$ có 4 điểm cực trị?
+    \loigiai{
+        Xét hàm số $g(x)=f'(x)=x^4-2x^2-3$ có được bảng biến thiên sau \begin{center}
+            \begin{tikzpicture}[every node/.style={circle,fill=white,inner sep=0pt},arrow/.style={>=stealth,->,shorten <= 0.3cm,shorten >= 0.3cm},font=\footnotesize,xscale=1,yscale=0.6]
+                \def\mnumline{4} %Số dòng
+                \def\mnumcol{9} %Số cột
+                \foreach \j in {0,...,\mnumline}
+                \foreach \i in {0,...,\mnumcol}{
+                    \coordinate (\j\i) at (\i,-\j);
+                }
+                \pgfmathsetmacro\yline{\mnumline/2-1}
+                \path node at (00){$x$} node at (10){$g'(x)$} node at ([yshift=\yline cm]\mnumline0){$g(x)$};
+                \foreach \x/\mnamex in {01/$-\infty$,03/$-1$,05/$0$,07/$1$,0\mnumcol/$+\infty$} \path node at (\x) {\mnamex};
+                \foreach \dy/\mnamedy in {12/$-$,13/$0$,14/$+$,15/$0$,16/$-$,17/$0$,18/$+$} \path node at (\dy) {\mnamedy};
+                \path node at ($(21)$){$+\infty$} node at ($(43)$){$-4$} node at ($(25)$){$-3$} node at ($(47)$){$-4$} node at ($(29)$){$+\infty$};
+                \draw[arrow] ($(21)$)--($(43)$);
+                \draw[arrow] ($(43)$)--($(25)$);
+                \draw[arrow] ($(25)$)--($(47)$);
+                \draw[arrow] ($(47)$)--($(29)$);
+                \draw[thick] (-.5,.5)rectangle([xshift=0.5cm,yshift=-0.5cm]\mnumline\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]0\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]10)--([xshift=0.5cm,yshift=-0.5cm]1\mnumcol) ([xshift=0.5cm,yshift=0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]\mnumline0);
+            \end{tikzpicture}
+        \end{center}
+        Lại có $y'=f'(x)-m$ để hàm số đã cho có 4 điểm cực trị thì $y'=0 \Leftrightarrow f'(x)=m$ có 4 nghiệm phân biệt.\\
+        Dựa vào bảng biến thiên trên ta có $-4<m<-3$.\\
+        Vậy không có giá trị nguyên dương nào thỏa mãn yêu cầu bài toán.}
+\end{vd}
+%%==========Ví dụ 50
+\begin{vd}%[2D1K2-6]
+    \immini{Cho hàm số $y=f(x)$ có đồ thị đạo hàm $f'(x)$ như hình vẽ bên dưới. Có bao nhiêu giá trị nguyên của tham số $m$ thuộc khoảng $(-12;12)$ sao cho hàm số $y=f(x)+mx+12$ có đúng một điểm cực trị?
+    }{
+        \begin{tikzpicture}[>=stealth,scale=0.6]
+            \draw[->,line width = 1pt] (-3,0)--(0,0) node[above left]{$O$}--(3,0) node[below]{$x$};
+            \draw[->,line width = 1pt] (0,-2) --(0,4) node[right]{$y$};
+            \draw (-1,0) node[below]{$-1$} circle (1pt);
+            \draw (0,3) node[right]{$3$} circle (1pt);
+            \draw (0,-1) node[left]{$-1$} circle (1pt);
+            \draw (1,0) node[above]{$1$} circle (1pt);
+            \draw [thick, domain=-2.1:2.1, samples=100] %
+            plot (\x, {(\x)^3-3*(\x)+1});
+            \draw [dashed] (-1,0)--(-1,3)--(0,3);
+            \draw [dashed] (0,-1)--(1,-1)--(1,0);
+    \end{tikzpicture}}
+    \loigiai{
+        Đặt $y=g(x)=f(x)+mx+12 \Rightarrow g'(x)=f'(x)+m$.\\
+        Hàm số $y=g(x)$ có đúng $1$ điểm cực trị khi và chỉ khi phương trình $g'(x)=0 \Leftrightarrow f'(x)=-m$ có đúng 1 nghiệm.\\
+        Từ đồ thị hàm số $f'(x)$ ta suy ra $\hoac{&-m<-1\\&-m>3}\Leftrightarrow \hoac{&m<-3\\&m>1}$.	\\
+        Kết hợp điều kiện $m\in(-12;12)$ ta được $18$ số nguyên $m$.
+    }
+\end{vd}
+%%==========Ví dụ 51
+\begin{vd}%[2D1G2-6]
+    \immini{
+        Cho hàm số $f(x)=ax^4+bx^3+cx^2+dx+e, (ae<0)$. Đồ thì hàm số $y=f'(x)$ như hình bên dưới. Hàm số $y=\left|4f(x)-x^2\right|$ có bao nhiêu điểm cực tiểu?
+    }{
+        \begin{tikzpicture}[>=stealth,x=1.0cm,y=1.0cm,thick, scale=0.8]
+            \draw[->] (-2,0) -- (3,0) node[below] {\footnotesize $x$};
+            \draw[->] (0,-1) -- (0,3) node[left] {\footnotesize $y$};
+            \draw (0,0) node[below left] {\footnotesize $O$} circle (1pt);
+            \draw[smooth](0,0) parabola bend (-0.6,-1)(-1.7,1.7);
+            \draw(0,0) parabola bend (1.3,2.5)(2,1);
+            \draw [dashed] (0,1)--(2,1)--(2,0);
+            \draw [dashed] (-1.05,0)--(-1.05,-0.5)--(0,-0.5);
+            \draw (-1,0) node[above] {\footnotesize $-1$};
+            \draw (0,-0.5) node[right] {\footnotesize $-\dfrac{1}{2}$};
+            \draw (0,1) node[left] {\footnotesize $1$};
+            \draw (2,0) node[below] {\footnotesize $2$};
+        \end{tikzpicture}
+    }
+    \loigiai{
+        \immini{
+            Ta có $f'(x)=4ax^3+3bx^2+2cx+d$. Từ đồ thị hàm số $f'(x)$ suy ra $a<0$, do đó $e>0$.\\
+            Đặt $y=g(x)=4f(x)-x^2\Rightarrow g'(x)	=4f'(x)-2x=4\left[f'(x)-\dfrac{x}{2}\right]$.\\
+            Suy ra $g'(x)=0\Leftrightarrow f'(x)-\dfrac{x}{2}=0\Leftrightarrow f'(x)=\dfrac{x}{2}\Leftrightarrow \hoac{&x=-1\\&x=0\\&x=2}$.
+        }{
+            \begin{tikzpicture}[>=stealth,x=1.0cm,y=1.0cm,thick, scale=0.8]
+                \draw[->] (-2,0) -- (3,0) node[below] {\footnotesize $x$};
+                \draw[->] (0,-1) -- (0,3) node[left] {\footnotesize $y$};
+                \draw (0,0) node[below left] {\footnotesize $O$} circle (1pt);
+                \draw[smooth](0,0) parabola bend (-0.6,-1)(-1.7,1.7);
+                \draw(0,0) parabola bend (1.3,2.5)(2,1);
+                \draw [dashed] (0,1)--(2,1)--(2,0);
+                \draw [dashed] (-1.05,0)--(-1.05,-0.5)--(0,-0.5);
+                \draw (-1,0) node[above] {\footnotesize $-1$};
+                \draw (0,-0.5) node[right] {\footnotesize $-\dfrac{1}{2}$};
+                \draw (0,1) node[left] {\footnotesize $1$};
+                \draw (2,0) node[below] {\footnotesize $2$};
+                \draw [thick, domain=-2.1:2.5, samples=100] %
+                plot (\x, {0.5*(\x)});
+            \end{tikzpicture}
+        }
+        Bảng biến thiên
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[nocadre=false,lgt=1.2,espcl=2.3]
+                {$x$ /0.6,$g'(x)$ /0.6,$g(x)$ /2}
+                {$-\infty$,$-1$,$0$,$2$,$+\infty$}
+                \tkzTabLine{,+,$0$,-,$0$,+,$0$,-,}
+                \tkzTabVar{-/,+/,-/$4e$,+/,-/}
+            \end{tikzpicture}
+        \end{center}
+        Vì $4e>0$ nên từ bảng biến thiên hàm số $g(x)$ ta suy ra hàm số $y=\left|g(x)\right|$ có $3$ điểm cực tiểu.
+    }
+\end{vd}
+%================
+\btvd
+%%==========Bài 45
+\begin{bt}%[2D1K2-6]
+    Cho hàm số $f(x)$ có bảng biến thiên bên dưới. Hàm số $y=f(x^2-2)$ đạt cực đại tại điểm nào?
+    \begin{center}
+        \begin{tikzpicture}
+            \tkzTabInit[lgt=1,espcl = 2]
+            {$x$ /0.6, $f'(x)$ /0.6}
+            {$-\infty$,$-1$,$2$,$+\infty$}
+            \tkzTabLine{ ,-,0,-,0, +, }
+        \end{tikzpicture}
+    \end{center}
+    \loigiai{Đặt $g(x)=f(x^2-2)$\\
+        Khi đó $g'(x)=2x \cdot f'(x^2-2)$\\
+        Cho $g'(x)=0 \Leftrightarrow 2x \cdot f'(x^2-2) =0$
+        $$ \Leftrightarrow \hoac{&x=0\\&f'(x^2-2)=0 \Leftrightarrow \hoac{&x^2-2=-1\\&x^2-2=2} \Leftrightarrow \hoac{x^2=1\\x^2=4} \Leftrightarrow \hoac{x=\pm 1\\x=\pm 2}}$$
+        Bảng xét dấu
+        \begin{center}
+            \begin{tikzpicture}[every node/.style={circle,fill=white,inner sep=0pt},arrow/.style={>=stealth,->,shorten <= 0.3cm,shorten >= 0.3cm},font=\footnotesize,xscale=1,yscale=0.6]
+                \def\mnumline{3} %Số dòng
+                \def\mnumcol{14} %Số cột
+                \foreach \j in {0,...,\mnumline}
+                \foreach \i in {0,...,\mnumcol}{
+                    \coordinate (\j\i) at (\i,-\j);
+                }
+                \pgfmathsetmacro\yline{\mnumline/2-1}
+                \path node at ([xshift=0.5cm]00){$x$} node at ([xshift=0.5cm]10){$x$} node at ([xshift=0.5cm]20){$f'\left(x^2-2\right)$} node at ([xshift=0.5cm]\mnumline0){$g'(x)$};
+                \foreach \x/\mnamex in {02/$-\infty$,04/$-2$,06/$-1$,08/$0$,010/$1$,012/$2$,0\mnumcol/$+\infty$} \path node at (\x) {\mnamex};
+                \foreach \dy/\mnamedy in {13/$-$,14/$0$,15/$+$,16/$+$} \path node at (\dy) {\mnamedy};
+                \path node at ($(13)$){$-$} node at ($(14)$){$|$} node at ($(15)$){$-$} node at ($(16)$){$|$} node at ($(17)$){$-$} node at ($(18)$){$0$} node at ($(19)$){$+$} node at ($(110)$){$|$} node at ($(111)$){$+$} node at ($(112)$){$|$} node at ($(113)$){$+$}
+                node at ($(23)$){$+$} node at ($(24)$){$0$} node at ($(25)$){$-$} node at ($(26)$){$0$} node at ($(27)$){$-$} node at ($(28)$){$|$} node at ($(29)$){$-$} node at ($(210)$){$0$} node at ($(211)$){$-$} node at ($(212)$){$0$} node at ($(213)$){$+$}
+                node at ($(33)$){$-$} node at ($(34)$){$0$} node at ($(35)$){$+$} node at ($(36)$){$0$} node at ($(37)$){$+$} node at ($(38)$){$0$} node at ($(39)$){$-$} node at ($(310)$){$0$} node at ($(311)$){$-$} node at ($(312)$){$0$} node at ($(313)$){$+$};
+                \draw[thick] (-.5,.5)rectangle([xshift=0.5cm,yshift=-0.5cm]\mnumline\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]0\mnumcol)
+                ([xshift=-0.5cm,yshift=-0.5cm]20)--([xshift=0.5cm,yshift=-0.5cm]2\mnumcol)
+                ([xshift=-0.5cm,yshift=-0.5cm]10)--([xshift=0.5cm,yshift=-0.5cm]1\mnumcol) ([xshift=0.5cm,yshift=0.5cm]01)--([xshift=0.5cm,yshift=-0.5cm]\mnumline1); %Lệnh tự động kẻ bảng
+            \end{tikzpicture}
+        \end{center}
+        Dựa vào bảng xét dấu ta xác định được hàm số đạt cực đại tại $x=0$.
+    }
+\end{bt}
+%%==========Bài 46
+\begin{bt}%[2D1K2-6]
+    \immini{
+        Cho hàm số $f(x)$ có đồ thị $f'(x)$ có đồ thị như hình vẽ. Hàm số $y=f(1-2x)$ có bao nhiêu cực trị?
+    }{
+        \begin{tikzpicture}[>=stealth,x=1.0cm,y=1.0cm,scale=0.6]
+            \draw[->] (0,-1)--(0,4)node[right]{\scriptsize $y$};
+            \draw[->] (-2,0)--(5,0)node[below]{\scriptsize $x$};
+            \fill (0,0) node[below left]{\scriptsize $O$} circle(1.5pt);
+            \draw (-0.8,0) node[below left]{\scriptsize $-1$} (0.9,0) node[below]{\scriptsize $1$} (2,0) node[below]{\scriptsize $2$} (4,0) node[below]{\scriptsize $4$};
+            \draw[thick] plot[smooth,tension=.65] coordinates{(-1.05,-0.9) (-0.3,2.5) (1.2,-0.5) (2.7,0.7) (4.2,0.2) (4.8,4)};
+        \end{tikzpicture}
+    }
+    \loigiai{
+        Đặt $g(x)=f(1-2x)$\\
+        Dựa vào đồ thị, ta thấy $f'(x)=0$ có nghiệm $x_1=-1,x_2=1,x_3=2$ và $x_4=4$ nên $f'(x)$ có dạng $$f'(x)=k(x+1)(x-1)(x-2)(x-4)$$
+        Khi đó $g'(x)=-2f'(1-2x)=-2k(2-2x)(-2x)(-1-2x)(-3-2x)^2$
+        $$g'(x)=0 \Leftrightarrow \hoac{&x=1\\&x=0\\&x=-\dfrac{1}{2}\\&x=-\dfrac{3}{2} \text{ (kép)}}$$
+        Bảng xét dấu $g'(x)$
+        \begin{center}
+            \begin{tikzpicture}[every node/.style={circle,fill=white,inner sep=0pt},arrow/.style={>=stealth,->,shorten <= 0.3cm,shorten >= 0.3cm},font=\footnotesize,xscale=1,yscale=0.6]
+                \def\mnumline{1} %Số dòng
+                \def\mnumcol{11} %Số cột
+                \foreach \j in {0,...,\mnumline}
+                \foreach \i in {0,...,\mnumcol}{
+                    \coordinate (\j\i) at (\i,-\j);
+                }
+                \pgfmathsetmacro\yline{\mnumline/2-1}
+                \path node at (00){$x$} node at (10){$g'(x)$};
+                \foreach \x/\mnamex in {01/$-\infty$,03/$-\frac{3}{2}$,05/$-\frac{1}{2}$,07/$0$,09/$1$,0\mnumcol/$+\infty$} \path node at (\x) {\mnamex};
+                \foreach \dy/\mnamedy in {12/$-$,13/$0$,14/$-$,15/$0$,16/$+$,17/$0$,18/$-$,19/$0$,110/$+$} \path node at (\dy) {\mnamedy};
+                \draw[thick] (-.5,.5)rectangle([xshift=0.5cm,yshift=-0.5cm]\mnumline\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]0\mnumcol) ([xshift=0.5cm,yshift=0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]\mnumline0);
+            \end{tikzpicture}
+        \end{center}
+        Dựa vào bảng xét dấu, ta thấy $g'(x)$ đổi dấu 3 lần nên $y=f(1-2x)$ có 3 cực trị.
+    }
+\end{bt}
+%%==========Bài 47
+\begin{bt}%[2D1K2-6]
+    Cho hàm $f(x)$ có đạo hàm $f'(x)=-x^3-2x^2,\forall x\in \mathbb{R}$. Có bao nhiêu giá trị nguyên dương của tham số $m$ để hàm số $g(x)=f(x)+mx+3$ có 3 điểm cực trị?
+    \loigiai{
+        Xét hàm số $f'(x)=-x^3-2x^2$ có được bảng biến thiên sau
+        \begin{center}
+            \begin{tikzpicture}[every node/.style={circle,fill=white,inner sep=0pt},arrow/.style={>=stealth,->,shorten <= 0.3cm,shorten >= 0.3cm},font=\footnotesize,xscale=1.2,yscale=0.6]
+                \def\mnumline{4} %Số dòng
+                \def\mnumcol{7} %Số cột
+                \foreach \j in {0,...,\mnumline}
+                \foreach \i in {0,...,\mnumcol}{
+                    \coordinate (\j\i) at (\i,-\j);
+                }
+                \pgfmathsetmacro\yline{\mnumline/2-1}
+                \path node at (00){$x$} node at (10){$f'(x)$} node at ([yshift=\yline cm]\mnumline0){$f(x)$};
+                \foreach \x/\mnamex in {01/$-\infty$,03/$-\frac{4}{3}$,05/$0$,0\mnumcol/$+\infty$} \path node at (\x) {\mnamex};
+                \foreach \dy/\mnamedy in {12/$-$,13/$0$,14/$+$,15/$0$,16/$-$} \path node at (\dy) {\mnamedy};
+                \path node at ($(21)$){$+\infty$} node at ($(43)$){$-\dfrac{32}{27}$} node at ($(25)$){$0$} node at ($(47)$){$-\infty$};
+                \draw[arrow] ($(21)$)--($(43)$);
+                \draw[arrow] ($(43)$)--($(25)$);
+                \draw[arrow] ($(25)$)--($(47)$);
+                \draw[thick] (-.5,.5)rectangle([xshift=0.5cm,yshift=-0.5cm]\mnumline\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]0\mnumcol) ([xshift=-0.5cm,yshift=-0.5cm]10)--([xshift=0.5cm,yshift=-0.5cm]1\mnumcol) ([xshift=0.5cm,yshift=0.5cm]00)--([xshift=0.5cm,yshift=-0.5cm]\mnumline0);
+            \end{tikzpicture}
+        \end{center}
+        Lại có $g'(x)=f'(x)+m$, để hàm số có 3 cực trị thì $g'(x)=0$ có 3 nghiệm phân biệt khi và chỉ khi $$-\dfrac{32}{27}\leq -m \leq 0 \Leftrightarrow 0 \leq m \leq \dfrac{32}{27}.$$
+        Vậy có một giá trị nguyên dương thỏa mãn yêu cầu bài toán.}
+\end{bt}
+%%==========Bài 48
+\begin{bt}%[2D1K2-6]
+    Cho hàm $f(x)$ có đạo hàm $f'(x)=x^2-2x,\forall x\in \mathbb{R}$. Hàm số $y=f\left(x^2-8x\right)$ có bao nhiêu điểm cực trị?
+    \loigiai{
+        Ta có $f'(x)=0 \Leftrightarrow \hoac{&x=0\\&x=2}$\\
+        $y'=(2x-8)f'(x^2-8x) \Leftrightarrow \hoac{&2x-8=0\\&f'(x^2-8x)=0} \Leftrightarrow \hoac{&x=4\\&x^2-8x=0\\&x^2-8x=2}\Leftrightarrow \hoac{&x=4\\&x=0\\&x=8\\&x=4-3\sqrt{2}\\&x=4+3\sqrt{2}.}$\\
+        Vì phương trình $y'=0$ có $5$ nghiệm đơn, vì vậy hàm số $y=f\left(x^2-8x\right)$ có $5$ cực trị. }
+\end{bt}
+%%==========Bài 49
+\begin{bt}%[2D1G2-6]
+    \immini{
+        Cho hàm số bậc bốn $f(x)$ có $f(0)=-1$. Hàm số $y=f'(x)$ có đồ thị là hình bên. Số điểm cực trị của hàm số $y=\vert 4f(x+1)+x^2+2x\vert$ là
+    }{
+        \begin{tikzpicture}[>=stealth,x=1.0cm,y=1.0cm,thick, scale=0.5]
+            \draw[->] (-3.5,0) -- (5,0) node[below] {\footnotesize $x$};
+            \draw[->] (0,-4) -- (0,2) node[left] {\footnotesize $y$};
+            \draw (0,0) node[below left] {\footnotesize $O$} circle (1pt);
+            \draw[very thick] (-3.6,-3.6) ..controls +(60:0.2) and +(-180:1.3).. (-1.5,1.2) ..controls +(0:1.6) and +(-180:1.6) .. (2.8,-3.4)..controls +(0:0.5) and +(-100:4.5) .. (4.95,1.8);
+            \draw [dashed] (-2,0)--(-2,1)--(0,1);
+            \draw [dashed] (0,-2)--(4,-2)--(4,0);
+            \draw (-2,0) node[below] {\footnotesize $-2$};
+            \draw (0,-2) node[left] {\footnotesize $-2$};
+            \draw (0,1) node[right] {\footnotesize $1$};
+            \draw (4,0) node[above] {\footnotesize $4$};
+        \end{tikzpicture}
+    }
+    \loigiai{
+        \immini{
+            Đặt $y=g(x)=4f(x+1)+x^2+2x\Rightarrow g'(x)=4f'(x+1)+2x+2=4\left[f'(x+1)+\dfrac{x+1}{2}\right]$.\\
+            Suy ra $g'(x)=0\Leftrightarrow f'(x+1)=-\dfrac{x+1}{2}$.\\
+            Đặt $t=x+1$ thì phương trình trở thành $f'(t)=-\dfrac{t}{2}$. Nghiệm của phương trình này là hoành độ giao điểm của đồ thị hàm số $y=f'(t)$ và $y=-\dfrac{t}{2}$.}{
+            \begin{tikzpicture}[>=stealth,x=1.0cm,y=1.0cm,thick, scale=0.5]
+                \draw[->] (-3.5,0) -- (5,0) node[below] {\footnotesize $t$};
+                \draw[->] (0,-4) -- (0,2) node[left] {\footnotesize $y$};
+                \draw (0,0) node[below left] {\footnotesize $O$} circle (1pt);
+                \draw[very thick] (-3.6,-3.6) ..controls +(60:0.2) and +(-180:1.3).. (-1.5,1.2) ..controls +(0:1.6) and +(-180:1.6) .. (2.8,-3.4)..controls +(0:0.5) and +(-100:4.5) .. (4.95,1.8);
+                \draw [thick, domain=-3.5:5, samples=100] %
+                plot (\x, {-0.5*(\x)});
+                \draw [dashed] (-2,0)--(-2,1)--(0,1);
+                \draw [dashed] (0,-2)--(4,-2)--(4,0);
+                \draw (-2,0) node[below] {\footnotesize $-2$};
+                \draw (0,-2) node[left] {\footnotesize $-2$};
+                \draw (0,1) node[right] {\footnotesize $1$};
+                \draw (4,0) node[above] {\footnotesize $4$};
+            \end{tikzpicture}
+        }
+        Do đó\\
+        $$f'(t)=-\dfrac{t}{2}\Leftrightarrow\hoac{&t=-2\\&t=0\\&t=4}\Rightarrow \hoac{&x+1=-2\\&x+1=0\\&x+1=4}\Leftrightarrow \hoac{&x=-3\\&x=-1\\&x=3.}$$
+        Bảng biến thiên
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[nocadre=false,lgt=1.2,espcl=2.3]
+                {$x$ /0.6,$g'(x)$ /0.6,$g(x)$ /2}
+                {$-\infty$,$-3$,$-1$,$3$,$+\infty$}
+                \tkzTabLine{,-,$0$,+,$0$,-,$0$,+,}
+                \tkzTabVar{+/,-/,+/$-5$,-/,+/}
+            \end{tikzpicture}
+        \end{center}
+        Từ bảng biến thiên suy ra hàm số $y=g(x)$ có $3$ cực trị âm, do đó hàm số $y=\left|g(x)\right|$ có $5$ điểm cực trị.
+    }
+\end{bt}
+%%==========Bài 50
+\begin{bt}%[2D1K2-6]
+    \immini{Cho hàm số $f=f(x)$ có đạo hàm trên $\mathbb{R}$. Đồ thị hàm số $y=f'(x)$ như hình vẽ. Tìm tất cả các giá trị của tham số $m$ để hàm số $y=f(x)-mx$ có $3$ điểm cực trị?
+    }{
+        \begin{tikzpicture}[>=stealth,scale=0.6]
+            \draw[->,line width = 1pt] (-3,0)--(0,0) node[above left]{$O$}--(3,0) node[below]{$x$};
+            \draw[->,line width = 1pt] (0,-1) --(0,5) node[right]{$y$};
+            \draw (-1,0) node[below]{$-1$} circle (1pt);
+            \draw (0,2) node[right]{$2$} circle (1pt);
+            \draw (0,4) node[right]{$4$} circle (1pt);
+            \draw (0,-1) node[left]{$-1$} circle (1pt);
+            \draw (1,0) node[above]{$1$} circle (1pt);
+            \draw [thick, domain=-2.1:2.1, samples=100] %
+            plot (\x, {(\x)^3-3*(\x)+2});
+            \draw [dashed] (-1,0)--(-1,4)--(0,4);
+    \end{tikzpicture}}
+    \loigiai{
+        Đặt $y=g(x)=f(x)-mx \Rightarrow g'(x)=f'(x)-m$.\\
+        Hàm số $g(x)$ có $3$ điểm cực trị khi và chỉ khi phương trình $g'(x)=0$ có $3$ nghiệm phân biệt.\\
+        Suy ra $0<m<4$.
+    }
+\end{bt}
