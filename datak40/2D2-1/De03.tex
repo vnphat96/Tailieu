@@ -320,6 +320,28 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 	{$\vec{SB}+\vec{AB}+\vec{SC}+\vec{AC}=4\vec{MN}$}
 	{Gọi $I$ là trọng tâm của tứ diện. Khoảng cách từ $I$ đến $(ABC)$ bằng $\dfrac{3a\sqrt{6}}{4}$}
 	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def\ac{4} % cạnh AC
+				\def\ab{2} % cạnh AB
+				\def\as{4} % cạnh AS
+				\def\gocA{50} % góc A của đáy
+				\path
+				(0,0) coordinate (A)
+				(\ac,0) coordinate (C)
+				(-\gocA:\ab) coordinate (B)
+				(70:\as) coordinate (S)
+				($(S)!.5!(A)$) coordinate (M)
+				($(B)!.5!(C)$) coordinate (N)
+				($(M)!.5!(N)$) coordinate (I)
+				($(A)!2/3!(N)$) coordinate (G)
+				;
+				\draw (A)--(B)--(C)--(S)--cycle (S)--(B) (S)--(N) (M)--(B);
+				\draw (S)--(A)node[midway,above left]{$a$};
+				\draw[dashed] (A)--(C)--(M)--(N)--(A) (S)--(G) ;
+				\foreach \x/\g in {A/180,B/-90,C/0,S/90}\fill (\x) circle (1pt)+(\g:3mm) node[black]{$\x$};
+			\end{tikzpicture}
+		\end{center}
 		\begin{enumerate}[a)]
 			\item $|\vec{SA}|=SA=a$.
 			\item $\vec{SA} \cdot \vec{SB}=\left| \vec{SA} \right| \cdot \left| \vec{SB} \right| \cdot \sin \widehat{ASB}=a \cdot a \cdot \sin 60^\circ=\dfrac{a^2\sqrt{3}}{2}$.
@@ -340,22 +362,46 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 \end{ex}
 %Câu 14
 \begin{ex}
-	Cho hình lập phương $ABCD.A_1B_1C_1D_1$ có cạnh $a$. Gọi $M$ là trung điểm $AD$. Các mệnh đề sau đúng hay sai?
+	Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh $a$. Gọi $M$ là trung điểm $AD$. Các mệnh đề sau đúng hay sai?
 	\choiceTF
-	{$\vec{A_1B_1}=\vec{CD}$}
-	{\True $\vec{DC_1}=\vec{DC}+\vec{DD_1}$}
-	{\True $\vec{AB_1} \cdot \vec{CD_1}=0$}
-	{$\vec{B_1M} =\vec{BB_1}+\vec{A_1B_1
-	}+\dfrac{1}{2}\vec{B_1C_1}$}
+	{$\vec{A'B'}=\vec{CD}$}
+	{\True $\vec{DC'}=\vec{DC}+\vec{DD'}$}
+	{\True $\vec{AB'} \cdot \vec{CD'}=0$}
+	{$\vec{B'M} =\vec{BB'}+\vec{A'B'
+	}+\dfrac{1}{2}\vec{B'C'}$}
 	\loigiai{
-		{\centering\color{red} HINH O DAY}\\
+		\begin{center}
+			\begin{tikzpicture}[line join = round, line cap = round, thick, font = \small, scale = .7]
+				\def \canh{4}
+				\path 
+				(0:0) coordinate (D')
+				+(90:\canh) coordinate (D)
+				+(0:\canh) coordinate (C')
+				+(40:.6*\canh) coordinate (A')
+				($(C')+(D)-(D')$) coordinate (C)
+				($(D)+(A')-(D')$) coordinate (A)
+				($(C')+(A')-(D')$) coordinate (B')
+				($(C)+(A)-(D)$) coordinate (B)
+				($(A)!.5!(D)$) coordinate (M);
+				\draw[dashed] 
+				(A')--(A) (A')--(B') (A')--(D') (B')--(M)--(C')
+				;
+				\draw 
+				(A)--(B)--(B')--(C')--(D')--(D)--cycle
+				(D)--(C)--(B) (C)--(C') 
+				;
+				\foreach \x/\g in {D'/-90,C'/-90,D/180,A'/135,C/-45,A/90,B'/0,B/90,M/135}
+				\fill (\x) circle (1.5pt)
+				+(\g:3mm) node {$\x$};
+				\end{tikzpicture}
+		\end{center}
 		\begin{enumerate}[a)]
-			\item $\vec{A_1B_1}=-\vec{CD}$.
-			\item $\vec{DC}+\vec{DD_1}=\vec{DC}+\vec{CC_1}=\vec{DC_1}$.
-			\item $\vec{AB_1} \cdot \vec{CD_1}=\vec{AB_1} \cdot \vec{BA_1}=0$
+			\item $\vec{A'B'}=-\vec{CD}$.
+			\item $\vec{DC}+\vec{DD'}=\vec{DC}+\vec{CC'}=\vec{DC'}$.
+			\item $\vec{AB'} \cdot \vec{CD'}=\vec{AB'} \cdot \vec{BA'}=0$
 			\item $\begin{aligned}[t]
-			\vec{B_1M} & =\vec{B_1B}+\vec{BM} =\vec{BB_1}+\dfrac{1}{2}\left(\vec{BA}+\vec{BD}\right) =\vec{BB_1}+\dfrac{1}{2}\left(\vec{B_1A_1}+\vec{B_1D_1}\right) \\
-			& =\vec{BB_1}+\dfrac{1}{2}\left(\vec{B_1A_1}+\vec{B_1A_1}+\vec{B_1C_1}\right) =\vec{BB_1}+\vec{B_1A_1}+\dfrac{1}{2}\vec{B_1C_1} \end{aligned}$
+			\vec{B'M} & =\vec{B'B}+\vec{BM} =\vec{BB'}+\dfrac{1}{2}\left(\vec{BA}+\vec{BD}\right) =\vec{BB'}+\dfrac{1}{2}\left(\vec{B'A'}+\vec{B'D'}\right) \\
+			& =\vec{BB'}+\dfrac{1}{2}\left(\vec{B'A'}+\vec{B'A'}+\vec{B'C'}\right) =\vec{BB'}+\vec{B'A'}+\dfrac{1}{2}\vec{B'C'} \end{aligned}$
 		\end{enumerate}	
 	}
 \end{ex}
@@ -368,6 +414,31 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 	{\True $\vec{AB} \cdot \vec{CD}+\vec{AC} \cdot \vec{DB}+\vec{AD} \cdot \vec{BC}=\vec{0}$}
 	{\True Điểm $I$ xác định bởi $P=3\vec{IA}^2+\vec{IB}^2+\vec{IC}^2+\vec{ID}^2$ có giá trị nhỏ nhất. Khi đó giá trị nhỏ nhất của $P$ là $2a^2$}
 	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[line join = round, line cap = round, thick, font = \small, scale = 1]
+				\path 
+				(0:0) coordinate (B)
+				+(0:5) coordinate (C)
+				+(-45:2) coordinate (D)
+				+(70:4) coordinate (A)
+				($(A)!.5!(B)$) coordinate (M)
+								($(C)!.5!(D)$) coordinate (N)
+								($(M)!.5!(N)$) coordinate (E)
+								($(B)!2/3!(N)$) coordinate (G)
+								($(A)!.5!(G)$) coordinate (O)
+				;
+				\draw[dashed] 
+				(B)--(C) (A)--(G) (M)--(N)
+				;
+				\draw 
+				(A)--(B)--(D)--(C)--cycle
+				(A)--(D)
+				;
+				\foreach \x/\g in {B/180,C/0,D/-90,G/0,A/90,M/135,N/-45,E/0,O/0}
+				\fill (\x) circle (1.5pt)
+				+(\g:3mm) node {$\x$};
+				\end{tikzpicture}
+		\end{center}
 		\begin{enumerate}[a)]
 			\item $\vec{AB}$ và $\vec{CD}$ ngược hướng.
 			\item Vì $M$ là trung điểm $AB$ nên $\vec{EA}+\vec{EB}=2\vec{EM}$, $N$ là trung điểm $CD$ nên $\vec{EC}+\vec{ED}=2\vec{EN}$.\\
@@ -377,20 +448,20 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 				 = & \vec{AC} \cdot \left(\vec{CD}+\vec{DB}\right)+\vec{AD} \cdot \vec{BC}+\vec{CB \cdot }\vec{CD}=\vec{AC} \cdot \vec{CB}+\vec{AD} \cdot \vec{BC}+\vec{CB \cdot }\vec{CD} \\
 				 = &\vec{CB}\left(\vec{AC}-\vec{AD}\right)+\vec{CB \cdot }\vec{CD}=\vec{0} 
 				\end{aligned}$
-			\item Gọi $M$ là điểm thoả mãn hệ thức $3\vec{MA}+\vec{MB}+\vec{MC}+\vec{MD}=\vec{0}$ suy ra $M$ cố định vì $A$, $B,C$, $D$ cố định. Ta có
+			\item Gọi $O$ là điểm thoả mãn hệ thức $3\vec{OA}+\vec{OB}+\vec{OC}+\vec{OD}=\vec{0}$ suy ra $O$ cố định vì $A$, $B,C$, $D$ cố định. Ta có
 			\begin{align*}
 				P& =3\vec{IA}^2+\vec{IB}^2+\vec{IC}^2+\vec{ID}^2 \\
-				& =3\left(\vec{IM}+\vec{MA}\right)^2+\left(\vec{IM}+\vec{MB}\right)^2+\left(\vec{IM}+\vec{MC}\right)^2+\left(\vec{IM}+\vec{MD}\right)^2 \\
-				& =6IM^2+3MA^2+MB^2+MC^2+MD^2+2\vec{IM}\left(3\vec{MA}+\vec{MB}+\vec{MC}+\vec{MD}\right) \\
-				& =6IM^2+3MA^2+MB^2+MC^2+MD^2.
+				& =3\left(\vec{IO}+\vec{OA}\right)^2+\left(\vec{IO}+\vec{OB}\right)^2+\left(\vec{IO}+\vec{OC}\right)^2+\left(\vec{IO}+\vec{OD}\right)^2 \\
+				& =6IO^2+3OA^2+OB^2+OC^2+OD^2+2\vec{IO}\left(3\vec{OA}+\vec{OB}+\vec{OC}+\vec{OD}\right) \\
+				& =6IO^2+3OA^2+OB^2+OC^2+OD^2.
 			\end{align*}
-			Do đó để $P$ nhỏ nhất thì $I$ trùng với $M$. Gọi $G$ là trọng tâm tam giác $BCD$.\\
-			Vì $3\vec{MA}+\vec{MB}+\vec{MC}+\vec{MD}=3\vec{MA}+\left(\vec{MB}+\vec{MC}+\vec{MD}\right) =3\vec{MA}+3\vec{MG}$ nên $\vec{MA}+\vec{MG}=\vec{0}$.\\			
-			Suy ra $M$ là trung điểm của $AG$.\\
+			Do đó để $P$ nhỏ nhất thì $I$ trùng với $O$. Gọi $G$ là trọng tâm tam giác $BCD$.\\
+			Vì $3\vec{OA}+\vec{OB}+\vec{OC}+\vec{OD}=3\vec{OA}+\left(\vec{OB}+\vec{OC}+\vec{OD}\right) =3\vec{OA}+3\vec{OG}$ nên $\vec{OA}+\vec{OG}=\vec{0}$.\\			
+			Suy ra $O$ là trung điểm của $AG$.\\
 			Ta có $BG=\dfrac{2}{3} \cdot \dfrac{a\sqrt{3}}{2}=\dfrac{a}{\sqrt{3}}\Rightarrow AG=\sqrt{AB^2-BG^2}=\sqrt{a^2-{{\left(\dfrac{a}{\sqrt{3}}\right)}^2}}=\dfrac{a\sqrt{2}}{\sqrt{3}}$\\
-			$\Rightarrow MA=\dfrac{1}{2}AG=\dfrac{a}{\sqrt{6}}\Rightarrow MA^2=\dfrac{a^2}{6}$.\\
-			Lại có $MD^2=MC^2=MB^2=MG^2+BG^2=\dfrac{a^2}{6}+\dfrac{a^2}{3}=\dfrac{a^2}{2}$.\\
-			Vậy giá trị nhỏ nhất là $P=3 \cdot \dfrac{a^2}{6}+3 \cdot \dfrac{a^2}{2}=2a^2$ khi $I$ trùng với $M$.
+			$\Rightarrow OA=\dfrac{1}{2}AG=\dfrac{a}{\sqrt{6}}\Rightarrow OA^2=\dfrac{a^2}{6}$.\\
+			Lại có $OD^2=OC^2=OB^2=OG^2+BG^2=\dfrac{a^2}{6}+\dfrac{a^2}{3}=\dfrac{a^2}{2}$.\\
+			Vậy giá trị nhỏ nhất là $P=3 \cdot \dfrac{a^2}{6}+3 \cdot \dfrac{a^2}{2}=2a^2$ khi $I$ trùng với $O$.
 		\end{enumerate}
 		
 	}
@@ -404,7 +475,28 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 	{\True $\vec{GB}+\vec{GC}+\vec{GD}=\vec{IA}+\vec{IB}+\vec{IC}+\vec{ID}$}
 	{\True $\vec{IB}=\dfrac{3}{4}\vec{AB}-\dfrac{1}{4}\vec{AC}-\dfrac{1}{4}\vec{AD}$}
 	\loigiai{
-		{\centering\color{red} HINH O DAY}\\
+		\begin{center}
+			\begin{tikzpicture}[line join = round, line cap = round, thick, font = \small, scale = .7]
+				\path 
+				(0:0) coordinate (B)
+				+(0:5) coordinate (C)
+				+(-45:2) coordinate (D)
+				+(70:4) coordinate (A)
+								($(C)!.5!(D)$) coordinate (N)
+								($(B)!2/3!(N)$) coordinate (G)
+				;
+				\draw[dashed] 
+				(B)--(C) (A)--(G)
+				;
+				\draw 
+				(A)--(B)--(D)--(C)--cycle
+				(A)--(D)
+				;
+				\foreach \x/\g in {B/180,C/0,D/-90,G/0,A/90}
+				\fill (\x) circle (1.5pt)
+				+(\g:3mm) node {$\x$};
+				\end{tikzpicture}
+		\end{center}
 		\begin{enumerate}
 			\item $G$ là trọng tâm của tam giác $BCD$ nên $\vec{GB}+\vec{GC}+\vec{GD}=\vec{0}$.
 			\item $\vec{IB}+\vec{IC}+\vec{ID}=\vec{IG}+\vec{GB}+\vec{IG}+\vec{GC}+\vec{IG}+\vec{GD}=3\vec{IG}+\left(\vec{GB}+\vec{GC}+\vec{GD}\right)=3\vec{IG}$.
@@ -418,7 +510,7 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 \begin{ex}
 	Cho tứ diện $ABCD$. Gọi $E$ là trung điểm $AD$, $F$ là trung điểm $BC$. Ta có $\vec{AB}+\vec{DC}= k\vec{EF}$. Tìm giá trị của $k$.
 	\loigiai{
-		\shortans{2}
+		\SA{2}
 		Do $E$ là trung điểm $AD$, $F$ là trung điểm $BC$ nên $\vec{EA}+\vec{ED}=\vec{0}$; $\vec{FB}+\vec{FC}=-\left(\vec{BF}+\vec{CF}\right)=\vec{0}$.\\
 		Có $\heva{& \vec{AB}=\vec{AE}+\vec{EF}+\vec{FB} \\& \vec{DC}=\vec{DE}+\vec{EF}+\vec{FB}}\Rightarrow \vec{AB}+\vec{DC}=2\vec{EF}$.
 	}
@@ -427,7 +519,7 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 \begin{ex}
 	Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=2$, $AD=3$. Độ dài vectơ $\vec{B'D'}$ bằng bao nhiêu (làm tròn đến hàng phần trăm)?
 	\loigiai{
-		{\centering\color{red} HINH O DAY}\\
+		\SA{3,61}
 		Ta có: $\left| \vec{B'D'} \right|=B'D'=BD=\sqrt{AB^2+AD^2}=\sqrt{13}$.\\
 		Vậy độ dài vectơ $\vec{B'D'}$ bằng $\sqrt{13} \approx 3,61$.
 	}
@@ -436,7 +528,7 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 \begin{ex}
 	Cho hình lập phương $ABCD.A'B'C'D'$. Góc giữa hai vectơ $\vec{A'B}$ và $\vec{AC'}$ bằng
 	\loigiai{
-		{\centering\color{red} HINH O DAY}\\
+		\SA{90}
 		$\vec{A'B}=\vec{A'A}+\vec{AB}=\vec{AB}-\vec{AA'}$.\\
 		$\vec{AC'}=\vec{AB}+\vec{AD}+\vec{AA'}$.\\
 		$\Rightarrow \vec{A'B} \cdot \vec{AC'} = \left(\vec{AB}-\vec{AA'}\right) \cdot \left(\vec{AB}+\vec{AD}+\vec{AA'}\right)={{\vec{AB}}^2}-{{\vec{AA'}}^2}=0$.\\
@@ -447,8 +539,7 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 \begin{ex}
 	Cho hình chóp $S.ABC$ có $SA$, $SB$, $SC$ đôi một vuông góc nhau và $SA=SB=SC=a$. Gọi $M$ là trung điểm của $AB$. Góc giữa hai vectơ $\vec{SM}$ và $\vec{BC}$ bằng
 	\loigiai{
-		\shortans{120}
-		{\centering\color{red} HINH O DAY}\\		
+		\shortans{120}	
 		Ta có $\cos \left(\vec{SM},\vec{BC}\right)=\dfrac{\vec{SM} \cdot \vec{BC}}{|\vec{SM}| \cdot |\vec{BC}|}=\dfrac{\vec{SM} \cdot \vec{BC}}{SM \cdot BC}$.\\
 		\begin{align*}
 			\vec{SM} \cdot \vec{BC} & =\dfrac{1}{2}\left(\vec{SA}+\vec{SB}\right) \cdot \left(\vec{SC}-\vec{SB}\right)\\
@@ -460,29 +551,38 @@ PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh tr�
 		Do đó $\cos \left(\vec{SM},\vec{BC}\right)=\dfrac{-\dfrac{a^2}{2}}{\dfrac{a\sqrt{2}}{2} \cdot a\sqrt{2}}=-\dfrac{1}{2}$. Suy ra $\left(\vec{SM},\vec{BC}\right)={120}^\circ$.
 	}
 \end{ex}
-%Câu 21
-\begin{ex}
-	Cho hình chóp $S.ABC$ có $SA$, $SB$, $SC$ đôi một vuông góc nhau và $SA=SB=SC=a$. Gọi $M$ là trung điểm của $AB$. Góc giữa hai vectơ $\vec{SM}$ và $\vec{BC}$ bằng
-	\loigiai{
-		\shortans{120}
-		{\centering\color{red} HINH O DAY}\\
-		Ta có $\cos \left(\vec{SM},\vec{BC}\right)=\dfrac{\vec{SM} \cdot \vec{BC}}{|\vec{SM}| \cdot |\vec{BC}|}=\dfrac{\vec{SM} \cdot \vec{BC}}{SM \cdot BC}$.\\
-		\begin{align*}
-			\vec{SM} \cdot \vec{BC} &=\dfrac{1}{2}\left(\vec{SA}+\vec{SB}\right) \cdot \left(\vec{SC}-\vec{SB}\right)\\
-			& =\dfrac{1}{2}\left(\vec{SA} \cdot \vec{SC}-\vec{SA} \cdot \vec{SB}+\vec{SB} \cdot \vec{SC}-\vec{SB} \cdot \vec{SB}\right) \\
-			& =-\dfrac{1}{2}\vec{SB} \cdot \vec{SB}=-\dfrac{1}{2}SB^2=-\dfrac{a^2}{2}.
-		\end{align*}
-		Tam giác $SAB$ và $SBC$ vuông cân tại $S$ nên $AB=BC=a\sqrt{2}$.\\
-		Suy ra trung tuyến $SM=\dfrac{AB}{2}=\dfrac{a\sqrt{2}}{2}$.\\
-		Do đó $\cos \left(\vec{SM},\vec{BC}\right)=\dfrac{-\dfrac{a^2}{2}}{\dfrac{a\sqrt{2}}{2} \cdot a\sqrt{2}}=-\dfrac{1}{2}$. Suy ra $\left(\vec{SM},\vec{BC}\right)={{120}^\circ}$.
-	}
-\end{ex}
+
 %Câu 22
 \begin{ex}
 	Cho hình hộp $ABCD.A'B'C'D'$. Xét các điểm $M$, $N$ lần lượt thuộc các đường thẳng $A'C$, $C'D$ sao cho đường thẳng $MN$ song song với đường thẳng $BD'$. Khi đó tỉ số $\dfrac{MN}{BD'}$ bằng
 	\loigiai{
 		\shortans{0,25}
-		{\centering\color{red} HINH O DAY}\\
+		\begin{center}
+			\begin{tikzpicture}[line join = round, line cap = round, thick, font = \small, scale = 1]
+				\path 
+				(0:0) coordinate (D)
+				+(100:3) coordinate (D')
+				+(0:3) coordinate (C)
+				+(35:2) coordinate (A)
+				($(C)+(D')-(D)$) coordinate (C')
+				($(D')+(A)-(D)$) coordinate (A')
+				($(C)+(A)-(D)$) coordinate (B)
+				($(C')+(A')-(D')$) coordinate (B')
+				($(C)!1/4!(A')$) coordinate (M)
+				($(C')!.5!(D)$) coordinate (N)
+				;
+				\draw[dashed] 
+				(A')--(A) (A)--(B) (A)--(D) (B)--(D') (A')--(C) (M)--(N)
+				;
+				\draw 
+				(A')--(B')--(B)--(C)--(D)--(D')--cycle
+				(C')--(B') (C')--(D') (D)--(C')--(C)
+				;
+				\foreach \x/\g in {D/-90,C/-90,D'/180,A/-60,C'/-45,A'/90,B/0,B'/90,M/-135,N/135}
+				\fill (\x) circle (1.5pt)
+				+(\g:3mm) node {$\x$};
+				\end{tikzpicture}
+		\end{center}
 		Đặt $\vec{BA}=\vec{x}$, $\vec{BB'}=\vec{y}$, $\vec{BC}=\vec{z}$.\\
 		Do $\vec{CM}$, $\vec{CA'}$ là hai vectơ cùng phương $\Rightarrow \exists \,k\in \mathbb{R}\colon \,\vec{CM}=k \cdot \vec{CA'}$.\\
 		Và $\vec{C'N}$, $\vec{C'D}$ là hai vectơ cùng phương $\Rightarrow \exists \,h\in \mathbb{R}\colon \,\vec{C'N}=h \cdot \vec{C'D}$.\\
