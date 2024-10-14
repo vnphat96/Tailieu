@@ -1,0 +1,1527 @@
+\begin{dang}{Ứng dụng của đường thẳng trong không gian}
+
+\end{dang}
+\Opensolutionfile{ans}[ans/ans-LC-3-C5B2CD4_12-21]
+\TN
+\begin{ex}%[2H5N2-7]
+	\immini{Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$, gọi $\alpha$ là góc giữa đường thẳng $A'B$ và mặt phẳng $(BB'D'D)$. Chọn hệ trục tọa độ $Oxyz$ như hình vẽ, tính $\sin \alpha$.
+		\choice[2]
+		{$\dfrac{\sqrt{3}}{5}$}
+		{$\dfrac{\sqrt{3}}{2}$}
+		{\True $\dfrac{1}{2}$}
+		{$\dfrac{\sqrt{3}}{4}$}}
+	{	\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\def\a{3}
+			\def\b{2}
+			\def\g{30}
+			\def\h{3}
+			\path
+			(0:0) coordinate (B)--++(\g:\b) coordinate (A)--++(0:\a) coordinate (D)--++(\g-180:\b) coordinate (C)
+			\foreach \x in {A,B,C,D}{
+				($(\x)+(90:\h)$) coordinate (\x')}
+			;
+			\foreach \x/\g in {A/60,B/150,C/-30,D/60,A'/140,B'/150,C'/-30,D'/30}
+			\fill[black](\x) circle (1pt)
+			($(\x)+(\g:3mm)$) node{$\x$};
+			\draw (A) node[above left]{$O$};
+			\draw[dashed] (A')--(A)--(D)--(B)
+			(A)--(B)--(A');
+			\draw
+			(A')--(B')--(B)--(C)--(D)--(D')--(C')--(B')	(C)--(C') (A')--(D') (B')--(D')
+			;
+			\foreach \diem/\anh/\ts in {B/x/1.8,D/y/1.4,A'/z/1.4} \coordinate[label = below right:$\anh$] (\anh) at ($(A)!\ts!(\diem)$);
+			\draw[-stealth] (B)--(x); \draw[-stealth](D)--(y); \draw[-stealth](A')--(z);
+	\end{tikzpicture}}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\def\a{3}
+				\def\b{2}
+				\def\g{30}
+				\def\h{3}
+				\path
+				(0:0) coordinate (B)--++(\g:\b) coordinate (A)--++(0:\a) coordinate (D)--++(\g-180:\b) coordinate (C)
+				\foreach \x in {A,B,C,D}{
+					($(\x)+(90:\h)$) coordinate (\x')}
+				;
+				\foreach \x/\g in {A/60,B/150,C/-30,D/60,A'/140,B'/150,C'/-30,D'/30}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+				\draw (A) node[above left]{$O$};
+				\draw[dashed] (A)--(C) (A')--(A)--(D)--(B)
+				(A)--(B)--(A');
+				\draw (B')--(D')
+				(A')--(B')--(B)--(C)--(D)--(D')--(C')--(B')	(C)--(C') (A')--(D')
+				;
+				\foreach \diem/\anh/\ts in {B/x/1.8,D/y/1.4,A'/z/1.4} \coordinate[label = below right:$\anh$] (\anh) at ($(A)!\ts!(\diem)$);
+				\draw[-stealth] (B)--(x); \draw[-stealth](D)--(y); \draw[-stealth](A')--(z);
+			\end{tikzpicture}
+		\end{center}
+	Ta chọn hệ trục tọa độ $Oxyz$ như hình vẽ với $A \equiv O(0;0;0)$, $B(a;0;0)$, $C(a;a;0)$, $D(0;a;0)$, $A'(0;0;a)$, $B'(a;0;a)$, $C'(a;a;a)$, $D'(0;a;a)$.\\
+	Ta thấy $OC \perp\left(BB'D'D\right)$ và $\overrightarrow{OC}=(a;a;0)$ nên suy ra mặt phẳng $\left(BB' D'D\right)$ có một vectơ pháp tuyến là $\vec{n}=(1;1;0)$.\\
+	Đường thẳng $A'B$ có vectơ chỉ phương là $\overrightarrow{A'B}=(a;0;-a)$ ta chọn $\vec{u}=(1;0;-1)$.\\
+	Ta có  
+	$$\sin \alpha=\dfrac{\left| \vec{n} \cdot \vec{u}\right| }{\left| \vec{n}\right|  \cdot\left| \vec{u}\right| }=\dfrac{\left| 1 \cdot 1+1 \cdot 0+0 \cdot(-1)\right| }{\sqrt{1^2+1^2+0^2} \cdot \sqrt{1^2+0^2+(-1)^2}}=\dfrac{1}{2}.$$
+	}
+\end{ex}
+%%%% Câu 2
+\begin{ex}%[2H5V2-7]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	\immini{
+		Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $I$ có độ dài đường chéo bằng $a\sqrt{2}$ và $SA$ vuông góc với mặt phẳng $\left(ABCD\right)$. Gọi $\alpha$ là góc giữa hai mặt phẳng $\left(SBD\right)$ và $\left(ABCD\right)$. Chọn hệ trục tọa độ $Oxyz$ như hình vẽ. Nếu $\tan\alpha = \sqrt{2}$ thì góc giữa hai mặt phẳng $\left(SAC\right)$ và $\left(SBC\right)$ bằng
+		\choice
+		{$30^\circ$}
+		{\True $60^\circ$}
+		{$45^\circ$}
+		{$90^\circ$}
+	}{
+		\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\tikzset{label style/.style={font=\footnotesize}}
+			\def\h{4} \def\r{5} \def\x{2.2} \def\y{1.5}
+			\coordinate[label={below}:$B$] (B) at (-3,-3);
+			\coordinate[label={above,xshift=2mm}:{$A\equiv O$}] (A) at ($(B)+(\x,\y)$);
+			\coordinate[label={above right}:$S$] (S) at ($(A)+(0,\h)$);
+			\coordinate[label={below right}:$D$] (D) at ($(A)+(\r,0)$);
+			\coordinate[label={below right}:$C$] (C) at ($(B)+(\r,0)$);
+			\coordinate[label={above}:{$x$}] (x) at ($(A)!1.4!(B)$);
+			\coordinate[label={below}:{$y$}] (y) at ($(A)!1.3!(D)$);
+			\coordinate[label={right}:{$z$}] (z) at ($(A)!1.3!(S)$);
+			\coordinate[label={below}:{$I$}] (I) at ($(A)!.5!(C)$);
+			
+			\draw (B)--(C)--(D)--(S)--(B) (S)--(C);
+			\draw[dashed] (B)--(A)--(D)--(B) (S)--(A)--(C);
+			\draw[->] (B)--(x);
+			\draw[->] (S)--(z);
+			\draw[->] (D)--(y);
+			
+			\foreach \x in{A, B, C, D, S, I}\fill[black](\x)circle(2pt);
+		\end{tikzpicture}
+	}
+	\loigiai
+	{
+		Ta có $\left(\left(SBD\right);\left(ABCD\right)\right) = \left(SI,AI\right) = \widehat{SIA}$. \\
+		Do đó $\tan\alpha = \tan\widehat{SIA} = \dfrac{SA}{AI} \Rightarrow SA=a$.\\
+		Với hệ trục tọa độ như hình vẽ thì ta có $A\left(0;0;0\right)$, $B(a;0;0)$, $C\left(a;a;0\right)$, $S\left(0;0;a\right)$. \\
+		Suy ra $\overrightarrow{SA} = \left(0;0;-a\right)$, $\overrightarrow{SC} = \left(a;a;-a\right)$, $\overrightarrow{SB} = \left(a;0;-a\right)$.\\
+		Mặt phẳng $\left(SAC\right)$ có véc-tơ pháp tuyến $\overrightarrow{n}_1 = \left(-1;1;0\right)$. \\
+		Mặt phẳng $\left(SBC\right)$ có véc-tơ pháp tuyến $\overrightarrow{n}_2 = \left(1;0;1\right)$.\\
+		Suy ra
+		\[\cos\left(\left(SAC\right),\left(SBC\right)\right) = \dfrac{\left|\overrightarrow{n}_1\cdot\overrightarrow{n}_2\right|}{ \left|\overrightarrow{n}_1\right|\cdot\left|\overrightarrow{n}_2\right| } = \dfrac{1}{\sqrt{2}\cdot\sqrt{2}} = \dfrac{1}{2}.\]
+		Vậy $\left(\left(SAC\right),\left(SBC\right)\right)=60^\circ$.
+	}
+\end{ex}
+
+%%%% Câu 3
+\begin{ex}%[2H5V2-7]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, cạnh bên $SA = 2a$ và vuông góc với mặt phẳng đáy. Gọi $M$ là trung điểm cạnh $SD$. Tính $\tan$ của góc tạo bởi hai mặt phẳng $\left(AMC\right)$ và $\left(SBC\right)$.
+	\choice
+	{$\dfrac{\sqrt{3}}{2}$}
+	{$\dfrac{2\sqrt{3}}{2}$}
+	{$\dfrac{\sqrt{5}}{5}$}
+	{\True $\dfrac{2\sqrt{5}}{5}$}
+	\loigiai
+	{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\tikzset{label style/.style={font=\footnotesize}}
+				\def\h{4} \def\r{5} \def\x{2.2} \def\y{1.5}
+				\coordinate[label={below}:$B$] (B) at (-3,-3);
+				\coordinate[label={above left}:{$A$}] (A) at ($(B)+(\x,\y)$);
+				\coordinate[label={above right}:$S$] (S) at ($(A)+(0,\h)$);
+				\coordinate[label={above right}:$D$] (D) at ($(A)+(\r,0)$);
+				\coordinate[label={below right}:$C$] (C) at ($(B)+(\r,0)$);
+				\coordinate[label={above}:{$x$}] (x) at ($(A)!1.4!(B)$);
+				\coordinate[label={below}:{$y$}] (y) at ($(A)!1.3!(D)$);
+				\coordinate[label={right}:{$z$}] (z) at ($(A)!1.3!(S)$);
+				\coordinate[label={above right}:{$M$}] (M) at ($(S)!.5!(D)$);
+				
+				\draw (B)--(C)--(D)--(S)--(B) (S)--(C)--(M);
+				\draw[dashed] (B)--(A)--(D)--(B) (S)--(A)--(C) (A)--(M);
+				\draw[->] (B)--(x);
+				\draw[->] (S)--(z);
+				\draw[->] (D)--(y);
+				
+				\foreach \x in{A, B, C, D, S, M}\fill[black](\x)circle(2pt);
+			\end{tikzpicture}
+		\end{center}
+		Gắn trục tọa độ như hình vẽ. Không mất tính tổng quát, ta đặt $a=1$.\\
+		Ta có $A\left(0;0;0\right)$, $B\left(1;0;0\right)$, $D\left(0;1;0\right)$, $C\left(1;1;0\right)$, $S\left(0;0;2\right)$.\\
+		Do $M$ là trung điểm của $SD$ nên $M\left(0;\dfrac{1}{2};1\right)$.\\
+		Khi đó 
+		\begin{itemize}
+			\item $\overrightarrow{BC} = \left(0;1;0\right)$, $\overrightarrow{SB} = \left(1;0;-2\right)$ $\Rightarrow \left[\overrightarrow{BC},\overrightarrow{SB}\right] = \left(2;0;1\right)$. \\
+			Một véc-tơ pháp tuyến của $\left(SBC\right)$ là $\overrightarrow{n}_1 = \left(2;0;1\right)$.
+			\item $\overrightarrow{MA} = \left(0;\dfrac{1}{2};1\right)$, $\overrightarrow{AC} = \left(1;1;0\right)$ $\Rightarrow\left[\overrightarrow{MA},\overrightarrow{AC}\right] = \left(-1;1;-\dfrac{1}{2}\right)$. \\
+			Một véc-tơ pháp tuyến của $\left(AMC\right)$ là $\overrightarrow{n}_2 = \left(2;-2;1\right)$.
+		\end{itemize}
+		Suy ra 
+		\[\cos\left(\left(SBC\right),\left(AMC\right)\right) = \dfrac{\sqrt{5}}{3}\Rightarrow \tan \left(\left(SBC\right),\left(AMC\right)\right) = \dfrac{2\sqrt{5}}{5}.\]
+	}
+\end{ex}
+
+%%%% Câu 4
+\begin{ex}%[2H5V2-7]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình chóp $S.ABCD$ có $ABCD$ là hình vuông cạnh $a$, $SA\perp\left(ABCD\right)$ và $SA=a$. Gọi $E$ và $F$ lần lượt là trung điểm của $SB$ và $SD$. Tính cô-sin của góc hợp bởi hai mặt phẳng $\left(AEF\right)$ và $\left(ABC\right)$.
+	\choice
+	{$\dfrac{1}{2}$}
+	{\True $\dfrac{\sqrt{3}}{3}$}
+	{$\sqrt{3}$}
+	{$\dfrac{\sqrt{3}}{2}$}
+	\loigiai
+	{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\tikzset{label style/.style={font=\footnotesize}}
+				\def\h{4} \def\r{5} \def\x{2.2} \def\y{1.5}
+				\coordinate[label={below}:$B$] (B) at (-3,-3);
+				\coordinate[label={below}:{$A$}] (A) at ($(B)+(\x,\y)$);
+				\coordinate[label={above right}:$S$] (S) at ($(A)+(0,\h)$);
+				\coordinate[label={above right}:$D$] (D) at ($(A)+(\r,0)$);
+				\coordinate[label={below right}:$C$] (C) at ($(B)+(\r,0)$);
+				\coordinate[label={above}:{$x$}] (x) at ($(A)!1.4!(B)$);
+				\coordinate[label={below}:{$y$}] (y) at ($(A)!1.3!(D)$);
+				\coordinate[label={right}:{$z$}] (z) at ($(A)!1.3!(S)$);
+				\coordinate[label={above right}:{$F$}] (F) at ($(S)!.5!(D)$);
+				\coordinate[label={above left}:{$E$}] (E) at ($(S)!.5!(B)$);
+				\draw (B)--(C)--(D)--(S)--(B) (S)--(C);
+				\draw[dashed] (B)--(A)--(D)--(B) (S)--(A)--(C) (A)--(E)--(F)--(A);
+				\draw[->] (B)--(x);
+				\draw[->] (S)--(z);
+				\draw[->] (D)--(y);
+				
+				\foreach \x in{A, B, C, D, S, E, F}\fill[black](\x)circle(2pt);
+			\end{tikzpicture}
+		\end{center}
+		Gắn trục tọa độ như hình vẽ. Không mất tính tổng quát, ta đặt $a=1$.\\
+		Ta có $A\left(0;0;0\right)$, $B\left(1;0;0\right)$, $D\left(0;1;0\right)$, $S\left(0;0;1\right)$. Khi đó $E\left(\dfrac{1}{2};0;\dfrac{1}{2}\right)$ và $F\left(0;\dfrac{1}{2};\dfrac{1}{2}\right)$.\\
+		Ta có $\overrightarrow{A E}=\left(\dfrac{1}{2} ; 0 ; \dfrac{1}{2}\right), \overrightarrow{A F}=\left(0 ; \dfrac{1}{2} ; \dfrac{1}{2}\right)$.\\
+		Một vec-tơ pháp tuyến của $(A E F)$ là $\overrightarrow{n_1}=\left[\overrightarrow{A B}, \overrightarrow{A F}\right]=\left(\dfrac{-1}{4} ; \dfrac{-1}{4} ; \dfrac{1}{4}\right) =-\dfrac{1}{4}(1 ; 1 ;-1)$.\\
+		Một vec-tơ pháp tuyến của $(A B C D)$ là  $\overrightarrow{n_2}=\overrightarrow{A S}=(0 ; 0 ; 1)$.\\
+		Vậy cô-sin góc giữa 2 mặt phẳng $(A E F)$ và $(A B C D)$ là
+		\[
+		\cos ((A E F),(A B C D))=\dfrac{\left|\overrightarrow{n}_1 \cdot \overrightarrow{n}_2\right|}{\left|\overrightarrow{n}_1\right| \cdot\left|\overrightarrow{n}_2\right|}=\dfrac{1}{\sqrt{3}}=\dfrac{\sqrt{3}}{3}.
+		\]
+	}
+\end{ex}
+
+%%%% Câu 5
+\begin{ex}%[2H5V2-7]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình chóp $O.ABC$ có ba cạnh $OA$, $OB$, $OC$ đôi một vuông góc và $OA = OB = OC = a$. Gọi $M$ là trung điểm cạnh $AB$. Góc tạo bởi hai véc-tơ $\overrightarrow{BC}$ và $\overrightarrow{OM}$ bằng
+	\choice
+	{$135^\circ$}
+	{$150^\circ$}
+	{\True $120^\circ$}
+	{$60^\circ$}
+	\loigiai
+	{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\tikzset{label style/.style={font=\footnotesize}}
+				\def\h{4} \def\r{5} \def\x{2.2} \def\y{1.5}
+				\coordinate[label={below}:$A$] (A) at (-3,-3);
+				\coordinate[label={below}:{$O$}] (O) at ($(A)+(\x,\y)$);
+				\coordinate[label={above right}:$C$] (C) at ($(O)+(0,\h)$);
+				\coordinate[label={above right}:$B$] (B) at ($(O)+(\r,0)$);
+				
+				\coordinate[label={above}:{$x$}] (x) at ($(O)!1.4!(B)$);
+				\coordinate[label={below}:{$y$}] (y) at ($(O)!1.4!(A)$);
+				\coordinate[label={right}:{$z$}] (z) at ($(O)!1.4!(C)$);
+				\coordinate[label={below}:{$M$}] (M) at ($(A)!.5!(B)$);
+				
+				\draw (A)--(B)--(C)--(A);
+				\draw[dashed] (C)--(O)--(A) (B)--(O)--(M);
+				\draw[->] (B)--(x);
+				\draw[->] (C)--(z);
+				\draw[->] (A)--(y);
+				
+				\foreach \x in{A, B, C, O, M}\fill[black](\x)circle(2pt);
+			\end{tikzpicture}
+		\end{center}
+		Gắn trục tọa độ như hình vẽ. \\
+		Ta có $O(0 ; 0 ; 0)$, $A(0 ; a ; 0)$, $B(a ; 0 ; 0)$, $C(0 ; 0 ; a)$, $M\left(\dfrac{a}{2} ; \dfrac{a}{2} ; 0\right)$. \\
+		Khi đó ta có $\overrightarrow{B C}=(-a ; 0 ; a)$, $\overrightarrow{O M}=\left(\dfrac{a}{2} ; \dfrac{a}{2} ; 0\right)$. Suy ra
+		\[
+		\cos \left(\overrightarrow{B C} ; \overrightarrow{O M}\right)=\dfrac{\overrightarrow{B C} \cdot \overrightarrow{O M}}{B C \cdot O M}=\dfrac{-\frac{a^2}{2}}{a\sqrt{2} \cdot \frac{a \sqrt{2}}{2}}=-\dfrac{1}{2} \Rightarrow\left(\overrightarrow{B C} ; \overrightarrow{O M}\right)=120^{\circ}.
+		\]
+	}
+\end{ex}
+
+%%%% Câu 6
+\begin{ex}%[2H5V2-7]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình chóp tứ giác đều $S.ABCD$ có $AB = a$, $SA = a\sqrt{2}$. Gọi $G$ là trọng tâm tam giác $SCD$. Góc giữa đường thẳng $BG$ với đường thẳng $SA$ bằng
+	\choice
+	{$\arccos\dfrac{\sqrt{3}}{5}$}
+	{\True $\arccos\dfrac{\sqrt{5}}{5}$}
+	{$\arccos\dfrac{\sqrt{5}}{3}$}
+	{$\arccos\dfrac{\sqrt{15}}{5}$}
+	\loigiai
+	{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.85, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\tikzset{label style/.style={font=\footnotesize}}
+				\def\h{5} \def\r{5} \def\x{2.2} \def\y{1.5}
+				\coordinate[label={below}:$B$] (B) at (-3,-3);
+				\coordinate[label={below}:{$A$}] (A) at ($(B)+(\x,\y)$);
+				\coordinate[label={above right}:$D$] (D) at ($(A)+(\r,0)$);
+				\coordinate[label={below right}:$C$] (C) at ($(B)+(\r,0)$);
+				\coordinate[label={above right}:{$O$}] (O) at ($(A)!.5!(C)$);
+				\coordinate[label={above}:$S$] (S) at ($(O)+(0,\h)$);
+				\coordinate[label={above}:{$x$}] (x) at ($(A)!1.4!(B)$);
+				\coordinate[label={below}:{$y$}] (y) at ($(A)!1.3!(D)$);
+				\coordinate[label={right}:{$z$}] (z) at ($(A)+(0,\h)$);
+				
+				\coordinate (M) at ($(C)!.5!(D)$);
+				\coordinate[label={above right}:{$G$}] (G) at ($(S)!.666!(M)$);
+				\draw (B)--(C)--(D)--(S)--(B) (M)--(S)--(C);
+				\draw[dashed] (B)--(A)--(D)--(B)--(G) (O)--(S)--(A)--(C);
+				\draw[->] (B)--(x);
+				\draw[->] (A)--(z);
+				\draw[->] (D)--(y);
+				
+				\foreach \x in{A, B, C, D, S, O, G}\fill[black](\x)circle(1pt);
+			\end{tikzpicture}
+		\end{center}
+		Gọi $O$ là giao điểm của $AC$ và $BD$. Trong $\triangle SAO$ vuông tại $O$ ta có $SO = \sqrt{SA^2 - OA^2} = \dfrac{a\sqrt{6}}{2}$.\\
+		Gắn trục tọa độ như hình vẽ. \\
+		Ta có $
+		A(0 ; 0 ; 0)$, $B(a ; 0 ; 0)$, $C(a ; a ; 0)$, $D(0 ; a ; 0)$, $O\left(\dfrac{a}{2} ; \dfrac{a}{2} ; 0\right)$, $S\left(\dfrac{a}{2} ; \dfrac{a}{2} ; \dfrac{a \sqrt{6}}{2}\right)$.\\
+		Vì $G$ là trọng tâm tam giác $S C D$ nên $G\left(\dfrac{a}{2} ; \dfrac{5 a}{6} ; \dfrac{a \sqrt{6}}{6}\right)$.\\
+		Ta có $\overrightarrow{A S}=\left(\dfrac{a}{2} ; \dfrac{a}{2} ; \dfrac{a \sqrt{6}}{2}\right)=\dfrac{a}{2}(1 ; 1 ; \sqrt{6})$, $ \overrightarrow{B G}=\left(\dfrac{-a}{2} ; \dfrac{5 a}{6} ; \dfrac{a \sqrt{6}}{6}\right)=\dfrac{a}{6}(-3 ; 5 ; \sqrt{6})$.\\
+		Góc giữa đường thẳng $B G$ với đường thẳng $S A$ bằng
+		\[
+		\cos (B G ; S A)=\dfrac{|\overrightarrow{B G} \cdot \overrightarrow{A S}|}{B G \cdot A S}=\dfrac{|-3+5+6|}{\sqrt{40} \cdot \sqrt{8}}=\dfrac{\sqrt{5}}{5} .\]
+	}
+\end{ex}
+
+%%%% Câu 7
+\begin{ex}%[2H5C4-1]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình hộp đứng $ABCD. A'B'C'D'$ có đáy là hình thoi, tam giác $ABD$ đều. Gọi $M, N$ lần lượt là trung điểm của $BC$ và $C'D'$, biết rằng $MN \perp B'D$. Gọi $\alpha$ là góc tạo bởi đường thẳng $MN$ và mặt đáy $(ABCD)$, khi đó $\cos \alpha$ bằng
+	\choice
+	{\True $\cos \alpha=\dfrac{1}{\sqrt{3}}$}
+	{$\cos \alpha=\dfrac{\sqrt{3}}{2}$}
+	{$\cos \alpha=\dfrac{1}{\sqrt{10}}$}
+	{$\cos \alpha=\dfrac{1}{2}$}
+	\loigiai
+	{\immini{Chọn $AB=2 \Rightarrow BD=2; AC=2\sqrt{3}$, đặt
+			$AA'=h$.\\
+			Chọn hệ trục tọa độ $Oxyz$ như hình vẽ ta có\\ $D(1 ; 0 ; 0), B(-1 ; 0 ; 0), C(0 ; \sqrt{3} ; 0)$,\\ $D'(1 ; 0 ; h)$, $C'(0 ; \sqrt{3} ; h), B'(-1 ; 0 ; h)$.\\
+			Suy ra
+			$M\left(-\dfrac{1}{2} ; \dfrac{\sqrt{3}}{2} ; 0\right), N\left(\dfrac{1}{2} ; \dfrac{\sqrt{3}}{2} ; h\right)$,\\ $\overrightarrow{M N}=(1 ; 0 ; h), \overrightarrow{B'D}=(2 ; 0 ;-h)$.}
+		{\begin{tikzpicture}[line join=round,line cap=round,>=stealth,font=\footnotesize,scale=.7]
+				\path
+				(0,0)coordinate(A)
+				(-130:2)coordinate(B)
+				(3,0)coordinate(D)
+				($(A)+(90:2.5)$)coordinate(A')
+				($(D)-(A)+(B)$)coordinate(C)
+				($(D)+(90:2.5)$)coordinate(D')
+				($(B)+(90:2.5)$)coordinate(B')
+				($(D')-(A')+(B')$)coordinate(C')
+				(intersection of A--C and B--D)coordinate(O)
+				(intersection of A'--C' and B'--D')coordinate(O')
+				;
+				\coordinate (M) at ($(C)!0.5!(B)$);
+				\coordinate (N) at ($(C')!0.5!(D')$);
+				\draw[dashed](B)--(A)--(D)(A)--(A')(A)--(C)(B)--(D)(O)--(O') (M)--(N);
+				\draw(B)--(C)--(D)--(D')--(A')--(B')--cycle(B')--(C')--(D') (C')--(C) (B')--(B)(A')--(C')(B')--(D');
+				\draw[->](C)--($(A)!1.5!(C)$)node[right]{$y$};
+				\draw[->](D)--($(O)!1.5!(D)$)node[above]{$x$};
+				\draw[->](O')--($(O)!1.5!(O')$)node[right]{$z$};
+				\foreach \p/\g in {A/left,B/left,C/right,D/above right,A'/left,B'/left,C'/right,D'/right,O/below,O'/right,M/below,N/right} 
+				\fill (\p)circle(1pt)node[\g]{\footnotesize$\p$};
+		\end{tikzpicture}}\noindent
+		Do $MN \perp B'D \Rightarrow \overrightarrow{MN} \cdot \overrightarrow{B'D}=0 \Leftrightarrow 2-h^2=0 \Rightarrow h=\sqrt{2} \Rightarrow \overrightarrow{MN}=(1 ; 0 ; \sqrt{2})$.\\ Ta có
+		$MN \parallel \vec{u}=\overrightarrow{MN}=(1 ; 0 ; \sqrt{2})$, mặt phẳng $(ABCD) \perp \vec{n}=\vec{j}=(0 ; 0 ; 1)$.\\
+		Do $\alpha$ là góc tạo bởi đường thẳng $MN$ và mặt đáy $(ABCD)$ nên ta có
+		\[
+		\sin \alpha=|\cos (\vec{u} ; \vec{n})|=\dfrac{|\vec{u} \cdot \vec{n}|}{|\vec{u}| \cdot |\vec{n}|}=\dfrac{\sqrt{2}}{\sqrt{3}} \Rightarrow \cos \alpha=\sqrt{1-\sin ^2 \alpha}=\dfrac{1}{\sqrt{3}}.\]
+	}
+\end{ex}
+
+%%%% Câu 8
+\begin{ex}%[2H5C4-1]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, mặt bên $(SAB)$ là tam giác đều và vuông góc với $(ABCD)$. Tính $\cos \varphi$ với $\varphi$ là góc tạp bởi $(SAC)$ và $(SCD)$.
+	\choice
+	{$\dfrac{\sqrt{3}}{7}$}
+	{$\dfrac{\sqrt{6}}{7}$}
+	{\True $\dfrac{5}{7}$}
+	{$\dfrac{\sqrt{2}}{7}$}
+	\loigiai
+	{Gọi $O, M$ lần lượt là trung điểm của $AB, CD$.\\ Vì mặt bên $(SAB)$ là tam giác đều và vuông góc với $(ABCD)$ nên $SO \perp(ABCD)$.
+		\immini{Xét hệ trục $Oxyz$ có $O(0 ; 0 ; 0), M(1 ; 0 ; 0), A\left(0 ; \dfrac{1}{2} ; 0\right)$,\\ $S\left(0 ; 0 ; \dfrac{\sqrt{3}}{2}\right), C\left(1 ; \dfrac{-1}{2} ; 0\right), D\left(1 ; \dfrac{1}{2} ; 0\right)$.\\
+			Suy ra $\overrightarrow{SA}=\left(0 ; \dfrac{1}{2} ; \dfrac{-\sqrt{3}}{2}\right), \overrightarrow{AC}(1 ;-1 ; 0)$\\ và $\overrightarrow{SC}=\left(1 ; \dfrac{-1}{2} ; \dfrac{-\sqrt{3}}{2}\right), \overrightarrow{CD}=(0 ; 1 ; 0)$.}{		\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\path
+				(0,0)coordinate(A)
+				(-150:1.5)coordinate(B)
+				(2,0)coordinate(D)
+				($(B)+(D)-(A)$)coordinate(C)
+				($(A)!1/2!(B)$)coordinate(O)
+				($(O)+(90:3)$)coordinate(S)
+				($(C)!1/2!(D)$)coordinate(N)
+				;
+				\coordinate (M) at ($(C)!0.5!(D)$);
+				\draw[dashed](B)--(A)--(D)(S)--(A)(S)--(O)(O)--(N);
+				\draw(S)--(B)--(C)--(D)--cycle(S)--(C);
+				\draw[->](N)--($(O)!1.5!(N)$)coordinate(Y)node[above]{$x$};	
+				\draw[dashed,->](A)--($(B)!1.6!(A)$)coordinate(X)node[above]{$y$};	
+				\draw[->](S)--($(O)!1.2!(S)$)coordinate(Z)node[right]{$z$};	
+				\foreach \p/\g in {S/left,C/below,D/above,A/left,B/left,O/left,M/below}\fill (\p)circle(1pt)node[\g]{$\p$};	
+		\end{tikzpicture}}\noindent
+		Mặt phẳng $(SAC)$ có véc tơ pháp tuyến $\overrightarrow{n_1}=[\overrightarrow{S A}, \overrightarrow{AC}]=\left(\dfrac{-\sqrt{3}}{2} ; \dfrac{-\sqrt{3}}{2} ; \dfrac{-1}{2}\right)$.\\
+		Mặt phẳng $(SAD)$ có véc tơ pháp tuyến $\overrightarrow{n_1}=[\overrightarrow{SC}, \overrightarrow{CD}]=\left(\dfrac{\sqrt{3}}{2} ; 0 ; 1\right)$.\\
+		Vậy $\cos \varphi=\dfrac{\left|\overrightarrow{n_1} \cdot \overrightarrow{n_2}\right|}{\left|\overrightarrow{n_1}\right| \cdot\left|\overrightarrow{n_2}\right|}=\dfrac{5}{7}$.
+	}
+\end{ex}
+
+%%%% Câu 9
+\begin{ex}%[2H2C2-4]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình lập phương $ABCD. A'B'C'D'$ có cạnh $a$. Góc giữa hai mặt phẳng $\left(A'B'CD\right)$ và $\left(AC C'A'\right)$ bằng
+	\choice
+	{\True $60^{\circ}$}
+	{$30^{\circ}$}
+	{$45^{\circ}$}
+	{$75^{\circ}$}
+	\loigiai
+	{\immini{Chọn hệ trục tọa độ $Oxyz$ sao cho $O \equiv A'$, $Ox \equiv A'D'$, $Oy \equiv A'B'$, $Oz \equiv A'A$.\\
+			Ta có $A'(0 ; 0 ; 0), D'(a ; 0 ; 0), B'(0 ; a ; 0), C'(a ; a ; 0)$\\ và 
+			$A(0 ; 0 ; a), D(a ; 0 ; a), B(0 ; a ; a), C(a ; a ; a)$.\\ Suy ra 
+			$\overrightarrow{A'B'}=(0 ; a ; 0), \overrightarrow{A'D}=(a ; 0 ; a), \overrightarrow{A'A}=(0 ; 0 ; a)$\\ và $ \overrightarrow{A'C'}=(a ; a ; 0)$. Ta có
+			$\left[\overrightarrow{A'B'}, \overrightarrow{A'D}\right]=\left(a^2 ; 0 ;-a^2\right)$.}{		\begin{tikzpicture}[line join=round,line cap=round,>=stealth,font=\footnotesize,scale=1]
+				\path
+				(0,0)coordinate(A')
+				(-130:1)coordinate(B')
+				(2,0)coordinate(D')
+				($(A')+(90:2)$)coordinate(A)
+				($(D')-(A')+(B')$)coordinate(C')
+				($(D')+(90:2)$)coordinate(D)
+				($(B')+(90:2)$)coordinate(B)
+				($(D)-(A)+(B)$)coordinate(C)
+				;
+				\draw[dashed](B')--(A')--(D')(A)--(A');
+				\draw(B')--(C')--(D')--(D)--(A)--(B)--cycle(B)--(C)--(D) (C')--(C) (B')--(B);
+				\draw[->](B')--($(A')!1.7!(B')$)node[left]{$y$};
+				\draw[->](D')--($(A')!1.5!(D')$)node[above]{$x$};
+				\draw[->](A)--($(A')!1.5!(A)$)node[right]{$z$};
+				\foreach \p/\g in {A/left,B/left,C/right,D/above right,A'/left,B'/left,C'/below,D'/below} 
+				\fill (\p)circle(1pt)node[\g]{$\p$};
+		\end{tikzpicture}}\noindent
+		Chọn $\overrightarrow{n_1}=(1 ; 0 ;-1)$ là vectơ pháp tuyến của mặt phẳng $\left(A'B'CD\right)$.\\
+		Suy ra $
+		\left[\overrightarrow{A'A}, \overrightarrow{A'C}\right]=\left(-a^2 ; a^2 ; 0\right)
+		$.\\
+		Chọn $\overrightarrow{n_2}=(-1 ; 1 ; 0)$ là vectơ pháp tuyến của mặt phẳng $\left(ACC'A'\right)$.\\
+		Góc giữa hai mặt phẳng $\left(A'B'CD\right)$ và $\left(ACC'A'\right)$ là
+		$$
+		\cos \alpha=\left|\cos \left(\overrightarrow{n_1}, \overrightarrow{n_2}\right)\right|=\dfrac{|-1|}{\sqrt{2} \cdot \sqrt{2}}=\dfrac{1}{2} \Rightarrow \alpha=60^{\circ}.
+		$$
+	}
+\end{ex}
+
+%%%% Câu 10
+\begin{ex}%[2H5V4-5]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình chóp tứ giác đêu $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, tâm $O$. Gọi $M$ và $N$ lần lượt là trung điểm của hai cạnh $SA$ và $BC$, biết $MN=\dfrac{a \sqrt{6}}{2}$. Khi đó giá trị $\sin$ của góc giữa đường thẳng $MN$ và mặt phẳng $(SBD)$ bằng
+	\choice
+	{$\dfrac{\sqrt{2}}{5}$}
+	{\True $\dfrac{\sqrt{3}}{3}$}
+	{$\dfrac{\sqrt{5}}{5}$}
+	{$\sqrt{3}$}
+	\loigiai
+	{\immini{Gọi $I$ hình chiếu của $M$ lên $(ABCD)$, suy ra $I$ là trung điểm của $AO$ suy ra
+			$CI=\dfrac{3}{4} AC=\dfrac{3a\sqrt{2}}{4}$.\\
+			Xét $\triangle CNI$ có $CN=\dfrac{a}{2}, \widehat{NCI}=45^{\circ}$.\\
+			Áp dụng định lý cosin ta có\\
+			$NI=\sqrt{CN^2+CI^2-2CN \cdot CI \cdot \cos 45^{\circ}}=\dfrac{a\sqrt{10}}{4}$.\\
+			Xét $\triangle MIN$ vuông tại $I$ ta có\\ $MI=\sqrt{MN^2-NI^2}=\dfrac{a\sqrt{14}}{4}$.\\
+			Mà $MI \parallel SO, MI=\dfrac{1}{2}SO \Rightarrow SO=\dfrac{a\sqrt{14}}{2}$.}
+		{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+				\path
+				(0,0)coordinate(C)
+				(-155:2.4)coordinate(D)
+				(3.6,0)coordinate(B)
+				($(B)+(D)-(C)$)coordinate(A)
+				(intersection of A--C and B--D)coordinate(O)
+				($(O)+(90:3.5)$)coordinate(S)
+				($(C)!1/2!(D)$)coordinate(M)
+				($(A)!1/2!(B)$)coordinate(N)
+				($(C)!1/2!(B)$)coordinate(P)
+				($(A)!1/2!(D)$)coordinate(Q)
+				;
+				\coordinate (I) at ($(A)!0.5!(O)$);
+				\coordinate (N) at ($(C)!0.5!(B)$);
+				\coordinate (M) at ($(A)!0.5!(S)$);
+				\draw[dashed](B)--(C)--(S)(C)--(D)(S)--(O)(A)--(C)(B)--(D) (I)--(M)--(N)--(I);
+				\draw(S)--(D)--(A)--(B)--cycle (S)--(A);
+				\draw[->](B)--($(O)!1.2!(B)$)node[above]{$y$};	
+				\draw[dashed,->](C)--($(O)!2!(C)$)node[right]{$x$};	
+				\draw[->](S)--($(O)!1.2!(S)$)node[right]{$z$};	
+				\foreach \p/\g in {S/left,C/left,D/left,A/right,B/above,O/left,N/right,I/left,M/right}
+				\fill (\p)circle(1pt)node[\g]{$\p$};	
+		\end{tikzpicture}}\noindent
+		Chọn hệ trục tọa độ $Oxyz$ như hình vẽ
+		ta có\\ $O(0 ; 0 ; 0), B\left(0 ; \dfrac{\sqrt{2}}{2} ; 0\right), D\left(0 ;-\dfrac{\sqrt{2}}{2} ; 0\right), C\left(\dfrac{\sqrt{2}}{2} ; 0 ; 0\right)$,\\$ N\left(\dfrac{\sqrt{2}}{4} ; \dfrac{\sqrt{2}}{4} ; 0\right),
+		A\left(-\dfrac{\sqrt{2}}{2} ; 0 ; 0\right), S\left(0 ; 0 ; \dfrac{\sqrt{14}}{4}\right), M\left(-\dfrac{\sqrt{2}}{4} ; 0 ; \frac{\sqrt{14}}{4}\right)$.\\
+		Khi đó $\overrightarrow{MN}=\left(\dfrac{\sqrt{2}}{2} ; \dfrac{\sqrt{2}}{4} ;-\dfrac{\sqrt{14}}{4}\right), \overrightarrow{SB}=\left(0 ; \dfrac{\sqrt{2}}{2} ;-\dfrac{\sqrt{14}}{2}\right), \overrightarrow{S D}=\left(0 ;-\dfrac{\sqrt{2}}{2} ;-\dfrac{\sqrt{14}}{2}\right)$.\\
+		Vectơ pháp tuyến mặt phẳng $(SBD) \vec{n}=\overrightarrow{SB} \wedge \overrightarrow{SD}=(-\sqrt{7} ; 0 ; 0)$.\\
+		Suy ra $\sin (MN,(SBD))=\dfrac{|\overrightarrow{MN} \cdot \vec{n}|}{|\overrightarrow{MN}| \cdot|\vec{n}|}=\dfrac{\left|-\sqrt{7} \cdot \frac{\sqrt{2}}{2}\right|}{\sqrt{7} \cdot \frac{\sqrt{6}}{2}}=\dfrac{\sqrt{3}}{3}$.
+	}
+\end{ex}
+
+%%%% Câu 11
+\begin{ex}%[2H5V1-6]%[Dự án 2025-K12-TL-TV]%[Thành Đức Trung]
+	Cho hình lăng trụ $ABC. A'B'C'$ có $A'. ABC$ là tứ diện đều cạnh $a$. Gọi $M, N$ lần lượt là trung điểm của $AA'$ và $BB'$. Tính $\tan$ của góc giữa hai mặt phẳng $(ABC)$ và $(CMN)$.
+	\choice
+	{$\dfrac{\sqrt{2}}{5}$}
+	{$\dfrac{3\sqrt{2}}{4}$}
+	{\True $\dfrac{2\sqrt{2}}{5}$}
+	{$\dfrac{4\sqrt{2}}{13}$}
+	\loigiai
+	{Gọi $O, H$ lần lượt là trung điểm của $AB$ và trọng tâm tam giác $ABC$.\\Vì $A'. ABC$ là tứ diện đều cạnh $a$ nên $A'H\perp (ABC)$.\immini{
+			Qua $O$ kẻ tia $Oz\parallel A'H$ và
+			chọn hệ trục tọa độ sao cho $O(0 ; 0 ; 0),
+			A\left(\dfrac{1}{2} ; 0 ; 0\right), B\left(-\dfrac{1}{2} ; 0 ; 0\right), C\left(0 ; \dfrac{\sqrt{3}}{2} ; 0\right)$,\\ $H\left(0 ; \dfrac{\sqrt{3}}{6} ; 0\right), A'H=\dfrac{a \sqrt{6}}{3} \Rightarrow A'\left(0 ; \dfrac{\sqrt{3}}{6} ; \dfrac{\sqrt{6}}{3}\right)
+			$\\
+			và $\overrightarrow{AB}=\overrightarrow{A'B'} \Rightarrow B'\left(-1 ; \dfrac{\sqrt{3}}{6} ; \dfrac{\sqrt{6}}{3}\right)$.\\ Dễ thấy $(ABC)$ có véc-tơ pháp tuyến $\overrightarrow{n_1}=(0 ; 0 ; 1)$.}{\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\def\ac{5} % cạnh AC
+				\def\ab{1.75} % cạnh AB
+				\def\ben{4} % cạnh bên
+				\def\gocnghieng{45} % góc nghiêng cạnh bên
+				\def\gocA{40} % góc A của đáy
+				\coordinate (A) at (0,0);
+				\coordinate (C) at (\ac,0);
+				\coordinate (B) at (-\gocA:\ab);
+				\coordinate (M') at ($(B)!0.5!(C)$);
+				\coordinate (O) at ($(B)!0.5!(A)$);
+				\coordinate (H) at ($(A)!2/3!(M')$);
+				\coordinate (A') at ($(H)+(0,4)$);
+				\coordinate (M) at ($(A)!0.5!(A')$);
+				\coordinate (S) at ($(O)+(0,5)$);
+				\coordinate (B') at ($(B)-(A)+(A')$);
+				\coordinate (N) at ($(B)!0.5!(B')$);
+				\coordinate (C') at ($(C)-(A)+(A')$);
+				\draw (B)--(A')--(A)--(B)--(C)--(C')--(A')--(B')--(C') (B)--(B') (C)--(N)--(M);
+				\draw[dashed] (A)--(C)--(A')--(H) (A)--(M)--(N) (O)--(C)--(M);
+				\foreach \x/\g in{A'/90,B'/90, C'/90,A/-90, B/-90, C/-90,H/-100,M/120,O/-90,N/-90}	\fill[black](\x) circle (1pt)($(\x)+(\g:3.0mm)$) node{\small $\x$};
+				\draw[-stealth](O)--(S)node[right]{$z$};
+				\draw[-stealth](A)--($(O)!1.7!(A)$)node[above]{$x$};
+				\draw[-stealth](C)--($(O)!1.3!(C)$)node[above]{$y$};
+				\foreach \x/\o/\y/\r in {S/O/B/3,S/O/C/3,C/O/B/3} \draw ($(\o)!\r mm!(\x)$)--($($(\o)!\r mm!(\x)$)+($(\o)!\r mm!(\y)$)-(\o)$)--($(\o)!\r mm!(\y)$);
+		\end{tikzpicture}}\noindent
+		Gọi $M$ là trung điểm $AA' \Rightarrow M\left(\dfrac{1}{4} ; \dfrac{\sqrt{3}}{12} ; \dfrac{\sqrt{6}}{6}\right), N$ là trung điểm $BB' \Rightarrow N\left(\dfrac{-3}{4} ; \dfrac{\sqrt{3}}{12} ; \dfrac{\sqrt{6}}{6}\right)$.\\
+		Ta có $\overrightarrow{MN}=(-1 ; 0 ; 0), \overrightarrow{CM}=\left(\dfrac{1}{4} ; \dfrac{-5 \sqrt{3}}{12} ; \dfrac{\sqrt{6}}{6}\right)$.\\
+		Mặt phẳng $(CMN)$ có véc-tơ pháp tuyến $\overrightarrow{n_2}=\left(0 ; \dfrac{\sqrt{6}}{6} ; \dfrac{5 \sqrt{3}}{12}\right)=\dfrac{\sqrt{3}}{12}(0 ; 2 \sqrt{2} ; 5)$
+		\[\cos \varphi=\dfrac{5}{\sqrt{33}} \Rightarrow \tan \varphi=\sqrt{\frac{1}{\cos ^2 \varphi}-1}=\dfrac{2 \sqrt{2}}{5}\]
+	}
+\end{ex}
+%%%==============EX_12============%%%
+\begin{ex}%[2H5V1-6]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $2a$ cạnh bên $SA=a$ và vuông góc với mặt phẳng đáy. Gọi $M$ là trung điểm cạnh $SD$. Tan của góc tạo bởi hai mặt phẳng $\left(AMC\right)$ và $\left(SBC\right)$ bằng
+	\choice
+	{\True $\dfrac{\sqrt{5}}{5}$}
+	{$\dfrac{2\sqrt{5}}{5}$}
+	{$\dfrac{\sqrt{3}}{2}$}
+	{$\dfrac{2\sqrt{3}}{3}$}
+	\loigiai{
+		Chọn hệ trục tọa độ sao cho $A\equiv O$ như hình vẽ
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{3}
+				\path 	
+				(0:0) coordinate (A)
+				(210:2*\a) coordinate (B)
+				($(B)+(210:1cm)$) coordinate (x)
+				(0:4*\a) coordinate (D)
+				($(D)+(0:1cm)$) coordinate (y)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(A)+(90:\h)$) coordinate (S)
+				($(S)+(90:1cm)$) coordinate (z)
+				($(S)!1/2!(D)$) coordinate (M)
+				(intersection of A--C and B--D) coordinate (O)
+				;
+				\foreach \x/\y in {B/x,D/y,S/z}
+				\draw[->] (\x)--(\y);
+				\draw[dashed] (B)--(A)--(D) (M)--(A)--(S) (A)--(C);
+				\draw[] (B)-- (C)--(D) (B)--(S) (M)--(C)--(S) (D)--(S);
+				\foreach \x/\y in {A/-90,B/1560,C/-45,D/45,S/45,M/45}
+				\fill[black] (\x) circle (1pt) ($(\y:2.75mm)+(\x)$) node {$\x$};	
+				\draw pic[draw,angle radius=2.5mm]{right angle=D--A--S}
+				pic[draw,angle radius=2.5mm]{right angle=D--A--B}
+				pic[draw,angle radius=2.5mm]{right angle=B--A--S};
+				\path 
+				(B)--(A) node[above,pos=.5]{$2a$}
+				(A)--(D) node[above,pos=.475]{$2a$}
+				(A)--(S) node[right,pos=.5]{$a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+			\end{tikzpicture}
+		\end{center}
+		Ta có
+		$\begin{aligned}[t]
+			& A(0;0;0), B(2a;0;0), D(0;2a;0), C(2a;2a;0), S(0;0;a), M\left(0;a;\dfrac{a}{2}\right).\\
+			\Rightarrow\ & \overrightarrow{SB}=(2a;0;-a), \overrightarrow{SC}=(2a;2a;-a), \overrightarrow{MA}=\left(0;-a;-\dfrac{a}{2}\right), \overrightarrow{MC}=\left(2a;a;-\dfrac{a}{2}\right).\\
+			& \overrightarrow{n}_1=\left[\overrightarrow{SB},\overrightarrow{SC}\right]=
+			\left(
+			\begin{vmatrix}
+				0&-a\\2a&-a
+			\end{vmatrix};
+			\begin{vmatrix}
+				-a&2a\\-a&2a
+			\end{vmatrix};
+			\begin{vmatrix}
+				2a&0\\2a&2a
+			\end{vmatrix}
+			\right)
+			=2a^2(1;0;2),\\
+			& \overrightarrow{n}_2=\left[\overrightarrow{MA},\overrightarrow{MC}\right]=
+			\left(
+			\begin{vmatrix}
+				-a&-\tfrac{a}{2}\\a&-\tfrac{a}{2}
+			\end{vmatrix};
+			\begin{vmatrix}
+				-\tfrac{a}{2}&0\\-\tfrac{a}{2}&2a
+			\end{vmatrix};
+			\begin{vmatrix}
+				0&-a\\2a&a
+			\end{vmatrix}
+			\right)
+			=a^2(1;-1;2).
+		\end{aligned}$\\
+		Mặt phẳng $(SBC)$ có một véc-tơ pháp tuyến $\overrightarrow{n}_1$, mặt phẳng $(AMC)$ có một véc-tơ pháp tuyến $\overrightarrow{n}_2$.\\
+		Gọi $\alpha$ ($0^\circ \le \alpha \le 90^\circ$) là góc tạo bởi hai mặt phẳng $(AMC)$ và $(SBC)$.\\
+		Ta có $\cos\alpha=\left|\cos\left(\overrightarrow{n}_1,\overrightarrow{n}_2 \right)\right| =\dfrac{\left|\overrightarrow{n}_1\cdot\overrightarrow{n}_2\right|}{\left|\overrightarrow{n}_1\right|\cdot\left|\overrightarrow{n}_2\right|} =\dfrac{2a^2\cdot a^2\cdot5}{2a^2\sqrt{5}\cdot a^2\sqrt{6}} =\dfrac{5}{\sqrt{30}}$.\\
+		Mà $\tan^2\alpha=\dfrac{1}{\cos^2\alpha}-1 =\left(\dfrac{\sqrt{30}}{5}\right)^2-1 =\dfrac{5}{25}$.\\ 
+		Suy ra $\tan \alpha=\dfrac{\sqrt{5}}{5}$.\\
+	}
+\end{ex}
+
+%%%==============EX_13============%%%
+\begin{ex}%[2H5V2-7]
+	Cho hình chóp $S.ABCD$ đáy là hình thang vuông tại $A$ và $B$, $AB=BC=a$, $AD=2a$. Biết $SA\perp(ABCD)$, $SA=a$. Gọi $M$ và $N$ lần lượt là trung điểm của $SB$ và $CD$. Tính $\sin$ góc giữa đường thẳng $MN$ và mặt phẳng $(SAC)$.
+	\choice
+	{\True $\dfrac{3\sqrt{5}}{10}$}
+	{$\dfrac{2\sqrt{5}}{5}$}
+	{$\dfrac{\sqrt{5}}{5}$}
+	{$\dfrac{\sqrt{55}}{10}$}
+	\loigiai{
+		Trong không gian $Oxyz$ chọn $A\equiv O(0;0;0), AB\equiv Ox, AD\equiv Oy, AS\equiv Oz$.
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{3}
+				\path 	
+				(0:0) coordinate (A)
+				(225:2*\a) coordinate (B)
+				($(B)+(225:1cm)$) coordinate (x)
+				(0:6*\a) coordinate (D)
+				($(D)+(0:1cm)$) coordinate (y)
+				($(B)+(D)-(A)$) coordinate (C')
+				($(B)!1/2!(C')$) coordinate (C)
+				($(A)+(90:\h)$) coordinate (S)
+				($(S)+(90:1cm)$) coordinate (z)
+				($(S)!1/2!(B)$) coordinate (M)
+				($(C)!1/2!(D)$) coordinate (N)
+				(intersection of A--C and B--D) coordinate (O)
+				;
+				\foreach \x/\y in {B/x,D/y,S/z}	\draw[->] (\x)--(\y);
+				\draw[dashed,thin] (B)--(A)--(D) (A)--(S) (A)--(C) (M)--(N);
+				\draw[] (B)-- (C)--(D) (B)--(S) (C)--(S) (D)--(S);
+				\foreach \x/\y in {A/-90,B/1560,C/-45,D/45,S/45,M/135,N/-90}
+				\fill[black] (\x) circle (1pt) ($(\y:3.25mm)+(\x)$) node {$\x$};	
+				\draw pic[draw,angle radius=2.5mm]{right angle=D--A--S}
+				pic[draw,angle radius=2.5mm]{right angle=D--A--B}
+				pic[draw,angle radius=2.5mm]{right angle=B--A--S}
+				pic[draw,angle radius=2.5mm]{right angle=A--B--C};
+				\path (A) node[xshift=-3mm,yshift=3mm]{$O$}
+				(B)--(A) node[above,pos=.5]{$a$}
+				(A)--(D) node[above,pos=.5]{$2a$}
+				(A)--(S) node[right,pos=.5]{$a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+			\end{tikzpicture}
+		\end{center}
+		Ta có 
+		$\begin{aligned}[t]
+			&S(0;0;a), B(a;0;0), D(0;2a;0), C(a;a;0), M\left(\dfrac{a}{2};0;\dfrac{a}{2}\right), N\left(\dfrac{a}{2};\dfrac{3a}{2};0\right).\\
+			\Rightarrow&\overrightarrow{MN}=\left(0;\dfrac{3a}{2};\dfrac{-a}{2}\right), \overrightarrow{AS}=(0;0;a); \overrightarrow{AC}=(a;a;0).\\
+			&\overrightarrow{n}_{(SAC)}=\left[\overrightarrow{AS},\overrightarrow{AC}\right]=
+			\left(
+			\begin{vmatrix}
+				0&a\\a&0
+			\end{vmatrix};
+			\begin{vmatrix}
+				a&0\\a&a
+			\end{vmatrix};
+			\begin{vmatrix}
+				0&0\\a&0
+			\end{vmatrix}
+			\right)
+			=(-a^2;a^2;0)=a^2(-1;1;0).
+		\end{aligned}$\\
+		Mặt phẳng $(SAC)$ có một véc-tơ pháp tuyến là $\overrightarrow{n}_{(SAC)}$.\\
+		Ta có $\sin\left(MN,(SAC)\right) =\dfrac{\overrightarrow{MN}\cdot\overrightarrow{n}_{(SAC)}}{\left|\overrightarrow{MN} \right|\left|\overrightarrow{n}_{(SAC)}\right|} =\dfrac{\dfrac{3a^3}{2}}{\dfrac{a}{2}\cdot\sqrt{10}\cdot a^2\sqrt{2}} =\dfrac{3\sqrt{5}}{10}$.
+	}
+\end{ex}
+
+%%%==============EX_14============%%%
+\begin{ex}%[2H5V2-7]
+	Cho hình chóp tứ giác đều $S.ABCD$ có cạnh đáy bằng $a$ tâm $O$. Gọi $M$ và $N$ lần lượt là trung điểm của $SA$ và $BC$. Biết rằng góc giữa $MN$ và $(ABCD)$ bằng $60^\circ$. Côsin của góc giữa đường thẳng $MN$ và mặt phẳng $(SBD)$ bằng
+	\choice
+	{$\dfrac{\sqrt{5}}{5}$}
+	{$\dfrac{\sqrt{41}}{41}$}
+	{\True $\dfrac{2\sqrt{5}}{5}$}
+	{$\dfrac{2\sqrt{41}}{41}$}
+	\loigiai{
+		Chọn hệ trục tọa độ $Oxyz$ như hình vẽ.
+		\begin{center}
+			\begin{tikzpicture}[line cap=round,line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1}
+				\path 	
+				(0:0) coordinate (O)
+				(200:4*\a) coordinate (A)
+				($(A)+(200:1.5cm)$) coordinate (x)
+				(-30:1.5*\a) coordinate (B)
+				($(B)+(-30:1.5cm)$) coordinate (y)
+				(20:4*\a) coordinate (C)
+				($(A)+(C)-(B)$) coordinate (D)
+				(90:3.75*\a) coordinate (S)
+				($(S)+(90:1cm)$) coordinate (z)
+				($(S)!1/2!(A)$) coordinate (M)
+				($(B)!1/2!(C)$) coordinate (N)
+				($(O)!1/2!(A)$) coordinate (H)
+				;
+				\foreach \x/\y in {A/x,B/y,S/z}	\draw[->] (\x)--(\y);
+				\draw[dashed] (B)--(D)--(O) (O)--(S)--(D)  (A)--(D)--(C)--cycle (M)--(N)--(H)--cycle;
+				\draw[] (A)--(B)--(C)--(S)--cycle (S)--(B)
+				;
+				\foreach \x/\y in {O/55,A/150,B/-90,S/45,C/0,D/150,M/150,N/-45, H/-90}
+				\fill[black] (\x) circle (1pt) ($(\y:3mm)+(\x)$) node {$\x$};
+				\path 
+				(A)--(B) node[below,pos=.5]{$a$} (A)--(D) node[left,pos=.5]{$a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+				\draw pic[draw,angle radius=2mm]{right angle=A--O--S}
+				pic[draw,angle radius=2mm]{right angle=A--H--M}
+				pic[draw,angle radius=5mm,angle eccentricity=1.75,"$60^\circ$"]{ angle=M--N--H}
+				;
+			\end{tikzpicture}
+		\end{center}
+		Đặt $SO=m, (m>0)$.\\
+		Ta có
+		$\begin{aligned}[t]
+			& A\left(\dfrac{a\sqrt{2}}{2};0;0\right), S\left(0;0;m\right), N\left(-\dfrac{a\sqrt{2}}{4};\dfrac{a\sqrt{2}}{4};0\right), M\left(\dfrac{a\sqrt{2}}{4};0;\dfrac{m}{2}\right).\\
+			\Rightarrow& \overrightarrow{MN}=\left(-\dfrac{a\sqrt{2}}{2};\dfrac{a\sqrt{2}}{4};-\dfrac{m}{2}\right).\\
+		\end{aligned}$\\
+		Mặt phẳng $(ABCD)$ có véc tơ pháp tuyến $\overrightarrow{k}=(0;0;1)$.\\
+		Ta có $\sin\left((MN,(ABCD)\right)=\dfrac{\left|\overrightarrow{MN}\cdot\overrightarrow{k} \right|}{\left|\overrightarrow{MN} \right|\left|\overrightarrow{k} \right|} =\dfrac{\dfrac{m}{2}}{\sqrt{\dfrac{5a^2}{8}+\dfrac{m^2}{4}}} =\dfrac{\sqrt{3}}{2} \Leftrightarrow m^2=\dfrac{15a^2}{8}+\dfrac{3m^2}{4}$.\\
+		Suy ra $2m^2=15a^2 \Rightarrow m=\dfrac{a\sqrt{30}}{2}$ \\
+		Do đó $\overrightarrow{MN} =\left(-\dfrac{a\sqrt{2}}{2};\dfrac{a\sqrt{2}}{4};-\dfrac{a\sqrt{30}}{4}\right)$.\\
+		Mặt phẳng $(SBD)$ có véc tơ pháp tuyến là $\overrightarrow{i}=(1;0;0)$.\\
+		Ta lại có $\sin\left(MN,(SBD)\right) =\dfrac{\left|\overrightarrow{MN}\cdot\overrightarrow{i}\right|}{\left|\overrightarrow{MN}\right|\left|\overrightarrow{i}\right|} =\dfrac{\dfrac{a\sqrt{2}}{2}}{\sqrt{\dfrac{a^2}{2}+\dfrac{a^2}{8}+\dfrac{30a^2}{16}}} =\dfrac{\sqrt{5}}{5}$.\\
+		Suy ra $\cos\left(MN,(SBD)\right) =\dfrac{2\sqrt{5}}{5}$.
+	}
+\end{ex}
+
+%%%==============EX_15============%%%
+\begin{ex}%[2H5V2-7]
+	Cho hình chóp $S.ABCD$ có đáy hình vuông. Cho tam giác $SAB$ vuông tại $S$ và góc $SBA$ bằng $30^\circ$. Mặt phẳng $(SAB)$ vuông góc mặt phẳng đáy. Gọi $M$, $N$ là trung điểm $AB$, $BC$. Tìm cô-sin góc tạo bởi hai đường thẳng $\left(SM, DN\right)$.
+	\choice
+	{$\dfrac{2}{\sqrt{5}}$}
+	{\True $\dfrac{1}{\sqrt{5}}$}
+	{$\dfrac{1}{\sqrt{3}}$}
+	{$\dfrac{\sqrt{2}}{\sqrt{3}}$}
+	\loigiai{
+		Trong $(SAB)$ kẻ $SH\perp AB$ tại $H$.\\ 
+		Ta có $\left\{\begin{aligned}
+			& (SAB)\perp (ABCD) \\ 
+			& (SAB)\cap (ABCD)=AB\\ 
+			& SH\subset (SAB),\ SH\perp AB
+		\end{aligned} \right.
+		\Rightarrow SH\perp (ABCD)$.\\
+		Kẻ tia $Az\parallel SH$ và chọn hệ trục tọa độ $Axyz$ như hình vẽ sau đây.
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{4}
+				\path 	
+				(0:0) coordinate (A)
+				(210:4*\a) coordinate (B)
+				($(B)+(210:1cm)$) coordinate (y)
+				(0:5*\a) coordinate (D)
+				($(D)+(0:1cm)$) coordinate (x)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(A)+(90:\h)$) coordinate (A')
+				($(A')+(90:.5cm)$) coordinate (z)
+				($(A)!1/2!(B)$) coordinate (M)
+				($(C)!1/2!(B)$) coordinate (N)
+				($(A)!1/4!(B)$) coordinate (H)
+				($(H)+(90:\h)$) coordinate (S)
+				(intersection of A--A' and S--D) coordinate (A'')
+				;
+				\foreach \x/\y in {B/y,D/x,A'/z} \draw[->] (\x)--(\y);
+				\draw[dashed] (B)--(A)--(D) (H)--(S)--(M) (N)--(D) (S)--(A)--(A'');
+				\draw[] (B)-- (C)--(D)--(S)--cycle (S)--(C) (A')--(A'');
+				\foreach \x/\y in {A/-90,B/150,C/-45,D/60,M/-90,N/-90, H/-90,S/90}
+				\fill[black] (\x) circle (1pt) ($(\y:2.5mm)+(\x)$) node {$\x$};	
+				\draw 
+				pic[draw,angle radius=5mm,angle eccentricity=1.75,"$30^\circ$"]{ angle=A--B--S}
+				pic[draw,angle radius=3mm,angle eccentricity=1.75,"$60^\circ$"]{ angle=S--A--B}
+				pic[draw,angle radius=2.5mm,angle eccentricity=1.75]{ angle=S--A--B}
+				pic[draw,angle radius=2mm]{right angle=S--H--B}
+				pic[draw,angle radius=2mm]{right angle=D--A--A'};
+				\path 
+				(A)--(D) node[above,pos=.5]{$a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+			\end{tikzpicture}
+		\end{center}
+		Trong tam giác $SAB$ vuông tại $S$, $SB=AB\cdot\cos \widehat{SBA}=a\cdot\cos30^\circ =\dfrac{a\sqrt{3}}{2}$.\\
+		Trong tam giác $SBH$ vuông tại $H$, $BH=SB\cdot\cos\widehat{SBH}=\dfrac{3a}{4}$ và $SH=BH\cdot\sin\widehat{SBA}=\dfrac{a\sqrt{3}}{4}$.\\
+		$AH=AB-BH=a-\dfrac{3a}{4}=\dfrac{a}{4}$ $\Rightarrow H\left(0;\dfrac{a}{4};0\right) \Rightarrow S\left(0;\dfrac{a}{4};\dfrac{a\sqrt{3}}{4}\right)$.\\
+		Có các điểm $M\left(0;\dfrac{a}{2};0\right)$, $D\left(a;0;0\right)$, $N\left(\dfrac{a}{2};a;0\right)$.\\
+		Ta có $\overrightarrow{SM}=\left(0;\dfrac{a}{4};-\dfrac{a\sqrt{3}}{4}\right)$, $\overrightarrow{DN}=\left(-\dfrac{a}{2};a;0\right)$.\\
+		Suy ra $\cos\left(SM,DN\right) =\dfrac{\left|\overrightarrow{SM}\cdot\overrightarrow{DN}\right|}{SM\cdot DN} =\dfrac{\dfrac{a^2}{4}}{\dfrac{a}{2}\cdot\dfrac{a\sqrt{5}}{2}}=\dfrac{1}{\sqrt{5}}$.
+	}
+\end{ex}
+
+%%%==============EX_16============%%%
+\begin{ex}%[2H5V2-7]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$ cạnh bên $SA$ vuông góc với mặt phẳng đáy, $SA=a\sqrt{2}$. Gọi $M$, $N$ lần lượt là hình chiếu vuông góc của điểm $A$ trên các cạnh $SB$, $SD$. Góc giữa mặt phẳng $(AMN)$ và đường thẳng $SB$ bằng
+	\choice
+	{$45^\circ$}
+	{$90^\circ$}
+	{$120^\circ$}
+	{\True $60^\circ$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{3}
+				\path 	
+				(0:0) coordinate (A)
+				(210:2*\a) coordinate (B)
+				($(B)+(210:1cm)$) coordinate (x)
+				(0:3*\a) coordinate (D)
+				($(D)+(0:1cm)$) coordinate (y)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(A)+(90:\h)$) coordinate (S)
+				($(S)+(90:1cm)$) coordinate (z)
+				($(B)!1/3!(S)$) coordinate (M)
+				($(D)!1/3!(S)$) coordinate (N)
+				(intersection of A--C and B--D) coordinate (O)
+				;
+				\foreach \x/\y in {B/x,D/y,S/z} \draw[->] (\x)--(\y);
+				\draw[dashed,thin] (B)--(A)--(D)--cycle (A)--(S) (A)--(M)--(N)--cycle;
+				\draw[] (B)-- (C)--(D) (B)--(S) (C)--(S) (D)--(S);
+				\foreach \x/\y in {A/-90,B/1560,C/-45,D/45,S/45,M/135,N/45}
+				\fill[black] (\x) circle (1pt) ($(\y:2.75mm)+(\x)$) node {$\x$};	
+				\draw pic[draw,angle radius=2.5mm]{right angle=D--A--S}
+				pic[draw,angle radius=2.5mm]{right angle=D--A--B}
+				pic[draw,angle radius=2.5mm]{right angle=B--A--S};
+				\path 
+				(B)--(A) node[above,pos=.5]{$a$}
+				(A)--(D) node[above,pos=.475]{$a$}
+				(A)--(S) node[above,pos=.4,sloped]{$a\sqrt{2}$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+			\end{tikzpicture}
+		\end{center}
+		Ta có $BC\perp(SAB)
+		\Rightarrow BC\perp AM
+		\Rightarrow AM\perp (SBC)
+		\Rightarrow AM\perp SC$. \\
+		Tương tự ta cũng có $AN\perp SC
+		\Rightarrow \left(AMN\right)\perp SC$.\\ 
+		Gọi $\varphi$ là góc giữa đường thẳng $SB$ và $(AMN)$.\\
+		Chọn $a=1$ (đơn vị độ dài) và hệ trục tọa độ $Oxyz$ sao cho $O\equiv A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $S(0;0;\sqrt{2})$, $C(1;1;0)$.\\
+		Có các véc-tơ $\overrightarrow{SC}=(1;1;-\sqrt{2})$, $\overrightarrow{SB}=(1;0;-\sqrt{2})$.\\
+		Do $(AMN)\perp SC$ nên mặt phẳng $(AMN)$ có một véc-tơ pháp tuyến là $\overrightarrow{SC}$. \\
+		Cho nên $\sin\varphi=\left|\cos\left(\overrightarrow{SC},\overrightarrow{SB}\right)\right| =\dfrac{\left|1\cdot1+1\cdot0+(-\sqrt{2})\cdot(-\sqrt{2})\right|}{2\cdot\sqrt{3}}=\dfrac{\sqrt{3}}{2}
+		\Rightarrow \varphi=60^\circ$.\\
+		Vậy góc giữa mặt phẳng $(AMN)$ và đường thẳng $SB$ bằng $60^\circ$.
+	}
+\end{ex}
+
+%%%==============EX_17============%%%
+\begin{ex}%[2H5V2-7]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $AB=a$, $BC=a\sqrt{3}$, $SA=a$ và $SA$ vuông góc với đáy $ABCD$. Tính $\sin \alpha$ với $\alpha$ là góc tạo bởi giữa đường thẳng $BD$ và mặt phẳng $(SBC)$.
+	\choice
+	{$\sin \alpha=\dfrac{\sqrt{7}}{8}$}
+	{$\sin \alpha=\dfrac{\sqrt{3}}{2}$}
+	{\True $\sin \alpha=\dfrac{\sqrt{2}}{4}$}
+	{$\sin \alpha=\dfrac{\sqrt{3}}{5}$}
+	\loigiai{
+		Đặt hệ trục tọa độ $Oxyz$ như hình vẽ.
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{3}
+				\path 	
+				(0:0) coordinate (A)
+				(210:2*\a) coordinate (B)
+				($(B)+(210:1cm)$) coordinate (x)
+				(0:4*\a) coordinate (D)
+				($(D)+(0:1cm)$) coordinate (y)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(A)+(90:\h)$) coordinate (S)
+				($(S)+(90:1cm)$) coordinate (z)
+				($(B)!1/3!(S)$) coordinate (M)
+				($(D)!1/3!(S)$) coordinate (N)
+				(intersection of A--C and B--D) coordinate (O)
+				;
+				\foreach \x/\y in {B/x,D/y,S/z} \draw[->] (\x)--(\y);
+				\draw[dashed] (B)--(A)--(D)--cycle (A)--(S) ;
+				\draw[] (B)-- (C)--(D) (B)--(S) (C)--(S) (D)--(S);
+				\foreach \x/\y in {A/-90,B/1560,C/-45,D/45,S/45}
+				\fill[black] (\x) circle (1pt) ($(\y:3mm)+(\x)$) node {$\x$};	
+				\draw pic[draw,angle radius=2.5mm]{right angle=D--A--S}
+				pic[draw,angle radius=2.5mm]{right angle=D--A--B}
+				pic[draw,angle radius=2.5mm]{right angle=B--A--S};
+				\path 
+				(B)--(A) node[above,pos=.5]{$a$}
+				(B)--(C) node[below,pos=.5]{$a\sqrt{3}$}
+				(A)--(S) node[right,pos=.5]{$a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+			\end{tikzpicture}
+		\end{center}
+		Khi đó, ta có $A(0;0;0)$, $B(a;0;0)$, $D\left(0;a\sqrt{3};0\right)$, $S(0;0;a)$.\\
+		Nên đường thẳng $BD$ có một véc-tơ chỉ phương là $\overrightarrow{u}=\left(-1;\sqrt{3};0\right)$.\\
+		Ta có 
+		$\begin{aligned}[t]
+			\overrightarrow{BD}&=\left(-a;a\sqrt{3};0\right)=a\left(-1;\sqrt{3};0\right),\\
+			\overrightarrow{SB}&=\left(a;0;-a\right),\\ \overrightarrow{BC}&=\left(0;a\sqrt{3};0\right),\\
+			\Rightarrow \left[\overrightarrow{SB},\overrightarrow{BC}\right] &=\left(a^2\sqrt{3};0;a^2\sqrt{3}\right) =a^2\sqrt{3}\left(1;0;1\right).
+		\end{aligned}$\\
+		Như vậy, mặt phẳng $(SBC)$ có một véc-tơ pháp tuyến là $\overrightarrow{n}=(1;0;1)$.\\
+		Do đó, $\alpha$ là góc tạo bởi giữa đường thẳng $BD$ và mặt phẳng $(SBC)$\\ thì
+		$\sin \alpha=\dfrac{\left|\overrightarrow{u}\cdot\overrightarrow{n}\right|}{\left|\overrightarrow{u} \right|\cdot\left|\overrightarrow{n} \right|} =\dfrac{\left|(-1)\cdot1+\sqrt{3}\cdot0+0\cdot1\right|}{\sqrt{(-1)^2+\sqrt{3}^2+0^2}\cdot\sqrt{1^2+0^2+1^2}}=\dfrac{\sqrt{2}}{4}$.
+	}
+\end{ex}
+
+%%%==============EX_18============%%%
+\begin{ex}%[2H5V1-6]
+	Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có $AB=2\sqrt{3}$ và $AA'=2$. Gọi $M$, $N$, $P$ lần lượt là trung điểm các cạnh $A'B'$, $A'C'$ và $BC$ (tham khảo hình vẽ bên). Cô-sin của góc tạo bởi hai mặt phẳng $(AB'C')$ và $(MNP)$ bằng
+	\begin{center}
+		\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+			\def\a{1} \def\h{4.5}
+			\path 	
+			(0:0) coordinate (A)
+			(180:6*\a) coordinate (B)
+			(135:3*\a) coordinate (C)
+			($(A)+(90:\h)$) coordinate (A')
+			($(B)+(90:\h)$) coordinate (B')
+			($(C)+(90:\h)$) coordinate (C')
+			($(B')!1/2!(A')$) coordinate (M)
+			($(C')!1/2!(A')$) coordinate (N)
+			($(B)!1/2!(C)$) coordinate (P)
+			;
+			\draw[dashed] (A)--(C)--(B) (C)--(C')--(A) (M)--(P)--(N) (P)--(A);
+			\draw[]	(A)--(B)--(B')--(A')--cycle (B')--(C')--(A') (M)--(N);
+			\foreach \x/\y in {A/0,B/180,C/30,A'/0,B'/180,C'/90, M/135,N/45,P/-90}
+			\fill[black] (\x) circle (1pt) ($(\y:3mm)+(\x)$) node {$\x$};	
+		\end{tikzpicture}
+	\end{center}
+	\choice
+	{$\dfrac{17\sqrt{13}}{65}$}
+	{$\dfrac{18\sqrt{13}}{65}$}
+	{$\dfrac{6\sqrt{13}}{65}$}
+	{\True $\dfrac{\sqrt{13}}{65}$}
+	\loigiai{
+		Gắn hệ trục tọa độ $Oxyz$ như hình vẽ.
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{4.5}
+				\path 	
+				(0:0) coordinate (A)
+				(180:6*\a) coordinate (B)
+				(135:3*\a) coordinate (C)
+				($(A)+(90:\h)$) coordinate (A')
+				($(B)+(90:\h)$) coordinate (B')
+				($(C)+(90:\h)$) coordinate (C')
+				($(B')!1/2!(A')$) coordinate (M)
+				($(C')!1/2!(A')$) coordinate (N)
+				($(B)!1/2!(C)$) coordinate (P)
+				($(B')!1/2!(C')$) coordinate (P')
+				($(A)!-1cm!(P)$) coordinate (x)
+				($(B)!-1cm!(C)$) coordinate (y)
+				($(P')!-1cm!(P)$) coordinate (z)
+				;
+				\foreach \x/\y in {A/x,B/y,P'/z} \draw[->] (\x)--(\y);
+				\draw[dashed] (A)--(C)--(B) (C)--(C')--(A) (M)--(P)--(N) (P')--(P)--(A);
+				\draw[]	(A)--(B)--(B')--(A')--cycle (B')--(C')--(A') (M)--(N) (A)--(B');
+				\foreach \x/\y in {A/30,B/150,C/30,A'/0,B'/180,C'/90, M/135,N/45,P/150}
+				\fill[black] (\x) circle (1pt) ($(\y:3mm)+(\x)$) node {$\x$};	
+				\path 
+				(B)--(A) node[below,pos=.5]{$2\sqrt{3}$}
+				(A)--(A') node[right,pos=.5]{$2$}
+				(P) node[below]{$O$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+				\fill[cyan,opacity=.5] (A)--(B')--(C');
+				\fill[green,opacity=.5] (M)--(N)--(P);
+			\end{tikzpicture}
+		\end{center}
+		Ta có
+		$\begin{aligned}[t]
+			& P(0;0;0), A(3;0;0), B(0;\sqrt{3};0), C(0;-\sqrt{3};0), A'(3;0;2), B'(0;\sqrt{3};2), C'(0;-\sqrt{3};2),\\
+			& M\left(\dfrac{3}{2};\dfrac{\sqrt{3}}{2};2\right), N\left(\dfrac{3}{2};-\dfrac{\sqrt{3}}{2};2\right).\\
+			\Rightarrow\ & \overrightarrow{AB'}=(-3;\sqrt{3};2), \overrightarrow{AC'}=(-3;-\sqrt{3};2), \overrightarrow{PM}=\left(\dfrac{3}{2};\dfrac{\sqrt{3}}{2};2\right), \overrightarrow{PN}=\left(\dfrac{3}{2};-\dfrac{\sqrt{3}}{2};2\right).\\
+			& \overrightarrow{n}_1 =\left[\overrightarrow{AB'},\overrightarrow{AC'}\right] =2\sqrt{3}(2;0;3), \overrightarrow{n}_2=\left[\overrightarrow{PM},\overrightarrow{PN}\right]=\dfrac{\sqrt{3}}{2}(4;0;-3)
+		\end{aligned}$\\
+		Ta có véc-tơ pháp tuyến của $(AB'C')$ là $\overrightarrow{n}_1$ và véc-tơ pháp tuyến của $(MNP)$ là $\overrightarrow{n}_2$.\\
+		Gọi $\varphi$ là góc giữa hai mặt phẳng $(AB'C')$ và $(MNP)$.\\
+		Suy ra $\cos\varphi=\left|\cos\left(\overrightarrow{n}_1,\overrightarrow{n}_2\right)\right| =\dfrac{\left|8-9\right|}{\sqrt{13}\sqrt{25}}=\dfrac{\sqrt{13}}{65}$.
+	}
+\end{ex}
+
+%%%==============EX_19============%%%
+\begin{ex}%[2H5V1-6]
+	Cho hình lăng trụ đứng $ABC.A'B'C'$ có $AB=AC=a$, góc $\widehat{BAC}=120^\circ$, $AA'=a$. Gọi $M$, $N$ lần lượt là trung điểm của $B'C'$ và $CC'$. Số đo góc giữa mặt phẳng $(AMN)$ và mặt phẳng $(ABC)$ bằng
+	\choice
+	{$60^\circ$}
+	{$30^\circ$}
+	{$\arcsin \dfrac{\sqrt{3}}{4}$}
+	{\True $\arccos \dfrac{\sqrt{3}}{4}$}
+	\loigiai{
+		Gọi $H$ là trung điểm $BC$, $BC=a\sqrt{3}$, $AH=\dfrac{a}{2}$.\\
+		\begin{center}
+			\begin{tikzpicture}[thick,blue,>=stealth, line cap=round, line join=round, font=\footnotesize]
+				\def\a{1} \def\h{4.5}
+				\path 	
+				(0:0) coordinate (A)
+				(-60:3*\a) coordinate (B)
+				(0:6*\a) coordinate (C)
+				($(A)+(90:\h)$) coordinate (A')
+				($(B)+(90:\h)$) coordinate (B')
+				($(C)+(90:\h)$) coordinate (C')
+				($(B')!1/2!(C')$) coordinate (M)
+				($(C)!1/2!(C')$) coordinate (N)
+				($(B)!1/2!(C)$) coordinate (H)
+				($(A)!-1.5cm!(H)$) coordinate (x)
+				($(B)!-1.5cm!(H)$) coordinate (y)
+				($(M)!-2cm!(H)$) coordinate (z)
+				;
+				\foreach \x/\y in {A/x,B/y,M/z} \draw[->] (\x)--(\y);
+				\draw[dashed] (M)--(A)--(H) (N)--(A)--(C);
+				\draw[] (C)--(C') (B)--(B') (A)--(A') (A)--(B)--(C) (N)--(M)--(H) (A)--(B') (A')--(B')--(C')--cycle;
+				\foreach \x/\y in {A/240,B/-90,C/0,A'/180,B'/75,C'/0,M/150,N/0,H/-90}
+				\fill[black] (\x) circle (1pt) ($(\y:3mm)+(\x)$) node {$\x$};
+				\path 
+				(A)--(B) node[below,pos=.5]{$a$}
+				(A)--(A') node[left,pos=.5]{$a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+				\draw pic[draw,angle radius=2.5mm]{right angle=M--H--C}
+				pic[draw,angle radius=2.5mm]{right angle=M--H--A}
+				pic[draw,angle radius=2.5mm]{right angle=B--H--A};
+				\fill[cyan,opacity=.5] (A)--(B)--(C);
+				\fill[green,opacity=.5] (M)--(N)--(A);
+			\end{tikzpicture}
+		\end{center}
+		Chọn hệ trục tọa độ theo hình vẽ.\\
+		Ta có
+		$\begin{aligned}[t]
+			& H(0;0;0), A\left(\dfrac{a}{2};0;0\right), B\left(0;\dfrac{a\sqrt{3}}{2};0\right), C\left(0;-\dfrac{a\sqrt{3}}{2};0\right), M(0;0;a), N\left(0;-\dfrac{a\sqrt{3}}{2};\dfrac{a}{2}\right). \\
+			\Rightarrow\ & \overrightarrow{AM}=\left(-\dfrac{a}{2};0;a\right), \overrightarrow{AN}=\left(0;-\dfrac{a\sqrt{3}}{2};\dfrac{a}{2}\right).\\
+			& \overrightarrow{n}=\left[\overrightarrow{AM},\overrightarrow{AN}\right] =\dfrac{a^2}{4}(2\sqrt{3};-1;\sqrt{3}).
+		\end{aligned}$\\
+		Gọi $\varphi$ là góc giữa mặt phẳng $(AMN)$ và mặt phẳng $(ABC)$.\\
+		Mặt phẳng $(AMN)$ có một véc-tơ pháp tuyến là $\overrightarrow{n}$. \\
+		Mặt phẳng $(ABC)$ có một véc-tơ pháp tuyến $\overrightarrow{HM}=(0;0;1)$.\\
+		Từ đó $\cos\varphi=\dfrac{\left|\overrightarrow{n}\cdot\overrightarrow{HM}\right|}{\left|{\overrightarrow{n}}\right|\cdot \left|\overrightarrow{HM}\right|} =\dfrac{\sqrt{3}}{4\cdot1}=\dfrac{\sqrt{3}}{4}$.
+	}
+\end{ex}
+
+%%%==============EX_20============%%%
+\begin{ex}%[2H5V1-6]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$ cạnh bên $SA=2a$ và vuông góc với mặt phẳng đáy. Gọi $M$ là trung điểm cạnh $SD$. Tan của góc tạo bởi hai mặt phẳng $(AMC)$ và $(SBC)$ bằng
+	\choice
+	{$\dfrac{\sqrt{5}}{5}$}
+	{$\dfrac{\sqrt{3}}{2}$}
+	{\True $\dfrac{2\sqrt{5}}{5}$}
+	{$\dfrac{2\sqrt{3}}{3}$}
+	\loigiai{
+		Chọn hệ trục toạ độ theo hình vẽ.
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{3}
+				\path 	
+				(0:0) coordinate (A)
+				(210:2*\a) coordinate (B)
+				($(B)+(210:1cm)$) coordinate (x)
+				(0:3*\a) coordinate (D)
+				($(D)+(0:1cm)$) coordinate (y)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(A)+(90:\h)$) coordinate (S)
+				($(S)+(90:1cm)$) coordinate (z)
+				($(D)!1/2!(S)$) coordinate (M)
+				($(D)!1/3!(S)$) coordinate (N)
+				(intersection of A--C and B--D) coordinate (O)
+				;
+				\foreach \x/\y in {B/x,D/y,S/z} \draw[->] (\x)--(\y);
+				\draw[dashed,thin] (B)--(A)--(D)--cycle (A)--(S) (C)--(A)--(M);
+				\draw[] (B)-- (C)--(D) (B)--(S) (M)--(C)--(S) (D)--(S);
+				\foreach \x/\y in {A/-90,B/1560,C/-45,D/45,S/45,M/45}
+				\fill[black] (\x) circle (1pt) ($(\y:3mm)+(\x)$) node {$\x$};	
+				\draw pic[draw,angle radius=2.5mm]{right angle=D--A--S}
+				pic[draw,angle radius=2.5mm]{right angle=D--A--B}
+				pic[draw,angle radius=2.5mm]{right angle=B--A--S};
+				\path 
+				(B)--(A) node[above,pos=.5]{$a$}
+				(B)--(C) node[below,pos=.5]{$a$}
+				(A)--(S) node[right,pos=.4]{$2a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+			\end{tikzpicture}
+		\end{center}
+		Ta có $A(0;0;0)$, $B(a;0;0)$, $C(a;a;0)$, $D(0;a;0)$, $S(0;0;2a)$.\\
+		Ta có $M$ là trung điểm $SD
+		\Rightarrow M\left(0;\dfrac{a}{2};a\right)$.\\
+		$\overrightarrow{AM}=\left(0;\dfrac{a}{2};a\right)$, $\overrightarrow{AC}=(a;a;0)$.\\
+		$\left[\overrightarrow{AM},\overrightarrow{AC}\right]=\dfrac{a^2}{2}\left(-2;1;-1\right)
+		\Rightarrow (AMC)$ có một véc-tơ pháp tuyến $\overrightarrow{n}=(-2;2;-1)$.\\
+		$\overrightarrow{SB}=(a;0;-2a)$, $\overrightarrow{SC}=(a;a;-2a)$.\\
+		$\left[\overrightarrow{SB},\overrightarrow{SC}\right]=a^2(2;0;1)
+		\Rightarrow (SBC)$ có một véc-tơ pháp tuyến $\overrightarrow{k}=(2;0;1)$.\\
+		Gọi $\alpha$ là góc giữa hai mặt phẳng $(AMC)$ và $(SBC)$.\\
+		Ta có $\cos\alpha =\dfrac{\left|\overrightarrow{n}\cdot\overrightarrow{k}\right|}{\left|{\overrightarrow{n}}\right|\cdot\left|{\overrightarrow{k}}\right|} 
+		=\dfrac{5}{3\cdot\sqrt{5}}
+		=\dfrac{\sqrt{5}}{3}$.\\
+		Do $\tan\alpha >0$ nên $\tan\alpha =\sqrt{\dfrac{1}{\cos^2\alpha}-1}=\dfrac{2\sqrt{5}}{5}$.
+	}
+\end{ex}
+
+%%%==============EX_21============%%%
+\begin{ex}%[2H5V1-6]
+	\immini{
+		Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$ mặt bên $SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc với mặt phẳng $\left(ABCD\right)$. Gọi $G$ là trọng tâm của tam giác $SAB$ và $M,N$ lần lượt là trung điểm của $SC,SD$ (tham khảo hình vẽ bên). Tính cô-sin của góc giữa hai mặt phẳng $\left(GMN\right)$ và $\left(ABCD\right)$.
+		\choice
+		{$\dfrac{2\sqrt{39}}{39}$}
+		{$\dfrac{\sqrt{3}}{6}$}
+		{\True $\dfrac{2\sqrt{39}}{13}$}
+		{$\dfrac{\sqrt{13}}{13}$}
+	}{
+		\begin{tikzpicture}[line cap=round, line join=round, >=stealth, x=5mm,y=5mm, thick, blue, font=\scriptsize]
+			\def\a{1} \def\h{6}
+			\path 	
+			(0:0) coordinate (A)
+			(220:3*\a) coordinate (B)
+			(0:5*\a) coordinate (D)
+			($(B)+(D)-(A)$) coordinate (C)
+			($(A)!1/2!(B)$) coordinate (H)
+			($(H)+(90:\h)$) coordinate (S)
+			($(S)!1/2!(C)$) coordinate (M)
+			($(S)!1/2!(D)$) coordinate (N)
+			($(S)!2/3!(H)$) coordinate (G)
+			;
+			\draw[dashed] (B)--(A)--(D) (S)--(A) (M)--(G)--(N);
+			\draw[] (B)-- (C)--(D)--(S)--cycle (S)--(C) (M)--(N);
+			\foreach \x/\y in {A/-90,B/-90,C/-90,D/0,M/-110,N/30, S/90,G/-90}
+			\fill[black] (\x) circle (1pt) ($(\y:2.5mm)+(\x)$) node {$\x$};
+		\end{tikzpicture}
+	}
+	\loigiai{
+		Chọn hệ trục tọa độ $Oxyz$ như hình vẽ.
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{6}
+				\path 	
+				(0:0) coordinate (A)
+				(220:3*\a) coordinate (B)
+				($(B)+(220:1cm)$) coordinate (x)
+				(0:5*\a) coordinate (D)
+				($(B)+(D)-(A)$) coordinate (C)
+				($(A)!1/2!(B)$) coordinate (H)
+				($(C)!1/2!(D)$) coordinate (H')
+				($(H')+(0:2cm)$) coordinate (y)
+				($(H)+(90:\h)$) coordinate (S)
+				($(S)+(90:1cm)$) coordinate (z)
+				($(S)!1/2!(C)$) coordinate (M)
+				($(S)!1/2!(D)$) coordinate (N)
+				($(S)!2/3!(H)$) coordinate (G)	;
+				\foreach \x/\y in {B/x,H'/y,S/z} \draw[->] (\x)--(\y);
+				\draw[dashed] (B)--(A)--(D) (H')--(H)--(S)--(A) (M)--(G)--(N);
+				\draw[] (B)-- (C)--(D)--(S)--cycle (S)--(C) (M)--(N);
+				\foreach \x/\y in {A/-90,B/-90,C/-90,D/0,M/-110,N/30, H/150,S/180,G/180}
+				\fill[black] (\x) circle (1pt) ($(\y:3mm)+(\x)$) node {$\x$};	
+				\draw 
+				pic[draw,angle radius=5mm,angle eccentricity=1.75,"$60^\circ$"]{ angle=A--B--S}
+				pic[draw,angle radius=3mm,angle eccentricity=1.75,"$60^\circ$"]{ angle=S--A--B}
+				pic[draw,angle radius=2mm]{right angle=S--H--A}
+				pic[draw,angle radius=2mm]{right angle=A--H--H'};
+				\path 
+				(H) node[below]{$O$}
+				(B)--(C) node[below,pos=.5]{$a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+			\end{tikzpicture}
+		\end{center}
+		Khi đó
+		$S\left(0;0;\dfrac{a\sqrt{3}}{2} \right)$, $A\left(-\dfrac{a}{2};0;0 \right)$, $B\left(\dfrac{a}{2};0;0 \right)$, $C\left(\dfrac{a}{2};a;0 \right)$, $D\left(-\dfrac{a}{2};a;0 \right)$.\\
+		Suy ra $G\left(0;0;\dfrac{a\sqrt{3}}{6}\right)$, $M\left(\dfrac{a}{4};\dfrac{a}{2};\dfrac{a\sqrt{3}}{4}\right)$, $N\left(-\dfrac{a}{4};\dfrac{a}{2};\dfrac{a\sqrt{3}}{4}\right)$.\\
+		Ta có mặt phẳng $(ABCD)$ có vectơ pháp tuyến là $\overrightarrow{k}=(0;0;1)$.\\
+		Mặt phẳng $(GMN)$ có cặp véc-tơ chỉ phương
+		$\heva{&\overrightarrow{GM}=\dfrac{a}{12}\left(3;6;\sqrt{3}\right),\\&\overrightarrow{GN}=\dfrac{a}{12}\left(-3;6;\sqrt{3}\right).}$\\
+		Suy ra véc-tơ pháp tuyến $\overrightarrow{n}=\left[\overrightarrow{GM};\overrightarrow{GN}\right] 
+		=\dfrac{a^2}{144}
+		\left(
+		\begin{vmatrix}
+			6&\sqrt{3}\\6&\sqrt{3}
+		\end{vmatrix};
+		\begin{vmatrix}
+			\sqrt{3}&3\\\sqrt{3}&-3
+		\end{vmatrix};
+		\begin{vmatrix}
+			3&6\\-3&6
+		\end{vmatrix}
+		\right)
+		=\dfrac{a^2}{24}\left(0;-\sqrt{3};6\right)$.\\
+		Gọi $\alpha$ là góc giữa hai mặt phẳng $(GMN)$ và $(ABCD)$.\\
+		Ta có
+		$\cos\alpha=\dfrac{\left|\overrightarrow{n}\cdot\overrightarrow{k}\right|}{\left|{\overrightarrow{n}}\right|\cdot\left|{\overrightarrow{k}}\right|}=\dfrac{6}{\sqrt{39}}=\dfrac{2\sqrt{39}}{13}$.
+	}
+\end{ex}
+
+%%%==============EX_22============%%%
+\begin{ex}%[2H5V1-6]
+	Cho hình lăng trụ đứng $ABC.A'B'C'$ có đáy $ABC$ là tam giác cân với $AB=AC=a$ và góc $\widehat{BAC}=120^\circ$ và cạnh bên $BB'=a$. Gọi $I$ là trung điểm của $CC'$. Tính cô-sin góc giữa hai mặt phẳng $(ABC)$ và $(AB'I)$.
+	\choice
+	{$\dfrac{\sqrt{3}}{10}$}
+	{\True $\dfrac{\sqrt{30}}{10}$}
+	{$\dfrac{\sqrt{30}}{30}$}
+	{$\dfrac{\sqrt{10}}{30}$}
+	\loigiai{
+		Gọi $O$ là trung điểm của $BC$.\\ 
+		Gắn hệ trục tọa độ như hình vẽ.
+		\begin{center}
+			\begin{tikzpicture}[line cap=round, line join=round, >=stealth, font=\footnotesize, thick, blue]
+				\def\a{1} \def\h{4.5}
+				\path 	
+				(0:0) coordinate (A)
+				(180:4*\a) coordinate (B)
+				(45:2*\a) coordinate (C)
+				($(A)+(90:\h)$) coordinate (A')
+				($(B)+(90:\h)$) coordinate (B')
+				($(C)+(90:\h)$) coordinate (C')
+				($(C)!1/2!(C')$) coordinate (I)
+				($(B)!1/2!(C)$) coordinate (O)
+				($(B')!1/2!(C')$) coordinate (O')
+				($(A)!-1cm!(O)$) coordinate (x)
+				($(B)!-1cm!(C)$) coordinate (y)
+				($(O')!-1cm!(O)$) coordinate (z)
+				;
+				\fill[cyan,opacity=.5] (A)--(B)--(C);
+				\fill[green,opacity=.5] (A)--(B')--(I);
+				\foreach \x/\y in {A/x,B/y,O'/z} \draw[->] (\x)--(\y);
+				\draw[dashed] (C)--(B) (A)--(O)--(O') (B')--(I);
+				\draw[]	(A)--(B)--(B')--(A')--cycle (B')--(C')--(A') (A)--(C)--(C') (B')--(A)--(I);
+				\foreach \x/\y in {A/-90,B/-90,C/0,A'/0,B'/180,C'/0,O/150,I/0}
+				\fill[black] (\x) circle (1pt) ($(\y:3mm)+(\x)$) node {$\x$};	
+				\path 
+				(B)--(A) node[below,pos=.5]{$a$}
+				(A)--(C) node[below,pos=.5]{$a$}
+				(B)--(B') node[left,pos=.5]{$a$}
+				(x) node[above]{$x$} (y) node[above]{$y$} (z) node[left]{$z$};
+				\draw 
+				pic[draw,angle radius=4mm]{ angle=C--A--B}
+				pic[draw,angle radius=2mm]{right angle=O'--O--C}
+				pic[draw,angle radius=2mm]{right angle=A--O--B};
+			\end{tikzpicture}
+		\end{center}
+		Ta có $OB=AB\sin60^\circ=\dfrac{a\sqrt{3}}{2}$ ; $OA=AB\cos60^\circ=\dfrac{a}{2}$.\\
+		Suy ra $A\left(\dfrac{a}{2};0;0\right)$, $B\left(0;\dfrac{a\sqrt{3}}{2};0\right)$, $C\left(0;-\dfrac{a\sqrt{3}}{2};0\right)$, $I\left(0;-\dfrac{\sqrt{3}}{2};\dfrac{a}{2}\right)$, ${B}'\left(0;\dfrac{a\sqrt{3}}{2};a\right)$.\\
+		Mặt phẳng $(ABC)$ có cặp véc-tơ chỉ phương
+		$\left\{\begin{aligned}
+			&\overrightarrow{AB}=\left(-\dfrac{a}{2};\dfrac{a\sqrt{3}}{2};\dfrac{a}{2}\right),\\
+			&\overrightarrow{AC}=\left(-\dfrac{a}{2};-\dfrac{a\sqrt{3}}{2};\dfrac{a}{2}\right).
+		\end{aligned}\right.$\\
+		Suy ra véc-tơ pháp tuyến
+		$\begin{aligned}[t]
+			\overrightarrow{n}_1=\left[\overrightarrow{AB},\overrightarrow{AC}\right]
+			&=\left(
+			\begin{vmatrix}
+				\dfrac{a\sqrt{3}}{2}&0\\-\dfrac{a\sqrt{3}}{2}&0
+			\end{vmatrix};
+			\begin{vmatrix}
+				0&-\dfrac{a}{2}\\0&-\dfrac{a}{2}
+			\end{vmatrix};
+			\begin{vmatrix}
+				-\dfrac{a}{2}&\dfrac{a\sqrt{3}}{2}\\-\dfrac{a}{2}&-\dfrac{a\sqrt{3}}{2}
+			\end{vmatrix}
+			\right)\\
+			&=\left(0;0;\dfrac{a^2\sqrt{3}}{2}\right).
+		\end{aligned}$\\
+		Mặt phẳng $AB'I$ có cặp véc-tơ chỉ phương
+		$\heva{&\overrightarrow{AB'}=\left(-\dfrac{a}{2};\dfrac{a\sqrt{3}}{2};a\right),\\ &\overrightarrow{AI}=\left(-\dfrac{a}{2};-\dfrac{a\sqrt{3}}{2};\dfrac{a}{2}\right).}$\\
+		Suy ra véc-tơ pháp tuyến 
+		$\begin{aligned}[t]
+			\overrightarrow{n}_2=\left[\overrightarrow{A{B}'},\overrightarrow{AI}\right]
+			&=\left(
+			\begin{vmatrix}
+				\dfrac{a\sqrt{3}}{2}&a\\-\dfrac{a\sqrt{3}}{2}&\dfrac{a}{2}
+			\end{vmatrix};
+			\begin{vmatrix}
+				a&-\dfrac{a}{2}\\\dfrac{a}{2}&-\dfrac{a}{2}
+			\end{vmatrix};
+			\begin{vmatrix}
+				-\dfrac{a}{2}&\dfrac{a\sqrt{3}}{2}\\-\dfrac{a}{2}&-\dfrac{a\sqrt{3}}{2}
+			\end{vmatrix}
+			\right)\\
+			&=\left(\dfrac{3a^2\sqrt{3}}{4};-\dfrac{a^2}{4};\dfrac{a^2\sqrt{3}}{2}\right).
+		\end{aligned}$\\
+		Gọi $\alpha$ là góc giữa hai mặt phẳng $(ABC)$ và $(AB'I)$.\\ 
+		Ta có $\cos\alpha=\dfrac{\left|\overrightarrow{n}_1\cdot\overrightarrow{n}_2\right|}{\left|\overrightarrow{n}_1\right|\cdot\left|\overrightarrow{n}_2\right|} =\dfrac{\dfrac{3}{4}}{\dfrac{\sqrt{3}}{2}\cdot\dfrac{\sqrt{10}}{2}} =\sqrt{\dfrac{3}{10}}=\dfrac{\sqrt{30}}{10}$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\inputansbox{10}{ans/ans-LC-3-C5B2CD4_12-21}
+\Opensolutionfile{ans}[ans/ans-C5B2CD4-KQ]
+\TNSA
+\begin{ex}%[2H5V1-6] 
+	Cho hình lập phương $ABCD.A'B'C'D'$ có tâm $O$. Gọi $I$ là tâm cùa hình vuông $A'B'C'D'$ và điểm $M$ thuộc đoạn $OI$ sao cho $MO=2MI$ (tham khảo hình vẽ).
+	\begin{center}
+		\begin{tikzpicture}
+			\def\a{3}
+			\def\b{1}
+			\def\g{35}
+			\def\h{3}
+			\path (0:0) coordinate (A)--++(\g:\b) coordinate (B)--++(0:\a) coordinate (C)--++(\g-180:\b) coordinate (D)
+			\foreach \x in {A,B,C,D}{($(\x)-(90:\h)$) coordinate (\x')};
+			\coordinate (O) at ($(A')!.5!(C)$);
+			\coordinate (I) at ($(A')!.5!(C')$);
+			\coordinate (M) at ($(O)!.66!(I)$);
+			\foreach \x/\g in {A/120,B/150,C/30,D/130,A'/140,B'/150,C'/-45,D'/-30,O/90,M/45,I/180} 
+			\fill[black](\x) circle (1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+			\draw[dashed] (A')--(B')--(C') (B)--(B') (A)--(M)--(B) (C')--(M)--(D') (O)--(I);
+			\draw (D')--(A')--(A)--(B)--(C)--(C')--(D')--(D)--(A) (D)--(C);
+		\end{tikzpicture}
+	\end{center} 
+	Tính sin của góc tạo bởi hai mặt phẳng $\left(MC'D'\right)$ và $(MAB)$ (kết quả viết ở dạng thập phân làm tròn đến hàng phần trăm).
+	\shortans{$0{,}65$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}
+				\def\a{3}
+				\def\b{1}
+				\def\g{35}
+				\def\h{3}
+				\path (0:0) coordinate (A)--++(\g:\b) coordinate (B)--++(0:\a) coordinate (C)--++(\g-180:\b) coordinate (D)
+				\foreach \x in {A,B,C,D}{ ($(\x)-(90:\h)$) coordinate (\x')};
+				\coordinate (O) at ($(A')!.5!(C)$);
+				\coordinate (I) at ($(A')!.5!(C')$);
+				\coordinate (M) at ($(O)!.66!(I)$);
+				\foreach \x/\g in {A/120,B/150,C/30,D/130,A'/140,B'/150,C'/-45,D'/-30,O/90,M/45,I/180}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+				\draw[dashed] (A')--(B')--(C') (B)--(B') (A)--(M)--(B) (C')--(M)--(D') (O)--(I);
+				\draw (D')--(A')--(A)--(B)--(C)--(C')--(D')--(D)--(A) (D)--(C) (D)--(C')
+				;
+				\foreach \diem/\anh/\ts in {A'/x/1.8,C'/y/1.4,B/z/1.4} \coordinate[label = below right:$\anh$] (\anh) at ($(B')!\ts!(\diem)$);
+				\draw[-stealth] (A')--(x); \draw[-stealth](C')--(y); \draw[-stealth](B)--(z);
+			\end{tikzpicture}
+		\end{center}
+		Gắn hệ trục tọa độ như hình vẽ, cạnh hình lập phương là $6$, ta được tọa độ các điểm như sau  $C'(0;6;0)$, $D'(6;6;0)$, $A(6;0;6)$, $B(0; 0;6)$,  $O\left( 3;3;3\right)$, $I\left(3;3;0\right)$ và  $M\left(3;3;1\right)$.\\
+		Lúc đó $\overrightarrow{MC'}=\left(-3;3;-1\right)$, $\overrightarrow{MD'}=\left(3;3;-1\right)$, $\overrightarrow{MA}=\left(3;-3;5\right)$ và $\overrightarrow{MB}=\left(-3;-3;5\right)$.\\
+		Ta có $\left[ \overrightarrow{MC'},\overrightarrow{MD'}\right]=-6\left(0;1;3\right)$. Suy ra mặt phẳng $(MC'D')$ có  một vectơ pháp tuyến  là
+		$\vec{n}_{\left(MC'D'\right)}=(0;1;3)$.\\
+		Lại có $\left[ \overrightarrow{MA},\overrightarrow{MB}\right]=-6\left(0;5;3\right)$. Suy ra mặt phẳng $(MAB)$ có một vectơ pháp tuyến  là
+		$\vec{n}_{(MAB)}=(0;5;3)$. \\
+		Suy ra $\cos \widehat{\left((MAB),(MC'D')\right)}=\dfrac{|5\cdot 1+3\cdot 3|}{\sqrt{5^2+3^2} \cdot \sqrt{1^2+3^2}}=\dfrac{7 \sqrt{85}}{85}$.\\
+		Từ đó có $\sin \widehat{\left((MAB),(MC'D')\right)}=\sqrt{1-\left(\dfrac{7 \sqrt{85}}{85}\right)^2}=\dfrac{6 \sqrt{85}}{85}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V2-7] 
+	Cho hình lăng trụ $ABC.A'B'C'$ có đáy $ABC$ là tam giác vuông tại $A$, $AB=a$, $AC=a\sqrt{3}$. Hình chiếu vuông góc của $A'$ lên mặt phẳng $(ABC)$ là trung điểm $H$ của $BC$, $A'H=a\sqrt{5}$. Gọi $\varphi$ là góc giữa hai đường thẳng $A'B$ và $B'C$. Tính $\cos \varphi$. Kết quả viết ở dạng thập phân làm tròn đến hàng phần trăm.
+	\shortans{ $0{,}51$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}
+				\def\a{5}
+				\def\b{3}
+				\def\g{-160}
+				\def\h{4.5}
+				\path (0:0) coordinate (A)--++(0:\a) coordinate (C)--++(\g:\b) coordinate (B)--++(180+\g:\b/2) coordinate (H)--++(90:\h) coordinate (A')--++(0:\a) coordinate (C')--++(\g:\b) coordinate (B');
+				\draw[dashed]  (A')--(B) (A)--(C) (A')--(H)--(A)  (A')--($(A)+(90:\h)$) coordinate (D);
+				\draw (A')--(B')--(C')-- (A')--(A)--(B)-- (C)--(C')  (B)--(B')--(C);
+				\draw[gray] ($(A)!.15!(B)$) coordinate (E) ($(A)!.15!(C)$) coordinate (F) (E)--($(E)+(F)-(A)$)-- (F);
+				\draw[-stealth] (A)--++(90:5) node[right]{$z$};
+				\draw[-stealth] (B)--($(B)!-.3!(A)$) node[right]{$x$};
+				\draw[-stealth] (C)--($(C)!-.3!(A)$) node[right]{$y$};
+				\foreach \x/\g in {A/180,B/-120,C/-90,A'/120,B'/-45,C'/30,H/-40,D/180}	\fill[black](\x) circle (1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Ta chọn hệ trục tọa độ $Oxyz$ với $O \equiv A$ như hình vẽ, chọn $a=1$ đơn vị, khi đó ta có tọa độ điểm $B(1;0;0)$, $C(0;\sqrt{3};0)$, suy ra trung điểm của $BC$ là $H\left(\dfrac{1}{2};\dfrac{\sqrt{3}}{2};0\right)$.\\
+		Vì $H$ là hình chiếu của $A'$ nên suy ra tọa độ của $A'\left(\dfrac{1}{2};\dfrac{\sqrt{3}}{2};\sqrt{5}\right)$.\\ Ta tìm tọa độ $B'$.\\
+		Gọi tọa độ $B'(x;y;z)$ khi đó ta có $\overrightarrow{A'B'}=\overrightarrow{OB}$ nên tọa độ $B'\left(\dfrac{3}{2};\dfrac{\sqrt{3}}{2};\sqrt{5}\right)$.\\
+		Ta cũng có $\overrightarrow{B'C}=\left(-\dfrac{3}{2};\dfrac{\sqrt{3}}{2};-\sqrt{5}\right)$ và $\vec{A'B}=\left(\dfrac{1}{2};-\dfrac{\sqrt{3}}{2} ;-\sqrt{5}\right)$.\\
+		Từ đó ta có $\cos \varphi=\dfrac{\left|\overrightarrow{A'B} \cdot \overrightarrow{B'C}\right|}{\left|\overrightarrow{A' B}\right| \cdot \left| \overrightarrow{B'C}\right|}=\dfrac{7}{2 \cdot \sqrt{6} \cdot \sqrt{8}}=\dfrac{7 \sqrt{3}}{24}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V1-6] 
+	Cho hình hộp chữ nhật $ABCD.A'B'C'D'$, có $AB=a$, $AD=a\sqrt{2}$, góc giữa $A'C$ và mặt phẳng $(ABCD)$ bằng $30^{\circ}$. Gọi $H$ là hình chiếu vuông góc của $A$ trên $A'B$ và $K$ là hình chiếu vuông góc của $A$ trên $A'D$. Góc giữa hai mặt phẳng $(AHK)$ và $\left(ABB'A'\right)$ bằng bao nhiêu độ?
+	\shortans{$45$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}
+				\def\a{5}
+				\def\b{2}
+				\def\g{40}
+				\def\h{3}
+				\path (0:0) coordinate (D)--++(\g:\b) coordinate (A)--++(0:\a) coordinate (B)--++(\g-180:\b) coordinate (C)
+				\foreach \x in {A,B,C,D}{($(\x)-(90:\h)$) coordinate (\x')};			
+				\draw[dashed] (A)--(A')--(B') (A')--(D') (B)--(A')--(D) (A)--($(D)!.3!(A')$) coordinate (K)--($(B)!.7!(A')$)coordinate (H)--(A);
+				\draw[dashed] (C')--(A')--(C) ($(D')!.3!(A')$) coordinate (E)--(K)--($(A)!.3!(A')$) coordinate (F) (K)--(H);
+				\draw (A)--(C) (D')--(D)--(A)--(B)--(C)--(C')--(B')--(B) (D')--(C') (D)--(C);
+				\foreach \goc/\t/\tt/\ts/\tss in {H/B/A/.08/.12,K/D/A/.3/.15,F/K/A/.15/.3,E/D'/K/.3/.15}
+				\draw[gray] ($(\goc)!\ts!(\t)$) coordinate (X) ($(\goc)!\tss!(\tt)$) coordinate (Y) (X)--($(X)+(Y)-(\goc)$)-- (Y);
+				\foreach \diem/\anh/\ts in {D'/x/1.5,B'/y/1.4,A/z/1.4} \coordinate[label = below right:$\anh$] (\anh) at ($(A')!\ts!(\diem)$);
+				\draw[-stealth] (D')--(x); \draw[-stealth](B')--(y); \draw[-stealth](A)--(z);
+				\foreach \x/\g in {A/140,B/70,C/-30,D/130,A'/-60,B'/-60,C'/-45,D'/-60,K/-130,H/-90,E/-20,F/0}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Do $ABCD.A'B'C'D'$ là hình hộp chữ nhật nên $A'C'$ là hình chiếu vuông góc của $A'C$ trên $(ABCD)$. Suy ra $$\left(A'C,(ABCD)\right)=\left(A'C,A'C'\right)=\widehat{CA'C'}=30^{\circ}.$$
+		Ta có $AC=\sqrt{AB^2+AD^2}=a\sqrt{3}$ và $\tan \widehat{CA'C'}=\dfrac{CC'}{A'C'} \Rightarrow CC'=a$.\\
+		Kết hợp với giả thiết ta được $ABB'A'$ là hình vuông và có $H$ là tâm.\\
+		Gọi $E$, $F$ lần lượt là hình chiếu vuông góc của $K$ trên $A'D'$ và $A'A$. Ta có $$\dfrac{1}{AK^2}=\dfrac{1}{A'A^2}+\dfrac{1}{AD^2} \Rightarrow AK=\dfrac{a \sqrt{6}}{3}, A'K=\sqrt{A'A^2-AK^2}=\dfrac{a}{\sqrt{3}}$$
+		và 
+		$$
+		\dfrac{1}{K F^2}=\dfrac{1}{K A^2}+\dfrac{1}{A' K^2} \Rightarrow K F=\dfrac{a \sqrt{2}}{3}, K E=\sqrt{A' K^2-K F^2} \Rightarrow K E=\dfrac{a}{3}.
+		$$
+		Ta chọn hệ trục tọa độ $Oxyz$ thỏa mãn $O \equiv A'$ còn $D'$, $B'$, $A$ theo thứ tự thuộc các tia $Ox$, $Oy$, $Oz$.\\
+		Khi đó ta có tọa độ các điểm lần lượt là $A(0;0;a)$, $B'(0;a;0)$, $H\left(0;\dfrac{a}{2};\dfrac{a}{2}\right)$, $K\left(\dfrac{a\sqrt{2}}{3};0;\dfrac{a}{3}\right)$, $E\left(\dfrac{a\sqrt{2}}{3};0;0\right)$, $F\left(0;0;\dfrac{a \sqrt{2}}{3}\right)$.\\
+		Mặt phẳng $\left(ABB'A'\right)$ là mặt phẳng $( Oyz)$ nên có vectơ  pháp tuyến là $\vec{n}_1=(1;0;0)$.\\
+		Ta có $\left[ \overrightarrow{AK},\overrightarrow{AH}\right] =\dfrac{a^2}{6} \vec{n}_2$, với $\vec{n}_2(2 ; \sqrt{2};\sqrt{2})$.\\
+		Mặt phẳng $(AKH)$ có vectơ  pháp tuyến là $\vec{n}_2=(2 ;\sqrt{2};\sqrt{2})$.\\
+		Gọi $\alpha$ là góc giữa hai mặt phẳng $(AHK)$ và $\left(ABB'A'\right)$. Ta có 
+		$$\cos \alpha=\left|\cos \left(\vec{n}_1, \vec{n}_2\right)\right|= \dfrac{\left| 1\cdot 2+0\cdot \sqrt{2}+0\cdot \sqrt{2}\right| }{\sqrt{1^2+0^2+0^2}\cdot \sqrt{2^2+\sqrt{2}^2+\sqrt{2}^2}}=\dfrac{1}{\sqrt{2}} \Rightarrow \alpha=45^{\circ}.$$
+	}
+\end{ex}
+
+\begin{ex}%[2H5V1-6] 
+	Cho hình lăng trụ đứng $ABC.A'B'C'$ có $AB=AC=a$, $BAC=120^{\circ}$. Gọi $M$, $N$ lần lượt là trung điểm của $B'C'$ và $CC'$. Biết thể tích khối lăng trụ $ABC.A'B'C'$ bằng $\dfrac{\sqrt{3} a^3}{4}$. Gọi $\alpha$ là góc giữa mặt phẳng $(AMN)$ và mặt phẳng $(ABC)$, tính $\cos \alpha$. Kết quả viết ở dạng thập phân làm tròn đến hàng phần trăm.
+	\shortans{$0{,}43$} 
+	\loigiai{ 
+		\begin{center}
+			\begin{tikzpicture}
+				\def\a{6}
+				\def\b{4}
+				\def\g{20}
+				\def\h{5}
+				\path
+				(0:0) coordinate (A)--++(\g:\b) coordinate (B)--++(170:\a) coordinate (C)
+				\foreach \x in {A,B,C}{($(\x)-(90:\h)$) coordinate (\x')};
+				\draw[dashed] (B')--(C')  ($(B')!.5!(C')$) coordinate (M)--($(C)!.5!(C')$) coordinate (N) (A)--(M)--(A') (M)--($(B)!.5!(C)$)coordinate (P);
+				\draw (A)--(A')--(C')--(C)--(A)--	(B)--(B')--(A') (B)--(C) (N)--(A);
+				\foreach \diem/\anh/\ts in {A'/x/1.5,B'/y/1.4,P/z/1.2} \coordinate[label = below right:$\anh$] (\anh) at ($(M)!\ts!(\diem)$);
+				\draw[-stealth] (A')--(x); \draw[-stealth](B')--(y); \draw[-stealth](P)--(z);
+				\foreach \x/\g in {A/60,B/70,C/90,A'/190,B'/50,C'/180,M/40,N/180}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Lấy $H$ là trung điểm của $BC$.\\ Ta có 
+		$V_{ABC.A'BC'}=CC' \cdot S_{\triangle ABC}=\dfrac{\sqrt{3} a^3}{4} \Rightarrow CC'=a$ vì $S_{\triangle ABC}=\dfrac{\sqrt{3} a^2}{4}$.\\
+		Chọn hệ trục tọa độ $Oxyz$ như hình vẽ. Ta có $M \equiv O$, $M(0;0;0)$, $A'\left(\dfrac{a}{2};0;0\right)$, $B'\left(0;\dfrac{\sqrt{3}a}{2};0\right)$, $C'\left(0;-\dfrac{\sqrt{3} a}{2};0\right)$, $A\left(\dfrac{a}{2};0;a\right)$, $N\left(0;-\dfrac{\sqrt{3} a}{2};\dfrac{a}{2}\right)$.\\
+		Ta có $(ABC) \perp Oz$ nên $(ABC)$ có một vectơ pháp tuyến là $\vec{k}=(0;0;1)$.\\
+		Lại có $\vec{MA}=\left(\dfrac{a}{2};0;a\right)$,  $\overrightarrow{MN}=\left(0;-\dfrac{\sqrt{3}a}{2} ;\dfrac{a}{2}\right)$.\\
+		Gọi $\overrightarrow{v_1}=\dfrac{2}{a}\overrightarrow{MA}\Rightarrow \overrightarrow{v_1}=(1;0;2)$, $\vec{v}_2=\dfrac{2}{a} \overrightarrow{MN} \Rightarrow \vec{v}_2=(0;-\sqrt{3};1)$. Khi đó mặt phẳng $(AMN)$ song song hoặc chứa giá của hai vectơ không cùng phương là $\overrightarrow{v_1}$ và $\overrightarrow{v_2}$ nên có một vectơ pháp tuyến là $\vec{n}=\left[\overrightarrow{v_1}, \overrightarrow{v_2}\right]=(2 \sqrt{3};-1 ;-\sqrt{3})$.\\
+		Vậy $\cos \alpha=\left| \cos (\vec{k}, \vec{n})\right| =\dfrac{\left| \vec{k}\cdot  \vec{n}\right| }{\left| \vec{k}\right| \left| \vec{n}\right| }=\dfrac{\sqrt{3}}{4}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V1-6]  
+	Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông cân tại $B$, $AC=2a$, tam giác $SAB$ và tam giác $SCB$ lần lượt vuông tại $A$, $C$. Khoảng cách từ $S$ đến mặt phẳng $(ABC)$ bằng $2a$. Tính côsin của góc giữa hai mặt phẳng $(SAB)$ và $(SCB)$. Kết quả viết ở dạng thập phân làm tròn đến hàng phần trăm.
+	\shortans{ $0{,}33$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=.8]
+				\def\a{5}
+				\def\b{4}
+				\def\g{-40}
+				\def\h{2}
+				\path
+				(0:0) coordinate (B)--++(\g:\b) coordinate (A)--++(30:\a) coordinate (C)--++(130:5)coordinate (S)
+				(0,0)--++(90:5) coordinate (D);
+				\draw[dashed] (B)--(C);
+				\draw (S)--(B)--(A)--(C)--(S)--(A);
+				\draw[gray] ($(B)!.12!(A)$) coordinate (E) ($(B)!.08!(C)$) coordinate (F) (E)--($(E)+(F)-(B)$)-- (F);
+				\foreach \diem/\anh/\ts in {A/x/1.4,C/y/1.2} \coordinate[label = below right:$\anh$] (\anh) at ($(B)!\ts!(\diem)$);
+				\draw[-stealth] (A)--(x); \draw[-stealth](C)--(y); \draw[-stealth](B)--(D)node[left]{$z$};
+				\foreach \x/\g in {A/-110,B/-130,C/65,S/90}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Chọn hệ trục tọa độ sao cho $B(0;0;0)$, $A(a\sqrt{2};0;0)$, $C(0;a\sqrt{2};0)$, $S(x;y;z)$.\\
+		Ta có phương trình mặt phẳng $(ABC)$ là $z=0$, $\overrightarrow{AS}=(x-a\sqrt{2};y;z)$, $\vec{CS}=(x;y-a\sqrt{2};z)$.\\
+		Do $\overrightarrow{AS} \cdot\overrightarrow{AB}=0 \Rightarrow(x-a \sqrt{2}) a \sqrt{2}=0 \Rightarrow x=a \sqrt{2}$.\\
+		Mặt khác $\mathrm{d}(S,(ABC))=2a \Rightarrow z=2a(z>0)$.\\
+		Lại có $\overrightarrow{CS}\cdot \overrightarrow{CB}=0 \Rightarrow(y-a\sqrt{2})a\sqrt{2}=0 \Rightarrow y=a \sqrt{2}$. \\
+		Vậy $S\left( a\sqrt{2};a \sqrt{2};2 a\right)$.\\
+		Ta có $\overrightarrow{AS}=\left(0;a\sqrt{2};2a\right)$, $\overrightarrow{CS}=\left(a\sqrt{2};0;2a\right)$, $\overrightarrow{BS}=\left(a\sqrt{2};a\sqrt{2};2a\right)$. Lúc đớ\\ $\left[\overrightarrow{AS},\overrightarrow{BS}\right] =\left( 0;2a^2\sqrt{2};-a^2\sqrt{a}\right) =2a^2\left( 0;\sqrt{2};1\right)$,\\ $\left[\overrightarrow{CS},\overrightarrow{BS}\right]=\left( -2a^2\sqrt{2};0;2a^2\right)=2a^2\left( -\sqrt{2};0;1\right)$.\\
+		Vậy $(SBC)$ có một vectơ  pháp tuyến là $\vec{n}=\left( -\sqrt{2};0;1\right)$ và $(SAB)$ có một vectơ  pháp tuyến $\vec{m}=\left( 0;\sqrt{2};-1\right)$. Suy ra $$\cos \varphi=\dfrac{\left| \vec{n}\cdot \vec{m}\right|} {\left| \vec{n}\right| \cdot\left| \vec{m}\right|  }=\dfrac{\left| -\sqrt{2}\cdot 0+0\cdot \sqrt{2}+1\cdot (-1)\right| }{\sqrt{\left( -\sqrt{2}\right)^2+0^2+1^2}\cdot \sqrt{0^2+\left( \sqrt{2}\right)^2+\left(-1\right)^2}}=\dfrac{1}{\sqrt{3} \cdot \sqrt{3}}=\dfrac{1}{3}.$$
+	}
+\end{ex}
+
+\begin{ex}%[2H5V1-6] 
+	Cho hình lăng trụ đứng $ABC.A'B'C'$ có đáy là tam giác cân đỉnh $A$. Biết $BC=a \sqrt{3}$ và $\widehat{ABC}=30^{\circ}$, cạnh bên $AA'=a$. Gọi $M$ là điểm thỏa mãn $2 \vec{CM}=3 \vec{CC'}$. Gọi $\alpha$ là góc tạo bởi hai mặt phẳng $(ABC)$ và $\left(AB'M\right)$, khi đó tính $\sin \alpha$. Kết quả viết ở dạng thập phân làm tròn đến hàng phần trăm.
+	\shortans{ $0{,}93$} 
+	\loigiai{ 
+		Gọi $O$ là trung điểm $BC$. Lúc đó 
+		$$BO=AB \cdot \cos 30^{\circ} \Leftrightarrow AB=\dfrac{BO}{\cos 30^{\circ}}=\dfrac{a \sqrt{3}}{2 \cdot \dfrac{\sqrt{3}}{2}}=a=AC$$
+		và 
+		$$AO=AB \cdot \sin 30^{\circ}=\dfrac{a}{2}.$$
+		Theo đề bài ta có 
+		$$2 \overrightarrow{CM}=3\vec{CC'} \Leftrightarrow \vec{CM}=\dfrac{3}{2} \vec{CC'} \Leftrightarrow \overrightarrow{CC'}+\overrightarrow{C'M}=\dfrac{3}{2} \overrightarrow{CC'} \Leftrightarrow \overrightarrow{C'M}=\dfrac{1}{2} \overrightarrow{CC'} \Rightarrow C'M=\dfrac{a}{2}.$$
+		\begin{center}
+			\begin{tikzpicture}
+				\def\a{3}
+				\def\b{1}
+				\def\g{-140}
+				\def\h{3}
+				\path
+				(0:0) coordinate (A)--++(0:\a) coordinate (C)--++(\g:\b) coordinate (B) 
+				\foreach \x in {A,B,C}{					($(\x)+(90:\h)$) coordinate (\x')};
+				\draw[dashed] (C)--(A)--($(B)!.5!(C)$) coordinate (O);
+				\draw (A)--(B)--(C)--(C')--(B')--(A')--(A) (B)--(B') (C')--($(C)!1.6!(C')$) coordinate (M) (O)--($(B')!.5!(C')$) coordinate (O');
+				\path[name path=c1] (A') --(C');
+				\path[name path=c2] (A)--(M);
+				\path[name intersections={of=c1 and c2}] (intersection-1) coordinate (N);
+				\draw (M)--(N)--(B')--cycle (N)--(A') ;
+				\foreach \t/\tt/\ts/\tss in {O'/A/.06/.06,O'/B/.06/.25,A/B/.06/.25}
+				\draw[gray] ($(O)!\ts!(\t)$) coordinate (X) ($(O)!\tss!(\tt)$) coordinate (Y) (X)--($(X)+(Y)-(O)$)--(Y);
+				\draw[dashed] (A)--(N) (N)--(C');
+				\foreach \diem/\anh/\ts in {B/x/3,A/y/1.4,O'/z/2} \coordinate[label = below right:$\anh$] (\anh) at ($(O)!\ts!(\diem)$);
+				\draw[-stealth] (B)--(x); \draw[-stealth](A)--(y); \draw[-stealth](O')--(z);
+				\foreach \x/\g in {A/-90,B/-90,C/0,A'/180,B'/-140,C'/0,M/0,N/130,O/-90,O'/-40}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Coi $a=1$. Gắn hệ trục tọa độ $Oxyz$ như hình vẽ với $O(0;0;0)$, $A\left(0;\dfrac{1}{2};0\right)$, $B\left(\dfrac{\sqrt{3}}{2};0;0\right)$, $C \left(-\dfrac{\sqrt{3}}{2};0;0\right)$, $B'\left(\dfrac{\sqrt{3}}{2};0;1\right)$, $C' \left(-\dfrac{\sqrt{3}}{2};0;\dfrac{3}{2}\right)$.\\
+		Khi đó $(ABC) \equiv(Oxy)\colon z=0 \Rightarrow(ABC)$ có một vectơ pháp tuyến là $\vec{k}=(0;0;1)$.\\
+		Ta có $\overrightarrow{AB'}=\left(\dfrac{\sqrt{3}}{2} ;-\dfrac{1}{2};1\right)$, $\overrightarrow{AM}=\left(-\dfrac{\sqrt{3}}{2};-\dfrac{1}{2};\dfrac{3}{2}\right)$ suy ra $$\overrightarrow{n}_{\left(AB'M\right)}=4\left[\overrightarrow{AB'},\overrightarrow{AM}\right]=\left(1;5\sqrt{3};2\sqrt{3}\right).$$
+		Gọi $\alpha$ là góc giữa hai mặt phẳng $(ABC)$ và $(AB'M)$.\\
+		Ta có $$\cos \alpha=\dfrac{\left|\vec{k}\cdot \vec{n}_{\left(AB'M\right)}\right|}{|\vec{k}| \cdot\left|\overrightarrow{n}_{\left(AB'M\right)}\right|}=\dfrac{|2 \sqrt{3}|}{1\cdot 2 \sqrt{22}}=\sqrt{\dfrac{3}{22}}.$$
+		Suy ra $\sin \alpha=\sqrt{1-\cos ^2 \alpha}=\sqrt{\dfrac{19}{22}}=\dfrac{\sqrt{418}}{22}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V1-6] 
+	Cho khối tứ diện $ABCD$ có $BC=3$, $CD=4$, $\widehat{ABC}=\widehat{ADC}=\widehat{BCD}=90^{\circ}$. Góc giữa đường thẳng $AD$ và $BC$ bằng $60^{\circ}$. Tính côsin góc giữa hai mặt phẳng $(ABC)$ và $(ACD)$. Kết quả viết ở dạng thập phân làm tròn đến hàng phần trăm.
+	\shortans{ $0{,}3$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=.8]
+				\path (0:0) coordinate (A)--++(-90:5) coordinate (O)--++(0:4) coordinate (D)--++(-140:3) coordinate (C)--++(180:4)coordinate (B);
+				\draw (A)--(B)--(C)--(D)--(A)--(C);
+				\draw[dashed] (A)--(O)--(D) (O)--(B);
+				\draw[gray] ($(O)!.08!(A)$) coordinate (X) ($(O)!.09!(D)$) coordinate (Y) (X)--($(X)+(Y)-(O)$)-- (Y);
+				\foreach \diem/\anh/\ts in {B/x/1.5,D/y/1.4,A/z/1.3} \coordinate[label = below right:$\anh$] (\anh) at ($(O)!\ts!(\diem)$);
+				\draw[-stealth] (B)--(x); \draw[-stealth](D)--(y); \draw[-stealth](A)--(z);
+				\foreach \x/\g in {A/140,B/-70,C/-30,O/140,D/60}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Dựng $AO \perp(BCD)$ khi đó $O$ là đỉnh thứ tư của hình chữ nhật $BCDO$.\\
+		Góc giữa đường thẳng $AD$ và $BC$ là góc giữa đường thẳng $AD$ và $OD$ và bằng $\widehat{ADO}=60^{\circ}$.\\
+		Xét tam giác $ADO$ vuông tại $O$ ta có $\tan 60^{\circ}=\dfrac{OA}{OD} \Rightarrow OA=3\sqrt{3}$.\\
+		Gắn hệ tọa độ $Oxyz$ vào hình chóp như hình vẽ.\\
+		Ta có $O(0;0;0)$, $B(4;0;0)$, $D(0;3;0)$, $C(4;3;0)$, $A(0;0;3\sqrt{3})$.\\
+		Suy ra $\overrightarrow{AB}=(4;0;-3\sqrt{3})$, $\overrightarrow{BC}=(0;3;0)$, $\overrightarrow{AD}=(0;3;-3\sqrt{3})$, $\overrightarrow{CD}=(-4;0;0)$.\\
+		Mặt phẳng $(ABC)$ nhận vectơ $\vec{n_1}=\left[ \overrightarrow{AB},\overrightarrow{BC}\right] =(9\sqrt{3};0;12)$ làm vectơ pháp tuyến.\\
+		Mặt phẳng $(ADC)$ nhận vectơ $\vec{n_2}=\left[ \overrightarrow{AD}, \overrightarrow{CD}\right] =\left(0;12\sqrt{3};12\right)$ làm vectơ pháp tuyến.\\
+		Nên $\cos\left((ABC);(ADC)\right) =\dfrac{\left|\overrightarrow{n_1} \cdot \overrightarrow{n_2}\right|}{\left|\overrightarrow{n_1}\right| \cdot\left| \vec{n}_2 \right| }=\dfrac{144}{72\sqrt{43}}=\dfrac{2 \sqrt{43}}{43}$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\inputansbox{7}{ans/ans-C5B2CD4-KQ}

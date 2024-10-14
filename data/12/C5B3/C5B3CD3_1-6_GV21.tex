@@ -1,0 +1,392 @@
+\chude{BÀI TOÁN LIÊN QUAN VỊ TRÍ TƯƠNG ĐỐI GIỮA MẶT PHẲNG VÀ MẶT CẦU}
+
+Cho mặt cầu $S(I;R)$ và mặt phẳng $(P)$. Gọi $H$ là hình chiếu vuông góc của $I$ lên $(P)$ và có $d=IH$ là khoảng cách từ $I$ đến mặt phẳng $(P)$. Khi đó:
+\begin{itemize}
+	\item Nếu $d>R$: Mặt cầu và mặt phẳng không có điểm chung.
+	\begin{center}
+		\begin{tikzpicture}[line join=round,line cap=round,>=stealth,scale=0.7,font=\footnotesize]
+			\tikzset{every node/.style={scale=0.8}}
+			\def \R{2}
+			\def \d{3}
+			\def \r{0.5}
+			\coordinate (I) at (0,0);
+			\coordinate (M1) at (0,\R);
+			\coordinate (M2) at (0,-\R);
+			\coordinate (H) at (0,-\d);
+			\coordinate (A) at (\R,0);
+			\coordinate (P1) at (-2.5,-\d+0.5);
+			\coordinate (P2) at (-4,-\d-0.5);
+			\coordinate (P3) at ($2*(H)-(P1)$);
+			\coordinate (P4) at ($2*(H)-(P2)$);
+			\draw (I) circle (\R);
+			\draw  (A) arc (0:-180: \R cm and \r cm);
+			\draw [dashed] (A) arc (0:180: \R cm and \r cm);
+			\draw[dashed] (M1)--(M2) (A)--(-\R,0) node[pos=0.65, above] {$R$};
+			\draw (M2)--(H);
+			\pic [draw, angle radius=8] {right angle=M2--H--P3};
+			\draw (P1)--(P2)--(P3)--(P4)--cycle;
+			\pic[draw,angle radius=30]{angle=P3--P2--P1};
+			\draw (-3.13,-\d-0.3)node[font=\scriptsize]{$(P)$};
+			\foreach \i/\g in {I/45,M2/45,M1/90,H/180} \draw[fill=black] (\i) circle(1.0 pt) node[shift={(\g:9pt)}]{$\i$};
+		\end{tikzpicture}
+	\end{center}
+	\item Nếu $d=R$: Mặt phẳng tiếp xúc mặt cầu. Lúc đó $(P)$ là mặt phẳng tiếp diện của $(S)$ và $H$ là tiếp điểm.
+		\begin{center}
+		\begin{tikzpicture}[line join=round,line cap=round,>=stealth,scale=0.7,font=\footnotesize]
+			\tikzset{every node/.style={scale=0.8}}
+			\def \R{2}
+			\def \d{2}
+			\def \r{0.5}
+			\coordinate (I) at (0,0);
+			\coordinate (M2) at (0,-\R);
+			\coordinate (H) at (0,-\d);
+			\coordinate (A) at (\R,0);
+			\coordinate (P1) at (-2.5,-\d+0.5);
+			\coordinate (P2) at (-4,-\d-0.5);
+			\coordinate (P3) at ($2*(H)-(P1)$);
+			\coordinate (P4) at ($2*(H)-(P2)$);
+			\draw [name path=i](I) circle (\R);
+			\draw  (A) arc (0:-180: \R cm and \r cm);
+			\draw [dashed] (A) arc (0:180: \R cm and \r cm);
+			\draw[dashed] (A)--(-\R,0) (I)--(M2) node[pos=0.5, right] {$R$};
+			\draw (M2)--(H);
+			\pic [draw, angle radius=8] {right angle=M2--H--P3};
+			\path [name path=p1p4] (P1)--(P4);
+			\path [name intersections={of=i and p1p4,by={G1,G2}}];
+			\draw (P1)--(P2)--(P3)--(P4) (P1)--(G1) (G2)--(P4);
+			\draw[dashed] (G1)--(G2);
+			\pic[draw,angle radius=30]{angle=P3--P2--P1};
+			\draw (-3.13,-\d-0.3)node[font=\scriptsize]{$(P)$};
+			\foreach \i/\g in {I/45,H/-150} \draw[fill=black] (\i) circle(1.0 pt) node[shift={(\g:9pt)}]{$\i$};
+		\end{tikzpicture}
+	\end{center}
+	\item Nếu $d<R$: mặt phẳng $(P)$ cắt mặt cầu theo thiết diện là đường tròn có tâm $H$ và bán kính $r=\sqrt{R^2-IH^2}$.
+			\begin{center}
+		\begin{tikzpicture}[line join=round,line cap=round,>=stealth,scale=0.7,font=\footnotesize]
+			\tikzset{every node/.style={scale=0.8}}
+			\def \R{2}
+			\def \d{1.3}
+			\def \a{0.3}
+			\coordinate (I) at (0,0);
+			\coordinate (H) at (0,-\d);
+			\coordinate (H1) at ($(H)+(\R,0)$);
+			\coordinate (H2) at ($(H)-(\R,0)$);
+			\coordinate (P1) at (-2.5,-\d+0.5);
+			\coordinate (P2) at (-4,-\d-0.5);
+			\coordinate (P3) at ($2*(H)-(P1)$);
+			\coordinate (P4) at ($(P2)!0.4!(P3)$);
+			\draw[name path=i] (I) circle (\R);
+			\path [name path=h1h2] (H1)--(H2);
+			\path [name intersections={of=i and h1h2,by={M1,A}}];
+			\draw[dashed] (A)--(H)--(I)node[pos=0.5, left] {$d$} (I)--(A) node[pos=0.5, right] {$R$};
+			\pic [draw, angle radius=8] {right angle=I--H--A};
+			\draw (A) arc (0:-180: 1.51cm and \a cm);
+			\draw [dashed] (A) arc (0:180: 1.51cm and \a cm);
+			\draw (P1)--(P2)--(P4);
+			\pic[draw,angle radius=30]{angle=P3--P2--P1};
+			\draw (-3.13,-\d-0.3)node[font=\scriptsize]{$(P)$};
+			\foreach \i/\g in {I/45,H/180,A/0} \draw[fill=black] (\i) circle(1.0 pt) node[shift={(\g:9pt)}]{$\i$};
+		\end{tikzpicture}
+	\end{center}
+\end{itemize}
+\begin{dang}{Vị trí tương đối giữa mặt phẳng với mặt cầu}
+\end{dang}
+\TN
+\Opensolutionfile{ans}[ans/ans-2C5B3CD3-D1]
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ tọa độ $Oxyz$, cho mặt cầu $(S) \colon x^2+y^2+z^2-2x-2y-2z-22=0$ và mặt phẳng $(P)\colon 3x-2y+6z+14=0$. Khoảng cách từ tâm $I$ của mặt cầu $(S)$ đến mặt phẳng $(P)$ bằng
+	\choice
+	{$2$}
+	{$4$}
+	{\True $3$}
+	{$1$}
+	\loigiai{
+		Mặt cầu $(S)$ có tâm $I(1;1;1)$.\\
+		Vậy $\mathrm{d}\Big(I,(P)\Big)=\dfrac{|3-2+6+14|}{\sqrt{9+4+36}}=3$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ tọa độ $Oxyz$, cho mặt cầu $(S)\colon x^2+y^2+z^2=1$ và mặt phẳng $(P)\colon x+2y-2z+1=0$. Tìm bán kính $r$ đường tròn giao tuyến của $(S)$ và $(P)$.
+	\choice
+	{$r=\dfrac{1}{3}$}
+	{\True $r=\dfrac{2\sqrt 2}{3}$}
+	{$r=\dfrac{1}{2}$}
+	{$r=\dfrac{\sqrt{2}}{2}$}
+	\loigiai{
+	\begin{center}
+		\begin{tikzpicture}[line join=round,line cap=round,>=stealth,scale=0.7,font=\footnotesize]
+			\tikzset{every node/.style={scale=0.6}}
+			\def \R{2}
+			\def \d{1.3}
+			\def \a{0.3}
+			%\def \r={$sqrt(\R^2-\d^2)$}
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (\R,0);			
+			\coordinate (H) at (0,-\d);
+			\coordinate (H1) at ($(H)+(\R,0)$);
+			\coordinate (H2) at ($(H)-(\R,0)$);
+			\coordinate (P1) at (-2.5,-\d+0.5);
+			\coordinate (P2) at (-4,-\d-0.5);
+			\coordinate (P3) at ($2*(H)-(P1)$);
+			\coordinate (P4) at ($(P2)!0.4!(P3)$);
+			\draw[name path=i] (O) circle (\R);
+			\draw (A) arc (0:-180: \R cm and \a cm);
+			\draw [dashed] (A) arc (0:180: \R cm and \a cm);
+			\path [name path=h1h2] (H1)--(H2);
+			\path [name intersections={of=i and h1h2,by={M1,M2}}];
+			\coordinate (M) at ($(M2)+(-120:1.51cm and \a cm)$);
+			\draw[dashed] (M)--(H) node[pos=0.5, above] {$r$} (H)--(O)node[pos=0.5, left] {$d$} (O)--(M) node[pos=0.5, right] {$R$};
+			\pic [draw, angle radius=5] {right angle=O--H--M};
+			\draw (M2) arc (0:-180: 1.51cm and \a cm);
+			\draw [dashed] (M2) arc (0:180: 1.51cm and \a cm);
+			\draw (P1)--(P2)--(P4);
+			\pic[draw,angle radius=30]{angle=P3--P2--P1};
+			\draw (-3.4,-\d-0.3)node[font=\scriptsize]{$(P)$};
+			\foreach \i/\g in {O/0,H/180,M/-60} \draw[fill=black] (\i) circle(1.0 pt) node[shift={(\g:9pt)}]{$\i$};
+		\end{tikzpicture}
+	\end{center}
+	Mặt cầu có tâm $O(0;0;0)$, bán kính $R=1$.\\
+	Khoảng cách $\mathrm{d}\Big(O,(P)\Big)=\dfrac{1}{3}$.\\
+	Bán kính đường tròn giao tuyến là $r=\sqrt{R^2-d^2}=\dfrac{2\sqrt 2}{3}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$ cho mặt cầu $(S)\colon x^2+y^2+z^2-2x-4y-6z=0$. Đường tròn giao tuyến của $(S)$ với mặt phẳng $(Oxy)$ có bán kính là
+	\choice
+	{$r=3$}
+	{\True $r=\sqrt 5$}
+	{$r=\sqrt 6$}
+	{$r=\sqrt{14}$}
+	\loigiai{
+			\begin{center}
+			\begin{tikzpicture}[line join=round,line cap=round,>=stealth,scale=0.7,font=\footnotesize]
+				\tikzset{every node/.style={scale=0.6}}
+				\def \R{2}
+				\def \d{1.3}
+				\def \a{0.3}
+				\coordinate (I) at (0,0);
+				\coordinate (A) at (\R,0);			
+				\coordinate (H) at (0,-\d);
+				\coordinate (H1) at ($(H)+(\R,0)$);
+				\coordinate (H2) at ($(H)-(\R,0)$);
+				\coordinate (P1) at (-2.5,-\d+0.5);
+				\coordinate (P2) at (-4,-\d-0.5);
+				\coordinate (P3) at ($2*(H)-(P1)$);
+				\coordinate (P4) at ($(P2)!0.4!(P3)$);
+				\draw[name path=i] (I) circle (\R);
+				\draw (A) arc (0:-180: \R cm and \a cm);
+				\draw [dashed] (A) arc (0:180: \R cm and \a cm);
+				\path [name path=h1h2] (H1)--(H2);
+				\path [name intersections={of=i and h1h2,by={M1,M2}}];
+				\coordinate (M) at ($(M1)+(-62:1.51cm and \a cm)$);
+				\draw[dashed] (M)--(H) node[pos=0.5, above] {$r$} (H)--(I) (I)--(M) node[pos=0.5, left] {$R$};
+				\pic [draw, angle radius=5] {right angle=I--H--M};
+				\draw (M2) arc (0:-180: 1.51cm and \a cm);
+				\draw [dashed] (M2) arc (0:180: 1.51cm and \a cm);
+				\draw (P1)--(P2)--(P4);
+				\pic[draw,angle radius=30]{angle=P3--P2--P1};
+				\draw (-3.4,-\d-0.3)node[font=\scriptsize]{$(\alpha)$};
+				\foreach \i/\g in {I/0,H/0} \draw[fill=black] (\i) circle(1.0 pt) node[shift={(\g:9pt)}]{$\i$};
+				\draw (\R-0.2,\R-0.5) node {$(S)$};
+				\draw (M2)+(-0.2,0.3) node {$(C)$};
+			\end{tikzpicture}
+		\end{center}
+		Mặt cầu $(S)$ có tâm $I(1;2;3)$ và bán kính $R=\sqrt{1^2+2^2+3^2}=\sqrt{14}$.\\
+		Khoảng cách từ tâm $I$ đến mặt phẳng $(Oxy)$ là $d=3$, suy ra bán kính đường tròn giao tuyến cần tìm là $r=\sqrt{R^2-d^2}=\sqrt 5$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho mặt cầu $(S)$ tâm $I(a;b;c)$ bán kính bằng $1$, tiếp xúc mặt phẳng $(Oxz)$. Khẳng định nào sau đây luôn đúng?
+	\choice
+	{$|a|=1$}
+	{$a+b+c=1$}
+	{\True $|b|=1$}
+	{$|c|=1$}
+	\loigiai{
+		Phương trình mặt phẳng $(Oxz)\colon y=0$.\\
+		Vì mặt cầu $(S)$ tâm $I(a;b;c)$ bán kính bằng $1$ tiếp xúc với $(Oxz)$ nên ta có\\
+		$\mathrm{d}\Big(I,(Oxz)\Big)=1 \Leftrightarrow|b|=1$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho mặt cầu $(S)\colon(x-2)^2+(y+1)^2+(z+2)^2=4$ và mặt phẳng $(P)\colon 4x-3y-m=0$. Tìm tất cả các giá trị thực của tham số $m$ để mặt phẳng $(P)$ và mặt cầu $(S)$ có đúng $1$ điểm chung.
+	\choice
+	{$m=1$}
+	{$m=-1$ hoặc $m=-21$}
+	{\True $m=1$ hoặc $m=21$}
+	{$m=-9$ hoặc $m=31$}
+	\loigiai{
+	Ta có mặt cầu $(S)\colon (x-2)^2+(y+1)^2+(z+2)^2=4$ có tâm $I(2;-1;-2)$, bán kính $R=2$.\\
+	Mặt phẳng $(P)$ và mặt cầu $(S)$ có đúng $1$ điểm chung khi và chỉ khi mặt phẳng $(P)$ tiếp xúc với mặt cầu $(S)$ hay: \\
+	\allowdisplaybreaks
+	\begin{eqnarray*}
+		\mathrm{d}\Big(I,(P)\Big)=R&\Leftrightarrow&\dfrac{|4\cdot 2-3 \cdot(-1)-m|}{\sqrt{4^2+3^2}}=2\\
+		&\Leftrightarrow&|11-m|=10\\
+		&\Leftrightarrow&\hoac{&m=1\\&m=21.}
+	\end{eqnarray*}
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho mặt cầu $(S)\colon x^2+y^2+z^2-2x+4y+2z-3=0$. Viết phương trình mặt phẳng $(Q)$ chứa trục $Ox$ và cắt $(S)$ theo một đường tròn bán kính bằng $3$.
+	\choice
+	{$(Q)\colon y+3z=0$}
+	{$(Q)\colon x+y-2z=0$}
+	{$(Q)\colon y-z=0$}
+	{\True $(Q)\colon y-2z=0$}
+	\loigiai{
+		$(Q)$ chứa trục $Ox$ nên có dạng $By+Cz=0\left(B^2+C^2 \neq 0\right)$.\\
+		$(S)$ có tâm $I(1;-2;-1)$ và bán kính $R=3$.\\
+		Bán kính đường tròn giao tuyến $r=3$.\\
+		Vì $R=r$ nên $I \in(Q)$.\\
+		Suy ra $-2B-C=0$ vì $B$, $C$ không đồng thời bằng $0$ nên chọn $B=1 \Rightarrow C=-2$.\\
+		Vậy $(Q)\colon y-2z=0$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho mặt cầu $(S)\colon (x-1)^2+(y-2)^2+(z+1)^2=45$ và mặt phẳng $(P)\colon x+y-z-13=0$. Mặt cầu $(S)$ cắt mặt phẳng $(P)$ theo giao tuyến là đường tròn có tâm $I(a;b;c)$ thì giá trị của $a+b+c$ bằng
+	\choice
+	{$-11$}
+	{\True $5$}
+	{$2$}
+	{$1$}
+	\loigiai{
+	Mặt cầu $(S)$ có tâm $A(1;2;-1)$ và bán kính $R=3\sqrt 5$.\\
+	Mặt cầu $(S)$ cắt mặt phẳng $(P)$ theo giao tuyến là đường tròn có tâm $I(a;b;c)$.\\
+	Suy ra $I$ là hình chiếu của $A$ lên $mp(P)$ khi và chỉ khi
+	\allowdisplaybreaks
+	\begin{eqnarray*}
+		\heva{&I \in(P)\\&\overrightarrow{IA}=k\overrightarrow{n}_P} &\Leftrightarrow& \heva{&a+b-c-13=0\\&1-a=k\\&2-b=k\\&-1-c=-k}\\
+		&\Rightarrow&(1-k)+(2-k)-(-1+k)-13=0\\
+		&\Leftrightarrow& k=-3.
+	\end{eqnarray*}
+	Suy ra $I(4;5;-4)$.\\
+	Vậy $a+b+c=5$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho mặt cầu $(S)\colon x^2+y^2+z^2-2x-2z-7=0$, mặt phẳng $(P)\colon 4x+3y+m=0$. Tìm tất cả các giá  trị của $m$ để mặt phẳng $(P)$ cắt mặt cầu $(S)$.
+	\choice
+	{$\hoac{&m>11\\&m<-19}$}
+	{\True $-19<m<11$}
+	{$-12<m<4$}
+	{$\hoac{&m>4\\&m<-12}$}
+	\loigiai{
+	$(S)\colon x^2+y^2+z^2-2 x-2 z-7=0$ có tâm $I(1;0;1)$ và bán kính $R=3$. \\
+	Suy ra, $(P)$ cắt mặt cầu $(S)$ khi và chỉ khi
+	\allowdisplaybreaks
+	\begin{eqnarray*}
+		\mathrm{d}\Big(I;(P)\Big)<R&\Leftrightarrow&\dfrac{|4\cdot 1+3\cdot 0+m|}{\sqrt{4^2+3^2}}<3\\
+		&\Leftrightarrow&|m+4|<15\\
+		&\Leftrightarrow&-19<m<11.
+	\end{eqnarray*}
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho mặt cầu $(S)\colon(x-a)^2+(y-2)^2+(z-3)^2=9$ và mặt phẳng $(P)\colon 2x+y+2z=1$. Tìm tất cả các giá trị của $a$ để $(P)$ cắt mặt cầu $(S)$ theo giao tuyến là đường tròn $(C)$.
+	\choice
+	{$-\dfrac{17}{2}\leq a\leq \dfrac{1}{2}$}
+	{$-\dfrac{17}{2}<a<\dfrac{1}{2}$}
+	{\True $-8<a<1$}
+	{$-8\leq a\leq 1$}
+	\loigiai{
+		$(S)\colon(x-a)^2+(y-2)^2+(z-3)^2=9$ có tâm $I(a;2;3)$ và có bán kính $R=3$.\\
+		Do $(P)$ cắt mặt cầu $(S)$ theo đường tròn $(C)$ nên ta suy ra
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			\mathrm{d}\Big(I;(P)\Big)<R &\Leftrightarrow& \dfrac{|2\cdot a+2+2\cdot 3-1|}{\sqrt{2^2+1^2+2^2}}<3\\ &\Leftrightarrow&|2a+7|<9\\
+			&\Leftrightarrow&-8<a<1.
+		\end{eqnarray*}
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho mặt cầu $(S)\colon x^2+y^2+z^2-4 x+2 y+2 z-10=0$, mặt phẳng $(P)\colon x+2 y-2 z+10=0$. Mệnh đề nào dưới đây đúng?
+	\choice
+	{\True $(P)$ tiếp xúc với $(S)$}
+	{$(P)$ cắt $(S)$ theo giao tuyến là đường tròn khác đường tròn lớn}
+	{$(P)$ và $(S)$ không có điểm chung}
+	{$(P)$ cắt $(S)$ theo giao tuyến là đường tròn lớn}
+	\loigiai{
+		Mặt cầu $(S)$ có tâm $I=(2;-1;-1)$, bán kính $R=\sqrt{4+1+1-(-10)}=\sqrt{16}=4$.\\
+		Khoảng cách từ tâm $I$ đến mặt phẳng $(P)$ là \[\mathrm{d}\Big(I,(P)\Big)=\dfrac{|2+2 \cdot(-1)-2(-1)+10|}{\sqrt{1^2+2^2+(-2)^2}}=\dfrac{12}{3}=4.\]
+		Ta thấy $\mathrm{d}\Big(I,(P)\Big)=R$, vậy $(P)$ tiếp xúc với $(S)$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ trục tọa độ $Oxyz$, cho mặt phẳng $(P)\colon mx+2y-z+1=0$ ($m$ là tham số). Mặt phẳng $(P)$ cắt mặt cầu $(S)\colon(x-2)^2+(y-1)^2+z^2=9$ theo một đường tròn có bán kính bằng $2$. Tìm tất cả các giá trị thực của tham số $m$.
+	\choice
+	{$m=\pm 1$}
+	{$m=\pm 2+\sqrt 5$}
+	{$m=\pm 4$}
+	{\True $m=6\pm 2\sqrt 5$}
+	\loigiai{
+			\begin{center}
+			\begin{tikzpicture}[line join=round,line cap=round,>=stealth,scale=0.7,font=\footnotesize]
+				\tikzset{every node/.style={scale=0.6}}
+				\def \R{2}
+				\def \d{1.3}
+				\def \a{0.3}
+				\coordinate (I) at (0,0);
+				\coordinate (A) at (\R,0);			
+				\coordinate (H) at (0,-\d);
+				\coordinate (H1) at ($(H)+(\R,0)$);
+				\coordinate (H2) at ($(H)-(\R,0)$);
+				\draw[name path=i] (I) circle (\R);
+				\path [name path=h1h2] (H1)--(H2);
+				\path [name intersections={of=i and h1h2,by={A,M2}}];
+				\draw[dashed] (A)--(H) (H)--(O) (I)--(A);
+				\pic [draw, angle radius=5] {right angle=I--H--A};
+				\draw (M2) arc (0:-180: 1.51cm and \a cm);
+				\draw [dashed] (M2) arc (0:180: 1.51cm and \a cm);
+				\foreach \i/\g in {I/90,H/0,A/180} \draw[fill=black] (\i) circle(1.0 pt) node[shift={(\g:9pt)}]{$\i$};
+			\end{tikzpicture}
+		\end{center}
+		Từ $(S)\colon (x-2)^2+(y-1)^2+z^2=9$ ta có tâm $I=(2;1;0)$ bán kính $R=3$.\\
+		Gọi $H$ là hình chiếu vuông góc của $I$ trên $(P)$ và $(P) \cap(S)=C(H;r)$ với $r=2$.\\
+		Ta có $IH=\mathrm{d}\Big(I;(P)\Big) \Leftrightarrow IH=\dfrac{|2m+2-0+1|}{\sqrt{m^2+4+1}}=\dfrac{|2m+3|}{\sqrt{m^2+5}}$.\\
+		Theo yêu cầu bài toán ta có $R^2=IH^2+r^2 \Leftrightarrow 9=\dfrac{(2m+3)^2}{m^2+5}+4$.\\
+		Suy ra $m^2-12m+16=0 \Leftrightarrow \hoac{&m=6-2\sqrt 5\\&m=6+2\sqrt 5.}$
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho mặt phẳng $(P)\colon 2x+3y+z-11=0$. Mặt cầu $(S)$ có tâm $I(1;-2;1)$ và tiếp xúc với mặt phẳng $(P)$ tại điểm $H$, khi đó $H$ có tọa độ là
+	\choice
+	{$H(-3;-1;-2)$}
+	{$H(-1;-5;0)$}
+	{$H(1;5;0)$}
+	{\True $H(3;1;2)$}
+	\loigiai{
+		$(S)$ có tâm $I(1;-2;1)$ và tiếp xúc với mặt phẳng $(P)$ tại điểm $H \Rightarrow H$ là hình chiếu của $I$ lên $(P)$.\\
+		Đường thẳng đi qua $I(1;-2;1)$ và vuông góc với $(P)$ là $d \colon \heva{&x=1+2t\\&y=-2+3t\\&z=1+t}\quad (t \in R)$.\\
+		Suy ra $H(1+2t;3t-2;1+t) \in d$.\\
+		Mặt khác, $H \in(P) \Leftrightarrow 2(1+2t)+3(3t-2)+(1+t)-11=0 \Leftrightarrow t=1$.\\		
+		Suy ra $H(3;1;2)$.
+	}
+
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ trục tọa độ $Oxyz$ cho mặt phẳng $(\alpha)$ có phương trình $2 x+y-z-1=0$ và mặt cầu $(S)$ có phương trình $(x-1)^2+(y-1)^2+(z+2)^2=4$. Xác định bán kính $r$ của đường tròn giao tuyến của mặt phẳng $(\alpha)$ và mặt cầu $(S)$.
+	\choice
+	{$r=\dfrac{2 \sqrt{42}}{3}$}
+	{\True $r=\dfrac{2 \sqrt 3}{3}$}
+	{$r=\dfrac{2 \sqrt{15}}{3}$}
+	{$r=\dfrac{2 \sqrt 7}{3}$}
+	\loigiai{
+		Mặt cầu $(S)$ có tâm $I(1;1;-2)$ và bán kính $R=2$. Gọi $d$ là khoảng cách từ tâm $I$ đến mặt phẳng $(\alpha)$.\\
+		Ta có $d=\mathrm{d}\Big(I,(\alpha)\Big)=\dfrac{2 \sqrt 6}{3}$.\\
+		Khi đó ta có $r=\sqrt{R^2-d^2}=\dfrac{2\sqrt 3}{3}$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{10}{ans/ans-2C5B3CD3-D1}

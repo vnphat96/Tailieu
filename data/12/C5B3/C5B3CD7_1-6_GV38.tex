@@ -1,0 +1,204 @@
+\section{GIÁ TRỊ LỚN NHẤT, GIÁ TRỊ NHỎ NHẤT LIÊN QUAN ĐẾN MẶT CẦU}
+\begin{dang}{MẶT PHẲNG LIÊN QUAN ĐẾN MẶT CẦU}
+\end{dang}
+\Opensolutionfile{ans}[ans/ans-3-C5B3CD7]
+\begin{bt}%[2H5V3-4]
+Cho điểm $A$ và mặt cầu $(S)$ có tâm $I$, bán kính $R$, $M$ là điểm di động trên $(S)$. Tìm giá trị nhỏ nhất và giá trị lớn nhất của $A M$.
+\loigiai{
+	\immini{Xét $A$ nằm ngoài mặt cầu $(S)$.\\
+		Gọi $M_1$, $M_2$ lần lượt là giao điểm của đường thẳng $A I$ với mặt cầu $(S)\left(A M_1<A M_2\right)$ và $(\alpha)$ là mặt phẳng đi qua $M$ và đường thẳng $A I$.\\
+		Khi đó $(\alpha)$ cắt $(S)$ theo một đường tròn lớn $(C)$.\\
+		Ta có $\widehat{M_1MM_2}=90^\circ$, nên $\widehat{AMM_2}$ và $\widehat{AM_1M}$ là các góc tù.\\
+		Nên trong các tam giác $AMM_1$ và $A M M_2$.\\
+		Ta có $A I-R=A M_1 \leq A M \leq A M_2=A I+R$.\\
+		Tương tự với $A$ nằm trong mặt cầu ta có $R-A I \leq A M \leq R+A I$.\\
+		Vậy $\min A M=|A I-R|$, $\max A M=R+A I$.
+		}{
+			\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=1]
+					\coordinate (I) at (0,0);
+					\coordinate (A) at (-2,-1);
+					\draw (I) circle[radius=1cm];
+					\coordinate (M) at ($(0,0)+(180:1cm)$);
+					\coordinate (X) at ($(A)!3/2!(I)$);
+					\path[name path=ax] (A)--(X); % Đặt tên đoạn thẳng AB là ab
+					\path[name path=circleO] (I)circle(1cm); % Đặt tên đường tròn tâm O bán kính 1cm là circleO
+					\path[name intersections={of= ax and circleO}] coordinate (M_2) at (intersection-1) coordinate (M_1) at (intersection-2); % Lấy giao điểm của ab và circleO đặt tên 2 điểm lần lượt là M, N
+
+					\draw (M)--(A)--(M_2)--(M)--(M_1);
+					\foreach \i/\j in {A/180,M/180,I/-90,M_1/-90,M_2/60}\fill[black] (\i) circle (1pt) ($(\i)+(\j:4mm)$)node{$\i$};
+				\end{tikzpicture}
+		}
+}
+\end{bt}
+
+\begin{dang}{GIÁ TRỊ LỚN NHẤT, GIÁ TRỊ NHỎ NHẤT LIÊN QUAN ĐẾN BIỂU THỨC}
+
+\end{dang}
+\TN
+\begin{ex}%[2H5V3-4]
+	Trong không gian với hệ trục tọa độ $O x y z$, cho các điểm $A(0 ;-1 ; 3)$, $B(-2 ;-8 ;-4)$, $C(2 ;-1 ; 1)$ và mặt cầu $(S)\colon (x-1)^2+(y-2)^2+(z-3)^2=14$. Gọi $M\left(x_M ; y_M ; z_M\right)$ là điểm trên $(S)$ sao cho biểu thức $|3 \overrightarrow{M A}-2 \overrightarrow{M B}+\overrightarrow{M C}|$ đạt giá trị nhỏ nhất. Tính $P=x_M+y_M$.
+	\choice
+	{$P=0$}
+	{\True $P=6$}
+	{$P=\sqrt{14}$}
+	{$P=3\sqrt{14}$}
+	\loigiai{
+	Gọi $J$ là điểm thỏa mãn
+	\begin{eqnarray*}
+		&&3 \overrightarrow{J A}-2 \overrightarrow{J B}+\overrightarrow{J C}=\overrightarrow{0}\\
+		&\Leftrightarrow &2 \overrightarrow{J O}+3 \overrightarrow{O A}-2 \overrightarrow{O B}+\overrightarrow{O C}=\overrightarrow{0}\\
+		&\Leftrightarrow &2 \overrightarrow{O J}=3 \overrightarrow{O A}-2 \overrightarrow{O B}+\overrightarrow{O C}\Rightarrow J(3 ; 6 ; 9).
+	\end{eqnarray*}
+	Mà $3 \overrightarrow{M A}-2 \overrightarrow{M B}+\overrightarrow{M C}=2 \overrightarrow{M J}+(3 \overrightarrow{J A}-2 \overrightarrow{J B}+\overrightarrow{J C})$ nên $|3 \overrightarrow{M A}-2 \overrightarrow{M B}+\overrightarrow{M C}|=|2 \overrightarrow{M J}|$.\\
+	Do đó $|3 \overrightarrow{M A}-2 \overrightarrow{M B}+\overrightarrow{M C}|_{\min } \Leftrightarrow|2 \overrightarrow{M J}|_{\min }$.\\
+	Mặt khác $(S)$ có tâm $I(1 ; 2 ; 3)$, bán kính $R=\sqrt{14}$ và $I J=2 \sqrt{14}>R \Rightarrow$ điểm $J$ nằm ngoài mặt cầu nên $I J$ cắt mặt cầu $(S)$ tại hai điểm $M_1$, $M_2$.\\
+	Xét hệ phương trình $\heva{&x=1+2 t \\ &y=2+4 t \\ &z=3+6 t \\ &(x-1)^2+(y-2)^2+(z-3)^2=14} \Leftrightarrow\hoac{&t_1=\dfrac{1}{2} \\ &t_2=-\dfrac{1}{2}.}$\\
+	Suy ra $M_1(2 ; 4 ; 6)$, $M_2(0 ; 0 ; 0)$, $M_1 J=\sqrt{14}$; $M_2 J=3 \sqrt{14}$.\\
+	Vậy $|3 \overrightarrow{M A}-2 \overrightarrow{M B}+\overrightarrow{M C}|_{\min } \Leftrightarrow|2 \overrightarrow{M J}|_{\min } \Leftrightarrow M \equiv M_1$.\\
+	Khi đó ta có
+	$$
+	P=x_M+y_M=2+4=6.
+	$$}
+\end{ex}
+
+\begin{ex}%[2H5V3-4]
+	Trong không gian với hệ tọa độ $Ox y z$ cho ba điểm $A(8 ; 5 ;-11)$, $B(5 ; 3 ;-4)$, $C(1 ; 2 ;-6)$ và mặt cầu $(S)\colon(x-2)^2+(y-4)^2+(z+1)^2=9$. Gọi điểm $M(a ; b ; c)$ là điểm trên $(S)$ sao cho $|\overrightarrow{M A}-\overrightarrow{M B}-\overrightarrow{M C}|$ đạt giá trị nhỏ nhất. Hãy tìm $a+b$.
+	\choice{$6$}{\True $2$}{$4$}{$9$}
+	\loigiai{
+	Gọi $N$ là điểm thỏa mãn $\overrightarrow{N A}-\overrightarrow{N B}-\overrightarrow{N C}=\overrightarrow{0}$, suy ra $N(-2 ; 0 ; 1)$.\\
+	Khi đó
+	\begin{eqnarray*}
+		&|\overrightarrow{M A}-\overrightarrow{M B}-\overrightarrow{M C}|&=|(\overrightarrow{M N}+\overrightarrow{N A})-(\overrightarrow{M N}+\overrightarrow{N B})-(\overrightarrow{M N}+\overrightarrow{N C})|\\& &=|(\overrightarrow{N A}-\overrightarrow{N B}-\overrightarrow{N C})-\overrightarrow{M N}|=M N.
+	\end{eqnarray*}
+	Suy ra $|\overrightarrow{M A}-\overrightarrow{M B}-\overrightarrow{M C}|$ nhỏ nhất khi $M N$ nhỏ nhất.\\
+	Mặt cầu $(S)$ có tâm $I(2 ; 4 ;-1)$, suy ra
+	$\overrightarrow{N I}=(4 ; 4 ;-2)=(2 ; 2 ;-1)$.\\
+	Phương trình $N I$ là $\heva{&x=2+2 t \\ &y=4+2 t \\ &z=-1-t.}$\\
+	Thay phương trình $NI$ vào phương trình $(S)$, ta được $$(2 t)^2+(2 t)^2+(-t)^2=9 \Leftrightarrow t^2=1 \Leftrightarrow\heva{&t=1 \\ &t=-1.}$$
+	Suy ra $N I$ cắt $(S)$ tại hai điểm phân biệt $N_1(3 ; 6 ;-2)$, $N_2(0 ; 2 ; 0)$.\\
+	Vì $N N_1>N N_2$ nên $MN$ nhỏ nhất khi và chỉ khi $M \equiv N_2$.\\
+	Vậy $M(0 ; 2 ; 0)$ là điểm cần tìm. Suy ra $a+b=2$.}
+\end{ex}
+
+\begin{ex}%[2H5V3-4]
+	Cho mặt cầu $(S)\colon (x-2)^2+(y-1)^2+(z-3)^2=9$ và hai điểm $A(1 ; 1 ; 3)$, $B(21 ; 9 ;-13)$. Điểm $M(a ; b ; c)$ thuộc mặt cầu $(S)$ sao cho $3 M A^2+M B^2$ đạt giá trị nhỏ nhất. Khi đó giá trị của biểu thức $T= abc$ bằng
+	\choice{$3$}{\True $8$}{$6$}{$-18$}
+	\loigiai{
+		Gọi điểm $I$ thỏa mãn $3 \overrightarrow{I A}+\overrightarrow{I B}=\overrightarrow{0} \Rightarrow I(6 ; 3 ;-1)$.\\
+		Khi đó
+		\begin{eqnarray*}
+			&3 M A^2+M B^2&=3(\overrightarrow{M I}+\overrightarrow{I A})^2+(\overrightarrow{M I}+\overrightarrow{I B})^2\\
+			& &=4 M I^2+3 I A^2+I B^2+2 \overrightarrow{M I} \cdot(3 \overrightarrow{I A}+\overrightarrow{I B}) \\
+			& &=4 M I^2+3 I A^2+I B^2
+		\end{eqnarray*}
+		Do $3 I A^2+I B^2$ không đổi vì ba điểm $A $; $B $; $I$ cố định nên $3 M A^2+M B^2$ đạt giá trị nhỏ nhất khi $M I$ nhỏ nhất.\\
+		Khi đó $M$ là giao điểm của đường thẳng $I J$ với mặt cầu $(S)$ $(J(2 ; 1 ; 3)$ là tâm của mặt cầu $(S))$.\\
+		Ta có phương trình đường thẳng $I J$ là $\heva{&x=2+2 t \\ &y=1+t \\ &z=3-2 t} \Rightarrow I J \cap(S)=\hoac{&M_1(4 ; 2 ; 1) \\ &M_2(0 ; 0 ; 5).}$\\
+		Kiểm tra $I M_1<I M_2$ $(3<9)$ nên $M_1(4 ; 2 ; 1)$ là điểm cần tìm.\\
+		Vậy $T= abc =8$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-4]
+	Trong không gian $O x y z$ cho $A(0 ; 0 ; 2)$, $B(1 ; 1 ; 0)$ và mặt cầu\\ $(S)\colon x^2+y^2+(z-1)^2=\dfrac{1}{4}$. Xét điểm $M$ thay đổi thuộc $(S)$. Giá trị nhỏ nhất của biểu thức $M A^2+2 M B^2$ bằng
+	\choice{$\dfrac{1}{2}$}{$\dfrac{3}{4}$}{\True $\dfrac{19}{4}$}{$\dfrac{21}{4}$}
+	\loigiai{
+	Mặt cầu $(S)$ có tâm $I(0 ; 0 ; 1)$, bán kính $R=\dfrac{1}{2}$.\\
+	Gọi $K$ là điểm thỏa mãn $\overrightarrow{K A}+2 \overrightarrow{K B}=\overrightarrow{0} \Rightarrow K\left(\dfrac{2}{3} ; \dfrac{2}{3} ; \dfrac{2}{3}\right)$.\\
+	Ta có
+	\begin{eqnarray*}
+		& M A^2+2 M B^2&=(\overrightarrow{M K}+\overrightarrow{K A})^2+2(\overrightarrow{M K}+\overrightarrow{K B})^2 \\
+		& &=3 M K^2+K A^2+2 K B^2+2 \overrightarrow{M K}(\overrightarrow{K A}+2 \overrightarrow{K B})\\
+		& &=3 M K^2+K A^2+2 K B^2.
+	\end{eqnarray*}
+	Biểu thức $M A^2+2 M B^2$ đạt giá trị nhỏ nhất khi và chỉ khi $M K$ đạt giá trị nhỏ nhất.\\
+	Với $M$ thay đổi thuộc $(S)$ ta có $M K_{\min }=|K I-R|=\left|1-\dfrac{1}{2}\right|=\dfrac{1}{2}$.\\
+	Vậy $\left(M A^2+2 M B^2\right)_{\min}=3 M K_{\min}^2+K A^2+2 K B^2=\dfrac{3}{4}+\dfrac{8}{3}+\dfrac{4}{3}=\dfrac{19}{4}$.
+}
+\end{ex}
+
+\begin{ex}%[2H5V3-4]
+	Trong không gian tọa độ $O x y z$, cho 2 điểm $A$, $B$ thay đổi trên mặt cầu\\ $x^2+y^2+(z-1)^2=25$ thỏa mãn $A B=6$. Giá trị lớn nhất của biểu thức $O A^2-O B^2$ là
+	\choice{\True $12$}{$6$}{$10$}{$24$}
+	\loigiai{
+	Mặt cầu $x^2+y^2+(z-1)^2=25$ có tâm $I(0 ; 0 ; 1)$.\\
+	Vì $A, B$ cùng thuộc mặt cầu tâm $I$ nên $I A=I B$.
+	\begin{eqnarray*}
+		& O A^2-O B^2&=\left(\overrightarrow{O A}\right)^2-\left(\overrightarrow{O B}\right)^2\\
+		& &=\left(\overrightarrow{O I}+\overrightarrow{I A}\right)^2-\left(\overrightarrow{O I}+\overrightarrow{I B}\right)^2 \\
+		& &=2 \overrightarrow{O I}\left(\overrightarrow{I A}-\overrightarrow{I B}\right)\\
+		& &=2 \overrightarrow{O I} \cdot \overrightarrow{B A}\\
+		& &=2 O I \cdot B A \cdot \cos \varphi \text {, với } \varphi=\left(\overrightarrow{O I}, \overrightarrow{B A}\right).
+	\end{eqnarray*}
+	Suy ra biểu thức $O A^2-O B^2$ đạt giá trị lớn nhất khi và chỉ khi $\varphi=0$.\\
+	Vậy $\max \left(O A^2-O B^2\right)=2 \cdot 1 \cdot 6 \cdot \cos 0=12$.}
+\end{ex}
+
+\begin{ex}%[2H5V3-4]
+	Trong không gian với hệ trục tọa độ $Ox y z$, cho mặt cầu $(S)\colon (x-1)^2+(y-2)^2+(z+1)^2=9$ và hai điểm $A(4 ; 3 ; 1)$, $B(3 ; 1 ; 3)$; $M$ là điểm thay đổi trên $(S)$. Gọi $m$, $n$ là giá trị lớn nhất và giá trị nhỏ nhất của biểu thức $P=2 M A^2-M B^2$. Xác định $m-n$.
+	\choice{$64$}{$68$}{\True $60$}{$48$}
+	\loigiai{
+	Xét điểm $I$ sao cho $2 \overrightarrow{I A}-\overrightarrow{I B}=\overrightarrow{0}$.\\
+	Giả sử $I(x ; y ; z)$, ta có
+	$\overrightarrow{I A}(4-x ; 3-y ; 1-z)$, $\overrightarrow{I B}(3-x ; 1-y ; 3-z)$.\\
+	Do đó $2 \overrightarrow{I A}-\overrightarrow{I B}=\overrightarrow{0} \Leftrightarrow\heva{&2(4-x)=3-x \\ &2(3-y)=1-y\\ &2(1-z)=3-z}\Leftrightarrow I(5 ; 5 ;-1)$.\\
+	Do đó
+	\begin{eqnarray*}
+		&P&=2 M A^2-M B^2\\
+		& &=2(\overrightarrow{M I}+\overrightarrow{I A})^2-(\overrightarrow{M I}+\overrightarrow{I B})^2\\
+		& &=2 \overrightarrow{M I}^2+2 \overrightarrow{I A}^2+4 \overrightarrow{M I} \cdot \overrightarrow{I A}-\left(\overrightarrow{M I}^2+\overrightarrow{I B}^2+2 \overrightarrow{M I} \cdot \overrightarrow{I B}\right) \\
+		& &=\overrightarrow{M I}^2+2 \overrightarrow{I A}^2-\overrightarrow{I B}^2+2 \overrightarrow{M I}(2 \overrightarrow{I A}-\overrightarrow{I B})\\
+		& &=M I^2+2 I A^2-I B^2+2 \overrightarrow{M I}(2 \overrightarrow{I A}-\overrightarrow{I B}) \\
+		& &=M I^2+2 I A^2-I B^2.
+	\end{eqnarray*}
+	Do $I$ cố định nên $I A^2$, $I B^2$ không đổi.\\
+	Vậy $P$ lớn nhất (nhỏ nhất) $\Leftrightarrow M I^2$ lớn nhất (nhỏ nhất)
+	 $\Leftrightarrow M I$ lớn nhất (nhỏ nhất) $\Leftrightarrow M$ là giao điểm của đường thẳng $I K$ (với $K(1 ; 2 ;-1)$ là tâm của mặt cầu $(S)$) với mặt cầu $(S)$.\\
+	Ta có $M I$ đi qua $I(5 ; 5 ;-1)$ và có véc-tơ chỉ phương là $\overrightarrow{K I}(4 ; 3 ; 0)$.\\
+	Phương trình của $M I$ là $\heva{x=1+4 t \\ y=2+3 t \\ z=-1.}$\\
+	Tọa độ điểm $M$ cần tìm ứng với giá trị $t$ là nghiệm của phương trình
+	$$
+	(1+4 t-1)^2+(2+3 t-2)^2+(-1+1)^2=9 \Leftrightarrow 25 t^2=9 \Leftrightarrow\hoac{&
+		t=\dfrac{3}{5} \\
+		&t=-\dfrac{3}{5}.}
+	$$
+	Với $t=\dfrac{3}{5} \Rightarrow M_1\left(\dfrac{17}{5} ; \dfrac{19}{5} ;-1\right) \Rightarrow M_1 I=2$ là giá trị nhỏ nhất của $MI$.\\
+	Với $t=-\dfrac{3}{5} \Rightarrow M_1\left(-\dfrac{7}{5} ; \dfrac{1}{5} ;-1\right) \Rightarrow M_2 I=8$ là giá trị lớn nhất của $MI$.\\
+	Vậy $\heva{&m=P_{\max }=48 \\ &n=P_{\min }=-12} \Rightarrow m-n=60$.}
+\end{ex}
+
+\begin{ex}%[2H5V3-4]
+	Trong không gian với hệ tọa độ $O x y z$, cho tam giác $A B C$ với $A(2 ; 1 ; 3)$, $B(1 ;-1 ; 2)$, $C(3 ;-6 ; 0)$, $D(2 ;-2 ;-1)$. Điểm $M(x ; y ; z)$ thuộc mặt phẳng $(P)\colon x-y+z+2=0$ sao cho $S=M A^2+M B^2+M C^2+M D^2$ đạt giá trị nhỏ nhất. Tính giá trị của biểu thức $P=x^2+y^2+z^2$.
+	\choice{\True $6$}{$2$}{$0$}{$-2$}
+	\loigiai{
+	Với mọi điểm $I$ ta có
+	\begin{eqnarray*}
+		& S&=2 N A^2+N B^2+N C^2\\
+		& &=2(\overrightarrow{N I}+\overrightarrow{I A})^2+(\overrightarrow{N I}+\overrightarrow{I B})^2+(\overrightarrow{N I}+\overrightarrow{I C})^2 \\
+		& &=4 N I^2+2 \overrightarrow{N I}(2 \overrightarrow{I A}+\overrightarrow{I B}+\overrightarrow{I C})+2 I A^2+I B^2+I C^2.
+	\end{eqnarray*}
+	Chọn điểm $I$ sao cho $2 \overrightarrow{I A}+\overrightarrow{I B}+\overrightarrow{I C}=\overrightarrow{0}\Leftrightarrow 2 \overrightarrow{I A}+\overrightarrow{I B}+\overrightarrow{I C}=\overrightarrow{0} \Leftrightarrow 4 \overrightarrow{I A}+\overrightarrow{A B}+\overrightarrow{A C}=\overrightarrow{0}$.\\
+	Suy ra tọa độ điểm $I$ là $I(0 ; 1 ; 2)$.\\
+	Khi đó $S=4 N I^2+2 I A^2+I B^2+I C^2$, do đó $S$ nhỏ nhất khi $N$ là hình chiếu của $I$ lên mặt phẳng $(P)$.\\
+	Phương trình đường thẳng đi qua $I$ và vuông góc với mặt phẳng $(P)$ là $\heva{&x=0+t \\ &y=1-t \\ &z=2+t.}$\\
+	Tọa độ điểm $N(t ; 1-t ; 2+t) \in(P) \Rightarrow t-1+t+2+t+2=0 \Leftrightarrow t=-1 \Rightarrow N(-1 ; 2 ; 1)$.}
+\end{ex}
+
+\begin{ex}%[2H5V3-4]
+	Trong không gian với hệ trục tọa độ $O x y z$, cho mặt cầu $(S)\colon (x-1)^2+(y-2)^2+(z+1)^2=9$ và hai điểm $A(4 ; 3 ; 1)$, $B(3 ; 1 ; 3)$, $M$ là điểm thay đổi trên $(S)$. Gọi $m$, $n$ lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của biểu thức $P=2 M A^2-M B^2$. Xác định $m-n$.
+	\choice{$64$}{$68$}{\True$60$}{$48$}
+	\loigiai{
+	Gọi $I$ là điểm thỏa mãn $2 \overrightarrow{IA}-\overrightarrow{I B}=0\Rightarrow I(5 ; 5 ;-1)$.\\
+	Suy ra $I$ là điểm cố định.\\
+	Suy ra $P$ đạt giá trị nhỏ nhất khi $M I$ đạt giá trị nhỏ nhất, $P$ đạt giá trị lớn nhất khi $M I$ đạt giá trị lớn nhất.\\
+	$(S)\colon (x-1)^2+(y-2)^2+(z+1)^2=9$ có tâm $J(1 ; 2 ;-1)$ và bán kính $R=3$.\\
+	Suy ra $I J=5$, mà $M$ là điểm thay đổi trên $(S)$.\\
+	Do đó
+	\begin{itemize}
+		\item $\min M I=I M_1=J I-R=5-3=2 $.
+		\item $\max M I=I M_2=J I+R=5+3=8$.
+	\end{itemize}
+	Suy ra $m-n=8^2-2^2=60$.}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-3-C5B3CD7}

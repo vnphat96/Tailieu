@@ -1,0 +1,130 @@
+\chude{Lập phương trình mặt phẳng liên quan đến đường thẳng}
+\begin{dang}{ Viết phương trình mặt phẳng $(P)$ qua $M$ và vuông góc với đường thẳng $d$ (hoặc vuông góc với đường thẳng $AB$)
+	}
+	\begin{center}
+		\begin{tikzpicture}
+			\def\a{4}
+			\def\b{2}
+			\def\g{35}
+			\def\h{3}
+			\path
+			(0:0) coordinate (E)--++(\g:\b) coordinate (F)--++(0:\a) coordinate (C)--++(\g-180:\b) coordinate (D)--++(120:.8)coordinate (G)--++(90:.7)coordinate (A)--++(90:1.3)coordinate (B)--++(90:.5)coordinate (H)--++(-90:3.2)coordinate (K)--++(160:1.6)coordinate (M);
+			\foreach \x/\g in {A/180,B/180,M/180}
+			\fill[black](\x) circle (1pt)
+			($(\x)+(\g:3mm)$) node{$\x$};
+			\draw (H) node[right]{$d$};
+			\draw[gray] ($(G)!.4!(A)$) coordinate (X) ($(G)!.15!(C)$) coordinate (Y) (X)--($(X)+(Y)-(G)$)-- (Y);
+			\draw  pic [draw, angle radius = 9 mm, "$P$"] {angle = D--E--F}; 
+			\draw (G)--(B) (H)--(A) (E)--(F)--(C)--	(D)--cycle;
+			\draw[dashed] (G)--(K);
+			\draw[-stealth] (A)--(B);
+		\end{tikzpicture}
+	\end{center}
+		\textbf{Phương pháp}:
+		$(P)\colon\heva{&\text{Qua } M\left(x_0;y_0;z_0\right) \\&
+		\text{Vectơ pháp tuyến } \vec{n}_{(P)}=\vec{u}_d=\overrightarrow{AB}.}$
+\end{dang}
+\begin{dang}{Viết phương trình mặt phẳng qua $M$ và chứa đường thẳng $d$ với $M \notin d$.
+		}
+	\begin{center}
+		\begin{tikzpicture}
+			\def\a{4}
+			\def\b{2}
+			\def\g{35}
+			\def\h{3}
+			\draw
+			(0:0) coordinate (E)--++(\g:\b) coordinate (F)--++(0:\a) coordinate (C)--++(\g-180:\b) coordinate (D)--cycle ($(E)!.7!(F)$)--++(-10:1) coordinate (A)--++(-10:1.25)coordinate (B)--++(-10:1);
+			\draw[-stealth]
+			(A)--++(90:2)coordinate (N) node[below left]{$\vec{n}$}; \draw[-stealth](A)--++(10:1.4) coordinate (M);
+			\draw[gray] ($(A)!.2!(B)$) coordinate (X) ($(A)!.15!(N)$) coordinate (Y) (X)--($(X)+(Y)-(A)$)-- (Y);
+			\draw  pic [draw, angle radius = 9 mm, "$P$"] {angle = D--E--F}; 
+			\foreach \x/\g in {A/-90,M/-10}
+			\fill[black](\x) circle (1pt)
+			($(\x)+(\g:3mm)$) node{$\x$};
+			\draw
+			($(B)+(-150:4mm)$) node{$\vec{u}_d$};
+			\draw[-stealth] (A)--(B);
+		\end{tikzpicture}
+	\end{center}
+	\textbf{Phương pháp}:
+	\begin{itemize}
+		\item Chọn điểm $A \in d$ và một vectơ chỉ phương $\overrightarrow{u_d}$. Tính $\left[\overrightarrow{A M}, \overrightarrow{u_d}\right]$.
+		\item Phương trình mặt phẳng $(P)\colon\heva{& \text{Đi qua } M \\ & \text{có vectơ pháp tuyến } \vec{n}=\left[\overrightarrow{AM}, \overrightarrow{u_d}\right].} $
+	\end{itemize}
+\end{dang}
+\Opensolutionfile{ans}[ans/ans-C5B2CD5]
+\TN
+\begin{ex}%[2H5H2-5]
+	Trong không gian với hệ tọa độ $Oxyz$, cho đường thẳng $d\colon \dfrac{x-1}{1}=\dfrac{y-2}{-2}=\dfrac{z+2}{1}$. Mặt phẳng nào sau đây vuông góc với đường thẳng $d$?
+	\choice
+		{$(T)\colon x+y+2 z+1=0$}
+		{\True $(P)\colon x-2 y+z+1=0$}
+		{$(Q)\colon x-2 y-z+1=0$}
+		{$(R)\colon x+y+z+1=0$}
+	\loigiai{
+		Đường thẳng vuông góc với mặt phẳng nếu vectơ chỉ phương của đường thẳng cùng phương với vectơ pháp tuyến của mặt phẳng.\\
+		Đường thẳng $d$ có một vectơ chỉ phương là $\vec{u}=(1;-2;1)$.\\
+		Mặt phẳng $(T)$ có một vectơ pháp tuyến là $\vec{n}_{(T)}=(1;1;2)$.\\
+		Do $\dfrac{1}{1} \neq \dfrac{-2}{1} \neq \dfrac{1}{2}$ nên $\vec{u}$ không cùng phương với $\vec{n}_{(T)}$. Do đó $d$ không vuông góc với $(T)$.\\
+		Mặt phẳng $(P)$ có một vectơ pháp tuyến là $\vec{n}_{(P)}=(1;-2;1)$.\\
+		Do $\dfrac{1}{1}=\dfrac{-2}{-2}=\dfrac{1}{1}$ nên $\vec{u}$ cùng phương với $\overrightarrow{n}_{(P)}$. Do đó $d$ vuông góc với $(P)$.\\
+		Mặt phẳng $(Q)$ có một vectơ pháp tuyến là $\vec{n}_{(Q)}=(1;-2;-1)$.\\
+		Do $\dfrac{1}{1}=\dfrac{-2}{-2} \neq \dfrac{1}{-1}$ nên $\vec{u}$ không cùng phương với $\vec{n}_{(Q)}$. Do đó $d$ không vuông góc với $(Q)$.\\
+		Mặt phẳng $(R)$ có một vectơ pháp tuyến là $\vec{n}_{(R)}=(1;1;1)$.\\ Do $\dfrac{1}{1} \neq \dfrac{-2}{1} \neq \dfrac{1}{1}$ nên $\vec{u}$ không cùng phương với $\vec{n}_{(R)}$. Do đó $d$ không vuông góc với $(R)$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5H2-5]
+	Trong không gian với hệ tọa độ $Oxyz$, phương trình mặt phẳng đi qua gốc tọa độ và vuông góc với đường thẳng $d\colon \dfrac{x}{1}=\dfrac{y}{1}=\dfrac{z}{1}$ là
+	\choice 
+		{$x+y+z+1=0$}
+		{$x-y-z=1$}
+		{$x+y+z=1$}
+		{\True $x+y+z=0$}
+	\loigiai{
+		Mặt phẳng $(P)$ vuông góc với đường thẳng $(d)\colon \dfrac{x}{1}=\dfrac{y}{1}=\dfrac{z}{1}$ nên nhận vectơ chỉ phương $\overrightarrow{u}_d=(1;1;1)$ làm vectơ pháp tuyến.\\
+		Suy ra phương trình mặt phẳng $(P)$ có dạng $x+y+z+D=0$.\\
+		Mặt khác $(P)$ đi qua gốc tọa độ nên $D=0$.\\
+		Vậy phương trình $(P)$ là $x+y+z=0$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5H2-5]
+	Trong không gian với hệ trục $Oxyz$, cho điểm $A(0;0;3)$ và đường thẳng $d$ có phương trình $ \heva{&x=1+2 t \\ &y=1-t \\&z=t}$. Phương trình mặt phẳng đi qua điểm $A$ và vuông góc với đường thẳng $d$ là
+	\choice
+		{\True $2x-y+z-3=0$}
+		{$2x-y+2 z-6=0$}
+		{$2x-y+z+3=0$}
+		{$2x-y-z+3=0$}
+	\loigiai{
+		Mặt phẳng cần tìm đi qua điểm $A(0;0;3)$ và vuông góc với đường thẳng $d$ nên nhận vectơ chỉ phương của đường thẳng $d$ là $\vec{u}=(2;-1;1)$ làm vectơ pháp tuyến. Do đó phương trình mặt phẳng cần tìm là $2 x-y+z-3=0$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5H2-5]
+	Trong không gian với hệ tọa độ $Oxyz$, cho đường thẳng $\Delta$ có phương trình $\dfrac{x-10}{5}=\dfrac{y-2}{1}=\dfrac{z+2}{1}$. Xét mặt phẳng $(P)\colon 10x+2y+m z+11=0$, với $m$ là tham số thực. Tìm tất cả các giá trị của $m$ để mặt phẳng $(P)$ vuông góc với đường thẳng $\Delta$.
+	\choice 
+		{\True $m=2$}
+		{$m=-52$}
+		{$m=52$}
+		{$m=-2$}
+	\loigiai{
+		Đường thẳng $\Delta\colon  \dfrac{x-10}{5}=\dfrac{y-2}{1}=\dfrac{z+2}{1}$ có vectơ chỉ phương $\vec{u}=(5;1;1)$.\\
+		Mặt phẳng $(P)\colon 10x+2y+mz+11=0$ có vectơ pháp tuyến $\vec{n}=(10;2;m)$.\\
+		Để mặt phẳng $(P)$ vuông góc với đường thẳng $\Delta$ thì $\vec{u}$ phải cùng phương với $\vec{n}$, tức là cần $$\dfrac{10}{2}=\dfrac{2}{1}=\dfrac{m}{1} \Leftrightarrow m=2.$$
+	}
+\end{ex}
+
+\begin{ex}%[2H5H2-5]
+	Trong không gian với hệ tọa độ $Oxyz$, cho đường thẳng $\Delta\colon \dfrac{x+1}{-1}=\dfrac{y-2}{2}=\dfrac{z}{-3}$ và mặt phẳng $(P)\colon x-y+z-3=0$. Phương trình mặt phẳng $(\alpha)$ đi qua $O$, song song với $\Delta$ và vuông góc với mặt phẳng $(P)$ là
+	\choice 
+		{\True $x+2 y+z=0$}
+		{$x-2 y+z=0$}
+		{$x+2 y+z-4=0$}
+		{$x-2 y+z+4=0$}
+	\loigiai{
+		$\Delta$ có vectơ chỉ phương là $\vec{u}=(-1;2;-3)$ và $(P)$ có vectơ pháp tuyến là $\vec{n}=(1;-1;1)$.\\
+		Mặt phẳng $(\alpha)$ qua $O$ và nhận vectơ pháp tuyến là  $\overrightarrow{n'}=-[\vec{u}, \vec{n}]=(1;2;1)$.\\
+		Suy ra $(\alpha)\colon x+2y+z=0$.
+	}
+\end{ex}

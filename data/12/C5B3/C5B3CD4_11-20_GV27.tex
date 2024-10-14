@@ -1,0 +1,377 @@
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ tọa độ $O x y z$, cho ba điểm $A(-2; 0; 0), B(0;-2; 0), C(0; 0;-2)$. Gọi $D$ là điểm khác $O$ sao cho $D A, D B, D C$ đôi một vuông góc nhau và $I(a; b; c)$ là tâm mặt cầu ngoại tiếp tứ diện $A B C D$. Tính $S=a+b+c$.
+	\shortans[\kindSA]{$-1$}
+	\loigiai{
+	\begin{center}
+		\begin{tikzpicture}[line join=round, line cap=round,thick]
+			\coordinate (D) at (-2,0);
+			\coordinate (B) at (0,-2.5);
+			\coordinate (C) at (4,0);
+			\coordinate (A) at ($(D)+(0,4)$);
+			\coordinate (M) at ($(B)!0.5!(C)$);
+			\coordinate (G) at ($(A)!0.65!(M)$);
+			\coordinate (H) at ($(D)!2!(G)$);
+			\coordinate (I) at ($(G)!0.5!(H)$);
+			\draw (D)--(A) (A)--(B) (A)--(C) (B)--(C) (D)--(B) (G)--(H) node[above]{$d$} (A)--(M);
+			\draw[dashed,thin](D)--(C) (D)--(G) ;
+			\pic[draw,thin,angle radius=2mm] {right angle = A--D--B} pic[draw,thin,angle radius=2mm] {right angle = A--D--C};
+			\foreach \i/\g in {A/90,D/180,B/-90,C/0,M/-90,G/90,I/-90}{\draw[fill=black](\i) circle (1.2pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+		\end{tikzpicture}
+	\end{center}
+	Gọi $d$ là trục của $\triangle A B C$, ta có $(A B C)\colon x+y+z+2=0$.\\
+	Do $\triangle A B C$ đều nên $d$ đi qua trọng tâm $G\left(-\dfrac{2}{3};-\dfrac{2}{3};-\dfrac{2}{3}\right)$ và có vectơ chỉ phương $\overrightarrow{u}=(1; 1; 1)$.\\
+	Suy ra $d\colon \heva{&x=-\dfrac{2}{3}+t \\ &y=-\dfrac{2}{3}+t \\ &z=-\dfrac{2}{3}+t.}$\\
+	Ta thấy $\triangle D A B=\triangle D B C=\triangle D C A$, suy ra $D A=D B=D C \Rightarrow D \in d$.\\
+	 Suy ra tọa độ $D$ có dạng $D\left(-\dfrac{2}{3}+t;-\dfrac{2}{3}+t;-\dfrac{2}{3}+t\right)$.\\
+	Ta có $$\overrightarrow{A D}=\left(\dfrac{4}{3}+t;-\dfrac{2}{3}+t;-\dfrac{2}{3}+t\right); \overrightarrow{B D}=\left(-\dfrac{2}{3}+t; \dfrac{4}{3}+t;-\dfrac{2}{3}+t\right); \overrightarrow{C D}=\left(-\dfrac{2}{3}+t;-\dfrac{2}{3}+t; \dfrac{4}{3}+t\right).$$
+	Có $\heva{&\overrightarrow{A D} \cdot \overrightarrow{B D}=0 \\ &\overrightarrow{A D} \cdot \overrightarrow{C D}=0} \Rightarrow\hoac{&t=-\dfrac{2}{3} \Rightarrow D\left(-\dfrac{4}{3};-\dfrac{4}{3};-\dfrac{4}{3}\right) \\ &t=\dfrac{2}{3} \Rightarrow D(0; 0; 0)\text{ (loại).}}$\\
+	Ta có $I \in d \Rightarrow I\left(-\dfrac{2}{3}+t;-\dfrac{2}{3}+t;-\dfrac{2}{3}+t\right)$. \\
+	Do tứ diện $A B C D$ nội tiếp mặt cầu tâm $I$ nên $$I A=I D \Rightarrow t=\dfrac{1}{3} \Rightarrow I\left(-\dfrac{1}{3};-\dfrac{1}{3};-\dfrac{1}{3}\right) \Rightarrow S=-1.$$ 	
+	}
+\end{ex}
+\begin{ex}%[2H5V3-2]
+	Trong không gian $O x y z$, cho $(P)\colon 2 x+y+2 z-1=0, A(0; 0; 4), B(3; 1; 2)$. Một mặt cầu $(S)$ luôn đi qua $A, B$ và tiếp xúc với $(P)$ tại $C$. Biết rằng, $C$ luôn thuộc một đường tròn cố định bán kính $r$. Bán kính $r$ của đường tròn đó có dạng $\dfrac{a\sqrt{5}}{3}$, tính giá trị $a+b$.
+	\shortans[\kindSA]{$17$}
+	\loigiai
+	{\begin{center}
+			\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=.8]
+				\path
+				(2,-2) coordinate (C)--++(90:2) coordinate (I)--++(80:2) coordinate (B)--++(-115:3.2) coordinate (A)--++(-115:1.5) coordinate (T)--++(-165:2) coordinate (P)--++(60:2) coordinate (Q)--++(0:5.5) coordinate (R)--++(-120:2) coordinate (S);
+				\draw[name path=t1]
+				(0,0) arc (180:-180:2);
+				\path[name path=qr] (Q)--(R);
+				\path[name intersections={of=qr
+					and t1}]
+				(intersection-1) coordinate (X)
+				(intersection-2) coordinate (Y);
+				\draw (X)--(R)--(S)--(P)--(Q)--(Y) (A)--(T)--(C);
+				\draw[dashed] (X)--(Y) (I)--(C) (B)--(A);
+				\draw[dashed] (0,0) arc (180:0:{2} and {.6});
+				\draw (0,0) arc (-180:0:{2} and {.6});		
+				\draw[gray] ($(C)!.15!(I)$) coordinate (E) ($(C)!.15!(T)$) coordinate (F) (E)--($(E)+(F)-(C)$)-- (F);
+				\foreach \x/\g in {I/0,B/90,C/-90,A/130,T/-90}	\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+	\begin{enumerate}[\ ]
+		\item \textbf{Cách 1.} Ta có $\overrightarrow{A B}=(3; 1;-2)$ là véctơ chỉ phương của đường thẳng $A B$.\\
+		Phương trình tham số của đường thẳng AB là $\heva{&x=3 t \\ &y=t \\ &z=4-2 t.}$\\
+		Giả sử $A B$ cắt $(P)$ tại $T(3 t; t; 4-2 t)$. \\
+		Do $T \in(P)\colon 2 x+y+2 z-1=0 \Rightarrow t=\dfrac{-7}{3}$.\\
+		Khi đó
+		{\allowdisplaybreaks
+			\begin{eqnarray*}
+		&&T\left(-7; \dfrac{-7}{3}; \dfrac{26}{3}\right); \overrightarrow{T A}\left(7; \dfrac{7}{3}; \dfrac{-14}{3}\right) \Rightarrow T A=\dfrac{7 \sqrt{14}}{3};\\
+		&& \overrightarrow{T B}\left(10; \dfrac{10}{3}; \dfrac{-20}{3}\right) \Rightarrow T B=\dfrac{10 \sqrt{14}}{3}.		
+		\end{eqnarray*}}
+		Ta có $T C^2=T A \cdot T B=\dfrac{980}{9} \Rightarrow T C=\dfrac{14 \sqrt{5}}{3}$.\\
+		Điểm $C$ thuộc mặt phẳng $(P)$ và cách điểm $T$ cố định một khoảng $\dfrac{14 \sqrt{5}}{3}$.\\
+		Suy ra $C$ luôn thuộc một đường tròn cố định bán kính $r=\dfrac{14 \sqrt{5}}{3}$.\\
+		Vậy $a=14$ và $b=3$ nên $a+b=17$.
+		\item \textbf{Cách 2.} Ta có $\dfrac{T A}{T B}=\dfrac{d(A,(P))}{d(B,(P))}=\dfrac{7}{10}; A B=\sqrt{14}$.\\
+		Giả sử $A B$ cắt $(P)$ tại $T$. Suy ra A nằm giữa B và $T$ (vì $A, B$ cùng phía so với $(P)$).\\
+		Khi đó, ta có 
+		$$\heva{&{T B-T A=\sqrt{1 4}} \\&
+			{T A=\dfrac{7}{1 0}\cdot T B}} \Leftrightarrow \heva{&T A=\dfrac{7 \sqrt{14}}{3} \\
+			&T B=\dfrac{10 \sqrt{14}}{3}}\Rightarrow T C^2=T A \cdot T B=\dfrac{980}{9} \Rightarrow T C=\dfrac{14 \sqrt{5}}{3}.$$ 
+		Vậy $a=14$ và $b=3$ nên $a+b=17$.
+	\end{enumerate}	
+	}
+\end{ex}
+\begin{ex}%[2H5V3-2]
+	Trong không gian cho mặt phẳng $(P)\colon x-z+6=0$ và hai mặt cầu $\left(S_1\right)\colon x^2+y^2+z^2=25$, $\left(S_2\right)\colon x^2+y^2+z^2+4 x-4 z+7=0$. Biết rằng tập hợp tâm $I$ các mặt cầu tiếp xúc với cả hai mặt cầu $\left(S_1\right),\left(S_2\right)$ và tâm $I$ nằm trên $(P)$ là một đường cong. Diện tích hình phẳng giới hạn bởi đường cong đó bằng $\dfrac{a}{b}\pi$, tính tổng $S=a+b$.
+	\shortans[\kindSA]{$16$}
+	\loigiai
+	{
+	Mặt cầu $\left(S_1\right)$ có tâm $O(0; 0; 0)$ và bán kính $R_1=5$. \\
+	Mặt cầu $(S)$ có tâm $E(-2; 0; 2)$ bán kính $R_2=1$.\\
+	Ta có 
+	$$\mathrm{d}(O,(P))=\dfrac{6}{\sqrt{2}}<R_1 \text{ và } \mathrm{d}({E},(P))=\sqrt{2}>R_2, O E=2 \sqrt{2}, O E+R_2<R_1$$ 
+	nên mặt cầu $\left(S_2\right)$ nằm trong mặt cầu $\left(S_1\right)$.\\ 
+	Như vậy mặt cầu $(S)$ tâm $I$ tiếp xúc với cả $\left(S_1\right)$ và $\left(S_2\right)$ thì $(S)$ tiếp xúc trong mặt cầu $\left(S_1\right)$ và tiếp xúc ngoài với $\left(S_2\right)$.\\ 
+	Gọi $R$ là bán kính của $(S)$, khi đó ta có hệ
+	$$
+	\heva{&O I+R=R_1 \\ &E I-R=R_2}\Rightarrow O I+E I=R_1+R_2 \Rightarrow O I+E I=6.
+	$$ 
+	Nhận xét: $\overrightarrow{O E}=(-2; 0; 2)$ nên $O E$ vuông góc với $(P)\colon x-z+6=0$.\\
+	Gọi $H$ là hình chiếu vuông góc của $O$ lên $(P)$, đặt $I H=x$, điều kiện $x>0$. Khi đó, ta có
+	{\allowdisplaybreaks
+		\begin{eqnarray*}
+		O I+E I=6 &\Leftrightarrow& \sqrt{O H^2+H I^2}+\sqrt{E H^2+H I^2}=6\\
+		 &\Leftrightarrow& \sqrt{18+x^2}+\sqrt{2+x^2}=6\\
+		 &\Leftrightarrow& x^2=\dfrac{7}{9} \Leftrightarrow x=\dfrac{\sqrt{7}}{3}.	
+	\end{eqnarray*}}
+	Điểm $I$ thuộc đường tròn tâm $H$ bán kính $r=\dfrac{\sqrt{7}}{3}$.
+	Nên diện tích hình phẳng giới hạn bởi đường tròn là $S=\pi r^2=\dfrac{7 \pi}{9}$.\\
+	Vậy $a=7$ và $b=9$, nên $S=a+b=16$.
+	}
+\end{ex}
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, mặt cầu $(S)$ có tâm thuộc mặt $(P) \colon x+ 2y +z -7 =0$ và đi qua hai điểm $A(1;2;1)$ và $B(2;5;3)$. Bán kính nhỏ nhất của mặt cầu $(S)$ bằng (\textit{kết quả làm tròn đến hàng phần trăm}).
+	\shortans[\kindSA]{$2{,}35$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale = 1.2, font=\footnotesize, line join = round, line cap = round,>=stealth]
+				\def\a{2}
+				\def\g{40}
+				\pgfmathsetmacro\c{\a*cos(\g)}
+				\path (0,0) coordinate (I) --++(-\g:\a) coordinate (B)
+				(I)--++(180+\g:\a) coordinate (A) ($(A)!0.5!(B)$) coordinate (H);
+				\draw[dashed] (B) arc (0:180:{\c} and {0.2});
+				\draw (B) arc (0:-180:{\c} and {0.2});
+				\draw (I) circle (\a);
+				\draw[dashed] (I)--(A)--(B)--cycle (I)--(H);
+				\node[above] at ($(I)!0.5!(B)$) {$R$}; 
+				\foreach \x/\g in {A/180,B/0,I/90,H/-90}
+				\fill[black] (\x) circle (1pt) ($(\x)+(\g:3mm)$) node {$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Ta có $AB = \sqrt{1+9+4} = \sqrt{14}$. \\
+		Gọi $H$ là trung điểm $AB$ khi đó điểm $H$ có tọa độ là $\left(\dfrac{3}{2};\dfrac{7}{2};2\right).$\\
+		Bán kính mặt cầu $$R = IB = \sqrt{IH^2 +HB^2} = \sqrt{IH^2 + \dfrac{AB^2}{4}} = \sqrt{IH^2 + \dfrac{7}{2}}.$$
+		Do đó, bán kính mặt cầu nhỏ nhất $\Leftrightarrow IH$ nhỏ nhất $\Leftrightarrow I$ là hình chiếu của $H$ lên $(P)$.\\
+		Khi đó $IH_{\min} = d(H;(P)) = \dfrac{\left|\dfrac{3}{2} + 7+2-7\right|}{\sqrt{1+4+1}} = \dfrac{7\sqrt{6}}{12}$.\\
+		Bán kính mặt cầu nhỏ nhất $R_{\min} =\sqrt{\dfrac{49}{24} + \dfrac{7}{2}} = \dfrac{\sqrt{798}}{12}\approx 2{,}35$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-C5B3CD4_1-10-D2-TLN}
+\begin{dang}{Lập phương trình đường thẳng liên quan  đến mặt cầu}
+\end{dang}
+\TN
+\Opensolutionfile{ans}[ans/ans-C5B3CD4_1-10-D3-LC]
+\begin{ex}%[2H5V3-2]
+	Trong không gian $Oxyz$, cho điểm $A(3;1;1)$, $d_1 \colon \dfrac{x-1}{1} = \dfrac{y-2}{2} = \dfrac{z}{2}$, $d_2 \colon  \heva{&x=1\\&y=t\\&z=0}$. Mặt cầu $(S)$ đi qua $A$, có tâm $I$ nằm trên $d_1$, biết rằng $(S)$ cắt $d_2$ tại hai điểm $B$, $C$ sao cho $\widehat{BAC} = 90^{\circ}$. Tìm tọa độ điểm $I$.
+	\choice{$I(2;3;2)$}{$I(3;4;4)$}{\True$I(1;2;0)$}{$I(0;0;2)$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale = 1.2, font=\footnotesize, line join = round, line cap = round,>=stealth]
+				\def\a{2}
+				\def\g{30}
+				\pgfmathsetmacro\c{\a*cos(\g)}
+				\path (0,0) coordinate (I) --++(-\g:\a) coordinate (C)
+				(I)--++(180+\g:\a) coordinate (B) ($(B)!0.5!(C)$) coordinate (H)
+				($(B)!1.2!(C)$) coordinate (C')
+				($(C)!1.2!(B)$) coordinate (B')
+				(I) --++(10:\a) coordinate (D) (I)--++(190:\a) coordinate (E)
+				($(D)!1.2!(E)$) coordinate (E')
+				($(E)!1.2!(D)$) coordinate (D');
+				\draw[dashed] (C) arc (0:180:{\c} and {0.5});
+				\draw (C) arc (0:-180:{\c} and {0.5});
+				\draw (I) circle (\a);
+				\draw (C) arc (0:-60:{\c} and {0.5}) coordinate (A);
+				\draw[dashed] (I)--(C)--(B) (I)--(H) (D)--(E) (B)--(A)--(C) (H)--(A);
+				\node[above] at ($(I)!0.5!(C)$) {$R$}; 
+				\foreach \x/\g in {C/-80,B/-100,I/90,H/120,A/-90}
+				\fill[black] (\x) circle (1pt) ($(\x)+(\g:2mm)$) node {$\x$};
+				\draw (E)--(E') node[below]{$d_1$} (D)--(D') (C)--(C') (B)--(B') node[below left] {$d_2$};
+			\end{tikzpicture}
+		\end{center}
+		Ta có $A\in (S)$ và $\widehat{BAC} = 90^{\circ}$ nên ba điểm $A$, $B$, $C$ thuộc đường tròn đường kính $BC$ là giao tuyến của $(ABC)$ và $(S)$.
+		\\Gọi $I(1+s;2+2s;2s) \in d_1$; $H(1;t;0) \in d_2$.\\
+		Đường thẳng $d_2$ có véc-tơ chỉ phương $\vec{u}_{2} = (0;1;0)$.
+			\\$\vec{HI} = (s;2+2s-t;2s)$, $\vec{AH} = (-2;t-1;-1)$.\\
+		Ta có {\allowdisplaybreaks
+			\begin{eqnarray*}
+			\heva{&IH \perp d_2\\&IH \perp HA} &\Rightarrow& \heva{&\vec{HI}\cdot \vec{u_2} = 0\\&\vec{HI}\cdot \vec{AH} = 0}\\
+			&\Leftrightarrow& \heva{&2+2s-t=0\\&-2s+(2+2s-t)(t-1)-2s = 0} \\
+			&\Leftrightarrow& \heva{&2s-t=-2\\&-4s=0}\Leftrightarrow \heva{&s=0\\&t=2.}	
+		\end{eqnarray*}}
+		\\Suy ra $I(1;2;0)$.
+	}
+\end{ex}
+\begin{ex}%[2H5V2-5]
+	Trong không gian $Oxyz$, cho mặt cầu $(S) \colon x^2 + y^2 +z^2 =4$ và đường thẳng \\$d \colon \dfrac{x-3}{1} = \dfrac{y-3}{1} = \dfrac{z}{1}$. Hai mặt phẳng $(P)$, $(P')$ chứa $d$ và tiếp xúc với $(S)$ tại $A$ và $B$. Đường thẳng $AB$ đi qua điểm có tọa độ là 
+	\choice{$\left(\dfrac{1}{3}; -\dfrac{1}{3};-\dfrac{4}{3}\right)$}{$\left(1;1;-\dfrac{4}{3}\right)$}{$\left(1;\dfrac{1}{3};-\dfrac{4}{3}\right)$}{\True$\left(\dfrac{1}{3};\dfrac{1}{3};-\dfrac{4}{3}\right)$}
+	\loigiai{
+		\begin{center}
+		\begin{tikzpicture}[scale = 1, font=\footnotesize, line join = round, line cap = round,>=stealth]
+			\def\a{2}
+			\def\g{60}
+			\pgfmathsetmacro\b{\a/cos(\g)}
+			\path (0,0) coordinate (I)--++(\g:\a) coordinate (A)
+			(I)--++(-\g:\a) coordinate (B)
+			(I)--++(\b,0) coordinate (H)
+			(intersection of A--B and I--H) coordinate (K);
+			\draw (I) circle (\a);
+			\draw (I)--(A)--(B)--cycle (A)--(H)--(B) (I)--(H);
+			\foreach \x/\g in {I/180,A/90,B/-90,H/0, K/120} \fill[black] (\x) circle (1pt) ($(\x)+(\g:3mm)$) node {$\x$};
+		\end{tikzpicture}	
+		\end{center}
+		Mặt cầu $(S)$ có tâm $I(0;0;0)$, $R = 2$.\\
+		Gọi $H$ là hình chiếu của $I$ trên $d \Rightarrow H(3+t;3+t;t)$.\\
+			$\vec{IH} = (3+t;3+t;t) \perp \vec{u}_{d} = (1;1;1)$\\ $\Leftrightarrow 3t = -6 \Leftrightarrow t = -2 \Rightarrow H(1;1;-2) \Rightarrow IH = \sqrt{6}$.\\
+		Gọi $K$ là trung điểm của $AB$ 
+		{\allowdisplaybreaks
+			\begin{eqnarray*}
+			&&\Rightarrow K \in IH.
+			IK\cdot IH = IA^2 = R^2 = 4 \Leftrightarrow \dfrac{IK}{IH} = \dfrac{4}{IH^2} = \dfrac{2}{3}\\ &&\Rightarrow \vec{IK} = \dfrac{2}{3} \vec{IH} = \dfrac{2}{3} (1;1;-2)\\ &&\Rightarrow K\left(\dfrac{2}{3};\dfrac{2}{3};\dfrac{-4}{3}\right).\\	
+		\end{eqnarray*}}
+		Mà $\heva{&AB \perp d\\&AB \perp IH} \Rightarrow \vv{u}_{AB} = \left[\vec{u},\vec{IH}\right] = 3(1;-1;0)$.\\
+		Suy ra đường thẳng $AB \colon \heva{&x= \dfrac{2}{3} + t\\&y=\dfrac{2}{3}-t\\&z=-\dfrac{4}{3}}$ đi qua điểm $\left(1;\dfrac{1}{3};-\dfrac{4}{3}\right)$.
+	}
+\end{ex}
+\begin{ex}%[2H5V2-3]
+	Trong không gian với hệ tọa độ $O x y z$, cho điểm $E(1; 1; 1)$, mặt cầu $(S)\colon x^2+y^2+z^2=4$ và mặt phẳng $(P)\colon x-3 y+5 z-3=0$. Gọi $\Delta$ là đường thẳng đi qua $E$, nằm trong $(P)$ và cắt mặt cầu $(S)$ tại hai điểm $A, B$ sao cho tam giác $O A B$ là tam giác đều. Phương trình của đường thẳng $\Delta$ là
+	\choice
+	{$\dfrac{x-1}{-2}=\dfrac{y-1}{1}=\dfrac{z-1}{-1}$}
+	{$\dfrac{x-1}{2}=\dfrac{y-1}{1}=\dfrac{z-1}{-1}$}
+	{$\dfrac{x-1}{2}=\dfrac{y-1}{1}=\dfrac{z-1}{1}$}
+	{\True $\dfrac{x-1}{2}=\dfrac{y-1}{-1}=\dfrac{z-1}{-1}$}
+	\loigiai{
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8,>=stealth, font=\footnotesize, line join=round, line cap=round]
+			\def\r{3}% Bán kính cầu
+			\def\h{1.75}%Chiều cao IH
+			\def\g{10}%Góc tiếp xúc cầu và Ellipse
+			\pgfmathsetmacro{\am}{sqrt((\r)^2-(\h)^2)}
+			\pgfmathsetmacro{\a}{\am *sec(\g)}
+			\pgfmathsetmacro{\b}{\a/4}
+			\pgfmathsetmacro{\bm}{\b *sin(\g)}
+			\pgfmathsetmacro{\gm}{asin(\h/\r)}
+			\path
+			(0:0) coordinate (O)
+			(270:\h-\bm) coordinate (H)
+			($(H)+(-165:2*\r)$) coordinate (P1)
+			($(H)+(160:1.5*\r)$) coordinate (P2)
+			($(P1)+(0:3*\r)$) coordinate (P4)
+			($(P2)+(0:3*\r)$) coordinate (P3)
+			(-\gm:\r) coordinate (C)
+			arc (-\g:-\g+140:{\a} and {\b}) coordinate (A)
+			arc (-\g+140:-\g-100:{\a} and {\b}) coordinate (B)
+			($(B)!0.5!(A)$) coordinate (E)
+			;
+			%===Vẽ các nét đứt====
+			\begin{scope}
+				\clip (O) circle (\r);
+				\draw[dashed] (P1)--(P2)--(P3)--(P4)--cycle;
+			\end{scope}
+			\draw[dashed]
+			(C) arc (-\gm:-180+\gm:\r)
+			(C) arc (-\g:180+\g:{\a} and {\b});
+			\draw[dashed](A)--(B) (H)--(O)--(E) (A)--(H)--(B);
+			%====Vẽ các điểm và node tên điểm====
+			\foreach \i/\g in {O/90,H/-90,B/-100,A/90,E/180}
+			\fill (\i) circle (1.5pt)+(\g:3mm) node {$\i$};
+			%==========Vẽ các nét liền
+			\draw (C) arc (-\gm:180+\gm:\r)
+			arc (180+\g:360-\g:{\a} and {\b})
+			;
+			\begin{scope}
+				\clip (90:\r) arc (90:449:\r) --(P3)--(P4)--(P1)--(P2)--cycle;
+				\draw (P1)--(P2)--(P3)--(P4)--cycle;
+			\end{scope}
+			%=======Vẽ ký hiệu mặt phẳng
+			\begin{scope}
+				\clip (P1)--(P2)--(P3)--(P4)--cycle;
+				\draw (P1) circle (7mm);
+				\path ($(P1)+(30:4mm)$) node[scale=0.75]{$P$};
+			\end{scope}
+			
+		\end{tikzpicture}
+	\end{center}
+	Mặt cầu $(S)$ có tâm $O(0; 0; 0)$ bán kính $R=2$. Tam giác $O A B$ là tam giác đều có cạnh bằng 2. \\
+	Gọi $M$ là trung điểm $A B$ ta có $O M=\dfrac{2 \sqrt{3}}{2}=\sqrt{3}$.\\
+	Mặt khác $\overrightarrow{O E}=(1; 1; 1) \Rightarrow O E=\sqrt{3}$.\\
+	Suy ra điểm $M$ trùng điểm $E$. \\
+	Gọi $\overrightarrow{u}$ là vectơ chỉ phương của $\Delta$ ta có $\overrightarrow{u} \perp \overrightarrow{O E}$ và $\overrightarrow{u} \perp \overrightarrow{n}$ (với $\overrightarrow{n}=(1;-3; 5)$ là vectơ pháp tuyến của $(P)$ vì $\Delta \subset(P)$).\\
+	$[\overrightarrow{n}, \overrightarrow{O E}]=(-8; 4; 4)$, chọn $\overrightarrow{u}=-\dfrac{1}{4}[\overrightarrow{n}, \overrightarrow{O E}]=(2;-1;-1)$.\\
+	Vậy đường thẳng $\Delta$ đi qua $E$, có vectơ chì phương $\overrightarrow{u}=(2;-1;-1)$ có phương trình là $$\dfrac{x-1}{2}=\dfrac{y-1}{-1}=\dfrac{z-1}{-1}.$$	
+	}
+\end{ex}
+\begin{ex}%[2H5V3-2] 
+	Trong không gian hệ tọa độ $O x y z$, cho hai điểm $A(1; 1; 1), B(2; 2; 1)$ và mặt phẳng $(P)\colon x+y+2 z=0$. Mặt cầu $(S)$ thay đổi qua $A, B$ và tiếp xúc với $(P)$ tại $H$. Biết $H$ chạy trên 1 đường tròn cố định. Tìm bán kính của đường tròn đó.
+	\choice
+	{$3 \sqrt{2}$}
+	{\True $2 \sqrt{3}$}
+	{$\sqrt{3}$}
+	{$\dfrac{\sqrt{3}}{2}$}
+	\loigiai{
+	Có $A(1; 1; 1), B(2; 2; 1) \Rightarrow$ phương trình $AB\colon \heva{&x=1+t \\ &y=1+t \\ &z=1.}$\\
+	Gọi $K$ là giao điểm của $A B$ và $(P) \Rightarrow K(-1;-1; 1)$.\\
+	Có mặt cầu $(S)$ tiếp xúc với $(P)$ tại $H$
+	$\Rightarrow H K$ là tiếp tuyến của $(S)$
+	$$\Rightarrow K H^2=\overrightarrow{K A} \cdot \overrightarrow{K B}=12 \Rightarrow K H=2 \sqrt{3} \text{ không đổi}.$$
+	Suy ra $H$ chạy trên 1 đường tròn bán kính $2 \sqrt{3}$ không đổi.
+	}
+\end{ex}
+\begin{ex}%[2H5V3-2] 
+	Trong không gian với hệ trục tọa độ $O x y z$, cho mặt cầu $(S)\colon x^2+y^2+z^2-2 x+2 z+1=0$ và đường thẳng $d\colon \dfrac{x}{1}=\dfrac{y-2}{1}=\dfrac{z}{-1}$. Hai mặt phẳng $(P),\left(P'\right)$ chứa $d$ và tiếp xúc với $(S)$ tại $T, T'$. Tìm tọa độ trung điểm $H$ của $T T'$.
+	\choice
+	{$H\left(-\dfrac{7}{6}; \dfrac{1}{3}; \dfrac{7}{6}\right)$}
+	{$H\left(\dfrac{5}{6}; \dfrac{2}{3};-\dfrac{7}{6}\right)$}
+	{\True $H\left(\dfrac{5}{6}; \dfrac{1}{3};-\dfrac{5}{6}\right)$}
+	{$H\left(-\dfrac{5}{6}; \dfrac{1}{3}; \dfrac{5}{6}\right)$}
+	\loigiai{
+	Mặt cầu $(S)$ có tâm $I(1; 0;-1)$, bán kính $R=1$.\\
+	Đường thẳng $d$ có vectơ chỉ phương $\overrightarrow{u_d}=(1; 1;-1)$.\\
+	Gọi $K$ là hình chiếu của $I$ trên $d$, ta có $K(t; 2+t;-t) \Rightarrow \overrightarrow{I K}=(t-1; 2+t;-t+1)$.\\
+	Vì $I K \perp d$ nên $\overrightarrow{u_d}\cdot \overrightarrow{I K}=0 \Leftrightarrow t-1+2+t-(-t+1)=0 \Leftrightarrow t=0 \Rightarrow \overrightarrow{I K}(-1; 2; 1)$.\\
+	Phương trình tham số của đường thẳng $I K$ là $\heva{&x=1-t' \\ &y=2 t' \\ &z=-1+t'.}$\\
+	Khi đó, trung điểm $H$ của $T T'$ nằm trên $I K$ nên $H\left(1-t'; 2 t';-1+t'\right) \Rightarrow \overrightarrow{I H}=\left(-t'; 2 t'; t'\right)$. \\
+	Mặt khác, ta có $$\overrightarrow{I H}\cdot \overrightarrow{I K}=I T^2 \Leftrightarrow \overrightarrow{I H} \cdot \overrightarrow{I K}=1 \Leftrightarrow t'+4 t'+t'=1 \Leftrightarrow t'=\dfrac{1}{6} \Rightarrow H\left(\dfrac{5}{6}; \dfrac{1}{3};-\dfrac{5}{6}\right).$$	
+	}
+\end{ex}
+\begin{ex} %[2H5V2-3]
+	Trong không gian với hệ trục tọa độ $O x y z$, cho điềm $E(1; 1; 1)$, mặt phẳng $(P)\colon x-3 y+5 z-3=0$ và mặt cầu $(S)\colon x^2+y^2+z^2=4$. Gọi $\Delta$ là đường thẳng qua $E$, nằm trong mặt phẳng $(P)$ và cắt $(S)$ tại 2 điểm phân biệt $A, B$ sao cho $A B=2$. Phương trình đường thẳng $\Delta$ là
+	\choice
+	{$\left\{\begin{array}{l}x=1-2 t \\ y=2-t \\ z=1-t\end{array}\right.$}
+	{$\left\{\begin{array}{l}x=1+2 t \\ y=1+t \\ z=1+t\end{array}\right.$}
+	{$\left\{\begin{array}{l}x=1-2 t \\ y=-3+t \\ z=5+t\end{array}\right.$}
+	{\True $\left\{\begin{array}{l}x=1+2 t \\ y=1-t \\ z=1-t\end{array}\right.$}
+	\loigiai{
+	\begin{center}
+		\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=.9]
+			\path
+			(2,0) coordinate (I)--++(0:1.5) coordinate (H)--++(90:2) coordinate (X)--++(-90:4) coordinate (Y);
+			\path[name path=xy] (X)--(Y);
+			\draw[name path=t1]
+			(0,0) arc (180:-180:2);
+			\path[name intersections={of=xy
+				and t1}]
+			(intersection-1) coordinate (A)
+			(intersection-2) coordinate (B);
+			\draw[rotate around={75:(I)}](0,0) arc (180:0:{2} and {.8});
+			\draw[rotate around={-105:(I)},dashed](0,0) arc (180:0:{2} and {.8});
+			\draw[gray] ($(H)!.15!(I)$) coordinate (E) ($(H)!.15!(A)$) coordinate (F) (E)--($(E)+(F)-(H)$)-- (F);
+			\draw[dashed] (I)--(H) (A)--(B)--(I)--(A);
+			\draw (Y)--(B) (X)node[right]{$\Delta$}--(A);
+			\foreach \x/\g in {A/0,B/0,H/0,I/180}
+			\fill[black](\x) circle (1pt)
+			($(\x)+(\g:3mm)$) node{$\x$};
+		\end{tikzpicture}
+	\end{center}
+	Mặt cầu $(S)\colon x^2+y^2+z^2=4$ có âm $I(0; 0; 0)$; bán kính $R=2$.\\
+	Mặt phẳng $(P)\colon x-3 y+5 z-3=0$ có  véctơ pháp tuyến  $\overrightarrow{n}_P=(1;-3; 5)$.\\
+	Gọi $H$ là hình chiếu của $I$ lên $\Delta \Rightarrow A H=B H=\dfrac{A B}{2}=1$.\\
+	Xét $\triangle I A H$ vuông tại $H \Rightarrow I H=\sqrt{I A^2-A H^2}=\sqrt{4-1}=\sqrt{3}$.\\
+	Mặt khác ta có $\overrightarrow{I E}=(1; 1; 1) \Rightarrow I E=\sqrt{3}=I H \Rightarrow H \equiv E \Rightarrow I E \perp \Delta$.\\
+	Đường thẳng $\Delta$ đi qua $E(1; 1; 1)$ vuông góc với $I E$ và chứa trong $(P)$ nên	véctơ chỉ phương của $\Delta$ xác định bởi $$\overrightarrow{u}_{\Delta}=\left[\overrightarrow{n}_P, \overrightarrow{I E}\right]=(-8; 4; 4)=-4(2;-1;-1).$$
+	Phương trình đường thẳng $\Delta$ là $$\heva{&x=1+2 t \\ &y=1-t \\ &z=1-t.}$$	
+	}
+\end{ex}
+\begin{ex}%[2H5H3-2]%[2H5?2-5]%
+	Trong không gian với hệ tọa độ $O x y z$, cho mặt phẳng $(P)\colon 2 x-2 y+z+3=0$ và mặt cầu $(S)\colon(x-1)^2+(y+3)^2+z^2=9$ và đường thẳng $d\colon \dfrac{x}{-2}=\dfrac{y+2}{1}=\dfrac{z+1}{2}$. Cho các phát biểu sau đây:
+	\begin{enumerate}[I. ]
+	\item Đường thẳng $d$ cắt mặt cầu $(S)$ tại 2 điểm phân biệt.
+	\item Mặt phẳng $(P)$ tiếp xúc với mặt cầu $(S)$.
+	\item Mặt phẳng $(P)$ và mặt cầu $(S)$ không có điểm chung.
+	\item Đường thẳng $d$ cắt mặt phẳng $(P)$ tại một điểm.	
+	\end{enumerate}
+	Số phát biểu đúng là
+	\choice
+	{$4$}
+	{$1$}
+	{$2$}
+	{\True $3$}
+	\loigiai{
+	Mặt cầu $(S)$ có tâm $I(1;-3; 0)$, bán kính $R=3$.\\
+	Phương trình tham số của đường thẳng $d\colon \heva{&x=-2 t \\ &y=-2+t \\ &z=-1+2 t.}$\\
+	Xét hệ phương trình $\heva{&x=-2 t \\ &y=-2+t \\ &z=-1+2 t \\&(x-1)^2+(y+3)^2+z^2=9}\Rightarrow 9 t^2+2 t-6=0.$ \hfill (1)\\
+	Phương trình (1) có 2 nghiệm phân biệt nên $d$ cắt $(S)$ tại 2 điểm phân biệt.\\
+	$$\mathrm{d}(I,(P))=\dfrac{|2 \cdot 1-2 \cdot(-3)+0+3|}{3}=\dfrac{11}{3}>R \Rightarrow(P) \text{ và } (S) \text{ không có điểm chung}.$$
+	Xét hệ phương trình $\heva{&x=-2 t \\& y=-2+t \\ &z=-1+2 t \\ &2 x-2 y+z+3=0} \Rightarrow t=\dfrac{3}{2}$ $\Rightarrow d$ cắt $(P)$ tại một điểm.\\
+	Vậy có 3 phát biểu đúng.	
+	}
+\end{ex} 
+

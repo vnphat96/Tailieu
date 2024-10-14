@@ -1,0 +1,439 @@
+\chude{Bài toán liên quan đến vị trí tương đối của đường thẳng với mặt cầu}
+\begin{tomtat}
+\textbf{Vị trí tương đối giữa đường thẳng $\Delta$ và mặt cầu $(S)$.}
+\begin{center}
+	\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=.9]
+		\path
+		(2,0) coordinate (I)--++(0:2) coordinate (K)--++(0:1) coordinate (H)--++(90:2) coordinate (X)--++(-90:4) coordinate (Y);
+		\draw
+		(0,0) arc (180:-180:2);
+		\draw[rotate around={75:(I)}](0,0) arc (180:0:{2} and {.8});
+		\draw[rotate around={-105:(I)},dashed](0,0) arc (180:0:{2} and {.8});
+		\draw ($(H)!.1!(I)$) coordinate (E) ($(H)!.15!(X)$) coordinate (F) (E)--($(E)+(F)-(H)$)-- (F);
+		\draw[dashed] (I)--(K);
+		\draw (X) node[right]{$\Delta$}--(Y) (K)--(H);
+		\draw (3,-.2) node{$R$};
+		\foreach \x/\g in {H/0,I/180}
+		\fill[black](\x) circle (1pt)
+		($(\x)+(\g:3mm)$) node{$\x$};
+	\end{tikzpicture}
+	\hspace*{.3cm}
+	\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=.9]
+	\path
+	(2,0) coordinate (I)--++(0:1.5) coordinate (H)--++(90:2) coordinate (X)--++(-90:4) coordinate (Y);
+	\path[name path=xy] (X)--(Y);
+	\draw[name path=t1]
+	(0,0) arc (180:-180:2);
+	\path[name intersections={of=xy
+		and t1}]
+	(intersection-1) coordinate (A)
+	(intersection-2) coordinate (B);
+	\draw[rotate around={75:(I)}](0,0) arc (180:0:{2} and {.8});
+	\draw[rotate around={-105:(I)},dashed](0,0) arc (180:0:{2} and {.8});
+	\draw[gray] ($(H)!.15!(I)$) coordinate (E) ($(H)!.15!(A)$) coordinate (F) (E)--($(E)+(F)-(H)$)-- (F);
+	\draw[dashed] (I)--(H) (A)--(B);
+	\draw (Y)--(B) (X)node[right]{$\Delta$}--(A);
+	\draw (3,-.2) node{$R$};
+	\foreach \x/\g in {A/0,B/0,H/0,I/180}
+	\fill[black](\x) circle (1pt)
+	($(\x)+(\g:3mm)$) node{$\x$};
+\end{tikzpicture}
+\hspace*{.3cm}
+\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=.9]
+	\path
+	(2,0) coordinate (I)--++(0:2) coordinate (H)--++(90:2) coordinate (X)--++(-90:4) coordinate (Y);
+	\draw
+	(0,0) arc (180:-180:2);
+	\draw[rotate around={75:(I)}](0,0) arc (180:0:{2} and {.8});
+	\draw[rotate around={-105:(I)},dashed](0,0) arc (180:0:{2} and {.8});
+	\draw[gray] ($(H)!.15!(I)$) coordinate (E) ($(H)!.15!(X)$) coordinate (F) (E)--($(E)+(F)-(H)$)-- (F);
+	\draw[dashed] (I)--(H);
+	\draw (Y)--(X) node[right]{$\Delta$};
+	\draw (3,-.2) node{$R$};
+	\foreach \x/\g in {H/0,I/180}
+	\fill[black](\x) circle (1pt)
+	($(\x)+(\g:3mm)$) node{$\x$};
+\end{tikzpicture}
+\end{center}
+Cho mặt cầu $(S)$ có tâm $I$, bán kính $R$ và đường thẳng $\Delta$. Để xét vị trí tương đối giữa $\Delta$ và $(S)$ ta tính $\mathrm{d}\left(I,\Delta\right)$ rồi so sánh với bán kính $R$.
+\begin{itemize}
+	\item Nếu $\mathrm{d}\left(I,\Delta\right)>R$ thì $\Delta$ không cắt $(S)$.
+	\item Nếu $\mathrm{d}\left(I,\Delta\right)=R$ thì $\Delta$ tiếp xúc với $(S)$ tại $H$.
+	\item Nếu $\mathrm{d}\left(I,\Delta\right)<R$ thì $\Delta$ cắt $(S)$ tại hai điểm phần biệt $A$, $B$.
+\end{itemize}
+\begin{note}
+	Trong không gian với hệ trục $Oxyz$, cho $(P)\colon A_1x+B_1y+C_1z+D_1=0$ và $(Q)\colon A_2x+B_2y+C_2z+D_2=0,\,(A_2,B_2,C_2,D_2\ne 0)$. Lúc đó
+	\begin{itemize}
+		\item $(P) \equiv (Q) \Leftrightarrow \dfrac{A_1}{A_2}=\dfrac{B_1}{B_2}=\dfrac{C_1}{C_2}=\dfrac{D_1}{D_2}$.
+		\item  $(P) \perp(Q) \Leftrightarrow A_1 A_2+B_1 B_2+C_1 C_2=0$.
+	\end{itemize} 
+\end{note}
+\end{tomtat}
+\begin{dang}{Vị trí tương đối của đường thẳng với mặt cầu}
+\end{dang}
+
+\TN
+\Opensolutionfile{ans}[ans/ans-C5B3CD4_1-10-D1-LC]
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ trục $Oxyz$, cho đường thằng $\Delta\colon \dfrac{x+2}{-1}=\dfrac{y}{1}=\dfrac{z-3}{-1}$ và và mặt cầu $(S)\colon x^2+y^2+z^2-2 x-4 y+6 z-67=0$. Số điểm chung của $\Delta$ và $(S)$ là \choice
+		{$3$}
+		{$0$}
+		{$1$}
+		{\True $2$}
+	\loigiai{
+		Đường thẳng $\Delta$ đi qua $M(-2;0;3)$ và có một vectơ chỉ phương là $\vec{u}=(-1;1;-1)$.\\
+		Mặt cầu $(S)$ có tâm $I(1;2;-3)$ và bán kính $R=9$.\\
+		Ta có $\overrightarrow{MI}=(3;2;-6)$ và $\left[\vec{u}, \overrightarrow{MI}\right]=(-4;-9;-5)$.\\
+		Suy ra
+		$$\mathrm{d}(I, \Delta)=\dfrac{\left| \left[\vec{u}, \overrightarrow{MI}\right]\right| }{\left| \vec{u}\right| }=\dfrac{\sqrt{366}}{3}.$$
+		Vì $\mathrm{d}(I,\Delta)<R$ nên $\Delta$ cắt mặt cầu $(S)$ tại hai điểm phân biệt.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ trục $Oxyz$, cho đường thẳng $\Delta\colon \dfrac{x}{2}=\dfrac{y-1}{1}=\dfrac{z-2}{-1}$ và và mặt cầu $(S)\colon x^2+y^2+z^2-2 x+4 z+1=0$. Số điểm chung của $\Delta$ và $(S)$ là 
+	\choice
+		{\True $0$}
+		{$1$}
+		{$2$}
+		{$3$}
+	\loigiai{
+		Đường thẳng $\Delta$ đi qua $M(0;1;2)$ và có một vectơ chỉ phương là $\vec{u}=(2;1;-1)$.\\
+		Mặt cầu $(S)$ có tâm $I(1;0;-2)$ và bán kính $R=2$.\\
+		Ta có $\overrightarrow{MI}=(1;-1;-4)$ và $\left[\vec{u}, \overrightarrow{M I}\right]=(-5;7;-3)$.\\
+		Suy ra $$\mathrm{d}(I,\Delta)=\dfrac{\left| \left[\vec{u}, \overrightarrow{MI}\right]\right| }{\left| \vec{u}\right| }=\dfrac{\sqrt{498}}{6}.$$
+		Vì $\mathrm{d}(I,\Delta)>R$ nên $\Delta$ không cắt mặt cầu $(S)$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	 Trong không gian với hệ trục $Oxyz$, cho đường thẳng $\Delta\colon\heva{&x=2+t \\&
+	y=1+mt\\&z=-2 t}$ và mặt cầu
+	$(S)\colon (x-1)^2+(y+3)^2+(z-2)^2=1$. Tìm tất cả các giá trị thực của $m$ để đường thẳng $\Delta$ không cắt mặt cầu $(S)$.
+	\choice 
+		{\True $m>\dfrac{15}{2}$ hoặc $m<\dfrac{5}{2}$}
+		{$m=\dfrac{15}{2}$ hoặc $m=\dfrac{5}{2}$}
+		{$\dfrac{5}{2}<m<\dfrac{15}{2}$}
+		{$m \in \mathbb{R}$}
+	\loigiai{
+		Từ phương trình đường thẳng $\Delta$ và mặt cầu $(S)$, ta có
+		\begin{align*}
+			& (2+t-1)^2+(1+mt+3)^2+(-2 t-2)^2=1 \\ 
+			\Leftrightarrow & (1+t)^2+(4+m t)^2+(-2 t-2)^2=1 \\
+			\Leftrightarrow & 	\left(m^2+5\right) t^2+2(5+4 m) t+20=0.\tag{1}
+		\end{align*}
+		Để $\Delta$ không cắt mặt cầu $(S)$ thì (1) vô nghiệm, hay (1) có $\Delta'<0 \Leftrightarrow\hoac{&m>\dfrac{15}{2} \\ &m<\dfrac{5}{2}.}$
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ trục $Oxyz$, cho đường thẳng $\Delta\colon\heva{&x=2+t \\ &y=1+m t \\& z=-2 t}$ và mặt cầu $(S)\colon (x-1)^2+(y+3)^2+(z-2)^2=1$. Tìm tất cả các giá trị thực của $m$ để đường thẳng $\Delta$ tiếp xúc mặt cầu $(S)$.
+	\choice 
+		{$m>\dfrac{15}{2}$ hoặc $m<\dfrac{5}{2}$}
+		{\True $m=\dfrac{15}{2}$ hoặc $m=\dfrac{5}{2}$}
+		{$\dfrac{5}{2}<m<\dfrac{15}{2}$}
+		{$m \in \mathbb{R}$}
+	\loigiai{
+		Từ phương trình đường thẳng $\Delta$ và mặt cầu $(S)$, ta có
+		\begin{align*}
+			& (2+t-1)^2+(1+mt+3)^2+(-2 t-2)^2=1 \\ 
+			\Leftrightarrow & (1+t)^2+(4+m t)^2+(-2 t-2)^2=1 \\
+			\Leftrightarrow & 	\left(m^2+5\right) t^2+2(5+4 m) t+20=0.\tag{1}
+		\end{align*}
+		Để $\Delta$ tiếp xúc mặt cầu $(S)$ thì (1) có nghiệm kép, hay (1) có $\heva{&a \neq 0 \\ &\Delta'=0} \Leftrightarrow\hoac{&m=\dfrac{15}{2} \\& m=\dfrac{5}{2}.}$
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ trục $Oxyz$, cho đường thẳng $\Delta\colon\heva{&x=2+t \\ &y=1+m t \\& z=-2 t}$ và mặt cầu $(S)\colon (x-1)^2+(y+3)^2+(z-2)^2=1$. Giá trị của $m$ để đường thẳng $\Delta$ cắt mặt cầu $(S)$ tại hai điểm phân biệt là
+	\choice 
+		{$m \in \mathbb{R}$}
+		{$m>\dfrac{15}{2}$ hoặc $m<\dfrac{5}{2}$}
+		{$m=\dfrac{15}{2}$ hoặc $m=\dfrac{5}{2}$}
+		{\True $\dfrac{5}{2}<m<\dfrac{15}{2}$}
+	\loigiai{
+		Từ phương trình đường thẳng $\Delta$ và mặt cầu $(S)$, ta có
+		\begin{align*}
+			& (2+t-1)^2+(1+mt+3)^2+(-2 t-2)^2=1 \\ 
+			\Leftrightarrow & (1+t)^2+(4+m t)^2+(-2 t-2)^2=1 \\
+			\Leftrightarrow & 	\left(m^2+5\right) t^2+2(5+4 m) t+20=0.\tag{1}
+		\end{align*}
+		Để $\Delta$ cắt mặt cầu $(S)$ tại hai điểm phân biệt thì (1) có hai nghiệm phân biệt, hay (1) có $$\Delta'>0 \Leftrightarrow \dfrac{5}{2}<m<\dfrac{15}{2}.$$
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\begin{dang}{Lập phương trình mặt cầu liên quan đến đường thẳng}
+\end{dang}
+\TN
+\Opensolutionfile{ans}[ans/ans-C5B3CD4_1-10-D2-LC]
+\begin{ex}%[2H5H3-3] 
+	Trong không gian với hệ trục $Oxyz$, cho điểm $I(1;-2;3)$. Phương trình mặt cầu tâm $I$ và tiếp xúc với trục $Oy$ là
+	\choice 
+		{$(x-1)^2+(y+2)^2+(z-3)^2=9$}
+		{$(x-1)^2+(y+2)^2+(z-3)^2=\sqrt{10}$}
+		{$(x+1)^2+(y-2)^2+(z+3)^2=10$}
+		{\True $(x-1)^2+(y+2)^2+(z-3)^2=10$}
+	\loigiai{
+		Gọi $M$ là hình chiếu của $I(1;-2;3)$ lên $Oy$, suy ra $M(0;-2;0)$.\\
+		Lúc đó $\overrightarrow{IM}=(-1;0;-3) \Rightarrow R=\mathrm{d}(I,Oy)=IM=\sqrt{10}$ là bán kính mặt cầu cần tìm.\\
+		Phương trình mặt cầu là $(x-1)^2+(y+2)^2+(z-3)^2=10$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3] 
+	Trong không gian với hệ trục $Oxyz$, phương trình mặt cầu tâm $I(2;3;-1)$ sao cho mặt cầu cắt đường thẳng $d$ có phương trình $\heva{&x=11+2 t \\& y=t \\ &z=-25-2 t}$ tại hai điểm $A$, $B$ sao cho $AB=16$ là
+	\choice 
+		{$(x-2)^2+(y-3)^2+(z+1)^2=280$}
+		{$(x+2)^2+(y+3)^2+(z-1)^2=289$}
+		{$(x-2)^2+(y-3)^2+(z+1)^2=17$}
+		{\True $(x-2)^2+(y-3)^2+(z+1)^2=289$}
+	\loigiai{
+		Đường thẳng $d$ đi qua $M(11;0;-25)$ và có một vectơ chỉ phương là $\vec{u}=(2;1;-2)$.\\
+		Gọi $H$ là hình chiếu của $I$ trên $d$. Lúc đó 
+		$$IH=\mathrm{d}(I,AB)=\dfrac{\left| \left[ \vec{u}, \vec{MI}\right] \right|}{\left| \vec{u}\right|}=15 \Rightarrow R=\sqrt{I H^2+\left(\dfrac{AB}{2}\right)^2}=17.$$
+		Vậy phương trình mặt cầu là $(x-2)^2+(y-3)^2+(z+1)^2=289$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5H3-3] 
+	Trong không gian với hệ trục $Oxyz$, biết mặt cầu $(S)$ có tâm $O$ và tiếp xúc với mặt phẳng $(P)\colon  x-2y+2z+9=0$ tại điểm $H(a;b;c)$. Giá trị của tổng $a+b+c$ bằng
+	\choice 
+		{$2$}
+		{\True $-1$}
+		{$1$}
+		{$-2$}
+	\loigiai{
+		Ta có
+		$\vec{n}_{(P)}=(1;-2;2)$ là một vectơ chỉ phương của đường thẳng $OH$.\\
+		Suy ra $OH\colon \heva{&x=t \\ &y=-2 t \\ &z=2 t}\Rightarrow H(t;-2t;2t)$.\\
+		Vì $H \in (P)$ nên $t-2\cdot(-2t)+2 \cdot 2 t+9=0 \Leftrightarrow t=-1$.\\
+		Vậy $H(-1;2;-2) \Rightarrow a+b+c=-1$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ trục $Oxyz$, cho đường thẳng $d\colon \dfrac{x-1}{2}=\dfrac{y}{-1}=\dfrac{z}{1}$ và điểm $I(1;0;2)$. Gọi $(S)$ là mặt cầu có tâm $I$, tiếp xúc với đường thẳng $d$. Bán kính của $(S)$ bằng
+	\choice 
+		{$\dfrac{5}{3}$}
+		{$\dfrac{2 \sqrt{5}}{3}$}
+		{\True $\dfrac{\sqrt{30}}{3}$}
+		{$\dfrac{4 \sqrt{2}}{3}$}
+	\loigiai{ 
+		Gọi $H(1+2t;-t;t)$ là hình chiếu của $I$ trên đường thẳng $d$.\\
+		Lúc đó ta có $\overrightarrow{IH}=(2t;-t;t-2)$ và $d$ có một vectơ chỉ phương là $\vec{u}=(2;-1;1)$.\\
+		Vì $H$ là hình chiếu vuông góc của $I$ trên $d$ nên $\overrightarrow{IH} \perp \vec{u} \Leftrightarrow \overrightarrow{IH} \cdot \vec{u}=0$.\\
+		$$
+		\Leftrightarrow 2 t \cdot 	2+(-t) \cdot(-1)+(t-2) \cdot 1=0 \Leftrightarrow t=\dfrac{1}{3} \Rightarrow \overrightarrow{IH}=\left(\dfrac{2}{3} ;-\dfrac{1}{3};-\dfrac{5}{3}\right) \Rightarrow IH=\dfrac{\sqrt{30}}{3}.
+		$$
+		Bán kính của mặt cầu $(S)$ là $R=IH=\dfrac{\sqrt{30}}{3}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-2]
+	Trong không gian với hệ tọa độ $Oxyz$, cho đường thẳng $d\colon \dfrac{x-1}{2}=\dfrac{y}{-1}=\dfrac{z+2}{1}$. Gọi $(S)$ là mặt cầu có bán kính $R=5$, có tâm $I$ thuộc đường thẳng $d$ và tiếp xúc với trục $Oy$. Biết rằng $I$ có tung độ dương. Điểm nào sau đây thuộc mặt cầu $(S)$?
+	\choice 
+		{$M(-1;-2;1)$}
+		{\True $N(1;2;-1)$}
+		{$P(-5;2;-7)$}
+		{$Q(5;-2;7)$}
+	\loigiai{
+		Điểm $I$ thuộc đường thẳng $d$ nên có tọa độ dạng  $I(1+2t;-t ;-2+t)$.\\
+		Vì mặt cầu $(S)$ tiếp xúc với trục $Oy$ nên 
+		$$\mathrm{d}(I,Oy)=R \Leftrightarrow \sqrt{(1+2 t)^2+(-2+t)^2}=5 \Leftrightarrow \sqrt{5 t^2+5}=5 \Leftrightarrow\hoac{&t=2 \\& t=-2.}$$
+		Với $t=2$ ta có $I(5 ;-2 ; 0)$ (không thỏa mãn).\\
+		Với $t=-2$ ta có $I(-3 ; 2 ;-4)$ (thỏa mãn).\\
+	   Suy ra mặt cầu $(S)$ có phương trình là $(x+3)^2+(y-2)^2+(z+4)^2=25$.\\
+		Thay tọa độ các điểm  vào phương trình mặt cầu ta thấy điểm $N(1;2;-1)$ thuộc mặt cầu $(S)$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3] 
+	Trong không gian với hệ tọa độ $Oxyz$, cho hai điểm $A(4;6;2)$, $B(2;-2;0)$ và mặt phẳng $(P)\colon x+y+z=0$. Xét đường thẳng $d$ thay đổi thuộc $(P)$ và đi qua $B$, gọi $H$ là hình chiếu vuông góc của $A$ trên $d$. Biết rằng khi $d$ thay đổi thì $H$ thuộc một đường tròn cố định. Tính bán kính $R$ của đường tròn đó.
+	\choice 
+		{$R=\sqrt{3}$}
+		{$R=2$}
+		{$R=1$}
+		{\True $R=\sqrt{6}$}
+	\loigiai{ 
+		Gọi $I$ là trung điểm của $AB$, ta có $I(3;2;1)$. Lúc đó $$\mathrm{d}\left(I ;(P)\right) =\dfrac{\left| 3+2+1\right|}{\sqrt{3}}=2 \sqrt{3}.$$
+		Gọi $(S)$ là mặt cầu có tâm $I(3;2;1)$ và bán kính $R'=\dfrac{AB}{2}=3\sqrt{2}$.\\ Ta có $H \in (S)$. Mặt khác $H \in (P)$ nên $H \in (C)=(S) \cap (P)$.\\
+		Bán kính của đường tròn $(C)$ là $R=\sqrt{\left(R'\right)^2-\mathrm{d}^2\left(I;(P)\right) }=\sqrt{\left(3 \sqrt{2}\right)^2-\left(2 \sqrt{3}\right)^2}=\sqrt{6}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ trục $Oxyz$, mặt phẳng $(P)\colon 2x+6y+z-3=0$ cắt trục $Oz$ và đường thẳng $d\colon \dfrac{x-5}{1}=\dfrac{y}{2}=\dfrac{z-6}{-1}$ lần lượt tại $A$ và $B$. Phương trình mặt cầu đường kính $AB$ là
+	\choice 						
+		{$(x+2)^2+(y-1)^2+(z+5)^2=36$}
+		{\True $(x-2)^2+(y+1)^2+(z-5)^2=9$}
+		{$(x+2)^2+(y-1)^2+(z+5)^2=9$}
+		{$(x-2)^2+(y+1)^2+(z-5)^2=36$}
+	\loigiai{
+		Ta có $(P) \cap Oz=A(0;0;3)$.\\ Tọa độ của $B$ là nghiệm của hệ phương trình
+		$$\heva{&2 x+6 y+z-3=0 \\& \dfrac{x-5}{1}=\dfrac{y}{2}=\dfrac{z-6}{-1}} \Leftrightarrow\heva{&2 x+6 y+z-3=0 \\ &2 x-y-10=0 \\ &y+2 z-12=0} \Leftrightarrow\heva{&x=4 \\& y=-2 \\& z=7} \Rightarrow B(4;-2;7).$$ 
+		Gọi $I$ là trung điểm của $AB$, suy ra $I(2;-1;5) \Rightarrow IA=\sqrt{4+1+4}=3$.\\
+		Phương trình mặt cầu đường kính $AB$ là $(x-2)^2+(y+1)^2+(z-5)^2=9$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ trục $Oxyz$, cho đường thẳng $d\colon\dfrac{x}{2}=\dfrac{y-3}{1}=\dfrac{z-2}{1}$ và hai mặt phẳng $(P)\colon x-2 y+2 z=0$, $(Q)\colon x-2 y+3 z-5=0$. Mặt cầu $(S)$ có tâm $I$ là giao điểm của đường thẳng $(d)$ và mặt phẳng $(P)$. Mặt phẳng $(Q)$ tiếp xúc với mặt cầu $(S)$. Mặt cầu $(S)$ có phương trình là
+	\choice 	
+		{$(S)\colon(x+2)^2+(y+4)^2+(z+3)^2=1$}
+		{$(S)\colon(x-2)^2+(y-4)^2+(z-3)^2=6$}
+		{\True $(S)\colon(x-2)^2+(y-4)^2+(z-3)^2=\dfrac{2}{7}$}
+		{$(S)\colon(x-2)^2+(y+4)^2+(z+4)^2=8$}
+	\loigiai{ 
+		Ta có $I \in(d) \Rightarrow I(2t;3+t;2+t)$.\\
+		Lại có $I \in(P) \Rightarrow 2 t-2(3+t)+2(2+t)=0 \Leftrightarrow t=1 \Rightarrow I(2;4;3)$.\\
+		Vì $(Q)$ tiếp xúc với $(S)$ nên $R=\mathrm{d}\left( I,(Q)\right)=\sqrt{\dfrac{2}{7}}$.\\
+		Vậy $(S)\colon (x-2)^2+(y-4)^2+(z-3)^2=\dfrac{2}{7}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ trục $Oxyz$, cho  đường thẳng $d\colon \dfrac{x-1}{1}=\dfrac{y-1}{2}=\dfrac{z+2}{1}$ và điểm $I(1;0;0)$. Phương trình mặt cầu $(S)$ có tâm $I$ và cắt đường thẳng $d$ tại hai điểm $A$, $B$ sao cho tam giác $IAB$ đều là
+	\choice 
+		{\True $(x+1)^2+y^2+z^2=\dfrac{20}{3}$}
+		{$(x-1)^2+y^2+z^2=\dfrac{20}{3}$}
+		{$(x-1)^2+y^2+z^2=\dfrac{16}{4}$}
+		{$(x-1)^2+y^2+z^2=\dfrac{5}{3}$}
+	\loigiai{ 
+		Đường thẳng $\Delta$ đi qua $M(1;1;-2)$ và có một vectơ chỉ phương là $\vec{u}=(1;2;1)$.\\
+		Ta có $\overrightarrow{MI}=(0;-1;2)$ và $\left[ \vec{u}, \overrightarrow{MI}\right] =(5;-2;-1)$.\\
+		Gọi $H$ là hình chiếu của $I$ trên $d$. Lúc đó $IH=\mathrm{d}(I,AB)=\dfrac{\left| \left[ \vec{u}, \vec{MI}\right] \right| }{\left| \vec{u}\right| }=\sqrt{5}$.\\
+		Xét tam giác $IAB$ ta có $IH=R\cdot \dfrac{\sqrt{3}}{2} \Rightarrow R=\dfrac{2\cdot IH}{\sqrt{3}}=\dfrac{2 \sqrt{15}}{3}$.\\
+		Vậy phương trình mặt cầu là $(x+1)^2+y^2+z^2=\dfrac{20}{3}$.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+
+\TNSA
+\Opensolutionfile{ans}[ans/ans-C5B3CD4_1-10-D2-TLN]
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ toạ độ $Oxyz$, cho điểm $I(1;-2;3)$ và đường thẳng $d$ có phương trình $\dfrac{x+1}{2}=\dfrac{y-2}{1}=\dfrac{z+3}{-1}$. Phương trình mặt cầu tâm $A$, tiếp xúc với $d$ có dạng $(x-a)^2+(y-b)^2+(z-c)^2=d$. Tính $a+b+c-d$.
+	\shortans{$-48$}
+	\loigiai{
+	Đường thẳng $(d)$ đi qua $I(-1;2;-3)$ và có một vectơ chỉ phương là $\vec{u}=(2;1;-1)$.\\
+	Suy ra
+	$$\mathrm{d}(A,d)=\dfrac{\left| \left[ \vec{u}, \overrightarrow{AM}\right] \right| }{\left| \vec{u}\right|}=5 \sqrt{2}.$$
+	Phương trình mặt cầu là $(x-1)^2+(y+2)^2+(z-3)^2=50$. \\
+	Suy ra $a=1$, $b=-2$, $c=3$, $d=50$. Vậy $a+b+c-d=1+(-2)+3-50=-48$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ trục $Oxyz$, cho đường thẳng $d\colon \dfrac{x+5}{2}=\dfrac{y-7}{-2}=\dfrac{z}{1}$ và điểm $M(4;1;6)$. Đường thẳng $d$ cắt mặt cầu $(S)$ có tâm $M$, tại hai điểm $A$, $B$ sao cho $AB=6$. Phương trình của mặt cầu $(S)$ có dạng có dạng $(x-a)^2+(y-b)^2+(z-c)^2=d$. Tính $a\cdot b+c\cdot d$.
+	\shortans{$112$}
+	\loigiai{
+		Ta có $d$ đi qua $N(-5;7;0)$ và có một vectơ chỉ phương là $\vec{u}=(2;-2;1)$.\\ Lúc đó có $\overrightarrow{MN}=(-9;6;-6)$.\\
+		Gọi $H$ là chân đường vuông góc vẽ từ $M$ đến đường thẳng $d \Rightarrow MH=\mathrm{d}(M, d)=3$.\\
+		Bán kính mặt cầu $(S)$ là $R^2=M H^2+\left(\dfrac{A B}{2}\right)^2=18$.\\
+		Suy ra phương trình mặt cầu $(S)$ là $(S)\colon (x-4)^2+(y-1)^2+(z-6)^2=18$.\\
+		Từ đó có $a=4$, $b=1$, $c=6$, $d=18$.
+		Vậy $a\cdot b+c\cdot d=4\cdot 1+6\cdot 18=112$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ tọa độ $Oxyz$, cho  mặt phẳng $(P)\colon 2x-2y-z-4=0$ và điểm $I(1;2;3)$. Mặt cầu tâm $I$ tiếp xúc với $(P)$ tại điểm $H(a;b;c)$. Tính $a+b+c$.
+	\shortans{$5$}
+ 	\loigiai{
+		Tọa độ điểm $H$ là hình chiếu của điểm $I$ trên mặt phẳng $(P)$.\\ Phương trình đường thẳng $d$ qua $I$ và vuông góc với mặt phẳng $(P)$ là $\heva{&x=1+2 t \\ &y=2-2 t \\ &z=3-t.}$\\
+		Lúc đó điểm $H$ là giao điểm của $d$ và $(P)$.\\
+		Xét phương trình $
+		2(1+2 t)-2(2-2 t)-(3-t)-4=0 \Leftrightarrow t=1$.\\
+		Suy ra $H(3;0;2)$.\\
+		Từ đó có $a=3$, $b=0$, $c=2$. Vậy $a+b+c=3+0+2=5$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ trục $Oxyz$, cho hai mặt cầu $\left(S_1\right)$, $\left(S_2\right)$ có phương trình lần lượt là $\left(S_1\right)\colon x^2+y^2+z^2=25$ và $\left(S_2\right)\colon x^2+y^2+(z-1)^2=4$. Một đường thẳng $d$ vuông góc với vectơ $\vec{u}=(1;-1;0)$ tiếp xúc với mặt cầu $\left(S_2\right)$ và cắt mặt cầu $\left(S_1\right)$ theo một đoạn thẳng có độ dài bằng $8$. Một vectơ chỉ phương của $d$ có tọa độ là $(1;a;b)$. Tính $a\cdot b$.
+	\shortans{$0$} 
+	\loigiai{ 
+		\begin{center}
+			\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=.5]
+				\path (0,0) coordinate (O)--++(135:1) coordinate (I)--++(135:5) coordinate (X)--++(-45:12) coordinate (Y);
+				\draw [name path=xy] (X)--(Y);
+				\draw[name path=s1] (O) circle (5cm);
+				\draw[name path=s2] (I)  circle (2cm);
+				\path[name intersections={of=xy
+					and s2}]
+				(intersection-1) coordinate (H)
+				;
+				\coordinate (T) at ($(H)!3!90:(I)$);
+				\coordinate (U) at ($(H)!3!-90:(I)$);
+				\draw [name path=tu] (T)--(U);
+				\path[name intersections={of=tu
+					and s1}]
+				(intersection-1) coordinate (M)
+				(intersection-2) coordinate (N)
+				;
+				\draw (5.8,0) node{$(S_1)$} (2,1) node{$(S_2)$};
+				\draw ($(H)!.2!(I)$) coordinate (E) ($(H)!.1!(M)$) coordinate (F) (E)--($(E)+(F)-(H)$)-- (F);
+				\foreach \x/\g in {O/-120,I/-120,H/180,M/-90,N/180}
+				\fill[black](\x) circle (2pt)
+				($(\x)+(\g:5mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Mặt cầu $\left(S_1\right)$ có tâm $O(0;0;0)$, bán kính $R_1=5$.\\
+		Mặt cầu $\left(S_2\right)$ có tâm $I(0;0;1)$, bán kính $R_2=2$.\\
+		Ta có  $OI=1<R_1-R_2$ nên $\left(S_2\right)$ nằm trong mặt cầu $\left(S_1\right)$.\\
+		Giả sử $d$ tiếp xúc với $\left(S_2\right)$ tại $H$ và cắt mặt cầu $\left(S_1\right)$ tại $M$, $N$. Gọi $K$ là trung điểm $MN$. Khi đó $IH=R_2=2$ và $OH \geq OK$.\\
+		Theo giả thiết $MN=8 \Rightarrow MK=4 \Rightarrow OK=\sqrt{R_1^2-M K^2}=\sqrt{5^2-4^2}=3$.\\
+		Lại có $OI=1$, $IH=2$, suy ra $OK=OI+IH \geq OH \geq OK$. Do đó $OH=OK$, suy ra $H \equiv K$, tức $d$ vuông góc với đường thẳng $OI$.\\
+		Đường thẳng $d$ cần tìm vuông góc với vectơ $\vec{u}=(1;-1;0)$ và vuông góc với $\overrightarrow{OI}=(0;0;1)$ nên có vectơ chỉ phương $\vec{u}_3=\left[ \overrightarrow{OI}, \vec{u}\right]=(1;1;0)$.\\
+		Vậy $a=1$, $b=0$, $a\cdot b=1\cdot 0=0$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ trục $Oxyz$, cho mặt cầu $(S)\colon x^2+y^2+z^2+4 x-6 y+m=0$ ($m$ là tham số) và đường thẳng $\Delta\colon \heva{&x=4+2 t \\ &y=3+t \\ &z=3+2 t}$. Biết đường thẳng $\Delta$ cắt mặt cầu $(S)$ tại hai điểm phân biệt $A$, $B$ sao cho $AB=8$. Tìm giá trị của $m$.
+	\shortans{$-12$} 
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=.5]
+				\path (0,0) coordinate (I)--++(135:3) coordinate (H);
+				\coordinate (C) at ($(H)!2!90:(I)$);
+				\coordinate (D) at ($(H)!2!-90:(I)$);
+				\coordinate (M) at ($(H)!1.8!-90:(I)$);
+				\draw [name path=tu] (C)--(D);
+				\draw[name path=s1] (I) circle (5cm);
+				\path[name intersections={of=tu
+					and s1}]
+				(intersection-1) coordinate (A)
+				(intersection-2) coordinate (B)
+				;			
+				\draw ($(H)!.16!(I)$) coordinate (E) ($(H)!.12!(B)$) coordinate (F) (E)--($(E)+(F)-(H)$)-- (F) (H)--(I);
+				\draw (C) node[above]{$\Delta$} (.8,2) node{$R$} (B)--(I)--(A);
+				\foreach \x/\g in {I/-120,H/180,A/110,B/180,M/-60}
+				\fill[black](\x) circle (2pt)
+				($(\x)+(\g:5mm)$) node{$\x$};
+			\end{tikzpicture}
+		\end{center}
+		Gọi $H$ là trung điểm đoạn thẳng $AB$ suy ra $IH \perp AB$ và $H A=4$.\\
+		Mặt cầu $(S)$ có tâm $I(-2;3;0)$, bán kính $R=\sqrt{13-m}\,(m<13)$.\\
+		Đường thẳng $\Delta$ đi qua $M(4;3;3)$ và có một vectơ chỉ phương là $\vec{u}=(2;1;2)$.\\\
+		Ta có $$\overrightarrow{IM}=(6;0;3) \Rightarrow\left[ \overrightarrow{IM}, \vec{u}\right] =(-3 ;-6;6) \Rightarrow IH=\mathrm{d}(I, \Delta)=\dfrac{\left| \left[  \overrightarrow{IM}, \vec{u}\right] \right| }{\left| \vec{u}\right|}=3.$$
+		Lúc đó $R^2=I H^2+HA^2 \Leftrightarrow 13-m=3^2+4^2 \Leftrightarrow m=-12$.
+	}
+\end{ex}
+
+\begin{ex}%[2H5V3-3]
+	Trong không gian với hệ tọa độ $Oxyz$ cho mặt phẳng $(P)\colon z+2=0$, điểm $K(0;0;-2)$ và đường thẳng $d\colon \dfrac{x}{1}=\dfrac{y}{1}=\dfrac{z}{1}$. Phương trình mặt cầu tâm thuộc đường thẳng $d$ và cắt mặt phẳng $(P)$ theo thiết diện là
+	đường tròn tâm $K$, bán kính $r=\sqrt{5}$ có dạng $(x-a)^2+(y-b)^2+(z-c)^2=d$. 
+	Tính $a+b+c+d$.
+	\shortans{$9$} 
+	\loigiai{
+		Ta có $(P)$ có vectơ pháp tuyến là $\vec{n}=(0;0;1)$.\\
+		Viết lại phương trình của đường thẳng $d$ dưới dạng tham số là $\heva{&x=t \\& y=t \\&z=t.}$\\
+		Gọi $I$ là tâm của mặt cầu cần lập. Vì $I \in d$ nên giả sử $I(t;t;t)$.\\
+		Lúc đó $\overrightarrow{IK}=(-t;-t;-2-t)$.\\
+		Thiết diện của mặt cầu và mặt phẳng $(P)$ là đường tròn tâm $K$ nên ta có $IK \perp(P)$. Suy ra $\overrightarrow{IK}$ và $\vec{n}=(0;0;1)$ cùng phương. Do đó tồn tại số thực $k$ để $$\vec{IK}=k \vec{n} \Leftrightarrow\heva{&-t=k \cdot 0 \\ &-t=k\cdot 0 \\ &-2-t=k\cdot 1} \Leftrightarrow\heva{&t=0 \\ &k=-2.}$$
+		Suy ra $I(0;0;0)$. Từ đó tính được $\mathrm{d}\left( I,(P)\right) =2$.\\
+		Gọi $R$ là bán kính mặt cầu. Ta có $R=\sqrt{r^2+\left[\mathrm{d}\left(I,(P)\right)\right]^2}=3$.\\
+		Suy ra mặt cầu cần tìm có phương trình là $x^2+y^2+z^2=9$.\\
+		Từ đó có $a=0$, $b=0$, $c=0$, $d=9$. Vậy $a+b+c+d=0+0+0+9=9$. 
+	}
+\end{ex}

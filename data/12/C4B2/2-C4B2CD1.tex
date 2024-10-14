@@ -1,0 +1,1518 @@
+\setcounter{section}{1}
+\section{Tích Phân}
+\subsection{Lý thuyết cần nhớ}
+\subsubsection{Diện tích hình thang cong}
+\begin{center}
+	\begin{tikzpicture}[>=stealth]
+		%		\tkzInit[xmin=-0.5,ymin=-2.5,xmax=6.5,ymax=2.5] \tkzClip
+		\draw[->] (-0.5,0)--(5.3,0) node[below] {$x$} ;
+		\draw[->] (0,-.5)--(0,2.3) node[right] {$y$} ;
+		\draw (0,0) node[below left] {$O$};
+		%		\draw (1,0) ellipse (0.16 and 1);
+		%		\draw (4,0) ellipse (0.25 and 1.73);
+		%Nhánh trên
+		\draw[domain=1:4] 
+		plot(\x,{0.31*(\x)^3-2.28*(\x)^2+5.14*(\x)-2.17}) ;
+		%Nhánh dưới
+		%	\draw[domain=1:4]
+		%	plot(\x,{-0.31*(\x)^3+2.28*(\x)^2-5.14*(\x)+2.17}) ;
+		%Tô màu
+		\draw[pattern = north east lines,opacity=.3, line width = 1.2pt,draw=none] (1,1) plot[domain=1:4] (\x,{0.31*(\x)^3-2.28*(\x)^2+5.14*(\x)-2.17})--(4,0)--(1,0)--cycle;
+		
+		%Các yếu tố khác
+		\draw (1,0) node[below] {$a$};
+		\draw (4,0) node[below] {$b$};
+		\draw[dashed] (1,0)--(1,1);
+		\draw[dashed] (4,0)--(4,1.72);
+		\draw (2.5,1.7) node {$y=f(x)$} ;
+		\draw (2.5,0.7) node {$S$} ;
+		%	\draw[->] (5,0.25) arc (90:270:0.3);
+	\end{tikzpicture}
+\end{center}
+Nếu hàm số $f(x)$ liên tục và không âm trên đoạn $\left[a;b\right]$ thì diện tích $S$ của hình thang cong giới hạn bởi đồ thị $y=f(x)$, trục hoành và hai đường thẳng $x=a$, $x=b$ được tính bởi:
+$S=F(b)-F(a)$
+trong đó $F(x)$ là một nguyên hàm của $f(x)$ trên đoạn $\left[a;b\right]$.
+\subsubsection{Khái niệm tích phân}
+Cho hàm số $f(x)$ liên tục trên đoạn $\left[a;b\right]$. Nếu $F(x)$ là nguyên hàm của hàm số $f(x)$ trên đoạn $\left[a;b\right]$ thì hiệu số $F(b)-F(a)$ được gọi là tích phân từ $a$ đến $b$ của hàm số $f(x)$, kí hiệu $\displaystyle\int\limits_a^bf(x)\mathrm{d}x$.\\
+\begin{note}Chú ý:
+	\begin{itemize}
+		\item Hiệu số $F(b)-F(a)$ còn được kí hiệu là $ F(x)\big|_a^b$.\\
+		Vậy $\displaystyle\int\limits_a^bf(x)\mathrm{d}x= F(x)\big|_a^b=F(b)-F(a)$.
+		\item Ta gọi $\displaystyle\int\limits_a^b{}$ là dấu tích phân, $a$ là cận dưới, $b$ là cận trên, $f(x)\mathrm{d}x$ là biểu thức dưới dấu tích phân và $f(x)$ là hàm số dưới dấu tích phân.
+		\item Quy ước: $\displaystyle\int\limits_a^af(x)\mathrm{d}x=0$; $\displaystyle\int\limits_a^bf(x)\mathrm{d}x=-\displaystyle\int\limits_b^af(x)\mathrm{d}x$.
+		\item Tích phân của hàm số $f$ từ $a$ đến $b$ chỉ phụ thuộc vào $f$ và các cận $a$, $b$ mà không phụ thuộc vào biến $x$ hay $t$, nghĩa là $\displaystyle\int\limits_a^bf(x)\mathrm{d}x=\displaystyle\int\limits_a^bf(t)\mathrm{d}t$.
+		\item Ý nghĩa hình học của tích phân.\\
+		\immini{
+			Nếu hàm số $f(x)$ liên tục và không âm trên đoạn $\left[a;b\right]$ thì $\displaystyle\int\limits_a^bf(x)\mathrm{d}x$ là diện tích $S$ của hình thang cong giới hạn bởi đồ thị $y=f(x)$, trục hoành và hai đường thẳng $x=a$, $x=b$.
+			$$S=\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x.$$}{\begin{tikzpicture}[>=stealth,scale=0.8]
+				%		\tkzInit[xmin=-0.5,ymin=-2.5,xmax=6.5,ymax=2.5] \tkzClip
+				\draw[->] (-0.5,0)--(5.3,0) node[below] {$x$} ;
+				\draw[->] (0,-.5)--(0,2.3) node[right] {$y$} ;
+				\draw (0,0) node[below left] {$O$};
+				%		\draw (1,0) ellipse (0.16 and 1);
+				%		\draw (4,0) ellipse (0.25 and 1.73);
+				%Nhánh trên
+				\draw[domain=1:4] 
+				plot(\x,{0.31*(\x)^3-2.28*(\x)^2+5.14*(\x)-2.17}) ;
+				%Nhánh dưới
+				%	\draw[domain=1:4]
+				%	plot(\x,{-0.31*(\x)^3+2.28*(\x)^2-5.14*(\x)+2.17}) ;
+				%Tô màu
+				\draw[pattern = north east lines,opacity=.3, line width = 1.2pt,draw=none] (1,1) plot[domain=1:4] (\x,{0.31*(\x)^3-2.28*(\x)^2+5.14*(\x)-2.17})--(4,0)--(1,0)--cycle;
+				
+				%Các yếu tố khác
+				\draw (1,0) node[below] {$a$};
+				\draw (4,0) node[below] {$b$};
+				\draw[dashed] (1,0)--(1,1);
+				\draw[dashed] (4,0)--(4,1.72);
+				\draw (2.5,1.7) node {$y=f(x)$} ;
+				\draw (2.5,0.7) node {$S$} ;
+				%	\draw[->] (5,0.25) arc (90:270:0.3);
+		\end{tikzpicture}}
+	\end{itemize}
+\end{note}
+\begin{nx}
+	\begin{itemize}
+		\item Nếu hàm số $f(x)$ có đạo hàm $f'(x)$ và $f'(x)$ liên tục trên đoạn $\left[a;b\right]$ thì\\
+		$f(b)-f(a)=\displaystyle\int\limits_a^bf'(x)\mathrm{d}x$.
+		\item Cho hàm số $f(x)$ liên tục trên đoạn $\left[a;b\right]$. Khi đó $\dfrac{1}{b-a}\displaystyle\int\limits_a^bf(x)\mathrm{d}x$ được gọi là giá trị trung bình của hàm số $f(x)$ trên đoạn $\left[a;b\right]$.
+		\item Đạo hàm của quãng đường di chuyển của vật theo thời gian bằng tốc độ của chuyển động tại mọi thời điểm $v(t)=s'(t)$. Do đó, nếu biết tốc độ $v(t)$ tại mọi thời điểm $t\in\left[a;b\right]$ thì tính được quãng đường di chuyển trong khoảng thời gian từ $a$ đến $b$ theo công thức: $s=s(b)-s(a)=\displaystyle\int\limits_a^bv(t)\mathrm{d}t$.
+	\end{itemize}
+\end{nx}
+\subsubsection{Tính chất của tích phân}
+Cho hai hàm số $f(x)$, $g(x)$ liên tục trên đoạn $\left[a;b\right]$. Khi đó:
+\begin{enumerate}
+	\item $\displaystyle\int\limits_a^bkf(x)\mathrm{d}x=k\displaystyle\int\limits_a^bf(x)\mathrm{d}x$, với $k$ là hằng số.
+	\item $\displaystyle\int\limits_a^b\left[f(x)\pm g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}\pm\displaystyle\int\limits_a^bg(x)\mathrm{\,d}x$.
+	\item $\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x=\displaystyle\int\limits_a^cf(x)\mathrm{\,d}x+\displaystyle\int\limits_c^bf(x)\mathrm{\,d}x$ với $c\in\left(a;b\right)$.
+\end{enumerate}
+\subsection{Phân loại và phương pháp giải bài tập}
+\begin{dang}{Tính chất của tích phân}
+
+\end{dang}
+\setcounter{ex}{0}
+\TN
+\Opensolutionfile{ans}[ans/ans-2C4B2CD3-LC]
+\begin{ex}%[Câu 1]%[2D4N2-1]
+	Nếu $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=6$ thì $\displaystyle\int\limits_0^3\left[\dfrac{1}{3}f(x)+2\right]\mathrm{\,d}x$ bằng
+	\choice
+	{\True $8$}
+	{$5$}
+	{$9$}
+	{$6$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_0^3\left[\dfrac{1}{3}f(x)+2\right]\mathrm{\,d}x=\dfrac{1}{3}\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x+\displaystyle\int\limits_0^32\mathrm{\,d}x=\dfrac{1}{3}\cdot 6+6=8$.}
+\end{ex}
+\begin{ex}%[Câu 2]%[2D4N2-1]
+	Nếu $\displaystyle\int_1^4 f(x) \mathrm{\,d}x=3$ và $\displaystyle\int_1^4 g(x) \mathrm{\,d}x=-2$ thì $\displaystyle\int_1^4\left(f(x)-g(x)\right)\mathrm{\,d}x$ bằng
+	\choice
+	{$-1$}
+	{$-5$}
+	{\True $5$}
+	{$1$}
+	\loigiai{
+		Ta có $\displaystyle\int _1^4\left[f(x)-g(x)\right]\mathrm{\,d}x=\displaystyle\int _1^4f(x)\mathrm{\,d}x-\displaystyle\int _1^4g(x)\mathrm{\,d}x=3-(-2)=5$.}
+\end{ex}
+\begin{ex}%[Câu 3]%[2D4N2-1]
+	Nếu $\displaystyle\int\limits_1^4f(x)\mathrm{\,d}x=5$ và $\displaystyle\int\limits_1^4g(x)\mathrm{\,d}x=-4$ thì $\displaystyle\int\limits_1^4\left[f(x)-g(x)\right]\mathrm{\,d}x$ bằng
+	\choice
+	{$-1$}
+	{$-9$}
+	{$1$}
+	{\True $9$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_1^4\left[f(x)-g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_1^4f(x)\mathrm{\,d}x-\displaystyle\int\limits_1^4g(x)\mathrm{\,d}x=5-(-4)=9$.}
+\end{ex}
+\begin{ex}%[Câu 4]%[2D4N2-1]
+	Biết $\displaystyle\int\limits_1^{2024}f(x)\mathrm{\,d}x=-3$ và $\displaystyle\int\limits_{2024}^1g(x)\mathrm{\,d}x=2$. Khi đó $\displaystyle\int\limits_1^{2024}\left[f(x)-g(x)\right]\mathrm{\,d}x$ bằng
+	\choice
+	{$6$}
+	{$-5$}
+	{$5$}
+	{\True $-1$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_{2024}^1g(x)\mathrm{\,d}x=2\Leftrightarrow \displaystyle\int\limits_1^{2024}g(x)\mathrm{\,d}x=-2$.\\
+		Do đó $\displaystyle\int\limits_1^{2024}\left[f(x)-g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_1^{2024}f(x)\mathrm{\,d}x-\displaystyle\int\limits_1^{2024}g(x)\mathrm{\,d}x=-3-(-2)=-1$.}
+\end{ex}
+\begin{ex}%[Câu 5]%[2D4N2-1]
+	Nếu $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=3$ thì $\displaystyle\int\limits_0^34f(x)\mathrm{\,d}x$ bằng
+	\choice
+	{$3$}
+	{\True $12$}
+	{$36$}
+	{$4$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_0^34f(x)\mathrm{\,d}x=4\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=4\cdot 3=12$.}
+\end{ex}
+\begin{ex}%[Câu 6]%[2D4N2-1]
+	Cho $\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=\dfrac{1}{2024}$. Tính $I=\displaystyle\int\limits_0^2 2024f(x)\mathrm{\,d}x$.
+	\choice
+	{$I=5$}
+	{$I=\dfrac{1}{2024}$}
+	{\True $I=1$}
+	{$I=2024$}
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits_0^2 2024f(x)\mathrm{\,d}x=2024\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=2024\cdot \dfrac{1}{2024}=1$.}
+\end{ex}
+\begin{ex}%[Câu 7]%[2D4N2-1]
+	Nếu $\displaystyle\int\limits_0^5f(x)\mathrm{\,d}x=5$ thì $\displaystyle\int\limits_5^05f(x)\mathrm{\,d}x$ bằng
+	\choice
+	{$1$}
+	{$-1$}
+	{$25$}
+	{\True $-25$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_5^05f(x)\mathrm{\,d}x=5\displaystyle\int\limits_5^0f(x)\mathrm{\,d}x=-5\cdot\displaystyle\int\limits_0^5f(x)\mathrm{\,d}x=(-5)\cdot 5=-25$.
+		
+	}
+\end{ex}
+\begin{ex}%[Câu 8]%[2D4N2-1]
+	Nếu $\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=5$ thì $\displaystyle\int\limits_0^2\left[2f(x)-1\right]\mathrm{\,d}x$ bằng
+	\choice
+	{\True $8$}
+	{$9$}
+	{$10$}
+	{$12$}
+	\loigiai{
+		Ta có $\displaystyle\int _0^2\left[2f(x)-1\right]\mathrm{\,d}x=2\displaystyle\int _0^2f(x)\mathrm{\,d}x-\displaystyle\int _0^21\mathrm{\,d}x=2\cdot 5-2=8$.}
+\end{ex}
+\begin{ex}%[Câu 9]%[2D4N2-1]
+	Nếu $\displaystyle\int_0^2 f(x) d x=3$ thì $\displaystyle\int_0^2\left[2f(x)-1\right]\mathrm{\,d}x$ bằng
+	\choice
+	{$6$}
+	{\True $4$}
+	{$8$}
+	{$5$}
+	\loigiai{
+		Ta có $\displaystyle\int_0^2\left[2f(x)-1\right]\mathrm{\,d}x=2\displaystyle\int_0^2f(x)\mathrm{\,d}x-\displaystyle\int_0^2\mathrm{\,d}x=2\cdot 3-2=4$.}
+\end{ex}
+\begin{ex}%[Câu 10]%[2D4N2-1]
+	Cho $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=2$ và $\displaystyle\int\limits_0^1g(x)\mathrm{\,d}x=5$, khi $\displaystyle\int\limits_0^1\left[f(x)-2g(x)\right]\mathrm{\,d}x$ bằng
+	\choice
+	{\True $-8$}
+	{$1$}
+	{$-3$}
+	{$12$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_0^1\left[f(x)-2g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x-2\displaystyle\int\limits_0^1g(x)\mathrm{\,d}x=2-2\cdot 5=-8$.}
+\end{ex}
+\begin{ex}%[Câu 11]%[2D4H2-1]
+	Cho $\displaystyle\int\limits_0^{\frac{\pi}{2}}f(x)\mathrm{\,d}x=5$. Tính $I=\displaystyle\int\limits_0^{\frac{\pi}{2}}\left[f(x)+2\sin x\right]\mathrm{\,d}x$.
+	\choice
+	{\True $I=7$}
+	{$I=5+\dfrac{\pi}{2}$}
+	{$I=3$}
+	{$I=5+\pi $}
+	\loigiai{
+		Ta có
+		\begin{eqnarray*}
+			&I&=\displaystyle\int\limits_0^{\frac{\pi}{2}}\left[f(x)+2\sin x\right]\mathrm{\,d}x\\
+			&&=\displaystyle\int\limits_0^{\frac{\pi}{2}}f(x)\mathrm{\,d}x\text{+2}\displaystyle\int\limits_0^{\tfrac{\pi}{2}}\sin x\mathrm{\,d}x\\
+			&&=\displaystyle\int\limits_0^{\frac{\pi}{2}}f(x)\mathrm{\,d}x-2\cos x\bigg|_0^{\frac{\pi}{2}}\\
+			&&=5-2(0-1)=7.
+		\end{eqnarray*}
+	}
+\end{ex}
+\begin{ex}%[Câu 12]%[2D4H2-1]
+	Cho $\displaystyle\int\limits_1^2\left[4f(x)-2x\right]\mathrm{\,d}x=1$. Khi đó $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x$ bằng
+	\choice
+	{\True $1$}
+	{$-3$}
+	{$3$}
+	{$-1$}
+	\loigiai{
+		Ta có \begin{eqnarray*}
+			&&\displaystyle\int\limits_1^2\left[4f(x)-2x\right]\mathrm{\,d}x=1\\
+			&\Leftrightarrow&4\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x-2\displaystyle\int\limits_1^2x\mathrm{\,d}x=1\\
+			&\Leftrightarrow&4\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x-2\cdot  \dfrac{x^2}{2}\bigg|_1^2=1\\
+			&\Leftrightarrow&4\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=4\\
+			&\Leftrightarrow&\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=1.
+		\end{eqnarray*}
+	}
+\end{ex}
+% \begin{ex}%[Câu 13]%[2D4H2-1]
+% 	Cho $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=1$, tích phân $\displaystyle\int\limits_0^1\left(2f(x)-3x^2\right)\mathrm{\,d}x$ bằng
+% 	\choice
+% 	{\True $1$}
+% 	{$0$}
+% 	{$3$}
+% 	{$-1$}
+% 	\loigiai{Ta có 
+% 		$\displaystyle\int\limits_0^1(2f(x)-3x^2)\mathrm{\,d}x=2\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x-3\displaystyle\int\limits_0^1x^2\mathrm{\,d}x=2-1=1$.}
+% \end{ex}
+% \begin{ex}%[Câu 14]%[2D4H2-1]
+% 	Cho $\displaystyle\int\limits_{-1}^2f(x)\mathrm{\,d}x=2$ và $\displaystyle\int\limits_{-1}^2g(x)\mathrm{\,d}x=-1$. Tính $I=\displaystyle\int\limits_{-1}^2\left[x+2f(x)-3g(x)\right]\mathrm{\,d}x$.
+% 	\choice
+% 	{\True $I=\dfrac{17}{2}$}
+% 	{$I=\dfrac{5}{2}$}
+% 	{$I=\dfrac{7}{2}$}
+% 	{$I=\dfrac{11}{2}$}
+% 	\loigiai{
+% 		Ta có 
+% 		\begin{eqnarray*}
+% 			&I&=\displaystyle\int\limits_{-1}^2\left[x+2f(x)-3g(x)\right]\mathrm{\,d}x\\
+% 			&&= \dfrac{x^2}{2}\bigg|_{-1}^2+2\displaystyle\int\limits_{-1}^2f(x)\mathrm{\,d}x-3\displaystyle\int\limits_{-1}^2g(x)\mathrm{\,d}x\\
+% 			&&=\dfrac{3}{2}+2\cdot 2-3(-1)=\dfrac{17}{2}.
+% 		\end{eqnarray*}
+% 	}
+% \end{ex}
+% \begin{ex}%[Câu 15]%[2D4H2-1]
+% 	Cho $\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=3$,$\displaystyle\int\limits_0^2g(x)\mathrm{\,d}x=-1$ thì $\displaystyle\int\limits_0^2\left[f(x)-5g(x)+x\right]\mathrm{\,d}x$ bằng
+% 	\choice
+% 	{$12$}
+% 	{$0$}
+% 	{$8$}
+% 	{\True $10$}
+% 	\loigiai{Ta có 
+% 		$\displaystyle\int\limits_0^2\left[f(x)-5g(x)+x\right]\mathrm{\,d}x=\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x-5\displaystyle\int\limits_0^2\mathrm{g}(x)\mathrm{\,d}x+\displaystyle\int\limits_0^2x\mathrm{\,d}x=3+5+2=10$.}
+% \end{ex}
+% \begin{ex}%[Câu 16]%[2D4H2-1]
+% 	Cho $\displaystyle\int\limits_0^5f(x)\mathrm{\,d}x=-2$. Tích phân $\displaystyle\int\limits_0^5\left[4f(x)-3x^2\right]\mathrm{\,d}x$ bằng
+% 	\choice
+% 	{$-140$}
+% 	{$-130$}
+% 	{$-120$}
+% 	{\True $-133$}
+% 	\loigiai{Ta có
+% 		$\displaystyle\int\limits_0^5\left[4f(x)-3x^2\right]\mathrm{\,d}x=4\displaystyle\int\limits_0^5f(x)\mathrm{\,d}x-\displaystyle\int\limits_0^53x^2\mathrm{\,d}x=-8-x^3\bigg|_0^5=-8-125=-133$.}
+% \end{ex}
+% \begin{ex}%[Câu 17]%[2D4H2-1]
+% 	Cho $\displaystyle\int\limits_1^2\left[4f(x)-2x\right]\mathrm{\,d}x=1$. Khi đó $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x$ bằng:
+% 	\choice
+% 	{\True $1$}
+% 	{$-3$}
+% 	{$3$}
+% 	{$-1$}
+% 	\loigiai{Ta có
+% 		\begin{eqnarray*}
+% 			&&\displaystyle\int\limits_1^2\left[4f(x)-2x\right]\mathrm{\,d}x=1\\
+% 			&\Leftrightarrow&4\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x-2\displaystyle\int\limits_1^2x\mathrm{\,d}x=1\\
+% 			&\Leftrightarrow&4\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x-2\cdot  \dfrac{x^2}{2}\bigg|_1^2=1\\
+% 			&\Leftrightarrow&4\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=4\\
+% 			&\Leftrightarrow&\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=1.
+% 		\end{eqnarray*}
+% 	}
+% \end{ex}
+% \begin{ex}%[Câu 18]%[2D4H2-1]
+% 	Cho $\displaystyle\int\limits_{-2}^2f(x)\mathrm{\,d}x=1$, $\displaystyle\int\limits_{-2}^4f(t)\mathrm{\,d}t=-4$. Tính $\displaystyle\int\limits_2^4f(y)\mathrm{\,d}y$.
+% 	\choice
+% 	{$I=5$}
+% 	{$I=-3$}
+% 	{$I=3$}
+% 	{\True $I=-5$}
+% 	\loigiai{	
+% 		Ta có $\displaystyle\int\limits_{-2}^4f(t)\mathrm{\,d}t=\displaystyle\int\limits_{-2}^4f(x)\mathrm{\,d}x$, $\displaystyle\int\limits_2^4f(y)\mathrm{\,d}y=\displaystyle\int\limits_2^4f(x)\mathrm{\,d}x$.\\
+% 		Khi đó $\displaystyle\int\limits_{-2}^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^4f(x)\mathrm{\,d}x=\displaystyle\int\limits_{-2}^4f(x)\mathrm{\,d}x$. Do đó
+% 		$$ \displaystyle\int\limits_2^4f(x)\mathrm{\,d}x=\displaystyle\int\limits_{-2}^4f(x)\mathrm{\,d}x-\displaystyle\int\limits_{-2}^2f(x)\mathrm{\,d}x=-4-1=-5.$$
+% 		Vậy $\displaystyle\int\limits_2^4f(y)\mathrm{\,d}y=-5$.}
+% \end{ex}
+% \begin{ex}%[Câu 19]%[2D4H2-1]
+% 	Cho hàm số $f(x)$ liên tục trên $\mathbb{R}$ và có $\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=9;\displaystyle\int\limits_2^4f(x)\mathrm{\,d}x=4$. Tính $I=\displaystyle\int\limits_0^4f(x)\mathrm{\,d}x$.
+% 	\choice
+% 	{$I=5$}
+% 	{$I=36$}
+% 	{$I=\dfrac{9}{4}$}
+% 	{\True $I=13$}
+% 	\loigiai{
+% 		Ta có $I=\displaystyle\int\limits_0^4f(x)\mathrm{\,d}x=\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^4f(x)\mathrm{\,d}x=9+4=13$.}
+% \end{ex}
+% \begin{ex}%[Câu 20]%[2D4H2-1]
+% 	Cho hàm số $f(x)$ liên tục trên $\mathbb{R}$ và $\displaystyle\int\limits_0^4f(x)\mathrm{\,d}x=10$, $\displaystyle\int\limits_3^4f(x)\mathrm{\,d}x=4$. Tích phân $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x$ bằng
+% 	\choice
+% 	{$4$}
+% 	{$7$}
+% 	{$3$}
+% 	{\True $6$}
+% 	\loigiai{
+% 		Theo tính chất của tích phân, ta có $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x+\displaystyle\int\limits_3^4f(x)\mathrm{\,d}x=\displaystyle\int\limits_0^4f(x)\mathrm{\,d}x$.\\
+% 		Suy ra  $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=\displaystyle\int\limits_0^4f(x)\mathrm{\,d}x-\displaystyle\int\limits_3^4f(x)\mathrm{\,d}x=10-4=6$.\\
+% 		Vậy $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=6$.}
+% \end{ex}
+% \begin{ex}%[Câu 21]%[2D4H2-1]
+% 	Cho hàm số $f(x)$ liên tục trên đoạn $[0;10]$ và $\displaystyle\int\limits_0^{10}f(x)\mathrm{\,d}x=7$; $\displaystyle\int\limits_2^6f(x)\mathrm{\,d}x=3$.\\
+% 	Tính $P=\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_6^{10}f(x)\mathrm{\,d}x$.
+% 	\choice
+% 	{\True $P=4$}
+% 	{$P=10$}
+% 	{$P=7$}
+% 	{$P=-4$}
+% 	\loigiai{
+% 		Ta có $\displaystyle\int\limits_0^{10}f(x)\mathrm{\,d}x=\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^6f(x)\mathrm{\,d}x+\displaystyle\int\limits_6^{10}f(x)\mathrm{\,d}x$ hay $7=P+3\Leftrightarrow P=4$.}
+% \end{ex}
+% \begin{ex}%[Câu 22]%[2D4H2-1]
+% 	Cho hàm số $f(x)$ liên tục trên đoạn $[0; 6]$ thỏa mãn $\displaystyle\int\limits_0^6f(x)\mathrm{\,d}x=10$ và $\displaystyle\int\limits_2^4f(x)\mathrm{\,d}x=6$. 	Tính giá trị của biểu thức $P=\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_4^6f(x)\mathrm{\,d}x$.
+% 	\choice
+% 	{\True$P=4$}
+% 	{$P=16$}
+% 	{$P=8$}
+% 	{$P=10$}
+% 	\loigiai{
+% 		Ta có $\displaystyle\int\limits_0^{6}f(x)\mathrm{\,d}x=\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^4f(x)\mathrm{\,d}x+\displaystyle\int\limits_4^{6}f(x)\mathrm{\,d}x$ hay $7=P+3\Leftrightarrow P=4$.	
+% 	}
+% \end{ex}
+\Closesolutionfile{ans}
+\indapan{10}{ans/ans-2C4B2CD3-LC}
+\TNTF
+\Opensolutionfile{ans}[ans/ans-2C4B2CD3-DS]
+\begin{ex}%[Câu 23]%[2D4H2-1]
+	Cho hai hàm $f$, $g$ liên tục trên $K$ và $a$, $b$ là các số bất kỳ thuộc $K$.
+	\choiceTF
+	{\True $\displaystyle\int\limits_a^b\left[f(x)+2g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x\text{+2}\displaystyle\int\limits_a^bg(x)\mathrm{\,d}x$}
+	{$\displaystyle\int\limits_a^b\dfrac{f(x)}{g(x)}\mathrm{\,d}x=\dfrac{\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x}{\displaystyle\int\limits_a^bg(x)\mathrm{\,d}x}$}
+	{$\displaystyle\int\limits_a^b\left[f(x)\cdot g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x \displaystyle\int\limits_a^bg(x)\mathrm{\,d}x$}
+	{$\displaystyle\int\limits_a^bf^2(x)\mathrm{\,d}x=\left[\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x\right]^2$}
+	\loigiai{
+		\begin{itemchoice}
+			\itemch Đúng. Theo tính chất tích phân ta có
+			$\displaystyle\int\limits_a^b\left[f(x)+g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x+\displaystyle\int\limits_a^bg(x)\mathrm{\,d}x;\displaystyle\int\limits_a^bkf(x)\mathrm{\,d}x=k\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x$, với $k\in \mathbb{R}$.
+			\itemch Sai. Cho $a=1,b=2$ và $f(x)=x+1, g(x)=x$. Khi đó
+			$$VT=\displaystyle\int\limits_{1}^2\dfrac{x+1}{x}\mathrm{\,d}x==\displaystyle\int\limits_{1}^2\left(1+\dfrac{1}{x}\right)\mathrm{\,d}x=\left(x+\ln x\right)\bigg|_1^2=1+\ln 2.$$
+			và $$VP=\dfrac{\displaystyle\int\limits_1^2(x+1)\mathrm{\,d}x}{\displaystyle\int\limits_1^2x\mathrm{\,d}x}=\dfrac{\left(\dfrac{x^2}{2}+x\right)\bigg|_1^2}{\dfrac{x^2}{2}\bigg|_1^2}=\dfrac{1}{3}.$$
+			Do đó $VT\neq VP$.
+			\itemch Sai. Cho $a=1, b=2$ và $f(x)=x, g(x)=\dfrac{1}{x}$. Khi đó
+			$$VT=\displaystyle\int\limits_1^2\left[x\cdot \dfrac{1}{x}\right]\mathrm{\,d}x=x\bigg|_1^2=1.$$
+			và $$VP=\displaystyle\int\limits_1^2x\mathrm{\,d}x\cdot \displaystyle\int\limits_1^2\dfrac{1}{x}\mathrm{\,d}x=\left(\dfrac{x^2}{2}\right)\bigg|_1^2\cdot \ln x\bigg|_1^2=\dfrac{3}{2}\ln 2.$$
+			Do đó $VT\neq VP$.
+			\itemch Sai. Cho $a=1,b=2$ và $f(x)=x$. Khi đó
+			$$VT=\displaystyle\int\limits_1^2x^2\mathrm{\,d}x=\left(\dfrac{x^3}{3}\right)\bigg|_1^2=\dfrac{7}{3}.$$
+			và $$VP=\left(\displaystyle\int\limits_1^2x\mathrm{\,d}x\right)^2=\left(\dfrac{x^2}{2}\bigg|_1^2\right)^2=\dfrac{9}{4}.$$
+			Do đó $VT\neq VP$.
+		\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[Câu 24]%[2D4H2-1]
+	Cho hàm số $f(x),g(x)$ liên tục trên $\mathbb{R}$.
+	\choiceTF
+	{\True Nếu $\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=4$ thì $\displaystyle\int\limits_0^2\left[\dfrac{1}{2}f(x)+2\right]\mathrm{\,d}x=6$}
+	{\True Nếu $\displaystyle\int\limits_2^5f(x)\mathrm{\,d}x=3$ và $\displaystyle\int\limits_2^5g(x)\mathrm{\,d}x=-2$ thì $\displaystyle\int\limits_2^5\left[f(x)+g(x)\right]\mathrm{\,d}x=1$}
+	{Nếu $\displaystyle\int\limits_1^4f(x)\mathrm{\,d}x=6$ và $\displaystyle\int\limits_1^4g(x)\mathrm{\,d}x=-5$ thì $\displaystyle\int\limits_1^4\left[f(x)-g(x)\right]\mathrm{\,d}x=1$}
+	{\True Nếu $\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=4$ và$\displaystyle\int\limits_2^3g(x)\mathrm{\,d}x=1$ thì $\displaystyle\int\limits_2^3\left[f(x)-g(x)\right]\mathrm{\,d}x=3$}
+	\loigiai{
+		\begin{itemchoice}
+			\itemch Đúng. Ta có $\displaystyle\int\limits_0^2\left[\dfrac{1}{2}f(x)+2\right]\mathrm{\,d}x=\dfrac{1}{2}\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_0^22\mathrm{\,d}x=\dfrac{1}{2}\cdot 4+4=6$.
+			\itemch Đúng. Ta có $\displaystyle\int\limits_2^5\left[f(x)+g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_2^5f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^5g(x)\mathrm{\,d}x=3+(-2)=1$.
+			\itemch Sai. Ta có $\displaystyle\int\limits_1^4\left[f(x)-g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_1^4f(x)\mathrm{\,d}x-\displaystyle\int\limits_1^4g(x)\mathrm{\,d}x=6-(-5)=11$.
+			\itemch Đúng. Ta có $\displaystyle\int\limits_2^3\left[f(x)-g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x-\displaystyle\int\limits_2^3g(x)\mathrm{\,d}x=4-1=3$.
+		\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[Câu 25]%[2D4H2-1]
+	Cho hàm số $f(x),g(x)$ liên tục trên $\mathbb{R}$.
+	\choiceTF
+	{Biết $\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=3$ và $\displaystyle\int\limits_3^2g(x)\mathrm{\,d}x=1$. Khi đó $\displaystyle\int\limits_2^3\left[f(x)+g(x)\right]\mathrm{\,d}x=4$}
+	{\True Biết $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=2022$ và $\displaystyle\int\limits_3^1g(x)\mathrm{\,d}x=1$. Khi đó $\displaystyle\int\limits_1^3\left[f(x)+g(x)\right]\mathrm{\,d}x=2021$}
+	{\True Biết $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=3$ và $\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x=2$. Khi đó $\displaystyle\int\limits_1^2\left[f(x)-g(x)\right]\mathrm{\,d}x=1$}
+	{Biết $\displaystyle\int\limits_2^5f(x)\mathrm{\,d}x=2$. Khi đó $\displaystyle\int\limits_2^53f(x)\mathrm{\,d}x=2$}
+	\loigiai{
+		\begin{itemchoice}
+			\itemch Sai. Ta có
+			$\displaystyle\int\limits_2^3\left[f(x)+g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^3g(x)\mathrm{\,d}x=\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x-\displaystyle\int\limits_3^2g(x)\mathrm{\,d}x=2$.
+			\itemch Đúng. Ta có $\displaystyle\int\limits_3^1g(x)\mathrm{\,d}x=1\Leftrightarrow \displaystyle\int\limits_1^3g(x)\mathrm{\,d}x=-1$. Do đó 
+			$$\displaystyle\int\limits_1^3\left[f(x)+g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x+\displaystyle\int\limits_1^3g(x)\mathrm{\,d}x=2022+(-1)=2021.$$
+			\itemch Đúng. Ta có $\displaystyle\int\limits_1^2\left[f(x)-g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x-\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x=3-2=1$.
+			\itemch Sai. Ta có $\displaystyle\int\limits_2^53f(x)\mathrm{\,d}x=3\displaystyle\int\limits_2^5f(x)\mathrm{\,d}x=3\cdot 2=6$.
+		\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[Câu 26]%[2D4H2-1]
+	Cho hàm số $f(x)$ liên tục trên $\mathbb{R}$.
+	\choiceTF
+	{\True Nếu $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=3$ thì $\displaystyle\int\limits_0^32f(x)\mathrm{\,d}x=6$}
+	{\True Nếu $\displaystyle\int\limits_1^4f(x)\mathrm{\,d}x=2024$ thì $\displaystyle\int\limits_4^1f(x)\mathrm{\,d}x=-2024$}
+	{Nếu $\displaystyle\int\limits_6^0f(x)\mathrm{\,d}x=12$ thì $\displaystyle\int\limits_0^62022f(x)\mathrm{\,d}x=24264$}
+	{\True Nếu $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=4$ thì $\displaystyle\int\limits_0^12f(x)\mathrm{\,d}x=8$}
+	\loigiai{
+		\begin{itemchoice}
+			\itemch Đúng. Ta có $\displaystyle\int\limits_0^32f(x)\mathrm{\,d}x=2\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=2\cdot 3=6$.
+			\itemch Đúng. Ta có $\displaystyle\int\limits_4^1f(x)\mathrm{\,d}x=-\displaystyle\int\limits_1^4f(x)\mathrm{\,d}x=-2024$.
+			\itemch Sai. Ta có $\displaystyle\int\limits_0^62022f(x)\mathrm{\,d}x=2022\displaystyle\int\limits_0^6f(x)\mathrm{\,d}x=2022\cdot (-12)=-24264$.
+			\itemch Đúng. Ta có $\displaystyle\int\limits_0^12f(x)\mathrm{\,d}x=2\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=2\cdot 4=8$.
+		\end{itemchoice}
+	}
+\end{ex}
+% \begin{ex}%[Câu 27]%[2D4H2-1]
+% 	Cho hàm số $f(x),g(x)$ liên tục trên $\mathbb{R}$.
+% 	\choiceTF
+% 	{Nếu $\displaystyle\int_0^2 f(x)d x=6$ thì $\displaystyle\int_0^2\left[2f(x)-1\right]\mathrm{\,d}x=-10$}
+% 	{\True Nếu $\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=4$ thì $\displaystyle\int\limits_0^2\left[2f(x)-1)\right]\mathrm{\,d}x=6$}
+% 	{\True Nếu $\displaystyle\int_0^2f(x)\mathrm{\,d}x=3$ và $\displaystyle\int_0^2g(x)\mathrm{\,d}x=7$ thì $\displaystyle\int_0^2\left[f(x)+3g(x)\right]\mathrm{\,d}x=24$}
+% 	{\True Nếu $\displaystyle\int\limits_0^1\left[f(x)+2x\right]\mathrm{\,d}x=3$ thì $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=2$}
+% 	\loigiai{
+% 		\begin{itemchoice}
+% 			\itemch Sai. Ta có $\displaystyle\int _0^2\left[2f(x)-1\right]\mathrm{\,d}x=2\displaystyle\int _0^2f(x)\mathrm{\,d}x-\displaystyle\int _0^2\mathrm{\,d}x=2\cdot 6-2=10$.
+% 			\itemch Đúng. Ta có $\displaystyle\int\limits_0^2\left[2f(x)-1)\right]\mathrm{\,d}x=\displaystyle\int\limits_0^22f(x)\mathrm{\,d}x-\displaystyle\int\limits_0^2\mathrm{\,d}x=2\cdot 4-2=6$.
+% 			\itemch Đúng. Ta có $\displaystyle\int_0^2\left[f(x)+3g(x)\right]\mathrm{\,d}x=\displaystyle\int_0^2f(x)\mathrm{\,d}x+3\displaystyle\int_0^2g(x)\mathrm{\,d}x=3+3\cdot 7=24$.
+% 			\itemch Đúng. Ta có:\\ $\displaystyle\int\limits_0^1\left[f(x)+2x\right]\mathrm{\,d}x=3\Leftrightarrow \displaystyle\int\limits_0^1f(x)\mathrm{\,d}x+2\displaystyle\int\limits_0^1x\mathrm{\,d}x=3\Leftrightarrow \displaystyle\int\limits_0^1f(x)\mathrm{\,d}x+2\cdot \dfrac{x^2}{2}\bigg|_0^1=3$.\\
+% 			Suy ra $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=3-x^2\bigg|_0^1=3-(1-0)=2$.
+% 		\end{itemchoice}
+% 	}
+% \end{ex}
+% \begin{ex}%[Câu 28]%[2D4H2-1]
+% 	Cho hàm số $f(x),g(x)$ liên tục trên $\mathbb{R}$.
+% 	\choiceTF
+% 	{\True Nếu $\displaystyle\int\limits_{-1}^5f(x)\mathrm{\,d}x=-3$ thì $\displaystyle\int\limits_5^{-1}f(x)\mathrm{\,d}x=3$}
+% 	{\True Nếu $\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=-6$ thì $\displaystyle\int\limits_3^22f(x)\mathrm{\,d}x=12$}
+% 	{Nếu $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=2$ và $\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x=6$ thì $\displaystyle\int\limits_2^1\left[f(x)-g(x)\right]\mathrm{\,d}x=-4$}
+% 	{Nếu $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=3$ và $\displaystyle\int\limits_0^1g(x)\mathrm{\,d}x=-4$ thì $\displaystyle\int\limits_1^0\left[f(x)+g(x)\right]\mathrm{\,d}x=-1$}
+% 	\loigiai{
+% 		\begin{itemchoice}
+% 			\itemch Đúng. Ta có $\displaystyle\int _5^{-1}f(x)\mathrm{\,d}x=-\displaystyle\int _{-1}^5f(x)\mathrm{\,d}x=-(-3)=3$.
+% 			\itemch Đúng. Ta có $\displaystyle\int\limits_3^22f(x)\mathrm{\,d}x=-\displaystyle\int\limits_2^32f(x)\mathrm{\,d}x=-2\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=-2\cdot (-6)=12$.
+% 			\itemch Sai. Ta có \\
+% 			$\displaystyle\int\limits_2^1\left[f(x)-g(x)\right]\mathrm{\,d}x=-\displaystyle\int\limits_1^2\left[f(x)-g(x)\right]\mathrm{\,d}x=-\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x=-2+6=4$.
+% 			\itemch Sai. Ta có\\
+% 			$\displaystyle\int\limits_1^0\left[f(x)+g(x)\right]\mathrm{\,d}x=-\displaystyle\int\limits_0^1\left[f(x)+g(x)\right]\mathrm{\,d}x=-\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x-\displaystyle\int\limits_0^1g(x)\mathrm{\,d}x=-3+4=1$.
+% 		\end{itemchoice}
+% 	}
+% \end{ex}
+% \begin{ex}%[Câu 29]%[2D4V2-1]
+% 	Cho hàm số $f(x),g(x)$ liên tục trên $\mathbb{R}$.
+% 	\choiceTF
+% 	{\True Nếu $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=-1$ và $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=5$ thì $\displaystyle\int\limits_1^3f(x)=6$}
+% 	{Nếu $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=-3$ và $\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=4$ thì $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=-1$}
+% 	{Nếu $\displaystyle\int\limits_{-1}^0f(x)\mathrm{\,d}x=3, \displaystyle\int\limits_{0}^3f(x)\mathrm{\,d}x=1$ thì $\displaystyle\int\limits_{-1}^3f(x)\mathrm{\,d}x=-4$}
+% 	{Nếu $\displaystyle\int\limits_{-2}^{5}f(x)\mathrm{\,d}x=8$ và $\displaystyle\int\limits_5^{-2}g(x)\mathrm{\,d}x=3$ thì $\displaystyle\int\limits_{-2}^5\left(f(x)-4g(x)-1\right)\mathrm{\,d}x=-13$}
+% 	\loigiai{
+% 		\begin{itemchoice}
+% 			\itemch Đúng. Ta có 
+% 			$\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x =\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x +\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x$.\\
+% 			Do đó $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x =\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x-\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x = 5+ 1= 6$.
+% 			\itemch Sai. Ta có $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=-3+4=1$.
+% 			\itemch Sai. Ta có $\displaystyle\int\limits_{-1}^0f(x)\mathrm{\,d}x=3;\displaystyle\int\limits_{0}^3f(x)\mathrm{\,d}x=1;\displaystyle\int\limits_{-1}^3f(x)\mathrm{\,d}x=\displaystyle\int\limits_{-1}^0f(x)\mathrm{\,d}x+\displaystyle\int\limits_{0}^3f(x)\mathrm{\,d}x=3+1=4$.
+% 			\itemch Sai. Ta có 
+% 			\begin{eqnarray*}
+% 				&&\displaystyle\int\limits_{-2}^5\left[f(x)-4g(x)-1\right]\mathrm{\,d}x\\
+% 				&&=\displaystyle\int\limits_{-2}^5f(x)\mathrm{\,d}x-\displaystyle\int\limits_{-2}^54g(x)\mathrm{\,d}x-\displaystyle\int\limits_{-2}^5\mathrm{\,d}x\\
+% 				&&=\displaystyle\int\limits_{-2}^5f(x)\mathrm{\,d}x-4\displaystyle\int\limits_{-2}^5g(x)\mathrm{\,d}x-\displaystyle\int\limits_{-2}^5\mathrm{\,d}x\\
+% 				&&=\displaystyle\int\limits_{-2}^5f(x)\mathrm{\,d}x+4\displaystyle\int\limits_5^{-2}g(x)\mathrm{\,d}x-\displaystyle\int\limits_{-2}^5\mathrm{\,d}x\\
+% 				&&=8+4\cdot 3-x\bigg|_{-2}^5=8+4\cdot 3-7=13.
+% 			\end{eqnarray*}
+% 		\end{itemchoice}
+% 	}
+% \end{ex}
+% \begin{ex}%[Câu 30]%[2D4V2-1]
+% 	Cho hàm số $f(x),g(x)$ liên tục trên $\mathbb{R}$.
+% 	\choiceTF
+% 	{\True Biết $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=2$. Giá trị của  $\displaystyle\int\limits_2^13f(x)\mathrm{\,d}x=-6$}
+% 	{Biết $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=-1$ và $\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x=3$, khi đó $\displaystyle\int\limits_2^1\left[f(x)-g(x)\right]\mathrm{\,d}x=5$}
+% 	{\True Nếu $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=-2$ và $\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=1$ thì $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=-1$}
+% 	{\True Nếu $\displaystyle\int\limits_0^2(f(x)+3x^2)\mathrm{\,d}x=10$ thì $\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=2$}
+% 	\loigiai{
+% 		\begin{itemchoice}
+% 			\itemch Đúng. Biết $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=2$. Giá trị của $\displaystyle\int\limits_2^13f(x)\mathrm{\,d}x=-6$.\\
+% 			Ta có $\displaystyle\int\limits_2^13f(x)\mathrm{\,d}x=-\displaystyle\int\limits_1^23f(x)\mathrm{\,d}x=-3\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=-3\cdot 2=-6$.
+% 			\itemch Sai. Biết $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=-1$ và $\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x=3$.\\
+% 			Ta có $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=-1\Leftrightarrow \displaystyle\int\limits_2^1f(x)\mathrm{\,d}x=1$ và $\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x=3\Leftrightarrow \displaystyle\int\limits_2^1g(x)\mathrm{\,d}x=-3$.\\
+% 			Do vậy,  $\displaystyle\int\limits_2^1\left[f(x)-g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_2^1f(x)\mathrm{\,d}x-\displaystyle\int\limits_2^1g(x)\mathrm{\,d}x=1-(-3)=4$.
+% 			\itemch Đúng. Nếu $\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x=-2$ và $\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=1$ thì $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=-1$.\\
+% 			Ta có $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^3f(x)\mathrm{\,d}x=-2+1=-1$.
+% 			\itemch Đúng. Ta có
+% 			\begin{eqnarray*}
+% 				&&\displaystyle\int\limits_0^2(f(x)+3x^2)\mathrm{\,d}x=10\\
+% 				&\Leftrightarrow&\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_0^23x^2\mathrm{\,d}x=10\\
+% 				&\Leftrightarrow&\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=10-\displaystyle\int\limits_0^23x^2\mathrm{\,d}x\\
+% 				&\Leftrightarrow&\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=10-x^3\bigg|_0^2\\
+% 				&\Leftrightarrow&\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x=10-8=2.	\end{eqnarray*}
+% 		\end{itemchoice}
+% 	}
+% \end{ex}
+\Closesolutionfile{ans}
+\indapan{3}{ans/ans-2C4B2CD3-DS}
+\Opensolutionfile{ans}[ans/ans-2-C4B2CD3-KQ]
+\TNSA
+
+\begin{ex}%[2D4H2-1]
+	Cho $\displaystyle\int\limits_0^3f(x)\mathrm{\,d}x=4$. Tính $I=\displaystyle\int\limits_0^33f(x)\mathrm{\,d}x$.\\
+	\shortans{$12$}
+	\loigiai{
+		Ta có $\displaystyle\displaystyle\int\limits_0^3 3 f(x){d}x=3\displaystyle\displaystyle\int\limits_0^3 f(x){d}x=12$.}
+\end{ex}
+\begin{ex}%[2D4H2-1]
+	Cho $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=2$. Tính $I=\displaystyle\int\limits_1^3\left[f(x)+2x\right]\mathrm{\,d}x$.\\
+	\shortans{$10$}
+	\loigiai{
+		Ta có$\colon $ $\displaystyle\int\limits_1^3\left[f(x)+2x\right]\mathrm{\,d}x=\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x+\displaystyle\int\limits_1^32x\mathrm{\,d}x=2+\left.x^2\right|_1^3=2+3^2-1^2=10$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-1]
+	Cho $\displaystyle\int\limits_{-1}^2f(x)\mathrm{\,d}x=2$ và $\displaystyle\int\limits_{-1}^2g(x)\mathrm{\,d}x=-1$. Tính $ I=\displaystyle\int\limits_{-1}^2\left[x+2f(x)+3g(x)\right]\mathrm{\,d}x$.\\
+	\shortans{$2{,}5$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_{-1}^2\left[x+2f(x)+3g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_{-1}^2x\mathrm{\,d}x+2\displaystyle\int\limits_{-1}^2f(x)\mathrm{\,d}x+3\displaystyle\int\limits_{-1}^2g(x)\mathrm{\,d}x=\dfrac{3}{2}+4-3=\dfrac{5}{2}=2{.}5$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-1]
+	Cho $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=1$. Tính tích phân $ I=\displaystyle\int\limits_0^1\left[2f(x)-3x^2\right]\mathrm{\,d}x.$\\
+	\shortans{$1$}
+	\loigiai{
+		$\displaystyle\int\limits_0^1\left[2f(x)-3x^2\right]\mathrm{\,d}x=2\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x-3\displaystyle\int\limits_0^1x^2\mathrm{\,d}x=2-1=1$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-1]
+	Biết $\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=3$. Tính giá trị của $ I=\displaystyle\int\limits_3^12f(x)\mathrm{\,d}x$.\\
+	\shortans{$-6$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_3^12f(x)\mathrm{\,d}x=-\displaystyle\int\limits_1^32f(x)\mathrm{\,d}x=-2\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x=-2\cdot3=-6$.}
+\end{ex}
+
+% \begin{ex}%[2D4H2-1]
+% 	Biết $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=-2$ và $\displaystyle\int\limits_1^0g(x)\mathrm{\,d}x=-3$.. Tính $ I=\displaystyle\int\limits_0^1\left[f(x)-g(x)\right]\mathrm{\,d}x$.\\
+% 	\shortans{$-5$}
+% 	\loigiai{
+% 		$\displaystyle\int\limits_0^1\left[f(x)-g(x)\right]\mathrm{\,d}x=\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x-\displaystyle\int\limits_0^1g(x)\mathrm{\,d}x=-2-3=-5$.}
+% \end{ex}
+
+% \begin{ex}%[2D4H2-1]
+% 	Biết $\displaystyle\int\limits_1^2f(x)\,\mathrm{\,d}x=3$ và $\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x=2$ và $\displaystyle\int\limits_1^2h(x)\mathrm{\,d}x=2022$. Tính $\linebreak I=\displaystyle\int\limits_1^2\left[f(x)-g(x)+h(x)\right]\mathrm{\,d}x$.\\
+% 	\shortans{$2023$}
+% 	\loigiai{
+% 		Ta có $\displaystyle\int\limits_1^2\left[f(x)-g(x)+h(x)\right]\,\mathrm{\,d}x=\displaystyle\int\limits_1^2f(x)\,\mathrm{\,d}x-\displaystyle\int\limits_1^2g(x)\mathrm{\,d}x+\displaystyle\int\limits_1^2h(x)\mathrm{\,d}x$\\
+% 		$=3-2+2022=2023$.}
+% \end{ex}
+
+% \begin{ex}%[2D4H2-1]
+% 	Cho $\displaystyle\int\limits_{-1}^2f(x)\mathrm{\,d}x=2$ và $\displaystyle\int\limits_2^5f(x)\mathrm{\,d}x=-5$. Tính $ I=\displaystyle\int\limits_{-1}^5f(x)\mathrm{\,d}x$.\\
+% 	\shortans{$-3$}
+% 	\loigiai{
+% 		Ta có $\displaystyle\int\limits_{-1}^5f(x)\mathrm{\,d}x=\displaystyle\int\limits_{-1}^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^5f(x)\mathrm{\,d}x=2-5=-3$.}
+% \end{ex}
+
+% \begin{ex}%[2D4H2-1]
+% 	Cho $ f$, $ g$ là hai hàm liên tục trên đoạn $\left[1;\,3\right]$ thoả$\colon $ $\displaystyle\int\limits_1^3\left[f(x)+3g(x)\right]\mathrm{\,d}x=10$, $\displaystyle\int\limits_1^3\left[2f(x)-g(x)\right]\mathrm{\,d}x=6$. Tính $I=\displaystyle\int\limits_1^3\left[f(x)+g(x)\right]\mathrm{\,d}x$.\\
+% 	\shortans{$6$}
+% 	\loigiai{
+% 		Đặt $ a=\displaystyle\int\limits_1^3f(x)\mathrm{\,d}x$ và $ b=\displaystyle\int\limits_1^3g(x)\mathrm{\,d}x$.\\
+% 		Khi đó, $\displaystyle\int\limits_1^3\left[f(x)+3g(x)\right]\mathrm{\,d}x=a+3b$, $\displaystyle\int\limits_1^3\left[2f(x)-g(x)\right]\mathrm{\,d}x=2a-b$.\\
+% 		Theo giả thiết, ta có $\heva{
+% 			& a+3b=10\\ 
+% 			& 2a-b=6\\ 
+% 		}\Leftrightarrow\heva{
+% 			& a=4\\ 
+% 			& b=2.\\ 
+% 		}$\\
+% 		Vậy $ I=a+b=6$.}
+% \end{ex}
+
+% \begin{ex}%[2D4H2-1]
+% 	Cho hàm số $ f(x)$ liên tục trên $\mathbb{R}$ thoả mãn $\displaystyle\int\limits_1^8f(x)\,\mathrm{\,d}x=9$, $\displaystyle\int\limits_4^{12}{f(x)}\,\mathrm{\,d}x=3$, $\displaystyle\int\limits_4^8f(x)\,\mathrm{\,d}x=5$. Tính $ I=\displaystyle\int\limits_1^{12}{f(x)}\,\mathrm{\,d}x$.\\
+% 	\shortans{$7$}
+% 	\loigiai{
+% 		Ta có $ I=\displaystyle\int\limits_1^{12}{f(x)}\,\mathrm{\,d}x=\displaystyle\int\limits_1^8f(x)\,\mathrm{\,d}x+\displaystyle\int\limits_8^{12}{f(x)}\,\mathrm{\,d}x$ $=\displaystyle\int\limits_1^8f(x)\,\mathrm{\,d}x+\displaystyle\int\limits_4^{12}{f(x)}\,\mathrm{\,d}x-\displaystyle\int\limits_4^8f(x)\,\mathrm{\,d}x$\\$=9+3-5=7$.}
+% \end{ex}
+
+% \begin{ex}%[2D4H2-1]
+% 	Cho hàm số $ f(x)$ liên tục trên $\left[0;10\right]$ thỏa mãn $\displaystyle\int\limits_0^{10}{f(x)\mathrm{\,d}x}=7$, $\displaystyle\int\limits_2^6f(x)\mathrm{\,d}x=3$. Tính $ P=\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_6^{10}{f(x)\mathrm{\,d}x}$.\\
+% 	\shortans{$4$}
+% 	\loigiai{
+% 		Ta có $\displaystyle\int\limits_0^{10}{f(x)\mathrm{\,d}x}=\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_2^6f(x)\mathrm{\,d}x+\displaystyle\int\limits_6^{10}{f(x)\mathrm{\,d}x}$\\
+% 		Suy ra $\displaystyle\int\limits_0^2f(x)\mathrm{\,d}x+\displaystyle\int\limits_6^{10}{f(x)\mathrm{\,d}x}=\displaystyle\int\limits_0^{10}{f(x)\mathrm{\,d}x}-\displaystyle\int\limits_2^6f(x)\mathrm{\,d}x=7-3=4$.}
+% \end{ex}
+
+% \begin{ex}%[2D4H2-1]
+% 	Giả sử $\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=3$ và $\displaystyle\int\limits_0^5f(z)\text{d}z=9$. Tổng $I=\displaystyle\int\limits_1^3f(t)\mathrm{\,d}t+\displaystyle\int\limits_3^5f(t)\mathrm{\,d}t$ bằng\\
+% 	\shortans{$6$}
+% 	\loigiai{
+% 		$\displaystyle\int\limits_0^1f(x)\mathrm{\,d}x=3\Leftrightarrow\displaystyle\int\limits_0^1f(t)\mathrm{\,d}t=3\Leftrightarrow\displaystyle\int\limits_1^0f(t)\mathrm{\,d}t=-3.$\\
+% 		$\displaystyle\int\limits_0^5f(z)\text{d}z=9\Leftrightarrow\displaystyle\int\limits_0^5f(t)\mathrm{\,d}t=9.$\\
+% 		$\Rightarrow\displaystyle\int\limits_1^0f(t)\mathrm{\,d}t+\displaystyle\int\limits_0^5f(t)\mathrm{\,d}t=6\Leftrightarrow\displaystyle\int\limits_1^5f(t)\mathrm{\,d}t=6.$\\
+% 		$I=\displaystyle\int\limits_1^3f(t)\mathrm{\,d}t+\displaystyle\int\limits_3^5f(t)\mathrm{\,d}t=\displaystyle\int\limits_1^5f(t)\mathrm{\,d}t=6.$}
+% \end{ex}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-2-C4B2CD3-KQ}
+\begin{dang}{Tích phân hàm số sơ cấp}	
+\end{dang}
+\TN
+\Opensolutionfile{ans}[ans/ans-C4B2CD1]
+\begin{ex}%[2D4N2-2]%Câu 1
+	Tích phân $ I=\displaystyle\int\limits_0^2(2x+1)\mathrm{\,d}x$ bằng
+	\choice
+	{$ I=5$}
+	{\True $ I=6$}
+	{$ I=2$}
+	{$ I=4$}
+	\loigiai{
+		Ta có $ I=\displaystyle\int\limits_0^2(2x+1)\mathrm{\,d}x=\left(x^2+x\right)\big|_0^2=4+2=6$.}
+\end{ex}
+%
+\begin{ex}%[2D4H2-2]%Câu 2
+	Tích phân $\displaystyle\int\limits_0^1\left(3x+1\right)\left(x+3\right)\mathrm{\,d}x$ bằng
+	\choice
+	{$ 12$}
+	{\True $ 9$}
+	{$ 5$}
+	{$ 6$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_0^1\left(3x+1\right)\left(x+3\right)\mathrm{\,d}x=\displaystyle\int\limits_0^1\left(3x^2+10x+3\right)\mathrm{\,d}x=\left(x^3+5x^2+3x\right)\big|_0^1=9$.\\
+		Vậy $\displaystyle\int\limits_0^1\left(3x+1\right)\left(x+3\right)\mathrm{\,d}x=9$.}
+\end{ex}
+%
+\begin{ex}%[2D4N2-2]%Câu 3
+	Tính tích phân $ I=\displaystyle\int\limits_1^\mathrm{e}{\left(\dfrac{1}{x}-\dfrac{1}{x^2}\right)}\mathrm{\,d}x$
+	\choice
+	{\True $I=\dfrac{1}{\mathrm{e}}$}
+	{$I=\dfrac{1}{\mathrm{e}}+1$}
+	{$I=1$}
+	{$I=\mathrm{e}$}
+	\loigiai{
+		$ I=\displaystyle\int\limits_1^\mathrm{e}{\left(\dfrac{1}{x}-\dfrac{1}{x^2}\right)}\mathrm{\,d}x=\left(\ln\left| x\right|+\dfrac{1}{x}\right)\Big|_1^\mathrm{e}=\dfrac{1}{\mathrm{e}}$.}
+\end{ex}
+
+\begin{ex}%[2D4N2-2]%Câu 4
+	Biết $\displaystyle\int\limits_1^3\dfrac{x+2}{x}\mathrm{\,d}x=a+b\ln c,$ với $a$, $b$, $c\in\mathbb{Z}$, $c<9.$ Tính tổng $S=a+b+c.$
+	\choice
+	{\True $ S=7$}
+	{$ S=5$}
+	{$ S=8$}
+	{$ S=6$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_1^3\dfrac{x+2}{x}\mathrm{\,d}x=\displaystyle\int\limits_1^3\left(1+\dfrac{2}{x}\right)\mathrm{\,d}x=\displaystyle\int\limits_1^3\mathrm{d}x+\displaystyle\int\limits_1^3\dfrac{2}{x}\mathrm{d}x=2+2\ln\left| x\right|\big|_1^3=2+2\ln 3.$\\
+		Do đó $ a=2$, $b=2$, $c=3\Rightarrow S=7.$}
+\end{ex}
+%
+\begin{ex}%[2D4H2-4]%Câu 5
+	Tích phân $\displaystyle\int\limits_0^1\mathrm{e}^{3x+1}\mathrm{\,d}x$ bằng
+	\choice
+	{$\dfrac{1}{3}\left(\mathrm{e}^4+\mathrm{e}\right)$}
+	{$\mathrm{e}^3-\mathrm{e}$}
+	{\True $\dfrac{1}{3}\left(\mathrm{e}^4-\mathrm{e}\right)$}
+	{$\mathrm{e}^4-\mathrm{e}$}
+	\loigiai{
+		$\displaystyle\int\limits_0^1\mathrm{e}^{3x+1}\mathrm{\,d}x=\dfrac{1}{3}\displaystyle\int\limits_0^1\mathrm{e}^{3x+1}\mathrm{\,d}\left(3x+1\right)=\dfrac{1}{3}{\mathrm{e}^{3x+1}}\big|_0^1=\dfrac{1}{3}\left(\mathrm{e}^4-\mathrm{e}\right)$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-4]%Câu 6
+	Biết $\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^x}{2^x}\mathrm{\,d}x=\dfrac{\mathrm{e-1}}{a-\ln b }$, $\left(a,b\in\mathbb{Z}\right)$. Khi đó giá trị của $ P=a+b$ là
+	\choice
+	{$ P=-3$}
+	{\True $ P=6$}
+	{$ P=-1$}
+	{$ P=3$}
+	\loigiai{
+		$ I=\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^x}{2^x}\mathrm{\,d}x=\displaystyle\int\limits_0^1\left(\dfrac{\mathrm{e}}{2}\right)^x\mathrm{\,d}x=\left[\left(\dfrac{\mathrm{e}}{2}\right)^x\cdot\dfrac{1}{1-\ln2}\right]\Big|_0^1=\dfrac{\mathrm{e}-1}{2-\ln 4}$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-4]%Câu 7
+	Giá trị của $ I=\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x}-4}{\mathrm{e}^x+2}\mathrm{\,d}x$ bằng
+	\choice
+	{$ I=2\left(\mathrm{e}+3\right)$}
+	{$ I=\dfrac{1}{2}\left(\mathrm{e}+3\right)$}
+	{\True $ I=\mathrm{e}-3$}
+	{$ I=2\left(\mathrm{e}-3\right)$}
+	\loigiai{
+		$ I=\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x}-4}{\mathrm{e}^x+2}\mathrm{\,d}x=\displaystyle\int\limits_0^1\dfrac{\left(\mathrm{e}^x-2\right)\left(\mathrm{e}^x+2\right)}{\mathrm{e}^x+2}\mathrm{\,d}x=\displaystyle\int\limits_0^1\left(\mathrm{e}^x-2\right)\mathrm{\,d}x=\left(\mathrm{e}^x-2x\right)\big|_0^1=e-3$.}
+\end{ex}
+%
+\begin{ex}%[2D4H2-4]%Câu 8
+	Biết $\displaystyle\int\limits_1^2\mathrm{e}^x\left(1-\dfrac{\mathrm{e}^{-x}}{x}\right)\mathrm{d}x=\mathrm{e}^2+a\cdot \mathrm{e}+b\ln 2$, $\left(a,b\in\mathbb{Z}\right)$. Khi đó giá trị của $ P=\dfrac{a+b}{a\cdot b}$ là
+	\choice
+	{$ P=-3$}
+	{$ P=1$}
+	{$ P=-1$}
+	{\True $ P=-2$}
+	\loigiai{
+		$ I=\displaystyle\int\limits_1^2\mathrm{e}^x\left(1-\dfrac{\mathrm{e}^{-x}}{x}\right)\mathrm{\,d}x=\displaystyle\int\limits_1^2\left(\mathrm{e}^x-\dfrac{1}{x}\right)\mathrm{\,d}x=\left(\mathrm{e}^x-\ln\left| x\right|\right)\big|_1^2=\mathrm{e}^2-\mathrm{e}-\ln 2$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-4]%Câu 9
+	Biết $ I=\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x-1}-\mathrm{e}^{-3x}+1}{\mathrm{e}^x}\mathrm{\,d}x=\dfrac{1}{a}+b$, $\left(a,b\in\mathbb{R}\right)$. Khi đó giá trị của $ P=\dfrac{a+b}{a\cdot b}$ là
+	\choice
+	{$ P=\mathrm{e}^4-1$}
+	{$ P=\dfrac{\mathrm{e}^4-1}{\mathrm{e}^2}$}
+	{$ P=\dfrac{\mathrm{e}^4-1}{\mathrm{e}^4}$}
+	{\True $ P=\dfrac{1-\mathrm{e}^4}{\mathrm{e}^4}$}
+	\loigiai{
+		\allowdisplaybreaks
+		\begin{eqnarray*} I&=&\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x-1}-\mathrm{e}^{-3x}+1}{\mathrm{e}^x}\mathrm{\,d}x=\displaystyle\int\limits_0^1\left(\mathrm{e}^{x-1}-\mathrm{e}^{-4x}+\mathrm{e}^{-x}\right)\mathrm{\,d}x\\
+			&=&\left(\mathrm{e}^{x-1}-\dfrac{\mathrm{e}^{-4x}}{-4}+\dfrac{\mathrm{e}^{-x}}{-1}\right)\Big|_0^1=\dfrac{1-\mathrm{e}^4}{\mathrm{e}^4}=\dfrac{1}{\mathrm{e}^4}-1
+		\end{eqnarray*}
+		$\Rightarrow P=\dfrac{a+b}{a\cdot b}=\dfrac{1-\mathrm{e}^4}{\mathrm{e}^4}$.}
+\end{ex}
+%
+\begin{ex}%[2D4N2-3]%Câu 10
+	Giá trị của $\displaystyle\int\limits_0^{\frac{\pi}{2}}{\sin x\mathrm{\,d}x}$ bằng
+	\choice
+	{0}
+	{\True 1}
+	{$-1$}
+	{$\dfrac{\pi}{2}$}
+	\loigiai{
+		Tính được $\displaystyle\int\limits_0^{\frac{\pi}{2}}{\sin x\mathrm{\,d}x}=-\cos x\Big|_0^{\frac{\pi}{2}}=1$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-3]%Câu 11
+	Biết $\displaystyle\int\limits_{\tfrac{\pi}{3}}^{\tfrac{\pi}{2}}{\left(2\sin x+3\cos x+x\right)\mathrm{\,d}x}=\dfrac{a+b\sqrt{3}}{2}+\dfrac{\pi^2}{c}$, $\left(a,b,c\in\mathbb{Z}\right)$. Khi đó giá trị của $ P=a+2b+3c$ là
+	\choice
+	{$ P=45$}
+	{\True $ P=60$}
+	{$ P=65$}
+	{$ P=70$}
+	\loigiai{
+		$\displaystyle\int\limits_{\tfrac{\pi}{3}}^{\tfrac{\pi}{2}}\left(2\sin x+3\cos x+x\right)\mathrm{\,d}x=\left(-2\cos x+3\sin x+\dfrac{1}{2}{x^2}\right)\Big|_{\tfrac{\pi}{3}}^{\tfrac{\pi}{2}}=\dfrac{12-3\sqrt{3}}{2}+\dfrac{\pi^2}{18}$\\
+		$\Rightarrow P=a+2b+3c=60$.
+	}
+\end{ex}
+
+\begin{ex}%[2D4H2-3]%Câu 12
+	Biết $\displaystyle\int\limits_{\tfrac{\pi}{4}}^{\tfrac{\pi}{3}}{3\tan^2x\mathrm{\,d}x}=a\sqrt{3}+b+\dfrac{\pi}{c}$, $\left(a,b,c\in\mathbb{Z}\right)$. Khi đó giá trị của $ P=a+b+c$ là
+	\choice
+	{$ P=6$}
+	{\True $ P=-4$}
+	{$ P=4$}
+	{$ P=-6$}
+	\loigiai{
+		$\displaystyle\int\limits_{\tfrac{\pi}{4}}^{\tfrac{\pi}{3}}{3\tan^2x\mathrm{\,d}x}=3\displaystyle\int\limits_{\tfrac{\pi}{4}}^{\tfrac{\pi}{3}}{\left(\dfrac{1}{\cos^2x}-1\right)\mathrm{\,d}x= 3\left(\tan x-x\right)\big|_{\tfrac{\pi}{4}}^{\tfrac{\pi}{3}}=3\sqrt{3}-3-\dfrac{\pi}{4}}$\\
+		$\Rightarrow P=a+b+c=3-3-4=-4$.}
+\end{ex}
+%
+\begin{ex}%[2D4H2-3]%Câu 13
+	Biết $\displaystyle\int\limits_{\tfrac{\pi}{6}}^{\tfrac{\pi}{4}}{\left(2\cot^2x+5\right)\mathrm{\,d}x}=\dfrac{\pi}{a}+b\sqrt{3}+c$, $\left(a,b,c\in\mathbb{Z}\right)$. Khi đó giá trị của \break $ P=a+b+c$ là
+	\choice
+	{$ P=6$}
+	{$ P=-4$}
+	{\True $ P=4$}
+	{$ P=-6$}
+	\loigiai{\allowdisplaybreaks
+		\begin{eqnarray*}
+			\displaystyle\int\limits_{\tfrac{\pi}{6}}^{\tfrac{\pi}{4}}{\left(2\cot^2x+5\right)\mathrm{\,d}x}&=&\displaystyle\int\limits_{\tfrac{\pi}{6}}^{\tfrac{\pi}{4}}{\left(2\left(\dfrac{1}{\sin^2x}-1\right)+5\right)\mathrm{\,d}x}\\
+			&=&\displaystyle\int\limits_{\dfrac{\pi}{6}}^{\dfrac{\pi}{4}}{\left(3-\dfrac{-2}{\sin^2x}\right)\mathrm{\,d}x=\left(3x-\cot x\right)\Big|_{\tfrac{\pi}{6}}^{\tfrac{\pi}{4}}=\dfrac{\pi}{4}+\sqrt{3}-1}.
+	\end{eqnarray*}}
+\end{ex}
+
+\begin{ex}%[2D4H2-3]%Câu 14
+	Biết $\displaystyle\int\limits_0^{\tfrac{\pi}{2}}\sin^2\dfrac{x}{4}{\cos^2}\dfrac{x}{4}\mathrm{\,d}x=\dfrac{\pi}{c}+\dfrac{a}{b}$ với $a$, $b\in\mathbb{Z}$ và $\dfrac{a}{b}$ là phân số tối giản. Khi đó giá trị của $ P=a+b+c$ là
+	\choice
+	{$ P=17$}
+	{$ P=16$}
+	{$ P=32$}
+	{\True $ P=49$}
+	\loigiai{\allowdisplaybreaks
+		\begin{eqnarray*}
+			\displaystyle\int\limits_0^{\tfrac{\pi}{2}}{\sin^2\dfrac{x}{4}{\cos^2}\dfrac{x}{4}\mathrm{\,d}x}&=&\dfrac{1}{4}\displaystyle\int\limits_0^{\tfrac{\pi}{2}}\sin^2\dfrac{x}{2}\mathrm{\,d}x\\
+			&=&\dfrac{1}{4}\displaystyle\int\limits_0^{\tfrac{\pi}{2}}\left(\dfrac{1-\cos x}{2}\right)\mathrm{\,d}x\\
+			&=&\dfrac{1}{8}\left(x-\dfrac{1}{4}\sin x\right)\Big|_0^{\tfrac{\pi}{2}}=\dfrac{\pi}{16}+\dfrac{1}{32}.
+		\end{eqnarray*}
+		$\Rightarrow P=a+b+c=1+32+16=49$.}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-C4B2CD1}
+\TNTF
+\Opensolutionfile{ans}[ans/ans-C4B2CD1-DS]
+\begin{ex}%[2D4H2-1]%Câu 15
+	Cho hàm số $y=f(x)$ liên tục trên $\left[a;b\right]$. Các mệnh đề sau đây đúng hay sai?
+	\choiceTF
+	{$\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}=\displaystyle\int\limits_b^a{f(x)\mathrm{\,d}x}$}
+	{\True $\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}=-\displaystyle\int\limits_b^a{f(x)\mathrm{\,d}x}$}
+	{$\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x=2\displaystyle\int\limits_a^bf(x)\mathrm{\,d}\left(2x\right)$}
+	{\True $\displaystyle\int\limits_a^a{2024f(x)\mathrm{\,d}x=0}$}
+	\loigiai{
+		\begin{itemchoice}
+			\itemch Sai. Vì
+			$\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}=-\displaystyle\int\limits_b^a{f(x)\mathrm{\,d}x}$.
+			\itemch Đúng. Vì $\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}=-\displaystyle\int\limits_b^a{f(x)\mathrm{\,d}x}$.
+			\itemch Sai. Vì $2\displaystyle\int\limits_a^bf(x)\mathrm{\,d}\left(2x\right)=4\displaystyle\int\limits_a^bf(x)\mathrm{\,d}\left(x\right)$.
+			\itemch Đúng. 
+			$\displaystyle\int\limits_a^a2024f(x)\mathrm{\,d}x=0.$
+		\end{itemchoice}
+	}
+\end{ex}
+%
+\begin{ex}%[2D4H2-1]%Câu 16
+	Cho hàm số $y=f(x)$, $y=g(x)$ liên tục trên $\left[a;b\right]$. Các mệnh đề sau đây đúng hay sai?
+	\choiceTF
+	{\True $\displaystyle\int\limits_a^b{\left[f(x)+g(x)\right]\mathrm{\,d}x}=\displaystyle\int\limits_a^b{f(x)}\mathrm{\,d}x+\displaystyle\int\limits_a^b{g(x)\mathrm{\,d}x}$}
+	{$\displaystyle\int\limits_a^b{f(x)\cdot g(x)\mathrm{\,d}x}=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}\cdot\displaystyle\int\limits_a^b{g(x)\mathrm{\,d}x}$}
+	{\True $\displaystyle\int\limits_a^b{kf(x)\mathrm{\,d}x=k\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}}$}
+	{$\displaystyle\int\limits_a^b{\dfrac{f(x)}{g(x)}\mathrm{\,d}x}=\dfrac{\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x}{\displaystyle\int\limits_a^bg(x)\mathrm{\,d}x}$}
+	\loigiai{
+		\begin{itemchoice}
+			\itemch Đúng.
+			$\displaystyle\int\limits_a^b{\left[f(x)+g(x)\right]\mathrm{\,d}x}=\displaystyle\int\limits_a^b{f(x)}\mathrm{\,d}x+\displaystyle\int\limits_a^b{g(x)\mathrm{\,d}x}$.
+			\itemch Sai. Vì không có tính chất.
+			\itemch Đúng.
+			$\displaystyle\int\limits_a^b{kf(x)\mathrm{\,d}x=k\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}}$.
+			\itemch Sai.
+	\end{itemchoice}}
+\end{ex}
+%
+% \begin{ex}%[2D4H2-1]%Câu 17
+% 	Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ và $a$, $b$, $c\in\mathbb{R}$ thỏa mãn $a<b<c$. Các mệnh đề sau đây đúng hay sai?
+% 	\choiceTF
+% 	{$\displaystyle\int\limits_a^c{f(x)\mathrm{\,d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}}\cdot \displaystyle\int\limits_b^c{f(x)\mathrm{\,d}x}$}
+% 	{\True $\displaystyle\int\limits_a^c{f(x)\mathrm{\,d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}}+\displaystyle\int\limits_b^c{f(x)\mathrm{\,d}x}$}
+% 	{$\displaystyle\int\limits_a^c{f(x)\mathrm{\,d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}}-\displaystyle\int\limits_b^c{f(x)\mathrm{\,d}x}$}
+% 	{$\displaystyle\int\limits_a^c{f(x)\mathrm{\,d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}}+\displaystyle\int\limits_c^b{f(x)\mathrm{\,d}x}$}
+% 	\loigiai{\begin{itemchoice}
+% 			\itemch Sai. Không đúng với lý thuyết.
+% 			\itemch Đúng. $\displaystyle\int\limits_a^c{f(x)\mathrm{\,d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x}}+\displaystyle\int\limits_b^c{f(x)\mathrm{\,d}x}$.
+% 			\itemch Sai.
+% 			\itemch Sai.
+% 	\end{itemchoice}}
+% \end{ex}
+% %
+% \begin{ex}%[2D4H2-1]%Câu 18
+% 	Cho $f(x)$, $g(x)$ là hai hàm số liên tục trên $\mathbb{R}$. Các mệnh đề sau đây đúng hay sai?
+% 	\choiceTF
+% 	{\True $\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x=\displaystyle\int\limits_a^bf(y)\mathrm{\,d}y$}
+% 	{\True $\displaystyle\int\limits_a^b{\left(f(x)+g(x)\right)\mathrm{\,d}x}=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x+\displaystyle\int\limits_a^b{g(x)\mathrm{\,d}x}}$}
+% 	{$\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x=\displaystyle\int\limits_a^b{f(t)\mathrm{\,d}x}}$}
+% 	{$\displaystyle\int\limits_a^b{\left(f(x)g(x)\right)\mathrm{\,d}x}=\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x\displaystyle\int\limits_a^b{g(x)\mathrm{\,d}x}}$}
+% 	\loigiai{
+% 		\begin{itemchoice}
+% 			\itemch Đúng. $\displaystyle\int\limits_a^b{f(x)\mathrm{\,d}x=\displaystyle\int\limits_a^b{f(y)\mathrm{\,d}}y}$
+% 			\itemch Đúng. $\displaystyle\int\limits_a^b{\left(f(x)+g(x)\right)\mathrm{\,d}x}=\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x+\displaystyle\int\limits_a^b g(x)\mathrm{\,d}x$.
+% 			\itemch Sai. Không đúng với lý thuyết.
+% 			\itemch Sai. Không đúng với lý thuyết.
+% 		\end{itemchoice}
+% 	}
+% \end{ex}
+
+% \begin{ex}%[2D4H2-1]%Câu 19
+% 	Các mệnh đề sau đây đúng hay sai?
+% 	\choiceTF
+% 	{\True $\displaystyle\int\limits_{-2024}^{2024}\mathrm{\,d}x=4048$}
+% 	{$\displaystyle\int\limits_a^bf_1(x)\cdot f_2(x)\mathrm{\,d}x=\displaystyle\int\limits_a^bf_1(x)\mathrm{\,d}x\cdot\displaystyle\int\limits_a^bf_2(x)\mathrm{\,d}x$}
+% 	{\True Cho hàm số $f(x)$ liên tục trên đoạn $\left[a;b\right]$. Khi đó $\dfrac{1}{b-a}\displaystyle\int\limits_a^bf(x)\mathrm{\,d}x$ được gọi là giá trị trung bình của hàm số $f(x)$ trên đoạn $\left[a;b\right]$}
+% 	{\True Nếu hàm số $f(x)$ có đạo hàm $f'(x)$ và $f'(x)$ liên tục trên đoạn $\left[a;b\right]$ thì $f(b)-f(a)=\displaystyle\int\limits_a^bf'(x)\mathrm{\,d}x$}
+% 	\loigiai{\begin{itemchoice}
+% 			\itemch Đúng.
+% 			\itemch Sai. 
+% 			\itemch Đúng.
+% 			\itemch Đúng.
+% 		\end{itemchoice}
+		
+% 	}
+% \end{ex}
+%
+\begin{ex}%[2D4H2-1]%Câu 20
+	Cho hàm $ f(x)$ là hàm liên tục trên đoạn $\left[a;b\right]$ với $ a<b$ và $F(x)$ là một nguyên hàm của hàm $ f(x)$ trên $\left[a;b\right]$. Các mệnh đề sau đây đúng hay sai?
+	\choiceTF
+	{\True $\displaystyle\int\limits_a^b{kf(x)\mathrm{\,d}x}=k\left[F(b)-F(a)\right]$}
+	{$\displaystyle\int\limits_b^af(x)\mathrm{\,d}x=F(b)-F(a)$}
+	{Diện tích $S$ của hình phẳng giới hạn bởi đường thẳng $x=a$; $x=b$; đồ thị của hàm số $ y=f(x)$ và trục hoành được tính theo công thức $ S=F(b)-F(a)$}
+	{$\displaystyle\int\limits_a^b{f\left(2x+3\right)\mathrm{\,d}x}=F\left(2x+3\right)\big|_a^b$}
+	\loigiai{
+		\begin{itemchoice}
+			\itemch Đúng.
+			\itemch Sai. $\displaystyle\int\limits_b^a{f(x)\mathrm{\,d}x}=F(a)-F(b)$. 
+			\itemch Sai. Diện tích $S$ của hình phẳng giới hạn bởi đường thẳng $x=a$; $x=b$; đồ thị của hàm số $ y=f(x)$ và trục hoành được tính theo công thức $ S=|F(b)-F(a)|$.
+			\itemch Sai. $\displaystyle\int\limits_a^bf\left(2x+3\right)\mathrm{\,d}x=\dfrac12 F\left(2x+3\right)\big|_a^b$
+		\end{itemchoice}
+	}
+\end{ex}
+%
+\begin{ex}%[2D4H2-4]%Câu 21
+	Các mệnh đề sau đây đúng hay sai.
+	\choiceTF
+	{\True $\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x}-4}{\mathrm{e}^x+2}\mathrm{\,d}x=\mathrm{e}-3$}
+	{$\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^x}{2^x}\mathrm{\,d}x=\dfrac{\mathrm{e}}{2}+1$}
+	{\True $\displaystyle\int\limits_1^2\mathrm{e}^x\left(1-\dfrac{\mathrm{e}^{-x}}{x}\right)\mathrm{\,d}x=\mathrm{e}^2-\mathrm{e}-\ln 2$}
+	{$\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x-1}-\mathrm{e}^{-3x}+1}{\mathrm{e}^x}\mathrm{\,d}x=\mathrm{e}^4-1$}
+	\loigiai{\begin{itemchoice}
+			\itemch Đúng. \allowdisplaybreaks
+			\begin{eqnarray*} \displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x}-4}{\mathrm{e}^x+2}\mathrm{\,d}x&=&\displaystyle\int\limits_0^1\dfrac{\left(\mathrm{e}^x-2\right)\left(\mathrm{e}^x+2\right)}{\mathrm{e}^x+2}\mathrm{\,d}x\\
+				&=&\displaystyle\int\limits_0^1\left(\mathrm{e}^x-2\right)\mathrm{\,d}x=\left(\mathrm{e}^x-2x\right)\big|_0^1=\mathrm{e}-3.
+			\end{eqnarray*}
+			\itemch Sai.  $\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^x}{2^x}\mathrm{\,d}x=\displaystyle\int\limits_0^1\left(\dfrac{\mathrm{e}}{2}\right)^x\mathrm{\,d}x=\left[\left(\dfrac{\mathrm{e}}{2}\right)^x\right]\Big|_0^1=\dfrac{\mathrm{e}}{2}-1$.
+			\itemch Đúng. $\displaystyle\int\limits_1^2\mathrm{e}^x\left(1-\dfrac{\mathrm{e}^{-x}}{x}\right)\mathrm{\,d}x=\displaystyle\int\limits_1^2\left(\mathrm{e}^x-\dfrac{1}{x}\right)\mathrm{\,d}x=\left(\mathrm{e}^x-\ln\left| x\right|\right)\big|_1^2=\mathrm{e}^2-\mathrm{e}-\ln 2$.
+			\itemch Sai.\allowdisplaybreaks
+			\begin{eqnarray*} \displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x-1}-\mathrm{e}^{-3x}+1}{\mathrm{e}^x}\mathrm{\,d}x&=&\displaystyle\int\limits_0^1\left(\mathrm{e}^{x-1}-\mathrm{e}^{-4x}+\mathrm{e}^{-x}\right)\mathrm{\,d}x\\
+				&=&\left(\mathrm{e}^{x-1}-\mathrm{e}^{-4x}+\mathrm{e}^{-x}\right)\big|_0^1=\dfrac{1-\mathrm{e}^4}{\mathrm{e}^4}=\mathrm{e}^{-4}-1.
+			\end{eqnarray*}
+		\end{itemchoice}
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{3}{ans/ans-C4B2CD1-DS}
+\TNSA
+\Opensolutionfile{ans}[ans/ans-C4B2CD1-KQ]
+\begin{ex}%[2D4H2-2]%Câu 22
+	Với $a$, $b$ là các tham số thực. Tích phân $$I=\displaystyle\int\limits_0^b\left(3x^2-2ax-1\right)\mathrm{\,d}x=b^t-b^ya+zb.$$ Tính $t+y+z$.
+	\shortans{$4$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_0^b{\left(3x^2-2ax-1\right)\mathrm{\,d}x}=\left(x^3-a{x^2}-x\right)\big|_0^b=b^3-a{b^2}-b$. \\
+		Suy ra $t=3$, $y=2$, $z=-1$ nên $t+y+z=4$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-2]%Câu 23
+	Cho $\displaystyle\int\limits_0^m{\left(3x^2-2x+1\right)}\mathrm{\,d}x=6$. Tính giá trị của tham số $m$.
+	\shortans{$2$}
+	\loigiai{
+		Ta có $\displaystyle\int\limits_0^m{\left(3x^2-2x+1\right)}\mathrm{\,d}x=6\Leftrightarrow\left.\left(x^3-x^2+x\right)\right|_0^m=6\Leftrightarrow{m^3}-m^2+m-6=0\Leftrightarrow m=2$.}
+\end{ex}
+%%%==============EX_1============%%%
+\begin{ex}%[2D4H2-2]
+	Tính tích phân $I=\displaystyle\int\limits\limits_1^2\dfrac{x-1}{x} \mathrm{d}x$ (\textit{\textit{làm tròn đến hàng phần trăm}}).
+	\shortans{$0{,}31$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I	&= &\displaystyle\int\limits_1^2\dfrac{x-1}{x} \mathrm{d}x\\
+			&=& \displaystyle\int\limits_1^2\left(1-\dfrac{1}{x} \right) \mathrm{d}x\\
+			&= & \left(x-\ln|x|\right)\Bigg|_1^2\\
+			&=&	\left(2-\ln 2\right)-\left(1-\ln 1\right)=1-\ln 2.
+	\end{eqnarray*}}
+\end{ex}
+%%%==============EX_2============%%%
+\begin{ex}%[2D4H2-2]
+	Tính $I=\displaystyle\int\limits_1^2\left(\dfrac{x-\sqrt[{4}]{x^3}}{x} \right)^2 \mathrm{\,d}x$ (\textit{\textit{làm tròn đến hàng phần trăm}}).
+	\shortans{$0{,}01$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I	&= &\displaystyle\int\limits_1^2\left(\dfrac{x-\sqrt[{4}]{x^3}}{x} \right)^2 \mathrm{\,d}x\\
+			&=& \displaystyle\int\limits_1^2\left(1-x^{-\tfrac{1}{4}}\right)^2 \mathrm{\,d}x\\
+			&= &\displaystyle\int\limits_1^2\left(1-2x^{-\tfrac{1}{4}}+x^{-\tfrac{1}{8}}\right) \mathrm{\,d}x\\
+			&=&	\left(x-\dfrac{8}{3}x^{\tfrac{3}{4}}+\dfrac{8}{7}x^{\tfrac{7}{8}} \right)\Bigg|_1^2\\
+			&\approx& 0{,}01. 
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_3============%%%
+\begin{ex}%[2D4H2-2]
+	Tính $I=\displaystyle\int\limits_1^2\left(\sqrt{x}+1\right)\left(\sqrt[{3}]{x}-1\right)\mathrm{\,d}x$ (\textit{\textit{làm tròn đến hàng phần trăm}}).
+	\shortans{$0{,}32$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\displaystyle\int\limits_1^2\left(\sqrt{x}+1\right)\left(\sqrt[{3}]{x}-1\right)\mathrm{\,d}x\\
+			&=& \displaystyle\int\limits_1^2\left(x^{\tfrac{5}{6}}-x^{\tfrac{1}{2}}+x^{\tfrac{1}{3}}-1\right) \mathrm{\,d}x\\
+			&=&	\left(\dfrac{6}{11}x^{\tfrac{11}{6}}-\dfrac{2}{3}x^{\tfrac{3}{2}}+\dfrac{3}{4}x^{\tfrac{4}{3}}-x \right)\Bigg|_1^2\\
+			&\approx& 0{,}32. 
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_4============%%%
+\begin{ex}%[2D4H2-2]
+	Tính $I=\displaystyle\int\limits_1^2\dfrac{(x^2+1)^3}{x^2} \mathrm{\,d}x$ (\textit{làm tròn đến hàng phần chục}).
+	\shortans{$16{,}7$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\displaystyle\int\limits_1^2\dfrac{(x^2+1)^3}{x^2} \mathrm{\,d}x\\
+			&=& \displaystyle\int\limits_1^2\left(x^4+3x^2+3+\dfrac{1}{x^2}\right) \mathrm{\,d}x\\
+			&=&	\left(\dfrac{x^5}{5}+x^3+3x-\dfrac{1}{x}\right)\Bigg|_1^2\\
+			&=& 16{,}7. 
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_5============%%%
+\begin{ex}%[2D4H2-4]
+	Tính $I=\displaystyle\int\limits _0^15^{x+1}\cdot7^{2x-1} \mathrm{\,d}x$ (\textit{làm tròn đến hàng đơn vị}).
+	\shortans{$959$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\displaystyle\int\limits _0^15^{x+1}\cdot7^{2x-1} \mathrm{\,d}x\\
+			&=&\dfrac{5}{7} \displaystyle\int\limits_0^15^x\cdot49^x \mathrm{\,d}x\\
+			&=&	\dfrac{5}{7} \displaystyle\int\limits_0^1245^x \mathrm{\,d}x\\
+			&=&	\dfrac{5}{7}\left(245^x\ln245\right)\Bigg|_0^1\\
+			&=&\dfrac{5}{7}\left(245\ln245-\ln245\right)\approx 959. 
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_6============%%%
+\begin{ex}%[2D4H2-4]
+	Tính $I=\displaystyle\int\limits _0^1\left(x+\mathrm{e}^{-x-2} \right)\mathrm{\,d}x$ (\textit{\textit{làm tròn đến hàng phần trăm}}).
+	\shortans{$0{,}59$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\displaystyle\int\limits _0^1\left(x+\mathrm{e}^{-x-2} \right)\mathrm{\,d}x\\
+			&=&	\left(\dfrac{x^2}{2}-\mathrm{e}^{-x-2}\right)\Bigg|_0^1\\
+			&=&\left(\dfrac{1}{2}+\mathrm{e}^{-2}-\mathrm{e}^{-3}\right)\approx 0{,}59. 
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_7============%%%
+\begin{ex}%[2D4H2-3]
+	Tính $I=\displaystyle\int\limits _{\tfrac{\pi}{6}}^{\tfrac{\pi}{3}}x^2 \left(1-\dfrac{\sin x}{x^2} \right)\mathrm{\,d}x$ (\textit{\textit{làm tròn đến hàng phần trăm}}).
+	\shortans{$-0{,}03$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\displaystyle\int\limits _{\tfrac{\pi}{6}}^{\tfrac{\pi}{3}}x^2 \left(1-\dfrac{\sin x}{x^2} \right)\mathrm{\,d}x\\
+			&=&\displaystyle\int\limits _{\tfrac{\pi}{6}}^{\tfrac{\pi}{3}}\left(x^2-\sin x \right)\mathrm{\,d}x\\
+			&=&\left(\dfrac{x^3}{3}+\cos x\right)\Bigg| _{\tfrac{\pi}{6}}^{\tfrac{\pi}{3}}\approx -0{,}03.  
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_8============%%%
+\begin{ex}%[2D4H2-3]
+	Tính $I=\displaystyle\int\limits _{\tfrac{\pi}{6}}^{\tfrac{\pi}{2}}\left(\sin x-\dfrac{1}{\sqrt[{3}]{x^2}} \right) \mathrm{\,d}x$ \textit{(\textit{làm tròn đến hàng phần trăm})}.
+	\shortans{$0{,}38$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\displaystyle\int\limits _{\tfrac{\pi}{6}}^{\tfrac{\pi}{2}}\left(\sin x-\dfrac{1}{\sqrt[{3}]{x^2}} \right) \mathrm{\,d}x\\
+			&=&\left(-\cos x-3\sqrt[{3}]{x}\right)\Bigg| _{\tfrac{\pi}{6}}^{\tfrac{\pi}{2}}\approx 0{,}38.  
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_9============%%%
+\begin{ex}%[2D4H2-4]
+	Biết $\displaystyle\int\limits _0^1\dfrac{\left(e^{-x}+2\right)^2}{e^{x-1}} \mathrm{\,d}x=ae+b+\dfrac{c}{e}+\dfrac{1}{e^2}$ $\left(a,b,c\in \mathbb{Z}\right)$. Tính giá trị của $P=a+b+c$.
+	\shortans{$-1$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I	&=& \displaystyle\int\limits _0^1\dfrac{\left(e^{-x}+2\right)^2}{e^{x-1}} \mathrm{\,d}x\\
+			&= & \displaystyle\int\limits _0^1\dfrac{e^{-2x}+4e^{-x}+4}{e^{x-1}} \mathrm{\,d}x\\
+			&=&	\displaystyle\int\limits _0^1\left(e^{-3x+1}+4e^{-2x+1}+4e^{-x+1} \right)\mathrm{\,d}x\\
+			&=&\left. \left(\dfrac{e^{-3x+1}}{-3}+\dfrac{4e^{-2x+1}}{-2}+\dfrac{4e^{-x+1}}{-1} \right)\right|_0^1\\
+			&=&\dfrac{-9e^3+4e^2+4e+1}{e^2}=-9e+4+\dfrac{4}{e}+\dfrac{1}{e^2}.
+		\end{eqnarray*}
+		Vậy $ P=a+b+c=-1$.
+	}
+\end{ex}
+%%%==============EX_10============%%%
+\begin{ex}%[2D4H2-3]
+	Biết $\displaystyle\int\limits _0^{\tfrac{\pi}{3}}\dfrac{1-\cos 2x}{1+\cos 2x} \mathrm{\,d}x=a\sqrt{3}+\dfrac{\pi}{b}$ $\left(a,b\in \mathbb{Z}\right)$. Tính $a+b$.
+	\shortans{$0$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= & \displaystyle\int\limits _0^{\tfrac{\pi}{3}}\dfrac{1-\cos 2x}{1+\cos 2x} \mathrm{\,d}x\\
+			&= & \displaystyle\int\limits _0^{\tfrac{\pi}{3}}\dfrac{2\sin^2 x}{2\cos^2 x} \mathrm{\,d}x\\
+			&=& \displaystyle\int\limits _0^{\tfrac{\pi}{3}}\left(\dfrac{1}{\cos^2 x}-1\right)\mathrm{\,d}x\\
+			&=&  \left(\tan x-x\right)\Bigg|_0^{\tfrac{\pi}{3}}=\sqrt{3}-\dfrac{\pi}{3}.
+		\end{eqnarray*}
+		Vậy  $\heva{&a=1\\
+			&b=-1}\Rightarrow a+b=0.$
+	}
+\end{ex}
+%%%==============EX_11============%%%
+\begin{ex}%[2D4H2-4]
+	Tính $I=\displaystyle\int\limits _0^1\dfrac{\left(2024^x+1\right)^2}{e^{-3x}} \mathrm{\,d}x$ (\textit{làm tròn đến hàng phần trăm}).
+	\shortans{$0$}	
+	\loigiai{
+		\begin{eqnarray*} 
+			I&=&\int_0^1 \frac{\left(2024^x+1\right)^2}{e^{-3 x}} d x\\
+			&=&\int_0^1 \frac{2024^{2 x}+2 \cdot 2024^x+1}{e^{-3 x}} d x\\
+			&=&\left[\left(\frac{2024^2}{e^{-3}}\right)^x+2 \cdot\left(\frac{2024}{e^{-3}}\right)^x+e^{3 x}\right]\Bigg|_0 ^1 \\ 
+			& =&\dfrac{\left(\dfrac{2024^2}{e^{-3}}\right)^x}{\ln \dfrac{2024^2}{e^{-3}}}+\dfrac{2 \cdot\left(\dfrac{2024}{e^{-3}}\right)^x}{\ln \dfrac{2024}{e^{-3}}}+\dfrac{1}{3} e^{3 x}\\
+			&=&\dfrac{2024^{2 x} e^{3 x}}{2 \ln 2024-3}+\dfrac{2.2024^{2 x} e^{3 x}}{\ln 2024-3}+\dfrac{1}{3} e^{3 x} \\ 
+			& =&\left(\dfrac{2024^{2 x}}{2 \ln 2024-3}+\dfrac{2\cdot2024^{2 x}}{\ln 2024-3}+\dfrac{1}{3}\right) e^{3 x}. 
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_12============%%%
+\begin{ex}%[2D4H2-4]
+	Tính $I=\dfrac{1}{1000}\displaystyle\int\limits _0^1\dfrac{\left(e^{-x}+2\right)^2}{e^{x-1}} \mathrm{\,d}x$ (\textit{làm tròn đến hàng đơn vị}).
+	\shortans{$4522$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\dfrac{1}{1000}\displaystyle\int\limits _0^1\dfrac{\left(e^{-x}+2\right)^2}{e^{x-1}} \mathrm{\,d}x\\
+			&=& \dfrac{1}{1000}\displaystyle\int\limits _0^1\dfrac{e^{-2x}+4e^{-x}+4}{e^{x-1}} \mathrm{\,d}x\\
+			&= &\dfrac{1}{1000} \displaystyle\int\limits _0^1\left(e^{-3x+1}+4e^{-2x+1}+4e^{-x+1} \right)\mathrm{\,d}x\\
+			&=& \dfrac{1}{1000}\left(e^{-3x+1}+4e^{-2x+1}+4e^{-x+1} \right)\Bigg|_0^1\\
+			&=&\dfrac{1}{1000} \dfrac{-9e^3+4e^2+4e+1}{e^2}\approx 4522.
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_13============%%%
+\begin{ex}%[2D4H2-4]
+	Tính $I=\dfrac{1}{100}\displaystyle\int\limits_1^2e^{2x} \left(2023+\dfrac{2024e^{-2x}}{x^3} \right) \mathrm{\,d}x$ (\textit{làm tròn đến hàng phần chục}).
+	\shortans{$48{,}5$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\dfrac{1}{100}\displaystyle\int\limits_1^2e^{2x} \left(2023+\dfrac{2024e^{-2x}}{x^3} \right) \mathrm{\,d}x\\
+			&=&\dfrac{1}{100}\displaystyle\int\limits_1^2\left(2023e^{2x} +\dfrac{2024}{x^3} \right) \mathrm{\,d}x\\
+			&=&\dfrac{1}{100}\left(2023\dfrac{e^{2x}}{2}-\dfrac{1012}{x}\right)\Bigg|_1^2\\
+			&\approx& 48{,}5.
+		\end{eqnarray*}
+	}
+\end{ex}
+%%%==============EX_14============%%%
+\begin{ex}%[2D4H2-4]
+	Tính $I=\displaystyle\int\limits_1^2\left(4x^3-2\cdot3^{x+1}+\dfrac{1}{x^2} \right) \mathrm{\,d}x$ (\textit{làm tròn đến hàng phần chục}).
+	\shortans{$-17{,}3$}	
+	\loigiai{
+		\begin{eqnarray*}
+			I&= &\displaystyle\int\limits_1^2\left(4x^3-2\cdot3^{x+1}+\dfrac{1}{x^2} \right) \mathrm{\,d}x\\
+			&=&\left(x^4-\dfrac{2\cdot3^{x+1}}{\ln3}-\dfrac{1}{x}\right)\Bigg|_1^2\\
+			&\approx&-17{,}3.
+		\end{eqnarray*}
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{3}{ans/ans-C4B2CD1-KQ}
+
+\begin{dang}{TÍCH PHÂN HÀM TRỊ TUYỆT ĐỐI}
+	Tính tích phân $I=\displaystyle\int\limits_a^b|f(x)| \mathrm{\,d}x$?\\
+	\textbf{Phương pháp}
+	\begin{itemize}
+		\item \textbf{Bước 1.} Xét dấu $f(x)$ trên đoạn $[a ; b]$.
+		\item \textbf{Bước 2.} Dựa vào bảng xét dấu trên đoạn $[a ; b]$ để khử $|f(x)|$. Sau đó sử dụng các phương pháp tính tích phân đã học để tính $I=\displaystyle\int\limits_a^b|f(x)| \cdot \mathrm{\,d}x$.
+	\end{itemize}
+\end{dang}
+
+\Opensolutionfile{ans}[ans/ans-C4B2CD1-Dang2]
+\TN
+%%%==============EX_1============%%%
+\begin{ex}%[2D4V2-3]
+	Giá trị của $I=\displaystyle\int\limits _0^{2\pi}\sqrt{1-\cos 2x} \mathrm{\,d}x$ bằng
+	\choice
+	{$\sqrt{3}$}
+	{\True $4\sqrt{2}$}
+	{$2\sqrt{3}$}
+	{$\dfrac{\pi}{2}$}
+	\loigiai{
+		Ta có	$I=\displaystyle\int\limits_0^{2\pi}\sqrt{1-\cos 2x} \mathrm{\,d}x=\displaystyle\int\limits _0^{2\pi}\sqrt{2\sin^2 x} \mathrm{\,d}x=\sqrt{2} \displaystyle\int\limits_0^{2\pi}\left|\sin x\right|\mathrm{\,d}x.$
+		\\
+		Vì $x\in \left[0;\pi \right]\to \sin x > 0\Rightarrow \left|\sin x\right|=\sin x$;\\
+		$x\in \left[\pi;2\pi \right]\to \sin x < 0\Rightarrow \left|\sin x\right|=-\sin x$.
+		\\		
+		Vậy $I=\sqrt{2} \left(\displaystyle\int\limits_0^{\pi}\sin x \mathrm{\,d}x+\displaystyle\int\limits_{\pi}^{2\pi}-\sin x\mathrm{\,d}x \right)=\sqrt{2} \left(-\cos x\Bigg|_0^\pi+\cos x\Bigg|_\pi^{2\pi}\right) =4\sqrt{2}$.
+	}
+\end{ex}
+%%%==============EX_2============%%%
+\begin{ex}%[2D4H2-2]
+	Tính tích phân $I=\displaystyle\int\limits _0^2\left|x-2\right|\mathrm{\,d}x$.
+	\choice
+	{$I=-2$}
+	{$I=4$}
+	{\True $I=2$}
+	{$I=0$}
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits _0^2\left|x-2\right|\mathrm{\,d}x.$\\
+		Do $x\in \left[0;2\right]\Rightarrow x-2< 0\Leftrightarrow \left|x-2\right|=2-x$.\\
+		Vậy $I=\displaystyle\int\limits _0^2\left(2-x\right)\mathrm{\,d}x=\left(2x-\dfrac{1}{2} x^2 \right)\Bigg|_0^2=4-2=2$.
+	}
+\end{ex}
+
+
+%%%==============EX_3============%%%
+\begin{ex}%[2D4H2-2]
+	Tính tích phân $I=\displaystyle\int\limits _0^2\left|x^3-x\right|\mathrm{\,d}x$.
+	\choice
+	{$I=-\dfrac{1}{2}$}
+	{$I=5$}
+	{$I=\dfrac{1}{2}$}
+	{\True $I=\dfrac{5}{2}$}
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits _0^2\left|x^3-x\right|\mathrm{\,d}x.$\\
+		Ta có $f(x)=x^3-x=x\left(x^2-1\right)=0\leftrightarrow \hoac{&x=0\\&x=-1\\&x=1.}$\\
+		\[\Rightarrow f(x) > 0\forall x\in \left[1;2\right];\quad f(x) < 0\forall x\in \left[0;1\right].
+		\]
+		Vậy $I=\displaystyle\int\limits _0^1\left(x-x^3 \right)\mathrm{\,d}x+\displaystyle\int\limits_1^2\left(x^3-x\right)\mathrm{\,d}x=\left(\dfrac{1}{2} x^2-\dfrac{1}{4} x^4 \right)\Bigg|_0^1+\left(\dfrac{1}{4} x^4-\dfrac{1}{2}^2 \right)\Bigg|_1^2=\dfrac{5}{2}$.
+	}
+\end{ex}
+
+%%%==============EX_4============%%%
+\begin{ex}%[2D4H2-2]
+	Tính tích phân $I=\displaystyle\int\limits _0^2\left|x^2+2x-3\right|\mathrm{\,d}x$.
+	\choice
+	{$I=-2$}
+	{$I=4$}
+	{\True $I=5$}
+	{$I=-4$}
+	\loigiai{
+		Ta có		$I=\displaystyle\int\limits _0^2\left|x^2+2x-3\right|\mathrm{\,d}x.$\\
+		Ta có $f(x)=x^2+2x-3=0\Rightarrow\hoac{&x=1\\&x=-3}\Rightarrow f(x) > 0$, $\forall x\in \left[1;2\right]$; $f(x) < 0$, $\forall x\in \left[0;1\right]$.
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _0^1-f(x)\mathrm{\,d}x+\displaystyle\int\limits_1^2f(x)\mathrm{\,d}x\\
+			&=&\displaystyle\int\limits _0^1\left(3-2x-x^2 \right)\mathrm{\,d}x+\displaystyle\int\limits_1^2\left(x^2+2x-3\right)\mathrm{\,d}x\\
+			&=&	\left(3x-x^2-\dfrac{1}{3} x^3 \right)\Bigg|_0^1+\left(\dfrac{1}{3} x^3+x^2-3x\right)\Bigg|_1^2\\
+			&=&\left(3-1-\dfrac{1}{3} \right)+\left[\left(\dfrac{8}{3}+4-6\right)-\left(\dfrac{1}{3}+1-3\right)\right]=5.
+		\end{eqnarray*} 	
+	}
+\end{ex}
+%%%==============EX_5============%%%
+
+\begin{ex}%[2D4V2-2]
+	Cho tích phân $I=\left(\sqrt{3}+\sqrt{2} \right)\displaystyle\int\limits _{-3}^3\left|x^2-1\right|\mathrm{\,d}x=\dfrac{20}{3}+\dfrac{4}{3}+\dfrac{16}{3}=a\sqrt{3}+b\sqrt{2}$ với $a,b\in \mathbb{Q}$. Tính $P=a+b$.
+	\choice
+	{$P=\dfrac{40}{3}$}
+	{\True $P=\dfrac{80}{3}$}
+	{$P=\dfrac{17}{3}$}
+	{$P=\dfrac{98}{3}$}
+	\loigiai{
+		Ta có		$I=\left(\sqrt{3}+\sqrt{2} \right)\displaystyle\int\limits _{-3}^3\left|x^2-1\right|\mathrm{\,d}x$.\\
+		Tính $J=\displaystyle\int\limits _{-3}^3\left|x^2-1\right|\mathrm{\,d}x$.\\
+		Ta có $f(x)=x^2-1=0\Rightarrow \hoac{&x=1\\&x=-1.}$\\
+		$\Rightarrow f(x) > 0$, $\forall x\in \left[-3;-1\right]\cup \left[1;3\right]$; và $f(x) < 0$, $\forall x\in \left[-1;1\right]$.\\
+		Vậy
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{-3}^{-1}\left(x^2-1\right)\mathrm{\,d}x+\displaystyle\int\limits _{-1}^1\left(1-x^2 \right)\mathrm{\,d}x+\displaystyle\int\limits_1^3\left(x^2-1\right)\mathrm{\,d}x\\
+			&=&\left(\dfrac{1}{3} x^3-x\right)\Bigg|_{-3}^{-1}+\left(x-\dfrac{1}{3} x^3 \right)\Bigg|_{-1}^{1}+\left(\dfrac{1}{3} x^3-x\right)\Bigg|_{1}^3\\
+			&=&\dfrac{20}{3}+\dfrac{4}{3}+\dfrac{16}{3}=\dfrac{40}{3}.
+		\end{eqnarray*}
+		\[\Rightarrow I=\left(\sqrt{3}+\sqrt{2} \right)\displaystyle\int\limits _{-3}^3\left|x^2-1\right|\mathrm{\,d}x=\dfrac{40}{3} \sqrt{3}+\dfrac{40}{3} \sqrt{2}.
+		\]
+		Khi đó $a=\dfrac{40}{3}$, $b=\dfrac{40}{3}$. Suy ra $P=a+b=\dfrac{80}{3}$.
+	}
+\end{ex}
+%%%==============EX_6============%%%
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits _{-2}^5\left(\left|x+2\right|-\left|x-2\right|\right)\mathrm{\,d}x$.
+	\choice
+	{$I=38$}
+	{\True $I=44$}
+	{$I=48$}
+	{$I=40$}
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits _{-2}^5\left(\left|x+2\right|-\left|x-2\right|\right)\mathrm{\,d}x.$\\
+		Gọi $f(x)=\left|x+2\right|-\left|x-2\right|$ trên $x\in [-2;5]$. Khi đó
+		\begin{itemize}
+			\item Với $ x\in \left[-2;2\right]$ thì $f(x)=4$.
+			\item Với $ x\in \left[2;5\right]$ thì $f(x)=2x$.
+		\end{itemize} 
+		Vậy $\displaystyle\int\limits _{-2}^5f(x)\mathrm{\,d}x=\displaystyle\int\limits _{-2}^24\mathrm{\,d}x+\leftarrow \displaystyle\int\limits_2^52x\mathrm{\,d}x=4x\Bigg|_{-2}^2+x^2\Bigg|_2^5=16+32-4=44$.
+	}
+\end{ex}
+%%%==============EX_7============%%%
+\begin{ex}%[2D4V2-4]
+	Cho tích phân $I=\displaystyle\int\limits _0^3\left|2^x-4\right|\mathrm{\,d}x=a+\dfrac{b}{c\ln 2}$ với $a,b,c\in \mathbb{Z}$ và $\dfrac{b}{c}$ là phân số tối giản. Tính $P=a^2+b^2+c^2$.
+	\choice
+	{$P=15$}
+	{$P=10$}
+	{$P=5$}
+	{\True $P=18$}
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits _0^3\left|2^x-4\right|\mathrm{\,d}x$.
+		Ta có $2^x-4> 0\Leftrightarrow x > 2\Rightarrow f(x) > 0,~\forall x\in \left[2;3\right]$; và $f(x) < 0,~\forall x\in \left[0;2\right]$.\\
+		Vậy
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _0^2\left(4-2^x \right)\mathrm{\,d}x+\displaystyle\int\limits_2^3\left(2^x-4\right)\mathrm{\,d}x\\
+			&=&\left(4x-\dfrac{1}{\ln 2} 2^x \right)\Bigg|_0^2+\left(\dfrac{1}{\ln 2} 2^x-4x\right)\Bigg|_2^3\\
+			&=&\left(8-\dfrac{3}{\ln 2} \right)+\left(\dfrac{4}{\ln 2}-4\right)=4+\dfrac{1}{\ln 2}.
+		\end{eqnarray*} 
+		\[\Rightarrow P=a^2+b^2+c^2=4^2+1^2+1^2=18.
+		\]
+	}
+\end{ex}
+%%%==============EX_8============%%%
+\begin{ex}%[2D4V2-4]
+	Tính tích phân $I=\displaystyle\int\limits _{-1}^1\left|2^x-2^{-x} \right|\mathrm{\,d}x$.
+	\choice
+	{\True $\dfrac{1}{\ln 2}$}
+	{$\ln 2$}
+	{$2\ln 2$}
+	{$\dfrac{2}{\ln 2}$}
+	\loigiai{
+		$I=\displaystyle\int\limits _{-1}^1\left|2^x-2^{-x} \right|\mathrm{\,d}x$.\\
+		Ta có $2^x-2^{-x}=0$ $\Rightarrow x=0$.
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{-1}^1\left|2^x-2^{-x} \right|\mathrm{\,d}x\\
+			&=&\displaystyle\int\limits _{-1}^0\left|2^x-2^{-x} \right|\mathrm{\,d}x+\displaystyle\int\limits _0^1\left|2^x-2^{-x} \right|\mathrm{\,d}x\\
+			&=&\left|\displaystyle\int\limits _{-1}^0\left(2^x-2^{-x} \right) \mathrm{\,d}x\right|+\left|\displaystyle\int\limits _0^1\left(2^x-2^{-x} \right) \mathrm{\,d}x\right|\\
+			&=&\left|\left(\dfrac{2^x+2^{-x}}{\ln 2} \right)\Bigg|_{-1}^0 \right|+\left| \left(\dfrac{2^x+2^{-x}}{\ln 2} \right)\Bigg|_0^1 \right|=\dfrac{1}{\ln 2}.
+		\end{eqnarray*} 		
+	}
+\end{ex}
+%%%==============EX_9============%%%
+
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits _{-1}^2\left(\left|x\right|-\left|x-1\right|\right)\mathrm{\,d}x$.
+	\choice
+	{\True $I=0$}
+	{$I=2$}
+	{$I=-2$}
+	{$I=-3$}
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits _{-1}^2\left(\left|x\right|-\left|x-1\right|\right)\mathrm{\,d}x$.
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{-1}^2\left(\left|x\right|-\left|x-1\right|\right)\mathrm{\,d}x\\
+			&=&\displaystyle\int\limits _{-1}^2\left|x\right|\mathrm{\,d}x-\displaystyle\int\limits _{-1}^2\left|x-1\right|\mathrm{\,d}x\\
+			&=&-\displaystyle\int\limits _{-1}^0x\mathrm{\,d}x+\displaystyle\int\limits _0^2x\mathrm{\,d}x+\displaystyle\int\limits _{-1}^1(x-1)\mathrm{\,d}x-\displaystyle\int\limits_1^2(x-1)\mathrm{\,d}x\\
+			&=&-\dfrac{x^2}{2}\Bigg|_{-1}^0+ \dfrac{x^2}{2}\Bigg|_0^2+ \left(\dfrac{x^2}{2}-x\right)\Bigg|_{-1}^1- \left(\dfrac{x^2}{2}-x\right)\Bigg|_1^2=0.
+		\end{eqnarray*} 		
+	}
+\end{ex}
+
+
+%%%==============EX_10============%%%
+\begin{ex}%[2D4V2-2]
+	Cho $a$ là số thực dương, tính tích phân $I=\displaystyle\int\limits _{-1}^a\left|x\right|\mathrm{d}x$ theo $a$.
+	\choice
+	{\True $I=\dfrac{a^2+1}{2}$}
+	{$I=\dfrac{a^2+2}{2}$}
+	{$I=\dfrac{-2a^2+1}{2}$}
+	{$I=\dfrac{\left|3a^2-1\right|}{2}$}
+	\loigiai{
+		Vì $a > 0$ nên $I=-\displaystyle\int\limits_{-1}^0x \mathrm{\,d}x+\displaystyle\int\limits_0^ax \mathrm{\,d}x=\dfrac{1}{2}+\dfrac{a^2}{2}=\dfrac{1+a^2}{2}$.
+	}
+\end{ex}
+%%%==============EX_11============%%%
+\begin{ex}%[2D4V2-2]
+	Cho số thực $m > 1$ thỏa mãn $\displaystyle\int\limits_1^m\left|2mx-1\right|\mathrm{\,d}x=1$. Khẳng định nào sau đây đúng?
+	\choice
+	{$m\in \left(4;6\right)$}
+	{$m\in \left(2;4\right)$}
+	{$m\in \left(3;5\right)$}
+	{\True $m\in \left(1;3\right)$}
+	\loigiai{
+		Do $m > 1\Rightarrow 2m > 2\Rightarrow \dfrac{1}{2m} < 1$. Do đó với $m > 1, x\in \left[1;m\right]\Rightarrow 2mx-1> 0$.\\		
+		Vậy
+		\begin{eqnarray*} 
+			\displaystyle\int\limits_1^m\left|2mx-1\right|\mathrm{\,d}x&=&\displaystyle\int\limits_1^m\left(2mx-1\right)\mathrm{\,d}x\\
+			&=&\left(mx^2-x\right)\Bigg|_1^m\\
+			&=&m^3-m-m+1=m^3-2m+1.
+		\end{eqnarray*}
+		Từ đó theo bài ra ta có $m^3-2m+1=1\Leftrightarrow \hoac{&m=0 \\&m=\pm \sqrt{2}.} $\\ Do $m > 1$ vậy $m=\sqrt{2}$.
+	}
+\end{ex}
+%%%==============EX_12============%%%
+\begin{ex}%[2D4V2-2]
+	Khẳng định nào sau đây là đúng?
+	\choice
+	{$\displaystyle\int\limits _{-1}^1\left|x\right|^3 \mathrm{d}x=\left|\displaystyle\int\limits _{-1}^1x^3 \mathrm{d}x \right|$}
+	{\True $\displaystyle\int\limits _{-1}^{2024}\left|x^4-x^2+1\right|\mathrm{d}x=\displaystyle\int\limits _{-1}^{2024}\left(x^4-x^2+1\right)\mathrm{d}x$}
+	{$\displaystyle\int\limits _{-2}^3\left|e^x \left(x+1\right)\mathrm{d}x\right|=\displaystyle\int\limits _{-2}^3e^x \left(x+1\right)\mathrm{d}x$}
+	{$\displaystyle\int\limits _{-\tfrac{\pi}{2}}^{\tfrac{\pi}{2}}\sqrt{1-\cos^2 x} \mathrm{d}x=\displaystyle\int\limits _{-\tfrac{\pi}{2}}^{\tfrac{\pi}{2}}\sin x\mathrm{d}x$}
+	\loigiai{
+		Ta có: $x^4-x^2+1=x^4-2\cdot x^2\cdot\dfrac{1}{2}+\dfrac{1}{4}+\dfrac{3}{4}$ $=\left(x^2-\dfrac{1}{2} \right)^2+\dfrac{3}{4} > 0,\forall x\in {\bf \mathbb{R}}$.\\
+		Do đó $\displaystyle\int\limits _{-1}^{2024}\left|x^4-x^2+1\right|\mathrm{d}x=\displaystyle\int\limits _{-1}^{2024}\left(x^4-x^2+1\right)\mathrm{d}x$.
+	}
+\end{ex}
+%%%==============EX_13============%%%
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits_1^4\sqrt{x^2-6x+9} \mathrm{\,d}x$.
+	\choice
+	{\True $I=\dfrac{5}{2}$}
+	{$I=-\dfrac{1}{2}$}
+	{$I=-2$}
+	{$I=\dfrac{1}{2}$}
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits_1^4\sqrt{x^2-6x+9} \mathrm{\,d}x=\displaystyle\int\limits_1^4\left|x-3\right|\mathrm{\,d}x$.\\
+		Ta có $x-3> 0,~\forall x\in \left[3;4\right];~x-3< 0,~\forall x\in \left[1;3\right]$.\\
+		Vậy
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits_1^3\left(3-x\right)\mathrm{\,d}x+\displaystyle\int\limits_3^4\left(x-3\right)\mathrm{\,d}x\\
+			&=&\left(3x-\dfrac{1}{2} x^2 \right)\Bigg|_1^3+\left(\dfrac{1}{2} x^2-3x\right)\Bigg|_3^4\\
+			&=&2+\dfrac{1}{2}=\dfrac{5}{2}.
+		\end{eqnarray*}
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-C4B2CD1-Dang2}
+
+
+
+\Opensolutionfile{ans}[ans/ans-C4B2CD1-Dang2-KQ]
+\TNSA
+
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits _{-3}^{3}\left|x^{2} -1\right|\mathrm{\,d}x $ (tính gần đúng đến hàng phần chục).
+	\shortans{$13{,}3$}	
+	\loigiai{
+		\[I=\displaystyle\int\limits _{-3}^{3}\left|x^{2} -1\right|\mathrm{\,d}x.\] 
+		Vì  $f(x)=x^{2} -1=0\to\hoac{&x=-1\\&x=1} \Rightarrow f(x)>0,~\forall x\in \left[-3;-1\right]\cup \left[1;3\right]$; $f(x)<0,~\forall x\in \left[-1;1\right]$.\\
+		Vậy  
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{-3}^{-1}\left(x^{2} -1\right)\mathrm{\,d}x+\displaystyle\int\limits _{-1}^{1}\left(1-x^{2} \right)\mathrm{\,d}x+\displaystyle\int\limits _{1}^{3}\left(x^{2} -1\right)\mathrm{\,d}x\\
+			&=&\left(\frac{1}{3} x^{3} -x\right)\Bigg|_{-3}^{-1}+\left(x-\frac{1}{3} x^{3} \right)\Bigg|_{-1}^1+\left(\frac{1}{3} x^{3} -x\right)\Bigg|_1^3\\
+			&=&\frac{20}{3} +\frac{4}{3} +\frac{16}{3} =\frac{40}{3}\approx 13{,}3.
+		\end{eqnarray*}
+	}
+\end{ex}
+
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits _{-1}^{2}\left|-x^{2} -2x+3\right|\mathrm{\,d}x $ (tính gần đúng đến hàng phần trăm).
+	\shortans{$7{,}67$}	
+	\loigiai{
+		Vì  $f(x)=-x^{2} -2x+3=0\Rightarrow\hoac{&x=1\\&x=-3} \Rightarrow f(x)>0,~\forall x\in \left[-1;-1\right]$; $f(x)<0,~\forall x\in \left[1;2\right]$\\
+		Vậy  
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{-1}^{1}\left(-x^{2} -2x+3\right)\mathrm{\,d}x+\displaystyle\int\limits _{1}^{2}\left(x^{2}+2x-3 \right)\mathrm{\,d}x\\
+			&=&\left(-\dfrac{1}{3} x^{3}-x^2 +3x\right)\Bigg|_{-1}^{1}+\left(\dfrac{1}{3} x^{3}+x^2 -3x \right)\Bigg|_{1}^2\\
+			&=&-\dfrac{1}{3}-1+3-\dfrac{1}{3}+1+3 +\dfrac{8}{3}+4-6-\dfrac{1}{3}-1+3 \approx7{,}67.
+		\end{eqnarray*}		
+	}
+\end{ex}
+
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits _{1}^{2}\left|\frac{x+1}{x} \right|\mathrm{\,d}x $ (tính gần đúng đến hàng phần trăm).
+	\shortans{$1{,}69$}	
+	\loigiai{
+		Vì $\frac{x+1}{x}>0$, $\forall x\in [1;2]$ nên
+		\[I=\displaystyle\int\limits _{1}^{2}\left(\dfrac{x+1}{x}\right)\mathrm{\,d}x=\displaystyle\int\limits _{1}^{2}\left(1+\dfrac{1}{x}\right)\mathrm{\,d}x=\left(x+\ln x \right)\Bigg|1^2=2+\ln2-1=1+\ln2\approx1{,}69.  \]		
+	}
+\end{ex}
+
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits _{2}^{6}\sqrt{x^{2} -8x+16} \mathrm{\,d}x $.
+	\shortans{$4$}	
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits _{2}^{6}\left| x-4\right|  \mathrm{\,d}x $.\\
+		Ta có $x-4\le 0$, $\forall x\in [2;4]$	và 	 $x-4\ge 0$, $\forall x\in [4;6]$. Khi đó
+		\[I=\displaystyle\int\limits _{2}^{4}\left( 4- x\right)   \mathrm{\,d}x+\displaystyle\int\limits _{4}^{6}\left( x- 4\right)   \mathrm{\,d}x=\left( 4 x-\dfrac{x^2}{2}\right)\Bigg|_{2}^{4}+\left( -4 x+\dfrac{x^2}{2}\right)\Bigg|_{4}^{6}=4.\]
+	}
+\end{ex}
+
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits _{-2}^{1}\sqrt{4x^{2} +6x+9} \mathrm{\,d}x $ (\textit{làm tròn đến hàng phần trăm}).
+	\shortans{$9{,}38$}	
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits _{-2}^{1}\sqrt{4x^{2} +6x+9} \mathrm{\,d}x=\displaystyle\int\limits _{-2}^{1}\left|2x+3 \right|  \mathrm{\,d}x$.\\
+		Ta có $2x+3\le 0$, $\forall x\in \left[-2;-\dfrac{3}{2} \right] $	và 	 $2x+3\ge 0$, $\forall x\in \left[-\dfrac{3}{2};1 \right]$. Khi đó
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{-2}^{-\tfrac{3}{2}}\left( -2x-3 \right)   \mathrm{\,d}x+\displaystyle\int\limits _{-\tfrac{3}{2}}^{1}\left( 2x+3 \right)  \mathrm{\,d}x\\
+			&=&\left(-x^2-3x\right)\Bigg|_{-2}^{-\tfrac{3}{2}}+\left(x^2+3x \right)\Bigg|_{-\tfrac{3}{2}}^{1}\\
+			&\approx&9{,}38.
+		\end{eqnarray*}				
+	}
+\end{ex}
+
+\begin{ex}%[2D4V2-2]
+	Tính tích phân $I=\displaystyle\int\limits _{0}^{1}\sqrt{9x^{2} -6x+1} \mathrm{\,d}x $ (\textit{làm tròn đến hàng phần trăm}).
+	\shortans{$0{,}83$}	
+	\loigiai{
+		Ta có $I=\displaystyle\int\limits _{0}^{1}\sqrt{9x^{2} -6x+1} \mathrm{\,d}x =\displaystyle\int\limits _{0}^{1}\left| 3x-1\right| \mathrm{\,d}x $.\\
+		Ta có $3x+1\le 0$, $\forall x\in \left[1;\dfrac{1}{3} \right] $	và 	 $3x+1\ge 0$, $\forall x\in \left[\dfrac{1}{3};1 \right]$. Khi đó
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{0}^{\tfrac{1}{3}}\left(-3x-1 \right)   \mathrm{\,d}x+\displaystyle\int\limits _{\tfrac{1}{3}}^{1}\left( 3x+1 \right)  \mathrm{\,d}x\\
+			&=&\left(-\dfrac{3x^2}{2}-x\right)\Bigg| _{0}^{\tfrac{1}{3}}+\left(\dfrac{3x^2}{2}+x\right)\Bigg|_{\tfrac{1}{3}}^{1}\\
+			&\approx&0{,}83.
+		\end{eqnarray*}		
+	}
+\end{ex}
+
+\begin{ex}%[2D4V2-3]
+	Tính tích phân $I=\displaystyle\int\limits _{0}^{2\pi }\sqrt{1+\cos 2x} \mathrm{\,d}x $ (\textit{làm tròn đến hàng phần trăm}).
+	\shortans{$5{,}66$}	
+	\loigiai{
+		Ta có  $I=\displaystyle\int\limits _{0}^{2\pi }\sqrt{1+\cos 2x} \mathrm{\,d}x =\sqrt{2}\displaystyle\int\limits _{0}^{2\pi }|\cos x|\mathrm{\,d}x $.\\
+		Ta có $\cos x\ge 0, \forall x\in \left[0;\dfrac{\pi}{2} \right]\cup\left[\dfrac{3\pi}{2};2\pi \right] $ và $\cos x\le 0, \forall x\in \left[\dfrac{\pi}{2};\dfrac{3\pi}{2} \right] $. Khi đó
+		\begin{eqnarray*} 
+			I&=&\sqrt{2}\displaystyle\int\limits _{0}^{\tfrac{\pi}{2} }\cos x\mathrm{\,d}x-\sqrt{2}\displaystyle\int\limits _{\tfrac{\pi}{2} }^{\tfrac{3\pi}{2} }\cos x\mathrm{\,d}x+\sqrt{2}\displaystyle\int\limits _{\tfrac{3\pi}{2} }^{2\pi}\cos x\mathrm{\,d}x\\
+			&=&\sqrt{2}\sin x\Bigg|_{0}^{\tfrac{\pi}{2} } -\sqrt{2}\sin x\Bigg|_{\tfrac{\pi}{2} }^{\tfrac{3\pi}{2} }+\sqrt{2}\sin x\Bigg|_{\tfrac{3\pi}{2} }^{2\pi}\\
+			&=&4\sqrt{2}\approx5{,}66.
+	\end{eqnarray*}		}
+\end{ex}
+
+\begin{ex}%[2D4V2-3]
+	Tính tích phân $I=\displaystyle\int\limits_{0}^{2\pi }\sqrt{1-\cos 2x} \mathrm{\,d}x $ (\textit{làm tròn đến hàng phần trăm}).
+	\shortans{$5{,}66$}	
+	\loigiai{
+		Ta có  $I=\displaystyle\int\limits _{0}^{2\pi }\sqrt{1-\cos 2x} \mathrm{\,d}x =2\displaystyle\int\limits _{0}^{2\pi }|\sin  x|\mathrm{\,d}x $.\\
+		Ta có $\sin x\ge 0, \forall x\in \left[0;\pi \right]$ và $\sin x\le 0, \forall x\in \left[\pi;2\pi \right]$. Khi đó
+		\begin{eqnarray*} 
+			I&=&\sqrt{2}\displaystyle\int\limits _{0}^{\pi}\sin x\mathrm{\,d}x-\sqrt{2}\displaystyle\int\limits _{\pi}^{2\pi}\sin x\mathrm{\,d}x\\
+			&=&-\sqrt{2}\cos x\Bigg|_{0}^{\pi } +\sqrt{2}\cos x\Bigg|_{\pi }^{2\pi}\\
+			&=&4\sqrt{2}\approx5{,}66.
+		\end{eqnarray*}			
+	}
+\end{ex}
+
+
+\begin{ex}%[2D4V2-3]
+	Tính tích phân $I=\displaystyle\int\limits _{0}^{2\pi }\sqrt{1-\sin 2x} \mathrm{\,d}x $, (\textit{làm tròn đến hàng phần trăm}).
+	\shortans{$0{,}31$}	
+	\loigiai{
+		Ta có  $I=\displaystyle\int\limits _{0}^{2\pi }\sqrt{1-\sin 2x} \mathrm{\,d}x =\displaystyle\int\limits _{0}^{2\pi }|\sin  x-\cos x|\mathrm{\,d}x $.\\
+		Ta có $\sin x-\cos x\le 0, \forall x\in \left[0;\dfrac{\pi}{4} \right]\cup\left[\dfrac{5\pi}{4};2\pi \right] $ và $\sin x-\cos x\ge 0, \forall x\in \left[\dfrac{\pi}{4};\dfrac{5\pi}{4} \right]$. Khi đó
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{0}^{\tfrac{\pi}{4} }\left( \cos x-\sin x\right) \mathrm{\,d}x+\displaystyle\int\limits _{\tfrac{\pi}{4} }^{\tfrac{5\pi}{4} }\left( \sin x-\cos x\right) \mathrm{\,d}x+\displaystyle\int\limits _{\tfrac{5\pi}{4} }^{2\pi}\left( \cos x-\sin x\right) \mathrm{\,d}x\\
+			&=&\left( \sin x+\cos x\right) \Bigg|_{0}^{\tfrac{\pi}{4} }+\left( -\cos x-\sin x\right) \Bigg|_{\tfrac{\pi}{4} }^{\tfrac{5\pi}{4} }+\left( \sin x+\cos x\right) \Bigg|_{\tfrac{5\pi}{4} }^{2\pi}\\
+			&=&4\sqrt{2}\approx5{,}66.
+		\end{eqnarray*}				
+	}
+\end{ex}
+
+\begin{ex}%[2D4V2-3]
+	Tính tích phân $I=\displaystyle\int\limits _{0}^{2\pi }\sqrt{1+\sin 2x} \mathrm{\,d}x $ (\textit{làm tròn đến hàng phần trăm}).
+	\shortans{$5{,}66$}	
+	\loigiai{
+		Ta có  $I=\displaystyle\int\limits _{0}^{2\pi }\sqrt{1+\sin 2x} \mathrm{\,d}x =\displaystyle\int\limits _{0}^{2\pi }|\sin  x+\cos x|\mathrm{\,d}x $.\\
+		Ta có $\sin x+\cos x\ge 0, \forall x\in \left[0;\dfrac{3\pi}{4} \right]\cup\left[\dfrac{7\pi}{4};2\pi \right] $ và $\sin x+\cos x\le 0, \forall x\in \left[\dfrac{3\pi}{4};\dfrac{7\pi}{4} \right]$. \\
+		Khi đó:
+		\begin{eqnarray*} 
+			I&=&\displaystyle\int\limits _{0}^{\tfrac{3\pi}{4} }\left( \cos x+\sin x\right) \mathrm{\,d}x-\displaystyle\int\limits _{\tfrac{3\pi}{4} }^{\tfrac{7\pi}{4} }\left( \sin x+\cos x\right) \mathrm{\,d}x+\displaystyle\int\limits _{\tfrac{7\pi}{4} }^{2\pi}\left( \cos x+\sin x\right) \mathrm{\,d}x\\
+			&=&\left( \sin x-\cos x\right) \Bigg|_{0}^{\tfrac{3\pi}{4} }-\left( \sin x-\cos x\right) \Bigg|_{\tfrac{3\pi}{4} }^{\tfrac{7\pi}{4} }+\left( \sin x-\cos x\right) \Bigg|_{\tfrac{7\pi}{4} }^{2\pi}\\
+			&=&4\sqrt{2}\approx5{,}66.
+		\end{eqnarray*}				
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-C4B2CD1-Dang2-KQ}

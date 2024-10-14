@@ -1,0 +1,64 @@
+\chude{Ứng dụng của đường thẳng trong không gian}
+\Opensolutionfile{ans}[ans/ans-LC-3-C5B2CD4_12-21]
+\TN
+\begin{ex}%[2H5N2-7]
+	\immini{Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$, gọi $\alpha$ là góc giữa đường thẳng $A'B$ và mặt phẳng $(BB'D'D)$. Chọn hệ trục tọa độ $Oxyz$ như hình vẽ, tính $\sin \alpha$.
+		\choice[2]
+		{$\dfrac{\sqrt{3}}{5}$}
+		{$\dfrac{\sqrt{3}}{2}$}
+		{\True $\dfrac{1}{2}$}
+		{$\dfrac{\sqrt{3}}{4}$}}
+	{	\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=.8]
+			\def\a{3}
+			\def\b{2}
+			\def\g{30}
+			\def\h{3}
+			\path
+			(0:0) coordinate (B)--++(\g:\b) coordinate (A)--++(0:\a) coordinate (D)--++(\g-180:\b) coordinate (C)
+			\foreach \x in {A,B,C,D}{
+				($(\x)+(90:\h)$) coordinate (\x')}
+			;
+			\foreach \x/\g in {A/60,B/150,C/-30,D/60,A'/140,B'/150,C'/-30,D'/30}
+			\fill[black](\x) circle (1pt)
+			($(\x)+(\g:3mm)$) node{$\x$};
+			\draw (A) node[above left]{$O$};
+			\draw[dashed] (A')--(A)--(D)--(B)
+			(A)--(B)--(A');
+			\draw
+			(A')--(B')--(B)--(C)--(D)--(D')--(C')--(B')	(C)--(C') (A')--(D') (B')--(D')
+			;
+			\foreach \diem/\anh/\ts in {B/x/1.8,D/y/1.4,A'/z/1.4} \coordinate[label = below right:$\anh$] (\anh) at ($(A)!\ts!(\diem)$);
+			\draw[-stealth] (B)--(x); \draw[-stealth](D)--(y); \draw[-stealth](A')--(z);
+	\end{tikzpicture}}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\footnotesize,scale=1]
+				\def\a{3}
+				\def\b{2}
+				\def\g{30}
+				\def\h{3}
+				\path
+				(0:0) coordinate (B)--++(\g:\b) coordinate (A)--++(0:\a) coordinate (D)--++(\g-180:\b) coordinate (C)
+				\foreach \x in {A,B,C,D}{
+					($(\x)+(90:\h)$) coordinate (\x')}
+				;
+				\foreach \x/\g in {A/60,B/150,C/-30,D/60,A'/140,B'/150,C'/-30,D'/30}
+				\fill[black](\x) circle (1pt)
+				($(\x)+(\g:3mm)$) node{$\x$};
+				\draw (A) node[above left]{$O$};
+				\draw[dashed] (A)--(C) (A')--(A)--(D)--(B)
+				(A)--(B)--(A');
+				\draw (B')--(D')
+				(A')--(B')--(B)--(C)--(D)--(D')--(C')--(B')	(C)--(C') (A')--(D')
+				;
+				\foreach \diem/\anh/\ts in {B/x/1.8,D/y/1.4,A'/z/1.4} \coordinate[label = below right:$\anh$] (\anh) at ($(A)!\ts!(\diem)$);
+				\draw[-stealth] (B)--(x); \draw[-stealth](D)--(y); \draw[-stealth](A')--(z);
+			\end{tikzpicture}
+		\end{center}
+	Ta chọn hệ trục tọa độ $Oxyz$ như hình vẽ với $A \equiv O(0;0;0)$, $B(a;0;0)$, $C(a;a;0)$, $D(0;a;0)$, $A'(0;0;a)$, $B'(a;0;a)$, $C'(a;a;a)$, $D'(0;a;a)$.\\
+	Ta thấy $OC \perp\left(BB'D'D\right)$ và $\overrightarrow{OC}=(a;a;0)$ nên suy ra mặt phẳng $\left(BB' D'D\right)$ có một vectơ pháp tuyến là $\vec{n}=(1;1;0)$.\\
+	Đường thẳng $A'B$ có vectơ chỉ phương là $\overrightarrow{A'B}=(a;0;-a)$ ta chọn $\vec{u}=(1;0;-1)$.\\
+	Ta có  
+	$$\sin \alpha=\dfrac{\left| \vec{n} \cdot \vec{u}\right| }{\left| \vec{n}\right|  \cdot\left| \vec{u}\right| }=\dfrac{\left| 1 \cdot 1+1 \cdot 0+0 \cdot(-1)\right| }{\sqrt{1^2+1^2+0^2} \cdot \sqrt{1^2+0^2+(-1)^2}}=\dfrac{1}{2}.$$
+	}
+\end{ex}

@@ -1,0 +1,406 @@
+\section{Tích Phân}
+\subsection{Khái niệm tích phân}
+\subsubsection{Diện tích hình thang cong}
+\begin{center}
+		\begin{tikzpicture}[>=stealth]
+		%		\tkzInit[xmin=-0.5,ymin=-2.5,xmax=6.5,ymax=2.5] \tkzClip
+		\draw[->] (-0.5,0)--(5.3,0) node[below] {$x$} ;
+		\draw[->] (0,-.5)--(0,2.3) node[right] {$y$} ;
+		\draw (0,0) node[below left] {$O$};
+		%		\draw (1,0) ellipse (0.16 and 1);
+		%		\draw (4,0) ellipse (0.25 and 1.73);
+		%Nhánh trên
+		\draw[domain=1:4] 
+		plot(\x,{0.31*(\x)^3-2.28*(\x)^2+5.14*(\x)-2.17}) ;
+		%Nhánh dưới
+		%	\draw[domain=1:4]
+		%	plot(\x,{-0.31*(\x)^3+2.28*(\x)^2-5.14*(\x)+2.17}) ;
+		%Tô màu
+		\draw[pattern = north east lines,opacity=.3, line width = 1.2pt,draw=none] (1,1) plot[domain=1:4] (\x,{0.31*(\x)^3-2.28*(\x)^2+5.14*(\x)-2.17})--(4,0)--(1,0)--cycle;
+		
+		%Các yếu tố khác
+		\draw (1,0) node[below] {$a$};
+		\draw (4,0) node[below] {$b$};
+		\draw[dashed] (1,0)--(1,1);
+		\draw[dashed] (4,0)--(4,1.72);
+		\draw (2.5,1.7) node {$y=f(x)$} ;
+		\draw (2.5,0.7) node {$S$} ;
+		%	\draw[->] (5,0.25) arc (90:270:0.3);
+	\end{tikzpicture}
+\end{center}
+Nếu hàm số $f(x)$ liên tục và không âm trên đoạn $\left[a;b\right]$ thì diện tích $S$ của hình thang cong giới hạn bởi đồ thị $y=f(x)$, trục hoành và hai đường thẳng $x=a$, $x=b$ được tính bởi:
+$S=F(b)-F(a)$
+trong đó $F(x)$ là một nguyên hàm của $f(x)$ trên đoạn $\left[a;b\right]$.
+\subsubsection{Khái niệm tích phân}
+Cho hàm số $f(x)$ liên tục trên đoạn $\left[a;b\right]$. Nếu $F(x)$ là nguyên hàm của hàm số $f(x)$ trên đoạn $\left[a;b\right]$ thì hiệu số $F(b)-F(a)$ được gọi là tích phân từ $a$ đến $b$ của hàm số $f(x)$, kí hiệu $\displaystyle\int\limits_a^bf(x)\mathrm{d}x$.\\
+\begin{note}Chú ý:
+	\begin{itemize}
+\item Hiệu số $F(b)-F(a)$ còn được kí hiệu là $ F(x)\big|_a^b$.\\
+Vậy $\displaystyle\int\limits_a^bf(x)\mathrm{d}x= F(x)\big|_a^b=F(b)-F(a)$.
+\item Ta gọi $\displaystyle\int\limits_a^b{}$ là dấu tích phân, $a$ là cận dưới, $b$ là cận trên, $f(x)\mathrm{d}x$ là biểu thức dưới dấu tích phân và $f(x)$ là hàm số dưới dấu tích phân.
+\item Quy ước: $\displaystyle\int\limits_a^af(x)\mathrm{d}x=0$; $\displaystyle\int\limits_a^bf(x)\mathrm{d}x=-\displaystyle\int\limits_b^af(x)\mathrm{d}x$.
+\item Tích phân của hàm số $f$ từ $a$ đến $b$ chỉ phụ thuộc vào $f$ và các cận $a$, $b$ mà không phụ thuộc vào biến $x$ hay $t$, nghĩa là $\displaystyle\int\limits_a^bf(x)\mathrm{d}x=\displaystyle\int\limits_a^bf(t)\mathrm{d}t$.
+\item Ý nghĩa hình học của tích phân.\\
+\immini{
+Nếu hàm số $f(x)$ liên tục và không âm trên đoạn $\left[a;b\right]$ thì $\displaystyle\int\limits_a^bf(x)\mathrm{d}x$ là diện tích $S$ của hình thang cong giới hạn bởi đồ thị $y=f(x)$, trục hoành và hai đường thẳng $x=a$, $x=b$.
+$$S=\displaystyle\int\limits_a^bf(x)\mathrm{~d}x.$$}{\begin{tikzpicture}[>=stealth,scale=0.8]
+	%		\tkzInit[xmin=-0.5,ymin=-2.5,xmax=6.5,ymax=2.5] \tkzClip
+	\draw[->] (-0.5,0)--(5.3,0) node[below] {$x$} ;
+	\draw[->] (0,-.5)--(0,2.3) node[right] {$y$} ;
+	\draw (0,0) node[below left] {$O$};
+	%		\draw (1,0) ellipse (0.16 and 1);
+	%		\draw (4,0) ellipse (0.25 and 1.73);
+	%Nhánh trên
+	\draw[domain=1:4] 
+	plot(\x,{0.31*(\x)^3-2.28*(\x)^2+5.14*(\x)-2.17}) ;
+	%Nhánh dưới
+	%	\draw[domain=1:4]
+	%	plot(\x,{-0.31*(\x)^3+2.28*(\x)^2-5.14*(\x)+2.17}) ;
+	%Tô màu
+	\draw[pattern = north east lines,opacity=.3, line width = 1.2pt,draw=none] (1,1) plot[domain=1:4] (\x,{0.31*(\x)^3-2.28*(\x)^2+5.14*(\x)-2.17})--(4,0)--(1,0)--cycle;
+	
+	%Các yếu tố khác
+	\draw (1,0) node[below] {$a$};
+	\draw (4,0) node[below] {$b$};
+	\draw[dashed] (1,0)--(1,1);
+	\draw[dashed] (4,0)--(4,1.72);
+	\draw (2.5,1.7) node {$y=f(x)$} ;
+	\draw (2.5,0.7) node {$S$} ;
+	%	\draw[->] (5,0.25) arc (90:270:0.3);
+\end{tikzpicture}}
+\end{itemize}
+\end{note}
+\begin{nx}
+\begin{itemize}
+\item Nếu hàm số $f(x)$ có đạo hàm $f'(x)$ và $f'(x)$ liên tục trên đoạn $\left[a;b\right]$ thì\\
+$f(b)-f(a)=\displaystyle\int\limits_a^bf'(x)\mathrm{d}x$.
+\item Cho hàm số $f(x)$ liên tục trên đoạn $\left[a;b\right]$. Khi đó $\dfrac{1}{b-a}\displaystyle\int\limits_a^bf(x)\mathrm{d}x$ được gọi là giá trị trung bình của hàm số $f(x)$ trên đoạn $\left[a;b\right]$.
+\item Đạo hàm của quãng đường di chuyển của vật theo thời gian bằng tốc độ của chuyển động tại mọi thời điểm $v(t)=s'(t)$. Do đó, nếu biết tốc độ $v(t)$ tại mọi thời điểm $t\in\left[a;b\right]$ thì tính được quãng đường di chuyển trong khoảng thời gian từ $a$ đến $b$ theo công thức: $s=s(b)-s(a)=\displaystyle\int\limits_a^bv(t)\mathrm{d}t$.
+\end{itemize}
+\end{nx}
+\subsection{Tính chất của tích phân}
+Cho hai hàm số $f(x)$, $g(x)$ liên tục trên đoạn $\left[a;b\right]$. Khi đó:
+\begin{tc} $\displaystyle\int\limits_a^bkf(x)\mathrm{d}x=k\displaystyle\int\limits_a^bf(x)\mathrm{d}x$, với $k$ là hằng số.
+	\end{tc}
+\begin{tc} $\displaystyle\int\limits_a^b\left[f(x)+g(x)\right]\mathrm{~d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}+\displaystyle\int\limits_a^bg(x)\mathrm{~d}x$.\\
+$\displaystyle\int\limits_a^b\left[f(x)-g(x)\right]\mathrm{~d}x=\displaystyle\int\limits_a^bf(x)\mathrm{~d}x-\displaystyle\int\limits_a^bg(x)\mathrm{~d}x$.
+\end{tc}
+\begin{tc} $\displaystyle\int\limits_a^bf(x)\mathrm{~d}x=\displaystyle\int\limits_a^cf(x)\mathrm{~d}x+\displaystyle\int\limits_c^bf(x)\mathrm{~d}x$ với $c\in\left(a;b\right)$.
+	\end{tc}
+%\chude{TÍNH TÍCH PHÂN CỦA MỘT SỐ HÀM SỐ}
+\begin{dang}{}
+	TÍNH TÍCH PHÂN SỬ DỤNG BẢNG NGUYÊN HÀM SƠ CẤP
+	\end{dang}
+\Opensolutionfile{ans}[ans/ans-C4B2CD1]
+\begin{ex}%[2D4N2-2]%Câu 1
+Tích phân $ I=\displaystyle\int\limits_0^2(2x+1)\mathrm{~d}x$ bằng
+\choice
+{$ I=5$}
+{\True $ I=6$}
+{$ I=2$}
+{$ I=4$}
+\loigiai{
+Ta có $ I=\displaystyle\int\limits_0^2(2x+1)\mathrm{~d}x=\left(x^2+x\right)\big|_0^2=4+2=6$.}
+\end{ex}
+%
+\begin{ex}%[2D4H2-2]%Câu 2
+Tích phân $\displaystyle\int\limits_0^1\left(3x+1\right)\left(x+3\right)\mathrm{~d}x$ bằng
+\choice
+{$ 12$}
+{\True $ 9$}
+{$ 5$}
+{$ 6$}
+\loigiai{
+Ta có $\displaystyle\int\limits_0^1\left(3x+1\right)\left(x+3\right)\mathrm{~d}x=\displaystyle\int\limits_0^1\left(3x^2+10x+3\right)\mathrm{~d}x=\left(x^3+5x^2+3x\right)\big|_0^1=9$.\\
+Vậy $\displaystyle\int\limits_0^1\left(3x+1\right)\left(x+3\right)\mathrm{~d}x=9$.}
+\end{ex}
+%
+\begin{ex}%[2D4N2-2]%Câu 3
+Tính tích phân $ I=\displaystyle\int\limits_1^\mathrm{e}{\left(\dfrac{1}{x}-\dfrac{1}{x^2}\right)}\mathrm{~d}x$
+\choice
+{\True $I=\dfrac{1}{\mathrm{e}}$}
+{$I=\dfrac{1}{\mathrm{e}}+1$}
+{$I=1$}
+{$I=\mathrm{e}$}
+\loigiai{
+$ I=\displaystyle\int\limits_1^\mathrm{e}{\left(\dfrac{1}{x}-\dfrac{1}{x^2}\right)}\mathrm{~d}x=\left(\ln\left| x\right|+\dfrac{1}{x}\right)\Big|_1^\mathrm{e}=\dfrac{1}{\mathrm{e}}$.}
+\end{ex}
+
+\begin{ex}%[2D4N2-2]%Câu 4
+Biết $\displaystyle\int\limits_1^3\dfrac{x+2}{x}\mathrm{~d}x=a+b\ln c,$ với $a$, $b$, $c\in\mathbb{Z}$, $c<9.$ Tính tổng $S=a+b+c.$
+\choice
+{\True $ S=7$}
+{$ S=5$}
+{$ S=8$}
+{$ S=6$}
+\loigiai{
+Ta có $\displaystyle\int\limits_1^3\dfrac{x+2}{x}\mathrm{~d}x=\displaystyle\int\limits_1^3\left(1+\dfrac{2}{x}\right)\mathrm{~d}x=\displaystyle\int\limits_1^3\mathrm{d}x+\displaystyle\int\limits_1^3\dfrac{2}{x}\mathrm{d}x=2+2\ln\left| x\right|\big|_1^3=2+2\ln 3.$\\
+Do đó $ a=2$, $b=2$, $c=3\Rightarrow S=7.$}
+\end{ex}
+%
+\begin{ex}%[2D4H2-4]%Câu 5
+Tích phân $\displaystyle\int\limits_0^1\mathrm{e}^{3x+1}\mathrm{~d}x$ bằng
+\choice
+{$\dfrac{1}{3}\left(\mathrm{e}^4+\mathrm{e}\right)$}
+{$\mathrm{e}^3-\mathrm{e}$}
+{\True $\dfrac{1}{3}\left(\mathrm{e}^4-\mathrm{e}\right)$}
+{$\mathrm{e}^4-\mathrm{e}$}
+\loigiai{
+$\displaystyle\int\limits_0^1\mathrm{e}^{3x+1}\mathrm{~d}x=\dfrac{1}{3}\displaystyle\int\limits_0^1\mathrm{e}^{3x+1}\mathrm{~d}\left(3x+1\right)=\dfrac{1}{3}{\mathrm{e}^{3x+1}}\big|_0^1=\dfrac{1}{3}\left(\mathrm{e}^4-\mathrm{e}\right)$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-4]%Câu 6
+Biết $\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^x}{2^x}\mathrm{~d}x=\dfrac{\mathrm{e-1}}{a-\ln b }$, $\left(a,b\in\mathbb{Z}\right)$. Khi đó giá trị của $ P=a+b$ là
+\choice
+{$ P=-3$}
+{\True $ P=6$}
+{$ P=-1$}
+{$ P=3$}
+\loigiai{
+$ I=\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^x}{2^x}\mathrm{~d}x=\displaystyle\int\limits_0^1\left(\dfrac{\mathrm{e}}{2}\right)^x\mathrm{~d}x=\left[\left(\dfrac{\mathrm{e}}{2}\right)^x\cdot\dfrac{1}{1-\ln2}\right]\Big|_0^1=\dfrac{\mathrm{e}-1}{2-\ln 4}$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-4]%Câu 7
+Giá trị của $ I=\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x}-4}{\mathrm{e}^x+2}\mathrm{~d}x$ bằng
+\choice
+{$ I=2\left(\mathrm{e}+3\right)$}
+{$ I=\dfrac{1}{2}\left(\mathrm{e}+3\right)$}
+{\True $ I=\mathrm{e}-3$}
+{$ I=2\left(\mathrm{e}-3\right)$}
+\loigiai{
+$ I=\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x}-4}{\mathrm{e}^x+2}\mathrm{~d}x=\displaystyle\int\limits_0^1\dfrac{\left(\mathrm{e}^x-2\right)\left(\mathrm{e}^x+2\right)}{\mathrm{e}^x+2}\mathrm{~d}x=\displaystyle\int\limits_0^1\left(\mathrm{e}^x-2\right)\mathrm{~d}x=\left(\mathrm{e}^x-2x\right)\big|_0^1=e-3$.}
+\end{ex}
+%
+\begin{ex}%[2D4H2-4]%Câu 8
+Biết $\displaystyle\int\limits_1^2\mathrm{e}^x\left(1-\dfrac{\mathrm{e}^{-x}}{x}\right)\mathrm{d}x=\mathrm{e}^2+a\cdot \mathrm{e}+b\ln 2$, $\left(a,b\in\mathbb{Z}\right)$. Khi đó giá trị của $ P=\dfrac{a+b}{a\cdot b}$ là
+\choice
+{$ P=-3$}
+{$ P=1$}
+{$ P=-1$}
+{\True $ P=-2$}
+\loigiai{
+$ I=\displaystyle\int\limits_1^2\mathrm{e}^x\left(1-\dfrac{\mathrm{e}^{-x}}{x}\right)\mathrm{~d}x=\displaystyle\int\limits_1^2\left(\mathrm{e}^x-\dfrac{1}{x}\right)\mathrm{~d}x=\left(\mathrm{e}^x-\ln\left| x\right|\right)\big|_1^2=\mathrm{e}^2-\mathrm{e}-\ln 2$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-4]%Câu 9
+Biết $ I=\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x-1}-\mathrm{e}^{-3x}+1}{\mathrm{e}^x}\mathrm{~d}x=\dfrac{1}{a}+b$, $\left(a,b\in\mathbb{R}\right)$. Khi đó giá trị của $ P=\dfrac{a+b}{a\cdot b}$ là
+\choice
+{$ P=\mathrm{e}^4-1$}
+{$ P=\dfrac{\mathrm{e}^4-1}{\mathrm{e}^2}$}
+{$ P=\dfrac{\mathrm{e}^4-1}{\mathrm{e}^4}$}
+{\True $ P=\dfrac{1-\mathrm{e}^4}{\mathrm{e}^4}$}
+\loigiai{
+\allowdisplaybreaks
+\begin{eqnarray*} I&=&\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x-1}-\mathrm{e}^{-3x}+1}{\mathrm{e}^x}\mathrm{~d}x=\displaystyle\int\limits_0^1\left(\mathrm{e}^{x-1}-\mathrm{e}^{-4x}+\mathrm{e}^{-x}\right)\mathrm{~d}x\\
+	&=&\left(\mathrm{e}^{x-1}-\dfrac{\mathrm{e}^{-4x}}{-4}+\dfrac{\mathrm{e}^{-x}}{-1}\right)\Big|_0^1=\dfrac{1-\mathrm{e}^4}{\mathrm{e}^4}=\dfrac{1}{\mathrm{e}^4}-1
+	\end{eqnarray*}
+$\Rightarrow P=\dfrac{a+b}{a\cdot b}=\dfrac{1-\mathrm{e}^4}{\mathrm{e}^4}$.}
+\end{ex}
+%
+\begin{ex}%[2D4N2-3]%Câu 10
+Giá trị của $\displaystyle\int\limits_0^{\frac{\pi}{2}}{\sin x\mathrm{~d}x}$ bằng
+\choice
+{0}
+{\True 1}
+{$-1$}
+{$\dfrac{\pi}{2}$}
+\loigiai{
+Tính được $\displaystyle\int\limits_0^{\frac{\pi}{2}}{\sin x\mathrm{~d}x}=-\cos x\Big|_0^{\frac{\pi}{2}}=1$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-3]%Câu 11
+Biết $\displaystyle\int\limits_{\tfrac{\pi}{3}}^{\tfrac{\pi}{2}}{\left(2\sin x+3\cos x+x\right)\mathrm{~d}x}=\dfrac{a+b\sqrt{3}}{2}+\dfrac{\pi^2}{c}$, $\left(a,b,c\in\mathbb{Z}\right)$. Khi đó giá trị của $ P=a+2b+3c$ là
+\choice
+{$ P=45$}
+{\True $ P=60$}
+{$ P=65$}
+{$ P=70$}
+\loigiai{
+$\displaystyle\int\limits_{\tfrac{\pi}{3}}^{\tfrac{\pi}{2}}\left(2\sin x+3\cos x+x\right)\mathrm{~d}x=\left(-2\cos x+3\sin x+\dfrac{1}{2}{x^2}\right)\Big|_{\tfrac{\pi}{3}}^{\tfrac{\pi}{2}}=\dfrac{12-3\sqrt{3}}{2}+\dfrac{\pi^2}{18}$\\
+$\Rightarrow P=a+2b+3c=60$.
+}
+\end{ex}
+
+\begin{ex}%[2D4H2-3]%Câu 12
+Biết $\displaystyle\int\limits_{\tfrac{\pi}{4}}^{\tfrac{\pi}{3}}{3\tan^2x\mathrm{~d}x}=a\sqrt{3}+b+\dfrac{\pi}{c}$, $\left(a,b,c\in\mathbb{Z}\right)$. Khi đó giá trị của $ P=a+b+c$ là
+\choice
+{$ P=6$}
+{\True $ P=-4$}
+{$ P=4$}
+{$ P=-6$}
+\loigiai{
+$\displaystyle\int\limits_{\tfrac{\pi}{4}}^{\tfrac{\pi}{3}}{3\tan^2x\mathrm{~d}x}=3\displaystyle\int\limits_{\tfrac{\pi}{4}}^{\tfrac{\pi}{3}}{\left(\dfrac{1}{\cos^2x}-1\right)\mathrm{~d}x= 3\left(\tan x-x\right)\big|_{\tfrac{\pi}{4}}^{\tfrac{\pi}{3}}=3\sqrt{3}-3-\dfrac{\pi}{4}}$\\
+$\Rightarrow P=a+b+c=3-3-4=-4$.}
+\end{ex}
+%
+\begin{ex}%[2D4H2-3]%Câu 13
+Biết $\displaystyle\int\limits_{\tfrac{\pi}{6}}^{\tfrac{\pi}{4}}{\left(2\cot^2x+5\right)\mathrm{~d}x}=\dfrac{\pi}{a}+b\sqrt{3}+c$, $\left(a,b,c\in\mathbb{Z}\right)$. Khi đó giá trị của \break $ P=a+b+c$ là
+\choice
+{$ P=6$}
+{$ P=-4$}
+{\True $ P=4$}
+{$ P=-6$}
+\loigiai{\allowdisplaybreaks
+	\begin{eqnarray*}
+\displaystyle\int\limits_{\tfrac{\pi}{6}}^{\tfrac{\pi}{4}}{\left(2\cot^2x+5\right)\mathrm{~d}x}&=&\displaystyle\int\limits_{\tfrac{\pi}{6}}^{\tfrac{\pi}{4}}{\left(2\left(\dfrac{1}{\sin^2x}-1\right)+5\right)\mathrm{~d}x}\\
+&=&\displaystyle\int\limits_{\dfrac{\pi}{6}}^{\dfrac{\pi}{4}}{\left(3-\dfrac{-2}{\sin^2x}\right)\mathrm{~d}x=\left(3x-\cot x\right)\Big|_{\tfrac{\pi}{6}}^{\tfrac{\pi}{4}}=\dfrac{\pi}{4}+\sqrt{3}-1}.
+\end{eqnarray*}}
+\end{ex}
+
+\begin{ex}%[2D4H2-3]%Câu 14
+Biết $\displaystyle\int\limits_0^{\tfrac{\pi}{2}}\sin^2\dfrac{x}{4}{\cos^2}\dfrac{x}{4}\mathrm{~d}x=\dfrac{\pi}{c}+\dfrac{a}{b}$ với $a$, $b\in\mathbb{Z}$ và $\dfrac{a}{b}$ là phân số tối giản. Khi đó giá trị của $ P=a+b+c$ là
+\choice
+{$ P=17$}
+{$ P=16$}
+{$ P=32$}
+{\True $ P=49$}
+\loigiai{\allowdisplaybreaks
+	\begin{eqnarray*}
+\displaystyle\int\limits_0^{\tfrac{\pi}{2}}{\sin^2\dfrac{x}{4}{\cos^2}\dfrac{x}{4}\mathrm{~d}x}&=&\dfrac{1}{4}\displaystyle\int\limits_0^{\tfrac{\pi}{2}}\sin^2\dfrac{x}{2}\mathrm{~d}x\\
+	&=&\dfrac{1}{4}\displaystyle\int\limits_0^{\tfrac{\pi}{2}}\left(\dfrac{1-\cos x}{2}\right)\mathrm{~d}x\\
+		&=&\dfrac{1}{8}\left(x-\dfrac{1}{4}\sin x\right)\Big|_0^{\tfrac{\pi}{2}}=\dfrac{\pi}{16}+\dfrac{1}{32}.
+\end{eqnarray*}
+$\Rightarrow P=a+b+c=1+32+16=49$.}
+\end{ex}
+\TNTF
+\begin{ex}%[2D4H2-1]%Câu 15
+Cho hàm số $y=f(x)$ liên tục trên $\left[a;b\right]$. Các mệnh đề sau đây đúng hay sai?
+\choiceTF
+{$\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}=\displaystyle\int\limits_b^a{f(x)\mathrm{~d}x}$}
+{\True $\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}=-\displaystyle\int\limits_b^a{f(x)\mathrm{~d}x}$}
+{$\displaystyle\int\limits_a^bf(x)\mathrm{~d}x=2\displaystyle\int\limits_a^bf(x)\mathrm{~d}\left(2x\right)$}
+{\True $\displaystyle\int\limits_a^a{2024f(x)\mathrm{~d}x=0}$}
+\loigiai{
+\begin{itemchoice}
+	\itemch Sai. Vì
+$\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}=-\displaystyle\int\limits_b^a{f(x)\mathrm{~d}x}$.
+\itemch Đúng. Vì $\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}=-\displaystyle\int\limits_b^a{f(x)\mathrm{~d}x}$.
+\itemch Sai. Vì $2\displaystyle\int\limits_a^bf(x)\mathrm{~d}\left(2x\right)=4\displaystyle\int\limits_a^bf(x)\mathrm{~d}\left(x\right)$.
+\itemch Đúng. 
+$\displaystyle\int\limits_a^a2024f(x)\mathrm{~d}x=0.$
+\end{itemchoice}
+}
+\end{ex}
+%
+\begin{ex}%[2D4H2-1]%Câu 16
+Cho hàm số $y=f(x)$, $y=g(x)$ liên tục trên $\left[a;b\right]$. Các mệnh đề sau đây đúng hay sai?
+\choiceTF
+{\True $\displaystyle\int\limits_a^b{\left[f(x)+g(x)\right]\mathrm{~d}x}=\displaystyle\int\limits_a^b{f(x)}\mathrm{~d}x+\displaystyle\int\limits_a^b{g(x)\mathrm{~d}x}$}
+{$\displaystyle\int\limits_a^b{f(x)\cdot g(x)\mathrm{~d}x}=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}\cdot\displaystyle\int\limits_a^b{g(x)\mathrm{~d}x}$}
+{\True $\displaystyle\int\limits_a^b{kf(x)\mathrm{~d}x=k\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}}$}
+{$\displaystyle\int\limits_a^b{\dfrac{f(x)}{g(x)}\mathrm{~d}x}=\dfrac{\displaystyle\int\limits_a^bf(x)\mathrm{~d}x}{\displaystyle\int\limits_a^bg(x)\mathrm{~d}x}$}
+\loigiai{
+\begin{itemchoice}
+	\itemch Đúng.
+$\displaystyle\int\limits_a^b{\left[f(x)+g(x)\right]\mathrm{~d}x}=\displaystyle\int\limits_a^b{f(x)}\mathrm{~d}x+\displaystyle\int\limits_a^b{g(x)\mathrm{~d}x}$.
+\itemch Sai. Vì không có tính chất.
+\itemch Đúng.
+$\displaystyle\int\limits_a^b{kf(x)\mathrm{~d}x=k\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}}$.
+\itemch Sai.
+\end{itemchoice}}
+\end{ex}
+%
+\begin{ex}%[2D4H2-1]%Câu 17
+Cho hàm số $y=f(x)$ liên tục trên $\mathbb{R}$ và $a$, $b$, $c\in\mathbb{R}$ thỏa mãn $a<b<c$. Các mệnh đề sau đây đúng hay sai?
+\choiceTF
+{$\displaystyle\int\limits_a^c{f(x)\mathrm{~d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}}\cdot \displaystyle\int\limits_b^c{f(x)\mathrm{~d}x}$}
+{\True $\displaystyle\int\limits_a^c{f(x)\mathrm{~d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}}+\displaystyle\int\limits_b^c{f(x)\mathrm{~d}x}$}
+{$\displaystyle\int\limits_a^c{f(x)\mathrm{~d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}}-\displaystyle\int\limits_b^c{f(x)\mathrm{~d}x}$}
+{$\displaystyle\int\limits_a^c{f(x)\mathrm{~d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}}+\displaystyle\int\limits_c^b{f(x)\mathrm{~d}x}$}
+\loigiai{\begin{itemchoice}
+\itemch Sai. Không đúng với lý thuyết.
+\itemch Đúng. $\displaystyle\int\limits_a^c{f(x)\mathrm{~d}x=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x}}+\displaystyle\int\limits_b^c{f(x)\mathrm{~d}x}$.
+\itemch Sai.
+\itemch Sai.
+\end{itemchoice}}
+\end{ex}
+%
+\begin{ex}%[2D4H2-1]%Câu 18
+Cho $f(x)$, $g(x)$ là hai hàm số liên tục trên $\mathbb{R}$. Các mệnh đề sau đây đúng hay sai?
+\choiceTF
+{\True $\displaystyle\int\limits_a^bf(x)\mathrm{~d}x=\displaystyle\int\limits_a^bf(y)\mathrm{~d}y$}
+{\True $\displaystyle\int\limits_a^b{\left(f(x)+g(x)\right)\mathrm{~d}x}=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x+\displaystyle\int\limits_a^b{g(x)\mathrm{~d}x}}$}
+{$\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x=\displaystyle\int\limits_a^b{f(t)\mathrm{~d}x}}$}
+{$\displaystyle\int\limits_a^b{\left(f(x)g(x)\right)\mathrm{~d}x}=\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x\displaystyle\int\limits_a^b{g(x)\mathrm{~d}x}}$}
+\loigiai{
+\begin{itemchoice}
+	\itemch Đúng. $\displaystyle\int\limits_a^b{f(x)\mathrm{~d}x=\displaystyle\int\limits_a^b{f(y)\mathrm{~d}}y}$
+	\itemch Đúng. $\displaystyle\int\limits_a^b{\left(f(x)+g(x)\right)\mathrm{~d}x}=\displaystyle\int\limits_a^bf(x)\mathrm{~d}x+\displaystyle\int\limits_a^b g(x)\mathrm{~d}x$.
+	\itemch Sai. Không đúng với lý thuyết.
+	\itemch Sai. Không đúng với lý thuyết.
+\end{itemchoice}
+}
+\end{ex}
+
+\begin{ex}%[2D4H2-1]%Câu 19
+Các mệnh đề sau đây đúng hay sai?
+\choiceTF
+{\True $\displaystyle\int\limits_{-2024}^{2024}\mathrm{~d}x=4048$}
+{$\displaystyle\int\limits_a^bf_1(x)\cdot f_2(x)\mathrm{~d}x=\displaystyle\int\limits_a^bf_1(x)\mathrm{~d}x\cdot\displaystyle\int\limits_a^bf_2(x)\mathrm{~d}x$}
+{\True Cho hàm số $f(x)$ liên tục trên đoạn $\left[a;b\right]$. Khi đó $\dfrac{1}{b-a}\displaystyle\int\limits_a^bf(x)\mathrm{~d}x$ được gọi là giá trị trung bình của hàm số $f(x)$ trên đoạn $\left[a;b\right]$}
+{\True Nếu hàm số $f(x)$ có đạo hàm $f'(x)$ và $f'(x)$ liên tục trên đoạn $\left[a;b\right]$ thì $f(b)-f(a)=\displaystyle\int\limits_a^bf'(x)\mathrm{~d}x$}
+\loigiai{\begin{itemchoice}
+		\itemch Đúng.
+		\itemch Sai. 
+		\itemch Đúng.
+		\itemch Đúng.
+	\end{itemchoice}
+	
+}
+\end{ex}
+%
+\begin{ex}%[2D4H2-1]%Câu 20
+Cho hàm $ f(x)$ là hàm liên tục trên đoạn $\left[a;b\right]$ với $ a<b$ và $F(x)$ là một nguyên hàm của hàm $ f(x)$ trên $\left[a;b\right]$. Các mệnh đề sau đây đúng hay sai?
+\choiceTF
+{\True $\displaystyle\int\limits_a^b{kf(x)\mathrm{~d}x}=k\left[F(b)-F(a)\right]$}
+{$\displaystyle\int\limits_b^af(x)\mathrm{~d}x=F(b)-F(a)$}
+{Diện tích $S$ của hình phẳng giới hạn bởi đường thẳng $x=a$; $x=b$; đồ thị của hàm số $ y=f(x)$ và trục hoành được tính theo công thức $ S=F(b)-F(a)$}
+{$\displaystyle\int\limits_a^b{f\left(2x+3\right)\mathrm{~d}x}=F\left(2x+3\right)\big|_a^b$}
+\loigiai{
+\begin{itemchoice}
+	\itemch Đúng.
+	\itemch Sai. $\displaystyle\int\limits_b^a{f(x)\mathrm{~d}x}=F(a)-F(b)$. 
+	\itemch Sai. Diện tích $S$ của hình phẳng giới hạn bởi đường thẳng $x=a$; $x=b$; đồ thị của hàm số $ y=f(x)$ và trục hoành được tính theo công thức $ S=|F(b)-F(a)|$.
+	\itemch Sai. $\displaystyle\int\limits_a^bf\left(2x+3\right)\mathrm{~d}x=\dfrac12 F\left(2x+3\right)\big|_a^b$
+\end{itemchoice}
+}
+\end{ex}
+%
+\begin{ex}%[2D4H2-4]%Câu 21
+Các mệnh đề sau đây đúng hay sai.
+\choiceTF
+{\True $\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x}-4}{\mathrm{e}^x+2}\mathrm{~d}x=\mathrm{e}-3$}
+{$\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^x}{2^x}\mathrm{~d}x=\dfrac{\mathrm{e}}{2}+1$}
+{\True $\displaystyle\int\limits_1^2\mathrm{e}^x\left(1-\dfrac{\mathrm{e}^{-x}}{x}\right)\mathrm{~d}x=\mathrm{e}^2-\mathrm{e}-\ln 2$}
+{$\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x-1}-\mathrm{e}^{-3x}+1}{\mathrm{e}^x}\mathrm{~d}x=\mathrm{e}^4-1$}
+\loigiai{\begin{itemchoice}
+		\itemch Đúng. \allowdisplaybreaks
+		\begin{eqnarray*} \displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x}-4}{\mathrm{e}^x+2}\mathrm{~d}x&=&\displaystyle\int\limits_0^1\dfrac{\left(\mathrm{e}^x-2\right)\left(\mathrm{e}^x+2\right)}{\mathrm{e}^x+2}\mathrm{~d}x\\
+			&=&\displaystyle\int\limits_0^1\left(\mathrm{e}^x-2\right)\mathrm{~d}x=\left(\mathrm{e}^x-2x\right)\big|_0^1=\mathrm{e}-3.
+				\end{eqnarray*}
+		\itemch Sai.  $\displaystyle\int\limits_0^1\dfrac{\mathrm{e}^x}{2^x}\mathrm{~d}x=\displaystyle\int\limits_0^1\left(\dfrac{\mathrm{e}}{2}\right)^x\mathrm{~d}x=\left[\left(\dfrac{\mathrm{e}}{2}\right)^x\right]\Big|_0^1=\dfrac{\mathrm{e}}{2}-1$.
+		\itemch Đúng. $\displaystyle\int\limits_1^2\mathrm{e}^x\left(1-\dfrac{\mathrm{e}^{-x}}{x}\right)\mathrm{~d}x=\displaystyle\int\limits_1^2\left(\mathrm{e}^x-\dfrac{1}{x}\right)\mathrm{~d}x=\left(\mathrm{e}^x-\ln\left| x\right|\right)\big|_1^2=\mathrm{e}^2-\mathrm{e}-\ln 2$.
+		\itemch Sai.\allowdisplaybreaks
+		\begin{eqnarray*} \displaystyle\int\limits_0^1\dfrac{\mathrm{e}^{2x-1}-\mathrm{e}^{-3x}+1}{\mathrm{e}^x}\mathrm{~d}x&=&\displaystyle\int\limits_0^1\left(\mathrm{e}^{x-1}-\mathrm{e}^{-4x}+\mathrm{e}^{-x}\right)\mathrm{~d}x\\
+			&=&\left(\mathrm{e}^{x-1}-\mathrm{e}^{-4x}+\mathrm{e}^{-x}\right)\big|_0^1=\dfrac{1-\mathrm{e}^4}{\mathrm{e}^4}=\mathrm{e}^{-4}-1.
+			\end{eqnarray*}
+	\end{itemchoice}
+}
+\end{ex}
+\TNSA
+\begin{ex}%[2D4H2-2]%Câu 22
+Với $a$, $b$ là các tham số thực. Tích phân $$I=\displaystyle\int\limits_0^b\left(3x^2-2ax-1\right)\mathrm{~d}x=b^t-b^ya+zb.$$ Tính $t+y+z$.
+\shortans{$4$}
+\loigiai{
+Ta có $\displaystyle\int\limits_0^b{\left(3x^2-2ax-1\right)\mathrm{~d}x}=\left(x^3-a{x^2}-x\right)\big|_0^b=b^3-a{b^2}-b$. \\
+Suy ra $t=3$, $y=2$, $z=-1$ nên $t+y+z=4$.}
+\end{ex}
+
+\begin{ex}%[2D4H2-2]%Câu 23
+Cho $\displaystyle\int\limits_0^m{\left(3x^2-2x+1\right)}\mathrm{~d}x=6$. Tính giá trị của tham số $m$.
+\shortans{$2$}
+\loigiai{
+Ta có $\displaystyle\int\limits_0^m{\left(3x^2-2x+1\right)}\mathrm{~d}x=6\Leftrightarrow\left.\left(x^3-x^2+x\right)\right|_0^m=6\Leftrightarrow{m^3}-m^2+m-6=0\Leftrightarrow m=2$.}
+\end{ex}
+\Closesolutionfile{ans}
+
