@@ -1,0 +1,609 @@
+\subsection{PHÂN LOẠI, PHƯƠNG PHÁP GIẢI TOÁN}
+\begin{dang}{Chứng minh hai mặt phẳng song song}
+\begin{enumerate}[\iconMT]
+	\item \indam{Phương pháp:} 
+	\immini{Chứng minh trên mặt phẳng này có hai đường thẳng cắt nhau cùng song song với mặt phẳng còn lại.
+		$$\heva{&a \text{ cắt } b\\&a \subset (\alpha),\,b\subset (\alpha)\\&a\parallel(\beta),\, b\parallel (\beta)}\quad\Rightarrow (\alpha) \parallel (\beta).$$
+
+}{
+\begin{tikzpicture}[scale=0.4]
+\tkzDefPoints{0/0/A, 9/0/B, 12/2.5/C}
+\coordinate (A1) at ($(A)+(0,3)$);
+\coordinate (B1) at ($(B)+(0,3)$);
+\coordinate (C1) at ($(C)+(0,3)$);
+\coordinate (D) at ($(A)-(B)+(C)$);
+\coordinate (D1) at ($(A1)-(B1)+(C1)$);
+\tkzDefPoints{2/3.3/a1, 9/5/a2, 3/5/b1, 8/3.3/b2}
+\tkzDrawSegments(a1,a2 b1,b2 A,B B,C C,D D,A A1,B1 B1,C1 C1,D1 D1,A1)
+\tkzDefPoint[label=above right:$a$](2.5,3.5){a}
+\tkzDefPoint[label=right:$b$](4,5){b}
+\tkzMarkAngles[size=1.6cm,arc=l](B,A,D)
+\tkzMarkAngles[size=1.6cm,arc=l](B1,A1,D1)
+\tkzLabelAngles[pos=1,rotate=30](B1,A1,D1){\scriptsize$\alpha$}
+\tkzLabelAngles[pos=1,rotate=30](B,A,D){\scriptsize$\beta$}
+%	\draw pic[draw,"$\beta$",  angle radius=1cm]{angle=B--A--D} pic[draw,"$\alpha$", angle radius=1cm]{angle=B1--A1--D1};
+\end{tikzpicture}}
+	\item \indam{Chú ý:} Hai mặt phẳng phân biệt cùng song song với mặt phẳng thứ ba thì song song nhau.
+\end{enumerate}
+\end{dang}
+
+\begin{vd}
+	Cho hình chóp $S.ABCD$ có đáy là hình bình hành tâm $O$. Gọi $M$, $N$, $P$ lần lượt là trung điểm của $SA$, $SD$ và $SB$.
+	\begin{enumerate}
+		\item Chứng minh rằng $(MNP)\parallel (ABCD)$.
+		\item Chứng minh rằng $(OMN)\parallel (SBC)$.
+	\end{enumerate}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.8]
+				\tkzDefPoints{-2/3/A, 0/0/B, 6/0/C, 3.4/7/S}
+				\coordinate (D) at ($(C)-(B)+(A)$);
+				\tkzInterLL(A,C)(B,D)\tkzGetPoint{O}
+				\tkzDefMidPoint(S,A)\tkzGetPoint{M}
+				\tkzDefMidPoint(S,D)\tkzGetPoint{N}
+				\tkzDefMidPoint(S,B)\tkzGetPoint{P}
+				%\tkzDefPointBy[homothety=center N ratio 0.25](M)\tkzGetPoint{H}
+				\tkzDrawSegments(A,B B,C S,A S,B S,C M,P)
+				\tkzDrawSegments[dashed](A,D C,D A,C N,P B,D S,D M,N O,M O,N)
+				\tkzDrawPoints(A,B,C,D,O,S,M,N,P)
+				\tkzLabelPoints[above left](A,M)
+				\tkzLabelPoints[below left](B)
+				\tkzLabelPoints[below right](C,P)
+				\tkzLabelPoints[right](D,N,D)
+				\tkzLabelPoints[below](O)
+				\tkzLabelPoints[above](S)
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}
+			\item Chứng minh $(MNP)\parallel (ABCD)$.
+			
+			Ta có
+			
+			$\begin{cases}MN\parallel AD,\text{ (do $MN$ là đường trung bình của $\Delta SAD$)}\\AD\subset (ABCD).\end{cases}$
+			Suy ra  $MN\parallel (ABCD).$
+			
+			Ta lại có
+			
+			$\begin{cases}NP\parallel AB,\text{ (do $NP$ là đường trung bình của $\Delta SAB$)}\\AB\subset (ABCD).\end{cases}$
+			Suy ra  $NP\parallel (ABCD).$
+			
+			Mặt khác, $MN,NP\subset (ABCD)$.
+			
+			Vậy $(MNP)\parallel (ABCD)$.
+			\item Chứng minh $(OMN)\parallel (SBC)$.
+			
+			Ta có $MN\parallel AD$, ($MN$ là đường trung bình của $\Delta SAD$) và $AD\parallel BC$, (do $ABCD$ là hình bình hành) nên $MN\parallel BC$.
+			
+			Mà $BC\subset (SBC)$ nên $MN\parallel (SBC)$.
+			
+			Ta lại có $OM\parallel SC$, (do $OM$ là đường trung bình của $\Delta SAC$).
+			
+			Mà $SC\subset (SBC)$ nên $OM\parallel (SBC)$.
+			
+			Mặt khác $(MN,OM\subset (OMN)$.
+			
+			Vậy $(OMN)\parallel (SBC)$.
+		\end{enumerate}
+	}
+\end{vd}
+
+\begin{vd}
+	Cho hình chóp $S.ABCD$ với đáy $ABCD$ là hình thang mà $AD\parallel BC$ và $AD=2BC$. Gọi $M$, $N$ lần lượt là trung điểm của $SA$ và $AD$. Chứng minh: $(BMN)\parallel (SCD)$.
+	\loigiai{
+		\immini
+		{
+			Vì $N$ là trung điểm của $AD$ nên $NA=ND=\dfrac{AD}{2}=BC$.\\
+			Tứ giác $NBCD$ có $ND=BC$ và $ND\parallel BC$ nên $NBCD$ là hình bình hành, suy ra $NB\parallel CD\Rightarrow NB\parallel (SCD)$.\\
+			Tam giác $SAD$ có $M$, $N$ lần lượt là trung điểm của $AS$ và $AD$ nên $MN$ là đường trung bình của $\triangle ADS$, suy ra $MN\parallel SD\Rightarrow MN\parallel (SCD)$.\\
+			Từ $\heva{& MN\parallel (SCD),\text{ }MN\subset (BMN) \\ & BN\parallel (SCD), \text{ }BN\subset (BMN)}\Rightarrow (BMN)\parallel (SCD).$
+		}
+		{
+			\begin{tikzpicture}[line join = round, line cap = round,>=stealth,font=\footnotesize,scale=0.6]
+			\tkzDefPoints{0/0/A,8/0/D,1.5/-2/B,5.5/-2/C,6/5/S}
+			\tkzDefMidPoint(A,D)\tkzGetPoint{N}
+			\tkzDefMidPoint(A,S)\tkzGetPoint{M}
+			\tkzDrawSegments[dashed](A,D B,N M,N)
+			\tkzDrawSegments(S,A S,B S,C S,D A,B B,C C,D B,M)
+			\tkzDrawPoints[fill=black](A,B,C,D,S,M,N)
+			\tkzLabelPoints[above](S,M)
+			\tkzLabelPoints[below](B,C,N)
+			\tkzLabelPoints[left](A)
+			\tkzLabelPoints[right](D)
+			\end{tikzpicture}
+		}
+	}
+\end{vd}
+
+\begin{vd}
+	Cho hai hình bình hành $ABCD$ và $ABEF$ có chung cạnh $AB$ và không đồng phẳng. Gọi $I$, $J$, $K$ lần lượt là trung điểm $AB$, $CD$, $EF$. Chứng minh
+	\begin{listEX}[2]
+		\item $(ADF)\parallel (BCE)$.
+		\item $(DIK)\parallel (JBE)$.
+	\end{listEX}
+	\loigiai{	\immini{\begin{listEX}
+				\item Ta có $AD\parallel BC$, suy ra $AD\parallel (BCE)$. Tương tự $AF\parallel (BCE)$.\\
+				Khi đó $(ADF)\parallel (BCE)$.
+				\item Trong hình bình hành $ABCD$ có $I$, $J$ lần lượt là trung điểm của $AB$ và $CD$ nên $BI=DJ$. Do đó $IBJD$ là hình bình hành. Suy ra $DI\parallel BJ$ nên $DI\parallel (JBE)$. \\
+				Trong hình bình hành $ABEF$ có $I$, $K$ lần lượt là trung điểm của $AB$ và $EF$ nên $IK\parallel EF$, suy ra $IK\parallel (JBE)$. \\
+				Vậy $(DIK)\parallel (JBE)$.
+		\end{listEX}}{
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\clip(-4.6,-1.8) rectangle (5.4,4.5);
+			\tkzDefPoints{2/-1/C,-1/4/F,4/1/B,-2/1/A,-4/-1/D,5/4/E}
+			\tkzDefMidPoint(A,C)
+			\tkzGetPoint{O}
+			\tkzDefMidPoint(B,A)
+			\tkzGetPoint{I}
+			\tkzDefMidPoint(C,D)
+			\tkzGetPoint{J}
+			\tkzDefMidPoint(E,F)
+			\tkzGetPoint{K}
+			%\tkzDefMidPoint(O,M) \tkzGetPoint{I}
+			\tkzDrawSegments(D,C C,B B,E E,F D,F D,K J,E)
+			\tkzDrawSegments[dashed](A,F A,B A,D D,I I,K B,J)
+			\tkzDrawPoints(A,B,C,D,E,F,I,J,K)
+			%	\tkzLabelPoint[above right](M){$M$}
+			\tkzLabelPoint[above](K){$K$}
+			\tkzLabelPoint[below](J){$J$}
+			\tkzLabelPoint[above left](I){$I$}
+			\tkzLabelPoint[above](F){$F$}
+			\tkzLabelPoint[left](A){$A$}
+			\tkzLabelPoint[right](B){$B$}
+			\tkzLabelPoint[above](E){$E$}
+			%\tkzLabelPoint[below](O){$O$}
+			\tkzLabelPoint[right](C){$C$}
+			\tkzLabelPoint[left](D){$D$}
+			\end{tikzpicture}}	
+	}
+\end{vd}
+
+\begin{vd}
+	Cho hình lăng trụ $ABC.A'B'C'$. Gọi $I$, $J$, $K$ lần lượt là trọng tâm các tam giác $ABC$, $ACC'$, $A'B'C'$. Chứng minh rằng $(IJK)\parallel (BCC'B')$ và $(A'JK)\parallel (AIB')$.
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[>=stealth=0.3, line join=round, line cap = round,scale=0.5]
+			\tkzDefPoints{0/0/A, 2/-3/B, 8/0/C,1/7/A'}
+			\tkzDefPointBy[translation= from A to A'](B)\tkzGetPoint{B'}
+			\tkzDefPointBy[translation= from A to A'](C)\tkzGetPoint{C'}
+			\tkzDefMidPoint(B,C)\tkzGetPoint{M}
+			\tkzDefMidPoint(C,C')\tkzGetPoint{N}
+			\tkzDefMidPoint(B',C')\tkzGetPoint{P}
+			\tkzDefPointBy[homothety=center A ratio 2/3](M)\tkzGetPoint{I}
+			\tkzDefPointBy[homothety=center A ratio 2/3](N)\tkzGetPoint{J}
+			\tkzDefPointBy[homothety=center A' ratio 2/3](P)\tkzGetPoint{K}
+			\tkzInterLL(A',J)(A,C)\tkzGetPoint{X}
+			\tkzDrawSegments[dashed](A,C A,M A,C' A,N I,J I,K J,K A',J I,B' A',X)
+			\tkzDrawSegments(A,B B,C A,A' B,B' C,C' A',B' B',C' A',C' A',P M,P A,B' M,N C,P B',M)
+			%Gán nhãn
+			\tkzDrawPoints[fill=black](A,B,C,A',B', C',I,M,J,N,P,K,X)
+			\tkzLabelPoints[left](A)
+			\tkzLabelPoints[right=3pt](C,M,N)
+			\tkzLabelPoints[below](B,I,J)
+			\tkzLabelPoints[above](A',C',P,K)
+			\tkzLabelPoints[left=4pt](B')
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}
+			\item  Gọi $M$, $N$, $P$ lần lượt là trung điểm của $BC$,  $CC'$ và $B'C'$. Theo tính chất của trọng tâm tam giác ta có
+			$$\dfrac{AI}{AM}=\dfrac{AJ}{AN}\Rightarrow IJ\parallel MN.$$
+			Tứ giác $AMPA'$ là hình bình hành và có $\dfrac{AI}{AM}=\dfrac{AK}{AP} =\dfrac{2}{3}\Rightarrow IK \parallel MP$.\\
+			Vậy $(IJK)\parallel (BCC'B')$.
+			\item Chú ý rằng mặt phẳng $(AIB')$ chính là mặt phẳng $(AMB')$. Mặt phẳng $(A'JK)$ chính là mặt phẳng $(A'CP)$.\\
+			Vì $AM \parallel A'P$, $MB'\parallel CP$ (do tứ giác $B'MCP$ là hình bình hành). Vậy ta có $(A'JK)\parallel (AIB')$.
+		\end{enumerate}
+	}
+\end{vd}
+
+\begin{vd}
+	Cho hai hình vuông $ABCD$ và $ABEF$ ở trong hai mặt phẳng phân biệt. Trên các đường chéo $AC$ và $BF$ lần lượt lấy các điểm $M$, $N$ sao cho $AM=BN$. Các đường thẳng song song với $AB$ vẽ từ $M$, $N$ lần lượt cắt $AD$ và $AF$ tại $M'$ và $N'$. 
+	\begin{tasks}(2)
+		\task Chứng minh rằng $(ADF)\parallel (BCE)$.
+		\task Chứng minh rằng $(CDF)\parallel (MM'N'N)$. 
+	\end{tasks}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[>=stealth=0.3, line join=round, line cap = round,scale=0.6]
+			\tkzDefPoints{0/0/A, -2/-2/D,6/0/B, 4/-2/C, 2.5/3/E,-3.5/3/F}
+			\tkzDefPointBy[homothety=center A ratio 1/3](C)\tkzGetPoint{M}
+			\tkzDefPointBy[homothety=center B ratio 1/3](F)\tkzGetPoint{N}
+			\tkzDefLine[parallel=through M](A,B)\tkzGetPoint{c}
+			\tkzInterLL(M,c)(A,D)\tkzGetPoint{M'}
+			\tkzDefLine[parallel=through N](A,B)\tkzGetPoint{d}
+			\tkzInterLL(N,d)(A,F)\tkzGetPoint{N'}
+			% Phần này trở xuống để gán nhãn
+			\tkzDrawPoints[fill=black](A,B,C,D,E,F,M',M,N,N')
+			\tkzDrawSegments(D,C B,E F,D E,C E,F C,B)
+			\tkzDrawSegments[dashed](A,B A,D A,F A,C B,F M,M' N,N'  M',N' M,N)
+			\tkzLabelPoints[left](A,M',N')
+			\tkzLabelPoints[below left](M)
+			\tkzLabelPoints[below](B,C,D)
+			\tkzLabelPoints[above](E,F,N)
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}[a)]
+			\item Ta có 
+			$\heva{&AD \parallel BC\\&AF \parallel BE\\&AD \cap AF =A}\Rightarrow (ADE)\parallel (BCF)$. 
+			\item Ta có 
+			\[ MM'\parallel CD \Rightarrow \dfrac{AM}{AC}=\dfrac{AM'}{AD} \tag \label{1} \]
+			Ta cũng có 
+			\[ NN'\parallel AB\Rightarrow \dfrac{BN}{BF}=\dfrac{AN'}{AF} \tag \label{2} \]
+			Mà từ giả thiết ta có 
+			\[ \dfrac{AM}{AC}= \dfrac{BN}{BF}\Rightarrow \dfrac{AM'}{AD}= \dfrac{AN'}{AF} \tag \label{3} \]
+			Từ $(3)$ suy ra $M'N'\parallel DF$. Ta cũng có $MM'\parallel NN'\parallel DC \parallel FE$. \\
+			Vậy  $(CDF)\parallel (MM'N'N)$. 
+		\end{enumerate}
+	}
+\end{vd}
+
+\begin{dang}{Chứng minh đường thẳng song song với mặt phẳng}
+	Để chứng minh $a$ song song $(P)$, ta thường sử dụng một trong hai cách sau
+	\begin{enumerate}[\iconMT]
+		\item \indam{Cách 1: } (\textit{Đã xét ở bài học trước}) Ta cần chứng tỏ các ý sau:
+		\begin{itemize}
+			\item [$\bullet$] $a$ không nằm trên $(P)$;
+			\item [$\bullet$] $a$ song song với một đường thẳng $b$ nằm trong $(P)$. Suy ra $a\parallel (P)$ hay $$\heva{&a\not\subset (P)\\&a\parallel b \\&b\subset (P)\\}\Rightarrow a\parallel (P)$$
+		\end{itemize}
+		\item \indam{Cách 2:} Ta chứng minh đường thẳng $a$ nằm trong mặt
+		phẳng $(Q)$ và $(Q)\parallel (P)$ thì $a \parallel (P)$.
+	\end{enumerate}
+\end{dang}
+
+\begin{vd}%[1H2B4-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $G_1$, $G_2$, $G_3$ lần lượt là trọng tâm các tam giác $SAB$, $ABC$, $SBD$. Gọi $M$ là một điểm thuộc đường thẳng $G_2 G_3$. Chứng minh $G_1M \parallel (SBC)$.
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.6]
+			\tkzDefPoints{3/3/A, 0/0/B, 8/0/C, 11/3/D, 3/10/S}
+			\tkzDefMidPoint(B,D)\tkzGetPoint{O}
+			\tkzDefMidPoint(B,A)\tkzGetPoint{N}
+			\tkzDefMidPoint(S,A)\tkzGetPoint{I}
+			\path[name path=sn] (S)--(N);
+			\path[name path=bi] (B)--(I);
+			\path[name intersections={of=sn and bi,by=G_1}];
+			\path[name path=bd] (B)--(D);
+			\path[name path=cn] (C)--(N);
+			\path[name intersections={of=bd and cn,by=G_2}];
+			\path[name path=so] (S)--(O);
+			\path[name path=ci] (C)--(I);
+			\path[name intersections={of=so and ci,by=G_3}];
+			\coordinate (M) at ($(G_2)!0.2!(G_3)$);
+			\draw (S)--(B)--(C)--(D)--(S) (S)--(C);
+			\draw[dashed] (S)--(A)--(B) (A)--(D) (B)--(D) (A)--(C) (S)--(O) (S)--(N) (C)--(N);
+			\draw[dashed] (G_1)--(G_2)--(G_3)--(G_1);
+			\fill (A) circle (2pt) node[above right]{$A$};
+			\fill (B) circle (2pt) node[below]{$B$};
+			\fill (C) circle (2pt) node[below]{$C$};
+			\fill (D) circle (2pt) node[right]{$D$};
+			\fill (S) circle (2pt) node[above]{$S$};
+			\fill (O) circle (2pt) node[above right]{$O$};
+			\fill (G_1) circle (2pt) node[left]{$G_1$};
+			\fill (G_2) circle (2pt) node[below]{$G_2$};
+			\fill (G_3) circle (2pt) node[right]{$G_3$};
+			\fill (N) circle (2pt) node[left]{$N$};
+			\fill (M) circle (2pt) node[right]{$M$};
+			\end{tikzpicture}
+		\end{center}
+		Gọi $O$ là tâm hình bình hành $ABCD$ và $N$ là trung điểm $AB$, suy ra $G_1 \in SN$, $G_2 \in CM$, $G_3 \in SO$.
+		
+		Do $G_1$, $G_2$ lần lượt là trọng tâm tam giác $SAB$, $ABC$ nên ta có: $$\begin{cases}
+		\dfrac{NG_1}{MS}=\dfrac{1}{3} \bigskip \\
+		\dfrac{NG_2}{MC}=\dfrac{1}{3}
+		\end{cases}$$
+		$\Rightarrow$ $G_1G_2 \parallel SC$ (Định lý Ta-lét trong $\Delta NSC$)
+		
+		$\Rightarrow$ $G_1G_2 \parallel (SBC)$.
+		
+		Do $G_2$, $G_3$ lần lượt là trọng tâm tam giác $ABC$, $SBD$ nên ta có:
+		$$\begin{cases}
+		\dfrac{OG_2}{OB}=\dfrac{1}{3} \bigskip \\
+		\dfrac{OG_3}{OS}=\dfrac{1}{3}
+		\end{cases}$$
+		$\Rightarrow$ $G_2G_3 \parallel SB$ (Định lý Ta-lét trong $\Delta SOB$).
+		
+		$\Rightarrow$ $G_2G_3 \parallel (SBC)$.
+		
+		Ta đã có: $\begin{cases} G_1G_2 \parallel (SBC) \\ G_2G_3 \parallel (SBC) \end{cases}$ $\Rightarrow$ $(G_1G_2G_3) \parallel (SBC)$ 
+		
+		Mà $G_1M \subset (G_1G_2G_3)$ $\Rightarrow$ $G_1M \parallel (SBC)$.
+	}
+\end{vd}
+
+\begin{vd}%[1H2B4-2]
+	Cho hình chóp $S.ABCD$ có đáy là hình bình hành tâm $O$. Gọi $M$, $N$ lần lượt là trung điểm của $SA$ và $CD$.
+	\begin{enumerate}
+		\item Chứng minh hai mặt phẳng $(OMN)$ và $(SBC)$ song song với nhau.
+		\item Gọi $I$ là trung điểm của $SD$, $J$ là một điểm trên $(ABCD)$ và cách đều $AB$, $CD$. Chứng minh $IJ$ song song với $(SAB)$.
+		\end{enumerate}
+	\loigiai{
+		\begin{enumerate}
+			\begin{minipage}{0.5\textwidth}
+				\item Chứng minh $(OMN)\parallel (SBC)$.
+				
+				Do $ON$, $OM$ theo thứ tự là đường trung bình của các tam giác $BCD$ và $SAC$ nên $OM \parallel BC$, $ON \parallel SC$.
+				
+				Hơn nữa, $ON$, $OM$ không chứa trong $(SBC)$. Do đó $ON \parallel (SBC)$, $OM \parallel (SBC)$.
+				
+				Mặt khác, $OM \cap ON= O$ nên $(OMN)\parallel (SBC)$. 
+				\item Chứng minh $IJ\parallel (SAB)$.
+				
+				Trong mặt phẳng $(ABCD)$, $O$ và $J$ cách đều hai đường thẳng song song $AB$ và $CD$ nên $OJ\parallel AB \parallel CD$. Hơn nữa, $OJ$ không chứa trong $(SAB)$. Do đó, $OJ\parallel (SAB)$.
+			\end{minipage}
+			\begin{minipage}{0.5\textwidth}
+				\begin{tikzpicture}[scale=0.8]
+				\tkzDefPoints{1.7/3/A, 0/0/B, 7/0/C, 1.2/7/S}
+				\coordinate (D) at ($(C)-(B)+(A)$);
+				\tkzInterLL(A,C)(B,D)\tkzGetPoint{O}
+				\tkzDefMidPoint(S,A)\tkzGetPoint{M}
+				\tkzDefMidPoint(C,D)\tkzGetPoint{N}
+				\tkzDefMidPoint(S,D)\tkzGetPoint{I}
+				%\coordinate (E) at ($1/3*(B)+2/3*(S)$);
+				%\coordinate (F) at ($1/3*(C)+2/3*(D)$);
+				\coordinate (J) at ($1.5*(O)-0.5*(3.5,0)$);
+				%\tkzDefPointBy[homothety=center N ratio 0.25](M)\tkzGetPoint{H}
+				\tkzDrawSegments(S,B B,C C,D S,C S,D)
+				\tkzDrawSegments[dashed](S,A A,B A,C B,D A,D O,I I,J M,N O,M O,N O,J)
+				\tkzDrawPoints(A,B,C,D,O,S,M,N,I,J)
+				\tkzLabelPoints[above right](M)
+				\tkzLabelPoints[below left](B)
+				%\tkzLabelPoints[below right](C,P)
+				\tkzLabelPoints[right](D,N,J)
+				\tkzLabelPoints[below](O,C,A)
+				\tkzLabelPoints[above](S,I)
+				\end{tikzpicture}
+			\end{minipage}
+			Mặt khác, $OI$ là đường trung bình trong tam giác $SBD$ nên $OI \parallel SB$. Do đó, $OJ\parallel (SAB)$.
+			
+			Mặt phẳng $(OIJ)$ chứa hai đường thẳng cắt nhau và cùng song song với $(SAB)$ nên $(OIJ)\parallel (SAB)$. Hơn nữa, $IJ\subset (OIJ)$. Vì vậy, $IJ\parallel (SAB)$.
+		\end{enumerate}}
+\end{vd}
+
+
+\begin{dang}{Định lý Thales}
+	\textbf{Định lí Thales}: Ba mặt phẳng đôi một song song chắn trên hai cát tuyến bất kì những đoạn thẳng tương ứng tỉ lệ.
+\end{dang}
+\begin{vd}
+	Cho ba mặt phẳng $(P),(Q)  ,(R) $  đôi một song song với nhau. Đường thẳng $a$   cắt các mặt phẳng $(P),(Q)  ,(R) $   lần lượt tại  $A, B, C$ sao cho $\dfrac{AB}{BC}=\dfrac{2}{3}$  và đường thẳng $b$   cắt các mặt phẳng $(P),(Q)  ,(R) $  lần lượt tại $A', B', C'$ . Tính tỉ số $\dfrac{A'B'}{B'C'}$  .
+	\loigiai{
+	Vì ba mặt phẳng  $(P),(Q)  ,(R) $  đôi một song song với nhau, áp dụng định lý Ta – lét trong không gian, ta có
+			$$\dfrac{AB}{BC}=\dfrac{A'B'}{B'C'}=\dfrac{2}{3}.$$
+}
+\end{vd}
+\begin{vd}
+	Cho ba mặt phẳng  $(P),(Q)  ,(R) $  đôi một song song với nhau. Đường thẳng $a$  cắt các mặt phẳng $(P),(Q)  ,(R) $   lần lượt tại   $A, B, C$ sao cho $\dfrac{AB}{BC}=\dfrac{1}{3}$    và đường thẳng $b$  cắt các mặt phẳng   $(P),(Q)  ,(R) $   lần lượt tại $D, E, F$ .Tính tỉ số $\dfrac{ED}{DF}$  .
+	\loigiai{
+		Vì ba mặt phẳng  $(P),(Q)  ,(R) $  đôi một song song với nhau, áp dụng định lý Ta – lét trong không gian, ta có $$\dfrac{AB}{BC}=\dfrac{DE}{EF}=\dfrac{1}{3}$$
+		Suy ra 
+		$$EF=3DE\Rightarrow DF=EF+DE=4DE\Rightarrow \dfrac{DE}{DF}=\dfrac{1}{4}.$$
+}
+\end{vd}
+\begin{vd}
+	Cho hình tứ diện $S.ABC$ . Trên cạnh $SA$  lấy các điểm $A_1, A_2$  sao cho $2AA_1=2A_1A_2=A_2S$  . Gọi $(P)$   và $(Q)$  là hai mặt phẳng song song với mặt phẳng $(ABC)$  và lần lượt đi qua $A_1$, $A_2$ . Mặt phẳng $(P)$  cắt các cạnh $SB$, $SC$ lần lượt tại $B_1$, $C_1$ . Mặt phẳng $(Q)$  cắt các cạnh $SB$, $SC$  lần lượt tại $B_2$, $C_2$ . Chứng minh $2BB_1= 2B_1B_2=B_2S$ và $2CC_1=2C_1C_2=C_2S$ .
+	\loigiai{
+	\immini{
+		Theo giả thiết thì $A_2A_1=A_1A$ và $A_2S=2A_2A_1$.\\
+		Vì mặt phẳng $(P)$  qua $A_1$   song song với mặt phẳng $(ABC)$  nên 
+		
+		$$\heva{&(P) \cap (SAB)=A_1B_1, \text{ với } A_1B_1 \parallel AB\\& (P) \cap (SBC)=B_1C_1, \text{ với } B_1C_1 \parallel BC}$$
+		
+		Vì mặt phẳng $(Q)$  qua $A_2$  song song với mặt phẳng $(ABC)$  nên		
+		$$\heva{&(Q) \cap (SAB)=A_2B_2, \text{ với } A_2B_2 \parallel AB\\& (Q) \cap (SBC)=B_2C_2, \text{ với } B_2C_2 \parallel BC}$$
+	}{
+\begin{tikzpicture}[scale=0.7, font=\footnotesize,>=stealth]
+	\path
+	%	Vẽ mp
+	(0,0) coordinate (A)
+	(1.5,-2) coordinate (B)
+	(4,0) coordinate (C)
+	(1,4) coordinate (S)
+	(2.3,-0.7) coordinate (I)
+	($(A)!0.5!(S)$)coordinate (A_2)
+	($(A_2)!0.5!(A)$)coordinate (A_1)
+	%
+	($(B)!0.5!(S)$)coordinate (B_2)
+	($(B_2)!0.5!(B)$)coordinate (B_1)
+	%
+	($(C)!0.5!(S)$)coordinate (C_2)
+	($(C_2)!0.5!(C)$)coordinate (C_1)
+	;
+	\draw (S)--(B)--(C)--(S)--(A)--(B) (A_1)--(B_1)--(C_1) (A_2)--(B_2)--(C_2);
+	\draw[dashed] (A)--(C) (A_1)--(C_1) (A_2)--(C_2);
+	\foreach \x/\g in {A/-180,B/-90,C/0,S/90,A_1/170,A_2/160,B_1/-30,B_2/60,C_1/0,C_2/30}\draw[fill=black] (\x) circle (.05) +(\g:.5)node{\footnotesize$\x$};
+\end{tikzpicture}}
+	Các mặt phẳng $(ABC)$, $(A_1B_1C_1)$ và $(A_2B_2C_2)$ đôi một song song nhau nên theo định lí Ta let ta có 
+	\begin{itemize}
+		\item [$\bullet$] $\dfrac{A_2A_1}{A_1A}=\dfrac{B_2B_1}{B_1B}=\dfrac{C_2C_1}{C_1C}=1 \Rightarrow B_2B1=B_1B \text{ và } C_2C1=C_1C$ \quad (1);
+		\item [$\bullet$] $\dfrac{SA_2}{A_2A_1}=\dfrac{SB_2}{B_2B_1}=\dfrac{SC_2}{C_2C_1}=2 \Rightarrow SB_2=2B_2B_1 \text{ và }  SC_2=2C_2C_1$ \quad (2)
+	\end{itemize}
+
+	Từ (1) và (2) suy ra
+	Nên  $2BB_1= 2B_1B_2=B_2S$ và $2CC_1=2C_1C_2=C_2S$.
+}
+\end{vd}
+\begin{vd}
+	Một kệ để đồ bằng gỗ có mâm tầng dưới $(ABCD)$ và mâm tầng trên $(EFGH)$ song song với nhau. Bác thợ mộc đo được $AE=80$ cm, $CG=90$ cm và muốn đóng thêm một mâm tầng giữa $(IJKL)$ song song với hai mâm tầng trên và dưới sao cho khoảng cách $EI=36$ cm (tham khảo hình vẽ). Hãy giúp bác thợ mộc tính độ dài $GK$ để đặt mâm tầng giữa cho kệ để đồ đúng vị trí.
+	%Hình vẽ 
+	\loigiai{
+	Theo định lý Thales ta có $\dfrac{EI}{GK}=\dfrac{AE}{CG}=\dfrac{80}{90}=\dfrac{8}{9}$. Suy ra $GK = 40,5$ cm.
+}
+\end{vd}
+\begin{vd}
+	Cho hình chóp $S.ABC$ có $SA=9, SB=12, SC=15$. Trên cạnh $SA$ lấy các điểm $M, N$ sao cho $SM=4, MN=3, NA=2$. Vẽ hai mặt phẳng song song với $(ABC)$ lần lượt đi qua $M, N$ , cắt $SB$ theo thứ tự $M', N'$ và cắt $SC$ theo thứ tự $M'', N''$. Tính độ dài các đoạn thẳng $SM', M'N', M''N'', N''C$.
+\end{vd}
+
+\begin{dang}{Hình hộp, hình lăng trụ}
+\end{dang}
+\begin{vd}
+Cho hình hộp $ABCD.A'B'C'D'$ và một mặt phẳng $(\alpha)$ cắt các mặt của hình hộp theo các giao tuyến $MN, NP, PQ, QR, RS, SM$ như hình vẽ. Chứng minh các cặp cạnh đối của lục giác $MNPQRS$ song song nhau.
+%Hình vẽ
+\end{vd}
+\begin{vd}
+	Cho hình lăng trụ tứ giác $ABCD.A'B'C'D'$  với đáy là hình thang $AB\parallel CD$   . Một mặt phẳng song song với mặt phẳng $(AA'B'B)$   cắt các cạnh $AD, BC, B'C', A'D'$  lần lượt tại $E, F, M, H$ . Hỏi hình tạo bởi các điểm $E, F, M, H, D, D', C', C$  là hình gì?
+	\loigiai{
+}
+\end{vd}
+\begin{vd}
+ Cho lăng trụ tam giác $A B C \cdot A^{\prime} B^{\prime} C^{\prime}$. Gọi $M, N, P$ lần lượt là các điểm trên cạnh $A A^{\prime}, B B^{\prime}, C C^{\prime}$ sao cho: $\dfrac{A M}{M A^{\prime}}=\dfrac{B N}{N B^{\prime}}=\dfrac{C P}{P C^{\prime}}=\dfrac{1}{2}$. Hỏi hình tạo bởi các điểm $M, N, P, A^{\prime}, B^{\prime}, C^{\prime}$ là hình gì?
+ \loigiai{
+}
+\end{vd}
+
+
+\subsection{BÀI TẬP TỰ LUYỆN}
+
+\begin{bt}
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Gọi $M$, $N$ lần lượt là trung điểm của $SA$ và $CD$.	Chứng minh hai mặt phẳng $(MNO)$ và $(SBC)$ song song.
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}
+				\tkzInit[xmin=-0.5,ymin=-0.5,xmax=7.5,ymax=6.5]
+				\tkzDefPoints{0/0/B}
+				\tkzDefShiftPoint[B](0:5){C}
+				\tkzDefShiftPoint[B](50:2.5){A}
+				\tkzDefShiftPoint[C](50:2.5){D}   
+				\tkzDefShiftPoint[A](80:4){S} 
+				\tkzInterLL(A,C)(B,D) \tkzGetPoint{O}
+				\tkzDefMidPoint(S,A)\tkzGetPoint{M}
+				\tkzDefMidPoint(C,D)\tkzGetPoint{N}
+				\tkzDrawPolygon(S,B,C)
+				\tkzDrawSegments[](C,D S,D)
+				\tkzDrawSegments[dashed](A,B A,D S,A B,D A,C M,N N,O M,O)
+				\tkzDrawPoints[fill=black](A,B,C,D,S,O,M,N)
+				\tkzLabelPoints[above](S)
+				\tkzLabelPoints[below left](B)
+				\tkzLabelPoints[below right](C)
+				\tkzLabelPoints[below](O)
+				\tkzLabelPoints[right](D,N)
+				\tkzLabelPoints[above left](A)
+				\tkzLabelPoints[above right](M)
+			\end{tikzpicture}
+		\end{center}
+		Ta có $M$ là trung điểm $SA$, $O$ là trung điểm $AC$\\
+		$\Rightarrow MO$ là đường trung bình $\triangle SAC$\\
+		$\Rightarrow MO \parallel SC$.\\
+		Tương tự $ON \parallel BC$.\\
+		Do đó $(OMN) \parallel (SBC)$.	
+	}
+\end{bt}
+
+\begin{bt}%[Trần Thị Thu Hằng]%[1H2K4]
+	Cho hình chóp $S.ABCD$, đáy $ABCD$ là hình thang có $AB \parallel CD$ và $AB=2CD$, $I$ là giao điểm của $AC$ và $BD$. Gọi $M$ là trung điểm của $SD$, $E$ là trung điểm đoạn $CM$ và $G$ là điểm đối xứng của $E$ qua $M$, $SE$ cắt $CD$ tại $K$. Chứng minh $(IKE) \parallel (ADG)$.
+	\loigiai{
+		\immini{Do $CE=ME=MG$ nên \begin{align}\label{2.1}
+				CE=\dfrac{1}{3} CG. \tag{1}
+			\end{align}
+			Mặt khác $$\begin{cases} \widehat{BAI}&=\widehat{DCI},\text{ (so le trong)}, \\ \widehat{AIB}&=\widehat{CID},\text{ (đối đỉnh)}. \end{cases}$$
+			Do đó $\triangle ABI \backsim \triangle CDI$, (g-g).
+			Khi đó \begin{align}\label{2.2}
+				\dfrac{CI}{IA}=\dfrac{CD}{AB}=\dfrac{1}{2}\hspace{5pt}\text{hay}\hspace{5pt} \dfrac{CI}{CA}=\dfrac{1}{3}.\tag{2}
+			\end{align}
+			Từ \eqref{2.1} và \eqref{2.2} suy ra 
+			\begin{align}\label{*}
+				EI \parallel GA.\tag{$\star$}
+		\end{align}}{
+			\begin{tikzpicture}[smooth]
+				\tkzDefPoints{0/0/C, 3/0/D, -1/2.5/B, 5/2.5/A, 1.5/7/S}
+				\tkzInterLL(A,C)(B,D)\tkzGetPoint{I}
+				\tkzDefMidPoint(S,D)\tkzGetPoint{M}
+				\tkzDefMidPoint(C,M)\tkzGetPoint{E}
+				\tkzDefPointBy[symmetry=center M](E)\tkzGetPoint{G}
+				\tkzInterLL(S,E)(C,D)\tkzGetPoint{K}
+				\tkzInterLL(S,A)(G,C)\tkzGetPoint{N}
+				\tkzDrawPoints(A,B,C,S,D,I,K,E,M,G)
+				\tkzDrawSegments(S,B S,C S,D S,N B,C C,D A,D G,C S,K G,D G,A)
+				\tkzDrawSegments[dashed](A,B N,A A,C B,D I,E I,K)
+				\tkzLabelPoints[below left](C)
+				\tkzLabelPoints[below right](D)
+				\tkzLabelPoints[below](K)
+				\tkzLabelPoints[left](B,M,E)
+				\tkzLabelPoints[right](A)
+				\tkzLabelPoints[above](S,G,I)
+			\end{tikzpicture}
+	}
+Hơn nữa, tứ giác $SGDE$ có $SM=MD$ và $EM=MG$, nên tứ giác $SGDE$ là hình bình hành. Do đó 
+\begin{align}\label{**}
+	SE \parallel GD\hspace{5pt}\text{hay}\hspace{5pt} EK \parallel GD.\tag{$\star\star$}
+\end{align}
+Từ \eqref{*} và \eqref{**} suy ra $(IEK) \parallel (ADG)$.}
+	
+\end{bt}
+
+
+\begin{bt}%[1H2K4-2]
+	Cho tứ diện $ ABCD $. Gọi $ G_1 $, $ G_2 $, $ G_3 $ lần lượt là trọng tâm của các tam giác $ ABC $, $ ACD $, $ ADB $.	 Chứng minh $ (G_1G_2G_3)\parallel (BCD) $.
+	
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.75, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\tkzDefPoints{4/9/A, 0/3/B, 5/1/C, 7/3/D}
+				\tkzDefMidPoint(B,C)\tkzGetPoint{M}
+				\tkzDefMidPoint(D,C)\tkzGetPoint{N}
+				\tkzDefMidPoint(D,B)\tkzGetPoint{L}
+				\tkzCentroid(A,B,C)\tkzGetPoint{G1}
+				\tkzCentroid(A,D,C)\tkzGetPoint{G2}
+				\tkzCentroid(A,B,D)\tkzGetPoint{G3}
+				\tkzDefLine[parallel=through G1](C,B) \tkzGetPoint{X}
+				\tkzInterLL(G1,X)(A,B)\tkzGetPoint{E}
+				\tkzInterLL(G1,X)(C,A)\tkzGetPoint{F}
+				\tkzInterLL(G2,F)(D,A)\tkzGetPoint{G}
+				\tkzDrawSegments(A,B B,C C,D D,A A,C E,F F,G A,M A,N)
+				\tkzDrawSegments[dashed](B,D L,M M,N N,L A,L E,G)
+				\tkzLabelPoints[right](G,D,N,F)
+				\tkzLabelPoints[left](E,B)
+				\tkzLabelPoints[above](A)
+				\tkzLabelPoints[below](C,L,M)
+				\node[below left] at (G1) {$ G_1 $};
+				\node[above left] at (G2) {$ G_2 $};
+				\node[above right] at (G3) {$ G_3 $};
+				\tkzDrawPoints[fill=black](A,B,C,D,M,N,L,E,F,G,G1,G2,G3)
+			\end{tikzpicture}
+		\end{center}
+	 Chứng minh $ (G_1G_2G_3)\parallel (BCD) $\\
+			Gọi $ M $, $ N $, $ L $ lần lượt là trung điểm các cạnh $ BC $, $ CD $ và $ BD $. Trong tam giác $ AMN $, ta có
+			$$ \dfrac{AG_1}{AM}=\dfrac{AG_2}{AN}=\dfrac{G_1G_2}{MN}=\dfrac{2}{3} (\text{tính chất trọng tâm}) $$
+			Theo định lý Ta-lét đảo, suy ra $ G_1G_2\parallel MN $.\\
+			Chứng minh tương tự, ta cũng có $ G_2G_3\parallel NL $ và $ G_3G_1\parallel LM $.\\
+			Từ đó suy ra $$ \heva{&G_1G_2\parallel MN, G_2G_3\parallel NL\\&MN, NL\subset(BCD)\\&G_1G_2,G_2G_3\subset(G_1G_2G_3).} $$
+			$ \Rightarrow (G_1G_2G_3)\parallel (BCD) $.\\
+			}
+\end{bt}
+
+\begin{bt}%[1H2K4-2]
+	Cho hình chóp $SABC$ có $G$ là trọng tâm tam giác $ABC$. Trên đoạn $SA$ lấy hai điểm $M$, $N$ sao cho $SM=MN=NA$.
+	\begin{listEX}[1]
+		\item Chứng minh rằng $GM\parallel (SBC)$. 
+		\item Gọi $D$ là điểm đối xứng với $A$ qua $G$. Chứng minh rằng $(MCD)\parallel (NBG)$.
+		\end{listEX} 
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[>=stealth=0.5, line join=round, line cap = round,scale=0.7]
+				\tkzDefPoints{0/0/A,1.5/-2/B,8/0/C,1.5/6/S}
+				\tkzDefMidPoint(B,C)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center A ratio 2/3](E)\tkzGetPoint{G}
+				\tkzDefPointBy[homothety=center A ratio 2/3](S)\tkzGetPoint{M}
+				\tkzDefPointBy[homothety=center A ratio 1/3](S)\tkzGetPoint{N}
+				\tkzDefPointBy[homothety=center A ratio 2](G)\tkzGetPoint{D}
+				\tkzInterLL(D,M)(S,E)\tkzGetPoint{H}
+				\tkzInterLL(D,H)(C,E)\tkzGetPoint{X}
+				\tkzDrawSegments(A,B B,E S,A S,B S,C S,E D,E C,D B,N D,H)
+				\tkzDrawSegments[dashed](A,C A,E G,M M,C B,G G,N H,M E,X E,C)
+				%Gán nhãn
+				\tkzDrawPoints[fill=black](A,B,C,S,E,G,M,N,H,D)
+				\tkzLabelPoints[left](A,M,N)
+				\tkzLabelPoints[below](B,G,E)
+				\tkzLabelPoints[right](C,D,H)
+				\tkzLabelPoints[above](S)
+			\end{tikzpicture}
+		\end{center}
+		\begin{enumerate}
+			\item Gọi $E$ là trung điểm của $BC$. Khi đó ta có $\dfrac{AG}{AE}=\dfrac{AM}{AS}=\dfrac{2}{3}\Rightarrow GM \parallel SE$. Vậy $GM \parallel (SBC)$.
+			\item Từ giả thiết ta suy ra $G,N$ lần lượt là trung điểm của $AD$ và $AM$. Do đó $NG \parallel MD \quad (1)$ \hfill $(1)$\\
+			Từ giác $BDCG$ có $E$ là trung điểm của hai đường chéo nên đó là hình bình hành. Suy ra $BG\parallel CD$ \hfill $(2)$\\
+			Từ $(1)$ và $(2)$ suy ra $(MCD)\parallel (NBG)$.
+		\end{enumerate}
+	}
+\end{bt}
+\begin{bt}
+	Cho hình hộp $ABCD.A'B'C'D'$  . Một mặt phẳng song song với mặt đáy $(ABCD)$  của hình hộp và cắt các cạnh $AA', BB', CC', DD'$  lần lượt tại $M, N, M', N'$ . Chứng minh rằng $ABCD.MNM'N'$  là hình hộp.
+	\loigiai{
+	}
+\end{bt}

@@ -68,7 +68,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 \usepackage[loigiai]{ex_test} 
 % \usepackage[solcolor]{ex_test}
 %----Lời giải, Hiền thị tên EX; Dấu kết thúc
-\font\damEX=ugqb8v at 11pt
+\font\damEX=ugqb8v at 10pt
 \def\loigiaiEX{\color{\mauLG}\damEX\strut\faCommenting\ Lời giải.}
 %lời giải EXS
 \def\loigiaiEXS{\loigiaiEX{\fontsize{8}{16}\selectfont\color{\maucham}\dotfill}}
@@ -484,16 +484,53 @@ marginparwidth=\so cm, marginparsep=5mm,
 \newcounter{dang}\setcounter{dang}{0}
 \renewcommand{\thedang}{\arabic{dang}}
 %---Dạng 1
+% \newtcolorbox{dang}[1]{
+% 	fonttitle=\fontfamily{qag}\bfseries,%fontupper=\itshape,
+% 	colframe=\maudang,colback=yellow!20,coltitle=white,
+% 	sharp corners, breakable, halign title=center,%adjusted title=center, %canh giữa DẠNG
+% 	before skip=2mm,after skip=3mm,
+% 	left=2mm,right=2mm,top=2mm,bottom=2mm,
+% 	boxrule=1pt,
+% 	title={\faFolderOpen\ Dạng~\stepcounter{dang}\thedang.\ #1}
+% 		\addcontentsline{toc}{subsection}{\it\sffamily \faFolderOpen\ Dạng~\thedang.#1}
+% 		\setcounter{subsubsection}{0}
+% 		\setcounter{vd}{0}
+% 		\setcounter{ex}{0}
+% 		\setcounter{bt}{0}
+% }
 \newtcolorbox{dang}[1]{
 	fonttitle=\fontfamily{qag}\bfseries,%fontupper=\itshape,
-	colframe=\maudang,colback=yellow!20,coltitle=white,
-	sharp corners, breakable, halign title=center,%adjusted title=center, %canh giữa DẠNG
-	before skip=2mm,after skip=3mm,
+	breakable, 
+	enhanced jigsaw, %nâng cao
+	%	frame hidden, opacityback=0,
+	colbacktitle=cyan!20!white,
+	coltitle=\maubai,
+	colframe=\maudang,
+	colback=white,
+	sharp corners,
+	before skip=3mm,after skip=3mm,
 	left=2mm,right=2mm,top=2mm,bottom=2mm,
-	boxrule=1pt,
-	title={\faFolderOpen\ Dạng~\stepcounter{dang}\thedang.\ #1}
-		\addcontentsline{toc}{subsection}{\it\sffamily \faFolderOpen\ Dạng~\thedang.#1}
-		\setcounter{subsubsection}{0}
+	underlay unbroken and first={
+		\def\kctrai{.5}
+		\def\daikhung{1}
+		%--Nền số section
+		\fill[cyan] 
+		([xshift=\kctrai cm,yshift=0.12cm+0.1cm]title.north west) coordinate (bai1)%trên trái
+		--++(\daikhung,0) coordinate (bai2)%trên phải
+		[rounded corners=6pt]--++(0,-0.6) coordinate (bai3)%dưới phải
+		--++(-\daikhung,0) coordinate (bai4)%dưới trái
+		[rounded corners=0pt]--cycle
+		;
+		%--Bóng góc trái trên của khung
+		\fill[gray!50] (bai1)--++(-0.2,-0.15)--++(0.2,0)--cycle;
+		%--Bài và số bài
+		\node[circle,draw=white,fill=\maudang, line width=1pt, inner sep=3pt,text=white] (SOBAI) at ([yshift=1pt]$(bai4)!0.5!(bai3)$) {\fontsize{12.5pt}{1pt}\fontfamily{put}\selectfont\bfseries \thedang};
+		% \draw ([yshift=-1.5pt]SOBAI.west) node[left,myblue,scale=1.2] {\damEX{Dạng} \,};	
+	},
+	title={%\faFolderOpen\ Dạng~\stepcounter{dang}\thedang.\ 
+		\hspace*{1.5cm}\parbox{\textwidth-2.75cm}{#1}\stepcounter{dang}}%
+	\addcontentsline{toc}{subsection}{\sffamily \faFolderOpenO \,\, Dạng~\thedang. #1}
+	\setcounter{subsubsection}{0}
 		\setcounter{vd}{0}
 		\setcounter{ex}{0}
 		\setcounter{bt}{0}
@@ -820,8 +857,8 @@ marginparwidth=\so cm, marginparsep=5mm,
 \newenvironment{khung}
 {\begin{tcolorbox}[
 		enhanced,breakable,
-		colback=yellow!10,
-		colframe=blue,
+		colback=cyan!10!white,
+		colframe=cyan,
 		boxrule=0.5pt,
 		%		drop fuzzy shadow=gray,
 		left=5pt,right=5pt,top=5pt,bottom=5pt,
@@ -907,13 +944,13 @@ marginparwidth=\so cm, marginparsep=5mm,
 	{\fontsize{11pt}{9pt}\sffamily \selectfont\bfseries\color{\maudn} #1}
 }
 \newcommand{\indam}[1]{
-	{\fontsize{11.5pt}{9pt}\sffamily \selectfont\bfseries\color{\maudn} #1}
+	{\fontsize{11pt}{9pt}\sffamily \selectfont\bfseries\color{\maudn} #1}
 }
 \newcommand{\indamm}[1]{
-	{\fontsize{11.5pt}{9pt}\sffamily \selectfont\bfseries\color{\maudl} #1}
+	{\fontsize{11pt}{9pt}\sffamily \selectfont\bfseries\color{\maudl} #1}
 }
 \newcommand{\ind}[1]{
-	{\fontsize{11.5pt}{9pt}\sffamily \selectfont\bfseries\color{\maucham} #1}
+	{\fontsize{11pt}{9pt}\sffamily \selectfont\bfseries\color{\maucham} #1}
 }
 %%%===Các biểu tượng===
 \def\iconGN{{\color{magenta}\faPencilSquareO}}
@@ -936,7 +973,6 @@ marginparwidth=\so cm, marginparsep=5mm,
 		}\noindent\color{gray}{\dotfill}\\[-4mm]
 	\end{multicols}
 }
-
 
 \def\TNTF{
     {\bfseries Phần II. Trong mỗi ý a), b), c) và d) ở mỗi câu, học sinh chọn đúng hoặc sai.}
@@ -966,3 +1002,5 @@ marginparwidth=\so cm, marginparsep=5mm,
 \def\TL{
     {\bfseries Phần II. Câu hỏi tự luận.}
 }
+
+\def\tickv{\faCheckCircleO~}
