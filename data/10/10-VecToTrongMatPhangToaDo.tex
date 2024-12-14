@@ -1,206 +1,206 @@
 % \part{Hình học 10}
-% \chapter{Véc-tơ}
+% \chapter{Vectơ}
 \setcounter{section}{0}
 \setcounter{ex}{0}
 \setcounter{vd}{0}
 \setcounter{bt}{0}
-\section*{Véc-tơ trong mặt phẳng tọa độ}
+\section{TOẠ ĐỘ VECTƠ - BTTĐ PHÉP TOÁN VECTƠ}
 \subsection{Tóm tắt lý thuyết}
-\subsubsection{Tọa độ của véc-tơ}
-	\begin{dn}{}
-		\begin{itemize}
-		\item  \emph{Trục} tọa độ (còn gọi là \emph{trục}, hay \emph{trục số}) là một đường thẳng mà trên đó đã xác định một điểm $O$ và một véc-tơ $\vec{i}$ có độ dài bằng $1$. Điểm $O$ gọi là \emph{gốc tọa độ}, véc-tơ $\vec{i}$ gọi là \emph{véc-tơ  đơn vị} của trục. Điểm $M$ trên trục biểu diễn số $x_0$ nếu $\overrightarrow{OM}=x_0\vec{i}$.
-		\begin{center}
-		\begin{tikzpicture}[scale=1,font=\footnotesize,line join = round, line cap = round, >= stealth]
-		\def\a{-1} \def\b{5} \def\c{-1} \def\d{3}
-		\coordinate (O) at (0,0);
-		\coordinate (M) at (3.5,0);
-		\draw[->] (\a,0)--(\b,0)node[below]{$x$};
-		\draw[->,blue,thick](0,0)--(1,0); \draw (0,0)node[below]{$0$} (1,0) node[below]{$1$};
-		\draw(0.5,0.3) node[]{$\vec{i}$}
-		(M)node[below]{$x_0$}
-		;
-		\foreach \p/\g in {O/90,M/90} \draw[fill] (\p) circle(1pt)node [shift={(\g:.3)}] {$\p$};
-		\end{tikzpicture}
-		\end{center}
-		\item  Trên mặt phẳng, xét hai trục $Ox$, $Oy$ có chung gốc $O$ và vuông góc với nhau. Véc-tơ đơn vị trên trục $Ox$ là $\vec{i}$, véc-tơ đơn vị của trục $Oy$ là $\vec{j}$. Hệ gồm hai trục $Ox$, $Oy$ như vậy được gọi là \emph{hệ trục tọa độ $Oxy$}. Điểm $O$ gọi là \emph{gốc tọa độ}, trục $Ox$ gọi là \emph{trục hoành}, trục $Oy$ gọi là \emph{trục tung}. Mặt phẳng chứa hệ trục tọa độ $Oxy$ gọi là {\color{red} mặt phẳng tọa độ} $Oxy$ hay mặt phẳng $Oxy$.
-		\begin{center}
-		\begin{tikzpicture}[scale=1,font=\footnotesize,line join = round, line cap = round, >= stealth]
-		\def\a{-1} \def\b{3.5} \def\c{-1} \def\d{4}
-		\coordinate (O) at (0,0);
-		\coordinate (M) at (2,3);
-		\draw[dashed] (2,0)|-(0,3);
-		\draw[->] (\a,0)--(\b,0)node[below]{$x$};
-		\draw[->] (0,\c)--(0,\d)node[left]{$y$};
-		\draw[->,blue,thick](0,0)--(1,0); 
-		\draw[->,blue,thick](0,0)--(0,1); 
-		\draw(0.5,0.3) node[]{$\vec{i}$};
-		\draw(-0.3,0.5) node[]{$\vec{j}$};
-		\draw (2,0)node[below]{$x_0$} (0,3)node[left]{$y_0$}
-		;
-		\draw (1,0)node[below]{$1$};
-		\draw (0,1) node[left]{$1$};
-		\foreach \p/\g in {O/-135,M/90} \draw[fill] (\p) circle(1pt)node [shift={(\g:.3)}] {$\p$};
-		\draw[violet,thick,->](O)--(M);
-		\draw (1,2)node[]{$\vec{u}$};
-		\end{tikzpicture}
-		\end{center}
-		\item Với mỗi véc-tơ $\vec{u}$ trên mặt phẳng $Oxy$, có duy nhất cặp số $(x_0;y_0)$ sao cho $\vec{u}=x_0\vec{i}+y_0\vec{j}$. Ta nói véc-tơ $\vec{u}$ có tọa độ $(x_0;y_0)$ và viết $\vec{u}=(x_0;y_0)$ hay $\vec{u}(x_0;y_0)$. Các số $x_0$, $y_0$ tương ứng được gọi là {\color{red}hoành độ, tung độ} của $\vec{u}$.
-		\end{itemize}
-	\end{dn}
-	\textbf{Nhận xét}. Hai véc-tơ bằng nhau khi và chỉ khi chúng có cùng tọa độ.
-	\[\vec{u}(x;y)=\vec{v}(x';y')\Leftrightarrow\heva{&x=x'\\&y=y'.} \]
-\subsubsection{Biểu thức tọa độ của các phép toán véc-tơ}
-	\begin{dl}
-		Cho hai véc-tơ $\vec{u}=(x;y)$ và $\vec{v}=(x';y')$. Khi đó\\
-		$\bullet$ $\vec{u}+\vec{v}=(x+x';y+y')$; \quad $\bullet$ $\vec{u}-\vec{v}=(x-x';y-y')$; \quad $\bullet$ $k\vec{u}=(kx;ky)$, với $k\in\mathbb{R}$.
-	\end{dl}
-\textbf{Nhận xét.} Véc-tơ $\vec{v}(x';y')$ cùng phương với véc-tơ $\vec{u}(x;y)\neq \vec{0}$ khi và chỉ khi tồn tại số $k$ sao cho $x'=kx$, $y'=ky$ (hay là $\dfrac{x'}{x}=\dfrac{y'}{y}$ nếu $xy\neq 0$).
-\begin{dl}
-Nếu điểm $M$ có tọa độ $(x;y)$ thì véc-tơ $\overrightarrow{OM}$ có tọa độ $(x;y)$ và độ dài $\left|\overrightarrow{OM}\right|=\sqrt{x^2+y^2}$.
-\end{dl}
-\textbf{Nhận xét.} Với véc-tơ $\vec{u}=(x;y)$, ta lấy điểm $M(x;y)$ thì $\vec{u}=\overrightarrow{OM}$. Do đó, $\left|\vec{u}\right|=\left|\overrightarrow{OM}\right|=\sqrt{x^2+y^2}$.\\
-Chẳng hạn, véc-tơ $\vec{u}=(2;-1)$ có độ dài là $\left|\vec{u}\right|=\sqrt{2^2+(-1)^2}=\sqrt{5}$.
-\begin{dl}
-Với hai điểm $M(x;y)$ và $N(x';y')$ thì $\overrightarrow{MN}=(x'-x;y'-y)$ và khoảng cách giữa hai điểm $M$, $N$ là $MN=\left|\overrightarrow{MN}\right|=\sqrt{(x'-x)^2+(y-y')^2}$.
-\end{dl}
-\textbf{Chú ý}
+\subsubsection{Tọa độ của vectơ}
+\begin{dn}{}
+	\begin{itemize}
+		\item  Trên mặt phẳng toạ độ $Oxy$, toạ độ điểm $M$ được xác định như hình vẽ.
+		      \begin{center}
+			      \begin{tikzpicture}[scale=1,font=\small,line join = round, line cap = round, >= stealth, scale = .7]
+				      \def\a{-1} \def\b{3.5} \def\c{-1} \def\d{4}
+				      \coordinate (O) at (0,0);
+				      \coordinate (M) at (2,3);
+				      \draw[dashed] (2,0)|-(0,3);
+				      \draw[->] (\a,0)--(\b,0)node[below]{$x$};
+				      \draw[->] (0,\c)--(0,\d)node[left]{$y$};
+				      \draw[->,blue,thick](0,0)--(1,0);
+				      \draw[->,blue,thick](0,0)--(0,1);
+				      \draw(0.5,0.3) node[]{$\vec{i}$};
+				      \draw(-0.3,0.5) node[]{$\vec{j}$};
+				      \draw (2,0)node[below]{$a$} (0,3)node[left]{$b$}
+				      ;
+				      \draw (1,0)node[below]{$1$};
+				      \draw (0,1) node[left]{$1$};
+				      \foreach \p/\g in {O/-135,M/90} \draw[fill] (\p) circle(1pt)node [shift={(\g:.3)}] {$\p$};
+				      \draw[violet,thick,->](O)--(M);
+				      \draw (1,2)node[]{$\vec{u}$};
+			      \end{tikzpicture}
+		      \end{center}
+		\item Toạ độ vectơ $\vec{OM}$ là toạ độ điểm $M$
+		      \begin{center}
+			      \fbox{$M(a;b) \Leftrightarrow \vec{OM}=(a;b)$}
+		      \end{center}
+		\item Với mỗi vectơ $\vec{u}$, toạ độ vectơ $\vec{u}$ là toạ độ điểm $M$ trong đó $\vec{OM}=\vec{u}$.
+	\end{itemize}
+\end{dn}
+\textbf{Chú ý}.
 \begin{itemize}
-\item Trung điểm $M$ của đoạn thẳng $AB$ có tọa độ là $\left(\dfrac{x_A+x_B}{2};\dfrac{y_A+y_B}{2}\right)$.
-\item Trọng tâm $G$ của tam giác $ABC$ có tọa độ là $\left(\dfrac{x_A+x_B+x_C}{3};\dfrac{y_A+y_B+y_C}{3}\right)$.
+	\item Vectơ $\vec{i}$ có điểm gốc là $O$ và có toạ độ $(1;0)$ được gọi là \textit{vectơ đơn vị} trên trục $Ox$.
+	\item Vectơ $\vec{j}$ có điểm gốc là $O$ và có toạ độ $(0;1)$ được gọi là \textit{vectơ đơn vị} trên trục $Oy$.
+\end{itemize}
+\begin{dl}
+	Trong mặt phẳng toạ độ, ta có:
+	\begin{center}
+		\fbox{$\vec{u}=a\vec{i}+b\vec{j} \Leftrightarrow \vec{u}=(a;b)$}
+	\end{center}
+\end{dl}
+\textbf{Nhận xét}. Hai vectơ bằng nhau khi và chỉ khi chúng có cùng tọa độ.
+\[\vec{u}(x;y)=\vec{v}(x';y')\Leftrightarrow\heva{&x=x'\\&y=y'.} \]
+\begin{dn}
+	Trong mặt phẳng toạ độ $Oxy$ cho hai điểm $A(x_A;y_A)$ và $B(x_B;y_B)$. Khi đó \fbox{$\overrightarrow{AB}=(x_B-x_A;y_B-y_A)$}.
+\end{dn}
+\subsubsection{Biểu thức tọa độ của các phép toán vectơ}
+\begin{dl}
+	Cho hai vectơ $\vec{u}=(x;y)$ và $\vec{v}=(x';y')$. Khi đó
+	\begin{itemize}
+		\item $\vec{u}+\vec{v}=(x+x';y+y')$
+		\item $\vec{u}-\vec{v}=(x-x';y-y')$
+		\item $k\vec{u}=(kx;ky)$, với $k\in\mathbb{R}$
+	\end{itemize}
+\end{dl}
+\textbf{Nhận xét.}
+\begin{itemize}
+	\item Vectơ $\vec{v}(x';y')$ cùng phương với vectơ $\vec{u}(x;y)\neq \vec{0}$ khi và chỉ khi tồn tại số $k$ sao cho $x'=kx$, $y'=ky$ (hay là $\dfrac{x'}{x}=\dfrac{y'}{y}$ nếu $xy\neq 0$).
+	\item Trung điểm $M$ của đoạn thẳng $AB$ có tọa độ là $\left(\dfrac{x_A+x_B}{2};\dfrac{y_A+y_B}{2}\right)$.
+	\item Trọng tâm $G$ của tam giác $ABC$ có tọa độ là $\left(\dfrac{x_A+x_B+x_C}{3};\dfrac{y_A+y_B+y_C}{3}\right)$.
 \end{itemize}
 \subsubsection{Biểu thức tọa độ của tích vô hướng}
 \begin{dn}{}
-	Cho $\overrightarrow{a} = (a_1; a_2)$, $\overrightarrow{b} = (b_1; b_2)$. Khi đó tích vô hướng của hai véc-tơ $\overrightarrow{a}$ và $\overrightarrow{b}$ được tính theo công thức sau $\overrightarrow{a} \cdot \overrightarrow{b} = a_1b_1 + a_2b_2$.
+	Cho $\overrightarrow{a} = (a_1; a_2)$, $\overrightarrow{b} = (b_1; b_2)$. Khi đó tích vô hướng của hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$ được tính theo công thức sau $\overrightarrow{a} \cdot \overrightarrow{b} = a_1b_1 + a_2b_2$.
 \end{dn}
-\begin{note}
-	\begin{itemize}
-		\item []
-		\item Hai véc-tơ $\overrightarrow{a}$ và $\overrightarrow{b}$ vuông góc với nhau khi và chỉ khi $a_1b_1 + a_2b_2 = 0$.
-		\item Bình phương vô hướng của $\overrightarrow{a}(a_1;a_2)$ là $\overrightarrow{a}^2 = a_1^2 + a_2^2$.
-		\item Nếu $\overrightarrow{a}\neq \overrightarrow{0}$ và $\overrightarrow{b}\neq \overrightarrow{0}$ thì $\cos \left(\overrightarrow{a},\overrightarrow{b}\right)= \dfrac{\overrightarrow{a}\cdot \overrightarrow{b}}{|\overrightarrow{a}|\cdot \overrightarrow{b}} = \dfrac{a_1b_1 + a_2b_2}{\sqrt{a_1^2+a_2^2}\cdot \sqrt{b_1^2+b_2^2}}$. 
-	\end{itemize}	
-\end{note}
+\textbf{Nhận xét}
+\begin{itemize}
+	\item Hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$ vuông góc với nhau khi và chỉ khi $a_1b_1 + a_2b_2 = 0$.
+	\item Bình phương vô hướng của $\overrightarrow{a}(a_1;a_2)$ là $\overrightarrow{a}^2 = a_1^2 + a_2^2$. \\
+	      Suy ra độ dài của $\vec{a}$ bằng $|\vec{a}|=\sqrt{a_1^2+a_2^2}$.
+	\item Với hai điểm $A(x_A;y_A)$ và $B(x_B;y_B)$ thì $\overrightarrow{AB}=(x_B-x_A;y_B-y_A)$ và khoảng cách giữa hai điểm $A$, $B$ là $AB=\left|\overrightarrow{AB}\right|=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$.
+	\item Nếu $\overrightarrow{a}\neq \overrightarrow{0}$ và $\overrightarrow{b}\neq \overrightarrow{0}$ thì $\cos \left(\overrightarrow{a},\overrightarrow{b}\right)= \dfrac{\overrightarrow{a}\cdot \overrightarrow{b} }{ |\overrightarrow{a}|\cdot |\overrightarrow{b}| } = \dfrac{a_1b_1 + a_2b_2}{\sqrt{a_1^2+a_2^2}\cdot \sqrt{b_1^2+b_2^2}}$.
+\end{itemize}
 \subsection{Các ví dụ}
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H1Y4-3]
-Viết tọa độ các véc-tơ sau
-$\vec{a}=3\vec{i}+7\vec{j}$; \quad $\vec{b}=\sqrt{2}\vec{i}-3\vec{j}$;\quad $\vec{c}=\dfrac{3}{4}\vec{i}$;\quad$\vec{d}=\pi\vec{j}$.
-\loigiai{
-Ta có $\vec{a}=(3;7)$, $\vec{b}=\left(\sqrt{2};-3\right)$, $\vec{c}=\left(\dfrac{3}{4};0\right)$, $\vec{d}=(0;\pi)$.
-}
+	Viết tọa độ các vectơ sau
+	$\vec{a}=3\vec{i}+7\vec{j}$; \quad $\vec{b}=\sqrt{2}\vec{i}-3\vec{j}$;\quad $\vec{c}=\dfrac{3}{4}\vec{i}$;\quad$\vec{d}=\pi\vec{j}$.
+	\loigiai{
+		Ta có $\vec{a}=(3;7)$, $\vec{b}=\left(\sqrt{2};-3\right)$, $\vec{c}=\left(\dfrac{3}{4};0\right)$, $\vec{d}=(0;\pi)$.
+	}
 \end{vd}
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H1Y4-3]
-Viết véc-tơ $\vec{u}$ dưới dạng $\vec{u}=x\vec{i}+y\vec{j}$ khi biết tọa độ của $\vec{u}$ là\\
-$(5;3)$, $(2;-1)$, $(4;0)$, $\left(0;-\sqrt{3}\right)$, $(0;0)$.
-\loigiai{
-Ta có $\vec{u}=5\vec{i}+3\vec{j}$, $\vec{u}=2\vec{i}-\vec{j}$, $\vec{u}=4\vec{i}$, $\vec{u}=-\sqrt{3}\vec{j}$, $\vec{u}=0\vec{i}+0\vec{j}=\vec{0}$.
-}
+	Viết vectơ $\vec{u}$ dưới dạng $\vec{u}=x\vec{i}+y\vec{j}$ khi biết tọa độ của $\vec{u}$ là\\
+	$(5;3)$, $(2;-1)$, $(4;0)$, $\left(0;-\sqrt{3}\right)$, $(0;0)$.
+	\loigiai{
+		Ta có $\vec{u}=5\vec{i}+3\vec{j}$, $\vec{u}=2\vec{i}-\vec{j}$, $\vec{u}=4\vec{i}$, $\vec{u}=-\sqrt{3}\vec{j}$, $\vec{u}=0\vec{i}+0\vec{j}=\vec{0}$.
+	}
 \end{vd}
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H1Y4-2]
-Trong mặt phẳng tọa độ $Oxy$, cho $\vec{u}=(1;2)$, $\vec{v}=(-3;4)$, $\vec{a}=(4;8)$
-\begin{enumerate}
-    \item Hãy biểu  thị mỗi véc-tơ $\vec{u}$, $\vec{v}$, $\vec{a}$ theo các véc-tơ $\vec{i}$, $\vec{j}$.
-    \item Tìm tọa độ $\vec{u}+\vec{v}$, $2\vec{u}$.
-    \item Tìm mối liên hệ giữa véc-tơ $\vec{a}$ và $\vec{u}$.
-    \end{enumerate}
-\loigiai{
-\begin{enumerate}
-    \item Ta có $\vec{u}=\vec{i}+2\vec{j}$, $\vec{v}=-3\vec{i}+4\vec{j}$, $\vec{a}=6\vec{i}+8\vec{j}$.
-    \item Ta có $\vec{u}+\vec{v}=(-2;6)$, $2\vec{u}=(2;4)$.
-    \item Ta có $\vec{a}=4\vec{u}$.
-    \end{enumerate}
-}
+	Trong mặt phẳng tọa độ $Oxy$, cho $\vec{u}=(1;2)$, $\vec{v}=(-3;4)$, $\vec{a}=(4;8)$
+	\begin{enumerate}
+		\item Hãy biểu  thị mỗi vectơ $\vec{u}$, $\vec{v}$, $\vec{a}$ theo các vectơ $\vec{i}$, $\vec{j}$.
+		\item Tìm tọa độ $\vec{u}+\vec{v}$, $2\vec{u}$.
+		\item Tìm mối liên hệ giữa vectơ $\vec{a}$ và $\vec{u}$.
+	\end{enumerate}
+	\loigiai{
+		\begin{enumerate}
+			\item Ta có $\vec{u}=\vec{i}+2\vec{j}$, $\vec{v}=-3\vec{i}+4\vec{j}$, $\vec{a}=6\vec{i}+8\vec{j}$.
+			\item Ta có $\vec{u}+\vec{v}=(-2;6)$, $2\vec{u}=(2;4)$.
+			\item Ta có $\vec{a}=4\vec{u}$.
+		\end{enumerate}
+	}
 \end{vd}
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H1Y4-2]
-Cho $\vec{u}=(2;-1)$, $\vec{v}=(4;5)$. Tính tọa độ các véc-tơ $\vec{u}+\vec{v}$, $\vec{u}-\vec{v}$, $3\vec{u}$, $5\vec{u}-4\vec{v}$.
-\loigiai{
-Ta có $\vec{u}+\vec{v}=(6;4)$, $\vec{u}-\vec{v}=(-2;-6)$, $3\vec{u}=(6;-3)$.\\
-Ta có $5\vec{u}=(10;-5)$, $4\vec{v}=(16;20)$ nên $5\vec{u}-4\vec{v}=(-6;-25)$.
-}
+	Cho $\vec{u}=(2;-1)$, $\vec{v}=(4;5)$. Tính tọa độ các vectơ $\vec{u}+\vec{v}$, $\vec{u}-\vec{v}$, $3\vec{u}$, $5\vec{u}-4\vec{v}$.
+	\loigiai{
+		Ta có $\vec{u}+\vec{v}=(6;4)$, $\vec{u}-\vec{v}=(-2;-6)$, $3\vec{u}=(6;-3)$.\\
+		Ta có $5\vec{u}=(10;-5)$, $4\vec{v}=(16;20)$ nên $5\vec{u}-4\vec{v}=(-6;-25)$.
+	}
 \end{vd}
 
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H1B4-3]
-Cho tam giác $ABC$ có $A(-5;6)$, $B(-4;-1)$, $C(4;3)$.
-\begin{enumerate}
-    \item Tìm tọa độ trung điểm $I$ của đoạn thẳng $AC$.
-    \item Tìm tọa độ điểm $D$ sao cho tứ giác $ABCD$ là hình bình hành.
-\end{enumerate}
-\loigiai{
-\begin{enumerate}
-    \item Gọi $I(x_I;y_I)$. Vì $I$ là trung điểm của của $AC$ nên
-    \[\heva{&x_I=\dfrac{x_A+x_C}{2}=\dfrac{-5+4}{2}=-\dfrac{1}{2}\\&y_I=\dfrac{y_A+y_C}{2}=\dfrac{6+3}{2}=\dfrac{9}{2}.}\] Vậy $I\left(-\dfrac{1}{2};\dfrac{9}{2}\right)$.
-    \item Gọi $D(x;y)$, ta có $\overrightarrow{AB}=(1;-7)$, $\overrightarrow{DC}=(4-x;3-y)$.
-    \immini{$ABCD$ là hình bình hành khi $\overrightarrow{AB}=\overrightarrow{CD}\\\Leftrightarrow\heva{&1=4-x\\&-7=3-y}\Leftrightarrow\heva{&x=3\\&y=10} $. Vậy $D(3;10)$.}{\begin{tikzpicture}[scale=1,font=\footnotesize,line join = round, line cap = round, >= stealth]
-\coordinate (A) at (0,0);
-\def\a{3} \def\b{2}
-\coordinate (B) at ($(A)+(0:\a)$);
-\coordinate (D) at ($(A)+(70:\b)$);
-\coordinate (C) at ($(B)+(D)-(A)$);
-\draw (A)--(B)--(C)--(D)--cycle;
-\foreach \p/\g in {A/-90,B/-90,C/90,D/90} \draw[fill] (\p) circle(.5pt) node [shift={(\g:.3)}] {$\p$};
-\end{tikzpicture}}
-   \end{enumerate}
-}
+	Cho tam giác $ABC$ có $A(-5;6)$, $B(-4;-1)$, $C(4;3)$.
+	\begin{enumerate}
+		\item Tìm tọa độ trung điểm $I$ của đoạn thẳng $AC$.
+		\item Tìm tọa độ điểm $D$ sao cho tứ giác $ABCD$ là hình bình hành.
+	\end{enumerate}
+	\loigiai{
+		\begin{enumerate}
+			\item Gọi $I(x_I;y_I)$. Vì $I$ là trung điểm của của $AC$ nên
+			      \[\heva{&x_I=\dfrac{x_A+x_C}{2}=\dfrac{-5+4}{2}=-\dfrac{1}{2}\\&y_I=\dfrac{y_A+y_C}{2}=\dfrac{6+3}{2}=\dfrac{9}{2}.}\] Vậy $I\left(-\dfrac{1}{2};\dfrac{9}{2}\right)$.
+			\item Gọi $D(x;y)$, ta có $\overrightarrow{AB}=(1;-7)$, $\overrightarrow{DC}=(4-x;3-y)$.
+			      \immini{$ABCD$ là hình bình hành khi $\overrightarrow{AB}=\overrightarrow{CD}\\\Leftrightarrow\heva{&1=4-x\\&-7=3-y}\Leftrightarrow\heva{&x=3\\&y=10} $. Vậy $D(3;10)$.}{\begin{tikzpicture}[scale=1,font=\footnotesize,line join = round, line cap = round, >= stealth]
+					      \coordinate (A) at (0,0);
+					      \def\a{3} \def\b{2}
+					      \coordinate (B) at ($(A)+(0:\a)$);
+					      \coordinate (D) at ($(A)+(70:\b)$);
+					      \coordinate (C) at ($(B)+(D)-(A)$);
+					      \draw (A)--(B)--(C)--(D)--cycle;
+					      \foreach \p/\g in {A/-90,B/-90,C/90,D/90} \draw[fill] (\p) circle(.5pt) node [shift={(\g:.3)}] {$\p$};
+				      \end{tikzpicture}}
+		\end{enumerate}
+	}
 \end{vd}
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H1B4-3]
-Cho tam giác $ABC$ biết $A(1;-1)$, $B(0;3)$ và $G\left(\dfrac{1}{3};3\right)$ là trọng tâm. Tìm tọa độ điểm $C$.
-\loigiai{
-Gọi $C(x;y)$. Vì $G$ là trọng tâm tam giác $ABC$ nên
+	Cho tam giác $ABC$ biết $A(1;-1)$, $B(0;3)$ và $G\left(\dfrac{1}{3};3\right)$ là trọng tâm. Tìm tọa độ điểm $C$.
+	\loigiai{
+	Gọi $C(x;y)$. Vì $G$ là trọng tâm tam giác $ABC$ nên
 	{\allowdisplaybreaks
-		\begin{eqnarray*}
+	\begin{eqnarray*}
 		& &\heva{&x_G=\dfrac{x_A+x_B+x_C}{3}\\&y_G=\dfrac{y_A+y_B+y_C}{3}}\\
 		&\Rightarrow&
 		\heva{&\dfrac{1}{3}=\dfrac{1+0+x}{3}\\&3=\dfrac{-1+3+y}{3}}\\
 		&\Rightarrow& \heva{&x=0\\&y=7.}
-		\end{eqnarray*}Vậy $C(0;7)$.
-	}	
-}
+	\end{eqnarray*}Vậy $C(0;7)$.
+	}
+	}
 \end{vd}
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H1B4-4]
-Cho $\vec{a}=(1;2)$, $\vec{b}=(3;-1)$. Hãy phân tích véc-tơ $\vec{c}=(-1;5)$ theo hai véc-tơ $\vec{a}$ và $\vec{b}$.
-\loigiai{
-Giả sử $\vec{c}=k\vec{a}+m\vec{b}=(k+3m;2k-m)$.\\
-Ta có $\heva{&k+3m=-1\\&2k-m=5}\Rightarrow \heva{&k=2\\&m=-1.}$\\ Vậy $\vec{c}=2\vec{a}-\vec{b}$.
-}
+	Cho $\vec{a}=(1;2)$, $\vec{b}=(3;-1)$. Hãy phân tích vectơ $\vec{c}=(-1;5)$ theo hai vectơ $\vec{a}$ và $\vec{b}$.
+	\loigiai{
+		Giả sử $\vec{c}=k\vec{a}+m\vec{b}=(k+3m;2k-m)$.\\
+		Ta có $\heva{&k+3m=-1\\&2k-m=5}\Rightarrow \heva{&k=2\\&m=-1.}$\\ Vậy $\vec{c}=2\vec{a}-\vec{b}$.
+	}
 \end{vd}
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H1B4-5]
-Cho ba điểm $A(1;-1)$, $B(3;5)$, $C(2;2)$. 
-\begin{enumerate}
-    \item Chứng minh rằng ba điểm $A$, $B$, $C$ thẳng hàng.
-    \item Tìm tọa độ điểm $D$ trên $Ox$ sao cho $A$, $B$, $D$ thẳng hàng.
-    \end{enumerate}
-\loigiai{
-\begin{enumerate}
-    \item Ta có $\overrightarrow{AB}=(2;6)$, $\overrightarrow{AC}=(1;3)$.\\
-Vì $\dfrac{2}{1}=\dfrac{6}{3}$ nên $\overrightarrow{AB}$ và $\overrightarrow{AC}$ cùng phương do đó ba điểm $A$, $B$, $C$ thẳng hàng.
-    \item Vì $D\in Ox$ nên $D(x;0)$. Ta có $\overrightarrow{AB}=(2;6)$, $\overrightarrow{AD}=(x-1;1)$.\\
-    Ba điểm $A$, $B$, $D$ thẳng hàng khi $\dfrac{x-1}{2}=\dfrac{1}{6}\Rightarrow x-1=\dfrac{1}{3}\Rightarrow x=\dfrac{4}{3}$. Vậy $D\left(\dfrac{4}{3};0\right)$.
-\end{enumerate}
-}
-\loigiai{
+	Cho ba điểm $A(1;-1)$, $B(3;5)$, $C(2;2)$.
+	\begin{enumerate}
+		\item Chứng minh rằng ba điểm $A$, $B$, $C$ thẳng hàng.
+		\item Tìm tọa độ điểm $D$ trên $Ox$ sao cho $A$, $B$, $D$ thẳng hàng.
+	\end{enumerate}
+	\loigiai{
+		\begin{enumerate}
+			\item Ta có $\overrightarrow{AB}=(2;6)$, $\overrightarrow{AC}=(1;3)$.\\
+			      Vì $\dfrac{2}{1}=\dfrac{6}{3}$ nên $\overrightarrow{AB}$ và $\overrightarrow{AC}$ cùng phương do đó ba điểm $A$, $B$, $C$ thẳng hàng.
+			\item Vì $D\in Ox$ nên $D(x;0)$. Ta có $\overrightarrow{AB}=(2;6)$, $\overrightarrow{AD}=(x-1;1)$.\\
+			      Ba điểm $A$, $B$, $D$ thẳng hàng khi $\dfrac{x-1}{2}=\dfrac{1}{6}\Rightarrow x-1=\dfrac{1}{3}\Rightarrow x=\dfrac{4}{3}$. Vậy $D\left(\dfrac{4}{3};0\right)$.
+		\end{enumerate}
+	}
+	\loigiai{
 
-}
+	}
 \end{vd}
 \begin{vd}%[BG Toán 10(2022)]%[Trần Hòa]%[0H2B2-2]
-Cho $A(1;2)$, $B(-2;1)$, $C(2;-1)$.
-\begin{enumerate}
-    \item Chứng minh tam giác $ABC$ vuông tại $A$.
-    \item Tính diện tích tam giác $ABC$.
-    \end{enumerate}
-\loigiai{
-\begin{enumerate}
-    \item Ta có $\overrightarrow{AB}=(-3;1)$, $\overrightarrow{AC}=(1;-3)$, $\overrightarrow{BC}=(4;-2)$.\\
-Suy ra $AB=\sqrt{(-3)^2+1}=\sqrt{10}$, $AC=\sqrt{1^2+(-3)^2}=\sqrt{10}$, $BC=\sqrt{4^2+(-2)^2}=\sqrt{20}$.\\
-Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
-\item Vì tam giác $ABC$ vuông tại $A$ nên diện tích là $\dfrac{1}{2}AB\cdot AC=\dfrac{1}{2}\cdot \sqrt{10}\cdot \sqrt{10}=5$.
-\end{enumerate}
-}
+	Cho $A(1;2)$, $B(-2;1)$, $C(2;-1)$.
+	\begin{enumerate}
+		\item Chứng minh tam giác $ABC$ vuông tại $A$.
+		\item Tính diện tích tam giác $ABC$.
+	\end{enumerate}
+	\loigiai{
+		\begin{enumerate}
+			\item Ta có $\overrightarrow{AB}=(-3;1)$, $\overrightarrow{AC}=(1;-3)$, $\overrightarrow{BC}=(4;-2)$.\\
+			      Suy ra $AB=\sqrt{(-3)^2+1}=\sqrt{10}$, $AC=\sqrt{1^2+(-3)^2}=\sqrt{10}$, $BC=\sqrt{4^2+(-2)^2}=\sqrt{20}$.\\
+			      Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
+			\item Vì tam giác $ABC$ vuông tại $A$ nên diện tích là $\dfrac{1}{2}AB\cdot AC=\dfrac{1}{2}\cdot \sqrt{10}\cdot \sqrt{10}=5$.
+		\end{enumerate}
+	}
 \end{vd}
 \begin{vd}
-	Cho các véc-tơ $\overrightarrow{a}=-\overrightarrow{i}+\overrightarrow{j}, \overrightarrow{b}=\overrightarrow{i}+3\overrightarrow{j}$. Tìm góc giữa hai véc-tơ $\overrightarrow{a}$ và $\overrightarrow{b}$.
+	Cho các vectơ $\overrightarrow{a}=-\overrightarrow{i}+\overrightarrow{j}, \overrightarrow{b}=\overrightarrow{i}+3\overrightarrow{j}$. Tìm góc giữa hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$.
 	\loigiai{
 		Ta có $\cos (\overrightarrow{a},\overrightarrow{b})=\dfrac{\overrightarrow{a}\cdot \overrightarrow{b}}{\big|\overrightarrow{a}\big|\cdot \big|\overrightarrow{b}\big|}=\dfrac{-1\cdot 1+1\cdot 3}{\sqrt{(-1)^2+1^2}\cdot \sqrt{1^2+3^2}}=\dfrac{2}{2\sqrt{5}}=\dfrac{1}{\sqrt{5}}$.\\
-		Do đó góc giữa hai véc-tơ $\overrightarrow{a}$ và $\overrightarrow{b}$ là góc $\alpha \in [0^\circ;180^\circ]$ sao cho $\cos \alpha =\dfrac{1}{\sqrt{5}}$ hay $ \alpha \approx 65^\circ 26' $.   
+		Do đó góc giữa hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$ là góc $\alpha \in [0^\circ;180^\circ]$ sao cho $\cos \alpha =\dfrac{1}{\sqrt{5}}$ hay $ \alpha \approx 65^\circ 26' $.
 	}
 \end{vd}
 
@@ -209,7 +209,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	\loigiai{
 		Ta có $\overrightarrow{AO}=(-1;-3)$ và $\overrightarrow{AB}=(2;-4)$.\\
 		Suy ra $\cos\left (\overrightarrow{AO},\overrightarrow{AB}\right )=\dfrac{\overrightarrow{AO}\cdot \overrightarrow{AB}}{AO\cdot AB}=\dfrac{-1\cdot 2+(-3)\cdot (-4)}{\sqrt{10}\cdot \sqrt{20}}=\dfrac{1}{\sqrt{2}}$.\\
-		Góc giữa hai véc-tơ $\overrightarrow{AO}$ và $\overrightarrow{AB}$ bằng góc $\widehat{BAO}=45^\circ$. Do đó góc giữa đường thẳng $OA$ và đường thẳng $AB$ bằng $45^\circ$.
+		Góc giữa hai vectơ $\overrightarrow{AO}$ và $\overrightarrow{AB}$ bằng góc $\widehat{BAO}=45^\circ$. Do đó góc giữa đường thẳng $OA$ và đường thẳng $AB$ bằng $45^\circ$.
 	}
 \end{vd}
 
@@ -227,14 +227,14 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 \end{vd}
 \subsection{Bài tập vận dụng}
 \begin{bt}%[0H1B3-1]
-	Trong mặt phẳng tọa độ $Oxy$ cho các véc-tơ $\vec{a}=(3;1)$, $\vec{b}=(-1;2)$. Tính $\vec{u}=3\vec{a}-2\vec{b}$.
+	Trong mặt phẳng tọa độ $Oxy$ cho các vectơ $\vec{a}=(3;1)$, $\vec{b}=(-1;2)$. Tính $\vec{u}=3\vec{a}-2\vec{b}$.
 	\loigiai{
 		Ta có $3\vec{a}=(9;3)$ và $-2\vec{b}=(2;-4)$ nên $\vec{u}=3\vec{a}-2\vec{b}=(11;-1)$.
 	}
 \end{bt}
 
 \begin{bt}%[0H1B4-4]
-	Trong mặt phẳng $Oxy$, cho các véc-tơ $\overrightarrow{a}=(2;-1),\overrightarrow{b}=(0;4)$ và $\overrightarrow{c}=(3;3)$. Tìm hai số thực $m$, $n$ sao cho $\overrightarrow{c}=m\overrightarrow{a}-n\overrightarrow{b}$.
+	Trong mặt phẳng $Oxy$, cho các vectơ $\overrightarrow{a}=(2;-1),\overrightarrow{b}=(0;4)$ và $\overrightarrow{c}=(3;3)$. Tìm hai số thực $m$, $n$ sao cho $\overrightarrow{c}=m\overrightarrow{a}-n\overrightarrow{b}$.
 	\loigiai
 	{
 		Ta có $m\overrightarrow{a}=(2m;-m),n\overrightarrow{b}=(0;4n) \Rightarrow m\overrightarrow{a}-n\overrightarrow{b}=(2m;-m-4n)$.\\
@@ -252,17 +252,17 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{
 		\begin{enumerate}
 			\item Điểm $G$ là trọng tâm tam giác $ABC$ nên $\heva{&x_G=\dfrac{x_A+x_B+x_C}{3}=-\dfrac{2}{3}\\&y_G=\dfrac{y_A+y_B+y_C}{3}=\dfrac{1}{3}}\Rightarrow G\left(-\dfrac{2}{3};\dfrac{1}{3}\right)$.\\
-			Ta có $\heva{&\overrightarrow{AB}=(3;-1)\Rightarrow AB=\sqrt{3^2+(-1)^2}=\sqrt{10} \\&\overrightarrow{BC}=(-2;-6)\Rightarrow BC=\sqrt{(-2)^2+(-6)^2}=2\sqrt{10}\\&\overrightarrow{CA}=(-1;7)\Rightarrow CA=\sqrt{(-1)^2+7^2}=5\sqrt{2}}\Rightarrow P_{ABC}=3\sqrt{10}+5\sqrt{2}$.
-			\item $K$ thuộc đoạn $BC$ nên 
-			\begin{eqnarray*}
-				2\overrightarrow{KB}+3\overrightarrow{KC}=\overrightarrow{0}&\Leftrightarrow &  2\left(\overrightarrow{OB}-\overrightarrow{OA}\right)+3\left(\overrightarrow{OA}-\overrightarrow{OK}\right)=\overrightarrow{0}\\
-				&\Rightarrow & \overrightarrow{OK}=\dfrac{2\overrightarrow{OB}+3\overrightarrow{OA}}{5}\\
-				&\Rightarrow & \heva{&x_K=\dfrac{2x_B+3x_A}{5}=-\dfrac{4}{5}\\&y_K=\dfrac{2y_B+3y_A}{5}=\dfrac{13}{5}.}
-			\end{eqnarray*}
-			
-			Vậy tọa độ cần tìm là $K\left(-\dfrac{4}{5};\dfrac{13}{5}\right).$
+			      Ta có $\heva{&\overrightarrow{AB}=(3;-1)\Rightarrow AB=\sqrt{3^2+(-1)^2}=\sqrt{10} \\&\overrightarrow{BC}=(-2;-6)\Rightarrow BC=\sqrt{(-2)^2+(-6)^2}=2\sqrt{10}\\&\overrightarrow{CA}=(-1;7)\Rightarrow CA=\sqrt{(-1)^2+7^2}=5\sqrt{2}}\Rightarrow P_{ABC}=3\sqrt{10}+5\sqrt{2}$.
+			\item $K$ thuộc đoạn $BC$ nên
+			      \begin{eqnarray*}
+				      2\overrightarrow{KB}+3\overrightarrow{KC}=\overrightarrow{0}&\Leftrightarrow &  2\left(\overrightarrow{OB}-\overrightarrow{OK}\right)+3\left(\overrightarrow{OC}-\overrightarrow{OK}\right)=\overrightarrow{0}\\
+				      &\Rightarrow & \overrightarrow{OK}=\dfrac{2\overrightarrow{OB}+3\overrightarrow{OC}}{5}\\
+				      &\Rightarrow & \heva{&x_K=\dfrac{2x_B+3x_C}{5}=-\dfrac{1}{5}\\&y_K=\dfrac{2y_B+3y_C}{5}=-\dfrac{8}{5}.}
+			      \end{eqnarray*}
+
+			      Vậy tọa độ cần tìm là $K\left(-\dfrac{1}{5};-\dfrac{8}{5}\right).$
 		\end{enumerate}
-		
+
 	}
 \end{bt}
 \begin{bt}%[0H1B4-5]%[0H2K2-3]%[0H2K2-2]
@@ -275,33 +275,33 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	\loigiai{
 		\begin{enumerate}
 			\item Ta có $\overrightarrow{AB}=(-3;-8)$, $\overrightarrow{AC}=(2;-5)$.\\
-			Vì $\dfrac{-3}{2}\ne \dfrac{-8}{-5}$ nên hai véc-tơ $\overrightarrow{AB}$ và $\overrightarrow{AC}$ không cùng phượng. Từ đó suy ra  $A$, $B$, $C$ là ba đỉnh của một tam giác.\\
-			Tọa độ trọng tâm $G$ của tam giác $ABC$ là
-			\begin{eqnarray*}
-				\heva{&x_G=\dfrac{x_A+x_B+x_C}{3}=\dfrac{(-1)+(-4)+1}{3}=-\dfrac{4}{3}\\&y_G=\dfrac{y_A+y_B+y_C}{3}=\dfrac{3+(-5)+(-2)}{3}=-\dfrac{4}{3}}
-			\end{eqnarray*}
-			Vậy $G\left(-\dfrac{4}{3};-\dfrac{4}{3}\right)$.
+			      Vì $\dfrac{-3}{2}\ne \dfrac{-8}{-5}$ nên hai vectơ $\overrightarrow{AB}$ và $\overrightarrow{AC}$ không cùng phượng. Từ đó suy ra  $A$, $B$, $C$ là ba đỉnh của một tam giác.\\
+			      Tọa độ trọng tâm $G$ của tam giác $ABC$ là
+			      \begin{eqnarray*}
+				      \heva{&x_G=\dfrac{x_A+x_B+x_C}{3}=\dfrac{(-1)+(-4)+1}{3}=-\dfrac{4}{3}\\&y_G=\dfrac{y_A+y_B+y_C}{3}=\dfrac{3+(-5)+(-2)}{3}=-\dfrac{4}{3}}
+			      \end{eqnarray*}
+			      Vậy $G\left(-\dfrac{4}{3};-\dfrac{4}{3}\right)$.
 			\item Giả sử $H(x;y)$ là trực tâm của tam giác $ABC$.\\
-			Ta có $\overrightarrow{BH}=(x+4;y+5)$, $\overrightarrow{CH}=(x-1;y+2)$, $\overrightarrow{AB}=(-3;-8)$, $\overrightarrow{AC}=(2;-5)$.\\
-			Vì $H$ là trực tâm tam giác $ABC$ nên
-			\begin{eqnarray*}
-				\heva{&\overrightarrow{AB}\perp\overrightarrow{CH}\\&\overrightarrow{AC}\perp\overrightarrow{BH}}
-				&\Leftrightarrow & \heva{&\overrightarrow{AB}\cdot\overrightarrow{CH}=0\\&\overrightarrow{AC}\cdot\overrightarrow{BH}=0}\\
-				&\Leftrightarrow & \heva{&(-3)\cdot(x-1)+(-8)\cdot (y+2)=0\\&2\cdot (x+4)+(-5)\cdot (y+5)=0}\\
-				&\Leftrightarrow & \heva{&3x+8y=-13\\&2x-5y=17}\\
-				&\Leftrightarrow & \heva{&x=\dfrac{71}{31}\\&y=-\dfrac{77}{31}.}
-			\end{eqnarray*}
-			Vậy $H\left(\dfrac{71}{31};-\dfrac{77}{31}\right)$.
+			      Ta có $\overrightarrow{BH}=(x+4;y+5)$, $\overrightarrow{CH}=(x-1;y+2)$, $\overrightarrow{AB}=(-3;-8)$, $\overrightarrow{AC}=(2;-5)$.\\
+			      Vì $H$ là trực tâm tam giác $ABC$ nên
+			      \begin{eqnarray*}
+				      \heva{&\overrightarrow{AB}\perp\overrightarrow{CH}\\&\overrightarrow{AC}\perp\overrightarrow{BH}}
+				      &\Leftrightarrow & \heva{&\overrightarrow{AB}\cdot\overrightarrow{CH}=0\\&\overrightarrow{AC}\cdot\overrightarrow{BH}=0}\\
+				      &\Leftrightarrow & \heva{&(-3)\cdot(x-1)+(-8)\cdot (y+2)=0\\&2\cdot (x+4)+(-5)\cdot (y+5)=0}\\
+				      &\Leftrightarrow & \heva{&3x+8y=-13\\&2x-5y=17}\\
+				      &\Leftrightarrow & \heva{&x=\dfrac{71}{31}\\&y=-\dfrac{77}{31}.}
+			      \end{eqnarray*}
+			      Vậy $H\left(\dfrac{71}{31};-\dfrac{77}{31}\right)$.
 			\item Gọi $M(x;0)$ là điểm thuộc trục hoành, ta có
-			\begin{eqnarray*}
-				\heva{&\overrightarrow{MA}=(-1-x;3)\\&\overrightarrow{MC}=(1-x;-2)}\Rightarrow 2\overrightarrow{MA}+\overrightarrow{MC}=(-1-3x;4).
-			\end{eqnarray*}
-			Nên
-			\begin{eqnarray*}
-				\left|2\overrightarrow{MA}+\overrightarrow{MC}\right|& =&\sqrt{(-1-3x)^2+4^2}\\ 
-				& =&\sqrt{(1+3x)^2+4^2}\ge 4.
-			\end{eqnarray*}
-			Dấu ``$=$'' xảy ra khi và chỉ khi $1+3x=0 \Leftrightarrow x=-\dfrac{1}{3}$. Khi đó $M\left(-\dfrac{1}{3};0\right)$.
+			      \begin{eqnarray*}
+				      \heva{&\overrightarrow{MA}=(-1-x;3)\\&\overrightarrow{MC}=(1-x;-2)}\Rightarrow 2\overrightarrow{MA}+\overrightarrow{MC}=(-1-3x;4).
+			      \end{eqnarray*}
+			      Nên
+			      \begin{eqnarray*}
+				      \left|2\overrightarrow{MA}+\overrightarrow{MC}\right|& =&\sqrt{(-1-3x)^2+4^2}\\
+				      & =&\sqrt{(1+3x)^2+4^2}\ge 4.
+			      \end{eqnarray*}
+			      Dấu ``$=$'' xảy ra khi và chỉ khi $1+3x=0 \Leftrightarrow x=-\dfrac{1}{3}$. Khi đó $M\left(-\dfrac{1}{3};0\right)$.
 		\end{enumerate}
 	}
 \end{bt}
@@ -311,26 +311,26 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	\loigiai{
 		Giả sử $N(x;y)$.
 		Ta có $\overrightarrow{NB}= (2-x; 1-y), \overrightarrow{NC}= (6-x; 3-y), \overrightarrow{NA}= (3-x; 4-y)$.\\
-		Khi đó 
+		Khi đó
 		\begin{align*}
-			2 \overrightarrow{NB}+ \overrightarrow{NC}- \overrightarrow{NA}= \overrightarrow{0} &\Leftrightarrow \heva{&2(2-x)+(6-x)- (3-x)=0\\ &2(1-y)+ (3-y)- (4-y)=0}\\
-			&\Leftrightarrow \heva{&7-2x=0\\ &1-2y=0} \Leftrightarrow \heva{&x= \dfrac{7}{2}\\ &y= \dfrac{1}{2}.}
+			2 \overrightarrow{NB}+ \overrightarrow{NC}- \overrightarrow{NA}= \overrightarrow{0} & \Leftrightarrow \heva{ & 2(2-x)+(6-x)- (3-x)=0 \\ &2(1-y)+ (3-y)- (4-y)=0}\\
+			                                                                                    & \Leftrightarrow \heva{ & 7-2x=0                \\ &1-2y=0} \Leftrightarrow \heva{&x= \dfrac{7}{2}\\ &y= \dfrac{1}{2}.}
 		\end{align*}
 		Vậy, $N \left(\dfrac{7}{2}; \dfrac{1}{2}\right)$ là điểm cần tìm.
 	}
 \end{bt}
 \begin{bt}%[0H1B4-3]
-	Trong mặt phẳng tọa độ $Oxy$, cho ba điểm $M(-1;1)$, $N\left(1;3\right)$, $P(-2;5).$ 
+	Trong mặt phẳng tọa độ $Oxy$, cho ba điểm $M(-1;1)$, $N\left(1;3\right)$, $P(-2;5).$
 	Tìm tọa độ điểm $E$ biết $\overrightarrow{PE}=2\overrightarrow{MN}$.
 	\loigiai{Ta có $\overrightarrow{MN}=(2;2)$.\\
 		$\overrightarrow{PE}=2\overrightarrow{MN}\Leftrightarrow \heva{
-			& x_E+2=4 \\ 
-			& y_E-5=4 \\ 
-		}\Leftrightarrow \heva{
-			& x_E=2 \\ 
-			& y_E=9. \\}$\\
+				& x_E+2=4 \\
+				& y_E-5=4 \\
+			}\Leftrightarrow \heva{
+				& x_E=2 \\
+				& y_E=9. \\}$\\
 		Vậy $E(2;9)$.
-	}	
+	}
 \end{bt}
 \begin{bt}%[0H1B4]%
 	Trong mặt phẳng với hệ tọa độ $Oxy$, cho tam giác $ABC$ với $A\left(1;1\right)$, $B\left(2;3\right)$, $C\left(5;-1\right)$. Tìm tọa độ điểm $D$ sao cho tứ giác $ABDC$ là hình bình hành.
@@ -350,23 +350,23 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 		\immini
 		{\begin{enumerate}
 				\item Tọa độ trọng tâm $G$ của tam giác $MNP$ là
-				\[G=\left(\dfrac{3+1+2}{3};\dfrac{-1+2-4}{3}\right)=\left(2;-1\right).\]
-				Gọi $Q(x;y)$.\\
-				Vì tứ giác $MNGQ$ là hình bình hành nên $\overrightarrow{MQ}=\overrightarrow{NG}.\hfill(1)$\\
-				Ta có $\overrightarrow{MQ}=(x-3;y+1)$ và $\overrightarrow{NG}=(1;-3)$.
-				Từ (1) suy ra
-				\[\heva{&x-3=1\\&y+1=-3}\Leftrightarrow\heva{&x=4\\&y=-4.}\] 
-				Vậy $Q(4;-4)$.
+				      \[G=\left(\dfrac{3+1+2}{3};\dfrac{-1+2-4}{3}\right)=\left(2;-1\right).\]
+				      Gọi $Q(x;y)$.\\
+				      Vì tứ giác $MNGQ$ là hình bình hành nên $\overrightarrow{MQ}=\overrightarrow{NG}.\hfill(1)$\\
+				      Ta có $\overrightarrow{MQ}=(x-3;y+1)$ và $\overrightarrow{NG}=(1;-3)$.
+				      Từ (1) suy ra
+				      \[\heva{&x-3=1\\&y+1=-3}\Leftrightarrow\heva{&x=4\\&y=-4.}\]
+				      Vậy $Q(4;-4)$.
 				\item Gọi $C(c_1;c_2)$, theo đề bài thì tứ giác $MNCP$ là hình bình hành nên
-				\[\heva{&c_1+x_M=x_N+x_P\\&c_2+y_M=y_N+y_P}\Leftrightarrow\heva{&c_1=1+2-3=0\\&c_2=2+(-4)-(-1)=-1.}\]
-				Vậy $C(0;-1)$.\\
-				Gọi $B(b_1;b_2)$, vì $N$ là trung điểm $CB$ nên
-				\[\heva{&b_1=2x_N-c_1\\&b_2=2y_N-c_2}\Leftrightarrow\heva{&b_1=2\cdot1-0=2\\&b_2=2\cdot2-(-1)=5.}\]
-				Vậy $B(2;5)$.\\
-				Gọi $A(a_1;a_2)$, vì $M$ là trung điểm $AB$ nên
-				\[\heva{&a_1=2x_M-b_1\\&a_2=2y_M-b_2}\Leftrightarrow\heva{&a_1=2\cdot3-2=4\\&a_2=2\cdot(-1)-5=-7.}\]
-				Vậy $A(4;-7)$.
-		\end{enumerate}}
+				      \[\heva{&c_1+x_M=x_N+x_P\\&c_2+y_M=y_N+y_P}\Leftrightarrow\heva{&c_1=1+2-3=0\\&c_2=2+(-4)-(-1)=-1.}\]
+				      Vậy $C(0;-1)$.\\
+				      Gọi $B(b_1;b_2)$, vì $N$ là trung điểm $CB$ nên
+				      \[\heva{&b_1=2x_N-c_1\\&b_2=2y_N-c_2}\Leftrightarrow\heva{&b_1=2\cdot1-0=2\\&b_2=2\cdot2-(-1)=5.}\]
+				      Vậy $B(2;5)$.\\
+				      Gọi $A(a_1;a_2)$, vì $M$ là trung điểm $AB$ nên
+				      \[\heva{&a_1=2x_M-b_1\\&a_2=2y_M-b_2}\Leftrightarrow\heva{&a_1=2\cdot3-2=4\\&a_2=2\cdot(-1)-5=-7.}\]
+				      Vậy $A(4;-7)$.
+			\end{enumerate}}
 		{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize,>=stealth,scale=0.75]
 				\fill (3,-1) coordinate [label=right:$M$] (M) circle(1pt)
 				(1,2) coordinate [label=left:$N$] (N) circle(1pt)
@@ -382,7 +382,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 				(C) node[left]{$C$} circle(1pt)
 				(A) node[below]{$A$} circle(1pt);
 				\draw (M)--(N)--(P)--cycle (N)--(G)--(Q)--(M) (B)--(C)--(A)--(B);
-		\end{tikzpicture}}
+			\end{tikzpicture}}
 	}
 \end{bt}
 
@@ -394,31 +394,31 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	\end{enumerate}
 	\loigiai{
 		%		\begin{center}
-			%			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,scale=.5]
-				%			\tkzDefPoints{-3/5/A,-4/-3/B,1/1/C}
-				%			\tkzDefPointBy[translation=from B to A](C)\tkzGetPoint{D}
-				%			\tkzDrawSegments[](A,B B,C C,D D,A)
-				%			\tkzLabelPoints[above left	](A)
-				%			\tkzLabelPoints[above right](D)
-				%			\tkzLabelPoints[below left](B)
-				%			\tkzLabelPoints[below right](C)
-				%			\end{tikzpicture}
-			%		\end{center}
+		%			\begin{tikzpicture}[>=stealth,line join=round,line cap=round,scale=.5]
+		%			\tkzDefPoints{-3/5/A,-4/-3/B,1/1/C}
+		%			\tkzDefPointBy[translation=from B to A](C)\tkzGetPoint{D}
+		%			\tkzDrawSegments[](A,B B,C C,D D,A)
+		%			\tkzLabelPoints[above left	](A)
+		%			\tkzLabelPoints[above right](D)
+		%			\tkzLabelPoints[below left](B)
+		%			\tkzLabelPoints[below right](C)
+		%			\end{tikzpicture}
+		%		\end{center}
 		\begin{enumerate}
 			\item Tứ giác $ABCD$ là hình bình hành \\
-			$\Leftrightarrow\overrightarrow{AB}=\overrightarrow{DC}\Leftrightarrow (-1;-8)=(1-x_D;1-y_D)\Leftrightarrow\heva{&1-x_D=-1\\&1-y_D=-8}\Leftrightarrow\heva{&x_D=2\\&y_D=9.}$\\
-			Vậy $D(2;9)$ là điểm cần tìm.
+			      $\Leftrightarrow\overrightarrow{AB}=\overrightarrow{DC}\Leftrightarrow (-1;-8)=(1-x_D;1-y_D)\Leftrightarrow\heva{&1-x_D=-1\\&1-y_D=-8}\Leftrightarrow\heva{&x_D=2\\&y_D=9.}$\\
+			      Vậy $D(2;9)$ là điểm cần tìm.
 			\item Gọi $K(a;0)$ là điểm cần tìm.\\
-			Ta có $KA+KB\ge AB$.\\
-			Dấu \lq\lq$=$\rq\rq\, xảy ra khi $A,K,B$ thẳng hàng.\\
-			$\Leftrightarrow \overrightarrow{AK}=k\overrightarrow{AB}\Leftrightarrow (a+3;-5)=k(-1;-8)\Leftrightarrow\heva{&a+3=-k\\&-5=-8k}\Leftrightarrow\heva{&a=-\dfrac{29}{8}\\&k=\dfrac{5}{8}.}$\\
-			Vậy $K\left(-\dfrac{29}{8};0\right) $ thỏa yêu cầu bài toán.
+			      Ta có $KA+KB\ge AB$.\\
+			      Dấu \lq\lq$=$\rq\rq\, xảy ra khi $A,K,B$ thẳng hàng.\\
+			      $\Leftrightarrow \overrightarrow{AK}=k\overrightarrow{AB}\Leftrightarrow (a+3;-5)=k(-1;-8)\Leftrightarrow\heva{&a+3=-k\\&-5=-8k}\Leftrightarrow\heva{&a=-\dfrac{29}{8}\\&k=\dfrac{5}{8}.}$\\
+			      Vậy $K\left(-\dfrac{29}{8};0\right) $ thỏa yêu cầu bài toán.
 		\end{enumerate}
 	}
 \end{bt}
 
 \begin{bt}
-	Trong mặt phẳng tọa độ $ Oxy $, tính góc giữa hai véc-tơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ trong mỗi trường hợp sau:
+	Trong mặt phẳng tọa độ $ Oxy $, tính góc giữa hai vectơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ trong mỗi trường hợp sau:
 	\begin{multicols}{2}
 		\begin{enumerate}
 			\item $ \overrightarrow{a}=(4;3) $, $ \overrightarrow{b}=(1;7) $;%\dapso{$ 45^\circ $}
@@ -430,13 +430,13 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	\loigiai{
 		\begin{enumerate}
 			\item $\cos (\overrightarrow{a},\overrightarrow{b})=\dfrac{\overrightarrow{a}\cdot \overrightarrow{b}}{\big|\overrightarrow{a}\big|\cdot \big|\overrightarrow{b}\big|}=\dfrac{4\cdot 1+3\cdot 7}{\sqrt{4^2+3^2}\cdot \sqrt{1^2+7^2}}=\dfrac{25}{5\sqrt{50}}=\dfrac{1}{\sqrt{2}}$.\\
-			Suy ra góc giữa hai véc-tơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ là $ 45^\circ $.
+			      Suy ra góc giữa hai vectơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ là $ 45^\circ $.
 			\item $\cos (\overrightarrow{a},\overrightarrow{b})=\dfrac{\overrightarrow{a}\cdot \overrightarrow{b}}{\big|\overrightarrow{a}\big|\cdot \big|\overrightarrow{b}\big|}=\dfrac{2\cdot 3+5\cdot (-7)}{\sqrt{2^2+5^2}\cdot \sqrt{3^2+(-7)^2}}=\dfrac{-29}{\sqrt{29}\cdot \sqrt{58}}=-\dfrac{1}{\sqrt{2}}$.\\
-			Suy ra góc giữa hai véc-tơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ là $ 135^\circ $.
+			      Suy ra góc giữa hai vectơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ là $ 135^\circ $.
 			\item $ \overrightarrow{a}\cdot \overrightarrow{b}=6\cdot 12+(-8)\cdot 9=0 $
-			Suy ra góc giữa hai véc-tơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ là $ 90^\circ $.
+			      Suy ra góc giữa hai vectơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ là $ 90^\circ $.
 			\item $\cos (\overrightarrow{a},\overrightarrow{b})=\dfrac{\overrightarrow{a}\cdot \overrightarrow{b}}{\big|\overrightarrow{a}\big|\cdot \big|\overrightarrow{b}\big|}=\dfrac{2\cdot (-3)+(-6)\cdot 9}{\sqrt{2^2+(-6)^2}\cdot \sqrt{(-3)^2+9^2}}=\dfrac{-60}{\sqrt{40}\cdot \sqrt{90}}=-1$.\\
-			Suy ra góc giữa hai véc-tơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ là $ 180^\circ $.
+			      Suy ra góc giữa hai vectơ $ \overrightarrow{a} $ và $ \overrightarrow{b} $ là $ 180^\circ $.
 		\end{enumerate}
 	}
 \end{bt}
@@ -475,7 +475,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 % \end{bt}
 
 \begin{bt}%[Lê Nguyễn Viết Tường,BG10-2022]%[0H2B2-3]
-	Trong mặt phẳng tọa độ $Oxy$, cho hai véc-tơ $\overrightarrow{u}=\left (\dfrac{1}{2};-5 \right )$ và $\overrightarrow{v}=\left (k;-4 \right )$. Tìm $k$ để $\overrightarrow{u}$ vuông góc với $\overrightarrow{v}$.
+	Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ $\overrightarrow{u}=\left (\dfrac{1}{2};-5 \right )$ và $\overrightarrow{v}=\left (k;-4 \right )$. Tìm $k$ để $\overrightarrow{u}$ vuông góc với $\overrightarrow{v}$.
 	\loigiai
 	{
 		Ta có $\overrightarrow{u}\perp\overrightarrow{v}\Leftrightarrow\overrightarrow{u}\cdot\overrightarrow{v}=0\Leftrightarrow \dfrac{1}{2}k+(-5)(-4)=0\Leftrightarrow k=-40.$
@@ -483,11 +483,11 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 \end{bt}
 
 \begin{bt}%[Lê Nguyễn Viết Tường,BG10-2022]%[0H2B2-3]
-	Trong mặt phẳng tọa độ $Oxy$, cho ba véc-tơ $\overrightarrow{u}=(4;1)$, $\overrightarrow{v}=(1;4)$ và $\overrightarrow{a}=\overrightarrow{u}+m\cdot\overrightarrow{v}$ với $m\in\mathbb{R}$. Tìm $m$ để $\overrightarrow{a}$ vuông góc với trục hoành.
+	Trong mặt phẳng tọa độ $Oxy$, cho ba vectơ $\overrightarrow{u}=(4;1)$, $\overrightarrow{v}=(1;4)$ và $\overrightarrow{a}=\overrightarrow{u}+m\cdot\overrightarrow{v}$ với $m\in\mathbb{R}$. Tìm $m$ để $\overrightarrow{a}$ vuông góc với trục hoành.
 	\loigiai
 	{
 		Ta có $\overrightarrow{a}=\overrightarrow{u}+m\overrightarrow{v}=\left (4+m;1+4m \right )$.\\
-		Trục hoành có véc-tơ đơn vị là $\overrightarrow{i}=(1;0)$.\\
+		Trục hoành có vectơ đơn vị là $\overrightarrow{i}=(1;0)$.\\
 		$\overrightarrow{a}$ vuông góc với trục hoành $\Leftrightarrow \overrightarrow{a}\cdot\overrightarrow{i}=0\Leftrightarrow 4+m=0\Leftrightarrow m=-4$.
 	}
 \end{bt}
@@ -524,10 +524,10 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{$\overrightarrow{i} = (0; 0)$}
 	{\True $\overrightarrow{i} = (1; 0)$}
 	\loigiai{
-		Ta có véc-tơ đơn vị $\overrightarrow{i}=(1;0)$.}
+		Ta có vectơ đơn vị $\overrightarrow{i}=(1;0)$.}
 \end{ex}
 \begin{ex}%[Bài giảng Toán 10 2022]%[Phạm Tiến Long]%[0H1Y4-3]
-	Trong mặt phẳng $Oxy$, cho $A(1;3)$, $B(2;-5)$. Tìm tọa độ của véc-tơ $\overrightarrow{AB}$.
+	Trong mặt phẳng $Oxy$, cho $A(1;3)$, $B(2;-5)$. Tìm tọa độ của vectơ $\overrightarrow{AB}$.
 	\choice
 	{$\overrightarrow{AB}=(2;-15)$}
 	{$\overrightarrow{AB}=(3;-2)$}
@@ -548,24 +548,24 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 		Giả sử $M(a; b)$.\\
 		Ta có:
 		$ \heva{
-			&\overrightarrow{MA}= (1-a; 3-b)\\
-			&\overrightarrow{MB}= (2-a; -3-b)\\
-			&\overrightarrow{MC}= (-2-a; 1-b)}$
+				&\overrightarrow{MA}= (1-a; 3-b)\\
+				&\overrightarrow{MB}= (2-a; -3-b)\\
+				&\overrightarrow{MC}= (-2-a; 1-b)}$
 		$ \Rightarrow
-		\heva{
-			& 5\overrightarrow{MA}= (5-5a; 15-5b)\\
-			& 2 \overrightarrow{MB}= (4-2a; -6-2b)\\
-			& 4\overrightarrow{MC}= (-8-4a; 4-4b).}$\\
+			\heva{
+				& 5\overrightarrow{MA}= (5-5a; 15-5b)\\
+				& 2 \overrightarrow{MB}= (4-2a; -6-2b)\\
+				& 4\overrightarrow{MC}= (-8-4a; 4-4b).}$\\
 		Vậy $ 5\overrightarrow{MA}-2\overrightarrow{MB}=4\overrightarrow{MC}$ $\Leftrightarrow
-		\heva{
-			& 5-5a-4+2a=-8-4a\\
-			& 15-5b+6+2b=4-4b}$
+			\heva{
+				& 5-5a-4+2a=-8-4a\\
+				& 15-5b+6+2b=4-4b}$
 		$ \Leftrightarrow
-		\heva{
-			& a= -9\\
-			& b= -17.}$\\
+			\heva{
+				& a= -9\\
+				& b= -17.}$\\
 		Vậy $M(-9;-17)$.
-		
+
 	}
 \end{ex}
 \begin{ex}%[Bài giảng Toán 10 2022]%[Phạm Tiến Long]%[0H1K4-3]
@@ -593,7 +593,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	}
 \end{ex}
 \begin{ex}%[Bài giảng Toán 10 2022]%[Phạm Tiến Long]%[0H1Y4-3]
-	Trong mặt phẳng $Oxy$, cho $A(2;3)$, $B(2;-5)$. Gọi $I$ là trung điểm của đoạn thẳng $AB$. Véc-tơ $\overrightarrow{AI}$ có tọa độ là
+	Trong mặt phẳng $Oxy$, cho $A(2;3)$, $B(2;-5)$. Gọi $I$ là trung điểm của đoạn thẳng $AB$. Vectơ $\overrightarrow{AI}$ có tọa độ là
 	\choice
 	{$(1;-3)$}
 	{$(0;5)$}
@@ -634,14 +634,14 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{$4$}
 	{$5$}
 	\loigiai{
-		Giả sử $\overrightarrow{IB}=k\overrightarrow{IC}$. Khi đó $\overrightarrow{IM}+\overrightarrow{MB}=k\overrightarrow{IM}+k\overrightarrow{MC}\Rightarrow \overrightarrow{MI}=\dfrac{1}{1-k}\overrightarrow{MB}+\dfrac{-k}{1-k}\overrightarrow{MC}$.\\
-		Do $\overrightarrow{MI}=\dfrac{2}{5}\overrightarrow{MB}+\dfrac{3}{5}\overrightarrow{MC}$ nên ta có $\heva{& \dfrac{1}{1-k}=\dfrac{2}{5} \\ & \dfrac{-k}{1-k}=\dfrac{3}{5}} \Leftrightarrow k=-\dfrac{3}{2}$.\\
-		Vậy $\overrightarrow{BI}=\dfrac{3}{5}\overrightarrow{BC} \Rightarrow \heva{& x_I=x_B+\dfrac{3}{5}x_{BC} \\ & y_I=y_B+\dfrac{3}{5}y_{BC}} \Leftrightarrow \heva{& x_I=1 \\ & y_I=0.} $\\
-		Vậy $a^2+b^2=1$.
+	Giả sử $\overrightarrow{IB}=k\overrightarrow{IC}$. Khi đó $\overrightarrow{IM}+\overrightarrow{MB}=k\overrightarrow{IM}+k\overrightarrow{MC}\Rightarrow \overrightarrow{MI}=\dfrac{1}{1-k}\overrightarrow{MB}+\dfrac{-k}{1-k}\overrightarrow{MC}$.\\
+	Do $\overrightarrow{MI}=\dfrac{2}{5}\overrightarrow{MB}+\dfrac{3}{5}\overrightarrow{MC}$ nên ta có $\heva{& \dfrac{1}{1-k}=\dfrac{2}{5} \\ & \dfrac{-k}{1-k}=\dfrac{3}{5}} \Leftrightarrow k=-\dfrac{3}{2}$.\\
+	Vậy $\overrightarrow{BI}=\dfrac{3}{5}\overrightarrow{BC} \Rightarrow \heva{& x_I=x_B+\dfrac{3}{5}x_{BC} \\ & y_I=y_B+\dfrac{3}{5}y_{BC}} \Leftrightarrow \heva{& x_I=1 \\ & y_I=0.} $\\
+	Vậy $a^2+b^2=1$.
 	}
 \end{ex}
 \begin{ex}%[Bài giảng Toán 10 2022]%[Phạm Tiến Long]%[0H1B4-3]
-	Trong mặt phẳng tọa độ $Oxy$, cho hai véc-tơ $\overrightarrow{a}=(3;-1)$ và $\overrightarrow{b}=(3;4)$. Tính tọa độ véc-tơ $\overrightarrow{c}=\overrightarrow{a}+\overrightarrow{b}$.
+	Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ $\overrightarrow{a}=(3;-1)$ và $\overrightarrow{b}=(3;4)$. Tính tọa độ vectơ $\overrightarrow{c}=\overrightarrow{a}+\overrightarrow{b}$.
 	\choice
 	{$\overrightarrow{c}=(3;3)$}
 	{$\overrightarrow{c}=(2;7)$}
@@ -750,11 +750,11 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{$\left(2;1\right)$}
 	{$\left(4;-3\right)$}
 	{\True $\left(2;5\right)$}
-	\loigiai{Tọa độ của véc-tơ $\overrightarrow{AB} = \left(3-1;7-2\right) = \left(2;5\right)$.
+	\loigiai{Tọa độ của vectơ $\overrightarrow{AB} = \left(3-1;7-2\right) = \left(2;5\right)$.
 	}
 \end{ex}
 \begin{ex}%[Lê Quốc Hiệp, dự án BG10-2022]%[0H1B4-3]
-	Trong mặt phẳng với $Oxy$, cho ba điểm $A(1;3)$, $B(-1;2)$, $C(-2;1)$. Toạ độ của véc-tơ $\overrightarrow{AB}-\overrightarrow{AC}$ là
+	Trong mặt phẳng với $Oxy$, cho ba điểm $A(1;3)$, $B(-1;2)$, $C(-2;1)$. Toạ độ của vectơ $\overrightarrow{AB}-\overrightarrow{AC}$ là
 	\choice
 	{$(-5;-3)$}
 	{\True $(1;1)$}
@@ -778,7 +778,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	}
 \end{ex}
 \begin{ex}%[Lê Quốc Hiệp, dự án BG10-2022]%[0H1K4-3]
-	Trong mặt phẳng tọa độ $Oxy$, cho các véc-tơ $\overrightarrow{OA} = (1;2)$ và $\overrightarrow{OB} = (2;1)$, biết $\overrightarrow{MA}=2\overrightarrow{MB}$. Khi đó độ dài véc-tơ $\overrightarrow{OM}$ là 
+	Trong mặt phẳng tọa độ $Oxy$, cho các vectơ $\overrightarrow{OA} = (1;2)$ và $\overrightarrow{OB} = (2;1)$, biết $\overrightarrow{MA}=2\overrightarrow{MB}$. Khi đó độ dài vectơ $\overrightarrow{OM}$ là
 	\choice
 	{$4$}
 	{$1$}
@@ -788,12 +788,12 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 		Ta có $\overrightarrow{OA}=(1;2)\Rightarrow A(1;2)$; $\overrightarrow{OB}=(2;1)\Rightarrow B(2;1)$.\\
 		Từ đẳng thức $\overrightarrow{MA}=2\overrightarrow{MB}$, suy ra $B$ là trung điểm của đoạn $MA$.\\
 		Gọi $M(a;b)$, ta có $\heva{&2=\dfrac{a+1}{2}\\&1=\dfrac{b+2}{2}}\Leftrightarrow\heva{&a=3\\&b=0}$ nên $M(3;0)$.\\
-		Vậy $\left|\overrightarrow{OM} \right|=\sqrt{3^2+0^2}=3$. 
+		Vậy $\left|\overrightarrow{OM} \right|=\sqrt{3^2+0^2}=3$.
 	}
 \end{ex}
 
 \begin{ex}%[Lê Quốc Hiệp, dự án BG10-2022]%[0H1B4-2]
-	Trong mặt phẳng tọa độ $Oxy$, cho các véc-tơ $\overrightarrow{a}=(-2;1)$, $\overrightarrow{b}=(1;-3)$ và $\overrightarrow{c}=(0;2).$ Tính tọa độ của véc-tơ $\overrightarrow{u}=\overrightarrow{a}+\overrightarrow{b}+\overrightarrow{c}.$
+	Trong mặt phẳng tọa độ $Oxy$, cho các vectơ $\overrightarrow{a}=(-2;1)$, $\overrightarrow{b}=(1;-3)$ và $\overrightarrow{c}=(0;2).$ Tính tọa độ của vectơ $\overrightarrow{u}=\overrightarrow{a}+\overrightarrow{b}+\overrightarrow{c}.$
 	\choice
 	{$\overrightarrow{u}=(-1;6)$}
 	{$\overrightarrow{u}=(3;0)$}
@@ -824,9 +824,9 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 				($(I)-(J)+(K)$) coordinate [label=above:$L$] (L) circle(1pt);
 				\draw[->](I)--(L) (J)--(K) (I)--(J);
 				\draw[->](L)--(K);
-		\end{tikzpicture}}
-		
-		
+			\end{tikzpicture}}
+
+
 	}
 \end{ex}
 \begin{ex}%[Lê Quốc Hiệp, dự án BG10-2022]%[0H1B4-3]
@@ -836,13 +836,13 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{\True  $(-1;12)$}
 	{$(3;1)$}
 	{$(2;12)$}
-	\loigiai{Ta có 
+	\loigiai{Ta có
 		$$\heva{&x_G=\dfrac{x_A+x_B+x_C}{3}\\&y_G=\dfrac{y_A+y_B+y_C}{3}}\Leftrightarrow \heva{&x_C=3x_G-x_A-x_B\\&y_C=3y_G-y_A-y_B}\Leftrightarrow \heva{&x_C=-1\\&y_C=12.}$$
 		Vậy tọa độ điểm $C$ là $(-1;12)$.
 	}
 \end{ex}
 \begin{ex}%[Lê Quốc Hiệp, dự án BG10-2022]%[0H1B4-3]
-	Trong mặt phẳng tọa độ $Oxy$, cho $\overrightarrow{a}=(m;3)$ và $\overrightarrow{b}=(2;-1)$. Tìm các giá trị của $m$ để hai véc-tơ $\overrightarrow{a}$ và $\overrightarrow{b}$ cùng phương.
+	Trong mặt phẳng tọa độ $Oxy$, cho $\overrightarrow{a}=(m;3)$ và $\overrightarrow{b}=(2;-1)$. Tìm các giá trị của $m$ để hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$ cùng phương.
 	\choice
 	{\True $m=-6$}
 	{$m=12$}
@@ -873,9 +873,9 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 				($(0,0)+(5:2)$) coordinate [label=right:$B$] (B) circle(1pt)
 				($(0,0)+(145:2)$) coordinate [label=above left:$C$] (C) circle(1pt)
 				(0,0) coordinate [label=below:$I$] (I) circle(1pt);
-				\draw (0,0) circle (2) 
+				\draw (0,0) circle (2)
 				(A)--(B)--(C)--(A)--(I)--(B) (I)--(C);
-		\end{tikzpicture}}
+			\end{tikzpicture}}
 	}
 \end{ex}
 \begin{ex}%[Lê Quốc Hiệp, dự án BG10-2022]%[0H1K4-3]
@@ -887,8 +887,8 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{$G\left(0;-\dfrac{11}{2}\right)$}
 	\loigiai{
 		Ta có $\overrightarrow{EF}=(-4;-1)$.\\
-		Lấy $G(x;0)\in Ox$.\\ 
-		Để $G\in EF$ khi và chỉ khi $\overrightarrow{EG}=(x-3;2)$ và $\overrightarrow{EF}$ cùng phương, khi đó ta có 
+		Lấy $G(x;0)\in Ox$.\\
+		Để $G\in EF$ khi và chỉ khi $\overrightarrow{EG}=(x-3;2)$ và $\overrightarrow{EF}$ cùng phương, khi đó ta có
 		\begin{equation*}
 			\dfrac{x-3}{-4}=\dfrac{2}{-1}\Leftrightarrow -x+3=-8\Leftrightarrow x=11.
 		\end{equation*}
@@ -952,7 +952,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 				\tkzLabelPoints[above right](M);
 				\tkzDrawSegments(A,B B,C C,A);
 				\fill (A) circle(1pt) (B) circle(1pt) (C) circle(1pt) (M) circle(1pt) (N) circle(1pt) (P) circle(1pt);
-		\end{tikzpicture}	}
+			\end{tikzpicture}	}
 	}
 \end{ex}
 
@@ -970,7 +970,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 		Suy ra $2\overrightarrow{AB}-3\overrightarrow{AC}= (-11;-3)$ và $\overrightarrow{CM}=(x-4;y-3)$.\\
 		Do đó $\overrightarrow{CM}=2\overrightarrow{AB}-3\overrightarrow{AC} \Leftrightarrow \heva{&x-4=-11\\&y-3=-3}\Leftrightarrow \heva{&x=-7\\&y=0.}$\\
 		Vậy $M(-7;0)$.
-		
+
 	}
 \end{ex}
 \begin{ex}%[Lê Quốc Hiệp, dự án BG10-2022]%[0H1K4-3]
@@ -986,7 +986,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 			\begin{eqnarray*}
 				S_{ABN}=3S_{ANC}\Leftrightarrow\dfrac{1}{2}\cdot AH\cdot BN=3\cdot\dfrac{1}{2}\cdot AH\cdot CN\Leftrightarrow BN=3CN.
 			\end{eqnarray*}
-			Do $N$ nằm trên cạnh $BC$ nên $\overrightarrow{BN}$ ngược chiều với $\overrightarrow{CN}$, suy ra 
+			Do $N$ nằm trên cạnh $BC$ nên $\overrightarrow{BN}$ ngược chiều với $\overrightarrow{CN}$, suy ra
 		}
 		{\begin{tikzpicture}[line cap=round,line join=round,font=\footnotesize,>=stealth,scale=1]
 				\fill (0,0) coordinate [label=left:$A$] (A) circle(1pt)
@@ -996,14 +996,14 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 				($(B)!2/3!(C)$) coordinate [label=right:$N$] (N) circle(1pt);
 				\draw (N)--(A)--(B)--(C)--(A)--(H);
 				\tkzMarkRightAngles[size=0.2](A,H,C)
-		\end{tikzpicture}}
+			\end{tikzpicture}}
 		\begin{eqnarray*}
 			\overrightarrow{BN}=-3\overrightarrow{CN}\Leftrightarrow\heva{&x_N-x_B=-3\left(x_N-x_C\right)\\&y_N-y_B=-3\left(y_N-y_C\right)}\Leftrightarrow\heva{&x_N=\dfrac{x_B+3x_C}{4}=-\dfrac{1}{4}\\&y_N=\dfrac{y_B+3y_C}{4}=-\dfrac{3}{4}.}
 		\end{eqnarray*}
 		Vậy tọa độ điểm $N$ cần tìm là $\left(-\dfrac{1}{4};-\dfrac{3}{4}\right)$.}
 \end{ex}
 \begin{ex}%[0H2Y2-1]
-	Cho hai véc-tơ $\overrightarrow{a}=\left( 3;2 \right),\overrightarrow{b}=\left( -2;4 \right)$. Hãy chọn khẳng định đúng.
+	Cho hai vectơ $\overrightarrow{a}=\left( 3;2 \right),\overrightarrow{b}=\left( -2;4 \right)$. Hãy chọn khẳng định đúng.
 	\choice
 	{\True $\overrightarrow{a}\cdot \overrightarrow{b}=2$}
 	{$\overrightarrow{a}\cdot \overrightarrow{b}=\left( -6;8 \right)$}
@@ -1014,7 +1014,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	}
 \end{ex}
 \begin{ex}%[0H2Y2-1]
-	Trong mặt phẳng tọa độ $Oxy$, cho hai véc-tơ $\overrightarrow{a}=4\overrightarrow{i}+6\overrightarrow{j} $ và $\overrightarrow{b}=3\overrightarrow{i}-7\overrightarrow{j} $. Tính tích vô hướng $\overrightarrow{a} \cdot \overrightarrow{b} $. 
+	Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ $\overrightarrow{a}=4\overrightarrow{i}+6\overrightarrow{j} $ và $\overrightarrow{b}=3\overrightarrow{i}-7\overrightarrow{j} $. Tính tích vô hướng $\overrightarrow{a} \cdot \overrightarrow{b} $.
 	\choice
 	{\True $\overrightarrow{a} \cdot \overrightarrow{b}=-30$}
 	{$\overrightarrow{a} \cdot \overrightarrow{b}=3$}
@@ -1048,11 +1048,11 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{\True $-5$}
 	\loigiai{
 		$\overrightarrow{AB}=(-2;-1) $, $ \overrightarrow{AC}=(4;-3) $.\\
-		$\overrightarrow{AB}\cdot \overrightarrow{AC}=\left(-2\right)\cdot 4+\left(-1\right)\cdot \left(-3\right)=-5$. 
+		$\overrightarrow{AB}\cdot \overrightarrow{AC}=\left(-2\right)\cdot 4+\left(-1\right)\cdot \left(-3\right)=-5$.
 	}
 \end{ex}
 \begin{ex}%[0H2Y2-1]
-	Trong mặt phẳng tọa độ $Oxy$, cho hai điểm $A\left(3;-1\right)$ và $B\left(2;10\right)$. Tính tích vô hướng $\overrightarrow{AO}\cdot \overrightarrow{OB}$. 
+	Trong mặt phẳng tọa độ $Oxy$, cho hai điểm $A\left(3;-1\right)$ và $B\left(2;10\right)$. Tính tích vô hướng $\overrightarrow{AO}\cdot \overrightarrow{OB}$.
 	\choice
 	{$\overrightarrow{AO}\cdot \overrightarrow{OB}=-4$}
 	{$\overrightarrow{AO}\cdot \overrightarrow{OB}=0$}
@@ -1064,7 +1064,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 \end{ex}
 
 \begin{ex}%[0H2Y2-1]
-	Trong mặt phẳng tọa độ $Oxy$, cho hai véc-tơ $\overrightarrow{a}=\left(-2;-1\right)$ và $\overrightarrow{b}=\left(4;-3\right)$. Tính cosin của góc giữa hai véc-tơ $\overrightarrow{a}$ và $\overrightarrow{b}$. 
+	Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ $\overrightarrow{a}=\left(-2;-1\right)$ và $\overrightarrow{b}=\left(4;-3\right)$. Tính cosin của góc giữa hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$.
 	\choice
 	{\True $\cos\left(\overrightarrow{a},\overrightarrow{b}\right)=-\dfrac{\sqrt{5}}{5}$}
 	{$\cos\left(\overrightarrow{a},\overrightarrow{b}\right)=\dfrac{2\sqrt{5}}{5}$}
@@ -1082,13 +1082,13 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{\True $135^{\circ}$}
 	{$45^{\circ}$}
 	\loigiai{
-		$$ \cos \left(\overrightarrow{a},\overrightarrow{b}\right)=\dfrac{\overrightarrow{a}\cdot\overrightarrow{b}}{\big| \overrightarrow{a}\big| \cdot \big| \overrightarrow{b}\big| }=\dfrac{2 \cdot 3 + 5 \cdot (-7)}{\sqrt{2^2+5^2}\cdot \sqrt{3^2+(-7)^2}}=-\dfrac{\sqrt{2}}{2}$$
-		Suy ra: $\left(\overrightarrow{a},\overrightarrow{b}\right)=135^{\circ}$		
+	$$ \cos \left(\overrightarrow{a},\overrightarrow{b}\right)=\dfrac{\overrightarrow{a}\cdot\overrightarrow{b}}{\big| \overrightarrow{a}\big| \cdot \big| \overrightarrow{b}\big| }=\dfrac{2 \cdot 3 + 5 \cdot (-7)}{\sqrt{2^2+5^2}\cdot \sqrt{3^2+(-7)^2}}=-\dfrac{\sqrt{2}}{2}$$
+	Suy ra: $\left(\overrightarrow{a},\overrightarrow{b}\right)=135^{\circ}$
 	}
 \end{ex}
 
 \begin{ex}%[0H2B2-1]
-	Trong mặt phẳng tọa độ $Oxy$, cho hai véc-tơ $\overrightarrow{a}=\left(-2;3\right)$ và $\overrightarrow{b}=\left(4;1\right)$. Tìm véc-tơ $\overrightarrow{d} $ biết $\overrightarrow{a} \cdot \overrightarrow{d}=4$ và $\overrightarrow{b} \cdot \overrightarrow{d}=-2$. 
+	Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ $\overrightarrow{a}=\left(-2;3\right)$ và $\overrightarrow{b}=\left(4;1\right)$. Tìm vectơ $\overrightarrow{d} $ biết $\overrightarrow{a} \cdot \overrightarrow{d}=4$ và $\overrightarrow{b} \cdot \overrightarrow{d}=-2$.
 	\choice
 	{$\overrightarrow{d}=\left(\dfrac{5}{7};\dfrac{6}{7}\right)$}
 	{\True $\overrightarrow{d}=\left(-\dfrac{5}{7};\dfrac{6}{7}\right)$}
@@ -1096,11 +1096,11 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{$\overrightarrow{d}=\left(-\dfrac{5}{7};-\dfrac{6}{7}\right)$}
 	\loigiai{
 		Gọi $\overrightarrow{d}=\left(x;y\right)$. Từ giả thiết, ta có hệ $\heva{
-			-2x+3y&=4\\4x+y&=-2} \Leftrightarrow\left\{{
-			\begin{array}{l}
-				{x=-\dfrac{5}{7}}\\
-				{y=\dfrac{6}{7}.}
-		\end{array}}\right.$
+				-2x+3y&=4\\4x+y&=-2} \Leftrightarrow\left\{{
+					\begin{array}{l}
+						{x=-\dfrac{5}{7}} \\
+						{y=\dfrac{6}{7}.}
+					\end{array}}\right.$
 	}
 \end{ex}
 
@@ -1125,8 +1125,8 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{$60^{\circ}$}
 	{$90^{\circ}$}
 	\loigiai{Ta có $\overrightarrow{BA}=(-3;-3)\Rightarrow BA=3\sqrt{2}$.\\
-		$\overrightarrow{BC}=(0;-4)\Rightarrow BC=4$.\\
-		$\cos\widehat{ABC}=\cos\left(\overrightarrow{BA},\overrightarrow{BC}\right)=\dfrac{\overrightarrow{BA}\cdot \overrightarrow{BC}}{BA\cdot BC}=\dfrac{12}{3\sqrt{2}\cdot 4}=\dfrac{1}{\sqrt{2}}\Rightarrow \widehat{ABC}=45^{\circ}$
+	$\overrightarrow{BC}=(0;-4)\Rightarrow BC=4$.\\
+	$\cos\widehat{ABC}=\cos\left(\overrightarrow{BA},\overrightarrow{BC}\right)=\dfrac{\overrightarrow{BA}\cdot \overrightarrow{BC}}{BA\cdot BC}=\dfrac{12}{3\sqrt{2}\cdot 4}=\dfrac{1}{\sqrt{2}}\Rightarrow \widehat{ABC}=45^{\circ}$
 	}
 \end{ex}
 
@@ -1169,10 +1169,10 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	\loigiai{
 		Ta có $\overrightarrow{AB}=\left(8;4\right), \overrightarrow{AD}=\left(5;-5\right), \overrightarrow{CB}=\left(-2;4\right), \overrightarrow{CD}=\left(-5;5\right)$.\\
 		Suy ra $\left\{
-		\begin{array}{l}
-			\cos\left(\overrightarrow{AB},\overrightarrow{AD}\right)=\dfrac{8\cdot 5+4\cdot \left(-5\right)}{\sqrt{8^2+4^2}\cdot \sqrt{5^2+5^2}}=\dfrac{1}{\sqrt{10}}\\
-			\cos\left(\overrightarrow{CB},\overrightarrow{CD}\right)=\dfrac{\left(-2\right)\cdot \left(-5\right)+4\cdot \left(-5\right)}{\sqrt{2^2+4^2}\cdot \sqrt{5^2+5^2}}=-\dfrac{1}{\sqrt{10}}.
-		\end{array}\right.$
+			\begin{array}{l}
+				\cos\left(\overrightarrow{AB},\overrightarrow{AD}\right)=\dfrac{8\cdot 5+4\cdot \left(-5\right)}{\sqrt{8^2+4^2}\cdot \sqrt{5^2+5^2}}=\dfrac{1}{\sqrt{10}} \\
+				\cos\left(\overrightarrow{CB},\overrightarrow{CD}\right)=\dfrac{\left(-2\right)\cdot \left(-5\right)+4\cdot \left(-5\right)}{\sqrt{2^2+4^2}\cdot \sqrt{5^2+5^2}}=-\dfrac{1}{\sqrt{10}}.
+			\end{array}\right.$
 	}
 \end{ex}
 
@@ -1188,7 +1188,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 \end{ex}
 
 \begin{ex}%[Lê Nguyễn Viết Tường, BG10-2022]%[0H2Y2-3]
-	Cặp véc-tơ nào sau đây vuông góc với nhau?
+	Cặp vectơ nào sau đây vuông góc với nhau?
 	\choice
 	{$\overrightarrow{a}_1=(-4;-6)$ và $\overrightarrow{a}_2=(3;2)$}
 	{$\overrightarrow{b}_1=(3;-4)$ và $\overrightarrow{b}_2=(-3;4)$}
@@ -1235,7 +1235,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	\loigiai{
 		Gọi tọa độ đỉnh $C(x;y)$. Ta có $\overrightarrow{AC}=(x+3;y+2)$, $\overrightarrow{BC}=(x-5;y-2)$, $\overrightarrow{AH}=(8;2)$, $\overrightarrow{BH}=(0;-2)$.\\
 		Vì $H$ là trực tâm tam giác $ABC$ nên ta có
-		\[\heva{&AH\perp BC\\ &BH\perp AC}\Leftrightarrow \heva{&\overrightarrow{AH}\cdot \overrightarrow{BC}=0\\ &\overrightarrow{BH}\cdot \overrightarrow{AC}=0}\Leftrightarrow \heva{&8(x-5)+2(y-2)=0\\ &-2(y+2)=0}\Leftrightarrow \heva{&x=6\\ &y=-2}\]	
+		\[\heva{&AH\perp BC\\ &BH\perp AC}\Leftrightarrow \heva{&\overrightarrow{AH}\cdot \overrightarrow{BC}=0\\ &\overrightarrow{BH}\cdot \overrightarrow{AC}=0}\Leftrightarrow \heva{&8(x-5)+2(y-2)=0\\ &-2(y+2)=0}\Leftrightarrow \heva{&x=6\\ &y=-2}\]
 	}
 \end{ex}
 
@@ -1250,7 +1250,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 		Ta có $\overrightarrow{AH}=(a+3; b)$, $\overrightarrow{BC}=(-1; 6)$, $\overrightarrow{BH}=(a-3; b)$ và $\overrightarrow{AC}=(5; 6)$.\\
 		$H$ là trực tâm tam giác $ABC$ khi và chỉ khi
 		$$\heva{&AH\perp BC\\&BH\perp AC}\Leftrightarrow \heva{&\overrightarrow{AH}\cdot\overrightarrow{BC}=0\\&\overrightarrow{BH}\cdot\overrightarrow{AC}=0}
-		\Leftrightarrow\heva{&-a-3+6b=0\\&5a-15+6b=0}\Leftrightarrow\heva{&a=2\\&b=\dfrac{5}{6}.}$$
+			\Leftrightarrow\heva{&-a-3+6b=0\\&5a-15+6b=0}\Leftrightarrow\heva{&a=2\\&b=\dfrac{5}{6}.}$$
 		Suy ra $a+6b=7$.
 	}
 \end{ex}
@@ -1268,15 +1268,15 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 \end{ex}
 
 \begin{ex}%[Lê Nguyễn Viết Tường, BG10-2022]%[0H2B2-3]
-	Trong mặt phẳng $Oxy$ cho $\overrightarrow{a}=(4;-8).$ Véc-tơ nào sau đây không vuông góc với $\overrightarrow{a}$ 
+	Trong mặt phẳng $Oxy$ cho $\overrightarrow{a}=(4;-8).$ Vectơ nào sau đây không vuông góc với $\overrightarrow{a}$
 	\choice
 	{\True $\overrightarrow{b}=(-1;2)$}
 	{$\overrightarrow{b}=(-2;-1)$}
 	{$\overrightarrow{b}=(2;1)$}
 	{$\overrightarrow{b}=(4;2)$}
 	\loigiai{
-		Hai véc-tơ vuông góc nhau khi $\overrightarrow{a}\cdot\overrightarrow{b}=0$, khi đó véc-tơ $\overrightarrow{a}=(4;-8)$ sẽ không vuông góc với véc-tơ $\overrightarrow{b}=(-1;2).$
-		
+		Hai vectơ vuông góc nhau khi $\overrightarrow{a}\cdot\overrightarrow{b}=0$, khi đó vectơ $\overrightarrow{a}=(4;-8)$ sẽ không vuông góc với vectơ $\overrightarrow{b}=(-1;2).$
+
 	}
 \end{ex}
 
@@ -1295,7 +1295,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 \end{ex}
 
 \begin{ex}%[Lê Nguyễn Viết Tường, BG10-2022]%[0H2B2-3]
-	Trong mặt phẳng $Oxy$ cho véc-tơ $\overrightarrow{u}=(2;-4)$ và $\overrightarrow{v}=(x;3)$. Tìm giá trị của $x$ để $\overrightarrow{u}\perp \overrightarrow{v}$.
+	Trong mặt phẳng $Oxy$ cho vectơ $\overrightarrow{u}=(2;-4)$ và $\overrightarrow{v}=(x;3)$. Tìm giá trị của $x$ để $\overrightarrow{u}\perp \overrightarrow{v}$.
 	\choice
 	{\True $6$}
 	{$-2$}
@@ -1334,13 +1334,13 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 		Ta có $\overrightarrow{CA}=(-6;3-c)$, $\overrightarrow{CB}=(4;1-c)$.\\
 		Tam giác $ABC$ vuông tại $C$ khi và chỉ khi $\overrightarrow{CA}\cdot \overrightarrow{CB}=0$\\
 		$\Leftrightarrow (-6)\cdot 4+(3-c)(1-c)=0 \Leftrightarrow c^2-4c-21=0
-		\Leftrightarrow \hoac{&c=7 \quad \text{(nhận)}\\&c=-3 \quad \text{(loại).}}$\\
+			\Leftrightarrow \hoac{&c=7 \quad \text{(nhận)}\\&c=-3 \quad \text{(loại).}}$\\
 		Vậy $C(0;7)$.
 	}
 \end{ex}
 
 \begin{ex}%[Lê Nguyễn Viết Tường, BG10-2022]%[0H2B2-3]
-	Tìm $m$ để hai véc-tơ $\overrightarrow{a}=(1;-3)$, $\overrightarrow{b}=(m^2;4)$ vuông góc với nhau.
+	Tìm $m$ để hai vectơ $\overrightarrow{a}=(1;-3)$, $\overrightarrow{b}=(m^2;4)$ vuông góc với nhau.
 	\choice
 	{$m=12$}
 	{$m=2\sqrt{3}$}
@@ -1348,8 +1348,8 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{\True $m=\pm 2\sqrt{3}$}
 	\loigiai{
 		Ta có $\overrightarrow{a} \perp \overrightarrow{b} \Leftrightarrow \overrightarrow{a}\cdot \overrightarrow{b}=0
-		\Leftrightarrow 1\cdot m^2 +(-3)\cdot 4 =0
-		\Leftrightarrow m^2-12=0 \Leftrightarrow m=\pm 2\sqrt{3}$.
+			\Leftrightarrow 1\cdot m^2 +(-3)\cdot 4 =0
+			\Leftrightarrow m^2-12=0 \Leftrightarrow m=\pm 2\sqrt{3}$.
 	}
 \end{ex}
 
@@ -1421,14 +1421,14 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 \end{ex}
 
 \begin{ex}%[Lê Nguyễn Viết Tường, BG10-2022]%[0H2K2-3]
-	Trong mặt phẳng $Oxy$ cho tam giác $ABC$ vuông tại $A$ với $A(-1;0)$ và $B(-3;0)$. Tọa độ điểm $C$ là:	
+	Trong mặt phẳng $Oxy$ cho tam giác $ABC$ vuông tại $A$ với $A(-1;0)$ và $B(-3;0)$. Tọa độ điểm $C$ là:
 	\choice
 	{$(-3;-1)$}
 	{$(-2;-2)$}
 	{$(-2;0)$}
 	{\True $(-1;-3)$}
 	\loigiai{
-		Ta có $A,B\in Ox$ do đó $\triangle ABC$ vuông tại $A$ khi và chỉ khi $x_C=x_A=-1$.	
+		Ta có $A,B\in Ox$ do đó $\triangle ABC$ vuông tại $A$ khi và chỉ khi $x_C=x_A=-1$.
 	}
 \end{ex}
 
@@ -1442,15 +1442,15 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	\loigiai{
 		Gọi $C(x;y)$ với $x>0$, $y>0$. Ta có $\overrightarrow{AB}=(2;1)$, $\overrightarrow{BC}=(x-3;y)$.\\
 		$ABCD$ là hình vuông nên $\heva{&\overrightarrow{AB}\cdot \overrightarrow{BC}=0\\&AB=BC}
-		\Leftrightarrow \heva{&2(x-3)+y=0\\&AB^2=BC^2}
-		\Leftrightarrow \heva{&y=6-2x\\&(x-3)^2+y^2=5}$
+			\Leftrightarrow \heva{&2(x-3)+y=0\\&AB^2=BC^2}
+			\Leftrightarrow \heva{&y=6-2x\\&(x-3)^2+y^2=5}$
 		{\allowdisplaybreaks
-			\begin{eqnarray*}
-				& \Leftrightarrow & \heva{&y=6-2x\\&(x-3)^2+(6-2x)^2=5}
-				\Leftrightarrow \heva{&y=6-2x\\&5x^2-30x+40=0}\\
-				& \Leftrightarrow & \heva{&y=6-2x\\&\hoac{&x=4\\&x=2}}
-				\Leftrightarrow \hoac{&\heva{&x=4\\&y=-2 \quad \text{(loại)}}\\&\heva{&x=2\\&y=2 \quad \text{(nhận).}}}
-		\end{eqnarray*}}
+				\begin{eqnarray*}
+					& \Leftrightarrow & \heva{&y=6-2x\\&(x-3)^2+(6-2x)^2=5}
+					\Leftrightarrow \heva{&y=6-2x\\&5x^2-30x+40=0}\\
+					& \Leftrightarrow & \heva{&y=6-2x\\&\hoac{&x=4\\&x=2}}
+					\Leftrightarrow \hoac{&\heva{&x=4\\&y=-2 \quad \text{(loại)}}\\&\heva{&x=2\\&y=2 \quad \text{(nhận).}}}
+				\end{eqnarray*}}
 		Vậy $C(2;2)$.
 	}
 \end{ex}
@@ -1463,7 +1463,7 @@ Ta thấy $AB^2+AC^2=10+10=20=BC^2$ nên tam giác $ABC$ vuông tại $A$.
 	{\True $M(2;0)$}
 	{$M(3;0)$}
 	\loigiai{
-		$M$ thuộc trục $Ox$ cho nên $M(m;0)$, $\overrightarrow{AB}= (-2;1)$ và $\overrightarrow{AM} = (m-1;2)$. Tam giác $ABM$ vuông tại $A$ suy ra  
+		$M$ thuộc trục $Ox$ cho nên $M(m;0)$, $\overrightarrow{AB}= (-2;1)$ và $\overrightarrow{AM} = (m-1;2)$. Tam giác $ABM$ vuông tại $A$ suy ra
 		\[ \overrightarrow{AB} \cdot \overrightarrow{AM} = 0 \Leftrightarrow -2m+4=0 \Leftrightarrow m=2.\]
 	}
 \end{ex}
