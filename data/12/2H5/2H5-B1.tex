@@ -1,0 +1,1487 @@
+\setcounter{section}{13}
+\setcounter{dang}{0}
+\section{PHƯƠNG TRÌNH MẶT PHẲNG}
+\subsection{LÝ THUYẾT CẦN NHỚ}
+\subsubsection{Vectơ pháp tuyến của mặt phẳng}
+\begin{itemize}
+	\immini{\item [\iconMT] \indam{Định nghĩa:} Vectơ pháp tuyến $\vec{n}$ của mặt phẳng $(P)$ là những vectơ khác $\vec{0}$ và có giá vuông góc với $(P)$. 
+		\item [\iconMT] \indam{Chú ý:} 
+		\begin{boxdn}
+			\begin{itemize}
+				\item [$\bullet$] $\vec{n} \ne \vec{0}$ và có giá vuông với $(P)$;
+				\item [$\bullet$] Nếu $\vec{n}$ và $\vec{n'}$ cùng là vectơ pháp tuyến của $(P)$ thì $\vec{n'} = k \cdot \vec{n}$ (tọa độ tỉ lệ nhau).
+			\end{itemize}
+		\end{boxdn}
+	}{
+		\begin{tikzpicture}[scale=0.8, line join=round, line cap=round,>=stealth]
+			\tkzDefPoints{0/0/A,4/0/B,5/2/C}
+			\coordinate (D) at ($(A)+(C)-(B)$);
+			\tkzDrawPolygon(A,B,C,D)
+			\tkzMarkAngles[size=0.7cm,arc=l](B,A,D)
+			\tkzLabelAngles[pos=0.5,rotate=10](B,A,D){\scriptsize$P$}
+			\draw[->] (2,1)--(2,2.5)node[right]{\scriptsize$\vec{n}$};
+			\draw[->] (3,1.5)--(3,3)node[right]{\scriptsize$\vec{n'}$};
+	\end{tikzpicture}}
+\end{itemize}
+
+\subsubsection{Cặp vectơ chỉ phương của mặt phẳng}
+\begin{itemize}
+	\item [\iconMT] \indam{Định nghĩa:} Trong không gian $Oxyz$, cho hai vectơ $\vec u$, $\vec v$ được gọi là cặp vectơ chỉ phương của mặt phẳng $(P)$ nếu chúng không cùng phương và có giá nằm trong hoặc song song với mặt phẳng $(P)$.
+	\item [\iconMT] \indam{Chú ý:} 
+	\begin{boxdn}
+\immini{		\begin{itemize}
+			\item [$\bullet$] Cho hai vectơ $\vec u = (a; b; c)$ và $\vec v = (a'; b'; c')$. Khi đó 
+			$$\vec n = (bc' - b'c;ca' - c'a; ab' - a'b)$$
+			vuông góc với cả hai vectơ $\vec u$ và $\vec v$, được gọi là tích có hướng của $\vec u$ và $\vec v$, ký hiệu là $[\vec u, \vec v]$.
+			\item [$\bullet$] Nếu $\vec u$, $\vec v$ là cặp vectơ chỉ phương của $(P)$ thì $[\vec u,\vec v]$ là một vectơ pháp tuyến của $(P)$.
+		\end{itemize}}{
+	\begin{tikzpicture}[>=stealth, line join=round, line cap = round,scale=0.8]
+	\def\d{4}
+	\def\r{3}
+	\path (0:0) coordinate (B)
+	++(0:\d) coordinate (C)
+	++(50:\r) coordinate (D)
+	($(B)+(D)-(C)$) coordinate (A)
+	(2.5,2) coordinate (M)
+	(3.5,2) coordinate (N)
+	(3.,1.6) coordinate (P)
+	;
+	\draw[->] (M)--($(M)+(-130:1.5)$) node[pos=0.4,left] {$\vec u$};
+	\draw[->] (N)--($(N)+(0:1.8)$) node[pos=0.4,below] {$\vec v$};
+	\draw[->] (P)--($(P)+(90:1.8)$) node[pos=0.9,right] {${[\vec u,\vec v]}$};
+	\draw (A)--(B)--(C)--(D)--cycle;
+	\begin{scope}
+		\clip (A)--(B)--(C);
+		\draw[opacity=0.7] (B) circle(0.8cm)node[black,shift={(25:4mm)}]{$P$};
+	\end{scope}
+	%		\foreach \x/ \goc in {A/180,B/180,C/0,D/0} 
+	%		\fill (\x) circle (1pt) ($(\x)+(\goc:3mm)$) node {$\x$};
+\end{tikzpicture}}
+	\end{boxdn}
+
+\end{itemize}
+\subsubsection{Phương trình tổng quát của mặt phẳng}
+\begin{itemize}
+	\item [\iconMT] \indam{Công thức:} Mặt phẳng $(P)$ đi qua điểm $M(x_0;y_0;z_0)$ và nhận $\vec{n}=(a;b;c)$ làm vectơ pháp tuyến có phương trình là 
+	\boxmini{$a(x-x_0)+b(y-y_0)+c(z-z_0)=0$}
+	Thu gọn ta được dạng 
+	$$ax+by+cz+d=0$$
+	\item [\iconMT] \indam{Chú ý:}
+	\begin{boxdn}
+		\begin{itemize}
+			\item [\ding{172}] Phương trình các mặt phẳng tọa độ: 
+			\begin{listEX}[2]
+				\item [$\bullet$] $(Oxy) \colon z=0$.
+				\item [$\bullet$] $(Oxz) \colon y=0$.
+				\item [$\bullet$] $(Oyz) \colon x=0$.
+			\end{listEX}
+			\item [\ding{173}] Phương trình mặt phẳng $(\alpha)$ song song với mặt phẳng tọa độ: 
+			\begin{listEX}[2]
+				\item [$\bullet$] $(\alpha) \parallel (Oxy) \Rightarrow z=a \quad a \ne 0$.
+				\item [$\bullet$] $(\alpha) \parallel (Oxz) \Rightarrow y=b \quad b \ne 0 $.
+				\item [$\bullet$] $(\alpha) \parallel (Oyz) \Rightarrow x=c \quad c \ne 0$.
+			\end{listEX}
+		\end{itemize}
+	\end{boxdn}
+\end{itemize}
+
+\subsubsection{Vị trị tương đối giữa hai mặt phẳng}
+\begin{itemize}
+	\item [] Cho hai mặt phẳng $(P) \colon a_1x + b_1y + c_1z + d_1=0$ và $(Q) \colon a_2x + b_2y + c_2z + d_2=0$. \\
+	Gọi $\vec{n_1}=(a_1;b_1;c_1)$, $\vec{n_2}=(a_2;b_2;c_2)$ lần lượt là vectơ pháp tuyến của $(P)$ và $(Q)$.\\
+	\begin{boxdn}
+		\begin{listEX}[1]
+			\item [\ding{172}] Nếu $\heva{&\vec{n_1}= k \cdot \vec{n_2}\\& d_1 =k\cdot d_2}$ thì $(P)$ trùng $(Q)$.
+			\item [\ding{173}] Nếu $\heva{&\vec{n_1}= k \cdot \vec{n_2}\\& d_1 \ne k\cdot d_2}$ thì $(P)$ song song $(Q)$.
+			\item [\ding{174}] Nếu $\vec{n_1}$ không cùng phương với $\vec{n_2}$ thì $(P)$ cắt $(Q)$.
+			\item [\ding{175}] Nếu $\vec{n_1} \perp \vec{n_2}$ hay $a_1a_2+b_1b_2+c_1c_2=0$ thì $(P) \perp (Q)$.
+		\end{listEX}
+	\end{boxdn}  
+\end{itemize}
+
+\subsubsection{Khoảng cách từ một điểm đến mặt phẳng}
+\begin{itemize}
+	\immini{\item [\iconMT] \indam{Định nghĩa:} Cho điểm $M(x_0;y_0;z_0)$ và mặt phẳng $(P) \colon ax+by+cz+d=0$. Gọi $H$ là hình chiếu vuông góc của điểm $M$ lên mặt phẳng $(P)$. Khi đó độ dài đoạn $MH$ được gọi là khoảng cách từ điểm $M$ đến $(P)$. Kí hiệu $\mathrm{d}\left(M,(P) \right)$.
+		\item [\iconMT] \indam{Công thức tính:}
+		\boxmini{$\mathrm{d}\left(M,(P) \right)=\dfrac{\bigg|ax_0+by_0+cz_0+d\bigg|}{\sqrt{a^2+b^2+c^2}}$}
+	}{
+		\begin{tikzpicture}[scale=0.8, line join=round, line cap=round]
+			\tkzDefPoints{0/0/A,4/0/B,5/2/C}
+			\coordinate (D) at ($(A)+(C)-(B)$);
+			\tkzDrawPolygon(A,B,C,D)
+			\tkzMarkAngles[size=0.7cm,arc=l](B,A,D)
+			\tkzLabelAngles[pos=0.5,rotate=10](B,A,D){$P$}
+			\draw (2,1)node[right]{$H$}--(2,3)node[above]{$M$};
+			\draw[fill=black] (2,1) circle(1.5pt) (2,3) circle(1.5pt);
+	\end{tikzpicture}}
+	\item [\iconMT] \indam{Đặc biệt:} 
+	\begin{listEX}[3]
+		\item [\ding{172}] $\mathrm{d}\left(M,(Oxy) \right)=\big|z_M\big|$.
+		\item [\ding{173}]  $\mathrm{d}\left(M,(Oxz) \right)=\big|y_M\big|$.
+		\item [\ding{174}]  $\mathrm{d}\left(M,(Oyz) \right)=\big|x_M\big|$.
+	\end{listEX}
+\end{itemize}
+\subsection{PHÂN LOẠI, PHƯƠNG PHÁP GIẢI TOÁN}
+\begin{dang}{Xác định vectơ pháp tuyến và điểm thuộc mặt phẳng}
+	Cho mặt phẳng $(\alpha)$.
+	\begin{itemize}
+		\item  [\ding{172}] Nếu véctơ $\overrightarrow{n}$ khác $\overrightarrow{0}$ và có giá vuông góc với $(\alpha)$ thì $\overrightarrow{n}$ được gọi là véctơ pháp tuyến của $(\alpha)$.
+		\item  [\ding{173}] Nếu hai véctơ $\overrightarrow{a}, \overrightarrow{b}$ không cùng phương, có giá song song hoặc nằm trong $(\alpha)$ thì $\overrightarrow{a}, \overrightarrow{b}$ được gọi là cặp véctơ chỉ phương của $(\alpha)$. Khi đó, nếu $\vec{a}=(a_1;a_2;a_3)$, $\vec{b}=(b_1;b_2;b_3)$ thì
+		$$\vec{n}= [\vec{a}, \vec{b}]=\left(\left|\begin{array}{ll}a_2 & a_3 \\ b_2 & b_3\end{array}\right| ;\left|\begin{array}{ll}a_3 & a_1 \\ b_3 & b_1\end{array}\right| ;\left|\begin{array}{ll}a_1 & a_2 \\ b_1 & b_2\end{array}\right|\right)$$ là một vectơ pháp tuyến của mặt phẳng $(P)$.
+		\item [\ding{174}] Nếu $(\alpha) \colon ax + by + cz + d = 0$ thì vectơ pháp tuyến của $(\alpha)$ là $\vec{n}=(a;b;c)$.
+	\end{itemize}
+\end{dang}
+\boxmini{BÀI TẬP TỰ LUẬN}
+
+\begin{vd}
+	\immini{Cho hình lập phương $ABCD.A'B'C'D'$. 
+		\begin{tasks}
+			\task Xác định vectơ pháp tuyến của các mặt phẳng $(ABCD)$,  $(ABB'A')$,  $(ACC'A')$,  $(ADD'A')$.
+			\task Chứng minh $\vec{AB'}$ là một vectơ pháp tuyến của $(BCD'A')$.
+		\end{tasks}
+	}{
+	\begin{tikzpicture}[scale=0.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\def\bc{4} % cạnh BC
+		\def\ba{2} % cạnh BA
+		\def\h{3} % đường cao
+		\def\gocB{35} % góc B của đáy
+		\coordinate[label=below left:$B$] (B) at (0,0);
+		\coordinate[label=above left:$A$] (A) at (\gocB:\ba);
+		\coordinate[label=below:$C$] (C) at (\bc,0);
+		\coordinate[label=right:$D$] (D) at ($(C)-(B)+(A)$);
+		\coordinate[label=above left:$A'$] (A') at ($(A)+(90:\h)$);
+		\coordinate[label=left:$B'$] (B') at ($(B)-(A)+(A')$);
+		\coordinate[label=below right:$C'$] (C') at ($(C)-(A)+(A')$);
+		\coordinate[label=right:$D'$] (D') at ($(D)-(A)+(A')$);
+		\draw (B')--(B)--(C)--(D)--(D')--(A')--(B')--(C')--(D') (C)--(C');
+		\draw[dashed] (A')--(A)--(D) (A)--(B);
+		\foreach \diem in {A,B,C,D,A',B',C',D'}	\fill (\diem)circle(1.5pt);
+\end{tikzpicture}}
+\end{vd}
+
+\dongcham{9}
+\begin{vd}
+	Cho mặt phẳng $(P): 2x-3y+4z+5=0$. Hãy chỉ ra một vectơ pháp tuyến của $(P)$ và hai điểm thuộc $(P)$. 
+
+	\loigiai{vectơ $\overrightarrow{n}=(2;-3;4) $ là một vectơ pháp tuyến của mặt phẳng $(P)$. 
+		
+	}
+\end{vd}
+\dongcham{4}
+
+\begin{vd}
+	Cho $(P)$ là mặt phẳng trung trực của $MN$ với $M(1;-2;3)$, $N(1;4;1)$. Hãy chỉ ra một vectơ pháp tuyến của $(P)$ và một điểm thuộc $(P)$.
+	\loigiai{
+		Mặt phẳng trung trực của $MN$ đi qua trung điểm của $MN$ và vuông góc với $MN$.\\
+		Vậy $\vec{MN}=(0; 6; -2)$ là một vectơ pháp tuyến của mặt phẳng $(P)$.
+	}
+\end{vd}
+\dongcham{4}
+\begin{vd}
+	Chỉ ra một vectơ pháp tuyến của mặt phẳng $(\alpha)$ biết
+	\begin{listEX}[1]
+		\item $(\alpha)$ đi qua $A(-1; 3; 5)$, $B(3;2;-2)$ và $C(0; 3; 0)$
+		\item $(\alpha)$ đi qua $M(0; 3; 1)$, $N(-3;2;5)$ và $P(-2; 0; 0)$
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item 	Ta có $\vec{AB} = (4; -1;-7)$, $\vec{AC} = (1; 0; -5)$.\\
+			Xét vectơ $\vec{n}=[\vec{AB}, \vec{AC}] = \left(\left|\begin{array}{cc}-1 & -7 \\ 0 & -5\end{array}\right| ;\left|\begin{array}{cc}-7 & 4 \\ -5 & 1\end{array}\right| ;\left|\begin{array}{cc}4 & -1 \\ 1 & 0\end{array}\right|\right)=(5 ; 13 ; 1)$.\\
+			Vậy $\vec{n} = (5 ; 13 ; 1)$ là một vectơ pháp tuyến của mặt phẳng $(\alpha)$.
+			\item Ta có $\vec{MN} = (-3; -1;4)$, $\vec{MP} = (-2; -3; -1)$.\\
+			Xét vectơ $\vec{n}=[\vec{MN}, \vec{MP}] = \left(\left|\begin{array}{cc}-1 & 4 \\ -3 & -1\end{array}\right| ;\left|\begin{array}{cc}4 & -3 \\ -1 & -2\end{array}\right| ;\left|\begin{array}{cc}-3 & -1 \\ -2 & -3\end{array}\right|\right)=(13; -11; 7)$.\\
+			Vậy $\vec{n} = (13 ; -11 ; 7)$ là một vectơ pháp tuyến của mặt phẳng $(\alpha)$.
+		\end{listEX}
+	}
+\end{vd}
+\dongcham{6}
+
+
+\begin{vd}
+	Cho tứ diện $ABCD$ có các đỉnh là $A(5 ; 1 ; 3)$, $B(1 ; 6 ; 2)$, $C(5 ; 0 ; 4)$ và $D(4 ; 0 ; 6)$. Gọi $(\alpha)$ là mặt phẳng chứa cạnh $AB$ và song song với cạnh $CD$. Hãy tìm một điểm thuộc $(\alpha)$ và một vectơ pháp tuyến của $(\alpha)$.
+	\loigiai{
+		Ta có $\overrightarrow{AB}=(-4 ; 5 ;-1)$, $\overrightarrow{CD}=(-1 ; 0 ; 2)$ nên $\overrightarrow{AB}, \overrightarrow{CD}$ không cùng phương.\\
+		Mà giá của $\overrightarrow{AB}$ nằm trong mặt phẳng $(\alpha)$ và giá của $\overrightarrow{CD}$ song song với mặt phẳng $(\alpha)$ nên $\overrightarrow{AB}$, $\overrightarrow{CD}$ là một cặp vectơ chỉ phương của mặt phẳng $(\alpha)$.
+		Vậy một vectơ pháp tuyến của $(\alpha)$ là
+		$$
+		\begin{aligned}
+			\vec{n}=\left[\overrightarrow{AB}, \overrightarrow{CD}\right]&=
+			\left(\left|\begin{array}{cc}
+				5 & -1 \\
+				0 & 2
+			\end{array}\right| ;
+			\left|\begin{array}{cc}
+				-1 & -4 \\
+				2 & -1
+			\end{array}\right| ;
+			\left|\begin{array}{cc}
+				-4 & 5 \\
+				-1 & 0
+			\end{array}\right|\right) \\
+			&=\left(5 \cdot 2-0 \cdot(-1) ; (-1)\cdot (-1) - 2 \cdot (-4) ; (-4) \cdot 0-5 \cdot (-1)\right) \\
+			&=(10 ; 9 ; 5).
+		\end{aligned}
+		$$
+	}
+\end{vd}
+\dongcham{4}
+\boxmini{BÀI TẬP TRẮC NGHIỆM}
+\setcounter{ex}{0}
+
+\begin{ex}
+	Cho mặt phẳng $(\alpha) \colon 2x-y+3z-2=0$. Điểm nào sau đây thuộc mặt phẳng $(\alpha)$?
+	\choice
+	{$A(1;-3;1)$}
+	{\True $B(2;-1;-1)$}
+	{$C(2;-1;1)$}
+	{$D(1;2;3)$}
+	\loigiai{
+	Thay tọa độ các điểm vào phương trình $(\alpha)$, tọa độ $B(2;-1;-1)$ thỏa mãn.}
+\end{ex}
+
+\begin{ex}%[2H3Y2-7]
+	Cho mặt phẳng $(\alpha) \colon x+y+z-6=0$. Điểm nào dưới đây \textbf{không} thuộc $(\alpha)$?
+	\choice
+	{\True $M(1;-1;1)$}
+	{$N(2;2;2)$}
+	{$P(1;2;3)$}
+	{$Q(3;3;0)$}
+	\loigiai
+	{
+		Ta có $1-1+1-6=-5 \neq 0$ nên $M(1;-1;1)$ không thuộc $(\alpha)$.
+	}
+\end{ex}
+
+\begin{ex}
+	Cho $(\alpha)$ vuông góc với giá của $\vec{a}=(2;-1;3)$. Vectơ nào dưới đây là vectơ pháp tuyến của $(\alpha)$?
+	\choice
+	{$\vec{n_1}=(-2;1;3)$}
+	{\True $\vec{n_2}=(-2;1;-3)$}
+	{$\vec{n_3}=(4;2;6)$}
+	{$\vec{n_4}=(4;-2;-6)$}
+	\loigiai{
+		$(\alpha)$ vuông góc với giá của $\vec{a}=(2;-1;3)$ nên $\vec{a}$ là một vectơ pháp tuyến của $(\alpha)$.\\
+		Do đó $\vec{n_2}=-\vec{a}$ cũng là một vectơ pháp tuyến của $(\alpha)$.
+	}
+\end{ex}
+
+\begin{ex}%[2H3B2-2]
+	vectơ nào sau đây \textbf{không} phải là vectơ pháp tuyến của mặt phẳng $(P):x+3y-5z+2=0$.
+	\choice
+	{$\overrightarrow{n}_1=(-1;-3;5)$}
+	{\True $\overrightarrow{n}_2=(-2;-6;-10)$}
+	{$\overrightarrow{n}_3=(-3;-9;15)$}
+	{$\overrightarrow{n}_4=(2;6;-10)$}
+	\loigiai{Mặt phẳng $(P)$ nhận vectơ $\overrightarrow{a}=(1;3;-5)$ làm vectơ pháp tuyến.\\
+		Xét $\overrightarrow{n}_2=(-2;-6;-10)$ có $\dfrac{-2}{1}\ne\dfrac{-6}{3}\ne\dfrac{-10}{-5}$ nên $\overrightarrow{n}_2$ không cùng phương với $\overrightarrow{a}$.\\
+		Suy ra $\overrightarrow{n}_2$ không là vectơ pháp tuyến của $(P)$.}
+\end{ex}
+
+\begin{ex}
+	Trong không gian  $Oxyz$, mặt phẳng tọa độ $(Oxy)$ có một vectơ pháp tuyến là
+	\choice
+	{$\overrightarrow{n}=(0;1;0)$}
+	{\True $\overrightarrow{n}=(0;0;1)$}
+	{$\overrightarrow{n}=(1;0;0)$}
+	{$\overrightarrow{n}=(1;1;0)$}
+	\loigiai{
+		Mặt phẳng tọa độ $(Oxy)\colon x=0\Rightarrow$ 1 vectơ pháp tuyến là $\overrightarrow{n}=(0;0;1)$.}
+\end{ex}
+
+\begin{ex}
+	Trong không gian $Oxyz$, cho điểm $A(4;-3;7)$ và $B(2;1;3)$. Một vectơ pháp tuyến của mặt phẳng trung trực của đoạn $AB$ là
+	\choice
+	{\True $\vec{n}=(1;-2;2)$}
+	{$\vec{n}=(2;4;4)$}
+	{$\vec{n}=(6;-2;10)$}
+	{$\vec{n}=(-2;-4;4)$}
+	\loigiai{
+		Ta có $\overrightarrow{AB}(-2;4;-4)$ cùng phương với  $\vec{n}=(1;-2;2)$. Suy ra  $\vec{n}=(1;-2;2)$ là một vectơ pháp tuyến.
+	}
+\end{ex}
+
+\begin{ex}%[HK1 - Chuyên Huỳnh Mẫn Đạt - Kiên Giang - 20-21]%[Phan Quốc Trí-EX5]%[2H3B2-2]%
+	Trong không gian $Oxyz$, $(P)$ là mặt phẳng trung trực của đoạn $AB$, biết $A(1;3;0)$, $B(-2;1;-1)$. vectơ nào sau đây là vectơ pháp tuyến của $(P)$?
+	\choice
+	{$\overrightarrow{n}_4=(3;-2;-1)$}
+	{$\overrightarrow{n}_2=(-3;2;-1)$}
+	{$\overrightarrow{n}_3=(-3;4;1)$}
+	{\True $\overrightarrow{n}_1=(3;2;1)$}
+	\loigiai{
+		Mặt phẳng $(P)$ có vectơ pháp tuyến là  $\overrightarrow{BA}= (3;2;1)$.
+	}
+\end{ex}
+
+\begin{ex}%[Trần Bình Thuận - DA2]%[2H3B2-2]% câu 2
+	Trong không gian $Oxyz$, vectơ nào sau đây là một vectơ pháp tuyến của $(P)$. Biết $\vec{u}=(1;-2;0)$, $\vec{v}=(0;2;-1)$ là cặp vectơ chỉ phương của $(P)$.
+	\choice
+	{$\vec{n}=(1;2;0)$}
+	{\True $\vec{n}=(2;1;2)$}
+	{$\vec{n}=(2;-1;2)$}
+	{$\vec{n}=(0;1;2)$}
+	\loigiai{
+		Ta có $(P)$ có một vectơ pháp tuyến là $\vec{n}=\left[\vec{u},\vec{v}\right]=\left(
+		\begin{vmatrix}
+			-2&0\\
+			2&-1
+		\end{vmatrix};
+		\begin{vmatrix}
+			0&1\\
+			-1&0
+		\end{vmatrix};
+		\begin{vmatrix}
+			1&-2\\
+			0&2
+		\end{vmatrix}\right)=(2;1;2)$.
+	}
+\end{ex}
+
+\begin{ex}
+	Trong không gian  $Oxyz$, cho $(\alpha)$ song song với giá của $\vec{a}=(1;-2;-3)$, $\vec{b}=(-4;2;0)$. Vectơ nào dưới đây \textbf{không phải} là vectơ pháp tuyến của $(\alpha)$?
+	\choice
+	{$\vec{n_1}=(6;12;-6)$}
+	{$\vec{n_2}=(1;2;-1)$}
+	{$\vec{n_3}=(-2;-4;2)$}
+	{\True $\vec{n_4}=(-3;-6;-3)$}
+	\loigiai{
+		$(\alpha)$ song song với giá của $\vec{a}=(1;-2;-3)$, $\vec{b}=(-4;2;0)$ nên $\vec{a}$, $\vec{b}$ là cặp vectơ chỉ phương của $(\alpha)$.\\
+		Một vectơ pháp tuyến của mặt phẳng $(\alpha)$ là
+		$$
+		\begin{aligned}
+			\vec{n}=[\vec{a}, \vec{b}] & =\left(\left|\begin{array}{cc}
+				-2 & -3 \\ 2 & 0
+			\end{array}\right| ;\left|\begin{array}{cc}
+				-3 & 1 \\ 0 & -4
+			\end{array}\right| ;\left|\begin{array}{cc}
+				1 & -2 \\ -4 & 2
+			\end{array}\right|\right) \\
+			& =(6 ;12 ; -6) .
+		\end{aligned}
+		$$
+		Ta có $\vec{n_1}=\vec{n}$; $\vec{n_2}=\dfrac{1}{6}\vec{n}$; $\vec{n_3}=-\dfrac{1}{3}\vec{n}$ là các vectơ pháp tuyến của $(\alpha)$.\\
+		Vậy $\vec{n_4}=(-3;-6;-3)$ không phải là vectơ pháp tuyến của $(\alpha)$.
+	}
+\end{ex}
+
+
+\begin{ex}%[Thi thử, Sở GD và ĐT - Hậu Giang, 2020]%[Trần Thành Thống, 12EX10]%[2H3B2-2]%
+	Trong không gian $Oxyz$, cho ba điểm $A(2;0;0)$, $B(0;-3;0)$, $C(0;0;6)$. Tọa độ một vectơ pháp tuyến của mặt phẳng $(ABC)$ là
+	\choice
+	{$\overrightarrow{n}=(1;-2;3)$}
+	{$\overrightarrow{n}=(3;2;1)$}
+	{\True $\overrightarrow{n}=(3;-2;1)$}
+	{$\overrightarrow{n}=(2;-3;6)$}
+	\loigiai{
+		Ta có $\overrightarrow{AB}=\left(-2;-3;0\right)\; \overrightarrow{AC}=\left(0;3;6\right)$.\\
+		$\Rightarrow$ vectơ pháp tuyến của mặt phẳng $\left(ABC\right)$ là $\overrightarrow{v}=\left[\overrightarrow{AB};\overrightarrow{AC}\right]=\left(-18;12;-6\right)$.\\
+		Ta có $\overrightarrow{v}=\left(-18;12;-6\right)$ cùng phương với $\overrightarrow{n}=\left(3;-2;1\right)$.
+	}
+\end{ex}
+
+\begin{ex}
+	Trong không gian $Oxyz$, cho ba điểm $A(2;-1;3)$, $B(4;0;1)$ và $C(-10;5;3)$. vectơ nào dưới đây là vectơ pháp tuyến của mặt phẳng $(ABC)$?
+	\choice
+	{$\overrightarrow{n}=(1;2;0)$}
+	{$\overrightarrow{n}=(1;-2;2)$}
+	{$\overrightarrow{n}=(1;8;2)$}
+	{$\True \overrightarrow{n}=(1;2;2)$}
+	\loigiai{
+		Ta có $\overrightarrow{AB}=(2;1;-2)$, $\overrightarrow{AC}=(-12;6;0)$, $\left[\overrightarrow{AB},\overrightarrow{AC}\right]=(12;24;24)$.\\
+		$\Rightarrow (ABC)$ có một vectơ pháp tuyến là $\overrightarrow{n}=\dfrac{1}{12}\left[\overrightarrow{AB},\overrightarrow{AC}\right]=(1;2;2)$.}
+\end{ex}
+
+
+\begin{ex}%[2H3B2-2]%[50 dạng toán đề minh họa 2020-Nguyễn Tâm Phục]%Câu 6.
+	Trong không gian $Oxyz$, cho hai điểm $A(2;-1;5)$, $B(1;-2;3)$. Mặt phẳng $(\alpha)$ đi qua hai điểm $A$, $B$ và song song với trục $Ox$ có vectơ pháp tuyến $\overrightarrow{n}=(0;a;b)$. Khi đó tỉ số $\dfrac{a}{b}$ bằng
+	\choice
+	{\True $-2$}
+	{$-\dfrac{3}{2}$}
+	{$\dfrac{3}{2}$}
+	{$2$}
+	\loigiai{
+		$\overrightarrow{BA}=(1;1;2)$; $\overrightarrow{i}=(1;0;0)$ là vectơ đơn vị của trục $Ox$.\\
+		Vì $(\alpha)$ đi qua hai điểm $A$, $B$ và song song với trục $Ox$ nên $\left[\overrightarrow{BA},\overrightarrow{i}\right]=(0;2;-1)$ là một vectơ pháp tuyến của $(\alpha)$. Do đó $\dfrac{a}{b}=-2$.}
+\end{ex}
+
+\begin{dang}{Lập phương trình mặt phẳng khi biết các yếu tố liên quan}
+	\begin{itemize}
+		\item [\iconCV] \indamm{Công thức:} Cho $(P)$ qua điểm $M(x_0,y_0,z_0)$ và một vectơ pháp tuyến $\overrightarrow{n_P}=(a,b,c)$. Khi đó, phương trình $(P)$ là
+		\begin{align*}
+			\boxed{(P):a(x-x_0)+b(y-y_0)+c(z-z_0)=0}
+		\end{align*}
+		\item [\iconCV] \indamm{Một số cách xác định vectơ pháp tuyến thường gặp:}
+		\begin{listEX}[1]
+			\item [\ding{172}] Nếu $(P)\bot AB$ thì $\overrightarrow{n_P}=\overrightarrow{AB}$;
+			\item [\ding{173}] Nếu $(P)$ là mặt phẳng trung trực của đoạn $AB$ thì $(P)$ qua trung điểm $I$ của $AB$ và $\overrightarrow{n_P}=\overrightarrow{AB}$;
+			\item [\ding{174}] Nếu $(P)$ có cặp vectơ chỉ phương $\vec u$, $\vec v$ thì $\overrightarrow{n_P}=[\vec u,\vec v]$ là một vectơ pháp tuyến của $(P)$.
+			\item [\ding{175}] Nếu $(P)$ qua ba điểm $A,B,C$ phân biệt và không thẳng hàng thì $\overrightarrow{n_P}=\left[ \overrightarrow{AB},\overrightarrow{AC} \right]$;
+			\item [\ding{176}] Nếu $(P)$ qua hai điểm $A,B$ phân biệt và song song với $d$ thì $\overrightarrow{n_P}=\left[ \overrightarrow{AB},\overrightarrow{u_d} \right]$;
+			\item [\ding{177}] Nếu $(P)$ qua điểm $A$ và chứa $d$ thì $\overrightarrow{n_P}=\left[ \overrightarrow{AM},\overrightarrow{u_d} \right]$, với $M \in d$.
+		\end{listEX}
+	\item [\iconCV] \indamm{Phương trình theo đoạn chắn:}
+		Cho $(P)$ đi qua $A(a;0;0),\,B(0;b;0),\,C(0;0;c)$ với $abc \neq 0$ thì $(P):\dfrac{x}{a}+\dfrac{y}{b}+\dfrac{z}{c}=1$ (phương trình theo đoạn chắn)
+	\end{itemize}
+\end{dang}
+\boxmini{BÀI TẬP TỰ LUẬN}
+\setcounter{vd}{0}
+\begin{vd}
+	Trong không gian $Oxyz$, cho ba điểm $A(3;-2;-2)$, $B(3;2;0)$, $C(0;2;1)$.
+	\begin{tasks}
+		\task Lập phương trình mặt phẳng qua $A$ và vuông góc với $BC$.
+		\task Lập phương trình mặt phẳng trung trực của đoạn $AB$.
+		\task Lập phương trình mặt phẳng $(ABC)$.
+	\end{tasks} 
+	\loigiai{
+		Ta có
+		$\vec{AB}=(0;4;2)$, $\vec{AC}=(-3;4;3)$ là cặp vectơ chỉ phương của $(ABC)$.\\
+		$\vec{n}=\left[\vec{AB},\vec{AC}\right]=(4;-6;12)$.\\
+		Chọn $\vec{n}_1=\dfrac{1}{2} \vec{n}=(2;-3;6)$ là một vectơ pháp tuyến của $(ABC)$.\\
+		Mặt phẳng $(ABC)$ đi qua điểm $C(0;2;1)$ và có một vectơ pháp tuyến $\vec{n}_1=(2;-3;6)$ nên $(ABC)$ có phương trình là
+		$$2(x-0)-3(y-2)+6(z-1)=0\Leftrightarrow 2x-3y+6z=0.$$
+		Vậy phương trình mặt phẳng cần tìm là $2x-3y+6z=0$.
+	}
+\end{vd}
+\dongcham{11}
+
+\begin{vd}
+	Cho tứ diện $ ABCD $ có các đỉnh $ A(5;1;3)$, $B(1;6;2)$, $C(5;0;4),D(4;0;6) $.
+	\begin{listEX}
+		\item Hãy viết phương trình của các mặt phẳng $ (ACD) $ và $ (BCD) $;
+		\item  Hãy viết phương trình mặt phẳng $ (\alpha) $ chứa cạnh $ AB $ và song song với cạnh $ CD $;
+		\item Gọi $A'$, $B'$, $C'$ lần lượt là hình chiếu vuông góc của $A$, $B$, $C$ lên các trục $Ox$, $Oy$, $Oz$. Hãy viết phương trình mặt phẳng $(A'B'C')$.
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}
+			\item Ta có $ \vec{AC}=(0;-1;1),\vec{AD}=(-1;-1;3),\vec{BC}=(4;-6;2),\vec{BD}=(4;-6;4) $.
+			\begin{itemize}
+				\item 	Mặt phẳng $ (ACD) $ qua $ A(5;1;3) $ và có vectơ pháp tuyến $ \vec{n}=\left[\vec{AC},\vec{AD}\right]=(-2;-1;-1) $ có phương trình là 
+				$$ -2(x-5)-(y-1)-(z-3)=0\Leftrightarrow 2x+y+z-14=0 .$$
+				\item 	Mặt phẳng $ (BCD) $ qua $ B(1;6;2) $ và có vectơ pháp tuyến $ \vec{n}=\left[\vec{BC},\vec{BD}\right]=(-12;-8;0) $ có phương trình là 
+				$$ -12(x-1)-8(y-6)-0(z-3)=0\Leftrightarrow 3x+2y-15=0 .$$
+			\end{itemize}
+			\item Ta có $ \vec{AB}=(-4;5;-1) $, $\vec{CD}=(-1;0;2)$.\\
+			Mặt phẳng $ (\alpha) $ chứa cạnh $ AB $ và song song với cạnh $ CD $ qua $ A(5;1;3) $ và có vectơ pháp tuyến $ \vec{n}=\left[\vec{AB},\vec{CD}\right]=(10;9;5) $ có phương trình là 
+			$$ 10(x-5)+9(y-1)+5(z-3)=0\Leftrightarrow 10x+9y+5z-74=0 .$$
+			\item Ta có $A'(5;0;0)$, $B'(0;6;0)$, $C'(0;0;4)$. Phương trình mặt phẳng $(A'B'C')$ là
+			$$\dfrac{x}{5}+\dfrac{y}{6}+\dfrac{z}{4}=1.$$
+		\end{listEX}
+	}
+\end{vd}
+\dongcham{17}
+\begin{vd}
+	Viết phương trình của mặt phẳng
+	\begin{tasks}(2)
+		\task Chứa trục $ Ox $ và điểm $ M(-4;1;2) $;
+		\task Chứa trục $ Oz $ và điểm $ P(3;0;-7) $.
+	\end{tasks}
+	\loigiai{
+		\begin{listEX}
+			\item Mặt phẳng $ (P) $ chứa trục $ Ox $ và điểm $ M(-4;1;2) $ nên có vectơ pháp tuyến \\$ \vec{n}=\left[\vec{i},\vec{OM}\right]=(0;-2;1) $, phương trình của $ (P) $ là $ -2y+z=0 $.
+			\item Mặt phẳng $ (R) $ chứa trục $ Oz $ và điểm $ P(3;0;-7) $ nên có vectơ pháp tuyến \\$ \vec{n}=\left[\vec{k},\vec{OP}\right]=(0;3;0) $, phương trình của $ (R) $ là $ y=0 $.
+		\end{listEX}
+	}
+\end{vd}
+\dongcham{12}
+
+\begin{vd}
+	Một phần sân nhà bác An có dạng hình thang $ABCD$ vuông tại $A$ và $B$ với độ dài $AB=9$ m, $AD=5$ m và $BC=6$ m như Hình bên dưới. Theo thiết kế ban đầu thì mặt sân bằng phẳng và $A$, $B$, $C$, $D$ có độ cao như nhau. Sau đó bác An thay đổi thiết kế để nước có thể thoát về phía góc sân ở vị trí $C$ bằng cách giữ nguyên độ cao ở $A$, giảm độ cao của sân ở vị trí $B$ và $D$ xuống thấp hơn độ cao ở $A$ lần lượt là $6$ cm và $3{,}6$ cm. Để mặt sân sau khi lát gạch vẫn là bề mặt phẳng thì bác An cần phải giảm độ cao ở $C$ xuống bao nhiêu centimét so với độ cao ở $A$?
+	\begin{center}
+		% \includegraphics[scale=.4]{image/2P5-1-H5-9}
+		% \hspace{0.5cm}
+		\begin{tikzpicture}[scale=0.5, font=\footnotesize,line join=round, line cap=round, >=stealth]
+			\path
+			(0,0) coordinate (A) 
+			(9,0) coordinate(B)
+			(9,-6) coordinate(C)
+			(0,-5) coordinate(D)
+			;
+			\draw[thick] (A)--(B)--(C)--(D)--cycle;
+			\node [above] at ($(A)!0.5!(B)$) {$9$ m};
+			\node [right] at ($(B)!0.5!(C)$) {$6$ m};
+			\node [left] at ($(A)!0.5!(D)$) {$5$ m};
+			\foreach \i/\g in {A/90,B/90,C/-90,D/-90}{\draw[fill=black](\i) circle (0pt) ($(\i)+(\g:4mm)$) node[scale=1]{$\i$};}
+		\end{tikzpicture}
+	\end{center}
+	\loigiai{
+		Tại vị trí ban đầu $A$, $B$, $C$, $D$ có độ cao như nhau, chọn hệ trục tọa độ có gốc tọa độ là điểm $A$ và các trục tọa độ lần lượt là $AD$, $AB$ và $Az$, với $Az \perp (ABCD)$.\\
+		Khi đó $A(0 ; 0 ; 0)$, $D(5; 0 ; 0)$, $B(0; 9 ; 0)$, $C(6; 9 ; 0)$.\\
+		Sau đó bác An thay đổi thiết kế để nước có thể thoát về phía góc sân ở vị trí $C$ bằng cách giữ nguyên độ cao ở $A$, giảm độ cao của sân ở vị trí $B$ và $D$ xuống thấp hơn độ cao ở $A$ lần lượt là $6$ cm và $3{,}6$ cm.\\
+		Khi đó, $A(0 ; 0 ; 0)$, $D(5; 0 ; -3{,}6)$, $B(0; 9 ; -6)$.\\
+		Ta có $\overrightarrow{AB}=(0 ; 9 ; -6)$, $ \overrightarrow{AD}=(5 ; 0 ; -3{,}6)$ là cặp vectơ chỉ phương của mặt phẳng $(ABD)$ nên một vectơ pháp tuyến của $(ABD)$ là $\left[\overrightarrow{AB}, \overrightarrow{AD}\right]=(-32{,}4 ; -30 ; -45)$.\\
+		Vậy mặt phẳng $(ABD)$ qua $A(0 ; 0 ; 0)$ và có vectơ pháp tuyến $\vec{n}=(-32{,}4 ; -30 ; -45)$ nên có phương trình là
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			-32{,}4 (x-2)-30(y+1)-45(z-3)=0 \qquad \text{hay } -32{,}4 x -30y -45z=0.
+		\end{eqnarray*}
+		Để mặt sân sau khi lát gạch vẫn là bề mặt phẳng thì bác An cần phải giảm độ cao ở $C$ xuống $k$ centimét so với độ cao ở $A$ nên suy ra $C(6; 9 ; -k)$.\\
+		Ta có $A$, $B$, $C$, $D$ đồng phẳng\\
+		$\Leftrightarrow C \in (ABD)$\\
+		$\Leftrightarrow -32{,}4\cdot 6 -30 \cdot 9 -45\cdot (-k)=0$\\
+		$\Leftrightarrow k=10{,}32$.\\
+		Vậy bác An cần phải giảm độ cao ở $C$ xuống $10{,}32$ centimét so với độ cao ở $A$.
+	}
+\end{vd}
+\dongcham{14}
+\boxmini{BÀI TẬP TRẮC NGHIỆM}
+\setcounter{ex}{0}
+\begin{ex}%[2H3Y2-3]
+	Phương trình mặt phẳng đi qua điểm $A(1;2;3)$ và có vectơ pháp tuyến $\overrightarrow{n}=(-2;0;1)$ là
+	\choice
+	{$-2x+z+1=0$}
+	{$-2y+z-1=0$}
+	{\True $-2x+z-1=0$}
+	{$-2x+y-1=0$}
+	\loigiai
+	{
+		Phương trình của mặt phẳng cần tìm là $-2(x-1)+0(y-2)+1(z-3)=0 \Leftrightarrow -2x+z-1=0$.
+	}
+\end{ex}
+\cham{2}
+
+\begin{ex}%[2H3B2-3]
+	Phương trình nào được cho dưới đây là phương trình mặt phẳng $(Oyz)$?
+	\choice
+	{$x=y+z$}
+	{$y-z=0$}
+	{$y+z=0$}
+	{\True $x=0$}
+	\loigiai{
+		Trong không gian với hệ tọa độ $Oxyz$, phương trình của mặt phẳng $(Oyz)$ là $x=0$.
+	}
+\end{ex}
+\cham{2}
+
+\begin{ex}%[Lê Quý Đôn, Hà Nội, lần 1, 2018]%[2H3B2-3]%[Nguyễn Bình Nguyên-12Ex7]
+	Cho các điểm $A(0;1;2)$, $B(2;- 2;1)$, $C(- 2;0;1)$. Phương trình mặt phẳng đi qua $A$ và vuông góc với $BC$ là
+	\choice
+	{$2x - y - 1 = 0$}
+	{$ - y + 2z - 3 = 0$}
+	{\True $2x - y + 1 = 0$}
+	{$y + 2z - 5 = 0$}
+	\loigiai{
+		Ta có $\overrightarrow{n}=\dfrac{1}{2}\overrightarrow{BC}=(-2;1;0)$.\\
+		Vậy phương trình mặt phẳng đi qua $A$ và vuông góc với $BC$ có dạng
+		$ - 2(x - 0) + 1(y - 1) = 0 \Leftrightarrow  - 2x + y - 1 = 0$ $ \Leftrightarrow 2x - y + 1 = 0$.}
+\end{ex}
+\cham{3}
+
+\begin{ex}%[2H3B2-3]
+	Cho hai điểm $A(4;0;1)$ và $B(-2;2;3)$. Phương trình nào dưới đây là phương trình mặt phẳng trung trực của đoạn thẳng $AB$?
+	\choice
+	{$3x-y-z+1=0$}
+	{$3x+y+z-6=0$}
+	{\True $3x-y-z=0$}
+	{$6x-2y-2z-1=0$}
+	\loigiai
+	{
+		Gọi $(\alpha)$ là mặt phẳng trung trực của đoạn thẳng $AB$. Khi đó $(\alpha)$ đi qua điểm $M(1;1;2)$, là trung điểm của $AB$, và nhận $\overrightarrow{AB}=(-6;2;2)$ làm vectơ pháp tuyến. Phương trình của mặt phẳng $(\alpha)$ là
+		$$-6(x-1)+2(y-1)+2(z-2)=0 \Leftrightarrow -6x+2y+2z=0 \Leftrightarrow 3x-y-z=0.$$
+	}
+\end{ex}
+\cham{3}
+\begin{ex}
+	Trong không gian $Oxyz$, cho hai điểm $A(1;1;1)$ và $B(1;3;5)$. Viết phương trình mặt phẳng trung trực của đoạn $AB$.
+	\choice
+	{$y-2z-6=0$}
+	{$y-2z+2=0$}
+	{$y-3z+4=0$}
+	{\True $y+2z-8=0$}
+	\loigiai{
+		Ta có $I(1;2;3)$ là trung điểm của đoạn $AB$.\\
+		Mặt phẳng trung trực của đoạn thẳng $AB$ đi qua $I$ và có vectơ pháp tuyến $\overrightarrow{AB}=(0;2;4)=2(0;1;2)$, suy ra phương trình mặt phẳng trung trực cần tìm là
+		\begin{center}
+			$0(x-1)+1(y-2)+2(z-3)=0\Leftrightarrow y+2z-8=0$.
+		\end{center}
+	}
+\end{ex}
+
+\begin{ex}%[Thi thử lần 1, THPT Văn Giang - Hưng Yên, 2019]%[Đỗ Đường Hiếu, 12EX-8-2019]%[2H3B2-3]%
+	Trông không gian $Oxyz$, phương trình mặt phẳng $(P)$ đi qua $A(0;-1;4)$ và song song với giá của hai vectơ $\vec{u}=(3;2;1)$, $\vec{v}=(-3;0;1)$ là
+	\choice
+	{\True $x-3y+3z-15=0$}
+	{$x-2y+3z-14=0$}
+	{$x-y-z+3=0$}
+	{$x-3y+3z-9=0$}
+	\loigiai{
+		Mặt phẳng $(P)$ có vectơ pháp tuyến là $\left[ \vec{u}; \vec{v}\right] =(2;-6;6)$. Hay $(P)$ có vectơ pháp tuyến là $\vec n=(1;-3;3)$.\\
+		Phương trình mặt phẳng $(P)$ là
+		$$1\cdot(x-0)-3\cdot (y+1)+3\cdot (z-4)=0\;\text{hay}\; (P)\colon x-3y+3z-15=0.$$
+	}
+\end{ex}
+
+\begin{ex}
+	Trong không gian $Oxyz$, cho ba điểm $A(3;-2;-2)$, $B(3;2;0)$, $C(0;2;1)$. Phương trình mặt phẳng $(ABC)$ là
+	\choice
+	{$2x-3y+6z+12=0$}
+	{$2x+3y-6z-12=0$}
+	{\True $2x-3y+6z=0$}
+	{$2x+3y+6z+12=0$}
+	\loigiai{
+		Ta có
+		$\vec{AB}=(0;4;2)$, $\vec{AC}=(-3;4;3)$ là cặp vectơ chỉ phương của $(ABC)$.\\
+		$\vec{n}=\left[\vec{AB},\vec{AC}\right]=(4;-6;12)$.\\
+		Chọn $\vec{n}_1=\dfrac{1}{2} \vec{n}=(2;-3;6)$ là một vectơ pháp tuyến của $(ABC)$.\\
+		Mặt phẳng $(ABC)$ đi qua điểm $C(0;2;1)$ và có một vectơ pháp tuyến $\vec{n}_1=(2;-3;6)$ nên $(ABC)$ có phương trình là
+		$$2(x-0)-3(y-2)+6(z-1)=0\Leftrightarrow 2x-3y+6z=0.$$
+		Vậy phương trình mặt phẳng cần tìm là $2x-3y+6z=0$.
+	}
+\end{ex}
+\cham{4}
+
+\begin{ex}%[12-TN-BGD-3]%[Nguyễn Thành Khang, dự án 12-TN-BGD-3]%[2H3B2-3]%
+	Trong không gian với hệ trục toạ độ $Oxyz$, cho ba điểm $A(1;0;0),B(0;-1;-1),C(5;-1;1)$. Mặt phẳng $(ABC)$ có phương trình là
+	\choice
+	{$2x+3y+5z-2=0$}
+	{$2x-3y-5z-2=0$}
+	{$2x-3y-5z+2=0$}
+	{\True $2x+3y-5z-2=0$}
+	\loigiai{
+		Ta có $\vec{AB}=(-1;-1;-1), \vec{AC}=(4;-1;1)$ nên vectơ pháp tuyến của mặt phẳng $(ABC)$ là $\vec{n}=\left[\vec{AC},\vec{AB}\right]=(2;3;-5)$, mà mặt phẳng $(ABC)$ đi qua $A(1;0;0)$ nên có phương trình là $2x+3y-5z-2=0$.
+	}
+\end{ex}
+\cham{4}
+\begin{ex}
+	Mặt phẳng $(\alpha)$ đi qua $A(-1; 4; -6)$ và chứa trục $Oy$ có phương trình là
+	\choice
+	{$-2x+y+z=0$}
+	{$6x+z=0$}
+	{$3x-y-6z+1=0$}
+	{\True $6x-z=0$}
+	\loigiai{
+		Ta có $\vec{OA} = (-1; 4; -6)$, $\vec{j} = (0; 1; 0)$ song song hoặc trùng với $(\alpha)$. Nên $\vec{OA}$ và $\vec{j}$ là cặp vectơ chỉ phương của $(\alpha)$.\\
+		Xét vectơ $\vec{n}=[\vec{OA}, \vec{j}] = \left(\left|\begin{array}{cc}4 & -6 \\ 1 & 0\end{array}\right| ;\left|\begin{array}{cc}-6 & -1 \\ 0 & 0\end{array}\right| ;\left|\begin{array}{cc}-1 & 4 \\ 0 & 1\end{array}\right|\right)=(6 ; 0 ; -1)$.\\
+		Do đó $\vec{n} = (6; 0 ; -1)$ là một vectơ pháp tuyến của mặt phẳng $(\alpha)$.\\
+		Phương trình mặt phẳng $(\alpha)$ là $6x-z=0$.
+	}
+\end{ex}
+\cham{6}
+\begin{ex}%[Thi thử L1, Cụm chuyên môn, Sở GDDT Hải Phòng, 2019]%[Nguyễn Quang Tân, dự án 12-EX-7-2019]%[2H3B2-3]%
+	Trong không gian ${Oxyz}$, mặt phẳng chứa trục ${Ox}$ và đi qua điểm $A(1;1;-1)$ có phương trình là
+	\choice
+	{\True $ y+z=0$}
+	{$ z+1=0$}
+	{$ x+z=0$}
+	{$ x-y=0$}
+	\loigiai{
+		Gọi $\vec n$ là vectơ pháp tuyến của mặt phẳng $(P)$ chứa trục ${Ox}$ và đi qua điểm $A(1;1;-1)$.\\
+		Ta có $\heva{&\vec n \bot \overrightarrow {OA}  = \left(1;1; - 1\right)\\& \vec n \perp \vec i = \left( 1;0;0 \right).}$\\
+		Chọn một vectơ pháp tuyến của mặt phẳng $(P)$ là $\vec{n} = \left[ \vec i, \vec{OA} \right] = \left(0;1;1\right)$.\\
+		Vậy phương trình mặt phẳng là $y + z = 0$.
+	}
+\end{ex}
+\cham{6}
+\begin{ex}%[Đề thi thử - Trường THPT chuyên Lương Thế Vinh - Đồng Nai - Lần 1 - 2018]%[2H3B2-3]%[Kim Minh Bui - 12EX8]%
+	Trong không gian $Oxyz,$ cho ba điểm $A(2;1;1),\ B(3;0;-1),\ C(2;0;3)$. Mặt phẳng $(\alpha)$ đi qua hai điểm $A,\ B$ và song song với đường thẳng $OC$ có phương trình là
+	\choice
+	{$3x+y-2z-5=0$}
+	{$4x+2y+z-11=0$}
+	{$x-y+z-2=0$}
+	{\True $3x+7y-2z-11=0$}
+	\loigiai{
+		Gọi $\overrightarrow{n}$ là vtpt của mặt phẳng $(\alpha)$.\\
+		Ta có $\begin{cases} AB \subset (\alpha) \\ OC \parallel (\alpha) \end{cases} \Rightarrow
+		\begin{cases} \overrightarrow{n} \perp \overrightarrow{AB} \\ \overrightarrow{n} \perp \overrightarrow{OC} \end{cases}$ nên $\overrightarrow{n}$ cùng phương với $\overrightarrow{AB} \wedge \overrightarrow{OC}$.\\
+		Ta có $\overrightarrow{AB}=(1;-1;-2),\ \overrightarrow{OC}=(2;0;3) \Rightarrow \overrightarrow{AB} \wedge \overrightarrow{OC}=(-3;-7;2) = (-1) \cdot (3;7;-2).$ Ta chọn $\overrightarrow{n} = (3;7;-2)$. \\ Phương trình mặt phẳng $(\alpha)$ là: $3x+7y-2z-11=0.$
+	}
+\end{ex}
+\cham{6}
+\begin{ex}
+	Mặt phẳng đi qua hai điểm $A(1;2;-1)$, $B(0;4;3)$ và song song với trục $Oz$ có phương trình là
+	\choice
+	{\True $2x + y -4 =0$}
+	{$4x - 4y +3 z+7 =0$}
+	{$x + 2y -5=0$}
+	{$2x + y+z -3 =0$}
+	\loigiai{
+		$\vec{AB}=(-1;2;4)$, $\vec{k}=(0;0;1)$. vectơ pháp tuyến của mặt phẳng cần tìm là $\vec{n}=\big[\vec{AB}, \vec{k}\big]=(2;1;0)$.\\
+		Mặt phẳng qua $A(1;2;-1)$, nhận $\vec{n}=(2;1;0)$ làm vectơ pháp tuyến có phương trình là
+		$$2(x-1)+1(y-2)+0(z+1)=0 \Leftrightarrow 2x+y-4=0.$$
+		
+	}
+\end{ex}
+\cham{6}
+
+\begin{ex}%[2H3B2-3]
+	Cho điểm $M(1;2;-3)$. Gọi $M_{1}$, $M_{2}$, $M_{3}$ lần lượt là hình chiếu vuông góc của $M$ lên trục $Ox$, $Oy$, $Oz$. Phương trình mặt phẳng đi qua ba điểm $M_{1}$, $M_{2}$, $M_{3}$ là
+	\choice
+	{\True $x+\dfrac{y}{2}-\dfrac{z}{3}=1$}
+	{$\dfrac{x}{3}+\dfrac{y}{2}+\dfrac{z}{1}=1$}
+	{$x+\dfrac{y}{2}+\dfrac{z}{3}=1$}
+	{$x+\dfrac{y}{2}+\dfrac{z}{3}=-1$}
+	\loigiai{
+		Ta có $M_{1}(1;0;0)$, $M_{2}(0;2;0)$, $M_{3}(0;0;-3)$.\\
+		Phương trình mặt phẳng đi qua $M_{1}$, $M_{2}$, $M_{3}$ là $x+\dfrac{y}{2}-\dfrac{z}{3}=1$.
+	}
+\end{ex}
+\cham{4}
+
+\begin{ex}%[2H3K2] 
+	Mặt phẳng nào sau đây cắt các trục $Ox$, $Oy$, $Oz$ lần lượt tại các điểm $A$, $B$, $C$ sao cho tam giác $ABC$ nhận điểm $G\big(1; 2; 1\big)$ là trọng tâm?
+	\choice{$x + 2y + 2z  - 6 = 0$}
+	{\True $2x + y + 2z  - 6 = 0$}
+	{$2x + 2y + z  - 6 = 0$}
+	{$2x + 2y + 6z - 6 = 0$} 
+\end{ex}
+\cham{6}
+\begin{ex}%[2H3B2-3]
+	Cho mặt phẳng  $\left(P\right)$ đi qua điểm $M\left(2; - 4; 1\right)$  và chắn trên các trục tọa độ $Ox$, $Oy$, $Oz$ theo ba đoạn có độ dài đại số lần lượt là $a$, $b$, $c$. Phương trình tổng quát của mặt phẳng $\left(P\right)$ khi $a$, $b$, $c$ theo thứ tự tạo thành một cấp số nhân có công bội bằng $2$ là 
+	\choice
+	{$4x + 2y - z - 1 = 0$}
+	{$4x -  2y + z +  1 = 0$}
+	{$16x + 4y - 4z - 1 = 0$}
+	{\True $4x + 2y +  z - 1 = 0$}
+	\loigiai{Do giả thiết suy ra $a, b, c \neq 0$ và $b = 2a$, $c = 2b$. Giả sử $A\left(a; 0;0\right)$, $B\left(0; b;0\right)$ và $C\left(0; 0;c\right)$ khi đó phương trình mặt phẳng $\left(P\right)\colon \dfrac{x}{a} + \dfrac{y}{b} + \dfrac{z}{c} = 1$.  Do $M$ thuộc $\left(P\right)$  nên
+		$$\dfrac{2}{a} - \dfrac{4}{b} + \dfrac{1}{c} = 1\Leftrightarrow \dfrac{2}{a} - \dfrac{4}{2a} + \dfrac{1}{4a} = 1\Leftrightarrow a = \dfrac{1}{4}.$$
+		Suy ra $b = \dfrac{1}{2}$ và $c = 1$ do đó phương trình mặt phẳng $\left(P\right)\colon 4x + 2y + z - 1 = 0$.
+	}
+\end{ex}
+\cham{8}
+
+\begin{dang}{Vị trí tương đối của hai mặt phẳng}
+	Cho hai mặt phẳng $(P) \colon a_1x+b_1y+c_1z+d_1=0$ và $(Q) \colon a_2x+b_2y+c_2z+d_2=0$.
+		\begin{listEX}[1]
+		\item [\ding{172}] Nếu $\heva{&\vec{n_1}= k \cdot \vec{n_2}\\& d_1 =k\cdot d_2}$ thì $(P)$ trùng $(Q)$.
+		\item [\ding{173}] Nếu $\heva{&\vec{n_1}= k \cdot \vec{n_2}\\& d_1 \ne k\cdot d_2}$ thì $(P)$ song song $(Q)$.
+		\item [\ding{174}] Nếu $\vec{n_1}$ không cùng phương với $\vec{n_2}$ thì $(P)$ cắt $(Q)$.
+		\item [\ding{175}] Nếu $\vec{n_1} \perp \vec{n_2}$ hay $a_1a_2+b_1b_2+c_1c_2=0$ thì $(P) \perp (Q)$.
+	\end{listEX}
+\end{dang}
+\setcounter{ex}{0}
+\setcounter{vd}{0}
+\boxmini{BÀI TẬP TỰ LUẬN}
+
+\begin{vd}%[2H5H1-4]	
+	Tìm các cặp mặt phẳng song song hoặc vuông góc trong các mặt phẳng sau
+	\begin{listEX}[2]
+		\item [] $(P)\colon 2x+3y-2z+7=0$
+		\item [] $(Q)\colon 3x-2y-11=0$
+		\item [] $(R)\colon 4x+6y-4z-9=0$
+		\item [] $(T)\colon 7x+y-z+1=0$
+	\end{listEX}
+	\loigiai{
+		Các mặt phẳng $(P)$, $(Q)$, $(R)$, $(T)$ có các vectơ pháp tuyến lần lượt là $\overrightarrow{n}_1=(2;3;-2)$, $\overrightarrow{n}_2=(3;-2;0)$, $\overrightarrow{n}_3=(4;6;-4)$, $\overrightarrow{n}_4=(7;1;-1)$.\\
+		Ta có $\overrightarrow{n}_1\cdot \overrightarrow{n}_2=2 \cdot3 +3\cdot (-2)+(-2)\cdot0 =0$, suy ra $(P)\perp (Q)$.\\
+		Vì $\dfrac{4}{2}=\dfrac{6}{3}=\dfrac{-4}{-2}\ne \dfrac{-9}{7}$ nên $(P) \parallel (R)$.\\
+		Ta lại có $ (P)\perp (Q)$ và $(P) \parallel (R)$, suy ra $(Q) \perp (R)$.\\
+		Ta có $\dfrac{2}{7}\ne \dfrac{3}{1}$ suy ra $\overrightarrow{n}_2$ và $\overrightarrow{n}_4$ không cùng phương.\\
+		Mặt khác, $\overrightarrow{n}_1\cdot \overrightarrow{n}_4=2\cdot7+3\cdot1+(-2)\cdot(-1)=19\ne 0$. Suy ra $(P)$ và $(T)$ cắt nhau nhưng không vuông góc. Tương tự, ta cũng có $(Q)$ và $(T)$ cắt nhau nhưng không vuông góc.}
+\end{vd}
+\dongcham{11}
+\begin{vd}
+	Trong không gian $Oxyz$, cho mặt phẳng $(\alpha)\colon 2x-3y+z+5=0$.
+	\begin{listEX}[1]
+		\item Chứng minh rằng mặt phẳng $\left(\alpha'\right)\colon-4 x+6 y-2 z+7=0$ song song với $(\alpha)$.
+		\item Viết phương trình mặt phẳng $(\beta)$ đi qua điểm $M(1 ; -2 ; 3)$ và song song với $(\alpha)$.
+	\end{listEX}
+	\loigiai{
+		\begin{listEX}[1]
+			\item Xét $(\alpha)\colon 2x-3y+z+5=0$ và $\left(\alpha'\right)\colon -4x+6y-2z+7=0$.\\
+			Ta có $\dfrac{2}{-4}=\dfrac{-3}{6}=\dfrac{1}{-2} \neq \dfrac{5}{7}$ nên $(\alpha) \parallel \left(\alpha'\right)$.
+			\item Mặt phẳng $(\alpha)$ có vectơ pháp tuyến $\vec{n}=(2 ;-3 ; 1)$.\\
+			Vì $(\beta) \parallel (\alpha)$ nên $(\beta)$ có vectơ pháp tuyến $\vec{n}=(2 ;-3 ; 1)$.\\
+			Vậy mặt phẳng $(\beta)$ đi qua điểm $M(1 ;-2 ; 3)$ và có vectơ pháp tuyến $\vec{n}=(2 ;-3 ; 1)$ nên có phương trình là
+			\allowdisplaybreaks
+			\begin{eqnarray*}
+				2(x-1)-3(y+2)+(z-3)=0 \qquad \text{hay } 2x-3y+z-11=0.
+			\end{eqnarray*}
+		\end{listEX}
+		
+	}
+\end{vd}
+
+\dongcham{10}
+
+\begin{vd}%[Thi thử, Sở GD và ĐT-THANH HÓA, 2020]%[Nguyễn Hữu Tính]%[2H3B2-3]%
+	Trong không gian $Oxyz$, cho  hai mặt phẳng $(Q) \colon x+y+3z=0$, $(R) \colon  2x-y+z=0$.
+	\begin{enumEX}[a)]{1}
+		\item Xét vị trí tương đối của $(Q)$ và $(R)$;
+		\item Viết trình của mặt phẳng $(P)$ đi qua điểm $B(2;1;-3)$, đồng thời vuông góc với $(Q)$ và $(R)$.
+	\end{enumEX}
+	\loigiai{
+		vectơ pháp tuyến $(P)$ là $n_{\overrightarrow{P}}= \left[ n_{\overrightarrow{Q}},n_{\overrightarrow{R}} \right]= (4;5;-3)$.\\
+		Phương trình mặt phẳng $(P)$ là $4(x-2)+5(y-1)-3(z+3)=0 \Leftrightarrow 4x+5y-3z-22=0$.
+	}
+\end{vd}
+\dongcham{10}
+\begin{vd}%[Đề tập huấn, Sở GD - ĐT tỉnh Quảng Bình, 2019]%[Nguyễn Tiến, dự án 12EX5]%[2H3K2-3]%
+	Trong không gian với hệ tọa độ $Oxyz$, cho hai điểm $A(-2;4;-1)$, $B(1;1;3)$ và mặt phẳng $(P)$ có phương trình $x-3y+2z-5=0$. Viết phương trình mặt phẳng $(Q)$ đi qua hai điểm $A$, $B$ và vuông góc với mặt phẳng $(P)$.
+	\loigiai{
+		$\left.\begin{array}{l} \overrightarrow{AB}=(3;-3;4)\\ \overrightarrow{n}_{(P)}=(1;-3;2)\end{array}\right\}\Rightarrow\left[\overrightarrow{AB},\overrightarrow{n}_{(P)}\right]=(6;-2;-6)=2(3;-1;-3)$.\\
+		Mặt phẳng $(Q)$ đi qua điểm $A$ và có vectơ pháp tuyến $\overrightarrow{n}_{(Q)}=(3;-1;-3)$ có phương trình
+		\begin{eqnarray*}
+			& & 3(x+2)-(y-4)-3(z+1)=0\\
+			&\Leftrightarrow & 3x-y-3z+7=0.
+		\end{eqnarray*}
+	}
+\end{vd}
+\dongcham{10}
+
+\boxmini{BÀI TẬP TRẮC NGHIỆM}
+
+\begin{ex}%[2H3B2-7]
+	Cho mặt phẳng $(P)\colon -x+y+3z+1=0$. Mặt phẳng song song với mặt phẳng $(P)$ có phương trình nào sau đây?
+	\choice
+	{\True $2x-2y-6z+7=0$}
+	{$-2x+2y+3z+5=0$}
+	{$x-y+3z-3=0$}
+	{$-x-y+3z+1=0$}
+	\loigiai{
+		vectơ pháp tuyến của mặt phẳng $ (P) $ là $ \overrightarrow{n}=(-1;1;3)$ cùng phương với vectơ $\overrightarrow{n}=(2;-2;-6) $. Vì $ \dfrac{2}{-1}\neq \dfrac{7}{1} $ nên phương trình mặt phẳng song song với $ (P) $ là $2x-2y-6z+7=0$.
+	}
+\end{ex}
+\cham{2}
+
+\begin{ex}%[2H3B2-7]
+	Cho hai mặt phẳng $(P) \colon 2x+4y+3z-5=0$ và $(Q) \colon mx-ny-6z+2-0$. Giá trị của $m,n$ sao cho $(P) \parallel (Q)$ là
+	\choice
+	{$m=4;n=-8$}
+	{$m=n=4$}
+	{\True $m=-4;n=8$}
+	{$m=n=-4$}
+	\loigiai{
+		$(P)$ có vectơ chỉ phương $\overrightarrow{u}_{(P)}=(2;4;3)$, $(Q)$ có vectơ chỉ phương $\overrightarrow{u}_{(Q)}=(m;-n;-6)$.\\ Để hai mặt phẳng trên song song thì $\overrightarrow{u}_{(Q)}=k\overrightarrow{u}_{(P)}\,(k \neq 0) \Leftrightarrow \heva{&m=2k\\&-n=4k\\&-6=3k} \Rightarrow \heva{&k=-2\\&m=-4\\&n=8.}$
+	}
+	
+\end{ex}
+\cham{3}
+
+\begin{ex}
+	Cho hai mặt phẳng $(P)\colon x+my+(m-1)z+1=0$ và $(Q)\colon x+y+2z=0$. Tập hợp tất cả các giá trị $m$ để hai mặt phẳng này \textbf{không} song song là
+	\choice
+	{$(0;+\infty)$}
+	{$\mathbb{R}\setminus\{-1;1;2\}$}
+	{$(-\infty;3)$}
+	{\True $\mathbb{R}$}
+	\loigiai{
+		Ta có $A(0;0;0)\in (Q)$.\\
+		$(P)\parallel (Q)\Leftrightarrow \heva{&\dfrac{1}{1}=\dfrac{m}{1}=\dfrac{m-1}{2}\\&A(0;0;0)\notin (P)}$. Hệ này vô nghiệm. Do đó $(P)$ không song song với $(Q)$, với mọi giá trị của $m$. 
+	} 
+\end{ex}
+\cham{4}
+
+\begin{ex}
+	Cho mặt phẳng $(\alpha)\colon x+y+z-1=0$. Trong các mặt phẳng sau, tìm mặt phẳng vuông góc với mặt phẳng $(\alpha)$.
+	\choice
+	{$2x-y+z+1=0$}
+	{\True $2x-y-z+1=0$}
+	{$2x+2y+2z-1=0$}
+	{$x-y-z+1=0$}
+	\loigiai{
+		Mặt phẳng $(\alpha)$ có $\overrightarrow{n}_{(\alpha)}=(1;1;1)$.\\
+		Mặt phẳng $2x-y-z+1=0$ có vectơ pháp tuyến $\overrightarrow{n}_1=(2;-1;-1)\Rightarrow\overrightarrow{n}_{(\alpha)}\cdot\overrightarrow{n}_1=0$ nên mặt phẳng $(\alpha)$ vuông góc với mặt phẳng $2x-y-z+1=0$.
+	}
+\end{ex}
+
+\begin{ex}%[2H3B2-7]
+	Cho mặt phẳng $(P)\colon 2x-y+2z-3=0$ và $(Q) \colon x+my+z-1=0$. Tìm tham số $m$ để hai mặt phẳng $P$ và $Q$ vuông góc với nhau.
+	\choice
+	{$m=-4$}
+	{$m=- \dfrac{1}{2}$}
+	{$m=\dfrac{1}{2}$}
+	{\True $m=4$}
+	\loigiai
+	{ Mặt phẳng $(P)$ và $(Q)$ có vectơ pháp tuyến lần lượt là $\overrightarrow{n}_1=(2;-1;2)$ và $\overrightarrow{n}_2=(1;m;1)$. \\
+		Do đó $(P) \perp (Q) \Leftrightarrow \overrightarrow{n}_1 \cdot \overrightarrow{n}_2=0 \Leftrightarrow 2-m+2=0 \Leftrightarrow m=4$.
+		
+	}
+\end{ex}
+\cham{2}
+
+\begin{ex}
+	Cho hai mặt phẳng $(P)\colon x+2y-z-1=0$, $(Q)\colon 3x-(m+2)y+(2m-1)z+3=0$. Tìm $m$ để hai mặt phẳng $(P)$ và $(Q)$ vuông góc với nhau.
+	\choice
+	{\True $m=0$}
+	{$m=2$}
+	{$m=-2$}
+	{$m=-1$}
+	\loigiai{
+		vectơ pháp tuyến của $(P)$, $(Q)$ lần lượt là $\overrightarrow{n}_P=(1;2;-1)$ và $\overrightarrow{n}_Q=(3;-m-2;2m-1)$.\\
+		$(P)\perp (Q)\Leftrightarrow \overrightarrow{n}_P\cdot\overrightarrow{n}_Q=0\Leftrightarrow 3-2(m+2)-2m+1=0\Leftrightarrow m=0$.
+	}
+\end{ex}
+
+\begin{ex}%[2H3B2-3]%
+	Mặt phẳng đi qua $A(1;3;-2)$ và song song với mặt phẳng $(P) \colon 2x-y+3z+4=0$ có phương trình là
+	\choice
+	{\True $2x-y+3z+7=0$}
+	{$2x-y+3z-7=0$}
+	{$2x+y-3z+7=0$}
+	{$2x+y+3z+7=0$}
+	\loigiai{
+		Ta có $\vec{n}=\vec{n_{(P)}}=(2;-1;3)$. Khi đó phương trình mặt phẳng qua $A(1;3;-2)$ và song song $(P)$ là
+		$$2(x-1)-1(y-3)+3(z+2)=0\Leftrightarrow 2x-y+3z+7=0.$$
+	}
+\end{ex}
+
+
+\begin{ex}%[KSCL giữa HK2 Cụm trường THPT TP Nam Định]%[Nguyễn Tiến, 12EX7]%[2H3B2-3]%
+	Cho điểm $A(2;-1;-3)$ và mặt phẳng $(P)\colon 3x-2y+4z-5=0$. Mặt phẳng $(Q)$ đi qua $A$ và song song với mặt phẳng $(P)$ có phương trình là
+	\choice
+	{\True $(Q)\colon 3x-2y+4z+4=0$}
+	{$(Q)\colon 3x+2y+4z+8=0$}
+	{$(Q)\colon 3x-2y+4z+5=0$}
+	{$(Q)\colon 3x-2y+4z-4=0$}
+	\loigiai{
+		Do mặt phẳng $(Q)$ song song với mặt phẳng $(P)$ nên có vectơ pháp tuyến là $\overrightarrow{n}=(3;-2;4)$.\\
+		Phương trình mặt phẳng $(Q)\colon 3(x-2)-2(y+1)+4(z+3)=0 \Leftrightarrow 3x-2y+4z+4=0$.
+	}
+\end{ex}
+
+\begin{ex}
+	Cho mặt phẳng $(P)$ đi qua các điểm $A(-2; 0; 0)$, $B(0; 3; 0)$, $C(0; 0; -3)$. Mặt phẳng $(P)$ vuông góc với mặt phẳng nào trong các mặt phẳng sau?
+	\choice
+	{\True $2x+2y-z-1=0$}
+	{$x+y+z+1=0$}
+	{$3x-2y+2z+6=0$}
+	{$x-2y-z-3=0$}
+	\loigiai{
+		Mặt phẳng $(P)\colon \dfrac{x}{-2}+\dfrac{y}{3}+\dfrac{z}{-3}=1$ hay $(P)\colon 3x-2y+2z+6=0$ có vectơ pháp tuyến $\vec{n}=(3;-2;2)$.\\
+		Ta có $3\cdot 2 -2\cdot 2-2\cdot 1=0$ nên $(P)$ vuông góc với mặt phẳng $2x+2y-z-1=0$.
+	}
+\end{ex}
+
+\begin{ex}
+	Mặt phẳng qua $A(1;2;-1)$ và vuông góc với các mặt phẳng $(P) \colon 2x-y+3z-2=0$; $(Q) \colon x+y+z-1=0$ có phương trình là
+	\choice
+	{$x-y+z+2=0$}
+	{$4x-y+z-1=0$}
+	{$x+y+2z-1=0$}
+	{\True $4x-y-3z-5=0$}
+	\loigiai{
+		vectơ pháp tuyến của mặt phẳng $(P)$ và $(Q)$ lần lượt là $\overrightarrow{n_1}=(2;-1;3)$ và $\overrightarrow{n_2}=(1;1;1)$.
+		\\
+		Ta có $\left[\overrightarrow{n_1};\overrightarrow{n_2}\right]=(-4;1;3)$.
+		Mặt phẳng cần tìm qua $A(1;2;-1)$ và có vectơ pháp tuyến là $\overrightarrow{n}=(-4;1;3)$ nên có phương trình là
+		$$-4 \cdot (x-1)+1 \cdot (y-2)+3 \cdot (z+1)=0\Leftrightarrow4x-y-3z-5=0.$$}
+\end{ex}
+
+\begin{ex}
+	Cho hai mặt phẳng $(P)$, $(Q)$ lần lượt có phương trình là $x+y-z=0$, $x-2y+3z=4$ và cho điểm $M(1;-2;5)$. Tìm phương trình mặt phẳng $(\alpha)$ đi qua điểm $M$ và đồng thời vuông góc với hai mặt phẳng $(P)$, $(Q)$.
+	\choice
+	{$5x+2y-z+14=0$}
+	{\True $x-4y-3z+6=0$}
+	{$x-4y-3z-6=0$}
+	{$5x+2y-z+4=0$}
+	\loigiai{
+		Ta có $\vec{n}_{(P)} = (1;1;-1)$ và
+		$\vec{n}_{(Q)} = (1;-2;3).$\\
+		Suy ra $\left[\vec{n}_{(P)},\vec{n}_{(Q)}\right]= (1;-4;-3).$\\
+		Do $(\alpha)$ vuông góc với $(P)$ và $(Q)$ nên $\heva{&\vec{n}_{(\alpha)} \perp \vec{n}_{(P)}\\&\vec{n}_{(\alpha)} \perp \vec{n}_{(Q)}}$. \\
+		Chọn $\vec{n}_{(\alpha)} = \left[\vec{n}_{(P)},\vec{n}_{(Q)}\right]=(1;-4;-3)$. Hơn nữa, $(\alpha)$ đi qua $M(1;-2;5)$ nên có phương trình là $$(x-1)-4(y+2)-3(z-5)=0\Leftrightarrow x-4y-3z+6=0.$$
+	}
+\end{ex}
+
+\begin{ex}%[Thi thử, THPT chuyên Quang Trung, 2020]%[Phạm Doãn Lê Bình, 12EX2-2020]%[2H3B2-3]%
+	Cho điểm $A(-4;1;1)$ và mặt phẳng $(P)\colon x-2y-z+4=0$. Mặt phẳng $(Q)$ đi qua điểm $A$ và song song với mặt phẳng $(P)$ có phương trình là
+	\choice
+	{$(Q)\colon x-2y-z+7=0$}
+	{\True $(Q)\colon x-2y-z-7=0$}
+	{$(Q)\colon x-2y+z+5=0$}
+	{$(Q)\colon x-2y+z-5=0$}
+	\loigiai{
+		Do $(Q)\parallel (P)$ nên phương trình của $(Q)$ có dạng $x-2y-z+c=0$ ($c\ne 4$).\\
+		Do $A \in (Q)$ nên $-4-2\cdot 1 - 1 + c = 0 \Leftrightarrow c = 7$ (thỏa).\\
+		Vậy $(Q)\colon x-2y-z+7=0$.
+	}
+\end{ex}
+
+\begin{ex}%[Thi thử L1, THPT Chuyên ĐH Vinh, Nghệ An, 2019]%[Nguyễn Đắc Giáp, dự án 12EX6]%[2H3B2-3]%
+	Cho hai mặt phẳng $(P)\colon x-3y+2z-1=0$, $(Q)\colon x-z+2=0$. Mặt phẳng $\left(\alpha\right)$ vuông góc với hai mặt phẳng $(P),(Q)$ đồng thời cắt trục $Ox$ tại điểm có hoành độ bằng $3$. Phương trình của $\left(\alpha\right)$ là
+	\choice
+	{$-2x+z+6=0$}
+	{$-2x+z-6=0$}
+	{\True $x+y+z-3=0$}
+	{$x+y+z+3=0$}
+	\loigiai{
+		Mặt phẳng $(P)$ có một vectơ pháp tuyến là $\overrightarrow{n}_P=(1;-3;2)$.\\
+		Mặt phẳng $(Q)$ có một vectơ pháp tuyến là $\overrightarrow{n}_Q=(1;0;-1)$.\\
+		Vì mặt phẳng $(\alpha)$ vuông góc với hai mặt phẳng $(P)$ và $(Q)$ nên $(\alpha)$ có một vectơ pháp tuyến là	 $\overrightarrow{n}_{\alpha}=\left[\overrightarrow{n}_P,\overrightarrow{n}_Q\right]=3(1;1;1)$.\\
+		Mà mặt phẳng $(\alpha)$ đi qua $A(3;0;0)$, nên suy ra phương trình là $\left(\alpha\right)\colon x+y+z-3=0$.
+	}
+\end{ex}
+
+\begin{ex}%[2H3K2-3]%
+	Cho $A\left( 1;-1;2 \right);\ B\left( 2;1;1 \right)$ và mặt phẳng $\left( P \right):x+y+z+1=0$. Mặt phẳng $\left( Q \right)$ chứa $A,\ B$ và vuông góc với mặt phẳng $\left( P \right)$. Mặt phẳng $\left( Q \right)$ có phương trình là
+	\choice
+	{$3x-2y-z+3=0$}
+	{\True $3x-2y-z-3=0$}
+	{$-x+y=0$}
+	{$x+y+z-2=0$}
+	\loigiai
+	{
+		Ta có $\vec{A B}=(1 ; 2 ;-1)$ và vectơ pháp tuyến của $(P)$ là $\vec{n}_{P}=(1 ; 1 ; 1)$. Gọi vectơ pháp tuyến của $(Q)$ là $\vec{n}_{Q}$.\\
+		Vì $(Q)$ chứa $A,B$ nên $\vec{n_{Q}} \perp \vec{A B}$, mặt khác $(Q) \perp(P)$ nên $\vec{n_{Q}} \perp \vec{n_{P}}$. \\
+		Từ đó suy ra $\vec{n_{Q}}=\left[\vec{A B}, \vec{n_{P}}\right]=(3 ;-2 ;-1)$.\\
+		$(Q)$ đi qua $A(1;-1;2)$ và có vectơ pháp tuyến $\vec{n_{Q}}=(3 ;-2 ;-1)$ nên $(Q)$ có phương trình là
+		$$(Q):3(x-1)-2(y+1)-(z-2)=0 \Leftrightarrow 3 x-2 y-z-3=0.$$
+	}
+\end{ex}
+
+\begin{ex}%[2H3K2-3]%[Đề thi thử L2, THPT Nguyễn Quang Diêu, 2018]%[Đỗ Đường Hiếu, 12EX-9]%
+	Cho hai điểm $A(2;4;1)$, $B(-1;1;3)$ và mặt phẳng $(P)\colon x-3y+2z-5=0$. Một mặt phẳng $(Q)$ đi qua hai điểm $A$, $B$ và vuông góc với mặt phẳng $(P)$ có dạng là $ax+by+cz-11=0$. Tính $a+b+c$.
+	\choice
+	{$a+b+c=-7$}
+	{$a+b+c=10$}
+	{\True $a+b+c=5$}
+	{$a+b+c=3$}
+	\loigiai{
+		Ta có $\overrightarrow{AB}=\left(-3;-3;2\right)$ và vectơ pháp tuyến của mặt phẳng $(P)$ là $\overrightarrow{n}_P=\left(1;-3;2\right)$.\\
+		Mặt phẳng $(Q)$ đi qua hai điểm $A$, $B$ và vuông góc với mặt phẳng $(P)$ có một vectơ chỉ phương là
+		$$\overrightarrow{n}_Q=\left[\overrightarrow{AB}, \overrightarrow{n}_P\right]=\left(0;8;12\right) =4\left(0;2;3\right).$$
+		Phương trình mặt phẳng $(Q)$ là
+		$$0\cdot (x-2)+2\cdot (y-4)+3\cdot (z-1)=0.$$
+		Hay $(Q)\colon 2y+3z-11=0$.
+		Từ đó suy ra $a=0$, $b=2$, $c=3$. Do đó $a+b+c=0+2+3=5$.
+	}
+\end{ex}
+
+\begin{dang}{Khoảng cách từ một điểm đến mặt phẳng, khoảng cách giữa hai mặt phẳng song song}
+	\begin{itemize}
+		\item [\iconMT] \indam{Khoảng cách từ một điểm đến mặt phẳng:} Cho điểm $M(x_0;y_0;z_0)$ và mặt phẳng $(P) \colon ax+by+cz+d=0$. Khi đó
+		\boxmini{$\mathrm{d}\left(M,(P) \right)=\dfrac{\bigg|ax_0+by_0+cz_0+d\bigg|}{\sqrt{a^2+b^2+c^2}}$}
+		\item [\iconMT] \indam{Khoảng cách giữa hai mặt phẳng song song:} 	Cho hai mặt phẳng $(P) \colon ax + by + cz + d_1=0$ và $(Q) \colon ax + by + cz + d_2=0$ song song nhau. 
+		Khi đó
+		\boxmini{$\mathrm{d}\left((P),(Q) \right)=\dfrac{\bigg|d_1-d_2\bigg|}{\sqrt{a^2+b^2+c^2}}$}
+	\end{itemize}
+\end{dang}
+\setcounter{ex}{0}
+\setcounter{vd}{0}
+\boxmini{BÀI TẬP TỰ LUẬN}
+\begin{vd}%[2H5H1-5] %[Dang]
+	Tính khoảng cách từ điểm $A(1;2;3)$ đến các mặt phẳng sau
+	\begin{enumEX}[a)]{3}
+		\item $\left(P\right) \colon 3x + 4z + 10 = 0$;
+		\item $\left(Q\right) \colon 2x - 10 = 0$;
+		\item $\left(R\right) \colon 2x + 2y + z - 3 = 0$.
+	\end{enumEX}
+	
+	\loigiai{
+		\begin{listEX}
+			\item $\mathrm{d}\left( A;\left( P \right) \right) = \dfrac{\left| {3 \cdot 1 + 0 \cdot 2 + 4 \cdot 3 + 10} \right|}{\sqrt {3^2 + 4^2}} = 5$.
+			\item $\mathrm{d}\left(A;\left( Q \right) \right) = \dfrac{\left| {2 \cdot 1 - 10} \right|}{\sqrt {2^2} } = 2$.
+			\item $\mathrm{d}\left( A;\left( R \right) \right) = \dfrac{\left| {2 \cdot 1 + 2 \cdot 2 + 1 \cdot 3 - 3} \right|}{\sqrt {2^2 + 2^2 + 1^2} } = 2$.
+		\end{listEX}
+	}
+\end{vd}
+\dongcham{3}
+\begin{vd}%[2H5N1-4]%[2H5H1-5]%[Dự án tex hóa sách bài tập Toán 12 CTST]%[Lê Thị Thúy Hằng]
+	Cho hai mặt phẳng $(P) \colon 2x+y+2z+12=0$, $(Q) \colon 4x+2y+4z-6=0$.
+	\begin{enumerate}
+		\item Chứng minh $(P) \parallel (Q)$.
+		\item Tính khoảng cách giữa hai mặt phẳng $(P)$ và $(Q)$.
+	\end{enumerate}
+	\loigiai{
+		\begin{enumerate}
+			\item Xét hai mặt phẳng $(P) \colon 2x+y+2z+12=0$ và $(Q) \colon 4x+2y+4z-6=0$, ta có
+			$\dfrac{4}{2} = \dfrac{2}{1} = \dfrac{4}{2} \ne \dfrac{-6}{12}$, suy ra $(P) \parallel (Q)$.
+			\item Trên mặt phẳng $(Q)$, lấy điểm $M(0;1;1)$.\\
+			Ta có
+			$$ \mathrm{d}((P),(Q)) = \mathrm{d} (M, (P)) = \dfrac{\left| 2 \cdot 0 + 1 \cdot 1 + 2 \cdot 1 + 12 \right|}{\sqrt{2^2+1^2+2^2}}=\dfrac{15}{3}=5.$$
+		\end{enumerate}
+	}
+\end{vd}
+\dongcham{7}
+\begin{vd}
+	\immini{
+		Một kĩ sư xây dựng thiết kế khung một ngôi nhà trong không gian $Oxyz$ như Hình 9 nhờ một phần mềm đồ họa máy tính.
+		\begin{enumerate}
+			\item Viết phương trình mặt phẳng mái nhà $(DEMN)$.
+			\item Tính khoảng cách từ điểm $B$ đến mái nhà $(DEMN)$.
+		\end{enumerate}
+	}
+	{
+		\begin{tikzpicture}[scale=.7, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\path 
+			(0:0) coordinate (O)
+			(-135:2) coordinate (A)
+			(0:4) coordinate (C)
+			($(A)+(-135:0.5)$) coordinate (x)
+			($(A)+(45:2)$) coordinate (O)
+			($(A)+(C)-(O)$) coordinate (B)
+			($(O)+(90:4)$) coordinate (D)
+			($(D)+(90:0.8)$) coordinate (z)
+			($(C)+(0:0.5)$) coordinate (y)
+			($(A)+(90:4)$) coordinate (E)
+			($(B)+(90:4)$) coordinate (F)
+			($(C)+(90:4)$) coordinate (H)
+			($(D)+(20:2)$) coordinate (N)
+			($(E)+(20:2)$) coordinate (M)
+			($(O)+(-50:4.5)$) coordinate (h)
+			;
+			\draw[dashed] (A)--(O)--(C) (O)--(D)--(H);
+			\draw[->] (A)--(x) node[below]{$x$};
+			\draw[->](C)--(y) node[above]{$y$};
+			\draw[->](D)--(z) node[right]{$z$};
+			\draw 	(B)--(F)--(E)--(A)--cycle
+			(D)--(E)--(M)--(N)--cycle
+			(B)--(C)--(H)--(F)--(M) (N)--(H) 
+			;
+			\draw (A) node[left]{$A(6;0;0)$}
+			(O) node[below right]{$O(0;0;0)$}
+			(C) node[below right]{$C(0;4;0)$}
+			(D) node[left]{$D(0;0;4)$}
+			(M) node[right]{$M(6;2;6)$}
+			(N) node[above right]{$N(0;2;6)$}
+			(E) node[left]{$E(6;0;4)$}
+			(B) node[right]{$B$}
+			(H) node[right]{$H$}
+			(h) node[above]{Hình 9}
+			;
+			%pic[draw,angle radius=2mm]{right angle=C--O--O'}
+			%pic[draw,angle radius=2mm]{right angle=A--O--C}
+			%pic[draw,angle radius=2mm]{right angle=O'--O--A}
+			%;
+			%\foreach \x/\g in {A/170,B/-15,C/-30,O/180,E/170,F/-15,H/0,D/180}
+			%\draw[fill=black] 	(\x) circle (.5pt)
+			%($(\g:.5)+(\x)$) node {$\x$};	
+		\end{tikzpicture}
+	}
+	\loigiai{
+		\begin{enumerate}
+			\item Mặt phẳng $(DEMN)$ có cặp vectơ chỉ phương là $\overrightarrow{DE} =(6;0;0)$, $\overrightarrow{DN} = (0;2;2)$. Ta có $\left[ \overrightarrow{DE}, \overrightarrow{DN} \right] =(0;-12;12)$, suy ra $(DEMN)$ có vectơ pháp tuyến là $$\overrightarrow{n} = -\dfrac{1}{12} \left[ \overrightarrow{DE}, \overrightarrow{DN} \right] = (0;1;-1).$$
+			Phương trình của mặt phẳng $(DEMN)$ là $y-z+4=0$.
+			\item $B(6;4;0)$, suy ra $\mathrm{d} (B,(DEMN)) = \dfrac{\left| 4+4 \right|}{\sqrt{0^2+1^2+(-1)^2}} = \dfrac{8}{\sqrt{2}} = 4\sqrt{2}$.
+		\end{enumerate}
+	}
+\end{vd}
+\dongcham{7}
+\begin{vd}
+	Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $DA=2$, $DC=3$, $DD'=2$. Tính khoảng cách từ đỉnh $B'$ đến mặt phẳng $(BA'C')$.
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\path 
+				(0,0) coordinate (D)
+				($(D)+(-135:2)$) coordinate (A)
+				($(A)+(-135:1)$) coordinate (x)
+				(0:4.5) coordinate (C)
+				($(C)+(0:1)$) coordinate (y)
+				($(A)+(C)-(D)$) coordinate (B)
+				($(D)+(90:3)$) coordinate (D')
+				($(D')+(90:1)$) coordinate (z)
+				($(A)+(90:3)$) coordinate (A')
+				($(B)+(90:3)$) coordinate (B')
+				($(C)+(90:3)$) coordinate (C')
+				;
+				\draw[dashed] (A)--(D)--(C)--cycle (D)--(D');
+				\draw (A')--(A)--(B)--(B')--(A')--(B')--(C')--(D') (B)--(C)--(C')--(B') (D')--(A')--(C')--(B);
+				\draw[->] (A')--(B);
+				\draw[->] (A)--(x) node[below]{$x$};
+				\draw[->] (C)--(y) node[below]{$y$};
+				\draw[->] (D')--(z) node[left]{$z$};
+				\foreach \x/\g in {A/170,B/-15,C/-60,D/180,D'/180,A'/180,B'/90,C'/12}
+				\draw	(\x)
+				($(\g:.2)+(\x)$) node {$\x$};	
+			\end{tikzpicture}
+		\end{center}
+		Chọn hệ tọa độ $Oxyz$ sao cho gốc tọa độ $O$ trùng với điểm $D$.\\
+		Khi đó, tọa độ các đỉnh của hình hộp chữ nhật $ABCD.A'B'C'D'$ là 
+		$D(0,0,0)$, $A(2,0,0)$, $C(0,3,0)$, $B(2,3,0)$, $D'(0,0,2)$, $A'(2,0,2)$, $B'(2,3,2)$, $C'(0,3,2)$.
+		Mặt phẳng $(BA'C')$ có cặp vectơ chỉ phương là
+		$\overrightarrow{BA'}=(0;-3;2)$, $\overrightarrow{BC'}=(-2;0;2)$. \\
+		Ta có $\left[ \overrightarrow{BA'}, \overrightarrow{BC'} \right] =(-6;-4;-6)$, suy ra $(BA'C')$ có vectơ pháp tuyến là 
+		$$\overrightarrow{n} = -\dfrac{1}{2} \left[ \overrightarrow{BA'}, \overrightarrow{BC'} \right] = (3;2;3).$$\\
+		Phương trình của $(BA'C')$ là
+		$$3(x-2)+2(y-3)+3z=0 \text{ hay } 3x+2y+3z-12=0.$$
+		Khoảng cách từ đỉnh $B'$ đến mặt phẳng $(BA'C')$ là
+		$$\mathrm{d} (B', (BA'C')) = \dfrac{\left| 3 \cdot 2 + 2 \cdot 3 + 3 \cdot 2 - 12 \right|}{\sqrt{3^2+2^2+3^2}}=\dfrac{6}{\sqrt{22}}=\dfrac{3 \sqrt{22}}{11}.$$
+	} 
+\end{vd}
+\dongcham{10}
+\boxmini{BÀI TẬP TRẮC NGHIỆM}
+
+\begin{ex}
+	Khoảng cách từ $ A(-2;1;-6) $ đến mặt phẳng $ (Oxy) $ là 
+	\choice
+	{\True $ 6 $}
+	{$ 2 $}
+	{$ 1 $}
+	{$ \dfrac{7}{\sqrt{41}} $}
+	\loigiai{
+		Ta có $ (Oxy) \colon z=0 $. Ta được $ d(A,(Oxy)) = \dfrac{|-6|}{1} = 6 $.
+	}	
+\end{ex}
+\cham{3}
+\begin{ex}
+	Cho hai điểm $A(-2;1;3)$, $B(4;1;-1)$. Khoảng cách từ trung điểm $I$ của đoạn $AB$ đến mặt phẳng $(Oyz)$ là
+	\choice
+	{$0$}
+	{$2$}
+	{$4$}
+	{\True $1$}
+	\loigiai{
+		Ta có trung điểm của đoạn $AB$ là $I(1;1;1)$ nên $\mathrm{d}(I,(Oyz))=|x_I|=1$.
+	}
+\end{ex}
+
+
+\begin{ex}%[2H3Y2-6]%
+	Cho mặt phẳng $(P)\colon 2x+3y+4z-5=0$ và điểm $A(1;-3;1)$. Khoảng cách từ điểm $A$ đến mặt phẳng $(P)$ bằng
+	\choice
+	{\True $\dfrac{8}{\sqrt{29}}$}
+	{$\dfrac{8}{9}$}
+	{$\dfrac{3}{\sqrt{29}}$}
+	{$\dfrac{8}{29}$}
+	\loigiai{
+		Ta có
+		\[\mathrm{d}(A, (P))=\dfrac{|2\cdot 1+3\cdot (-3)+4\cdot 1-5|}{\sqrt{2^2+3^2+4^2}}=\dfrac{8}{\sqrt{29}}.\]
+	}
+\end{ex}
+
+\begin{ex}
+	Gọi $H$ là hình chiếu vuông góc của điểm $A(2;3;-1)$ trên mặt phẳng $(\alpha)\colon 16x+12y-15z+7=0$. Tính độ dài đoạn thẳng $AH$.
+	\choice
+	{$\dfrac{19}{25}$}
+	{\True $\dfrac{12}{25}$}
+	{$\dfrac{19}{625}$}
+	{$\dfrac{12}{625}$}
+	\loigiai{
+		Độ dài đoạn thẳng $AH$ bằng $\mathrm{d}\left(A;(\alpha)\right)=\dfrac{|16\cdot 2+12\cdot (-3)-15\cdot 1+7|}{\sqrt{16^2+12^2+(-15)^2}}=\dfrac{12}{25}$.
+	}
+\end{ex}
+
+\begin{ex}%[2H3B2-6]
+	Cho hai mặt phẳng $(P)\colon x+2y-2z+3=0$ và $(Q)\colon x+2y-2z-1=0$. Khoảng cách giữa hai mặt phẳng $(P)$ và $(Q)$ là 
+	\choice 
+	{$\dfrac{4}{9}$}
+	{$\dfrac{2}{3}$}
+	{\True $\dfrac{4}{3}$}
+	{$-\dfrac{4}{3}$}
+	
+	\loigiai{
+		Lấy $M(-3;0;0)\in (P)$. Vì $(P)\parallel (Q)$ nên khoảng cách giữa hai mặt phẳng $(P)$ và $(Q)$ bằng khoảng cách từ điểm $M$ đến mặt phẳng $(Q)$.\\
+		Ta có $\mathrm{d}(M,(Q))=\dfrac{|x_M+2y_M-2z_M-1|}{\sqrt{1^2+2^2+(-2)^2}}=\dfrac{4}{3}$.
+	}
+\end{ex}
+\cham{4}
+
+\begin{ex}
+	Biết rằng hai mặt phẳng $4x-4y+2z-7=0$ và $2x-2y+z+4=0$ chứa hai mặt của hình lập phương. Thể tích khối lập phương đó bằng
+	\choice
+	{$V=\dfrac{9 \sqrt{3}}{2}$}
+	{$V=\dfrac{27}{8}$}
+	{$V=\dfrac{81 \sqrt{3}}{8}$}
+	{\True $V=\dfrac{125}{8}$}
+	\loigiai{
+		Khoảng cách giữa hai mặt phẳng trên bằng độ dài cạnh của hình lập phương.\\
+		Gọi $(P)\colon 4x-4y+2z-7=0$ và $(Q)\colon 2x-2y+z+4=0$.\\
+		Lây $M(0;0;-4) \in (Q)$ và $\mathrm{d}(M,(P))=\dfrac{5}{2}$.\\
+		Vậy $V=\dfrac{125}{8}$.
+	}
+\end{ex}
+
+\begin{ex}
+	Cho hai điểm $A(2;2;-2)$ và $B(3;-1;0)$. Đường thẳng $AB$ cắt mặt phẳng $(P)\colon x+y-z+2=0$ tại điểm $I$. Tỉ số $\dfrac{IA}{IB}$ bằng
+	\choice
+	{\True $2$}
+	{$4$}
+	{$6$}
+	{$3$}
+	\loigiai{
+		Ta có $\dfrac{IA}{IB}=\dfrac{d(A,(P))}{d(B,(P))}=\dfrac{8}{\sqrt{3}} : \dfrac{4}{\sqrt{3}}=2$.
+	}
+\end{ex}
+\cham{4}
+
+\begin{ex}%[2H3B2-6]
+	Cho hai mặt phẳng $(P) \colon x+y-z+1=0$ và $(Q) \colon x-y+z-5=0.$ Có bao nhiêu điểm $M$ trên trục $Oy$ thỏa mãn $M$ cách đều hai mặt phẳng $(P)$ và $(Q)$?
+	\choice
+	{$0$}
+	{\True $1$}
+	{$2$}
+	{$3$}
+	\loigiai{
+		Vì $M\in Oy$ nên $M(0;y;0).$\\
+		Ta có $\mathrm{d}(M;(P))=\dfrac{|y+1|}{\sqrt{3}}$ và $\mathrm{d}(M;(Q))=\dfrac{|-y-5|}{\sqrt{3}}.$\\
+		Theo giả thiết $\mathrm{d}(M;(P))=\mathrm{d}(M;(Q))\Leftrightarrow |y+1|=|-y-5|\Leftrightarrow \hoac{&y+1=-y-5\\&y+1=y=5}\Leftrightarrow \hoac{&y=-3\\& 0y=4 \,(\text{vô nghiệm})}$\\
+		$\Rightarrow M(0;-3;0).$\\
+		Vậy có $1$ điểm $M$ thỏa mãn bài.
+	}
+\end{ex}
+\cham{6}
+\begin{ex}%[2H3B2-3]
+	Cho điểm $A(1;2;3)$ và mặt phẳng $(P)\colon x+y+z-2=0$. Mặt phẳng $(Q)$ song song với mặt phẳng $(P)$ và $(Q$) cách điểm $A$ một khoảng bằng $3\sqrt{3}$. Phương trình mặt phẳng $(Q)$ là
+	\choice
+	{$x+y+z+3=0$ và $x+y+z-3=0$}
+	{$x+y+z+3=0$ và $x+y+z+15=0$}
+	{\True $x+y+z+3=0$ và $x+y+z-15=0$}
+	{$x+y+z+3=0$ và $x+y-z-15=0$}
+	\loigiai{
+		Do $(Q)\parallel (P)\Rightarrow (Q)\colon x+y+z+d=0,\quad d\neq -2$.\\
+		Mà $d\left(A,(Q)\right)=3\sqrt{3}\Leftrightarrow |6+d|=9 \Leftrightarrow \hoac{&d=3\\&d=-15.}$\\
+		Vậy $(Q_1)\colon x+y+z+3=0$ và $(Q_2)\colon x+y+z-15=0$.
+		
+	} 
+\end{ex}
+\cham{6}
+\begin{ex}
+	Cho mặt phẳng $ (P)\colon x+2y+z-4=0 $ và điểm $ D(1;0;3) $. Mặt phẳng $ (Q) $ song song với $ (P) $ và cách $ D $ một khoảng bằng $ \sqrt{6} $ có phương trình là
+	\choice
+	{$ \hoac{&x+2y-z-10=0\\&x+2y-z+2=0} $}
+	{$ x+2y+z+2=0 $}
+	{\True $ \hoac{&x+2y+z+2=0\\&x+2y+z-10=0} $}
+	{$ x+2y+z-10=0 $}
+	\loigiai{
+		Vì $(Q)\parallel (P)$ nên $(Q)$ có phương trình dạng $(Q)\colon x+2y+z+D=0$ $(D\neq -4)$.\\
+		Lại có $\mathrm{d}(D,(Q))=\sqrt{6}\Leftrightarrow \dfrac{|1+3+D|}{\sqrt{1+1+4}}=\sqrt{6}\Leftrightarrow |D+4|=6\Leftrightarrow \hoac{&D=2\\&D=-10}$.\\
+		Vậy $(Q)\colon x+2y+z+2=0$ hoặc $(Q)\colon x+2y+z-10=0$.
+	}
+\end{ex}
+
+\begin{ex}
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật. Biết $A(0; 0; 0), D(2; 0; 0), B(0; 4; 0), S(0; 0; 4)$. Gọi $M$ là trung điểm của $SB$. Tính khoảng cách từ $B$ đến mặt phẳng $(CDM)$.
+	\choice
+	{$d(B,(CDM))=\sqrt{2}$}
+	{$d(B,(CDM))=2$}
+	{$d(B,(CDM))=\dfrac{1}{\sqrt{2}}$}
+	{\True $d(B,(CDM))=2\sqrt{2}$}
+	\loigiai
+	{
+		Do $ABCD$ là hình chữ nhật nên $C\left(2;4;0\right)$. Và $M$ là trung điểm $SB$ nên $M\left(0;2;2\right)$.\\
+		Phương trình mặt phẳng $\left(CDM\right)$ đi qua $M$ và nhận $\vec{n}=\left[\overrightarrow{MC},\overrightarrow{MD}\right]=\left(-8;0;-8\right)$ làm vectơ pháp tuyến là $x+z-8=0$.\\
+		Khi đó $\mathrm{d}\left(B,\left(MCD\right)\right)=\dfrac{|4-8|}{\sqrt{1^2+0^2+1^2}}=2\sqrt{2}$.
+	}
+\end{ex}
+
+\begin{ex}%[Thi thử, Chuyên Phan Bội Châu - Nghệ An, 2019-L1]%[Duong Xuan Loi, 12-EX-5-2019]%[2H3B4-1]
+	Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $2$. Khoảng cách giữa hai mặt phẳng $(AB'D')$ và $(BC'D)$ bằng
+	\choice
+	{$\dfrac{\sqrt{3}}{3}$}
+	{\True $\dfrac{2\sqrt{3}}{3}$}
+	{$\dfrac{\sqrt{3}}{2}$}
+	{$\sqrt{3}$}
+	\loigiai{
+		\immini{
+			Chọn hệ trục toạ độ như hình vẽ.\\
+			Ta có $A(0;0;0),B(2;0;0),C(2;2;0),D(0;2;0)$.\\
+			$A'(0;0;2),B'(2;0;2),C'(2;2;2),D'(0;2;2)$.\\
+			Mặt phẳng $(AB'D')$ qua $A$ và có một vectơ pháp tuyến là $-\dfrac{1}{4}\left[\overrightarrow{AB'}, \overrightarrow{AD'}\right]=(1;1;-1)$ nên có phương trình $x+y-z=0.$				
+		}{
+			\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\tkzDefPoints{0/0/A,-1.1/-1.1/B,2/-1.1/C}
+				\coordinate (D) at ($(A)+(C)-(B)$);
+				\coordinate (A') at ($(A)+(0,2.5)$);
+				\coordinate (x) at ($(A)!1.5!(B)$);
+				\coordinate (y) at ($(A)!1.3!(D)$);
+				\coordinate (z) at ($(A)!1.4!(A')$);
+				\tkzDefPointsBy[translation=from A to A'](B,C,D){B'}{C'}{D'}
+				\tkzDrawPolygon(A',B',B,C,D,D')
+				\tkzDrawSegments(B',C' C',D' C,C' B',D' C',B C',D)
+				\tkzDrawSegments[dashed](A,B A,D A,A' B,D A,B' A,D')
+				\tkzDrawPoints[fill=black](A,B,D,C,A',B',C',D')
+				\tkzLabelPoints[above](D')
+				\tkzLabelPoints[below](C,D)
+				\tkzLabelPoints[above left](A')
+				\tkzLabelPoints[left](A,B',B)
+				\tkzLabelPoints[right](C')
+				\draw[->] (B)--(x)node[right]{$x$};
+				\draw[->] (D)--(y)node[above]{$y$};
+				\draw[->] (A')--(z)node[right]{$z$};
+			\end{tikzpicture}
+		}\noindent
+		Mặt phẳng $\left(BC'D\right)$ qua $B$ và có một vectơ pháp tuyến là $-\dfrac{1}{4}\left[\overrightarrow{BC'}, \overrightarrow{BD}\right]=(1;1;-1)$ nên có phương trình $x+y-z-2=0$.\\
+		Ta có $(AB'D')\parallel (BC'D)$ nên
+		$$\mathrm{d}((AB'D'),(BC'D))=\mathrm{d}(A,(BC'D))=\dfrac{|-2|}{\sqrt{1^2+1^2+t(-1)^2}}=\dfrac{2\sqrt{3}}{3}.$$
+	}
+\end{ex}
+
+\begin{ex}%[Thi thử L1, Star Education HCM, 2019]%[Nguyễn Ngọc Dũng, dự án 12EX6]%[2H3K4-1]
+	Cho hình hộp chữ nhật $ABCD.A’B’C’D’$ có $AB=a$, $AD=2a$, $AA'=3a$. Gọi $M$, $N$, $P$ lần lượt là trung điểm của $BC$, $C’D’$ và $DD’$. Tính khoảng cách từ $A$ đến $(MNP)$.
+	\choice
+	{\True $ \dfrac{15}{11}a $}
+	{$\dfrac{15}{22}a$}
+	{$\dfrac{9}{11}a$}
+	{$\dfrac{3}{4}a$}
+	\loigiai{
+		\immini{
+			Gán hệ trục tọa độ như hình vẽ với độ dài đơn vị trên trục là $a$. Khi đó, ta tính được tọa độ các điểm như sau
+			$$A(0;0;0), M(1;1;0), N\left(2;\dfrac{1}{2}; 3\right), P\left( 2;0;\dfrac{3}{2} \right).$$
+			Ta có $\overrightarrow{MN} = \left( 1;-\dfrac{1}{2};3\right)$ và $\overrightarrow{MP} = \left( 1;-1;\dfrac{3}{2}\right)$. \\
+			Chọn $\left[ \overrightarrow{MN}, \overrightarrow{MP}\right] = \left( \dfrac{9}{4}; \dfrac{3}{2}; -\dfrac{1}{2}\right)$ là vtpt của $(MNP)$.\\
+			Suy ra $(MNP)\colon 9x + 6y - 2z - 15 = 0$.\\
+			Do đó $\mathrm{d}(A,(MNP)) = \dfrac{15}{11}$.\\
+			Vậy $\mathrm{d}(A,(MNP)) = \dfrac{15a}{11}$.	
+		}{
+			\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+				\tikzset{label style/.style={font=\footnotesize}}
+				\def\h{4} \def\r{5} \def\x{2.2} \def\y{1.5}
+				\coordinate[label={below}:$B$] (A) at (-3,-3);
+				\coordinate[label={below,xshift=2mm}:{$A\equiv O$}] (B) at ($(A)+(\x,\y)$);
+				\coordinate[label={below right}:$D$] (C) at ($(B)+(\r,0)$);
+				\coordinate[label={below right}:$C$] (D) at ($(A)+(\r,0)$);
+				\coordinate[label={above left}:$B'$] (A') at ($(A)+(0,\h)$);
+				\coordinate[label={above left}:$A'$] (B') at ($(A')+(\x,\y)$);
+				\coordinate[label={above right}:$D'$] (C') at ($(B')+(\r,0)$);
+				\coordinate[label={above}:$C'$] (D') at ($(A')+(\r,0)$);
+				\coordinate[label={above}:{$x$}] (x) at ($(B)!1.2!(C)$);
+				\coordinate[label={below}:{$y$}] (y) at ($(B)!1.2!(A)$);
+				\coordinate[label={right}:{$z$}] (z) at ($(B)!1.2!(B')$);
+				
+				\coordinate[label={below}:{$M$}] (M) at ($(A)!0.5!(D)$);
+				\coordinate[label={above}:{$N$}] (N) at ($(C')!0.5!(D')$);
+				\coordinate[label={right}:{$P$}] (P) at ($(C)!0.5!(C')$);
+				
+				\draw (A)--(A') (C)--(C') (D)--(D') (A)--(D)--(C) (A')--(B')--(C')--(D')--(A') (P)--(N);
+				\draw[dashed] (B)--(B') (A)--(B)--(C) (P)--(M)--(N);
+				\draw[->] (C)--(x);
+				\draw[->] (B')--(z);
+				\draw[->] (A)--(y);
+				
+				\tkzLabelSegment[below](B,C){$2a$}
+				\tkzLabelSegment[right](D,C){$a$}
+				\tkzLabelSegment[left](A,A'){$3a$}
+				\tkzDrawPoints[fill=black](A,B,C,D,A',B',C',D',M,N,P)
+			\end{tikzpicture}
+		}
+	}
+\end{ex}
+
+\begin{ex}%[1H3B5-2]
+	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, $SA\perp (ABCD)$ và $SA=a\sqrt{3}$. Tính khoảng cách từ điểm $B$ đến mặt phẳng $(SCD)$.
+	\choice
+	{\True $\dfrac{a\sqrt{3}}{2}$}
+	{$\dfrac{a\sqrt{2}}{4}$}
+	{$\dfrac{a\sqrt{2}}{3}$}
+	{$\dfrac{a}{2}$}
+	\loigiai{
+	\immini{
+		Chuẩn hóa $a=1$. Với hệ trục đã chọn như hình vẽ thì $B(1;0;0)$, $S(0;0;\sqrt{3})$, $C(1;1;0)$, $D(0;1;0)$.\\
+		Ta có 
+		\begin{enumEX}[]{1}
+			\item $\vec{CD}=(-1;0;0)$, $\vec{CS}=(-1;-1;\sqrt{3})$,
+			\item $\vec{CB}=(0;-1;0)$; $[\vec{CD},\vec{CS}]=(0;\sqrt{3};1)$
+		\end{enumEX}
+			Khoảng cách từ điểm $B$ đến $(SCD)$ được tính theo công thức:
+		$$d=\dfrac{\big|[\vec{CD},\vec{CS}]\cdot \vec{CB}\big|}{\big|[\vec{CD},\vec{CS}]\big|}=\dfrac{\sqrt{3}}{2}$$
+		}{
+		\begin{tikzpicture}[scale=0.6, font=\footnotesize,>=stealth]
+			\path
+			(0,0) coordinate (A)
+			(-2,-2) coordinate (B)
+			(5,0) coordinate (D)
+			($(B)+(D)-(A)$)coordinate (C)
+			%($(A)!0.5!(C)$)coordinate (I)
+			($(A)+(0,3)$)coordinate (S)
+			;
+			\draw[->] (D)--(7,0) node[below]{$y$};
+			\draw[->] (B)--(-3,-3) node[below]{$x$};
+			\draw[->] (S)--(0,4) node[left]{$z$};
+			\draw (C)--(D)--(S)--(C)--(B)--(S);
+			\draw[dashed] (S)--(A)--(D) (B)--(A);
+			\pic[draw,thin,angle radius=2mm] {right angle = B--A--D};
+			\foreach \x/\g in {A/180,B/-90,C/-100,D/-80,S/170}\draw[fill=black] (\x) circle (.04) +(\g:.5)node{\footnotesize$\x$};
+	\end{tikzpicture}}	
+	}
+\end{ex}
+
+\begin{ex}
+	Cho hình chóp $S. ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, $SD=\dfrac{3a}{2}$, hình chiếu vuông góc của $S$ lên mặt phẳng $(ABCD)$ là trung điểm của cạnh $AB$. Tính khoảng cách $d$ từ $A$ đến mặt phẳng $(SBD)$. 
+	\choice
+	{$d=\dfrac{a}{3}$}
+	{$d=\dfrac{a}{6}$}
+	{$d=\dfrac{3a}{2}$}
+	{\True $d=\dfrac{2a}{3}$}
+	\loigiai{
+		
+	}
+\end{ex}
