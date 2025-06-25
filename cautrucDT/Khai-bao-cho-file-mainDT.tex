@@ -1,7 +1,7 @@
 %=====================================
 % Khai báo nhóm Tex (cơ bản)
 %=====================================
-\usepackage{amsmath,amssymb,mathrsfs,maybemath,xlop,polynom,slashbox}
+\usepackage{amsmath,amssymb,mathrsfs,maybemath,xlop,polynom,slashbox,tabularray}
 \usepackage{yhmath} %\let\widering\relax %cần khi sd với font fouriernc
 
 \usepackage{enumerate}
@@ -16,7 +16,7 @@
 %\usepackage{bbding}
 %\usepackage{array}
 \usepackage{tasks}
-% \usepackage{casiovn}
+\usepackage{casiovn}
 %==========
 \usetikzlibrary{math,through,calc,intersections,angles,quotes,shapes,shapes.geometric,arrows,patterns,snakes,matrix,chains,arrows.meta,decorations.shapes,decorations.fractals,decorations.markings,shadows}
 \usetikzlibrary{positioning,decorations.text,decorations.pathmorphing}% Để uốn cong văn bản 
@@ -28,6 +28,7 @@
 \usepackage[hidelinks,unicode]{hyperref}
 \usepackage{currfile}
 \usepackage[outline]{contour} %viền
+\usepackage{fontawesome5}
 \usepackage{fontawesome} % Gói kí hiệu
 \usepackage{lipsum} %Lấy text
 \usepackage{tabularx}
@@ -247,7 +248,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 		%-----trang
 		\node[anchor=west,text=white,inner sep=0pt,xshift=-0.75cm] at ([xshift=2*\trai cm]AA) {\fontfamily{put}\bfseries\thepage};
 		%-----tên tg
-		\node[anchor=west,text=\maufoot,inner sep=0pt,fill=white] at ([xshift=2*\trai cm]AA){\fontfamily{qag}\fontsize{9pt}{1pt}\selectfont\bfseries \,\,\, \tentacgia \,\,\, };
+		\node[anchor=west,text=\maufoot,inner sep=0pt,fill=white] at ([xshift=2*\trai cm]AA){\fontfamily{qag}\fontsize{9pt}{1pt}\selectfont\bfseries \,\,\, \href{https://www.facebook.com/vu.ngocphat.7/}{\tentacgia} \,\,\, };
 	\else %chẵn
 		%---kẻ
 		\draw[\maufoot, line width=2pt] ([xshift=-2*\trai cm+4pt]BB)--([xshift=\phai cm-3pt]AA);
@@ -256,7 +257,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 		%-----trang
 		\node[anchor=east,text=white,inner sep=0pt,xshift=0.75cm] at ([xshift=-2*\trai cm]BB) {\fontfamily{put}\bfseries\thepage};
 		%-----tên tg
-		\node[anchor=east,text=\maufoot,inner sep=0pt,fill=white] at ([xshift=-2*\trai cm]BB){\fontfamily{qag}\fontsize{9pt}{1pt}\selectfont\bfseries \,\,\, \tentacgia \,\,\,};
+		\node[anchor=east,text=\maufoot,inner sep=0pt,fill=white] at ([xshift=-2*\trai cm]BB){\fontfamily{qag}\fontsize{9pt}{1pt}\selectfont\bfseries \,\,\, \href{https://www.facebook.com/vu.ngocphat.7/}{\tentacgia} \,\,\,};
 	\fi
 	\end{tikzpicture}%
 }
@@ -643,14 +644,16 @@ marginparwidth=\so cm, marginparsep=5mm,
 	\boldmath\fontfamily{qag}\selectfont\color{\mauname}
 \hoten \dotfill {\fontsize{10}{11}\selectfont \ngaylamde}
 	\begin{tcolorbox}[boxrule=0.7pt,arc=0mm,breakable,colframe=\mauSO,colback=\mauname!2,before skip=2mm,after skip=2mm]\color{\mauname}
+		% \imminiL{
 	\begin{center}
 		%%---
 		{\damTT \MakeUppercase{#1}}\\[1pt]
 		{\dam \MakeUppercase{#2 --- Đề} \stepcounter{deso}\thedeso}\\[1pt]
 		% {\dam \MakeUppercase{#2}}\\[1pt]
 		{\dam\color{\mauSO} \MakeUppercase{#3}}\\[1pt]
-		{\fontsize{10}{10}\selectfont \textit{#4}}%\\[-1mm]
+		{\fontsize{10}{10}\selectfont \textit{#4}.}\\[-1mm]
 	\end{center}
+	% 	}{\includegraphics[width=4.5cm]{logo/logo.jpg}}
 	\end{tcolorbox}
 	%%--- Phần note đầu đề
 	\notename
@@ -677,8 +680,9 @@ marginparwidth=\so cm, marginparsep=5mm,
 	\addcontentsline{toc}{chapter}{\hspace*{-2.75cm}#1}
 }
 %---Hiện bảng ĐA
+\let\inputansboxold\inputansbox
 \newcommand{\hienDA}{
-	\renewcommand{\indapan}[2]{
+	\renewcommand{\inputansbox}[2]{
 		\addcontentsline{toc}{subsection}{\hspace*{-4.2cm}\sf Bảng đáp án} % đưa MT vào mục lục
 		%		\begin{center}
 		\par\vspace*{5mm}
@@ -687,12 +691,12 @@ marginparwidth=\so cm, marginparsep=5mm,
 		\end{tikzpicture}%
 		%		\end{center}
 		\vspace*{-2mm}
-		\inputansbox{##1}{##2}
+		\inputansboxold{##1}{##2}
 	}
 }
 %---Ẩn bảng ĐA
 \newcommand{\anDA}{
-	\renewcommand{\indapan}[2]{}
+	\renewcommand{\inputansbox}[2]{}
 }
 %---Dòng chấm từng câu
 \newcommand{\dongchamEX}[1]{
@@ -770,6 +774,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 	\renewcommand{\TrueEX}{\FalseEX}
 	\renewcommand{\writekeyTFone}{\gdef\TrueX{}\gdef\FalseX{}}
 	\renewcommand{\writekeyTF}{&&}
+	\def\kindSA{oly}
 }
 %---Hiện LG
 \newcommand{\hienLG}{
@@ -788,9 +793,8 @@ marginparwidth=\so cm, marginparsep=5mm,
 		&\parbox[t]{\linewidth}{\centering\leavevmode\FalseX}%
 			\gdef\TrueX{}\gdef\FalseX{\tickF}%
 	}
-	\def\kindSA{ShowSAKeyColor}
+	\def\kindSA{ShowSAKeyLG}
 	\showanswers
-	% \SAOPTN{kindSA=oly}
 	\renewcommand{\dotlineEXS}[1]{}	
 }
 %=======Đn các phương án
@@ -852,7 +856,18 @@ marginparwidth=\so cm, marginparsep=5mm,
 	}
 }
 %%%%%%%%%%%%%%%%%%%%%%%
-
+\renewcommand{\shortansfix}[2][]{%
+	\ifthenelse{\equal{#1}{0}}{}
+		{\ifthenelse{\equal{#1}{}}
+			{\par\noindent\hfill\oKQ{\widthSA}}
+			{\ifthenelse{\equal{#1}{oly}}
+				{\par \noindent\hfill\oKQ[oly]{4}}
+				{\ifthenelse{\equal{#1}{...}}
+					{\par\noindent\hfill\oKQ[...]{\widthSA}}
+					{\par\noindent\hfill\oKQ{#1}}}}%
+		\ifInList{\hspace{-1mm}}{\par}%
+		}%
+}
 %============================ Khung
 \newenvironment{khung}
 {\begin{tcolorbox}[
@@ -1012,7 +1027,10 @@ marginparwidth=\so cm, marginparsep=5mm,
     \end{center}
 }
 \def\TL{
-    {\bfseries Phần II. Câu hỏi tự luận.}
+    {\bfseries Phần IV. Câu hỏi tự luận.}
 }
 
 \def\tickv{\faCheckCircleO~}
+\def\caulc{\TN}
+\def\cauds{\TNTF}
+\def\caukq{\TNSA}
