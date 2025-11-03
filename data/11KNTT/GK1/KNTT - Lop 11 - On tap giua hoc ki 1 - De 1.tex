@@ -394,6 +394,7 @@ $S_{50}=\dfrac{50}{2}\left[2\cdot u_1+(50-1)d\right]=25\left[72-637\right]=-1412
 }
 \end{ex}
 
+
 \begin{ex}%[1D2C3-8]
 Bố bạn An tặng bạn ấy một máy vi tính trị giá $15$ triệu đồng bằng cách cho bạn ấy tiền hàng tháng theo phương thức: tháng đầu tiên cho $300\,000$ đồng, các tháng từ tháng thứ $2$ trở đi mỗi tháng nhận được số tiền nhiều hơn tháng trước $50\,000$ đồng.
 \begin{enumerate}
@@ -488,7 +489,56 @@ $N_n=N_{n-1}\cdot0{,}007-300\,000-(n-1)50\,000$.
 \end{itemize}
 Ta thấy khi $X=21$ thì $A=-496\,006$.
 \end{enumerate}
+}
+\end{ex}
 
 
+\begin{ex}%[1D2C3-8]
+Bố bạn An tặng bạn ấy một máy vi tính trị giá $15$ triệu đồng bằng cách cho bạn ấy tiền hàng tháng theo phương thức: tháng đầu tiên cho $300\,000$ đồng, các tháng từ tháng thứ $2$ trở đi mỗi tháng nhận được số tiền nhiều hơn tháng trước $50\,000$ đồng.
+\begin{enumerate}
+\item Nếu chọn cách gửi tiết kiệm số tiền được nhận hàng tháng với lãi suất $0,6\%$/tháng thì bạn An gửi bao nhiêu tháng mới đủ mua máy vi tính?
+\item Nếu bạn An muốn có ngay máy vi tính để học bằng phương thức mua trả góp hàng tháng bằng số  tiền bố cho với lãi suất ngân hàng là $0,7\%$/tháng thì bạn An mất bao nhiêu tháng để trả đủ số tiền và tháng cuối cùng trả bao nhiêu?
+\end{enumerate}
+\loigiai{
+    Gọi $a_n$ (nghìn đồng) là số tiền bạn An nhận được vào tháng thứ $n$ ($n \ge 1$).
+    Theo đề ta có $a_1 = 300$, $a_n=a_{n-1}+50$ với $n \ge 2$. Do đó, dãy số $(a_n)$ là cấp số cộng có $u_1=300$, $d=50$.
+    \begin{enumerate}
+    \item Gọi $b_n$ (nghìn đồng) là số tiền bạn An có được sau khi gửi tiết kiệm số tiền nhận được sau $n$ tháng, $r=0,6\%$ là lãi suất gửi tiết kiệm mỗi tháng. Theo đề ta có
+    \begin{align*}
+    b_1&=a_1 (1+r) \\
+    b_2&=b_1 (1+r) + a_2(1+r) = a_1(1+r)^2 + a_1(1+r) + d(1+r) \\
+    b_3&=b_2 (1+r) + a_3(1+r) = a_1(1+r)^3 + a_1(1+r)^2 + d(1+r)^2 + a_1(1+r) + 2d(1+r) \\
+    & \cdots \\
+    b_n&=a_1(1+r)^n + a_1(1+r)^{n-1} + \cdots + a_1(1+r) \\
+	& \quad + d(1+r)^{n-1} + 2d(1+r)^{n-2} + \cdots + (n-2)d(1+r)^2 + (n-1)d(1+r).
+    \end{align*}
+	Ta có
+    \begin{itemize}
+        \item $a_1(1+r)^n + a_1(1+r)^{n-1} + \cdots + a_1(1+r) = a_1(1+r) \dfrac{(1+r)^n - 1}{(1+r) - 1} = a_1 \dfrac{(1+r)^{n+1} - (1+r)}{r}$.
+        \item Đặt $S= d(1+r)^{n-1} + 2d(1+r)^{n-2} + \cdots + (n-2)d(1+r)^2 + (n-1)d(1+r)$.\\
+        $\Rightarrow (1+r)S = d(1+r)^n + 2d(1+r)^{n-1} + \cdots + (n-2)d(1+r)^3 + (n-1)d(1+r)^2$.\\
+        Suy ra $(1+r)S - S = d(1+r)^n + d(1+r)^{n-1} + \cdots + d(1+r)^2 + d(1+r) - nd(1+r)$.\\
+        Do đó, $S = d(1+r)\dfrac{(1+r)^n - 1}{r^2} - \dfrac{nd(1+r)}{r}$.
+    \end{itemize}
+    Vậy $b_n = a_1 \dfrac{(1+r)^{n+1} - (1+r)}{r} + d(1+r)\dfrac{(1+r)^n - 1}{r^2} - \dfrac{nd(1+r)}{r}$.
+    Ta cần tìm số tháng $n$ sao cho $b_n \ge 15000$.\\
+    Thay các giá trị $a_1 = 300$, $d = 50$, $r = 0,006$ và khảo sát các giá trị $n = 1, 2, 3, \ldots$ ta thấy $b_{19} \approx 14955,52$, $b_{20} \approx 15017,46$ (nghìn đồng).\\
+    Vậy bạn An cần gửi tiết kiệm trong $20$ tháng để đủ mua máy vi tính.
+    \item Gọi $c_n$ (nghìn đồng) là số tiền bạn An còn nợ sau khi trả góp vào cuối tháng thứ $n$, $s=0,7\%$ là lãi suất ngân hàng mỗi tháng. Theo đề ta có
+    \begin{align*}
+    c_1&=(A - a_1)(1+s) = A(1+s) - a_1(1+s) \\
+    c_2&=(c_1 - a_2)(1+s) = A(1+s)^2 - a_1(1+s)^2 - a_1(1+s) - d(1+s) \\
+    c_3&=(c_2 - a_3)(1+s) = A(1+s)^3 - a_1(1+s)^3 - a_1(1+s)^2 - d(1+s)^2 - a_1(1+s) - 2d(1+s) \\
+    & \cdots \\
+    c_n&=A(1+s)^n - a_1(1+s)^n - a_1(1+s)^{n-1} - \cdots - a_1(1+s) \\
+	&\quad - d(1+s)^{n-1} - 2d(1+s)^{n-2} - \cdots - (n-2)d(1+s)^2 - (n-1)d(1+s).
+    \end{align*}
+    Tương tự như trên ta có
+    $c_n = A(1+s)^n - \left[a_1 \dfrac{(1+s)^{n+1} - (1+s)}{s} + d(1+s)\dfrac{(1+s)^n - 1}{s^2} + \dfrac{nd(1+s)}{s}\right]$.
+    Ta cần tìm số tháng $n$ sao cho $c_n \le 0$.\\
+    Thay các giá trị $A = 15000$, $a_1 = 300$, $d = 50$, $s = 0,007$ và khảo sát các giá trị $n = 1, 2, 3, \ldots$ ta thấy $c_{20} \approx 803,99$, $c_{21} \approx -499,48$ (nghìn đồng).\\
+    Vậy bạn An cần trả góp trong $21$ tháng để trả đủ số tiền mua máy vi tính.\\
+    Số tiền trả góp trong tháng cuối cùng là $c_{20} (1+s) \approx 809,62$ (nghìn đồng).
+    \end{enumerate}
 }
 \end{ex}
