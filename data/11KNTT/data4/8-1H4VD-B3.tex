@@ -356,60 +356,35 @@ Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật. Gọi $G$ là 
 			\end{enumerate}
 			
 		}{
-			\begin{tikzpicture}[scale=0.8]
-				\tkzInit[xmin=-3,xmax=7,ymin=-3,ymax=5]
-				\tkzClip
-				\tkzSetUpPoint[fill=black,size=4]
-				\tkzDefPoints{0/0/A,1/-2/B,5/-2/C,7/0/D,2/4/S}
-				\tkzDefMidPoint(S,B) \tkzGetPoint{I}
-				\tkzDefMidPoint(B,D) \tkzGetPoint{K}
-				\tkzDefPointWith[linear,K=0.79](D,A)
-				\tkzGetPoint{E}
-				\tkzDefPointWith[linear,K=0.79](D,C)
-				\tkzGetPoint{F}
-				\tkzDrawPoints(A,B,C,D,S,I,K,E,F)
-				\tkzDrawSegments[dashed](A,D B,D I,K A,C E,F)
-				\tkzDrawSegments(A,B B,C C,D S,A S,B S,C S,D)
-				\tkzLabelPoint[left](I){\footnotesize $I$}
-				\tkzLabelPoint[above](K){\footnotesize $K$}
-				\tkzLabelPoint[below](E){\footnotesize $E$}
-				\tkzLabelPoint[right](F){\footnotesize $F$}
-				\tkzLabelPoint[left](A){\footnotesize $A$}
-				\tkzLabelPoint[below](B){\footnotesize $B$}
-				\tkzLabelPoint[below](C){\footnotesize $C$}
-				\tkzLabelPoint[right](D){\footnotesize $D$}
-				\tkzLabelPoint[above](S){\footnotesize $S$}
+			\begin{tikzpicture}[scale=0.8, line cap =round, line join=round, font = \small]
+				\path
+				(0,0)coordinate(A)
+				(7,0)coordinate(D)
+				(2,-2)coordinate(B)
+				(5,-2)coordinate(C)
+				(5,4)coordinate(S)
+				($(B)!0.5!(S)$)coordinate(I)
+				($(B)!0.5!(D)$)coordinate(K)
+				($(K)+(A)-(C)$)coordinate(L)
+				(intersection of A--D and K--L)coordinate(E)
+				(intersection of C--D and K--L)coordinate(F);
+				
+				\draw (S)--(A)--(B)--(C)--(D)--cycle (C)--(S)--(B);
+				\draw[dashed](C)--(A)--(D)--(B) (E)--(F) (K)--(I);
+				\foreach \d/\g in {S/45,A/-135,B/-90,C/-45,D/0,I/135,K/90,E/135,F/-45} \draw (\d) node [shift={(\g:10pt)}] {$\d$};
 		\end{tikzpicture}}
 	}
 \end{vd}
 
 \begin{vd}
-\immini{Cho tứ diện $ABCD$. Gọi $M$, $I$ lần lượt là trung điểm của $BC$, $AC$. Mặt phẳng $(P)$ đi qua điểm $M$, song song với $BI$ và $SC$. Xác định trên hình vẽ các giao điểm $H, K, N$ của $(P)$ với các cạnh $AC$, $SA$, $SB$. Tứ giác $MNKH$ là hình gì?
-	
-}{
-	\begin{tikzpicture}[scale=0.6,fill=black]
-	\coordinate (A) at (-1,0);
-	\coordinate (B) at (0,-2);
-	\coordinate (C) at (4,0);
-	\coordinate (S) at (1,3);
-	\coordinate (M) at ($(B)!0.5!(C)$);
-	\coordinate (I) at ($(C)!0.5!(A)$);
-	\tkzLabelPoints[right,font=\footnotesize](C)
-	\tkzLabelPoints[below,font=\footnotesize](B,M)
-	\tkzLabelPoints[above=0.1,font=\footnotesize](S,I)
-	\tkzLabelPoints[left,font=\footnotesize](A)
-	\tkzDrawSegments(S,A S,B S,C A,B B,C)
-	\tkzDrawSegments[dashed](A,C B,I)
-	\tkzDrawPoints[size=5,fill=black](A,B,C,S,I,M)
-	
-	\end{tikzpicture}}
+	Cho tứ diện $ABCD$. Gọi $M$, $I$ lần lượt là trung điểm của $BC$, $AC$. Mặt phẳng $(P)$ đi qua điểm $M$, song song với $BI$ và $SC$. Xác định trên hình vẽ các giao điểm $H, K, N$ của $(P)$ với các cạnh $AC$, $SA$, $SB$. Tứ giác $MNKH$ là hình gì?
 	\loigiai{
 		\immini
 		{
 			Vì $\heva{&(P) \parallel SC\\& M\in (P)\cap (SBC)}\Rightarrow (P) \cap (SBC) = MN \parallel SC$, $N\in SB$ $\qquad (1)$\\
 			Tương tự, $\heva{&(P)\parallel BI\\& M\in (P) \cap (ABC)}\Rightarrow (P) \cap (ABC) =MH \parallel BI$, $H\in AC$ $\qquad (2)$
 			
-			Mặt khác, $\heva{&(P)\parallel (SC)\\& N\in (P) cap (SAC)}\Rightarrow (P) \cap (SAC) = HK \parallel SC$, $K\in SA$ $(3)$
+			Mặt khác, $\heva{&(P)\parallel (SC)\\& N\in (P) \cap (SAC)}\Rightarrow (P) \cap (SAC) = HK \parallel SC$, $K\in SA$ $(3)$
 			Từ $(1)$, $(2)$ và $(3)$ ta có thiết diện của $(P)$ với tư diện $ABCD$ là tứ giác $MNKH$.
 		}
 		{\begin{tikzpicture}[scale=1,fill=black]
