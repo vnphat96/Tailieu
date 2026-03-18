@@ -1,0 +1,662 @@
+
+\setcounter{section}{23}
+\section{HOÁN VỊ, CHỈNH HỢP VÀ TỔ HỢP}
+%-------------------------------------------
+\subsection{KIẾN THỨC TRỌNG TÂM}
+\subsubsection{Hoán vị}
+\begin{dn}
+	Một \textbf{\textcolor{red}{hoán vị}} của một tập hợp có $n$ phần tử là một cách sắp xếp có thứ tự $n$ phần tử đó (với $n$ là một số tự nhiên, $n \geq 1$).
+	\\
+	Số các hoán vị của tập hợp có $n$ phần tử, kí hiệu là $\mathrm{P}_n$, được tính bằng công thức
+	$$\mathrm{P}_n = n \cdot (n - 1) \cdot (n - 2) \cdots 2 \cdot 1$$
+\end{dn}
+\begin{note}
+	Kí hiệu $n \cdot (n-1) \cdot (n-2) \cdots 2 \cdot 1$ là $n!$ (đọc là $n$ giai thừa), ta có: $\mathrm{P}_n = n!$. Chẳng hạn $\mathrm{P}_3 = 3! = 3 \cdot 2 \cdot 1 = 6$.\\
+	Quy ước $0! = 1$.
+\end{note}
+\subsubsection{Chỉnh hợp}
+\begin{dn}
+	Một \textbf{\textcolor{red}{chỉnh hợp chập $k$ của $n$}} là một cách sắp xếp có thứ tự $k$ phần tử từ một tập hợp $n$ phần tử (với $k$, $n$ là các số tự nhiên, $1 \le k \le n$).
+	\\
+	Số các chỉnh hợp chập $k$ của $n$, kí hiệu là $A_n^k$, được tính bằng công thức
+	$$\mathrm{A}_n^k = n \cdot (n-1) \cdots (n-k+1) \text{ hay } \mathrm{A}_n^k = \dfrac{n!}{(n-k)!} \ (1 \le k \le n).$$
+\end{dn}
+\begin{note}
+	\begin{itemize}
+		\item Hoán vị sắp xếp tất cả các phần tử của tập hợp, còn chỉnh hợp chọn ra một số phần tử và sắp xếp chúng.
+		\item Mỗi hoán vị của $n$ phần tử cũng chính là một chỉnh hợp chập $n$ của $n$ phần tử đó. Vì vậy $\mathrm{P}_n = \mathrm{A}_n^n$.
+	\end{itemize}
+\end{note}
+\subsubsection{Tổ hợp}
+\begin{dn}
+	Một \textbf{\textcolor{red}{tổ hợp chập $k$ của $n$}} là một cách chọn $k$ phần tử từ một tập hợp $n$ phần tử (với $k$, $n$ là các số tự nhiên, $0 \le k \le n$).
+	\\
+	Số các tổ hợp chập $k$ của $n$, kí hiệu là $\mathrm{C}_n^k$, được tính bằng công thức
+	$$\mathrm{C}_n^k = \dfrac{n!}{(n-k)!k!} \ (0 \le k \le n).$$
+\end{dn}
+\begin{note}
+	\begin{itemize}
+		\item $\mathrm{C}_n^k = \dfrac{\mathrm{A}_n^k}{k!}$.
+		\item Chỉnh hợp và tổ hợp có điểm giống nhau là đều chọn một số phần tử trong một tập hợp, nhưng khác nhau ở chỗ, chỉnh hợp là chọn có xếp thứ tự, còn tổ hợp là chọn không xếp thứ tự.
+	\end{itemize}
+\end{note}
+\subsection{PHÂN LOẠI VÀ PHƯƠNG PHÁP GIẢI TOÁN}
+\begin{dang}[Tìm số hoán vị]
+\begin{itemize}
+	\item[1.] Hoán vị các chữ số trong số tự nhiên.
+	\item[2.] Hoán vị đồ vật.
+	\begin{itemize}
+		\item Tập hợp $A$ là tập con có $n$ phần tử của tập hợp $\left\{ 0,1,\ldots,8,9 \right\}$ với $1\le n\le 10$.
+		\item Khi đó số cách thành lập số tự nhiên $A$ có $n$ chữ số được lấy từ $A$ là số hoán vị của $n$ phần tử này, tức là có $\mathrm{P}_n=n!$ số.
+	\end{itemize}
+	\item[3.] Hoán vị vòng quanh.
+	\begin{itemize}
+		\item Có $n$ phần tử được sắp xếp trên một vòng tròn $n$ vị trí. Số cách xếp sẽ là hoán vị của $n-1$ phần tử $(n-1)!$.
+		\item Thật vậy mỗi cách xếp không thay đổi khi các phần tử lần lượt dời chỗ qua bên phải (hoặc trái) một vị trí.\\
+		Như vậy có $n$ vị trí trên vòng tròn, nên có $\dfrac{n!}{n}=(n-1)!$ cách xếp.
+	\end{itemize}
+	\item[4.] Hoán vị lặp.
+	\begin{itemize}
+		\item Cho $k$ phần tử khác nhau $a_1$, $a_2$, $\ldots,a_k$. Một cách sắp xếp $n$ phần tử trong đó gồm $n_1$ phần tử $a_1$, $n_2$ phần tử $a_2$, $\cdots$, $n_k$ phần tử $a_k$ $(n_1+n_2+\cdots+n_k=n)$ theo một thứ tự nào đó được gọi là hoán vị lặp cấp $n$ và kiểu $(n_1,n_2,\ldots,n_k)$ của $k$ phần tử.
+		\item Số các hoán vị lặp dạng như trên là $\mathrm{P}_n(n_1,n_2,\ldots,n_k)=\dfrac{n!}{n_1!n_2!\ldots!n_k!}$.
+	\end{itemize}
+\end{itemize}
+\end{dang}
+\begin{vd}
+	Cho tập hợp $S=\left\{ 1;2;3;4 \right\}$. Có bao nhiêu số tự nhiên có $4$ chữ số phân biệt lấy từ tập $A$?
+	\loigiai
+	{
+		Gọi $x=\overline{a_1a_2a_3a_4}$ là số cần tìm, $a_i\in S$, $\forall i=\overline{1,4}$.\\
+		Mỗi hoán vị của $4$ phần tử tập hợp $A$ ta được $1$ số tự nhiên có $4$ chữ số cần tìm, ví dụ như $x=3\, 214$.\\
+		Do vậy ta được $\mathrm{P}_4=4!=24$ số.
+	}
+\end{vd}
+\begin{vd}
+	Từ các chữ số $0$; $1$; $2$; $3$; $4$ có thể lập được bao nhiêu số gồm $7$ chữ số, trong đó chữ số $2$ có mặt $3$ lần, các chữ số còn lại có mặt đúng một lần.
+	\loigiai
+	{
+		Xếp các chữ số $0$; $1$; $2$; $2$; $2$; $3$; $4$ thành một hàng có $\dfrac{7!}{3!}$ cách xếp.\\
+		Xếp các chữ số $0$; $1$; $2$; $2$; $2$; $3$; $4$ thành một hàng sao cho chữ số $0$ đứng đầu có $\dfrac{6!}{3!}$ cách xếp.\\
+		Vậy có $\dfrac{7!}{3!}-\dfrac{6!}{3!}=1\, 440$ số thỏa mãn yêu cầu.
+	}
+\end{vd}
+\begin{vd}
+	Một chồng sách gồm $4$ quyển sách Toán khác nhau, $3$ quyển sách Vật Lý khác nhau, $5$ quyển sách Hóa Học khác nhau. Hỏi có bao nhiêu cách xếp các quyển sách trên thành một hàng ngang sao cho
+	\begin{enumerate}
+		\item Các quyển sách cùng môn thì đứng cạnh nhau.
+		\item Các quyển sách toán đứng gần nhau.
+	\end{enumerate}
+	\loigiai
+	{
+		\begin{enumerate}
+			\item Các quyển sách cùng môn thì đứng cạnh nhau.\\
+			Xếp $4$ quyển sách toán thành một nhóm đứng gần nhau có $\mathrm{P}_4=4!=24$ cách xếp. \\
+			Xếp $3$ quyển sách Vật Lí thành một nhóm gần nhau có $\mathrm{P}_3=3!=6$ cách xếp.\\
+			Xếp $5$ quyển sách Hóa Học thành một nhóm gần nhau có $\mathrm{P}_5=5!=120$ cách xếp.\\
+			Xếp $3$ nhóm sách trên lên giá sách có $\mathrm{P}_3=3!=6$ cách xếp.\\
+			Vậy có $24\cdot 6\cdot 120\cdot 6=103\, 680$ cách xếp các cuốn sách cùng môn thì đứng cạnh nhau.
+			\item Các quyển sách toán đứng gần nhau.\\
+			Xếp $4$ quyển sách Toán thành một nhóm đứng gần nhau có $\mathrm{P}_4=4!=24$ cách xếp.\\
+			Coi nhóm sách Toán là một quyển sách lớn, xếp quyển sách lớn đó và 8 quyển sách còn lại có $\mathrm{P}_9=9!$ cách xếp.\\
+			Vậy có $24\cdot 9!=8\, 709\, 120$ cách xếp các cuốn sách Toán đứng gần nhau.
+		\end{enumerate}
+	}
+\end{vd}
+\begin{dang}[Tìm số chỉnh hợp]
+	\begin{itemize}
+		\item[1.] Khi giải bài toán chọn trên một tập hợp $X$ có $n$ phần tử, ta sẽ dùng chỉnh hợp nếu có $2$ dấu hiệu sau:
+		\begin{itemize}
+			\item Chỉ chọn $k$ phần tử trong $n$ phần tử của $X$ ($1\le k\le n$).
+			\item Có kể đến thứ tự sắp xếp các phần tử đã chọn.
+		\end{itemize}
+		\item[2.]Tìm số chỉnh hợp trong bài toán đếm số. 
+		\begin{itemize}
+			\item Gọi số cần tìm là $x=\overline{a_1a_2\ldots a_n}$.
+			\item Liệt kê các số $x$ thỏa mãn điều kiện đề bài. Dựa vào tính chất bài toán xem có chia trường hợp hay không?
+			\item Thứ tự đếm và sử dụng quy tắc cộng, nhân (nếu có).
+		\end{itemize}
+	\end{itemize}
+\end{dang}
+\begin{vd}
+	Phần thi chung kết nội dung chạy cự li $1\,500 \mathrm{~m}$ của một giải đấu có $10$ vận động viên tham gia. Có bao nhiêu khả năng về kết quả $3$ vận động viên đoạt huy chương vàng, bạc và đồng sau khi phần thi kết thúc? Biết rằng không có hai vận động viên nào về đích cùng lúc.
+	\loigiai{Mỗi kết quả về $3$ vận động viên đoạt huy chương vàng, bạc và đồng của nội dung thi đấu là một chỉnh hợp chập $3$ của $10$ vận động viên.\\ 
+		Số khả năng về kết quả $3$ vận động viên đoạt huy chương vàng, bạc và đồng sau khi phần thi kết thúc là
+		\[\mathrm{A}_{10}^3=720.\]}
+\end{vd}
+\begin{vd}
+	Từ bảy chữ số $1 ;$ $2 ;$ $ 3 ;$ $ 4 ;$ $ 5 ;$ $ 6 ;$ $ 7$, lập các số có ba chữ số khác nhau.
+	\begin{enumerate}
+		\item Có thể lập được bao nhiêu số như vậy?
+		\item Trong các số đó có bao nhiêu số lẻ?
+	\end{enumerate}
+	\loigiai{
+		\begin{enumerate}
+			\item Ta thực hiện qua $3$ bước:
+			\begin{itemize}
+				\item Chọn $1$ số trong $7$ chữ số xếp vào vị trí thứ nhất, có $7$ cách chọn; 
+				\item Chọn $1$ số trong $6$ chữ số còn lại  xếp vào vị trí thứ hai, có $6$ cách chọn; 
+				\item Chọn $1$ số trong $5$ chữ số còn lại  xếp vào vị trí thứ ba, có $5$ cách chọn.
+			\end{itemize} 
+			Vậy có $7\cdot 6\cdot 5=210\text{ (số)}. $
+			\item Số lẻ là số có chữ số tận cùng là lẻ, để lập được số thỏa yêu cầu bài toán, ta thực hiện qua $3$ bước:
+			\begin{itemize}
+				\item Chọn $1$ số lẻ trong $4$ chữ số lẻ xếp vào vị trí thứ ba, có $4$ cách chọn; 
+				\item Chọn $1$ số trong $6$ chữ số còn lại  xếp vào vị trí thứ nhất, có $6$ cách chọn; 
+				\item Chọn $1$ số trong $5$ chữ số còn lại  xếp vào vị trí thứ hai, có $5$ cách chọn.
+			\end{itemize} 
+			Vậy có $4\cdot 6\cdot 5=120\text{ (số lẻ)}. $
+	\end{enumerate}}
+\end{vd}
+\begin{vd}
+	\begin{enumerate}
+		\item Từ các chữ số $1$; $2$; $3$; $4$; $5$; $6$; $7$; $8$; $9$ có thể lập được bao nhiêu số tự nhiên gồm $4$ chữ số khác nhau?
+		\item Tính tổng của tất cả các số tìm được ở câu trên.
+	\end{enumerate}
+	\loigiai
+	{
+		\begin{enumerate}
+			\item Mỗi số tự nhiên có bốn chữ số khác nhau được lập bằng cách lấy bốn chữ số khác nhau từ chín chữ số đã cho và xếp chúng theo một thứ tự nhất định.\\
+			Mỗi số như vậy được coi là một chỉnh hợp chập $4$ của $9$.\\
+			Vậy số các số đó là $\mathrm{A}_9^4=3\, 024$.
+			\item Ta chia $S$ số ở câu $a)$ thành $\dfrac{S}{2}$ cặp số có dạng $(\overline{x_1x_2x_3 x_4};\overline{y_1 y_2 y_3 y_4})$ trong đó $x_i+y_i=10$.\\
+			Tổng mỗi cặp như vậy đều bằng $11\, 110$.\\
+			Vậy tổng của tất cả các số đó bằng $T=\dfrac{1}{2}\cdot \mathrm{A}_9^4\cdot 11\, 110=16\, 798\, 320$.
+		\end{enumerate}
+	}
+\end{vd}
+\begin{dang}[Tìm số tổ hợp]
+	Khi giải bài toán chọn trên một tập hợp $X$ có $n$ phần tử, ta sẽ dùng tổ hợp nếu có $2$ dấu hiệu sau:
+	\begin{itemize}
+		\item Chỉ chọn $k$ phần tử trong $n$ phần tử của $X$ ($1\le k\le n$).
+		\item Không phụ thuộc vào thứ tự sắp xếp các phần tử đã chọn.
+	\end{itemize}
+\end{dang}
+\begin{vd}
+	Từ một đội tuyển bóng đá gồm $20$ cầu thủ người ta cần chọn $3$ cầu thủ dự lễ bốc thăm chia bảng thi đấu. Hỏi có bao nhiêu cách chọn?
+	\loigiai
+	{
+		Mỗi cách cử ra $3$ cầu thủ dự lễ bốc thăm chia bảng thi đấu là một tổ hợp chập $3$ của $20$ phần tử.\\
+		Do đó số cách cử là $\mathrm{C}_{20}^3=1\, 140$ cách.
+	}
+\end{vd}
+\begin{vd}
+	\immini{Cho $6$ điểm cùng nằm trên một đường tròn như hình bên.
+		\begin{enumerate}
+			\item Có bao nhiêu đoạn thẳng có điểm đầu mút thuộc các điểm đã cho?
+			\item Có bao nhiêu tam giác có đỉnh thuộc các điểm đã cho?
+	\end{enumerate}}{\begin{tikzpicture}[scale=.5, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			\draw (0,0) circle (3);
+			\coordinate[label=above left:$A$] (A) at (-1,2.8284271247);
+			\coordinate [label=left:$B$](B) at ($(0,0)!1!60:(A)$);
+			\coordinate [label=below left:$C$](C) at ($(0,0)!1!100:(A)$);
+			\coordinate [label=below left:$D$](D) at ($(0,0)!1!140:(A)$);
+			\coordinate [label=below right:$E$](E) at ($(0,0)!1!210:(A)$);
+			\coordinate [label=above right:$F$](F) at ($(0,0)!1!290:(A)$);
+			\foreach \diem in {A,B,C,D,E,F}	\fill (\diem)circle(1.5pt);
+	\end{tikzpicture}}
+	\loigiai{
+		\begin{enumerate}
+			\item Cứ lấy hai điểm bất kỳ trong $6$ điểm đã cho, ta được một đoạn thẳng cần tìm, vậy mỗi đoạn thẳng có điểm đầu mút thuộc các điểm đã cho là một tổ hợp chập $2$ của $6$, số đoạn thẳng là
+			$$\mathrm{C} _{6}^{2}=15 \text{~(đoạn thẳng)}.$$
+			\item Cứ lấy ba điểm bất kỳ trong $6$ điểm đã cho, ta được một tam giác, vậy số tam giác là 
+			$$\mathrm{C} _{6}^{3}=20 \text{~(tam giác)}.$$
+	\end{enumerate}}
+\end{vd}
+\begin{vd}
+	Từ $5$ bông hồng vàng, $3$ bông hồng trắng, $4$ bông hồng đỏ (các bông hồng xem như đôi một khác nhau). Người ta muốn chọn ra một bó hoa hồng gồm $7$ bông. Có bao nhiêu cách chọn thỏa mãn.
+	\begin{enumerate}
+		\item $1$ bó hoa trong đó có đúng một bông hồng đỏ.
+		\item $1$ bó hoa trong đó có ít nhất $3$ bông hồng vàng và ít nhất $3$ bông hồng đỏ.
+	\end{enumerate}
+	\loigiai
+	{
+		\begin{enumerate}
+			\item $1$ bó hoa trong đó có đúng một bông hồng đỏ.\\
+			Chọn $1$ bó hoa gồm $7$ bông, trong đó có đúng $1$ bông hồng đỏ, $6$ bông hồng còn lại chọn trong $8$ bông (gồm vàng và trắng). \\
+			Số cách chọn là $\mathrm{C}_4^1\cdot \mathrm{C}_8^6=112$ cách.
+			\item $1$ bó hoa trong đó có ít nhất $3$ bông hồng vàng và ít nhất $3$ bông hồng đỏ.
+			\begin{itemize}
+				\item Trường hợp 1: Chọn $3$ bông vàng, $3$ bông đỏ và 1 bông trắng, có $\mathrm{C}_5^3.\mathrm{C}_4^3\cdot\mathrm{C}_3^{1}$ cách.
+				\item Trường hợp 2: Chọn $4$ bông vàng và $3$ bông đỏ, có $\mathrm{C}_5^4\cdot\mathrm{C}_4^3$ cách.
+				\item Trường hợp 3: Chọn $3$ bông vàng và $4$ bông đỏ, có $\mathrm{C}_5^3\cdot\mathrm{C}_4^4$ cách.
+			\end{itemize}
+			Theo quy tắc cộng có $\mathrm{C}_5^3\cdot \mathrm{C}_4^3\cdot \mathrm{C}_3^{1}+\mathrm{C}_5^4\cdot \mathrm{C}_4^3+\mathrm{C}_5^3\cdot\mathrm{C}_4^4=150$.
+		\end{enumerate}
+	}
+\end{vd}
+%-------------------------------------------
+\subsection{BÀI TẬP RÈN LUYỆN}
+%-------------Trắc nghiệm nhiều lựa chọn
+\ind{PHẦN I.} \inden{Câu trắc nghiệm nhiều phương án lựa chọn. Mỗi câu hỏi học sinh chỉ chọn một phương án.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-c8b24-lc]
+\begin{ex}%[0D8N2-7]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Có bao nhiêu cách sắp xếp $5$ học sinh thành một hàng dọc?
+	\choice
+	{$5$}
+	{$10$}
+	{\True $\mathrm{P}_5$}
+	{$5^5$}
+	\loigiai
+	{
+		Mỗi cách sắp xếp $5$ học sinh thành một hàng dọc là một hoán vị của $5$ phần tử.\\
+		Số cách sắp xếp là $\mathrm{P}_5 = 5! = 120$ cách.
+	}
+\end{ex}
+\begin{ex}%[0D8N2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Cho tập hợp $A$ có $n$ phần tử ($n \in \mathbb{N}, n \ge 1$). Số hoán vị của $n$ phần tử là
+	\choice
+	{\True $n!$}
+	{$n^n$}
+	{$2^n$}
+	{$n^2$}
+	\loigiai
+	{
+		Theo định nghĩa, số các hoán vị của tập hợp có $n$ phần tử là $\mathrm{P}_n = n!$.
+	}
+\end{ex}
+\begin{ex}%[0D8N2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Số các chỉnh hợp chập $k$ của $n$ phần tử ($1 \le k \le n$) được tính bởi công thức nào sau đây?
+	\choice
+	{$\mathrm{A}_n^k = \dfrac{n!}{k!}$}
+	{\True $\mathrm{A}_n^k = \dfrac{n!}{(n-k)!}$}
+	{$\mathrm{A}_n^k = \dfrac{n!}{k!(n-k)!}$}
+	{$\mathrm{A}_n^k = \dfrac{(n-k)!}{n!}$}
+	\loigiai
+	{
+		Số các chỉnh hợp chập $k$ của $n$ phần tử là $\mathrm{A}_n^k = \dfrac{n!}{(n-k)!}$.
+	}
+\end{ex}
+\begin{ex}%[0D8N2-3]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn]
+	Từ các chữ số $\{1, 2, 3, 4, 5\}$, có thể lập được bao nhiêu số tự nhiên có $3$ chữ số khác nhau?
+	\choice
+	{$\mathrm{C}_5^3$}
+	{$5^3$}
+	{\True $\mathrm{A}_5^3$}
+	{$3^5$}
+	\loigiai
+	{
+		Mỗi số tự nhiên có $3$ chữ số khác nhau được lập từ $5$ chữ số đã cho là một chỉnh hợp chập $3$ của $5$ phần tử.\\
+		Số các số lập được là $\mathrm{A}_5^3 = 60$ số.
+	}
+\end{ex}
+\begin{ex}%[0D8N2-2]]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Số các tổ hợp chập $k$ của $n$ phần tử ($0 \le k \le n$) là
+	\choice
+	{$\mathrm{C}_n^k = \dfrac{n!}{(n-k)!}$}
+	{$\mathrm{C}_n^k = \dfrac{n!}{k!}$}
+	{\True $\mathrm{C}_n^k = \dfrac{n!}{k!(n-k)!}$}
+	{$\mathrm{C}_n^k = \dfrac{(n-k)!}{k!n!}$}
+	\loigiai
+	{
+		Công thức tính số tổ hợp chập $k$ của $n$ phần tử là $\mathrm{C}_n^k = \dfrac{n!}{k!(n-k)!}$.
+	}
+\end{ex}
+\begin{ex}%[0D8N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một tổ có $10$ học sinh. Số cách chọn ra $2$ học sinh đi trực nhật là
+	\choice
+	{$\mathrm{A}_{10}^2$}
+	{\True $\mathrm{C}_{10}^2$}
+	{$10^2$}
+	{$20$}
+	\loigiai
+	{
+		Vì việc chọn $2$ học sinh không phân biệt thứ tự nên mỗi cách chọn là một tổ hợp chập $2$ của $10$ phần tử.\\
+		Số cách chọn là $\mathrm{C}_{10}^2 = 45$ cách.
+	}
+\end{ex}
+\begin{ex}%[0D8H2-7]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Có bao nhiêu số tự nhiên gồm $4$ chữ số khác nhau được lập từ các chữ số $1$, $2$, $3$, $4$, $5$, $6$?
+	\choice
+	{$4^6$}
+	{$6^4$}
+	{$15$}
+	{\True $360$}
+	\loigiai
+	{
+		Mỗi số tự nhiên gồm $4$ chữ số khác nhau lập từ tập hợp $6$ chữ số đã cho là một chỉnh hợp chập $4$ của $6$ phần tử.\\
+		Số các số cần tìm là $\mathrm{A}_6^4 = \dfrac{6!}{(6-4)!} = 360$ số.
+	}
+\end{ex}
+\begin{ex}%[0D8H2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Trong một mặt phẳng cho $10$ điểm phân biệt, trong đó không có $3$ điểm nào thẳng hàng. Có thể lập được bao nhiêu tam giác có các đỉnh là $3$ trong $10$ điểm đã cho?
+	\choice
+	{\True $120$}
+	{$720$}
+	{$30$}
+	{$10^3$}
+	\loigiai
+	{
+		Mỗi tam giác được hình thành bằng cách chọn $3$ điểm không thẳng hàng từ $10$ điểm đã cho. Vì không có $3$ điểm nào thẳng hàng nên số tam giác là $\mathrm{C}_{10}^3$.\\
+		Ta có $\mathrm{C}_{10}^3 = \dfrac{10 \cdot 9 \cdot 8}{3 \cdot 2 \cdot 1} = 120$ tam giác.
+	}
+\end{ex}
+\begin{ex}%[0D8H2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một nhóm công nhân gồm $7$ nam và $3$ nữ. Có bao nhiêu cách chọn một đội công tác gồm $5$ người sao cho có đúng $2$ nữ?
+	\choice
+	{\True $105$}
+	{$21$}
+	{$35$}
+	{$120$}
+	\loigiai
+	{
+		Để chọn đội công tác có đúng $2$ nữ, ta thực hiện hai công đoạn:
+		\begin{itemize}
+			\item Chọn $2$ nữ từ $3$ nữ có $\mathrm{C}_3^2 = 3$ cách.
+			\item Chọn $3$ nam từ $7$ nam (để đủ $5$ người) có $\mathrm{C}_7^3 = 35$ cách.
+		\end{itemize}
+		Theo quy tắc nhân, số cách chọn là $3 \cdot  35 = 105$ cách.
+	}
+\end{ex}
+\begin{ex}%[0D8H2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một hộp chứa $10$ quả cầu gồm $6$ quả cầu màu đỏ và $4$ quả cầu màu xanh. Có bao nhiêu cách chọn ra $3$ quả cầu từ hộp đó sao cho có đúng $2$ quả cầu màu đỏ?
+	\choice
+	{$\mathrm{C}_{10}^3$}
+	{$24$}
+	{\True $60$}
+	{$120$}
+	\loigiai
+	{
+		Để chọn được $3$ quả cầu trong đó có đúng $2$ quả cầu màu đỏ, ta thực hiện qua hai công đoạn liên tiếp sau:
+		\begin{itemize}
+			\item Công đoạn 1: Chọn $2$ quả cầu màu đỏ từ $6$ quả cầu màu đỏ. Số cách chọn là $\mathrm{C}_6^2 = 15$ cách.
+			\item Công đoạn 2: Chọn $1$ quả cầu màu xanh từ $4$ quả cầu màu xanh (để đủ số lượng $3$ quả cầu). Số cách chọn là $\mathrm{C}_4^1 = 4$ cách.
+		\end{itemize}
+		Theo quy tắc nhân, số cách chọn thỏa mãn yêu cầu bài toán là $15 \cdot  4 = 60$ cách.
+	}
+\end{ex}
+\begin{ex}%[0D8H2-7]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Có bao nhiêu cách sắp xếp $3$ học sinh nam và $3$ học sinh nữ vào một dãy ghế hàng ngang có $6$ chỗ ngồi sao cho các học sinh nam và nữ ngồi xen kẽ nhau?
+	\choice
+	{$36$}
+	{$144$}
+	{\True $72$}
+	{$48$}
+	\loigiai
+	{
+		Có $2$ trường hợp ngồi xen kẽ:\\
+		Trường hợp 1: Nam ngồi các vị trí lẻ ($1, 3, 5$), nữ ngồi các vị trí chẵn ($2, 4, 6$).
+		\begin{itemize}
+			\item Xếp nam có $3!$ cách.
+			\item Xếp nữ có $3!$ cách.
+			\item Số cách là $3! \cdot  3! = 36$ cách.
+		\end{itemize}
+		Trường hợp 2: Nữ ngồi các vị trí lẻ, nam ngồi các vị trí chẵn. Tương tự có $3! \cdot  3! = 36$ cách.\\
+		Tổng cộng có $36 + 36 = 72$ cách.
+	}
+\end{ex}
+\begin{ex}%[0D8H2-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một hộp chứa $6$ viên bi đỏ và $4$ viên bi xanh. Có bao nhiêu cách chọn ra $4$ viên bi sao cho có ít nhất một viên bi xanh?
+	\choice
+	{$195$}
+	{\True $195$}
+	{$210$}
+	{$209$}
+	\loigiai
+	{
+		Tổng số cách chọn $4$ viên bi bất kì từ $10$ viên bi là $\mathrm{C}_{10}^4 = 210$ cách.\\
+		Số cách chọn $4$ viên bi mà không có viên bi xanh nào (tức là cả $4$ viên đều đỏ) là $\mathrm{C}_6^4 = 15$ cách.\\
+		Số cách chọn có ít nhất một viên bi xanh là $210 - 15 = 195$ cách.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-c8b24-lc}
+%---------------------Trắc nghiệm đúng sai
+\ind{PHẦN II.} \inden{Câu trắc nghiệm đúng sai. Trong mỗi ý a), b), c), d) ở mỗi câu, học sinh chọn đúng hoặc sai.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-c8b24-ds]
+\begin{ex}%[0D8N2-3]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Cho tập hợp $A = \{1, 2, 3, 4, 5, 6\}$. Xét các khẳng định sau
+	\choiceTF
+	{Số các số tự nhiên có $6$ chữ số đôi một khác nhau lập từ tập $A$ là $\mathrm{P}_6 = 720$}
+	{\True Số tập con có $3$ phần tử của tập $A$ là $\mathrm{C}_6^3 = 20$}
+	{Số các số tự nhiên có $3$ chữ số đôi một khác nhau lập từ tập $A$ là $\mathrm{C}_6^3$}
+	{\True Số cách chọn ra $2$ chữ số từ tập $A$ và sắp xếp chúng theo một thứ tự là $\mathrm{A}_6^2 = 30$}
+	\loigiai
+	{
+		\begin{itemchoice}
+			\itemch Mỗi số tự nhiên có $6$ chữ số đôi một khác nhau lập từ $6$ phần tử của $A$ là một hoán vị của $6$ phần tử. Số các số đó là $\mathrm{P}_6 = 6! = 720$.
+			\itemch Mỗi tập con có $3$ phần tử của $A$ là một tổ hợp chập $3$ của $6$ phần tử. Số tập con là $\mathrm{C}_6^3 = \dfrac{6!}{3! \cdot 3!} = 20$.
+			\itemch Số các số tự nhiên có $3$ chữ số đôi một khác nhau lập từ $A$ phải là một chỉnh hợp chập $3$ của $6$, tức là $\mathrm{A}_6^3 = 120$.
+			\itemch Việc chọn $2$ chữ số và sắp xếp thứ tự là một chỉnh hợp chập $2$ của $6$ phần tử, số cách là $\mathrm{A}_6^2 = \dfrac{6!}{4!} = 30$.
+		\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[0D8H2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Trong một giải thi đấu cầu lông có $10$ vận động viên tham gia thi đấu vòng tròn một lượt (hai vận động viên bất kỳ đều gặp nhau đúng một trận).
+	\choiceTF
+	{\True Tổng số trận đấu của giải là $\mathrm{C}_{10}^2$}
+	{Số cách chọn ra $3$ vận động viên để trao giải Nhất, Nhì, Ba là $\mathrm{C}_{10}^3$}
+	{\True Nếu có $2$ vận động viên bỏ cuộc trước khi giải bắt đầu thì số trận đấu giảm đi $17$ trận}
+	{Số cách phân công $10$ vận động viên vào $5$ sân thi đấu khác nhau, mỗi sân $2$ người là $10!$}
+	\loigiai
+	{
+		\begin{itemchoice}
+			\itemch Mỗi trận đấu là một cách chọn $2$ vận động viên từ $10$ vận động viên (không tính thứ tự), nên số trận đấu là $\mathrm{C}_{10}^2 = 45$.
+			\itemch Vì các giải Nhất, Nhì, Ba có phân biệt thứ tự nên số cách chọn là một chỉnh hợp chập $3$ của $10$, tức là $\mathrm{A}_{10}^3 = 720$.
+			\itemch Nếu còn $8$ vận động viên, số trận đấu là $\mathrm{C}_8^2 = 28$. Số trận giảm đi là $45 - 28 = 17$.
+			\itemch Việc phân công này phức tạp hơn và không đơn thuần là $10!$ (hoán vị $10$ phần tử).
+		\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[0D8H2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một đội văn nghệ có $7$ học sinh nam và $5$ học sinh nữ. Nhà trường cần chọn ra $5$ học sinh để đi biểu diễn.
+	\choiceTF
+	{Số cách chọn $5$ học sinh bất kỳ là $\mathrm{A}_{12}^5$}
+	{\True Số cách chọn $5$ học sinh sao cho có đúng $3$ nam và $2$ nữ là $\mathrm{C}_7^3 \cdot \mathrm{C}_5^2$}
+	{Số cách chọn $5$ học sinh sao cho có ít nhất $1$ học sinh nữ là $\mathrm{C}_{12}^5 - \mathrm{C}_5^5$}
+	{\True Số cách chọn $5$ học sinh sao cho có ít nhất $1$ học sinh nữ là $771$ cách}
+	\loigiai
+	{
+		\begin{itemchoice}
+			\itemch Chọn $5$ học sinh từ $12$ học sinh không phân biệt thứ tự phải dùng tổ hợp $\mathrm{C}_{12}^5 = 792$.
+			\itemch Chọn $3$ nam từ $7$ nam có $\mathrm{C}_7^3$ cách, chọn $2$ nữ từ $5$ nữ có $\mathrm{C}_5^2$ cách. Theo quy tắc nhân ta có $\mathrm{C}_7^3 \cdot \mathrm{C}_5^2$ cách.
+			\itemch Số cách chọn ít nhất $1$ nữ = (Tổng số cách chọn $5$ người) $-$ (Số cách chọn $5$ người toàn nam). Vậy phải là $\mathrm{C}_{12}^5 - \mathrm{C}_7^5$.
+			\itemch Ta có $\mathrm{C}_{12}^5 - \mathrm{C}_7^5 = 792 - 21 = 771$.
+		\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[0D8H2-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một hộp đựng $15$ viên bi đôi một khác nhau, trong đó có $6$ viên bi xanh, $5$ viên bi đỏ và $4$ viên bi vàng. Người ta chọn ngẫu nhiên đồng thời $4$ viên bi từ hộp đó. Xét các khẳng định sau:
+	\choiceTF
+	{Số cách chọn $4$ viên bi bất kỳ từ hộp là $\mathrm{A}_{15}^4$}
+	{\True Số cách chọn $4$ viên bi sao cho chúng có cùng một màu là $21$ cách}
+	{\True Số cách chọn $4$ viên bi sao cho có ít nhất một viên bi vàng là $\mathrm{C}_{15}^4 - \mathrm{C}_{11}^4$}
+	{Số cách chọn $4$ viên bi sao cho có đúng $2$ viên bi đỏ là $\mathrm{C}_5^2 \cdot \mathrm{C}_{10}^2 = 540$ cách}
+	\loigiai
+	{
+		\begin{itemchoice}
+			\itemch Vì chọn đồng thời $4$ viên bi nên không tính thứ tự, số cách chọn phải là một tổ hợp chập $4$ của $15$, tức là $\mathrm{C}_{15}^4 = 1365$ cách.
+			\itemch Để chọn $4$ viên bi cùng màu, ta có các trường hợp:
+			\begin{itemize}
+				\item Chọn $4$ viên xanh từ $6$ viên xanh: $\mathrm{C}_6^4 = 15$ cách.
+				\item Chọn $4$ viên đỏ từ $5$ viên đỏ: $\mathrm{C}_5^4 = 5$ cách.
+				\item Chọn $4$ viên vàng từ $4$ viên vàng: $\mathrm{C}_4^4 = 1$ cách.
+			\end{itemize}
+			Tổng số cách là $15 + 5 + 1 = 21$ cách.
+			\itemch Ta dùng phương pháp biến cố đối. Tổng số cách chọn $4$ viên bất kỳ là $\mathrm{C}_{15}^4$. Số cách chọn $4$ viên mà không có viên bi vàng nào (tức là chọn từ $11$ viên xanh và đỏ) là $\mathrm{C}_{11}^4$. Vậy số cách chọn có ít nhất một viên bi vàng là $\mathrm{C}_{15}^4 - \mathrm{C}_{11}^4$.
+			\itemch Chọn $2$ viên bi đỏ từ $5$ viên đỏ có $\mathrm{C}_5^2$ cách. Chọn $2$ viên bi còn lại từ $10$ viên bi (xanh và vàng) có $\mathrm{C}_{10}^2$ cách. Theo quy tắc nhân, số cách chọn là $\mathrm{C}_5^2 \cdot \mathrm{C}_{10}^2 = 10 \cdot 45 = 450$ cách.
+		\end{itemchoice}
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{3}{ans/ans-c8b24-ds}
+%---------------Trắc nghiệm trả lời ngắn
+\ind{PHẦN III.} \inden{Câu trả lời ngắn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-c1b1-kq]
+%-----Câu 1
+\begin{ex}%[0D8H2-7]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Có bao nhiêu cách xếp $5$ học sinh thành một hàng dọc?
+	\par
+	\shortans{$120$}
+	\loigiai
+	{
+		Mỗi cách xếp $5$ học sinh thành một hàng dọc là một hoán vị của $5$ phần tử.
+		\\
+		Số cách xếp là $\mathrm{P}_5 = 5! = 120$.
+	}
+\end{ex}
+\begin{ex}%[0D8V2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một nhóm tình nguyện gồm $10$ học sinh, trong đó có $6$ nam và $4$ nữ. Hỏi có bao nhiêu cách chọn ra $3$ học sinh sao cho trong đó có ít nhất một học sinh nữ?
+	\par
+	\shortans{$100$}
+	\loigiai
+	{
+		Số cách chọn $3$ học sinh bất kì từ $10$ học sinh là $\mathrm{C}_{10}^3 = 120$. \\
+		Số cách chọn $3$ học sinh mà không có học sinh nữ nào (tức là chọn $3$ nam từ $6$ nam) là $\mathrm{C}_6^3 = 20$. \\
+		Số cách chọn có ít nhất một học sinh nữ là $120 - 20 = 100$.
+	}
+\end{ex}
+\begin{ex}%[0D8H2-3]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một câu lạc bộ có $15$ thành viên. Có bao nhiêu cách chọn ra $2$ thành viên để bầu vào hai vị trí khác nhau là Chủ nhiệm và Phó chủ nhiệm?
+	\shortans{210}
+	\loigiai
+	{
+		Mỗi cách chọn ra $2$ thành viên từ $15$ thành viên và sắp xếp vào $2$ vị trí khác nhau (có phân biệt thứ tự) là một chỉnh hợp chập $2$ của $15$ phần tử. \\
+		Số cách chọn là $\mathrm{A}_{15}^2 = 15 \cdot  14 = 210$.
+	}
+\end{ex}
+\begin{ex}%[0D8V2-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Trên một kệ sách có $4$ cuốn sách Toán khác nhau và $3$ cuốn sách Vật lý khác nhau. Hỏi có bao nhiêu cách sắp xếp các cuốn sách thành một hàng ngang sao cho các cuốn sách cùng môn luôn đứng cạnh nhau?
+	\par
+	\shortans{$288$}
+	\loigiai
+	{
+		Xem nhóm sách Toán là một vật thể $X$, nhóm sách Vật lý là một vật thể $Y$. \\
+		Số cách xếp $X$ và $Y$ là $2! = 2$ cách. \\
+		Trong nhóm $X$, số cách xếp $4$ cuốn Toán là $4! = 24$ cách. \\
+		Trong nhóm $Y$, số cách xếp $3$ cuốn Vật lý là $3! = 6$ cách. \\
+		Vậy tổng số cách xếp là $2 \cdot  24 \cdot  6 = 288$.
+	}
+\end{ex}
+\begin{ex}%[0D8V2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Trong một buổi gặp mặt giữa các đại biểu, mỗi người đều bắt tay với tất cả những người còn lại một lần. Biết rằng có tất cả $190$ cái bắt tay, hỏi buổi gặp mặt đó có bao nhiêu đại biểu tham dự?
+	\par
+	\shortans{$20$}
+	\loigiai
+	{
+		Gọi $n$ là số đại biểu tham dự ($n \in \mathbb{N}, n \ge 2$). \\
+		Mỗi cái bắt tay là một cách chọn ra $2$ người từ $n$ người, tức là một tổ hợp chập $2$ của $n$ phần tử. \\
+		Theo đề bài ta có phương trình $\mathrm{C}_n^2 = 190 \Leftrightarrow \dfrac{n(n-1)}{2} = 190 \Leftrightarrow n^2 - n - 380 = 0$. \\
+		Giải phương trình ta được $n = 20$ (thỏa mãn) hoặc $n = -19$ (loại). \\
+		Vậy có $20$ đại biểu.
+	}
+\end{ex}
+\begin{ex}%[0D8C2-3]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Có bao nhiêu số tự nhiên có $5$ chữ số đôi một khác nhau được lập từ tập hợp \break $A = \{0,\,1,\,2,\,3,\,4,\,5\}$ sao cho các chữ số lẻ luôn đứng cạnh nhau?
+	\par
+	\shortans{$84$}
+	\loigiai
+	{
+		Tập $A$ có các chữ số lẻ là $L = \{1, 3, 5\}$ và các chữ số chẵn là $C = \{0, 2, 4\}$. \\
+		Vì số có $5$ chữ số khác nhau nên ta chọn thêm $2$ chữ số từ tập $C$. \\
+		Nhóm $3$ chữ số lẻ thành một khối $X$, có $3! = 6$ cách xếp các chữ số lẻ trong $X$. \\
+		Trường hợp 1: Chọn thêm $2$ chữ số từ $\{2, 4\}$. Khi đó có $1$ cách chọn. Hoán vị $X$ và $\{2, 4\}$ có $3!$ cách. Số các số là $1 \cdot  6 \cdot  3! = 36$. \\
+		Trường hợp 2: Chọn thêm chữ số $0$ và một chữ số từ $\{2, 4\}$. Có $\mathrm{C}_2^1 = 2$ cách chọn. Hoán vị $X, 0$ và chữ số còn lại có $3!$ cách, trong đó có $2!$ cách mà số $0$ đứng đầu. \\
+		Số các số là $2 \cdot  6 \cdot  (3! - 2!) = 12 \cdot  4 = 48$. \\
+		Tổng cộng có $36 + 48 = 84$ số.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{4}{ans/ans-c1b1-kq}
+%------------------Tự luận
+\ind{PHẦN IV.} \inden{Tự luận.}
+\setcounter{ex}{0}
+\begin{ex}%[0D8V2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Một đội văn nghệ có $10$ học sinh nam và $6$ học sinh nữ. Chọn ngẫu nhiên $5$ học sinh để đi biểu diễn. Hỏi có bao nhiêu cách chọn sao cho trong $5$ học sinh được chọn có ít nhất $2$ học sinh nữ?
+	\loigiai
+	{
+		Tổng số cách chọn $5$ học sinh từ $16$ học sinh là $\mathrm{C}_{16}^5 = 4\,368$ cách. \\
+		Ta sử dụng phương pháp phần bù
+		\begin{itemize}
+			\item Trường hợp không có học sinh nữ nào (chọn $5$ nam) có $\mathrm{C}_{10}^5 = 252$ cách.
+			\item Trường hợp có đúng $1$ học sinh nữ (chọn $1$ nữ và $4$ nam) có $\mathrm{C}_6^1 \cdot \mathrm{C}_{10}^4 = 6 \cdot 210 = 1\,260$ cách.
+		\end{itemize}
+		Số cách chọn có ít nhất $2$ học sinh nữ là
+		$$ 4\,368 - (252 + 1\,260) = 2\,856 \text{ cách.} $$
+	}
+\end{ex}
+\begin{ex}%[0D8H2-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+Bạn Nam có $4$ quyển sách Toán, $6$ quyển sách Tiếng Anh (các quyển sách là khác nhau). Hỏi có bao nhiêu cách xếp các quyển sách thành hàng ngang sao cho:
+\begin{enumerate}
+	\item Các quyển sách cùng môn thì xếp cạnh nhau (không có quyển sách Toán nào nằm giữa hai quyển sách Tiếng Anh và ngược lại)?
+	\item Các quyển sách Toán thì xếp cạnh nhau?
+\end{enumerate}
+\loigiai{
+	\begin{enumerate}
+		\item Xếp $4$ quyển sách Toán cạnh nhau thành một nhóm có $\mathrm{P}_4 = 4! = 24$ (cách).\\
+		Xếp $6$ quyển sách Tiếng Anh cạnh nhau thành một nhóm có $\mathrm{P}_6 = 6! = 720$ (cách).\\
+		Có $\mathrm{P}_2 = 2! = 2$ cách xếp hai nhóm trên.\\
+		Vậy số cách xếp các quyển sách sao cho các quyển sách cùng môn thì xếp cạnh nhau là
+		$24 \cdot 720 \cdot 2 = 34\,560$.
+		\item Xếp $4$ quyển sách Toán cạnh nhau thành một nhóm có $\mathrm{P}_4 = 4! = 24$ (cách).\\
+		Coi nhóm sách Toán là một quyển sách, gọi là $A$, xếp quyển sách A và $6$ quyển sách Tiếng Anh có $\mathrm{P}_7 = 7! = 5\,040$ (cách).\\
+		Vậy số cách xếp các quyển sách sao cho các quyển sách Toán thì xếp cạnh nhau là $24 \cdot 5\,040 = 120\,960$.
+	\end{enumerate}	
+}
+\end{ex}
+\begin{ex}%[0D8C2-3]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Có bao nhiêu số tự nhiên có $7$ chữ số được lập từ các chữ số $\{1,\,2,\,3,\,4,\,5\}$ sao cho chữ số $1$ xuất hiện đúng $3$ lần, các chữ số còn lại xuất hiện đúng $1$ lần?
+	\loigiai
+	{
+		Số các số thỏa mãn yêu cầu là số cách sắp xếp $7$ chữ số, trong đó có $3$ chữ số $1$ và $4$ chữ số khác nhau là $\{2,\,3,\,4,\,5\}$.
+		\begin{itemize}
+			\item Bước 1: Chọn $3$ vị trí trong $7$ vị trí để đặt chữ số $1$, có $\mathrm{C}_7^3 = 35$ cách.
+			\item Bước 2: Còn lại $4$ vị trí trống, ta xếp $4$ chữ số $\{2,\,3,\,4,\,5\}$ vào đó. Đây là một hoán vị của $4$ phần tử, có $\mathrm{P}_4 = 4! = 24$ cách.
+		\end{itemize}
+		Vậy số các số tự nhiên thỏa mãn là $35 \cdot  24 = 840$ số.
+	}
+\end{ex}
+\begin{ex}%[0D8H2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Trong mặt phẳng cho hai đường thẳng song song $d_1$ và $d_2$. Trên đường thẳng $d_1$ lấy $10$ điểm phân biệt, trên đường thẳng $d_2$ lấy $8$ điểm phân biệt.
+	\begin{enumerate}
+		\item Có bao nhiêu đoạn thẳng có hai đầu mút được chọn từ $18$ điểm đã cho?
+		\item Có bao nhiêu tam giác có các đỉnh được chọn từ $18$ điểm đã cho?
+		\item Có bao nhiêu hình thang có các đỉnh được chọn từ $18$ điểm đã cho?
+	\end{enumerate}
+	\loigiai
+	{
+		\begin{enumerate}
+			\item Một đoạn thẳng được xác định bằng cách chọn $2$ điểm bất kì từ $18$ điểm đã cho ($10 + 8 = 18$). \\
+			Số đoạn thẳng là $\mathrm{C}_{18}^2 = 153$ (đoạn thẳng).		
+			\item Để tạo thành một tam giác, ta không thể chọn $3$ điểm thẳng hàng. Có $2$ trường hợp:
+			\begin{itemize}
+				\item Trường hợp 1: Chọn $2$ điểm từ $d_1$ và $1$ điểm từ $d_2$. \\
+				Số cách chọn: $\mathrm{C}_{10}^2 \cdot \mathrm{C}_8^1 = 45 \cdot 8 = 360$ (tam giác).
+				\item Trường hợp 2: Chọn $1$ điểm từ $d_1$ và $2$ điểm từ $d_2$. \\
+				Số cách chọn: $\mathrm{C}_{10}^1 \cdot \mathrm{C}_8^2 = 10 \cdot 28 = 280$ (tam giác).
+			\end{itemize}
+			Tổng số tam giác tạo thành là $360 + 280 = 640$ (tam giác).
+			
+			\item Một hình thang có hai đáy nằm trên $d_1$ và $d_2$. Để tạo thành hình thang, ta cần chọn $2$ điểm từ $d_1$ (làm đáy thứ nhất) và $2$ điểm từ $d_2$ (làm đáy thứ hai). \\
+			Số hình thang tạo thành là $\mathrm{C}_{10}^2 \cdot \mathrm{C}_8^2 = 45 \cdot 28 = 1260$ (hình thang).
+		\end{enumerate}
+	}
+\end{ex}
+\begin{ex}%[0D8V2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Trong một cuộc gặp mặt giữa hai đoàn đại biểu, đoàn I có $7$ người và đoàn II có $5$ người. Mỗi người của đoàn này đều bắt tay một lần với tất cả những người của đoàn kia. Hỏi có tất cả bao nhiêu cái bắt tay?
+	\loigiai
+	{
+		Mỗi cái bắt tay được hình thành bằng cách chọn $1$ người từ đoàn I và $1$ người từ đoàn II.
+		\begin{itemize}
+			\item Chọn $1$ người từ đoàn I có $\mathrm{C}_7^1 = 7$ cách.
+			\item Chọn $1$ người từ đoàn II có $\mathrm{C}_5^1 = 5$ cách.
+		\end{itemize}
+		Theo quy tắc nhân, số cái bắt tay là $7 \cdot  5 = 35$ cái bắt tay.
+	}
+\end{ex}
+\begin{ex}%[0D8V2-8]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV biên soạn: Mai Thái Phong]
+	Có $4$ nữ sinh và $4$ nam sinh được xếp ngồi quanh một bàn tròn có $8$ ghế. Hỏi có bao nhiêu cách xếp sao cho không có hai nữ sinh nào ngồi cạnh nhau?
+	\loigiai
+	{
+		Đây là bài toán hoán vị bàn tròn có điều kiện xen kẽ.
+		\begin{itemize}
+			\item Bước 1: Xếp $4$ nam sinh ngồi quanh bàn tròn trước. Số cách xếp là $(4-1)! = 3! = 6$ cách.
+			\item Bước 2: Sau khi $4$ nam sinh ngồi cố định, giữa họ tạo ra $4$ khoảng trống.
+			\item Bước 3: Xếp $4$ nữ sinh vào $4$ khoảng trống đó (đây là hoán vị hàng ngang vì mốc đã được xác định bởi các nam sinh). Số cách xếp là $4! = 24$ cách.
+		\end{itemize}
+		Vậy tổng số cách xếp là $6 \cdot  24 = 144$ cách.
+	}
+\end{ex}
+\Closesolutionfile{ans}

@@ -1,0 +1,843 @@
+\begin{name}
+	{GV biên soạn: Huỳnh Quốc Đạt\\ GV phản biện 1: Trí Thiện\\ GV phản biện 2: Nguyễn Sĩ Đạt}
+	{TOÁN 10-KNTT-CS}
+\end{name}
+\setcounter{section}{25}
+\section{Biến cố và định nghĩa cổ điển của xác suất}
+%-------------------------------------------
+\subsection{KIẾN THỨC TRỌNG TÂM}
+\subsubsection{Phép thử ngẫu nhiên, không gian mẫu}
+\begin{dn}~
+	\begin{itemize}
+		\item [$\bullet$]  \textbf{Phép thử ngẫu nhiên} (gọi tắt là phép thử) là một thí nghiệm hay một hành động mà kết quả của nó không thể biết được trước khi phép thử được thực hiện.
+		\item [$\bullet$]  \textbf{Không gian mẫu} của phép thử (kí hiệu là $\Omega$) là tập hợp tất cả các kết quả có thể xảy ra khi thực hiện phép thử.
+	\end{itemize}
+\end{dn}
+\begin{chuy}
+	Ta chỉ xét phép thử mà không gian mẫu gồm hữu hạn kết quả.
+\end{chuy}
+\subsubsection{Biến cố}
+\begin{dn}
+	\immini{
+		\begin{itemize}
+			\item [$\bullet$] Biến cố là một tập con của không gian mẫu $\Omega $, kí hiệu $A$, $B$, $C$,...
+			\item [$\bullet$] Một kết quả thuộc tập $A$ được gọi là kết quả thuận lợi cho biến cố $A$.
+		\end{itemize}
+	}{
+		\begin{tikzpicture}[scale=.6]
+			\tkzDefPoints{0/0/A, 5/0/B, 0/3/D, 5/3/C}
+			\draw[fill=cyan!50] (A)--(B)--(C)--(D)--cycle;
+			\draw(4,0)--(4.5,-.5) node[below] {$\Omega$};
+			\node (A) at (1.5,1.5) [circle, draw,fill=white] {$A$};
+	\end{tikzpicture}}
+\end{dn}
+\begin{chuy}
+\begin{itemize}
+	\item [$\bullet$] Biến cố chắc chắn là biến cố luôn xảy ra, kí hiệu là $\Omega$.
+	\item [$\bullet$] Biến cố không thể là biến cố không bao giờ xảy ra, ki hiệu là $\varnothing$.
+\end{itemize}
+\end{chuy}
+\subsubsection{Biến cố đối}
+Xét phép thử $T$  với không gian mẫu là  $\Omega$. Giả sử $E$ là một biến cố.
+\begin{dn}
+	\begin{itemize}
+		\item [$\bullet$] Biến cố đối của biến cố $E$ là biến cố \lq\lq$E$ không xảy ra\rq\rq. Nếu biến cố $E$ được mô tả dưới dạng mệnh đề toán học $Q$ thì biến cố đối $\overline{E}$ được mô tả bằng mệnh đề phủ định của mệnh đề $Q$ (tức là mệnh đề $\overline{Q}$ ).
+		\item [$\bullet$] Biến cố đối của biến cố $E$ kí hiệu là $\overline{E}$. Nhận xét $\overline{E}=\Omega \backslash E$.
+	\end{itemize}
+\end{dn}
+\begin{nx} Nếu biến cố $E$ là tập con của không gian mẫu $\Omega$ thì $\overline{E}$ là phần bù của $E$ trong $\Omega$.
+\begin{center}
+	\begin{tikzpicture}[scale=.8]
+		\tkzDefPoints{0/0/A, 5/0/B, 0/3/D, 5/3/C}
+		\fill[cyan!10] (A)--(B)--(C)--(D);
+		\draw[fill=cyan!50] (A)--(B)--(C)--(D)--cycle;
+		\draw(4,0)--(4.5,-.5) node[below] {$\Omega$};
+		\node (A) at (1.5,1.5) [circle, draw,fill=white] {$E $};
+		\node at (4,2) {$\overline{E}$};
+	\end{tikzpicture}
+\end{center}
+\end{nx}
+\subsubsection{Định nghĩa cổ điển của xác suất}
+\begin{dn}
+	 Cho phép thử $T$ có không gian mẫu là $\Omega$. Giả thiết rằng các kết quả có thể của $T$ là đồng khả năng. Khi đó, nếu $E$ là một biến cố liên quan phép thử $T$ thì xác suất của $E$ được cho bởi công thức
+	$$\mathrm{P}(E) = \dfrac{n(E)}{n(\Omega)}$$
+	Trong đó, $n(\Omega)$ và $n(E)$ lần lượt là số phần tử của tập không gian mẫu $\Omega$ và tập biến cố $E$.
+\end{dn}
+\begin{nx}~
+	\begin{itemize}
+	\item $0\le \mathrm{P}(E)\le 1$, với mọi biến cố $E$.
+	\item Với biến cố chắc chắn (là tập $\Omega$), ta có  $\mathrm{P}(\Omega)=1$.
+	\item Với biến cố không thể (là tập $\varnothing$), ta có  $\mathrm{P}(\varnothing)=0$.
+\end{itemize}
+\end{nx}
+\subsection{PHÂN LOẠI VÀ PHƯƠNG PHÁP GIẢI TOÁN}
+\begin{dang}[Mô tả không gian mẫu]
+	\textbf{Phương pháp:} Không gian mẫu là tập hợp các kết quả có thể xảy ra của một phép thử. Tập hợp này được gọi là \textbf{không gian mẫu} của phép thử đó và được ký hiệu là $\Omega$.
+\end{dang}
+\begin{vd}%[0D0H1-2]
+	Chọn ngẫu nhiên một số nguyên dương không lớn hơn $30$. Mô tả không gian mẫu.
+\loigiai{
+	Không gian mẫu $\Omega = \{1; 2; 3; \ldots; 27; 28; 29; 30\}$.
+	}
+\end{vd}
+\begin{vd}%[0D0H1-2]
+	Chọn ngẫu nhiên hai số khác nhau từ $5$ số nguyên dương đầu tiên. Mô tả không gian mẫu.
+\loigiai{
+	Không gian mẫu $\Omega = \{(1; 2); (1; 3); (1; 4); (1; 5); (2; 3); (2; 4); (2; 5); (3; 4); (3; 5); (4; 5)\}$.
+	}
+\end{vd}
+\begin{vd}%[0D0H1-2]
+	Gieo đồng thời một con xúc xắc và một đồng xu. Mô tả không gian mẫu.
+\loigiai{
+	Kí hiệu $S$ và $N$ tương ứng là đồng xu ra mặt sấp và đồng xu ra mặt ngửa. Khi đó không gian mẫu là
+	$$\Omega = \{(1; S); (2; S); (3; S); (4; S); (5; S); (6; S); (1; N); (2; N); (3; N); (4; N); (5; N); (6; N)\}.$$
+	}
+\end{vd}
+\begin{vd}%[0D0H1-2]
+	Gieo đồng thời ba đồng xu cân đối đồng chất. Mô tả không gian mẫu.
+\loigiai{
+	Kí hiệu $S$ và $N$ tương ứng là đồng xu ra mặt sấp và đồng xu ra mặt ngửa. Khi đó không gian mẫu là
+	$$\Omega = \{(S; S; S); (S; S; N); (S; N; S); (S; N; N); (N; S; S); (N; S; N); (N; N; S); (N; N; N)\}.$$
+	}
+\end{vd}
+\begin{vd}%[0D0H1-2]
+	Chọn ngẫu nhiên một gia đình có ba con ($12$ tuổi, $15$ tuổi và $18$ tuổi). Quan sát giới tính của ba người con này. Mô tả không gian mẫu.
+\loigiai{
+	Chọn ngẫu nhiên một gia đình có ba con và quan sát giới tính của ba người con này, ta có không gian mẫu $\Omega = \{TTT; TTG; TGT; TGG; GTT; GTG; GGT; GGG\}$ nên số phần tử của không gian mẫu là $n(\Omega) = 8$.
+	}
+\end{vd}
+\begin{dang}[Tính xác suất theo định nghĩa cổ điển]
+	\textbf{Phương pháp:} Ta có thể sử dụng các công thức sau
+	\begin{itemize}
+		\item Tính xác suất theo thống kê ta sử dụng công thức
+		$$\mathrm{P} \left(A\right)=\dfrac{n}{N}.$$
+		\item  Tính xác suất của biến cố theo định nghĩa cổ điển ta sử dụng công thức
+		$$\mathrm{P} \left(A\right)=\dfrac{n\left(A\right)}{n \left(\Omega\right)}.$$
+	\end{itemize}
+\end{dang}
+\begin{vd}%[0D0N2-2]%[GV:Xuan Vy Pham]
+	Gieo một con xúc xắc cân đối đồng chất. Tính xác suất của biến cố \lq \lq Mặt có số chấm chẵn xuất hiện\rq \rq.
+\loigiai{Không gian mẫu $\Omega = \left\{1;2;3;4;5;6\right\}$ suy ra $n(\Omega)=6$.\\
+	Gọi $A$ là biến cố: \lq \lq Mặt có số chấm chẵn xuất hiện\rq \rq.
+	\\
+	Khi đó $A=\left\{2;4;6\right\}$ nên $n(A)=3$.\\
+	Do đó $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{1}{2}$.
+	}
+\end{vd}
+%BT2
+\begin{vd}%[0D0N2-2]%[GV:Xuan Vy Pham]
+	Gieo lần lượt hai con xúc xắc cân đối đồng chất. Tính xác suất của biến cố \lq \lq Số chấm xuất hiện trên mặt hai con xúc xắc giống nhau \rq \rq.
+\loigiai{Số phần tử của không gian mẫu là $n(\Omega)=6 \cdot 6=36$.\\
+	Gọi $A$ là biến cố: \lq \lq Số chấm xuất hiện trên mặt hai con xúc xắc giống nhau\rq \rq.\\
+	Có $6$ kết quả thuận lợi cho biến cố $A$ là $\left\{1;1\right\}$; $\left\{2;2\right\}$; $\left\{3;3\right\}$; $\left\{4;4\right\}$; $\left\{5;5\right\}$; $\left\{6;6\right\}$.\\
+	Xác suất để số chấm xuất hiện trên mặt hai con xúc xắc giống nhau là $$\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{6}{36}=\dfrac{1}{6}.$$
+	}
+\end{vd}
+%BT3
+\begin{vd}%[0D0H2-2]%[GV:Xuan Vy Pham]
+	Gieo một con xúc xắc cân đối đồng chất $2$ lần, tính xác suất của biến cố \lq Tích số chấm ở $2$ lần khi gieo xúc xắc là một số chẵn\rq \rq.
+\loigiai{Số phần tử của không gian mẫu là $n(\Omega)=6 \cdot 6=36$.\\
+	Gọi $A$ là biến cố: \lq \lq Tích hai lần số chấm khi gieo xúc xắc là một số chẵn \rq \rq.\\
+	Ta xét các trường hợp sau:\\
+	\textbf{Trường hợp 1:} Gieo lần một, số chấm xuất hiện trên mặt là số lẻ thì khi gieo lần hai, số chấm xuất hiện phải là số chẵn. Khi đó có $3 \cdot 3=9$ cách gieo.\\
+	\textbf{Trường hợp 2}: Gieo lần một, số chấm xuất hiện trên mặt là số chẵn thì có hai trường hợp xảy ra là số chấm xuất hiện trên mặt khi gieo lần hai là số lẻ hoặc số chẵn. \\
+	Khi đó có $3 \cdot 3+3 \cdot 3 =18$ cách gieo.\\
+	Suy ra số kết quả thuận lợi cho biến cố là $n(A)=9+18=27$.\\
+	Vậy xác suất cần tìm là $\mathrm{P}(A)=\dfrac{27}{36}=0{,}75$.
+	}
+\end{vd}
+%BT4
+\begin{vd}%[0D0H2-4]%[GV:Xuan Vy Pham]
+	Một nhóm học sinh gồm có $9$ nam, $3$ nữ. Tính xác suất để khi chọn ngẫu nhiên $4$ người thì có đúng $1$ nữ.
+\loigiai{Số phần tử của không gian mẫu là $n(\Omega) = \mathrm{C}_{12}^{4}=495$.\\
+	Gọi $A$ là biến cố: \lq \lq Trong $4$ người được chọn thì có đúng $1$ nữ \rq \rq.  \\
+	Để chọn $4$ người có đúng $1$ nữ thì phải chọn $1$ nữ và $3$ nam có $\mathrm{C}_{3}^{1} \cdot \mathrm{C}_{9}^{3}=252$ cách.\\ Do đó $n(A)=252$.\\
+	Vậy xác suất cần tìm là $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{252}{495}=\dfrac{28}{55}$.
+	}
+\end{vd}
+%BT5
+\begin{vd}%[0D0H2-4]%[GV:Xuan Vy Pham]
+	Một đội gồm $5$ nam và $8$ nữ. Lập một nhóm gồm $4$ người hát tốp ca, tính xác suất để trong $4$ người được chọn có ít nhất $3$ nữ.
+\loigiai{Chọn tùy ý  $4$ người từ $13$ người nên số phần tử của không gian mẫu là $n(\Omega)=\mathrm{C}_{30}^{3}$.\\
+	Gọi  $A$ là biến cố  \lq \lq Trong $4$ người được chọn có ít nhất $3$ nữ\rq \rq. \\
+	Ta có hai trường hợp như sau:\\
+	\textbf{Trường hợp 1:} Chọn $3$ nữ và $1$ nam, có $\mathrm{C}_{8}^{3} \cdot \mathrm{C}_{5}^{1}$ cách.\\
+	\textbf{Trường hợp 2:} Chọn cả $4$ nữ, có $\mathrm{C}_{8}^{4}$ cách.\\
+	Suy ra số phần tử của biến cố $A$ là $n(A)=\mathrm{C}_{8}^{3} \cdot \mathrm{C}_{5}^{1}+\mathrm{C}_{8}^{4}=350$.\\
+	Vậy xác suất cần tính là $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{350}{715}=\dfrac{70}{143}$. }
+\end{vd}
+\begin{dang}[Tính xác suất dựa vào biến cố đối]
+	\textbf{Phương pháp}: Ta có thể sử dụng các công thức sau
+	$$\mathrm{P}(A)=1-\mathrm{P}\left(\overline{A}\right)$$
+	\begin{luuy}
+	Nên dùng khi: Biến cố $A$ có nhiều trường hợp phức tạp, khó liệt kê. Thường trong đề bài xuất hiện các từ như \lq\lq ít nhất\rq\rq, \lq\lq không ít hơn\rq\rq, \lq\lq có ít nhất một\rq\rq.
+	\end{luuy}
+\end{dang}
+\begin{vd}%[0D0V2-4]
+	Một lớp có $15$ học sinh nam và $20$ học sinh nữ. Chọn ngẫu nhiên $5$ học sinh tham gia lao động. Tính xác suất sao cho
+	\begin{enumerate}
+		\item Chọn $5$ học sinh có đúng $3$ nam và $2$ nữ.
+		\item Chọn $5$ học sinh sao cho có ít nhất $1$ nam.
+	\end{enumerate}
+\loigiai{
+	\begin{enumerate}
+		\item 	$n(\Omega)=\mathrm{C}_{35}^5=324\,632$. \\
+		Gọi $A$ là biến cố chọn $5$ học sinh có đúng $3$ nam và $2$ nữ.\\
+		$n(A)=\mathrm{C}_{15}^3\cdot \mathrm{C}_{20}^2=86\,450$.\\
+		Xác suất của biến cố $A$ là  $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{86\,450}{324\,632} \approx 0{,}266$.
+		\item Gọi $B$ là biến cố chọn $5$ học sinh sao cho có ít nhất $1$ nam. \\
+		Khi đó $\overline{B}$ là biến cố chọn được $5$ học sinh nữ nên $n(\overline{B})=\mathrm{C}_{20}^5=15\,504$.\\
+		$\mathrm{P}(B)=1-\mathrm{P}(\overline{B})=1-\dfrac{\mathrm{C}_{20}^5}{\mathrm{C}_{35}^5} \approx 0{,}95$.
+	\end{enumerate}
+	}
+\end{vd}
+\begin{vd}%[0D0H2-1]
+	Gieo một đồng xu cân đối liên tiếp một số lần. Biết rằng xác suất để mặt ngửa không xuất hiện lần nào là $\dfrac{1}{1\,024}$. Xác suất để mặt ngửa xuất hiện ít nhất một lần là $\dfrac{a}{b}$ với $\dfrac{a}{b}$ là phân số tối giản. Tính giá trị $a+b$.
+\loigiai{
+	Gọi $A$ là biến cố \lq\lq Đồng xu không xuất hiện mặt ngửa\rq\rq.\\
+	Suy ra $\overline{A}$ là biến cố \lq\lq Đồng xu xuất hiện mặt ngửa ít nhất một lần\rq\rq.\\
+	Theo đề bài có $\mathrm{P}(A)=\dfrac{1}{1\,024}$.\\
+	Vậy $\mathrm{P}\left(\overline{A}\right)=1-\mathrm{P}(A)=1-\dfrac{1}{1\,024}=\dfrac{1\,023}{1\,024}$.\\
+	Suy ra $a=1\,023$, $b=1\,024$ hay $a+b=2\,047$.
+	}
+\end{vd}
+\begin{vd}%[0D0V2-2]
+	Gieo một con xúc xắc cân đối và đồng chất $3$ lần liên tiếp. Xác suất để ít nhất hai lần gieo cho kết quả khác nhau bằng?
+\loigiai{
+	Số phần tử của không gian mẫu là $n(\Omega) = 6 \cdot  6 \cdot 6 = 216$. \\
+	Gọi $A$ là biến cố \lq\lq Số chấm xuất hiện trong ba lần gieo là khác nhau\rq\rq. \\
+	Gọi $\overline{A}$ là biến cố \lq\lq Số chấm xuất hiện trong ba lần gieo là giống nhau\rq\rq. \\
+	Các kết quả thuận lợi cho $\overline{A}$ là $(1;1;1), (2;2;2), (3;3;3), (4;4;4), (5;5;5), (6;6;6)$. \\
+	Suy ra $n(\overline{A}) = 6$. \\
+	Vậy $\mathrm{P}(\overline{A}) = \dfrac{n(\overline{A})}{n(\Omega)} = \dfrac{6}{36} = \dfrac{1}{6}$. \\
+	Do đó $\mathrm{P}(A) = 1 - \mathrm{P}(\overline{A}) = 1 - \dfrac{1}{6} = \dfrac{5}{6}$.
+	}
+\end{vd}
+%Từ ngân hàng. Câu 2134. File gốc: /Users/huynhbill/Downloads/SpDuAn-A-Dot11/data/HKII/0-TN-DS-TLN-SGD-BacNinh-HKII-NH24-25.tex
+\begin{vd}%[0D0C2-7][Lê Phúc]%[0-TN-DS-TLN-SGD-BacNinh-HKII-NH24-25]
+	Một chiếc hộp đựng $8$ viên bi màu trắng và được đánh số từ $1$ đến $8$; $9$ viên bi màu xanh được đánh số từ $1$ đến $9$ và $10$ viên bi màu đỏ được đánh số từ $1$ đến $10$. Lấy ngẫu nhiên $3$ viên bi trong hộp trên. Tính xác suất để $3$ viên bi được chọn có số ghi trên đó đôi một khác nhau.
+\loigiai{
+	Tổng số bi trong hộp là $8+9+10=27$ viên bi. \\
+	Số cách chọn ngẫu nhiên $3$ viên bi từ $27$ viên bi là $n(\Omega) = \mathrm{C}_{27}^3 = 2925$. \\
+	Gọi $A$ là biến cố \lq\lq$3$ viên bi được chọn có số ghi trên đó đôi một khác nhau\rq\rq. \\
+	Suy ra biến cố $\overline{A}$ là \lq\lq $3$ viên bi được chọn số ghi trên đó có ít nhất hai số trùng nhau\rq\rq.
+	\begin{itemize}
+		\item \textbf{Trường hợp 1:} Ba viên bi cùng số.\\
+		Suy ra số cách chọn là $8$ cách.
+		\item \textbf{Trường hợp 2:} Có hai bi có số giống nhau
+		\begin{itemize}
+			\item Hai viên bi số $9$ và một bi khác có $25$ cách chọn.
+			\item Hai viên bi có cùng số bé hơn $9$ và $1$ bi khác có $8\cdot 3\cdot 24$ cách.
+		\end{itemize}
+	\end{itemize}
+	Suy ra $n\left(\overline{A}\right)=8+25+8\cdot 3\cdot 24=609$.\\
+	Vậy $\mathrm{P}\left(\overline{A}\right)=\dfrac{n\left(\overline{A}\right)}{n(\Omega)}=\dfrac{609}{2925}$.\\
+	Do đó $\mathrm{P}(A)=1-\mathrm{P}\left(\overline{A}\right)=1-\dfrac{609}{2925}=\dfrac{772}{975}$.
+	}
+\end{vd}
+\subsection{BÀI TẬP RÈN LUYỆN}
+\ind{PHẦN I.} \inden{Câu trắc nghiệm nhiều phương án lựa chọn. Mỗi câu hỏi học sinh chỉ chọn một phương án.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/0-KNTT-LT-C8B26-caulc]
+%%%==============Cau_EX1==============%%%
+\begin{ex}%[0D0N2-2]
+	Gieo một đồng tiền cân đối và đồng chất bốn lần. Xác suất để cả bốn lần xuất hiện mặt sấp là?
+	\choice
+	{$\dfrac{4}
+	{16}$}
+	{$\dfrac{2}
+	{16}$}
+	{\True $\dfrac{1}{16}$}
+	{$\dfrac{6}{16}$}
+\loigiai{
+	Số phần tử của không gian mẫu là $n\left(\Omega \right)=2\cdot2\cdot2\cdot2=16$.\\
+	Gọi $A$ là biến cố \lq\lq Cả bốn lần gieo xuất hiện mặt sấp\rq\rq $\Rightarrow n\left(A\right)=1$.\\
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{1}{16}$.
+	}
+\end{ex}
+%%%==============HetCau_EX1==============%%%
+%%%==============Cau_EX2==============%%%
+\begin{ex}%[0D0N2-2]
+	Gieo một con xúc xắc hai lần. Xác suất để ít nhất một lần xuất hiện mặt sáu chấm là?
+	\choice
+	{$\dfrac{12}
+	{36}$}
+	{\True $\dfrac{11}
+	{36}$}
+	{$\dfrac{6}{36}$}
+	{$\dfrac{8}{36}$}
+\loigiai{
+	Số phần tử của không gian mẫu là $n\left(\Omega \right)=6\cdot6=36$.\\
+	Gọi $A$ là biến cố \lq\lq Ít nhất một lần xuất hiện mặt sáu chấm\rq\rq. \\
+	Để tìm số phần tử của biến cố $A$, ta đi tìm số phần tử của biến cố đối $\overline{A}$ là \lq\lq Không xuất hiện mặt sáu chấm\rq\rq
+	\[\Rightarrow n\left(\overline{A}\right)=5\cdot5=25\to n\left(A\right)=36-25=11.\]
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{11}{36}$.
+	}
+\end{ex}
+%%%==============HetCau_EX2==============%%%
+%%%==============Cau_EX3==============%%%
+\begin{ex}%[0D0N2-2]
+	Gieo ngẫu nhiên một con súc sắc cân đối đồng chất $3$ lần. Khi đó $n\left(\Omega \right)$ bằng bao nhiêu?
+	\choice
+	{\True $6\cdot6\cdot6$}
+	{$6\cdot6\cdot5$}
+	{$6\cdot5\cdot4$}
+	{$36$}
+\loigiai{
+	Số khả năng xuất hiện khi gieo một con súc sắc cân đối đồng chất lần thứ nhất là $6$.\\
+	Số khả năng xuất hiện khi gieo một con súc sắc cân đối đồng chất lần thứ hai là $6$.\\
+	Số khả năng xuất hiện khi gieo một con súc sắc cân đối đồng chất lần thứ ba là $6$.\\
+	Vậy số khả năng xuất hiện khi gieo một con súc sắc cân đối đồng chất 3 lần là $6\cdot6\cdot6$.
+	}
+\end{ex}
+%%%==============HetCau_EX3==============%%%
+%%%==============Cau_EX4==============%%%
+\begin{ex}%[0D0N2-2]
+	Gieo hai con súc sắc cân đối, đồng chất. Tính xác suất để số chấm xuất hiện trên hai con súc sắc như nhau?
+	\choice
+	{$\dfrac{1}
+	{36}$}
+	{$\dfrac{12}
+	{36}$}
+	{$\dfrac{5}{6}$}
+	{\True $\dfrac{1}{6}$}
+\loigiai{
+	Gieo hai con súc sắc cân đối. đồng chất, ta có số phần tử của không gian mẫu là $n\left(\Omega \right)=6^2$.\\
+	Gọi $A$ là biến cố \lq\lq số chấm xuất hiện trên hai con súc sắc như nhau\rq\rq.\\
+	Ta có, $A=\left\{\left\{1,1\right\}; \left\{2; 2\right\}; \left\{3; 3\right\}; \left\{4; 4\right\}; \left\{5; 5\right\}; \left\{6; 6\right\} \right\}\Rightarrow n\left(A\right)=6$.\\
+	Vậy xác suất để số chấm xuất hiện trên hai con súc sắc như nhau là $\dfrac{6}{36}=\dfrac{1}{6}$.
+	}
+\end{ex}
+%%%==============HetCau_EX4==============%%%
+%%%==============Cau_EX5==============%%%
+\begin{ex}%[0D0N2-2]
+	Gieo một con xúc xắc hai lần. Tính xác suất để biến cố có tổng hai mặt bằng $8$.
+	\choice
+	{$\dfrac{1}
+	{6}$}
+	{\True $\dfrac{5}
+	{36}$}
+	{$\dfrac{1}{9}$}
+	{$\dfrac{1}{2}$}
+\loigiai{
+	Số phần tử của không gian mẫu là $n\left(\Omega \right)=6\cdot6=36$.\\
+	Gọi $A$ là biến cố \lq\lq Số chấm trên mặt hai lần gieo có tổng bằng $8$\rq\rq.\\
+	Gọi số chấm trên mặt khi gieo lần một là $x$, số chấm trên mặt khi gieo lần hai là $y$.\\
+	Theo bài ra, ta có
+	$\heva{{1\le x\le 6} \\ {1\le y\le 6} \\ {x+y=8}}\Rightarrow \left(x;y\right)=\left\{\left(2;6\right),\left(3;5\right),\left(4;4\right),\left(6;2\right),\left(5;3\right)\right\}$.\\
+	Khi đó số kết quả thuận lợi cho biến cố là $n\left(A\right)=5$.\\
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{5}{36}$.
+	}
+\end{ex}
+%%%==============HetCau_EX5==============%%%
+%%%==============Cau_EX6==============%%%
+\begin{ex}%[0D0N2-5]
+	Chọn ngẫu nhiên $2$ viên bi từ hộp có $2$ viên bi đỏ và $3$ viên bi xanh. Xác suất để chọn được $2$ viên bi xanh là
+	\choice
+	{$\dfrac{3}
+	{25}$}
+	{$\dfrac{2}
+	{5}$}
+	{\True $\dfrac{3}{10}$}
+	{$\dfrac{7}{10}$}
+\loigiai{
+	Chọn ngẫu nhiên $2$ viên bi bất kỳ từ $5$ viên bi có $\mathrm{C}_5^2=10$ cách.\\
+	Chọn $2$ viên bi màu xanh trong $3$ viên bi mà xanh có $\mathrm{C}_3^2=3$ cách.\\
+	Vậy xác suất để chọn được $2$ viên bi xanh là $\dfrac{3}{10}$.
+	}
+\end{ex}
+%%%==============HetCau_EX6==============%%%
+%%%==============Cau_EX7==============%%%
+\begin{ex}%[0D0H2-2]
+	Gieo một con xúc xắc cân đối đồng chất hai lần. Tính xác suất để biến cố có tích hai lần số chấm khi gieo xúc xắc là một số chẵn.
+	\choice
+	{$0,25$}
+	{$0,5$}
+	{\True $0,75$}
+	{$0,85$}
+\loigiai{
+	Số phần tử của không gian mẫu là $n\left(\Omega \right)=6\cdot6=36$.\\
+	Gọi $A$ là biến cố \lq\lq tích hai lần số chấm khi gieo xúc xắc là một số chẵn\rq\rq.\\
+	Ta xét các trường hợp:
+	\begin{itemize}
+		\item TH1: Gieo lần một số chấm xuất hiện trên mặt là số lẻ thì khi gieo lần hai, số chấm xuất hiện phải là số chẵn. Khi đó có $3\cdot3=9$ cách gieo.
+		\item TH2: Gieo lần một số chấm xuất hiện trên mặt là số chẵn thì khi gieo lần hai, số chấm xuất hiện có thể là số chẵn hoặc số lẻ. Khi đó có $3\cdot3+3\cdot3=18$ cách gieo.
+	\end{itemize}
+	Suy ra số kết quả thuận lợi cho biến cố là $n\left(A\right)=9+18=27$.\\
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{27}{36}=0,75$.
+	}
+\end{ex}
+%%%==============HetCau_EX7==============%%%
+%%%==============Cau_EX8==============%%%
+\begin{ex}%[0D0H2-4]
+	Một đội gồm $3$ nam và $8$ nữ. Lập một nhóm gồm $4$ người hát tốp ca, tính xác suất để trong $4$ người được chọn ít nhất $3$ nữ.
+	\choice
+	{\True $\dfrac{70}
+	{143}$}
+	{$\dfrac{73}
+	{143}$}
+	{$\dfrac{56}{143}$}
+	{$\dfrac{87}{143}$}
+\loigiai{
+	Không gian mẫu là chọn tùy ý $4$ người từ $13$ người.\\
+	Suy ra số phần tử của không gian mẫu là $n\left(\Omega \right)=\mathrm{C}_{13}^4=715$.\\
+	Gọi $A$ là biến cố `' $4$ người được chọn ít nhất $3$ nữ''. Ta có hai trường hợp thuận lợi cho biến cố $A$ như sau:\\
+	TH1: Chọn 3 nữ và 1 nam, có $\mathrm{C}_8^3\mathrm{C}_5^1$ cách.
+	TH2: Chọn cả 4 nữ, có $\mathrm{C}_8^4$ cách.
+	Suy ra số phần tử của biến cố $A$ là $n\left(A\right)=\mathrm{C}_8^3\mathrm{C}_5^1+\mathrm{C}_8^4=350$.\\
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{350}{715}=\dfrac{70}{143}$.
+	}
+\end{ex}
+%%%==============HetCau_EX8==============%%%
+%%%==============Cau_EX9==============%%%
+\begin{ex}%[0D0H2-5]
+	Một hộp có $5$ viên bi đỏ, $3$ viên bi vàng và $4$ viên bi xanh. Chọn ngẫu nhiên $4$ viên bi trong hộp, tính xác suất để $4$ viên bi được chọn có số bi đỏ lớn hơn số bi vàng và nhất thiết phải có mặt bi xanh.
+	\choice
+	{$\dfrac{1}
+	{12}$}
+	{$\dfrac{1}
+	{3}$}
+	{\True $\dfrac{16}{33}$}
+	{$\dfrac{1}{2}$}
+\loigiai{
+	Không gian mẫu là số cách chọn ngẫu nhiên $4$ viên bi từ hộp chứa $12$ viên bi.\\
+	Suy ra số phần tử của không gian mẫu là $n\left(\Omega \right)=\mathrm{C}_{12}^4=495$.\\
+	Gọi $A$ là biến cố: \lq\lq 4 viên bi được chọn có số bi đỏ lớn hơn số bi vàng và nhất thiết phải có mặt bi xanh\rq\rq. \\
+	Ta có các trường hợp thuận lợi cho biến cố $A$ như sau:
+	\begin{itemize}
+		\item TH1: Chọn $1$ bi đỏ, $3$ bi xanh nên có $\mathrm{C}_5^1\mathrm{C}_4^3$ cách.
+		\item TH2: Chọn $2$ bi đỏ, $2$ bi xanh nên có $\mathrm{C}_5^2\mathrm{C}_4^2$ cách.
+		\item TH3: Chọn $3$ bi đỏ, $1$ bi xanh nên có $\mathrm{C}_5^3\mathrm{C}_4^1$ cách.
+		\item TH4: Chọn $2$ bi đỏ, $1$ bi vàng và bi xanh nên có $\mathrm{C}_5^2\mathrm{C}_3^1\mathrm{C}_4^1$ cách.
+	\end{itemize}
+	Suy ra số phần tử của biến cố $A$ là $n\left(A\right)=\mathrm{C}_5^1\mathrm{C}_4^3+\mathrm{C}_5^2\mathrm{C}_4^2+\mathrm{C}_5^3\mathrm{C}_4^1+\mathrm{C}_5^2\mathrm{C}_3^1\mathrm{C}_4^1=240$.
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{240}{495}=\dfrac{16}{33}$.
+	}
+\end{ex}
+%%%==============HetCau_EX9==============%%%
+%%%==============Cau_EX10==============%%%
+\begin{ex}%[0D0H2-4]
+	Có 13 học sinh của một trường THPT đạt danh hiệu học sinh xuất sắc trong đó khối 12 có 8 học sinh nam và 3 học sinh nữ, khối 11 có 2 học sinh nam. Chọn ngẫu nhiên 3 học sinh bất kỳ để trao thưởng, tính xác suất để 3 học sinh được chọn có cả nam và nữ đồng thời có cả khối 11 và khối 12.
+	\choice
+	{\True $\dfrac{57}
+	{286}$}
+	{$\dfrac{24}
+	{143}$}
+	{$\dfrac{27}{143}$}
+	{$\dfrac{229}{286}$}
+\loigiai{
+	Không gian mẫu là số cách chọn ngẫu nhiên 3 học sinh từ 13 học sinh.\\
+	Suy ra số phần tử của không gian mẫu là $n\left(\Omega \right)=\mathrm{C}_{13}^3=286$.\\
+	Gọi $A$ là biến cố: \lq\lq 3 học sinh được chọn có cả nam và nữ đồng thời có cả khối 11 và khối 12\rq\rq. \\
+	Ta có các trường hợp thuận lợi cho biến cố $A$ là
+	\begin{itemize}
+		\item TH1: Chọn 1 học sinh khối 11,1 học sinh nam khối 12 và 1 học sinh nữ khối 12 nên có $\mathrm{C}_2^1\mathrm{C}_8^1\mathrm{C}_3^1=48$ cách.
+		\item TH2: Chọn 1 học sinh khối 11,2 học sinh nữ khối 12 nên có $\mathrm{C}_2^1\mathrm{C}_3^2=6$ cách.
+		\item TH3: Chọn 2 học sinh khối 11,1 học sinh nữ khối 12 nên có $\mathrm{C}_2^2\mathrm{C}_3^1=3$ cách.
+	\end{itemize}
+	Suy ra số phần tử của biến cố $A$ là $n\left(A\right)=48+6+3=57$.\\
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{n\left(A\right)}{n\left(\Omega \right)}=\dfrac{57}{286}$.
+	}
+\end{ex}
+%%%==============HetCau_EX10==============%%%
+%%%==============Cau_EX11==============%%%
+\begin{ex}%[0D0H2-5]
+	Một chiếc hộp đựng 8 quả cầu trắng, 12 quả cầu đen. Lần thứ nhất lấy ngẫu nhiên một quả cầu trong hộp, lần thứ hai lấy ngẫu nhiên 1 quả cầu trong các quả cầu còn lại. Tính xác suất để kết quả của hai lần lấy được 2 quả cầu cùng màu.
+	\choice
+	{$\dfrac{14}
+	{95}$}
+	{$\dfrac{48}
+	{95}$}
+	{\True $\dfrac{47}{95}$}
+	{$\dfrac{81}{95}$}
+\loigiai{
+	Không gian mẫu là lấy hai quả cầu trong hộp một cách lần lượt ngẫu nhiên.\\
+	Suy ra số phần tử của không gian mẫu là $n\left(\Omega \right)=\mathrm{C}_{20}^1\mathrm{C}_{19}^1$.\\
+	Gọi $A$ là biến cố: \lq\lq Hai quả cầu được lấy cùng màu\rq\rq. \\
+	Ta có các trường hợp thuận lợi cho biến cố $A$ như sau:
+	\begin{itemize}
+		\item TH1: Lần thứ nhất lấy hai quả màu trắng và lần thứ hai cũng màu trắng. Do đó trường hợp này có $\mathrm{C}_7^1\mathrm{C}_8^1$ cách.
+		\item TH2: Lần thứ nhất lấy hai quả màu đen và lần thứ hai cũng màu đen. Do đó trường hợp này có $\mathrm{C}_{12}^1\mathrm{C}_{11}^1$ cách.
+	\end{itemize}
+	Suy ra số phần tử của biến cố $A$ là $n\left(A\right)=\mathrm{C}_7^1\mathrm{C}_8^1+\mathrm{C}_{12}^1\mathrm{C}_{11}^1$.\\
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{n\left(A\right)}{n\left(\Omega \right)}=\dfrac{\mathrm{C}_7^1\mathrm{C}_8^1+\mathrm{C}_{12}^1\mathrm{C}_{11}^1}{\mathrm{C}_{20}^1\mathrm{C}_{19}^1}=\dfrac{47}{95}$.
+	}
+\end{ex}
+%%%==============HetCau_EX11==============%%%
+%%%==============Cau_EX12==============%%%
+\begin{ex}%[0D0H2-5]
+	Trong một hộp có 50 viên bi được đánh số từ 1 đến 50. Chọn ngẫu nhiên 3 viên trong hộp, tính xác suất để tổng ba số trên 3 viên bi được chọn là một số chia hết cho $3$.
+	\choice
+	{$\dfrac{816}
+	{1225}$}
+	{\True $\dfrac{409}
+	{1225}$}
+	{$\dfrac{289}{1225}$}
+	{$\dfrac{936}{1225}$}
+\loigiai{
+	Không gian mẫu là số cách chọn ngẫu nhiên 3 viên bi từ hộp chứa 50 viên bi.\\
+	Suy ra số phần tử của không gian mẫu là $n\left(\Omega \right)=\mathrm{C}_{50}^3=19600$.\\
+	Gọi $A$ là biến cố: \lq\lq3 viên bi được chọn là một số chia hết cho 3\rq\rq.\\
+	Trong 50 viên bi được chia thành ba loại gồm: 16 viên bi có số chia hết cho 3; 17 viên bi có số chia cho 3 dư 1; 17 viên bi có số chia cho 3 dư 2. \\
+	Để tìm số kết quả thuận lợi cho biến cố $A$, ta xét các trường hợp.
+	\begin{itemize}
+		\item TH1: 3 viên bi được chọn cùng một loại, có $\left(\mathrm{C}_{16}^3+\mathrm{C}_{17}^3+\mathrm{C}_{17}^3\right)$ cách.
+		\item TH2: 3 viên bi được chọn có mỗi viên một loại, có $\mathrm{C}_{16}^1\mathrm{C}_{17}^1\mathrm{C}_{17}^1$ cách.
+	\end{itemize}
+	Suy ra số phần tử của biến cố $A$ là $n\left(A\right)=\left(\mathrm{C}_{16}^3+\mathrm{C}_{17}^3+\mathrm{C}_{17}^3\right)+\mathrm{C}_{16}^1\mathrm{C}_{17}^1\mathrm{C}_{17}^1=6544$.\\
+	Vậy xác suất cần tính $P\left(A\right)=\dfrac{n\left(A\right)}{n\left(\Omega \right)}=\dfrac{6544}{19600}=\dfrac{409}{1225}$.
+	}
+\end{ex}
+%%%==============HetCau_EX12==============%%%
+\Closesolutionfile{ans}
+\indapan{6}{ans/0-KNTT-LT-C8B26-caulc}
+\ind{PHẦN II.} \inden{Câu trắc nghiệm đúng sai. Trong mỗi ý a), b), c), d) ở mỗi câu, học sinh chọn đúng hoặc sai.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/0-KNTT-LT-C8B26-cauds]
+%%%==============Cau_1==============%%%
+\begin{ex}%[0D0N2-2]
+	Ném 3 đồng xu đồng chất (giả thiết các đồng xu hoàn toàn giống nhau gồm 2 mặt: sấp và ngửa. Khi đó:
+	\choiceTF
+	{\True $n(\Omega)=8$}
+	{\True Xác suất để thu được 3 mặt giống nhau bằng $\dfrac{1}{4}$}
+	{Xác suất để thu được ít nhất một mặt ngửa bằng $\dfrac{1}{8}$}
+	{Xác suất để không thu được một mặt ngửa nào bằng $\dfrac{7}{8}$}
+\loigiai{
+	\begin{itemchoice}
+		\itemch $n(\Omega)=8$\\
+		Ta có  $\Omega=\{SSS,SSN,SNS,SNN,NNN,NNS,NSS,NSN\}\\ \Rightarrow n(\Omega)=8$.\\
+		\itemch Xác suất để thu được 3 mặt giống nhau bằng $\dfrac{1}{4}$\\
+		Gọi $A$ là biến cố: \lq\lq Thu được 3 mặt giống nhau\rq\rq.\\
+		Ta có  $A=\{SSS,NNN\} \Rightarrow n(A)=2$.\\
+		Xác suất của $A$ là  $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{2}{8}=\dfrac{1}{4}$.\\
+		\itemch Xác suất để thu được ít nhất một mặt ngửa bằng $\dfrac{1}{8}$\\
+		Gọi $C$ là biến cố: \lq\lq Thu được ít nhất một mặt ngửa\rq\rq.\\
+		Ta xét biến cố đối của $C$ là $\overline{C}$: \lq\lq Không thu được một mặt ngửa nào\rq\rq.\\
+		Suy ra $n\left(\overline{C}\right)=1$. \\
+		Do vậy $P\left(C\right)=1-P\left(\overline{C}\right)=1-\dfrac{n\left(\overline{C}\right)}{n\left(\Omega \right)}=1-\dfrac{1}{8}=\dfrac{7}{8}$.\\
+		\itemch Xác suất để không thu được một mặt ngửa nào bằng $\dfrac{7}{8}$\\
+		\[P\left(\overline{C}\right)=\dfrac{n\left(\overline{C}\right)}{n\left(\Omega \right)}=\dfrac{1}{8}.
+		\]
+	\end{itemchoice}
+	}
+\end{ex}
+%%%==============HetCau_1==============%%%
+%%%==============Cau_2==============%%%
+\begin{ex}%[0D0N2-2]
+	Gieo một con súc sắc. Khi đó:
+	\choiceTF[1]
+	{\True $n(\Omega)=6$}
+	{\True Xác suất để thu được mặt có số chấm chia hết cho 2 là $\dfrac{1}{2}$}
+	{\True Xác suất để thu được mặt có số chấm nhỏ hơn 4 là $\dfrac{1}{2}$}
+	{Xác suất để thu được mặt có số chấm lớn hơn 4 là $\dfrac{1}{2}$}
+\loigiai{
+	\begin{itemchoice}
+		\itemch $n(\Omega)=6$\\
+		Ta có $\Omega=\{1;2;3;5;6\} \Rightarrow n(\Omega)=6$.\\
+		\itemch Xác suất để thu được mặt có số chấm chia hết cho 2 là $\dfrac{1}{2}$.\\
+		Gọi $A$ là biến cố: \lq\lq Số chấm thu được chia hết cho 2\rq\rq.
+		Ta có $A=\{2;4;6\} \Rightarrow n(A)=3$. \\
+		Suy ra $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{3}{6}=\dfrac{1}{2}$.
+		\itemch Xác suất để thu được mặt có số chấm nhỏ hơn 4 là $\dfrac{1}{2}$\\
+		Gọi $B$ là biến cố: \lq\lq Số chấm thu được nhỏ hơn 4\rq\rq.\\
+		Ta có $B=\{1;2;3\} \Rightarrow n(B)=3$. \\
+		Suy ra $\mathrm{P}(B)=\dfrac{n(B)}{n(\Omega)}=\dfrac{3}{6}=\dfrac{1}{2}$.
+		\itemch Xác suất để thu được mặt có số chấm lớn hơn 4 là $\dfrac{1}{2}$\\
+		Gọi $C$ là biến cố: \lq\lq Số chấm thu được lớn hơn 4\rq\rq.\\
+		Ta có $C=\{5;6\} \Rightarrow n(C)=2$. \\
+		Suy ra $\mathrm{P}(C)=\dfrac{n(C)}{n(\Omega)}=\dfrac{2}{6}=\dfrac{1}{3}$.
+	\end{itemchoice}
+	}
+\end{ex}
+%%%==============HetCau_2==============%%%
+%%%==============Cau_3==============%%%
+\begin{ex}%[0D0V2-4]
+	Một tổ có 7 nam và 3 nữ. Chọn ngẫu nhiên 2 người. Khi đó:
+	\choiceTF[1]
+	{\True Số phần tử của không gian mẫu là $45$}
+	{Xác suất để không có nữ nào cả bằng: $\dfrac{11}{15}$}
+	{\True Xác suất để đều là nữ bằng: $\dfrac{1}{15}$}
+	{Xác suất để có ít nhất một nữ bằng: $\dfrac{4}{15}$}
+\loigiai{
+	\begin{itemchoice}
+		\itemch Số phần tử của không gian mẫu là $45$.\\
+		Ta có số phần tử của không gian mẫu là $n(\Omega)=\mathrm{C}_{10}^2=45$.
+		\itemch Xác suất để không có nữ nào cả bằng: $\dfrac{11}{15}$\\
+		Gọi $A$: \lq\lq2 người được chọn không có nữ\rq\rq thì $A$: \lq\lq2 người được chọn đều là nam\rq\rq.\\
+		Ta có $n(A)=\mathrm{C}_7^2=21$. \\
+		Vậy $\mathrm{P}(A)=\dfrac{21}{45}=\dfrac{7}{15}$.
+		\itemch Xác suất để đều là nữ bằng: $\dfrac{1}{15}$\\
+		Gọi $B$: \lq\lq2 người được chọn là nữ\rq\rq.\\
+		Ta có $n(B)=\mathrm{C}_3^2=3$.\\
+		Vậy $\mathrm{P}(B)=\dfrac{3}{45}=\dfrac{1}{15}$.
+		\itemch Xác suất để có ít nhất một nữ bằng: $\dfrac{4}{15}$
+		Số phần tử của không gian mẫu là  $n(\Omega)=\mathrm{C}_{10}^2$.
+		Gọi biến cố $D$: \lq\lq Hai người được chọn có ít nhất một người nữ\rq\rq.\\
+		$\Rightarrow \overline{D}$: \lq\lq Hai người được chọn không có nữ\rq\rq $\Rightarrow n\left(\overline{D}\right)=\mathrm{C}_7^2$.\\
+		Vậy xác suất cần tìm là $\mathrm{P}(D)=1-P\left(\overline{D}\right)=1-\dfrac{n(\Omega)}{n\left(\overline{D}\right)}=1-\dfrac{\mathrm{C}_7^2}{\mathrm{C}_{10}^2}=\dfrac{8}{15}$.
+	\end{itemchoice}
+	}
+\end{ex}
+%%%==============HetCau_3==============%%%
+%%%==============Cau_4==============%%%
+\begin{ex}%[0D0V2-5]
+	Một bình đựng 4 quả cầu xanh và 6 quả cầu trắng. Chọn ngẫu nhiên 3 quả cầu. Khi đó:
+	\choiceTF
+	{\True Xác suất để được 3 quả cầu toàn màu xanh bằng $\dfrac{1}{30}$}
+	{\True Xác suất để được 2 quả cầu xanh và 2 quả cầu trắng bằng $\dfrac{3}{10}$}
+	{Xác suất để được 3 quả cầu cùng màu bằng $\dfrac{1}{6}$}
+	{Xác suất để trong 3 quả cầu lấy được có ít nhất 1 quả màu trắng bằng $\dfrac{19}{30}$}
+\loigiai{
+	\begin{itemchoice}
+		\itemch Xác suất để được 3 quả cầu toàn màu xanh bằng $\dfrac{1}{30}$\\
+		Phép thử chọn ngẫu nhiên ba quả cầu.\\
+		Ta có $n(\Omega)=\mathrm{C}_{10}^3=120$.\\
+		Gọi $A$ là biến cố rút \lq\lq Được ba quả toàn màu xanh\rq\rq.
+		\[\Rightarrow n\left(A\right)=\mathrm{C}_4^3=4\Rightarrow P\left(A\right)=\dfrac{n\left(A\right)}{n\left(\Omega \right)}=\dfrac{1}{30}.
+		\]
+		\itemch Xác suất để được 2 quả cầu xanh và 2 quả cầu trắng bằng $\dfrac{3}{10}$\\
+		Gọi $B$ là biến cố \lq\lq được hai quả xanh, một quả trắng\rq\rq.
+		\[\Rightarrow n\left(B\right)=\mathrm{C}_4^2\cdot \mathrm{C}_6^1=36\Rightarrow P\left(B\right)=\dfrac{n\left(B\right)}{n\left(\Omega \right)}=\dfrac{36}{120}=\dfrac{3}{10}.
+		\]
+		\itemch Xác suất để được 3 quả cầu cùng màu bằng $\dfrac{1}{6}$\\
+		Gọi $C$ là biến cố \lq\lq Rút được ba qua cầu cùng màu\rq\rq.\\
+		Trường hợp 1: Rút được 3 màu xanh $\mathrm{C}_4^3=4$.\\
+		Trường hợp 2: Rút được 3 màu trắng $\mathrm{C}_6^3=20$.\\
+		\[n\left(C\right)=4+20=24\Rightarrow P\left(C\right)=\dfrac{n\left(C\right)}{n\left(\Omega \right)}=\dfrac{24}{120}=\dfrac{1}{5}.
+		\]
+		\itemch Xác suất để trong 3 quả cầu lấy được có ít nhất 1 quả màu trắng bằng $\dfrac{19}{30}$\\
+		Gọi $D$ là biến cố \lq\lq lấy được có ít nhất 1 quả màu trắng\rq\rq.\\
+		Gọi $\overline{D}$ là biến cố \lq\lq lấy 3 quả cầu không có quả cầu trắng\rq\rq\\
+		Ta có  $n\left(\overline{D}\right)=\mathrm{C}_4^3$.
+		Nên số cách chọn có ít nhất 1 quả cầu đỏ là $n\left(D\right)=\mathrm{C}_{10}^3-\mathrm{C}_4^3$.\\
+		Xác xuất cần tìm: $P\left(D\right)=\dfrac{\mathrm{C}_{10}^3-\mathrm{C}_4^3}{\mathrm{C}_{10}^3}=\dfrac{29}{30}$.
+	\end{itemchoice}
+	}
+\end{ex}
+%%%==============HetCau_4==============%%%
+\Closesolutionfile{ans}
+\indapan{2}{ans/0-KNTT-LT-C8B26-cauds}
+\ind{PHẦN III.} \inden{Câu trả lời ngắn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/0-KNTT-LT-C8B26-caukq]
+%%%==============Bai_ex1==============%%%
+\begin{ex}%[0D0H2-5]
+	Trong tủ có 4 đôi giày khác loại. Bạn Lan lấy ra ngẫu nhiên 2 chiếc giày. Tính xác suất để lấy ra được một đôi giày hoàn chỉnh. Kết quả làm tròn đến hàng phần mười
+	\par\shortans[0]{0{,}1}
+\loigiai{
+	Gọi $A$ là biến cố \lq\lq Lấy ra được một đôi giày hoàn chỉnh\rq\rq.\\
+	Ta có  $n(\Omega)=\mathrm{C}_8^2=28,n(A)=4$.\\
+	Vậy xác suất của biến cố $A$ là  $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{4}{28}=\dfrac{1}{7}$.
+	}
+\end{ex}
+%%%==============HetBai_ex1==============%%%
+%%%==============Bai_ex2==============%%%
+\begin{ex}%[0D0H2-2]
+	Gieo đồng thời hai viên xúc xắc cân đối và đồng chất. Tính xác suất để tổng số chấm xuất hiện trên hai viên xúc xắc bằng $9$. Kết quả làm tròn đến hàng phần mười
+	\par\shortans[0]{0{,}1}
+\loigiai{
+	Ta có $n(\Omega)=36$.\\
+	Gọi $A$ là biến cố \lq\lq tổng số chấm trên hai viên xúc xắc bằng $9$\rq\rq.\\
+	$A=\{(3;6),(4;5);(5;4);(6;3)\}$. \\
+	Do đó, ta có $n(A)=4$.\\
+	Vậy xác suất của biến cố $A$ là  $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{4}{36}=\dfrac{1}{9}$.
+	}
+\end{ex}
+%%%==============HetBai_ex2==============%%%
+%%%==============Bai_ex3==============%%%
+\begin{ex}%[0D0V2-5]
+	Một lô hàng có 14 sản phẩm, trong đó có đúng 2 phế phẩm. Chọn ngẫu nhiên 8 sẩn phẩm trong lô hàng đó. Tính xác suất của biến cố \lq\lq Trong 8 sản phẩm được chọn có không quá 1 phế phẩm\rq\rq. Kết quả làm tròn đến hàng phần mười
+	\par\shortans[0]{0{,}7}
+\loigiai{
+	Số cách chọn ngẫu nhiên 8 sản phẩm là  $\mathrm{C}_{14}^8=3003$.\\
+	Số cách chọn ngẫu nhiên 8 sản phẩm mà không có phế phẩm là  $\mathrm{C}_{12}^8=495$.\\
+	Số cách chọn ngẫu nhiên 8 sản phẩm mà trong đó có đúng 1 phế phẩm là  $\mathrm{C}_2^1\cdot \mathrm{C}_{12}^7=1584$.\\
+	Suy ra số cách chọn ngẫu nhiên 8 sản phẩm mà trong đó có không quá 1 phế phẩm là  $495+1584=2079$.\\
+	Vậy xác suất của biến cố \lq\lq Trong 8 sản phẩm được chọn có không quá 1 phế phẩm\rq\rq\;là  $\dfrac{2079}{3003}=\dfrac{9}{13} \approx 0,7$.
+	}
+\end{ex}
+%%%==============HetBai_ex3==============%%%
+%%%==============Bai_ex4==============%%%
+\begin{ex}%[0D0V2-4]
+	Xếp ngẫu nhiên 4 bạn nam và 4 bạn nữ thành một hàng dọc. Tính xác suất của biến cố \lq\lq Xếp được các bạn nam và bạn nữ đứng xen kẽ nhau\rq\rq. Kết quả làm tròn đến hàng phần trăm
+	\par\shortans[0]{0{,}03}
+\loigiai{
+	Giả sử các vị trí của hàng dọc được đánh số thứ tự từ đầu hàng là $1,2,3,4,5,6,7,8$. Số cách xếp 8 bạn thành một hàng dọc là $8!=40320$.\\
+	Xếp các bạn nam và bạn nữ đứng xen kẽ nhau có hai trường hợp:\\
+	Trường hợp 1: Các bạn nam đứng ở các vị trí số lẻ còn các bạn nữ đứng ở các vị trí số chẵn. Số cách xếp như vậy là $4!\cdot4!=576$.\\
+	Trường hợp 2: Các bạn nữ đứng ở các vị trí số lẻ còn các bạn nam đứng ở các vị trí số chẵn. Số cách xếp như vậy là $4!\cdot 4!=576$.\\
+	Vậy xác suất của biến cố \lq\lq Xếp được các bạn nam và bạn nữ đứng xen kẽ nhau\rq\rq\;là $$\dfrac{576+576}{40320}=\dfrac{1}{35} \approx 0,03.$$
+	}
+\end{ex}
+%%%==============HetBai_ex4==============%%%
+%%%==============Bai_ex5==============%%%
+\begin{ex}%[0D0V2-5]
+	Một lớp có 40 học sinh trong đó có 15 học sinh giỏi Toán, 10 học sinh giỏi Văn và 5 học sinh giỏi cả Văn và Toán. Chọn ngẫu nhiên một học sinh. Tính xác suất của biến cố $A$: \lq\lq Học sinh được chọn giỏi Toán\rq\rq. Kết quả làm tròn đến hàng phần mười
+	\par\shortans[0]{0{,}4}
+\loigiai{
+	Ta có $n(\Omega)=40$. \\
+	Ta mô phỏng lớp học 40 em này bằng biểu đồ Ven như sau:
+	\begin{center}
+		\begin{tikzpicture}[declare function={a=3;b=a/1.61;},>=stealth]
+			\def\da{({-a/2},0)  ellipse (a and b)}
+			\def\db{({a/2},0) ellipse (a and b)}
+			\begin{scope}
+				\clip\db;
+				\fill[pattern=north west lines] \da;
+				\path (0,0) node[fill=white] (AB) {$5$};
+			\end{scope}
+			\begin{scope}
+				\clip\db;
+				\fill[even odd rule,pattern=dots,pattern color=gray] \da\db;
+				\path ({0.65*a},0) node[fill=white,anchor=west](B){$5$};
+			\end{scope}
+			\path ({-0.65*a},0) node[fill=white,anchor=east](A){$10$};
+			\draw\da\db;
+			\draw[<-] ($(A)+(0,-0.2)$)--+(0,-b) node[anchor=north]{$\text{Giỏi toán}$};
+			\draw[<-] ($(B)+(0,-0.2)$)--+(0,-b) node[anchor=north]{$\text{Giỏi văn}$};
+			%    \draw[<-] (AB.270)--+(0,{-1.2*b}) node[anchor=north]{$\mathrm{P}(AB)=5$};
+			\draw (-5,-3) rectangle (5,3);
+			\path (0,3.5) node {$\text{Lớp học có 40 học sinh}$};
+			\path (0,-2.5) node {$20$};
+		\end{tikzpicture}
+	\end{center}
+	Ta có  $n(A)=15\Rightarrow \mathrm{P}(A)=\dfrac{15}{40}=\dfrac{3}{8}$.
+	}
+\end{ex}
+%%%==============HetBai_ex5==============%%%
+%%%==============Bai_ex6==============%%%
+\begin{ex}%[0D0C2-2]
+	Kết quả $(b;c)$ của việc gieo con súc sắc cân đối và đồng chất hai lần, trong đó $b$ là số chấm xuất hiện trong lần gieo đầu, $c$ là số chấm xuất hiện ở lần gieo thứ hai, được thay vào phương trình bậc hai $x^2+bx+c=0$. Tính xác suất để phương trình trên có nghiệm. Kết quả làm tròn đến hàng phần mười.
+	\par\shortans[0]{0,5}
+\loigiai{
+	Số phần tử không gian mẫu là $n(\Omega)=6\cdot 6=36$.\\
+	Xét biến cố $A$: \lq\lq Phương trình $x^2+bx+c=0$ có nghiệm\rq\rq.\\
+	Ta có  $\Delta=b^2-4c$. Điều kiện bài toán là  $\Delta=b^2-4c\ge 0\Rightarrow c\le \dfrac{b^2}{4}$.\\
+	Trường hợp 1: $b\ge 5$. Khi đó $c$ nhận giá trị tùy ý từ $1$ đến $6$, nên có tất cả $2\cdot6=12$ kết quả thuận lợi cho biến cố $A$.\\
+	Trường hợp 2: $b=4$. Khi đó $c\le 4$, nên có $1\cdot4=4$ kết quả thuận lợi cho biến cố $A$.\\
+	Trường hợp 3: $b < 4$. Ta thấy có ba kết quả thỏa mãn là $(3;1),(3;2),(2;1)$. \\
+	Vậy $n(A)=12+4+3=19$.\\
+	Xác suất để phương trình có nghiệm là $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{19}{36} \approx 0,5$.
+	}
+\end{ex}
+%%%==============HetBai_ex6==============%%%
+\Closesolutionfile{ans}
+\indapan{6}{ans/0-KNTT-LT-C8B26-caukq}
+\ind{PHẦN IV.} \inden{Tự luận.}
+\setcounter{ex}{0}
+%%%==============Bai_BT1==============%%%
+\begin{ex}%[0D0V2-5]
+	Trong một chiếc hộp có 20 viên bi, trong đó có 8 viên bi màu đỏ, 7 viên bi màu xanh và 5 viên bi màu vàng. Lấy ngẫu nhiên ra 3 viên bi. Tìm xác suất để:
+	\begin{enumerate}
+		\item 3 viên bi lấy ra đều màu đỏ.
+		\item 3 viên bi lấy ra có đúng hai màu.
+	\end{enumerate}
+\loigiai{
+	Gọi $A$: \lq\lq3 viên bi lấy ra đều màu đỏ\rq\rq,
+	$B$: \lq\lq3 viên bi lấy ra có đúng hai màu\rq\rq.\\
+	Số cách lấy 3 viên bi từ 20 viên bi là $\mathrm{C}_{20}^3$ nên ta có $n\left(\Omega \right)=\mathrm{C}_{20}^3=1140$.
+	\begin{enumerate}
+		\item 3 viên bi lấy ra đều màu đỏ.\\
+		Số cách lấy 3 viên bi màu đỏ là $\mathrm{C}_8^3=56$ nên $n\left(A\right)=56$.\\
+		Do đó: $P\left(A\right)=\dfrac{56}{1140}=\dfrac{14}{285}$.
+		\item 3 viên bi lấy ra có đúng hai màu.\\
+		Số cách lấy 3 viên bi có đúng hai màu
+		\begin{itemize}
+			\item Đỏ và xanh: $\mathrm{C}_{15}^3-\left(\mathrm{C}_8^3+\mathrm{C}_7^3\right)$
+			\item Đỏ và vàng: $\mathrm{C}_{13}^3-\left(\mathrm{C}_8^3+\mathrm{C}_5^3\right)$
+			\item Vàng và xanh: $\mathrm{C}_{12}^3-\left(\mathrm{C}_5^3+\mathrm{C}_7^3\right)$
+		\end{itemize}
+		Nên số cách lấy 3 viên bi có đúng hai màu: $\mathrm{C}_{12}^3+\mathrm{C}_{15}^3+\mathrm{C}_{15}^3-2\left(\mathrm{C}_8^3+\mathrm{C}_5^3+\mathrm{C}_7^3\right)=759$\\
+		Do đó: $n\left(B\right)=759$. \\
+		Vậy $P\left(B\right)=\dfrac{n\left(B\right)}{n\left(\Omega \right)}=\dfrac{253}{380}$.
+	\end{enumerate}
+	}
+\end{ex}
+%%%==============HetBai_BT1==============%%%
+%%%==============Bai_BT2==============%%%
+\begin{ex}%[0D0H2-2]
+	Gieo đồng thời ba con xúc xắc cân đối và đồng chất. Gọi $A$ là biến cố: \lq\lq Tích số chấm ở mặt xuất hiện trên ba con xúc xắc đó là số chẵn\rq\rq. Hãy tính xác suất của biến cố $A$.
+\loigiai{
+	Biến cố đối của biến cố $A$ là biến cố $\overline{A}$: \lq\lq Tích các số chấm ở mặt xuất hiện trên ba con xúc xắc đó là số lẻ\rq\rq.\\
+	Tổng số kết quả có thể xảy ra của phép thử là $n\left(\Omega \right)=6^3$.\\
+	$\overline{A}$ xảy ra khi mặt xuất hiện trên cả ba con xúc xắc đều có số chấm là số lẻ. \\
+	Số kết quả thuận lợi cho $\overline{A}$ là $n\left(\overline{A}\right)=3^3$.\\
+	Xác suất của biến cố $\overline{A}$ là $P\left(\overline{A}\right)=\dfrac{3^3}{6^3}=\dfrac{1}{8}$.\\
+	Xác suất của biến cố $A$ là $P\left(A\right)=1-P\left(\overline{A}\right)=\dfrac{7}{8}$.
+	}
+\end{ex}
+%%%==============HetBai_BT2==============%%%
+%%%==============Bai_BT3==============%%%
+\begin{ex}%[0D0V2-5]
+	Trong một hộp kín có 18 quả bóng khác nhau: 9 trắng, 6 đen, 3 vàng.Lấy ngẫu nhiên đồng thời 5 quả bóng trong đó. Tính xác suất của:
+	\begin{enumerate}
+		\item $A$: \lq\lq5 quả bóng cùng màu\rq\rq.
+		\item $B$: \lq\lq5 quả bóng có đủ 3 màu\rq\rq.
+		\item $C$: \lq\lq5 quả bóng không có màu trắng\rq\rq.
+	\end{enumerate}
+\loigiai{
+	Lấy ngẫu nhiên 5 bóng đồng thời trong hộp kín do đó $n\left(\Omega \right)=\mathrm{C}_{18}^5=8568$ cách.
+	\begin{enumerate}
+		\item $A$: \lq\lq5 quả bóng cùng màu\rq\rq.\\
+		Trường hợp 1: 5 quả bóng đồng màu trắng: $\mathrm{C}_9^5=126$ cách lấy.\\
+		Trường hợp 2: 5 quả bóng đồng màu đen: $\mathrm{C}_6^5=6$ cách lấy.\\
+		Từ đó $n\left(A\right)=126+6=132\Rightarrow P\left(A\right)=\dfrac{n\left(A\right)}{n\left(\Omega \right)}=\dfrac{11}{714}$.
+		\item $B$: \lq\lq5 quả bóng có đủ 3 màu\rq\rq.\\
+		Trường hợp 1: 1 trắng, 1 đen, 3 vàng: $9\cdot6\cdot\mathrm{C}_3^3=54$ cách.\\
+		Trường hợp 2: 1 trắng, 2 đen, 2 vàng: $9\cdot\mathrm{C}_6^2\cdot\mathrm{C}_3^2=405$ cách.\\
+		Trường hợp 3: 2 trắng, 1 đen, 2 vàng: $\mathrm{C}_9^2\cdot6\cdot\mathrm{C}_3^2=648$ cách.\\
+		Trường hợp 4: 2 trắng, 2 đen, 1 vàng: $\mathrm{C}_9^2\cdot\mathrm{C}_6^2\cdot3=1620$ cách.\\
+		Trường hợp 5: 3 trắng, 1 đen, 1 vàng: $\mathrm{C}_9^3\cdot6\cdot3=1512$ cách.\\
+		Từ đó $n\left(B\right)=4239\Rightarrow P\left(B\right)=\dfrac{n\left(B\right)}{n\left(\Omega \right)}=\dfrac{471}{952}$.
+		\item $C$: \lq\lq5 quả bóng không có màu trắng\rq\rq.\\
+		5 quả bóng lấy trong 9 quả đen vàng do đó
+		\[n\left(C\right)=\mathrm{C}_9^5=126\Rightarrow P\left(C\right)=\dfrac{n\left(C\right)}{n\left(\Omega \right)}=\dfrac{1}{68}.\]
+	\end{enumerate}
+	}
+\end{ex}
+%%%==============HetBai_BT3==============%%%
+%%%==============Bai_BT4==============%%%
+\begin{ex}%[0D0V2-5]
+	Một giáo viên muốn chọn hai câu hỏi ra đề kiểm tra 15 phút môn Toán lớp 10. Trong ngân hàng đề có 10 câu hàm số, 6 câu toán tổ hợp, 8 câu hỏi toán xác suất. Tính xác suất để hai câu hỏi rơi vào hai chủ đề khác nhau.
+\loigiai{
+	Ta có $n\left(\Omega \right)=\mathrm{C}_{24}^2$.\\
+	Gọi $A$ là biến cố: \lq\lq Chọn được hai câu cùng chủ đề\rq\rq.\\
+	Trường hợp 1: Chọn được hai câu hàm số: $\mathrm{C}_{10}^2$.\\
+	Trường hợp 2: Chọn được hai câu tổ hợp: $\mathrm{C}_6^2$.\\
+	Trường hợp 3: Chọn được hai câu xác suất: $\mathrm{C}_8^2$.\\
+	Khi đó $n\left(A\right)=\mathrm{C}_{10}^2+\mathrm{C}_6^2+\mathrm{C}_8^2$\\
+	Vậy $P\left(A\right)=\dfrac{n\left(A\right)}{n\left(\Omega \right)}=\dfrac{\mathrm{C}_{10}^2+\mathrm{C}_8^2+\mathrm{C}_6^2}{\mathrm{C}_{24}^2}=\dfrac{22}{69}$.\\
+	Ta có  $\overline{A}$ là biến cố: \lq\lq Chọn được hai câu vào hai chủ đề khác nhau\rq\rq.\\
+	Khi đó: $P\left(\overline{A}\right)=1-P\left(A\right)=\dfrac{47}{69}$.
+	}
+\end{ex}
+%%%==============HetBai_BT4==============%%%
+%%%==============Bai_BT5==============%%%
+\begin{ex}%[0D0H2-5]
+	Một lô hàng gồm $30$ sản phẩm tốt và $10$ sản phẩm xấu. Lấy ngẫu nhiên $3$ sản phẩm. Tính xác suất để $3$ sản phẩm lấy ra có ít nhất một sản phẩm tốt.
+\loigiai{
+	Chọn ra ba sản phẩm tùy ý có $\mathrm{C}_{40}^3=9880$ cách chọn.\\
+	Do đó $n\left(\Omega \right)=9880$.\\
+	Gọi $A$: \lq\lq có ít nhất $1$ sản phẩm tốt\rq\rq.\\
+	Khi đó $\overline{A}$: \lq\lq3 sản phẩm không có sản phẩm tốt\rq\rq.
+	\[n\left(\overline{A}\right)=\mathrm{C}_{10}^3=120.\\
+	\]
+	Vậy xác suất cần tìm là $P\left(A\right)=1-P\left(\overline{A}\right)=1-\dfrac{n\left(\overline{A}\right)}{n\left(\Omega \right)}=1-\dfrac{120}{9880}=\dfrac{244}{247}$.
+	}
+\end{ex}
+%%%==============HetBai_BT5==============%%%
+%%%==============Bai_BT6==============%%%
+\begin{ex}%[0D0C2-6]
+	Cho đa giác đều gồm $2n$ đỉnh. Chọn ngẫu nhiên ba đỉnh trong số $2n$ đỉnh của đa giác, xác suất ba đỉnh được chọn tạo thành một tam giác vuông là $0{,}2$. Tìm $n$, biết $n$ là số nguyên dương và $n\ge 2$.
+\loigiai{
+	Số cách chọn 3 đỉnh trong $2n$ đỉnh của đa giác là $\mathrm{C}_{2n}^3$.\\
+	Ba đỉnh được chọn tạo thành tam giác vuông khi và chỉ khi có hai đỉnh trong ba đỉnh là hai đâu mút của một đường kính của đường tròn ngoại tiếp đa giác, và đỉnh còn lại là một trong số $(2n-2)$ đỉnh còn lại của đa giác.\\
+	Số cách chọn một đường kính mà hai đâu mút là hai đỉnh trong số $2n$ đỉnh của đa giác là $n$. Suy ra số cách chọn 3 đỉnh trong số $2n$ đỉnh của đa giác để chúng tạo thành một tam giác vuông là $n(2n-2)$.\\
+	Vì xác suất ba đỉnh được chọn tạo thành một tam giác vuông là $0{,}2$ nên
+	$$\dfrac{n(2n-2)}{\mathrm{C}_{2n}^3}=0{,}2
+	\Leftrightarrow \dfrac{6n(2n-2)}{2n(2n-1)(2n-2)}=\dfrac{1}{5}
+	\Leftrightarrow n=8 (\text{nhận}).
+	$$
+	}
+\end{ex}
+%%%==============HetBai_BT6==============%%%
