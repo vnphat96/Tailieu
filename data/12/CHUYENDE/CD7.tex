@@ -1,0 +1,2320 @@
+\subsection{\vdmh}
+\Opensolutionfile{ans}[ans/DA-CD7-VD]
+\begin{vd}
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, $SA=a\sqrt{6}$ và $SA$ vuông góc $(ABCD)$. Hãy xác định và tính
+    \begin{listEX}[2]
+        \item  $\left(SC;(ABCD)\right)$
+        \item  $\left(SC;(SAB)\right)$
+        \item  $\left(SB;(SAC)\right)$
+        \item  $\left(AC;(SBC)\right)$
+        \item $d(D,SAB)$
+        \item $d(D,SAC)$
+        \item $d(A,SBD)$
+        \item $d(C,SBD)$
+        \item* $d(O,SBC)$ với $O$ là tâm hình vuông
+    \end{listEX}
+}
+{
+    \begin{tikzpicture}[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+        \def\bc{4} % cạnh BC
+        \def\ba{2} % cạnh BA
+        \def\h{4} % đường cao
+        \def\gocB{30} % góc B của đáy
+        \path
+        (0,0) coordinate (B)
+        (\gocB:\ba) coordinate (A)
+        (\bc,0) coordinate (C)
+        ($(C)-(B)+(A)$) coordinate (D)
+        ($(A)+(90:\h)$) coordinate (S);
+        \draw (B)--(C)--(D)--(S)--cycle (S)--(C)
+        pic[draw,angle radius=2mm]{right angle=D--A--S};
+        \draw[dashed] (A)--(D) (S)--(A)--(B);
+        \foreach \x/\g in {A/160,B/-145,C/-45,D/0,S/90}\fill[red] (\x) circle (1pt)+(\g:3mm) node[black]{$ \x $};
+    \end{tikzpicture}
+}
+    \loigiai{
+       
+    }
+    \dotlineEX{17}
+\end{vd}
+
+\begin{vd}%[1H8H4-3]
+    \immini[thm]
+{
+    Cho hình chóp tứ giác $S.ABCD$ có đáy $ABCD$ là hình vuông và $SA$ vuông góc với mặt phẳng $(ABCD)$. Biết tam giác $SBD$ đều và có diện tích bằng $a^2\sqrt 3 $. Góc giữa hai mặt phẳng $(SCD)$ và $(ABCD)$ bằng
+        \choice
+        {\True $45^\circ $}
+        {$60^\circ $}
+        {$90^\circ $}
+        {$75^\circ $}
+    }
+    {
+        \begin{tikzpicture}[line join =round, line cap= round, >= stealth,
+            declare function={goc=-130; a=4; b=0.65*a; h=2.5;gocnghieng=90;}]
+            \path
+            (0,0) coordinate (A)
+            (gocnghieng:h) coordinate (S)
+            (a,0) coordinate (D)
+            (goc:b) coordinate (B)
+            ($(D)+(B)-(A)$) coordinate (C)
+            ($(A)!.5!(C)$) coordinate (O)
+            ;
+            \draw (S)--(C)--(D)--(S)--(B)--(C)
+            ;
+            \draw[dashed](S)--(A)--(B)  (A) -- (D) (A)--(C)(B)--(D);
+            \foreach \x/\g in {S/90,A/180, B/180, C/0,D/20,O/-90} {
+                \fill (\x) node[shift={(\g:7pt)}]{$\x$} circle (1pt);
+            }
+        \end{tikzpicture}
+    }
+%    \loigiai{
+%        \immini{
+%            Ta có $S_{\triangle SBD}=\dfrac{BD^2\sqrt 3}{4}=a^2\sqrt 3$.\\
+%            Suy ra $SB=BD=2a\Rightarrow\heva{&AD=AB=a\sqrt 2\\&	SA=\sqrt{SB^2-AB^2}=a\sqrt 2.}$\\
+%            Mặt khác $\heva{&CD\perp AD\\&CD\perp SA}\Rightarrow CD\perp(SAD)\Rightarrow CD\perp SD$ và $AD\perp CD$.\\
+%            Khi đó $\Big(\widehat{(SCD),(ABCD)}\Big)=\Big(AD,SD\Big)=\widehat{SDA}$.\\
+%            Và $\tan\widehat{SDA}=\dfrac{SA}{AD}=1\Rightarrow\widehat{SDA}=45^\circ$.
+%        }{
+%            \begin{tikzpicture}[font=\small, scale=1, line join =round, line cap= round, >= stealth,
+%                declare function={goc=-130; a=4; b=0.65*a; h=3.5;gocnghieng=90;}]
+%                \path
+%                (0,0) coordinate (A)
+%                (gocnghieng:h) coordinate (S)
+%                (a,0) coordinate (D)
+%                (goc:b) coordinate (B)
+%                ($(D)+(B)-(A)$) coordinate (C)
+%                ($(A)!.5!(C)$) coordinate (O)
+%                ;
+%                \draw (S)--(C)--(D)--(S)--(B)--(C)
+%                pic[draw, angle radius=3mm]{angle=S--D--A}
+%                ;
+%                \draw[dashed](S)--(A)--(B)  (A) -- (D) (A)--(C)(B)--(D);
+%                \foreach \x/\g in {S/90,A/180, B/-60, C/0,D/20,O/-90} {
+%                    \fill (\x) node[shift={(\g:7pt)}]{$\x$} circle (1pt);
+%                }
+%            \end{tikzpicture}
+%        }
+%    }
+%\dotlineEX{1}
+\end{vd}
+
+\begin{vd}[THPT Chuyên Quốc Học Huế]%[2H1B3-2]
+\immini[thm]
+{
+    Cho khối chóp tứ giác đều có cạnh đáy bằng $a$ và cạnh bên bằng $a\sqrt{3}$. Tính thể tích $V$ của khối chóp đó theo $a$.
+    \choice
+    {$V=\dfrac{\sqrt{2}a^3}{3}$}
+    {$V=\dfrac{\sqrt{3}a^3}{6}$}
+    {\True $V=\dfrac{\sqrt{10}a^3}{6}$}
+    {$V=\dfrac{a^3}{2}$}
+}
+{
+    \begin{tikzpicture}
+        \path
+        (0,0) coordinate (A)
+        --++(4,0) coordinate (B)
+        --++(-2,-1.5) coordinate (C)
+        ($(A)+(C)-(B)$) coordinate (D)
+        ($(A)!.5!(C)$) coordinate (O)
+        --++(0,3) coordinate (S)
+        ;
+        \draw (B)--(C)--(D) (D)--(S)--(C) (S)--(B);
+        \draw[dashed](D)--(A)--(B) (S)--(A)--(C) (S)--(O);
+        \foreach \d/\g in {A/135, B/45,C/-45, D/-135, S/90,O/-90}{
+            \draw[fill=black](\d) circle (1pt) +(\g:.35)node{$\d$};}
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \begin{immini}{
+%                $OA=\dfrac{a\sqrt{2}}{2}$.\\
+%                $SO=\sqrt{SA^2-OA^2}=\sqrt{3a^2-\dfrac{a^2}{2}}=\dfrac{a\sqrt{5}}{\sqrt{2}}$.\\
+%                $S_{ABCD}=a^2$.\\
+%                $V_{S.ABCD}=\dfrac{1}{3}\cdot a^2\cdot \dfrac{a\sqrt{5}}{\sqrt{2}}=\dfrac{a^3\sqrt{10}}{6}$.
+%            }{
+%                \begin{tikzpicture}[scale=.7]
+%                    \path
+%                    (0,0) coordinate (A)
+%                    --++(5,0) coordinate (B)
+%                    --++(-2,-2) coordinate (C)
+%                    --++(-5,0) coordinate (D)
+%                    ($(A)!.5!(C)$) coordinate (O)
+%                    --++(0,4) coordinate (S)
+%                    ;
+%                    \draw (B)--(C)--(D) (D)--(S)--(C) (S)--(B);
+%                    \draw[dotted](D)--(A)--(B) (S)--(A)--(C) (S)--(O);
+%                    \foreach \d/\g in {A/135, B/45,C/-45, D/-135, S/90,O/-90}{
+%                        \draw[fill=black](\d) circle (1pt) +(\g:.35)node{$\d$};}
+%                \end{tikzpicture}
+%            }
+%        \end{immini}
+%    }
+%\dotlineEX{2}
+\end{vd}
+\begin{vd}%[1H3B5-3]
+    \immini[thm]
+{
+    Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$. Cạnh bên $SA=a\sqrt{3}$ và vuông góc với mặt đáy $\left(ABC\right)$. Tính khoảng cách $d$ từ $A$ đến mặt phẳng $\left(SBC\right)$.
+        \choice
+        {$d=\dfrac{a\sqrt{3}}{2}$}
+        {$d=a$}
+        {\True $d=\dfrac{a\sqrt{15}}{5}$}
+        {$d=\dfrac{a\sqrt{5}}{5}$}
+    }
+    {
+        \begin{tikzpicture}[line join=round, line cap=round,>=stealth]
+            \tkzDefPoints{0/0/A, 5/0/C, 3/-2/B}
+            \coordinate (S) at ($(A)+(0,2.5)$);
+            \draw (S)--(A)--(B)--(C)--(S)--(B);
+            \draw[dashed] (A)--(C);
+            \foreach \x/\g in {A/180,B/-90,C/0,S/180}\draw[fill=white] (\x) circle (1pt)+(\g:3mm) node{$\x$};
+        \end{tikzpicture}
+    }
+%    \loigiai{
+%        \immini{
+%            Gọi $M$ là trung điểm $BC$, suy ra $AM\perp BC$ và $AM=\dfrac{a\sqrt{3}}{2}$.\\
+%            Gọi $K$ là hình chiếu của $A$ trên $SM$, suy ra $AK\perp SM$.\hfill $(1)$\\
+%            Ta có $\heva{& AM\perp BC \\ & BC\perp SA \\}\Rightarrow BC\perp \left(SAM\right)\Rightarrow BC\perp AK.$ \hfill$(2)$\\
+%            Từ $(1)$ và $(2)$, suy ra $AK\perp \left(SBC\right)$ nên $\mathrm{d}\left(A,\left(SBC\right)\right)=AK.$\\
+%            Trong $\bigtriangleup SAM$, có $AK=\dfrac{SA\cdot AM}{\sqrt{SA^2+AM^2}}=\dfrac{3a}{\sqrt{15}}=\dfrac{a\sqrt{15}}{5}.$\\
+%            Vậy $\mathrm{d}\left(A,\left(SBC\right)\right)=AK=\dfrac{a\sqrt{15}}{5}.$
+%        }{
+%            \begin{tikzpicture}[scale=.7, font=\footnotesize, line join=round, line cap=round,>=stealth]
+%                \tkzDefPoints{0/0/A, 6/0/C, 2.5/-3/B}
+%                \coordinate (S) at ($(A)+(0,4)$);
+%                \coordinate (M) at ($(B)!.5!(C)$);
+%                \coordinate (K) at ($(S)!.35!(M)$);
+%                \tkzDrawPoints[fill=black](A,B,C,S,K,M)
+%                \tkzDrawSegments[dashed](A,M A,K A,C)
+%                \tkzDrawPolygon(S,A,B,C)
+%                \tkzDrawSegments(S,M S,B)
+%                \tkzLabelPoints[left](A)
+%                \tkzLabelPoints[below right](M)
+%                \tkzLabelPoints[right](C,K)
+%                \tkzLabelPoints[above](S)
+%                \tkzLabelPoints[below](B)
+%                \tkzMarkRightAngles(A,M,B S,K,A)
+%            \end{tikzpicture}
+%        }
+%    }
+%\dotlineEX{1}
+\end{vd}
+\begin{vd}%[1H3B5-4]
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$,cạnh bằng $4a$. Cạnh bên $SA=2a$. Hình chiếu vuông góc của đỉnh $S$ trên mặt phẳng $\left(ABCD\right)$ là trung điểm của $H$ của đoạn thẳng $AO$. Tính khoảng cách $d$ giữa các đường thẳng $SD$ và $AB$.
+    \choice
+    {\True $d=\dfrac{4a\sqrt{22}}{11}$}
+    {$d=2a$}
+    {$d=4a$}
+    {$d=\dfrac{3a\sqrt{2}}{\sqrt{11}}$}
+}
+{
+    \begin{tikzpicture}[line join=round, line cap=round,>=stealth]
+        \tkzDefPoints{0/0/D, 4/0/C, 6.5/2/B}
+        \coordinate (A) at ($(B)+(D)-(C)$);
+        \coordinate (O) at ($(A)!.5!(C)$);
+        \coordinate (H) at ($(A)!.5!(O)$);
+        \coordinate (S) at ($(H)+(0,3)$);
+        \draw (S)--(D)--(C)--(B)--(S)--(C);
+        \draw[dashed] (S)--(A)--(D)--(B)--(A)--(C) (S)--(H);
+        \foreach \x/\g in {A/130,B/0,C/-90,D/-90,O/-120,S/90,H/10}\draw[fill=white] (\x) circle (1pt)+(\g:3mm) node{$\x$};
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \immini{
+%            Do $AB\parallel CD$ nên $\mathrm{d}\left(SD,AB\right)=\mathrm{d}\left(AB,\left(SCD\right)\right)=\mathrm{d}\left(A,\left(SCD\right)\right)=\dfrac{4}{3}\mathrm{d}\left(H,\left(SCD\right)\right).$\\
+%            Kẻ $HE\perp CD$, kẻ $HL\perp SE$, ta tính được: $$SH=\sqrt{SA^2-AH^2}=a\sqrt{2},HE=\dfrac{3}{4}AD=3a.$$
+%            Khi đó $\mathrm{d}\left(H,\left(SCD\right)\right)=HL=\dfrac{SH\cdot HE}{\sqrt{SH^2+HE^2}}=\dfrac{3a\sqrt{2}}{\sqrt{11}}.$\\
+%            Vậy $\mathrm{d}\left(SD,AB\right)=\dfrac{4}{3}HL=\dfrac{4a\sqrt{22}}{11}.$
+%        }{
+%            \begin{tikzpicture}[scale=.7, font=\footnotesize, line join=round, line cap=round,>=stealth]
+%                \tkzDefPoints{0/0/D, 5/0/C, 7.5/2.5/B}
+%                \coordinate (A) at ($(B)+(D)-(C)$);
+%                \coordinate (O) at ($(A)!.5!(C)$);
+%                \coordinate (H) at ($(A)!.5!(O)$);
+%                \coordinate (S) at ($(H)+(0,6)$);
+%                \coordinate (E) at ($(D)!.25!(C)$);
+%                \coordinate (L) at ($(S)!.7!(E)$);
+%                \tkzDrawPoints[fill=black](A,B,C,D,S,L,H,E,O)
+%                \tkzDrawSegments[dashed](S,A S,H A,C H,E H,L)
+%                \tkzDrawPolygon(S,B,C,D)
+%                \tkzDrawPolygon[dashed](A,B,D)
+%                \tkzDrawSegments(S,C S,E)
+%                \tkzLabelPoints[left](L)
+%                \tkzLabelPoints[above left](A)
+%                \tkzLabelPoints[above](S)
+%                \tkzLabelPoints[right](H)
+%                \tkzLabelPoints[below](D,C,O,E)
+%                \tkzLabelPoints[above right](B)
+%                \tkzMarkRightAngles(S,H,A H,E,C H,L,E)
+%            \end{tikzpicture}
+%        }
+%    }
+\dotlineEX{2}
+\end{vd}
+\Closesolutionfile{ans}
+\subsection{\btrl}
+\Opensolutionfile{ans}[ans/DA-CD7-BTRL]
+
+\begin{ex}%[1H4H3-2]
+    \immini[thm]
+{
+    Cho tứ diện $ABCD$ có $M$, $N$ lần lượt là trung điểm của $AB$, $AC$. Mặt phẳng
+        nào sau đây song song với đường thẳng $MN$?
+        \choice
+        {$(ACD)$}
+        {$(ABD)$}
+        {$(ABC)$}
+        {\True $(BCD)$}
+    }
+    {
+        \begin{tikzpicture}[line join=round, line cap=round, >=stealth]
+            \path
+            (0,2) coordinate (A)
+            (-2,0) coordinate (B)
+            ($(B)+(-30:1.5)$) coordinate (C)
+            (3,0) coordinate (D)
+            ($(A)!1/2!(B)$) coordinate (M)
+            ($(A)!1/2!(C)$) coordinate (N);
+            \draw(A)--(B) (A)--(C) (A)--(D) (A)--(B) (B)--(C)--(D)  (M)--(N);
+            \draw[dashed](B)--(D);
+            \foreach \i/\g in {A/0,B/180,C/190,D/0,M/150,N/0}{\draw[fill=black](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+        \end{tikzpicture}
+    }
+%    \loigiai{
+%        \immini{Vì $M$, $N$ lần lượt là trung điểm của $AB$, $AC$ nên $MN$ là đường trung bình
+%            của tam giác $ABC$, do đó $MN \parallel BC$, lại có $MN \not\subset(BCD)$ và
+%            $BC\subset (BCD)$ nên $MN\parallel (BCD)$.}
+%        {\begin{tikzpicture}[scale=.7, font=\small, line join=round, line cap=round, >=stealth]
+%                \path
+%                (0,4) coordinate (A)
+%                (-2,0) coordinate (B)
+%                (0,-3) coordinate (C)
+%                (3,0) coordinate (D)
+%                ($(A)!1/2!(B)$) coordinate (M)
+%                ($(A)!1/2!(C)$) coordinate (N);
+%                \draw(A)--(B) (A)--(C) (A)--(D) (A)--(B) (B)--(C)--(D)  (M)--(N);
+%                \draw[dashed](B)--(D);
+%                \foreach \i/\g in {A/90,B/180,C/-90,D/0,M/150,N/0}{\draw[fill=black](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+%        \end{tikzpicture}}
+%    }
+\end{ex}
+
+
+
+\begin{ex}%[1H8H2-2]
+    \immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông, $SA$ vuông góc với mặt đáy. Đường thẳng $CD$ vuông góc với mặt phẳng nào sau đây?
+        \choice
+        {\True $(SAD)$}
+        {$(SAB)$}
+        {$(SAC)$}
+        {$(SBD)$}
+    }
+    {
+        \begin{tikzpicture}[ line join=round, line cap=round, >=stealth]
+            \def\a{2.8}
+            \def\h{2.2}
+            \path
+            (0:0) coordinate (A)
+            ++(0:\a) coordinate (D)
+            ++(-150:0.6*\a) coordinate (C)
+            ($(A)+(C)-(D)$) coordinate (B)
+            (A)++(90:\h) coordinate (S)
+            ;
+            \draw[dashed] (S)--(A)--(B) (D)--(A);
+            \draw (S)--(C) (S)--(D) (S)--(B) (B)--(C)--(D);
+            \foreach \x/\g in {D/0,A/135,B/180,C/-40,S/90}
+            \fill[black] 	(\x) circle (1pt)
+            ($(\g:3mm)+(\x)$) node {$\x$};
+            \draw pic[draw,angle radius=2mm]{right angle=S--A--D};
+        \end{tikzpicture}
+    }
+%    \loigiai{\begin{center}
+%            \begin{tikzpicture}[font=\small, line join=round, line cap=round, >=stealth, scale=.8]
+%                \def\a{4}
+%                \def\h{3.5}
+%                \path
+%                (0:0) coordinate (A)
+%                ++(0:\a) coordinate (D)
+%                ++(-150:0.7*\a) coordinate (C)
+%                ($(A)+(C)-(D)$) coordinate (B)
+%                (A)++(90:\h) coordinate (S)
+%                ;
+%                \draw[dashed] (S)--(A)--(B) (D)--(A);
+%                \draw (S)--(C) (S)--(D) (S)--(B) (B)--(C)--(D);
+%                \foreach \x/\g in {D/0,A/135,B/180,C/-40,S/90}
+%                \fill[black] 	(\x) circle (1pt)
+%                ($(\g:3mm)+(\x)$) node {$\x$};
+%                \draw pic[draw,angle radius=2mm]{right angle=S--A--D};
+%            \end{tikzpicture}
+%        \end{center}
+%        Vì $\heva{&SA\perp (ABCD) \\&CD\subset (ABCD)}$  nên $SA \perp CD$.\\
+%        Ta có $\heva{&CD\perp SA\\&CD\perp AD}$ suy ra $CD\perp (SAD)$.
+%    }
+\end{ex}
+
+\begin{ex}%[1H8H2-2]
+    \immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có tất cả các cạnh bên và cạnh đáy đều bằng nhau và $ABCD$ là hình vuông.
+        Khẳng định nào sau đây đúng?
+        \choice
+        {$SA\perp (ABCD)$}
+        {$AC\perp (SBC)$}
+        {\True $AC\perp (SBD)$}
+        {$AC\perp (SCD)$}
+    }
+    {
+        \begin{tikzpicture}[line join=round, line cap=round, >=stealth,declare function={goc=-150; a=3.5; b=a/2; h=2.2;}]
+            \path (0,0) coordinate (A)
+            (a,0) coordinate (B)
+            (goc:b) coordinate (D)
+            +(a,0) coordinate (C)
+            ($(A)!.5!(C)$) coordinate (O)
+            +(0,h) coordinate (S);
+            \draw pic[angle radius=3mm,draw] {right angle = S--O--D};
+            \draw[dashed] (S)--(A) (D)--(A)--(B) (S)--(O) (A)--(C) (D)--(B);
+            \draw (S)--(D)--(C)--(S)--(B)--(C)--cycle;
+            \foreach \x/\goc in {S/90,A/150,B/0,C/-60,D/-180,O/-90}
+            \draw[fill=white] (\x) node[shift={(\goc:7pt)},font=\scriptsize]{$\x$} circle (1pt);
+        \end{tikzpicture}
+    }
+%    \loigiai{
+%        \begin{center}
+%            \begin{tikzpicture}[scale=1, font=\small, line join=round, line cap=round, >=stealth,declare function={goc=-150; a=3.5; b=a/2; h=4;}]
+%                \path (0,0) coordinate (A)
+%                (a,0) coordinate (B)
+%                (goc:b) coordinate (D)
+%                +(a,0) coordinate (C)
+%                ($(A)!.5!(C)$) coordinate (O)
+%                +(0,h) coordinate (S);
+%                \draw pic[angle radius=3mm,draw] {right angle = S--O--D};
+%                \draw[dashed] (S)--(A) (D)--(A)--(B) (S)--(O) (A)--(C) (D)--(B);
+%                \draw (S)--(D)--(C)--(S)--(B)--(C)--cycle;
+%                \foreach \x/\goc in {S/90,A/150,B/0,C/-60,D/-180,O/-90}
+%                \draw[fill=white] (\x) node[shift={(\goc:7pt)},font=\scriptsize]{$\x$} circle (1pt);
+%            \end{tikzpicture}
+%        \end{center}
+%        Do $SA=SC$ nên tam giác $SAC$ cân $\Rightarrow AC\perp SO$.\\
+%        Tứ giác $ABCD$ là hình vuông nên $AC\perp BD\Rightarrow AC\perp (SBD)$.
+%    }
+\end{ex}
+
+
+\begin{ex}%[1H8H4-3]
+    \immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có $SA \perp(ABCD)$ và đáy $ABCD$ là hình vuông tâm $O$. Góc giữa $(SBD)$ và $(ABCD)$ là
+        \choice
+        {\True $\widehat{SOA}$}
+        {$\widehat{SBA}$}
+        {$\widehat{SDA}$}
+        {$\widehat{SOC}$}
+    }
+    {
+        \begin{tikzpicture}[>=stealth,line join=round,line cap=round]
+            \draw
+            (0,0)coordinate(A) (-35:2.2)coordinate(C)--(3,0)coordinate(D)--($(A)+(90:2)$) coordinate(S)--(C) ($(A)!0.5!(C)$)coordinate(O)  ($(D)!2!(O)$)coordinate(B)--(S)
+            (B)--(C);
+            \draw[dashed]  (C)--(A)--(D)--(B)--(A)--(S) -- (O);
+            \path[scale=2.5] pic[angle radius=5,draw=blue,angle eccentricity=1.5] {right angle = D--A--S};
+            \foreach \diem/\vitrin in {S/above,A/left,C/right,D/right,B/left, O/below}	\fill (\diem)circle(1.5pt)node[\vitrin]{$\diem$};
+        \end{tikzpicture}
+    }
+%    \loigiai{
+%        \immini
+%        {
+%            Ta có  $\heva{&BD \perp AC \\ &BD \perp SA}\Rightarrow BD \perp(SAC)$
+%            
+%            $\Rightarrow\heva{&BD \perp SO \\ &BD \perp AC \\ &DB=(SBD) \cap(ABCD)}.$\\
+%            $\Rightarrow$ Góc giữa $(SBD)$ và $(ABCD)$ là góc giữa $AC$ và $SO$ là
+%            $\widehat{SOA}\, ($do $\triangle SAC$ vuông tại $A)$.
+%        }
+%        {
+%            \begin{tikzpicture}[>=stealth,line join=round,line cap=round,scale=.8]
+%                \draw
+%                (0,0)coordinate(A) (-35:3)coordinate(C)--(4,0)coordinate(D)--($(A)+(90:3.5)$) coordinate(S)--(C) ($(A)!0.5!(C)$)coordinate(O)  ($(D)!2!(O)$)coordinate(B)--(S)--(A)(B)--(C);
+%                \draw[dashed,black,scale=2.5]  (C)--(A)--(D)--(B)--(A) (S) -- (O);
+%                \path[scale=2.5] pic[angle radius=5,draw=blue,angle eccentricity=1.5] {right angle = D--A--S};
+%                \foreach \diem/\vitrin in {S/above,A/left,C/below left,D/right,B/left, O/below}	\fill (\diem)circle(1.5pt)node[\vitrin]{$\diem$};
+%            \end{tikzpicture}
+%        }
+%    }
+\end{ex}
+
+\begin{ex}%[2H1Y3-2]
+\immini[thm]
+{
+    Cho hình chóp $S.ABC$ có đáy là tam giác đều cạnh $a$, cạnh bên $SA$ vuông góc với đáy và $SA=a\sqrt{3}$. Tính thể tích $V$ của khối chóp $S.ABC$.
+    \choice
+    {$V=\dfrac{a^3}{12}$}
+    {$V=\dfrac{a^3}{2}$}
+    {\True $V=\dfrac{a^3}{4}$}
+    {$V=\dfrac{a^3}{6}$}
+}
+{
+    \begin{tikzpicture}[line join=round,line cap=round,scale=.8]
+        \coordinate[label=left:$A$] (A) at (0,0);
+        \coordinate[label=below left:$B$] (B) at (1,-1);
+        \coordinate[label=right:$C$] (C) at (4,0);
+        \coordinate[label=above left:$S$] (S) at ($(A)+(90:3)$);
+        \draw (A)--(B)--(C)--(S)--cycle (S)--(B);
+        \draw[dashed] (A)--(C);
+        \draw ($ (A)!5pt!(C)$)--($(A)!2!($($(A)!5pt!(C)$)!.5!($(A)!5pt!(S)$)$)$)--($(A)!5pt!(S)$);
+        \fill (A)circle(1.5pt) (B)circle(1.5pt) (C)circle(1.5pt) (S)circle(1.5pt);
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \immini
+%        {
+%            Ta có $S_{\triangle ABC}=\dfrac{\sqrt{3}a^2}{4}$.\\
+%            Suy ra $V=\dfrac{1}{3}\cdot S_{\triangle ABC}\cdot SA=\dfrac{1}{3}\cdot \dfrac{\sqrt{3}a^2}{4}\cdot \sqrt{3}a=\dfrac{a^3}{4}$.
+%        }
+%        {
+%            \begin{tikzpicture}[line join=round,line cap=round,line width=.6pt,font=\footnotesize,scale=.6]
+%                \coordinate[label=left:$A$] (A) at (0,0);
+%                \coordinate[label=below left:$B$] (B) at (1,-1);
+%                \coordinate[label=right:$C$] (C) at (4,0);
+%                \coordinate[label=above left:$S$] (S) at ($(A)+(90:3)$);
+%                \draw (A)--(B)--(C)--(S)--cycle (S)--(B);
+%                \draw[dashed] (A)--(C);
+%                \draw ($ (A)!5pt!(C)$)--($(A)!2!($($(A)!5pt!(C)$)!.5!($(A)!5pt!(S)$)$)$)--($(A)!5pt!(S)$);
+%                \fill (A)circle(1.5pt) (B)circle(1.5pt) (C)circle(1.5pt) (S)circle(1.5pt);
+%            \end{tikzpicture}
+%        }
+%    }
+%\dotlineEX{1}
+\end{ex}
+\begin{ex}%(THPT Kim Liên-Hà Nội)%[2H1Y3-2]
+\immini[thm]
+{
+    Cho hình chóp tứ giác $S.ABCD$ có đáy $ABCD$ là hình vuông, cạnh bên $SA$ vuông góc với mặt đáy và $SA=AC=a \sqrt{3}$. Tính thể tích $V$ của khối chóp $S.ABCD$.
+    \choice
+    {$V=\sqrt{2} a^3$}
+    {\True $V=\dfrac{\sqrt{3} a^3}{2}$}
+    {$V=\dfrac{\sqrt{6} a^3}{2}$}
+    {$V=\dfrac{\sqrt{6} a^3}{3}$}
+}
+{
+    \begin{tikzpicture}[line join=round,line cap=round]
+        \coordinate[label=below left:$B$] (B) at (0,0);
+        \coordinate[label=above left:$A$] (A) at (1,.8);
+        \coordinate[label=below right:$C$] (C) at (4,0);
+        \coordinate[label=above right:$D$] (D) at ($(C)-(B)+(A)$);
+        \coordinate[label=above left:$S$] (S) at ($(A)+(90:2.2)$);
+        \draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+        \draw[dashed] (A)--(D) (S)--(A)--(B);
+        \draw ($ (A)!5pt!(D)$)--($(A)!2!($($(A)!5pt!(D)$)!.5!($(A)!5pt!(S)$)$)$)--($(A)!5pt!(S)$);
+        \fill (A)circle(1.5pt) (B)circle(1.5pt) (C)circle(1.5pt) (D)circle(1.5pt) (S)circle(1.5pt);
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \immini
+%        {
+%            Ta có $AC=\sqrt{2}AB\Rightarrow AB=\dfrac{\sqrt{3}a}{\sqrt{2}}$.\\
+%            Suy ra $S_{ABCD}=AB^2=\dfrac{3a^2}{2}$.\\
+%            Vậy $V_{S.ABCD}=\dfrac{1}{3}\cdot S_{ABCD}\cdot SA=\dfrac{1}{3}\cdot \dfrac{3a^2}{2}\cdot \sqrt{3}a=\dfrac{\sqrt{3}a^3}{2}$.
+%        }
+%        {
+%            \begin{tikzpicture}[line join=round,line cap=round,line width=.6pt,font=\footnotesize,scale=.6]
+%                \coordinate[label=below left:$B$] (B) at (0,0);
+%                \coordinate[label=above left:$A$] (A) at (1,.8);
+%                \coordinate[label=below right:$C$] (C) at (4,0);
+%                \coordinate[label=above right:$D$] (D) at ($(C)-(B)+(A)$);
+%                \coordinate[label=above left:$S$] (S) at ($(A)+(90:3)$);
+%                \draw (B)--(C)--(D)--(S)--cycle (S)--(C);
+%                \draw[dashed] (A)--(D) (S)--(A)--(B);
+%                \draw ($ (A)!5pt!(D)$)--($(A)!2!($($(A)!5pt!(D)$)!.5!($(A)!5pt!(S)$)$)$)--($(A)!5pt!(S)$);
+%                \fill (A)circle(1.5pt) (B)circle(1.5pt) (C)circle(1.5pt) (D)circle(1.5pt) (S)circle(1.5pt);
+%            \end{tikzpicture}
+%        }
+%    }
+%\dotlineEX{1}
+\end{ex}
+
+\begin{ex}%[1H8N6-1]
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $2a$, $SA=a \sqrt{2}$, đường thẳng $SA$ vuông góc với mặt phẳng $(ABCD)$. Tan của góc giữa đường thẳng $SC$ và mặt phẳng $(ABCD)$ là
+    \choice
+    {$3$}
+    {$\dfrac{1}{3}$}
+    {\True $\dfrac{1}{2}$}
+    {$\sqrt{2}$}
+}
+{
+    \begin{tikzpicture}[declare function={gocx=90; goc=-150; a=3; b=a/2; h=2.2;}]
+        \path (0,0) coordinate (A)--+(gocx:h) coordinate (S)
+        (a,0) coordinate (B)
+        (goc:b) coordinate (D)
+        +(a,0) coordinate (C);
+        \draw pic[angle radius=3mm,draw] {right angle = S--A--B};
+        \draw[dashed] (S)--(A) (D)--(A)--(B) (A)--(C);
+        \draw (S)--(D)--(C)--(S)--(B)--(C)--cycle;
+        \foreach \x/\goc in {S/90,A/150,B/0,C/-60,D/-180}
+        \draw[fill=white] (\x) node[shift={(\goc:7pt)},font=\scriptsize]{$\x$} circle (1pt);
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \immini{Góc tạo bởi $SC$ và $(ABC)$ là $\widehat{SCA}$.\\
+%            Ta có $AC=2a\sqrt2$ và $SA=a\sqrt2$.\\
+%            Suy ra, $\tan \widehat{SCA}=\dfrac{SA}{AC}=\dfrac{1}{2}$.}
+%        {\begin{tikzpicture}[scale=0.5,declare function={gocx=90; goc=-150; a=5; b=a/2; h=6;}]
+%                \path (0,0) coordinate (A)--+(gocx:h) coordinate (S)
+%                (a,0) coordinate (B)
+%                (goc:b) coordinate (D)
+%                +(a,0) coordinate (C);
+%                \draw pic[angle radius=3mm,draw] {right angle = S--A--B};
+%                \draw[dashed] (S)--(A) (D)--(A)--(B) (A)--(C);
+%                \draw (S)--(D)--(C)--(S)--(B)--(C)--cycle;
+%                \foreach \x/\goc in {S/90,A/150,B/0,C/-60,D/-180}
+%                \draw[fill=white] (\x) node[shift={(\goc:7pt)},font=\scriptsize]{$\x$} circle (1pt);
+%        \end{tikzpicture}}
+%    }
+\dotlineEX{1}
+\end{ex}
+\begin{ex}%[1H8H5-3]
+    \immini[thm]
+    {
+        Cho tứ diện $ABCD$ có các cạnh $AB$, $AC$, $AD$ đôi một vuông góc và $AC=a \sqrt{2}$, $AD=a \sqrt{3}$. Khoảng cách từ điểm $A$ đến mặt phẳng $(BCD)$ bằng
+        \choice
+        {\True $\dfrac{a\sqrt{66}}{11}$}
+        {$\dfrac{a\sqrt{6}}{3}$}
+        {$\dfrac{a\sqrt{30}}{5}$}
+        {$\dfrac{a\sqrt{3}}{2}$}
+    }
+    {
+        \begin{tikzpicture}[line join=round, line cap=round]
+            \coordinate (A) at (-2,0);
+            \coordinate (C) at (.4,-1.5);
+            \coordinate (D) at (3,0);
+            \coordinate (B) at ($(A)+(0,2.5)$);
+            \draw(B)--(A) (B)--(C) (B)--(D) (C)--(D) (A)--(C);
+            \draw[dashed](A)--(D);
+            \foreach \i/\g in {B/90,A/180,C/-90,D/0}{\draw[fill=black](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+        \end{tikzpicture}
+    }
+    %    \loigiai{
+        %        \immini{
+            %            Ta có các tam giác $ABC$,$ACD$,$ABD$ là các tam giác vuông tại đỉnh $A$.
+            %            Do $AB$, $AC$, $AD$ đôi một vuông góc nên
+            %            $$
+            %            \dfrac{1}{\mathrm{d}^2(A,(BCD))}=\dfrac{1}{AB^2}+\dfrac{1}{AC^2}+\dfrac{1}{AD^2}=\dfrac{11}{6a^2}.
+            %            $$
+            %            Suy ra $\mathrm{d}(A,(BCD))=\dfrac{a\sqrt{66}}{11}$.
+            %        }{
+            %            \begin{tikzpicture}[line join=round, line cap=round,font=\footnotesize,scale=.6]
+                %                \coordinate (A) at (-2,0);
+                %                \coordinate (C) at (0,-2.5);
+                %                \coordinate (D) at (3,0);
+                %                \coordinate (B) at ($(A)+(0,4)$);
+                %                \draw(B)--(A) (B)--(C) (B)--(D) (C)--(D) (A)--(C);
+                %                \draw[dashed,thin](A)--(D);
+                %                \pic[draw,thin,angle radius=2mm] {right angle = B--A--C} pic[draw,thin,angle radius=2mm] {right angle = B--A--D}
+                %                pic[draw,thin,angle radius=2mm] {right angle = C--A--D};
+                %                \foreach \i/\g in {B/90,A/180,C/-90,D/0}{\draw[fill=black](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+                %            \end{tikzpicture}
+            %        }
+        %    }
+    \dotlineEX{1}
+\end{ex}
+\begin{ex}%[1H8H5-3]
+    \immini[thm]
+    {
+        Cho hình chóp $S.ABCD$ có đáy là hình thang vuông tại $A$ và $B$ với $AD=2a$ và $AB=BC=a$. Cạnh bên $SA$ vuông góc với mặt phẳng đáy và $SA=a$. Khoảng cách từ điểm $A$ đến mặt phẳng $(SCD)$ bằng
+        \choice
+        {$\dfrac{2a}{\sqrt{5}}$}
+        {$a\sqrt{2}$}
+        {\True $\dfrac{a\sqrt{6}}{3}$}
+        {$2a$}
+    }
+    {
+        \begin{tikzpicture}[ line join=round, line cap=round,>=stealth]
+            \def \canh{2}
+            \path (0,0) coordinate (A)
+            (-130:\canh) coordinate (B)
+            ($(B)+(\canh,0)$) coordinate (C)
+            ($(A)+(2*\canh,0)$) coordinate (D)
+            ($(A)+(\canh,0)$) coordinate (M)
+            (0,2.5) coordinate (S);
+            \draw (S)--(B) (S)--(C) (S)--(D) (B)--(C)--(D);
+            \draw [dashed] (S)--(A) (B)--(A)--(D) (A)--(C);
+            \foreach \t/\g in {A/180,C/-10,B/180,D/0,S/180}{
+                \draw[fill=black] (\t) circle (1pt) node[shift={(\g:10pt)}]{$ \t $};
+            }
+        \end{tikzpicture}
+    }
+    %    \loigiai{
+        %        \immini{
+            %            Gọi $M$ là trung điểm của $AD$, suy ra tứ giác $ABCM$ là hình vuông.\\
+            %            Do đó $CM=MA=\dfrac{AD}{2}$ nên tam giác $ACD$ vuông tại $C$. Kẻ $AK\perp SC$. Vì $CD\perp CA\Rightarrow CD\perp(SAC)$, do đó $AK\perp(SCD)$ nên suy ra $CD\perp AK$.\\
+            %            Vì vậy $\mathrm{d}(A,(SCD))=AK=\dfrac{SA\cdot AC}{\sqrt{SA^2+AC^2}}=\dfrac{a \sqrt{6}}{3}$.
+            %        }{
+            %            \begin{tikzpicture}[font=\footnotesize, line join=round, line cap=round,>=stealth,scale=.8]
+                %                \def \canh{2}
+                %                \path (0,0) coordinate (A)
+                %                (-120:\canh) coordinate (B)
+                %                ($(B)+(\canh,0)$) coordinate (C)
+                %                ($(A)+(2*\canh,0)$) coordinate (D)
+                %                ($(A)+(\canh,0)$) coordinate (M)
+                %                (0,2.5) coordinate (S)
+                %                ($(S)!(A)!(C)$) coordinate (K);
+                %                \draw (S)--(B) (S)--(C) (S)--(D) (B)--(C)--(D);
+                %                \draw [dashed] (S)--(A) (A)--(K) (B)--(A)--(D) (A)--(C)--(M);
+                %                \foreach \t/\g in {A/180,C/-90,B/-90,D/0,M/90,K/0,S/90}{
+                    %                    \draw[fill=black] (\t) circle (1pt) node[shift={(\g:10pt)}]{$ \t $};
+                    %                }
+                %                \foreach \x/\y/\z in {S/K/A,A/M/C}{
+                    %                    \path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};
+                    %                }
+                %        \end{tikzpicture}	}
+        %    }
+    \dotlineEX{1}
+\end{ex}
+\begin{ex}%[1H3K5-4]
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh bằng $a$, $SA$ vuông góc với mặt phẳng đáy $(ABCD)$, góc giữa đường thẳng $SC$ và mặt phẳng $(ABCD)$ bằng $45^\circ$. Khoảng cách giữa hai đường thẳng $SB$ và $AC$ bằng
+    \choice
+    {$a\sqrt{11}$}
+    {\True $\dfrac{a\sqrt{10}}{5}$}
+    {$\dfrac{2a\sqrt{11}}{3}$}
+    {$a\sqrt{3}$}
+}
+{
+    \begin{tikzpicture}[line join =round, line cap = round,>= stealth]
+        \coordinate [label=above right:$A$] (A) at (0,0);
+        \coordinate [label=below:$B$] (B) at (-1,-1.5);
+        \coordinate [label=right:$D$] (D) at (3,0);
+        \coordinate [label=right:$C$] (C) at ($(B)+(D)-(A)$);
+        \coordinate [label=above:$O$] (O) at ($(A)!.5!(C)$);
+        \coordinate[label=left:$S$] (S) at (0,2.2);
+        \draw[dashed] (S)--(A)--(D)--(B)--(A)--(C);
+        \draw (S)--(B)--(C)--(S)--(D)--(C);
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        Ta có $\heva{&SA \perp (ABCD)\\ & SC \cap (ABCD)=C\\ & \widehat{SC,(ABCD)}=45^\circ}$
+%        $\Rightarrow \widehat{SCA}=45^\circ \Rightarrow \bigtriangleup SAC$ vuông cân tại $A \Rightarrow SA=AC=a\sqrt{2}$.\\
+%        Dựng $Bx\parallel AC \Rightarrow d(AC,SB)=d(AC,(SBx))$.\\
+%        Dựng $AE\perp Bx$, $AF\perp SE\ (1)$.\\
+%        Ta có $\heva{&Bx\perp AE\\ & Bx\perp SA}$
+%        $\Rightarrow Bx\perp (SAE)\Rightarrow Bx\perp AF \ (2)$.\\
+%        Từ $(1)$ và $(2)$ suy ra  $AF\perp (SBE)$\\
+%        $\Rightarrow \mathrm{d}(AC,(SBx))=\mathrm{d}(A,(SBx))=AF=\mathrm{d}(SB,AC)$\\
+%        Ta có $BE\parallel AC \Rightarrow BE \perp BD$.\\
+%        Lại có $\heva{& BO \perp AO\\ & AE\perp BE}$\\
+%        $\Rightarrow AEBO$ là hình chữ nhật $\Rightarrow AE=OB=\dfrac{a\sqrt{2}}{2}$\\
+%        $\bigtriangleup SAE$ vuông tại $A$ có $AF$ đường cao\\
+%        $\Rightarrow \dfrac{1}{AF^2}=\dfrac{1}{AE^2}+\dfrac{1}{SA^2}\Leftrightarrow AF=\dfrac{AE\times SA}{\sqrt{AE^2+SA^2}}=\dfrac{\dfrac{a\sqrt{2}}{2}\times a\sqrt{2}}{\sqrt{\left(\dfrac{a\sqrt{2}}{2}\right)^2+(a\sqrt{2})^2}}=\dfrac{a\sqrt{10}}{5}$\\
+%        Vậy $\mathrm{d}(SB,AC)=\dfrac{a\sqrt{10}}{5}$.
+%        \begin{center}
+%            \begin{tikzpicture}[line join =round, line cap = round,>= stealth,font=\footnotesize,line width=1pt,scale=1.2]
+%                \coordinate [label=above right:$A$] (A) at (0,0);
+%                \coordinate [label=below:$B$] (B) at (-1,-2);
+%                \coordinate [label=right:$D$] (D) at (7,0);
+%                \coordinate [label=right:$C$] (C) at (6,-2);
+%                \coordinate [label=above:$O$] (O) at (3,-1);
+%                \coordinate[label=left:$S$] (S) at (0,3);
+%                \coordinate[label= below left:$E$] (E) at (-1.99,-1.19);
+%                \coordinate[label=right:$F$] (F) at ($(S)!0.4!0:(E)$);
+%                \coordinate[label=left:$x$] (x) at (-2.22,-1);
+%                \draw[dashed] (S)--(A)--(D)--(B)--(A)--(C);
+%                \draw (S)--(B)--(C)--(S)--(D)--(C);
+%                \draw (B)--(x) (S)--(E);
+%                \draw[dashed] (A)--(E) (A)--(F) ;
+%                \tkzMarkRightAngle (A,F,E);
+%                \tkzMarkRightAngle (A,E,B);
+%            \end{tikzpicture}
+%        \end{center}
+%    }
+\dotlineEX{2}
+\end{ex}
+%%==========Câu 24
+\begin{ex}%[1H3B5-4]
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông tâm $O$,cạnh bằng $2$. Đường thẳng $SO$ vuông góc với mặt phẳng đáy $\left(ABCD\right)$ và $SO=\sqrt{3}$. Tính khoảng cách $d$ giữa hai đường thẳng $SA$ và $BD$.
+    \choice
+    {$d=\sqrt{2}$}
+    {$d=2$}
+    {\True $d=\dfrac{\sqrt{30}}{5}$}
+    {$d=2\sqrt{2}$}
+}
+{
+    \begin{tikzpicture}[line join=round, line cap=round,>=stealth]
+        \tkzDefPoints{0/0/D, 3/0/C, 5/1.2/B}
+        \coordinate (A) at ($(B)+(D)-(C)$);
+        \coordinate (O) at ($(A)!.5!(C)$);
+        \coordinate (S) at ($(O)+(0,2.2)$);
+        \tkzDrawPoints(A,B,C,D,S,O)
+\draw[dashed] (S)--(A)--(O)--(C) (A)--(B)--(D)--(A) (S)--(O);
+        \draw (S)--(C) (S)--(B)--(C)--(D)--cycle;
+        \tkzLabelPoints[left](A)
+        \tkzLabelPoints[above](S)
+        \tkzLabelPoints[below](D,C,O)
+        \tkzLabelPoints[above right](B)
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \immini{
+%            Ta có $BD\perp \left(SAC\right)$.\\
+%            Kẻ $OK\perp SA$.
+%            Khi đó $$\mathrm{d}\left(SA,BD\right)=\dfrac{SO\cdot OA}{\sqrt{SO^2+OA^2}}=\dfrac{\sqrt{30}}{5}.$$
+%        }{
+%            \begin{tikzpicture}[scale=.7, font=\footnotesize, line join=round, line cap=round,>=stealth]
+%                \tkzDefPoints{0/0/D, 5.5/0/C, 7.5/2.5/B}
+%                \coordinate (A) at ($(B)+(D)-(C)$);
+%                \coordinate (O) at ($(A)!.5!(C)$);
+%                \coordinate (S) at ($(O)+(0,6)$);
+%                \coordinate (K) at ($(S)!.7!(A)$);
+%                \tkzDrawPoints[fill=black](A,B,C,D,S,K,O)
+%                \tkzDrawSegments[dashed](S,A S,O A,C O,K)
+%                \tkzDrawPolygon(S,B,C,D)
+%                \tkzDrawPolygon[dashed](A,B,D)
+%                \tkzDrawSegments(S,C)
+%                \tkzLabelPoints[left](A)
+%                \tkzLabelPoints[above](S)
+%                \tkzLabelPoints[below](D,C,O)
+%                \tkzLabelPoints[above right](B)
+%                \tkzLabelPoints[right](K)
+%                \tkzMarkRightAngles(O,K,A)
+%            \end{tikzpicture}
+%        }
+%    }
+\dotlineEX{2}
+\end{ex}
+
+%%==========Câu 29
+\begin{ex}%[1H3B5-4]
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông với $AC=\dfrac{a\sqrt{2}}{2}$. Cạnh bên $SA$ vuông góc với đáy, $SB$ hợp với đáy góc $60^\circ$. Tính khoảng cách $d$ giữa hai đường thẳng $AD$ và $SC$.
+    \choice
+    {\True $d=\dfrac{a\sqrt{3}}{4}$}
+    {$d=\dfrac{a\sqrt{3}}{2}$}
+    {$d=\dfrac{a}{2}$}
+    {$d=\dfrac{a\sqrt{2}}{2}$}
+}
+{
+    \begin{tikzpicture}[line join=round, line cap=round,>=stealth]
+        \tkzDefPoints{0/0/B, 3/0/C, 5/1.2/D}
+        \coordinate (A) at ($(B)+(D)-(C)$);
+        \coordinate (S) at ($(A)+(0,2.2)$);
+        \tkzDrawPoints[fill=black](A,B,C,D,S)
+        \draw[dashed] (S)--(A)--(B) (C)--(A)--(D);
+        \draw (S)--(B)--(C)--(D)--cycle (S)--(C);
+        \tkzLabelPoints[above](S)
+        \tkzLabelPoints[below](B,C,A)
+        \tkzLabelPoints[above right](D)
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \immini{
+%            Ta có $\mathrm{d}\left(AD,SC\right)=\mathrm{d}\left(AD,\left(SBC\right)\right)=\mathrm{d}\left(A,\left(SBC\right)\right)$.\\
+%            Kẻ $AK\perp SB$. Khi đó $$\mathrm{d}\left(A,\left(SBC\right)\right)=AK=\dfrac{SA\cdot AB}{\sqrt{SA^2+AB^2}}=\dfrac{a\sqrt{3}}{4}.$$
+%        }{
+%            \begin{tikzpicture}[scale=.7, font=\footnotesize, line join=round, line cap=round,>=stealth]
+%                \tkzDefPoints{0/0/B, 6/0/C, 8.5/2.5/D}
+%                \coordinate (A) at ($(B)+(D)-(C)$);
+%                \coordinate (S) at ($(A)+(0,5)$);
+%                \coordinate (K) at ($(S)!.6!(B)$);
+%                \tkzDrawPoints[fill=black](A,B,C,D,S,K)
+%                \tkzDrawSegments[dashed](S,A A,B A,D A,K)
+%                \tkzDrawPolygon(S,B,C,D)
+%                \tkzDrawSegments(S,C)
+%                \tkzLabelPoints[above left](K)
+%                \tkzLabelPoints[above](S)
+%                \tkzLabelPoints[below](B,C,A)
+%                \tkzLabelPoints[above right](D)
+%                \tkzMarkRightAngles(A,K,B)
+%            \end{tikzpicture}
+%        }
+%    }
+\dotlineEX{2}
+\end{ex}
+
+\begin{ex}%[1H8H6-1]
+\immini[thm]
+{
+    Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$. Biết $SA=a\sqrt{2}$ và $SA$ vuông góc với mặt đáy. Gọi $M$ là trung điểm của $BC$ và $H$ là hình chiếu vuông góc của $A$ lên $SM$.
+    \choiceTF
+    {\True Đường thẳng $AH$ vuông góc với mặt phẳng $(SBC)$}
+    {\True Đường thẳng $SH$ là hình chiếu của đường thẳng $SA$ lên $(SBC)$}
+    {Độ dài đoạn thẳng $AH$ bằng $\dfrac{6a}{11}$}
+    {$\cos\alpha =\dfrac{\sqrt{11}}{33}$ với $\alpha=\left(SA,(SBC)\right)$}
+}
+{
+    \begin{tikzpicture}[line join=round, line cap=round, >=stealth]
+        \def\a{4} \def\b{2} \def\h{3}
+        \path
+        (0:0) coordinate (A)
+        (0:\a) coordinate (C)
+        (-40:\b) coordinate (B)
+        ($(A)+(90:\h)$) coordinate (S)
+        ($(B)!1/2!(C)$) coordinate (M)
+        ($(S)!1/2.2!(M)$) coordinate (H)
+        ;
+        \draw (S)--(A)--(B)--(C)--(S)--(B) (S)--(M);
+        \draw[dashed] (A)--(C) (M)--(A)--(H);
+        \foreach \x/\g in {S/90,A/180,B/-90,C/0,M/-45,H/45}
+        \fill[black] (\x) circle(1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+        \draw pic[draw,angle radius=6pt] {right angle = A--H--M};
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \immini{
+%            \begin{itemchoice}
+%                \itemch {\bf{Đúng}}. Vì $ABC$ là tam giác đều nên $BC \perp AM$.\\
+%                Lại có $BC \perp SA$, nên $BC \perp (SAM)\Rightarrow  BC \perp AH$.\\
+%                Mặt khác $AH \perp SM$, do đó $AH \perp (SBC)$.
+%                \itemch {\bf{Đúng}}. Vì $AH \perp (SBC)$ nên hình chiếu của $SA$ lên $(SBC)$ là $SH$.
+%                \itemch {\bf{Sai}}. $AM$ là đường trung tuyến của tam giác đều $ABC$ nên $AM=\dfrac{a\sqrt{3}}{2}$.\\
+%                Tam giác $SAM$ vuông tại $A$, có $AH$ là đường cao nên \[AH=\dfrac{SA\cdot AM}{\sqrt{SA^2+AM^2}}=\dfrac{a\sqrt{2}\cdot \dfrac{a\sqrt{3}}{2}}{\sqrt{2a^2+\dfrac{3a^2}{4}}}=\dfrac{a\sqrt{66}}{11}.\]
+%                \itemch {\bf{Sai}}. Hình chiếu của $SA$ lên $(SBC)$ là $SM$ nên \[\cos\left(SA,(SBC)\right)=\cos(SA,SM)=\cos\widehat{ASM}=\dfrac{SA}{SM}=\dfrac{a\sqrt{2}}{\sqrt{2a^2+\dfrac{3a^2}{4}}}=\dfrac{2\sqrt{22}}{11}.\]
+%            \end{itemchoice}
+%        }
+%        {
+%            \begin{tikzpicture}[scale=1, font=\small, line join=round, line cap=round, >=stealth]
+%                \def\a{3} \def\b{1.8} \def\h{2.2}
+%                \path
+%                (0:0) coordinate (A)
+%                (0:\a) coordinate (C)
+%                (-60:\b) coordinate (B)
+%                ($(A)+(90:\h)$) coordinate (S)
+%                ($(B)!1/2!(C)$) coordinate (M)
+%                ($(S)!1/2.2!(M)$) coordinate (H)
+%                ;
+%                \draw (S)--(A)--(B)--(C)--(S)--(B) (S)--(M);
+%                \draw[dashed] (A)--(C) (M)--(A)--(H);
+%                \foreach \x/\g in {S/90,A/180,B/-90,C/0,M/-45,H/45}
+%                \fill[black] (\x) circle(1pt) ($(\x)+(\g:3mm)$) node{$\x$};
+%                \draw pic[draw,angle radius=6pt] {right angle = A--H--M};
+%            \end{tikzpicture}
+%        }
+%    }
+    \dotlineEX{1}
+\end{ex}
+\begin{ex}%[1H8H5-2]
+    \immini[thm]
+{
+    Cho hình chóp $A.BCD$ có cạnh $AC \perp (BCD)$ và $BCD$ là tam giác đều cạnh bằng $a$. Biết $AC=a\sqrt{2}$ và $M$ là trung điểm của $BD$. Xét tính đúng, sai các khẳng định sau:
+        \choiceTF
+        {$\mathrm{d}(C,BD)=\dfrac{a\sqrt{2}}{2}$}
+        {Khoảng cách từ $A$ đến $BD$ là $\dfrac{a\sqrt{11}}{3}$}
+        {\True $\mathrm{d}(B,AD)=\mathrm{d}(D,AB)$}
+        {\True Khoảng cách từ $C$ đến $AM$ là $a\sqrt{\dfrac{6}{11}}$}
+    }
+    {
+        \begin{tikzpicture}[scale=1.0, font=\small, line join=round, line cap=round, >=stealth, declare function={goc=-30; a=4; b=2.5; h=3;}]
+            \path
+            (0,0) coordinate (C)
+            +(90:h) coordinate (A)
+            +(0:a) coordinate (D)
+            +(goc:b) coordinate (B)
+            ($(B)!0.5!(D)$) coordinate (M)
+            ($(A)!0.6!(M)$) coordinate (H)
+            ;
+            \draw (A)--(C)--(B)--(D)--(A) (B)--(A)--(M) ;
+            \draw[dashed] (M)--(C)--(D) (C)--(H);
+            \foreach \x/\g in {A/135, B/-45, C/-135, D/-45, M/-45, H/45}
+            {\fill (\x) node[shift={(\g:10pt)}]{$\x$} circle (1.5pt);}
+        \end{tikzpicture}
+    }
+%    \loigiai
+%    { \begin{center}
+%            \begin{tikzpicture}[scale=1.0, font=\small, line join=round, line cap=round, >=stealth, declare function={goc=-40; a=4; b=4; h=5;}]
+%                \path
+%                (0,0) coordinate (C)
+%                +(90:h) coordinate (A)
+%                +(0:a) coordinate (D)
+%                +(goc:b) coordinate (B)
+%                ($(B)!0.5!(D)$) coordinate (M)
+%                ($(A)!0.6!(M)$) coordinate (H)
+%                ;
+%                \draw (A)--(C)--(B)--(D)--(A) (B)--(A)--(M) ;
+%                \draw[dashed] (M)--(C)--(D) (C)--(H);
+%                \foreach \x/\g in {A/135, B/-45, C/-135, D/-45, M/-45, H/45}
+%                {\fill (\x) node[shift={(\g:10pt)}]{$\x$} circle (1.5pt);}
+%            \end{tikzpicture}
+%        \end{center}
+%        
+%        \begin{itemchoice}
+%            \itemch \textbf{Sai}. Do tam giác $BCD$ đều nên $CM \perp BD \Rightarrow \mathrm{d}(C, BD)=CM=\dfrac{a\sqrt{3}}{2}$.
+%            \itemch \textbf{Sai}. Ta có $\heva{& AC \perp BD\\&CM\perp BD} \Rightarrow BD \perp AM \Rightarrow \mathrm{d}(A, BD)=AM$.\\
+%            Ta có  $CM=\dfrac{a\sqrt{3}}{2}$ nên $AM=\sqrt{AC^2+MC^2}=\dfrac{a\sqrt{11}}{2}$.\\
+%            Vậy khoảng cách từ $A$ đến $BD$ là $\dfrac{a\sqrt{11}}{2}$.
+%            \itemch \textbf{Đúng}. Do $M$ là trung điểm của $BD$, mà $AM \perp BD$ nên tam giác $ABD$ cân tại $A$.\\
+%            Suy ra $\mathrm{d}(B,AD)=\mathrm{d}(D,AB)$.
+%            \itemch \textbf{Đúng}. Dựng $CH \perp AM \Rightarrow \mathrm{d}(C,AM)=CH$.\\
+%            Vì $\triangle BCD$ là tam giác đều cạnh $a$ và $M$ là trung điểm của $BD$ nên dễ tính được $CM=\dfrac{a\sqrt{3}}{2}$.\\
+%            Xét $\triangle ACM$ vuông tại $C$ có $CH$ là đường cao, ta có:\\
+%            $\dfrac{1}{CH^2}=\dfrac{1}{CA^2}+\dfrac{1}{CM^2} \Rightarrow CH=a\sqrt{\dfrac{6}{11}}$.\\
+%            Vậy $\mathrm{d}(A, BD')=a\sqrt{\dfrac{6}{11}}$.
+%            
+%        \end{itemchoice}
+%    }
+%    \dotlineEX{2}
+\end{ex}
+\begin{ex}%[1H8H6-2]
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh bằng $a$ tâm $O$, $SA\perp(ABCD)$, $SA=\dfrac{a\sqrt{2}}{2}$.
+    \choiceTF
+    {Góc nhị diện $[S,AB,D]$ bằng số đo $\widehat{SDA}$}
+    {\True Góc nhị diện $[S,AD,B]$ bằng $90^{\circ}$}
+    {Góc nhị diện $[S,BD,C]$ bằng số đo của $\widehat{SCO}$}
+    {\True Góc nhị diện $[S,BD,C]$ bằng $135^{\circ}$}
+}
+{
+    \begin{tikzpicture}[scale=1, font=\small, line join=round, line cap=round, >=stealth]
+        \path
+        (0,0) coordinate (A)
+        (-1,-1) coordinate (B)
+        (3,-1) coordinate (C)
+        ($(C)+(A)-(B)$)coordinate (D)
+        ($(A)+(0,2.4)$)coordinate (S)
+        ($(A)!.5!(C)$)coordinate (O)
+        ;
+        \draw (S)--(B)--(C)--(D)--(S)--(C);
+        \draw[dashed] (S)--(A)--(B) (C)--(A)--(D) (B)--(D) (S)--(O);
+        \foreach \d/\g in {A/160, D/0, C/-40, B/-140, S/90,O/-90}
+        \fill (\d) circle(1pt) + (\g:.3) node{$\d$};
+        \foreach \x/\y/\z in {S/A/D,A/B/C,A/D/C} \draw pic[draw,angle radius=2mm] {right angle= \x--\y--\z};
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \begin{center}
+%            \begin{tikzpicture}[scale=1, font=\small, line join=round, line cap=round, >=stealth]
+%                \path
+%                (0,0) coordinate (A)
+%                (-1,-1) coordinate (B)
+%                (3,-1) coordinate (C)
+%                ($(C)+(A)-(B)$)coordinate (D)
+%                ($(A)+(0,3)$)coordinate (S)
+%                ($(A)!.5!(C)$)coordinate (O)
+%                ;
+%                \draw (S)--(B)--(C)--(D)--(S)--(C);
+%                \draw[dashed] (S)--(A)--(B) (C)--(A)--(D) (B)--(D) (S)--(O);
+%                \foreach \d/\g in {A/160, D/0, C/-40, B/-140, S/90,O/-90}
+%                \fill (\d) circle(1pt) + (\g:.3) node{$\d$};
+%                \foreach \x/\y/\z in {S/A/D,A/B/C,A/D/C} \draw pic[draw,angle radius=2mm] {right angle= \x--\y--\z};
+%            \end{tikzpicture}
+%        \end{center}
+%        \begin{itemchoice}
+%            \itemch Ta có $SA\perp AB$, $AD\perp AB$.\\
+%            Do đó, góc phẳng nhị diện $[S,AB,D]$ bằng góc $SAD$.
+%            \itemch Ta có $SA\perp AD$, $AB\perp AD$.\\
+%            Do đó, số đo của góc nhị diện $[S,AD,B]$ bằng số đo góc $\widehat{SAB}=90^{\circ}$.
+%            \itemch $CO\perp BD$, $SO\perp BD$.\\
+%            Do đó, góc phẳng nhị diện $[S,BD,C]$ bằng góc $SOC$.
+%            \itemch Xét $\triangle SAO$, có $AO=\dfrac{a\sqrt{2}}{2}=SA$ và góc $SAO$ là góc vuông, suy ra $\triangle SAO$ là tam giác vuông cân tại $A$.\\
+%            Do đó $\widehat{SOA}=45^{\circ}$, $\widehat{SOC}=135^{\circ}$.\\
+%            Vậy số đo của góc nhị diện $[S,BD,C]$ bằng $135^{\circ}$.
+%        \end{itemchoice}
+%    }
+\dotlineEX{2}
+\end{ex}
+
+\begin{ex}%[1H8H6-2]
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$ có $SA\perp \left(ABCD\right)$, $ABCD$ là hình vuông tâm $O$, cạnh $AB=a$, $SA=a$. Gọi $H$ là hình chiếu vuông góc của $A$ trên cạnh $SD$.
+    \choiceTF
+    {\True $BC\perp SA$}
+    { Góc giữa $SB$ và $CD$ bằng góc $\widehat{SAB}$}
+    {$AC\perp \left(SBD\right)$}
+    {\True $AH\perp \left(SCD\right)$}
+}
+{
+    \begin{tikzpicture}[>=stealth,line join=round,line cap=round]
+        \path
+        (0,0) coordinate (A)
+        ++ (-130:2) coordinate (B)
+        ++(0:5) coordinate (C)
+        ($(A)+(C)-(B)$) coordinate (D)
+        (A)++(90:2.5) coordinate (S)
+        ($(A)!0.5!(C)$) coordinate (O)
+        ($(S)!0.5!(D)$) coordinate (H)
+        ;
+        \draw (S)--(B)--(C)--(D)--cycle (S)--(C);
+        \draw[dashed](S)--(A)--(C) (B)--(A)--(D) (A)--(H) (B)--(D) (S)--(O);
+        \pic[draw,thin,angle radius=2mm] {right angle = A--H--D} ;
+        \foreach \i/\g in {S/90,A/180,B/-90,C/-60,D/30,H/30,O/-90}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \begin{center}
+%            \begin{tikzpicture}[scale=0.6,>=stealth,line join=round,line cap=round,font=\small]
+%                \path
+%                (0,0) coordinate (A)
+%                ++ (-120:3) coordinate (B)
+%                ++(0:5) coordinate (C)
+%                ++(60:3) coordinate (D)
+%                (A)++(90:4) coordinate (S)
+%                ($(A)!0.5!(C)$) coordinate (O)
+%                ($(S)!0.5!(D)$) coordinate (H)
+%                ;
+%                \draw (S)--(B)--(C)--(D)--cycle (S)--(C);
+%                \draw[dashed](S)--(A)--(C) (B)--(A)--(D) (A)--(H) (B)--(D) (S)--(O);
+%                \pic[draw,thin,angle radius=2mm] {right angle = A--H--D} ;
+%                \foreach \i/\g in {S/90,A/180,B/-90,C/-60,D/30,H/30,O/-90}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+%            \end{tikzpicture}
+%        \end{center}
+%        \begin{itemchoice}
+%            \itemch \textbf{Đúng}.\\
+%            Ta có $\heva{&BC\parallel AD\\& SA\perp AD}\Rightarrow BC\perp SA$.
+%            \itemch \textbf{Sai}.\\
+%            Ta có $CD\parallel AB$ nên  góc giữa $SB$ và $CD$ bằng góc giữa $SB$ và $AB$ bằng góc $\widehat{SBA}$.
+%            \itemch  \textbf{Sai}. \\
+%            Ta có $SA\perp\left(ABCD\right)\Rightarrow SA\perp AC$ tại $A$.\\
+%            Suy ra $\triangle SAO$ vuông tại $A$. Do đó $\widehat{SOA}<90^\circ$.\\
+%            Suy ra $AC\not\perp SO\subset(SBD)$. Do đó $AC\not\perp\subset(SBD)$.
+%            \itemch \textbf{Đúng}. \\
+%            Ta có $\heva{&CD\perp SA\\&CD\perp AD}\Rightarrow CD\perp \left(SAD\right)\Rightarrow CD\perp AH\subset \left(SBD\right)$.\\
+%            Theo đề bài ta có $AH\perp SD$.\\
+%            Suy ra $AH\perp \left(SCD\right)$.
+%            
+%    \end{itemchoice}}
+%\dotlineEX{2}
+\end{ex}
+
+\begin{ex}%[1H8H5-4]
+\immini[thm]
+{
+    Cho hình chóp tứ giác đều $S.ABCD$ có đáy là hình vuông tâm $O$, cạnh bằng $2a$. Cạnh bên $SA=a \sqrt{5}$.
+    \choiceTF
+    {Độ dài $SO=a \sqrt{5}$}
+    {\True $BD\perp(SAC)$}
+    {$d_{(O,(SBC))}=\dfrac{a\sqrt{2}}{2}$}
+    {\True $d_{(BD,SC)}=\dfrac{a \sqrt{30}}{5}$}
+}
+{
+    \begin{tikzpicture}[line join = round, line cap = round,]
+        \path
+        (0:0) coordinate (A)
+        +(0:3) coordinate (B)
+        +(-140:2) coordinate (D)
+        ($(B)+(D)-(A)$) coordinate (C)
+        (intersection of A--C and B--D) coordinate (O)
+        ++(90:3) coordinate (S)
+        ;
+        \draw[dashed]
+        (A)--(B) (A)--(D) (A)--(S) (A)--(C) (B)--(D) (S)--(O)
+        ;
+        \draw
+        (D)--(C)--(B)
+        (S)--(B) (S)--(C) (S)--(D)
+        ;
+        \foreach \x/\g in {A/135,B/0,C/-45,D/-135,O/-90,S/90}
+        \fill (\x) circle (1.5pt)
+        +(\g:3mm) node {$\x$};
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \begin{center}
+%            \begin{tikzpicture}[line join = round, line cap = round, thick, font = \small, scale = 1]
+%                \path
+%                (0:0) coordinate (A)
+%                +(0:5) coordinate (B)
+%                +(-140:2.5) coordinate (D)
+%                ($(B)+(D)-(A)$) coordinate (C)
+%                (intersection of A--C and B--D) coordinate (O)
+%                ++(90:5) coordinate (S)
+%                ;
+%                \draw[dashed]
+%                (A)--(B) (A)--(D) (A)--(S) (A)--(C) (B)--(D) (S)--(O)
+%                ;
+%                \draw
+%                (D)--(C)--(B)
+%                (S)--(B) (S)--(C) (S)--(D)
+%                ;
+%                \foreach \x/\g in {A/135,B/0,C/-45,D/-135,O/-90,S/90}
+%                \fill (\x) circle (1.5pt)
+%                +(\g:3mm) node {$\x$};
+%            \end{tikzpicture}
+%        \end{center}
+%        Ta có $SO=\sqrt{SC^2-OC^2}=a \sqrt{3}$.\\
+%        Ta có $BD\perp SO$, $BD\perp AC\Rightarrow BD\perp(SAC)$.\\
+%        Kẻ $OH\perp SC(H\in SC) \Rightarrow BD\perp OH$.\\
+%        Khi đó $OH$ là đoạn vuông chung của $BD$ và $SC$.\\
+%        Suy ra $OH=\dfrac{SO\cdot OC}{\sqrt{SO^2+OC^2}}=\dfrac{a \sqrt{6}}{\sqrt{5}}=\dfrac{a \sqrt{30}}{5}$.
+%    }
+\dotlineEX{1}
+\end{ex}
+
+\begin{ex}%[1H8H7-3]
+\immini[thm]
+{
+    Cho hình chóp $S.ABCD$  có đáy $ABCD$ là hình chữ nhật tâm $O$ với $AB=a\sqrt{2}$, $AC=a\sqrt{3}$. Cạnh bên $SA=2a$ và vuông góc với mặt đáy $(ABCD)$. Các mệnh đề sau đúng hay sai?
+    \choiceTF
+    {\True$AD \parallel (SBC)$}
+    {Khoảng cách từ $D$ đến $(SBC)$  bằng $\dfrac{a\sqrt{3}}{3}$}
+    {\True Khoảng cách giữa hai đường thẳng $SD$, $AB$  bằng $\dfrac{2a\sqrt{5}}{5}$}
+    {\True Thể tích khối chóp $S.ABCD$ bằng $\dfrac{a^3\sqrt{2}}{3}$}
+}
+{
+    \begin{tikzpicture}[>=stealth,line join=round,line cap=round,]
+        \def\a{3}
+        \def\b{1}
+        \path (0,0)coordinate (O)
+        +(140:\b)coordinate (A)
+        (A)+(0:\a)coordinate (D) (A)+(90:\a)coordinate (S)
+        ($(A)!2!(O)$)coordinate (C)
+        ($(D)!2!(O)$)coordinate (B)
+        ($(S)!.5!(B)$)coordinate (H)
+        ($(S)!.4!(D)$)coordinate (K)
+        ($(S)!.7!(O)$)coordinate (E)
+        (intersection of H--K and S--O)coordinate (X)
+        (intersection of A--X and S--C)coordinate (F)
+        ;
+        \draw (S)--(B)--(C)--(D)--cycle (S)--(C);
+        \draw[dashed](S)--(A)--(D) (A)--(B) (A)--(C)(B)--(D)
+        ;
+        \foreach \x/\g in {S/90,A/-90,B/210,C/-30,D/0,O/-90} \fill (\x) circle (0.03)+(\g:3mm) node[scale=.9] {$\x$};
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \begin{center}
+%            \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\small,scale=1]
+%                \def\a{3}
+%                \def\b{1}
+%                \path (0,0)coordinate (O)
+%                +(140:\b)coordinate (A)
+%                (A)+(0:\a)coordinate (D) (A)+(90:\a)coordinate (S)
+%                ($(A)!2!(O)$)coordinate (C)
+%                ($(D)!2!(O)$)coordinate (B)
+%                ($(S)!.5!(B)$)coordinate (H)
+%                ($(S)!.4!(D)$)coordinate (K)
+%                ($(S)!.7!(O)$)coordinate (E)
+%                (intersection of H--K and S--O)coordinate (X)
+%                (intersection of A--X and S--C)coordinate (F)
+%                ;
+%                \draw (S)--(B)--(C)--(D)--cycle (S)--(C);
+%                \draw[dashed](S)--(A)--(D) (A)--(B) (A)--(C)(B)--(D)
+%                (S)--(O)
+%                (A)--(H)(A)--(K)
+%                ;
+%                \draw pic[draw,angle radius=2mm] {right angle = A--H--B}
+%                pic[draw,angle radius=2mm] {right angle = A--K--D};
+%                \foreach \x/\g in {S/90,A/-90,B/210,C/-30,D/0,O/-90,H/180,K/0} \fill (\x) circle (0.03)+(\g:3mm) node[scale=.9] {$\x$};
+%            \end{tikzpicture}
+%        \end{center}
+%        \begin{itemchoice}
+%            \itemch Đúng.\\  $ABCD$ là hình chữ nhật nên $AD\parallel BC$ mà $AD$ không nằm trong $(SBC)$ suy ra $AD\parallel (SBC)$.
+%            \itemch Sai.\\ Từ $A$ kẻ $AH\perp SB$ ($H\in SB$),
+%            ta có $CB\perp BA$, $CB\perp SA$ nên $CB\perp SH$.\\
+%            Suy ra $AH\perp (SBC)$.\\
+%            Do $AD\parallel (SBC)$ nên $\mathrm{d}(D,(SBC))=\mathrm{d}(A,(SBC))=AH$.\\
+%            Tam giác $SAB$ vuông tại $A$, $AH$ là đường cao nên
+%            \[AH=\dfrac{AS\cdot AB}{\sqrt{AS^2+AB^2}}=\dfrac{2a\cdot a\sqrt{2}}{\sqrt{4a^2+2a^2}}=\dfrac{2a\sqrt{3}}{3}.\]
+%            \itemch  Đúng.\\ Do $AB\parallel CD$ nên $AB\parallel (SCD)$, suy ra $\mathrm{d}(SD,AB)=\mathrm{d}((SCD),AB)=\mathrm{d}(A,(SCD))$.\\
+%            Kẻ $AK\perp SD$ ($K\in SD$), ta có $CD\perp AD$, $CD\perp SA$ nên $CD\perp (SAD)$, suy ra $CD\perp AK$.\\
+%            Do đó, $AK\perp (SCD)$  hay $\mathrm{d}(A,(SCD))=AK$.\\
+%            Ta có $AD=\sqrt{AC^2-CD^2}=\sqrt{3a^2-2a^2}=a$,
+%            tam giác $SAD$ vuông tại $A$, $AK$ là đường cao nên
+%            \[AK=\dfrac{AS\cdot AD}{\sqrt{AS^2+AD^2}}=\dfrac{2a\cdot a}{\sqrt{4a^2+ a^2}}=\dfrac{2a\sqrt{5}}{5}.\]
+%            \itemch Đúng.\\ Thể tích khối chóp $S.ABCD$ là
+%            \[V=\dfrac{1}{3}SA\cdot S_{ABCD}=\dfrac{1}{3}\cdot 2a\cdot \dfrac{1}{2}\cdot a\sqrt{2}\cdot a=\dfrac{a^3\sqrt{2}}{3}.\]
+%        \end{itemchoice}
+%    }
+    \dotlineEX{2}
+\end{ex}
+\begin{ex}%[1H8H7-3]
+    \immini[thm]{Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$. Mặt bên $SAB$ là tam giác đều và $SH\perp (ABCD)$ với $H$ là trung điểm của $AB$. Các mệnh đề sau đúng hay sai?
+        \choiceTF
+        {\True $SH\perp BD$}
+        {$AB\perp (SAD)$}
+        {\True $(SAB)\perp (SAD)$}
+        {\True Thể tích khối chóp $S.ABC$ là $\dfrac{a^3\sqrt{3}}{12}$}
+    }
+    {\begin{tikzpicture}[>=stealth,line join=round,line cap=round,
+            declare function={ad=4;gB=-140;ab=2;hs=2.5;}]
+            \path
+            (0,0) coordinate (A)
+            (gB:ab) coordinate (B)
+            (0:ad) coordinate (D)
+            ($(B)+(D)-(A)$) coordinate (C)
+            ($(A)!.5!(B)$) coordinate (H)
+            ($(H)+(90:hs)$)
+            ;
+            \draw  (S)--(B)--(C)--(D)--(S)--(C);
+            \draw[dashed](B)--(A)--(D)(A)--(S)--(H)(A)--(C)(B)--(D);
+            \fill[black] (A) circle (1.5pt) node[above left]{$A$}
+            (C) circle (1.5pt) node[below right]{$C$}
+            (B) circle (1.5pt) node[below left]{$B$}
+            (S) circle (1.5pt) node[above]{$S$}
+            (H) circle (1.5pt) node[right]{$H$}
+            (D) circle (1.5pt) node[right]{$D$};
+            \draw pic[draw, opacity = .7, angle radius = 5pt] {right angle =S--H--A};
+    \end{tikzpicture}}
+%    \loigiai{
+%        \begin{itemize}
+%            \item Đúng. Vì $SH\perp (ABCD)$ nên $SH\perp BD$.
+%            \item Sai. Do $\triangle SAB$ đều nên $AB \not \perp SA\Rightarrow AB \not \perp (SAD)$.
+%            \item Đúng. Ta có $\heva{&AD\perp AB\\&AD\perp SH}\Rightarrow AD\perp (SAB)\Rightarrow (SAD)\perp (SAB)$.
+%            \item Đúng. Ta có $V_{S.ABC}=\dfrac{1}{3}\cdot SH\cdot S_{ABC}$.
+%            Tam giác $SAB$ đều cạnh $a$ nên $SH=\dfrac{a\sqrt{3}}{2}$. Lại có $S_{ABC}=\dfrac{a^2}{2}$. Do đó
+%            \[V_{S.ABC}=\dfrac{1}{3}\cdot \dfrac{a\sqrt{3}}{2}\cdot \dfrac{a^2}{2} =\dfrac{a^3\sqrt{3}}{12}.\]
+%        \end{itemize}
+%    }
+\dotlineEX{2}
+\end{ex}
+
+\begin{ex}%[1H8H5-2]
+\immini[thm]
+{
+        Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh $a$. Gọi $H$ là hình chiếu vuông góc của $B$ lên $B'D$. Khi đó
+    \choiceTF
+    {\True Khoảng cách từ điểm $B$ đến đường thẳng $DB'$ là  $BH$}
+    {Độ dài đoạn $BH=\dfrac{a\sqrt{6}}{4}$}
+    {\True $\mathrm{d}(B,AC)=\dfrac{1}{2}AC$}
+    {$\mathrm{d}(B,AA')=BA'$}
+}
+{
+    \begin{tikzpicture}[>=stealth,line join=round,line cap=round,
+        declare function={gb=-135;ab=1.7;ad=3.5;h=ad;}]
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (gb:ab);
+        \coordinate (D) at (ad,0);
+        \coordinate (C) at ($(B)+(D)-(A)$);
+        \coordinate (A') at ($(A)+(0,h)$);
+        \coordinate (B') at ($(B)+(0,h)$);
+        \coordinate (C') at ($(C)+(0,h)$);
+        \coordinate (D') at ($(D)+(0,h)$);
+        \coordinate (H) at ($(B')!0.35!(D)$);
+        \coordinate (O) at (intersection of A--C and B--D);
+        \draw(B)--(C)--(C')--(B')--cycle (B')--(A')--(D')--(C') (C)--(D)--(D');
+        \draw[dashed](B)--(A)--(A') (D)--(A)--(C) (B)--(D) (B')--(D) (B)--(H);
+        \pic[draw,angle radius=2mm] {right angle = B'--H--B};
+        \foreach \i/\g in {A/180,B/-90,C/-90,D/0,A'/90,C'/90,D'/90,B'/180,H/90,O/90}{\draw[fill=black](\i) circle (1pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \begin{center}
+%            \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\small,scale=0.7]
+%                \coordinate (A) at (0,0);
+%                \coordinate (B) at (-2,-3);
+%                \coordinate (D) at (7,0);
+%                \coordinate (C) at ($(B)+(D)-(A)$);
+%                \coordinate (A') at ($(A)+(0,6)$);
+%                \coordinate (B') at ($(B)+(0,6)$);
+%                \coordinate (C') at ($(C)+(0,6)$);
+%                \coordinate (D') at ($(D)+(0,6)$);
+%                \coordinate (H) at ($(B')!0.2!(D)$);
+%                \coordinate (O) at (intersection of A--C and B--D);
+%                \draw(B)--(C)--(C')--(B')--cycle (B')--(A')--(D')--(C') (C)--(D)--(D');
+%                \draw[dashed,thin](B)--(A)--(A') (D)--(A)--(C) (B)--(D) (B')--(D) (B)--(H);
+%                \pic[draw,thin,angle radius=3mm] {right angle = B'--H--B};
+%                \foreach \i/\g in {A/180,B/-90,C/-90,D/0,A'/90,C'/90,D'/90,B'/180,H/90,O/90}{\draw[fill=black](\i) circle (1pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+%            \end{tikzpicture}
+%        \end{center}
+%        \begin{itemchoice}
+%            \itemch \textbf{Đúng}.\\Ta có $BH \perp B'D$ $\Rightarrow \mathrm{d}(B, B'D)=BH$.
+%            \itemch
+%            \textbf{Sai}.\\
+%            Ta có $\triangle BB'D$ là tam giác vuông tại $B$ và $BB'=a$, $BD=a\sqrt{2}$.\\
+%            Áp dụng hệ thức lượng trong tam giác vuông ta có
+%            \[BH=\dfrac{BB'\cdot BD}{\sqrt{BB'^2+BD^2}}=\dfrac{a\cdot a\sqrt{2}}{a\sqrt{3}}=\dfrac{a\sqrt{6}}{3}.\]
+%            \itemch
+%            \textbf{Đúng}.\\Ta có $BD \perp AC$ tại $O$ \\
+%            Suy ra $\mathrm{d}(B,AC)=BO=\dfrac{1}{2}BD=\dfrac{1}{2}AC$.
+%            \itemch
+%            \textbf{Sai}.\\
+%            Ta có $BA \perp AA' \Rightarrow \mathrm{d}(B,AA')=BA.$
+%        \end{itemchoice}
+%    }
+\dotlineEX{2}
+\end{ex}
+\begin{ex}%[1H8H7-5]
+\immini[thm]
+{
+    Cho hình lăng trụ tứ giác đều $ABCD.A'B'C'D'$ có $AB=a$, $AA'=a\sqrt{3}$.
+    \choiceTF
+    {\True $BD \perp\left(ACC'A'\right)$}
+    {$(ADD')\perp\left(ACC'A'\right)$}
+    {Khoảng cách giữa đường thẳng $BC$ và mặt phẳng $\left(ADC'B'\right)$ bằng $\dfrac{a\sqrt{2}}{3}$}
+    {\True Thể tích khối lăng trụ $ABC.A'B'C'$ bằng $\dfrac{a^3\sqrt{3}}{2}$}
+}
+{
+    \begin{tikzpicture}[>=stealth,line join=round,line cap=round,
+        declare function={gb=-135;ab=1.7;ad=3.5;h=ad;}]
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (gb:ab);
+        \coordinate (D) at (ad,0);
+        \coordinate (C) at ($(B)+(D)-(A)$);
+        \coordinate (A') at ($(A)+(0,h)$);
+        \coordinate (B') at ($(B)+(0,h)$);
+        \coordinate (C') at ($(C)+(0,h)$);
+        \coordinate (D') at ($(D)+(0,h)$);
+        \coordinate (H) at ($(B')!0.35!(D)$);
+        \coordinate (O) at (intersection of A--C and B--D);
+        \draw(B)--(C)--(C')--(B')--cycle (B')--(A')--(D')--(C') (C)--(D)--(D');
+        \draw[dashed](B)--(A)--(A') (D)--(A)--(C) (B)--(D);
+        \foreach \i/\g in {A/180,B/-90,C/-90,D/0,A'/90,C'/90,D'/90,B'/180,O/90}{\draw[fill=black](\i) circle (1pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+    \end{tikzpicture}
+}
+%    \loigiai{\begin{tikzpicture}[font=\small, line join=round, line cap=round, >=stealth, scale=.8]
+%            \def\a{3}
+%            \def\b{6}
+%            \path
+%            (0:0) coordinate (A)
+%            ++(0:\b) coordinate (B)
+%            ++(-150:\a) coordinate (C)
+%            ($(A)+(C)-(B)$) coordinate (D)
+%            (A)++(90:\b) coordinate (A')
+%            ++(0:\b) coordinate (B')
+%            ++(-150:\a) coordinate (C')
+%            ($(A')+(C')-(B')$) coordinate (D')
+%            ($(B')!0.5!(A)$) coordinate (K)
+%            ($(B)!0.5!(D)$) coordinate (O)
+%            ;
+%            \draw[dashed]
+%            (A')--(A)--(D) (B')--(A)--(B)--(K) (D')--(A)--(C) (B)--(D)
+%            ;
+%            \draw 	(D')--(D)--(C)--(C')--(D)
+%            (C)--(B)--(B')
+%            (A')--(B')--(C')
+%            (C')--(A')--(D')--(C');
+%            \foreach \x/\g in {A/-90,D/-90,C/-45,B/0,A'/90,D'/135,C'/110,B'/45,K/140}
+%            \fill[black] 	(\x) circle (1pt)
+%            ($(\g:3mm)+(\x)$) node {$\x$};
+%            \draw pic[draw,angle radius=2mm]{right angle=B--K--A};
+%            \draw pic[draw,angle radius=2.5mm]{right angle=D--O--C};
+%        \end{tikzpicture}
+%        \begin{itemchoice}
+%            \itemch \textbf{Đúng.}\\
+%            Vì $ABCD$ là hình vuông nên $BD\perp AC$.\\
+%            Mặt khác $BD\perp AA'$ nên $BD\perp (ACC'A')$.
+%            \itemch \textbf{Sai.}\\
+%            Vì $(ADD')\equiv (ADD'A')$ và $ \left(\left(ADD'A'\right),\left(ACC'A'\right)\right)=45^{\circ}$
+%            \itemch	\textbf{Sai.}\\
+%            Vì $ABCD.A'B'C'D'$ là lăng trụ tứ giác đều nên $AD\perp (ABB'A')$.\\ Do đó $ \left(ADC'B'\right)\perp \left(ABB'A'\right)$.\\
+%            Gọi $K$ là hình chiếu của $B$ trên đường thẳng $AB'$. Suy ra $BK\perp \left(ADC'B'\right)$.\\ $\Rightarrow $ $\mathrm{d}\left( (BC,\left(ADC'B'\right)\right)=BK$.\\
+%            Xét tam giác $ABB'$ vuông tại $B$ có $AB=a$, $AA'=a\sqrt{3}$ và đường cao $BK$.\\
+%            Áp dụng hệ thức lượng ta tính được $BK=\dfrac{AB\cdot BB'}{\sqrt{{AB}^2+{BB'}^2}}=\dfrac{a\sqrt{3}}{2}$.\\
+%            Vậy $\mathrm{d}\left( (BC,\left(ADC'B'\right)\right)=\dfrac{a\sqrt{3}}{2}$.
+%            \itemch \textbf{Đúng.}\\
+%            Ta có $ V_{ABC.A'B'C'}=\dfrac{1}{2}V_{ABCD.A'B'C'D'}=\dfrac{1}{2}\cdot a^2\cdot a\sqrt{3}=\dfrac{a^3\sqrt{3}}{2}$.
+%        \end{itemchoice}
+%    }
+\dotlineEX{2}
+\end{ex}
+
+\begin{ex}%[1H8H7-4]
+\immini[thm]
+{
+    Cho khối lăng trụ đứng $ABC.A'B'C'$ có đáy $ABC$ là tam giác vuông cân tại $B$ có $BA=BC=2a$; $AA'=2a$; $M$ là trung điểm của $BC$. Khi đó
+    \choiceTF
+    {\True Đường cao của khối lăng trụ là $AA'$}
+    {Diện tích tam giác $ABM$ bằng diện tích tam giác $ABC$}
+    {Thể tích khối chóp $A'.ABC$ bằng thể tích khối lăng trụ $ABC.A'B'C'$}
+    {\True Thể tích khối lăng trụ $ABC.A'B'C'$ là $4a^3$}
+}
+{
+    \begin{tikzpicture}[line join=round, line cap=round]
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (-50:2);
+        \coordinate (C) at (0:5);
+        \coordinate (A') at (90:4);
+        \coordinate (B') at ($(A')+(-50:2)$);
+        \coordinate (C') at ($(A')+(0:5)$);
+        \coordinate (M) at ($(B)!0.5!(C)$);
+        \foreach \i/\j in {A/B,B/C,A/A',B/B',C/C',A'/B',B'/C',C'/A',A'/B}{\draw (\i)--(\j);}
+        \foreach \i/\j in {A/C,A/M,A'/C,A'/M}{\draw[dashed] (\i)--(\j);}
+        \foreach \i/\g in {A/180,B/-90,C/0,A'/180,B'/-50,C'/0,M/-50}{\draw[fill=black](\i) circle (1.0pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+    \end{tikzpicture}
+}
+%    \loigiai{
+%        \begin{center}
+%            \begin{tikzpicture}[line join=round, line cap=round]
+%                \coordinate (A) at (0,0);
+%                \coordinate (B) at (-50:2);
+%                \coordinate (C) at (0:5);
+%                \coordinate (A') at (90:4);
+%                \coordinate (B') at ($(A')+(-50:2)$);
+%                \coordinate (C') at ($(A')+(0:5)$);
+%                \coordinate (M) at ($(B)!0.5!(C)$);
+%                \foreach \i/\j in {A/B,B/C,A/A',B/B',C/C',A'/B',B'/C',C'/A',A'/B}{\draw (\i)--(\j);}
+%                \foreach \i/\j in {A/C,A/M,A'/C,A'/M}{\draw[dashed] (\i)--(\j);}
+%                \foreach \i/\g in {A/180,B/-90,C/0,A'/180,B'/-50,C'/0,M/-50}{\draw[fill=black](\i) circle (1.0pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+%            \end{tikzpicture}
+%        \end{center}
+%        \begin{itemchoice}
+%            \itemch
+%            Do $ABC.A'B'C'$ là lăng trụ đứng nên suy ra $AA' \perp (ABC)$.\\
+%            Suy ra $A$ là hình chiếu của $A'$ trên $(ABC)$.\\
+%            Suy ra $AA'$ là đường cao của khối chóp.
+%            \itemch
+%            Ta có tam giác $ABM$ vuông tại $B$ nên $S_{\triangle ABM}=\dfrac{1}{2}AB\cdot BM$.\\
+%            Mặt khác, $M$ là trung điểm $BC$ nên $BM=\dfrac{1}{2}BC$.\\
+%            Suy ra, $S_{\triangle ABM}=\dfrac{1}{2}AB\cdot \dfrac{1}{2}BC=\dfrac{1}{2}\cdot \dfrac{1}{2} AB \cdot BC=\dfrac{1}{2} S_{\triangle ABC}$.
+%            \itemch
+%            Ta có $V_{A'.ABC}=\dfrac{1}{3}S_{\triangle ABC}\cdot AA'=\dfrac{1}{3}\cdot V_{ABC.A'B'C'}$.
+%            \itemch
+%            Ta có $V_{ABC.A'B'C'}=S_{\triangle ABC}\cdot AA'=\dfrac{1}{2}\cdot BA\cdot BC \cdot AA'=\dfrac{1}{2}\cdot 2a\cdot 2a\cdot 2a=4a^3$.
+%        \end{itemchoice}
+%    }
+\dotlineEX{3}
+\end{ex}
+
+\begin{ex}%[1H8H7-4]
+    \immini[thm]
+    {
+        Cho hình lăng trụ tam giác đều $ABC.A'B'C'$ có cạnh đáy bằng $2a$, khoảng cách từ điểm $A'$
+    đến mặt phẳng $(AB'C')$ bằng $\dfrac{a\sqrt{3}}{2}$. Khi đó:
+    \choiceTF
+    {\True Trong mặt phẳng $(A'B'C')$, kẻ $A'H\perp B'C'$ tại $H$. Khi đó, $B'C'\perp (AA'H)$            }
+    {\True $\mathrm{d}\left( \left(ABC \right) ,\left(A'B'C' \right) \right)=a$}
+    {Diện tích đáy của lăng trụ là $a^2\sqrt{5}$}
+    {\True Thể tích khối lăng trụ là $a^3\sqrt{3}$}
+}
+{
+    \begin{tikzpicture}[>=stealth,line join=round,line cap=round]
+        \def\c{3}
+        \def\goc{90}
+        \path (0,0)coordinate (A)
+        (5,0)coordinate (B)
+        (2,1)coordinate (C)
+        (C)+(\goc:\c)coordinate (C')
+        (A)	+(\goc:\c)coordinate (A')
+        (B)+(\goc:\c)coordinate (B')
+        ($(B')!.6!(C')$)coordinate (H)
+        ($(A)!.4!(H)$)coordinate (K)
+        ;
+        \draw (A')--(B')--(C')--cycle (A')--(A)--(B)--(B')
+        ;
+        \draw[dashed](A)--(C)--(B) (C)--(C');
+        \foreach \x/\g in {A'/180,B'/0,C'/90,A/180,B/0,C/40} \fill (\x) circle (0.03)+(\g:3mm) node[scale=.9] {$\x$};
+    \end{tikzpicture}
+}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\small,scale=0.8]
+                \def\c{4}
+                \def\goc{90}
+                \path (0,0)coordinate (A)
+                (5,0)coordinate (B)
+                (2,2)coordinate (C)
+                (C)+(\goc:\c)coordinate (C')
+                (A)	+(\goc:\c)coordinate (A')
+                (B)+(\goc:\c)coordinate (B')
+                ($(B')!.6!(C')$)coordinate (H)
+                ($(A)!.4!(H)$)coordinate (K)
+                
+                ;
+                \draw (A')--(B')--(C')--cycle (H)--(A')--(A)--(B)--(B')
+                (A)--(B')
+                
+                ;
+                \draw pic[draw,angle radius=2mm] {right angle = A'--H--C'};
+                \draw[dashed](A)--(C)--(B) (C)--(C')--(A)--(H) (A')--(K);
+                \draw pic[draw,angle radius=2mm] {right angle = A'--K--A};
+                \foreach \x/\g in {A'/180,B'/0,C'/90,A/180,B/0,C/40,H/0,K/0} \fill (\x) circle (0.03)+(\g:3mm) node[scale=.9] {$\x$};
+            \end{tikzpicture}
+        \end{center}
+        \begin{itemchoice}
+            \itemch	 Đúng.\\
+            Do $AA'\perp (A'B'C')$ nên $AA'\perp B'C'$, mà $B'C'\perp A'H$ nên $B'C'\perp (AA'H)$.
+            \itemch	 Đúng.\\
+            Kẻ $A'K\perp AH$, ($K\in AH$), ta có $B'C'\perp A'K$ ($B'C'\perp (AA'H) $), suy ra $A'K\perp (AB'C')$\\ hay $\mathrm{d}(A',(AB'C'))=A'K$, suy ra $A'K=\dfrac{a\sqrt{3}}{2}$.\\
+            Tam giác $AA'H$ vuông tại $A'$, $A'H=\dfrac{2a\sqrt{3}}{2}=a\sqrt{3}$, $A'H$ là đường cao nên
+            \[\dfrac{1}{A'K^2}=\dfrac{1}{AA'^2}+\dfrac{1}{A'H^2}\Rightarrow AA'=\dfrac{A'H\cdot A'K}{\sqrt{A'H^2-A'K^2}}=\dfrac{a\sqrt{3}\cdot \dfrac{a\sqrt{3}}{2}}{\sqrt{3a^2-\dfrac{3a^2}{4}}}=a.\]
+            Vậy $\mathrm{d}\left( \left(ABC \right) ,\left(A'B'C' \right) \right)=a$.
+            \itemch	Sai.\\
+            Diện tích đáy của hình lăng trụ là
+            \[S_{\text{đáy}}=\dfrac{(2a)^2\sqrt{3}}{4}=a^2\sqrt{3}.\]
+            \itemch Đúng.\\
+            Thể tích khối lăng trụ là $V=AA'\cdot S_{\text{đáy}}=a\cdot a^2\sqrt{3}=a^3\sqrt{3}$.
+        \end{itemchoice}
+        
+    }
+    \dotlineEX{3}
+\end{ex}
+
+\begin{ex}%[1H8V6-3]
+    Cho hình chóp $S.ABCD$ có đáy là hình chữ nhật $AB=3$, $BC=4$. Tam giác $SAC$ nằm trong mặt phẳng vuông góc với đáy. Khoảng cách từ $C$ đến $SA$ là $4$. Cosin của góc giữa hai mặt phẳng $(SAB)$ và $(SAC)$ bằng $\dfrac{3}{\sqrt{m}}$ với $m\in\mathbb{N^*}$. Khi đó $m$ là
+    \shortans{$34$}
+    \loigiai{
+        Giao tuyến của $(SAB)$ và $(SAC)$ là $SA$.\\
+        Kẻ $BE \perp AC$ tại $E$ với $(E\in AC)$, khi đó
+        \[EB = \dfrac{BA \cdot BC}{AC} = \dfrac{12}{5}.\]
+        Kẻ $EK$ vuông góc với giao tuyến $SA$.\\
+        Kẻ $CH \perp SA$ tại $H \Rightarrow CH = 4$.\\
+        Vì $\heva{&BE \perp AC\\&(SAC) \perp (ABC)\\&(SAC)\cap (ABC)=AC}\Rightarrow BE \perp (SAC)$.
+        \[\Rightarrow BE \perp SA, \text{mà} SA \perp EK \Rightarrow SA \perp(BKE) \Rightarrow \widehat{((SAB);(SAC))}=\widehat{BKE}.
+        \]
+        Tính được $AE=\dfrac{9}{5}$. Ta có $\dfrac{KE}{HC}=\dfrac{AE}{AC}=\dfrac{9}{25} \Rightarrow KE=\dfrac{36}{25} \Rightarrow BK=\dfrac{12 \sqrt{34}}{25}$.\\
+        Vậy $\cos \widehat{BKE}=\dfrac{KE}{BK}=\dfrac{3}{\sqrt{34}}$.
+    }
+    \dotlineEX{4}
+\end{ex}
+\begin{ex}%[1H8V5-3]
+    Cho hình chóp $S.ABCD$, đáy $ABCD$ là hình thoi cạnh $2$. Tam giác $ABC$ đều, hình chiếu vuông góc $H$ của đỉnh $S$ trên mặt phẳng $ABCD$ trùng với trọng tâm tam giác $ABC$. Đường thẳng $SD$ hợp với mặt phẳng đáy một góc $30^\circ$. Tính khoảng cách từ $B$ đến mặt phẳng $\left(SCD\right)$. (làm tròn đến hàng phần trăm)
+    \shortans{$1{,}31$}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[line join=round,line cap=round,>=stealth,font=\small,scale=.8]
+                \coordinate (A) at (0,0);
+                \coordinate (B) at (-2,-1.5);
+                \coordinate (D) at (6,0);
+                \coordinate (C) at ($(B)+(D)-(A)$);
+                \coordinate (T) at ($(A)!.5!(B)$);
+                \coordinate (O) at (intersection of A--C and B--D);
+                \coordinate (H) at (intersection of T--C and B--D);
+                \coordinate (S) at ($(H)+(0,6)$);
+                \coordinate (K) at ($(S)!(H)!(C)$);
+                \draw(S)--(B) (S)--(C) (S)--(D) (B)--(C)--(D);
+                \pic[draw,angle radius=2mm] {right angle = H--K--S};
+                \draw[dashed] (C)--(H)--(S)--(A) (A)--(B) (A)--(D) (B)--(D) (A)--(C) (H)--(K);
+                \foreach \i/\g in {S/90,A/140,B/180,C/-45,D/0,O/50,H/150,K/70}{\draw[fill=black](\i) circle (1.5pt) ($(\i)+(\g:4mm)$) node[scale=1]{$\i$};}
+            \end{tikzpicture}
+        \end{center}
+        Gọi $H$ là trọng tâm tam giác đều $ABC \Rightarrow SH \bot \left(ABCD\right)$\\
+        $\Rightarrow HD$ là hình chiếu của $SD$ lên $\left(ABCD\right)$.\\
+        $\Rightarrow \widehat{\left(SD;\left(ABCD\right) \right)}=\widehat{\left(SD;HD\right)}=\widehat{SDH}={{30}^\circ}$\\
+        Ta có: $\dfrac{BH}{BO}=\dfrac{2}{3} \Rightarrow \dfrac{BH}{BD}=\dfrac{1}{3} \Rightarrow \dfrac{HD}{BD}=\dfrac{2}{3}$.\\
+        Mà $BH \cap \left(SCD\right)= D \Rightarrow \dfrac{\mathrm{d}\left(B;\left(ABCD\right) \right)}{\mathrm{d}\left(H;\left(SCD\right) \right)}=\dfrac{BD}{HD}=\dfrac{3}{2}$\\
+        $\Rightarrow \mathrm{d}\left(B;\left(SCD\right) \right)=\dfrac{3}{2} \mathrm{d}\left(H;\left(SCD\right) \right)$.\\
+        Ta có $H$ là trọng tâm tam giác đều $ABC$ nên $HC\bot AB$.\\
+        Mà $AB \parallel CD$ nên $HC\bot CD$.\\
+        Trong $\left(SHC\right)$ kẻ $HK\bot SC$.\\
+        Ta có $\heva{&CD\bot CH\\& CD\bot SH} \Rightarrow CD \bot \left(SHC\right)\Rightarrow CD\bot HK$.\\
+        $\heva{& HK\bot SC\\& HK\bot CD} \Rightarrow HK\bot \left(SCD\right) \Rightarrow \mathrm{d}\left(H;\left(SCD\right) \right)=HK$.\\
+        Vì tam giác $ABC$ đều cạnh bằng $2$ nên $HC=\dfrac{2}{3}\cdot\dfrac{2\sqrt{3}}{2}=\dfrac{2\sqrt{3}}{3}$.\\
+        Ta có: $\dfrac{HD}{BD}=\dfrac{2}{3}$, mà $BD=2BO=2\cdot\dfrac{2\sqrt{3}}{2}=2\sqrt{3}\Rightarrow HD=\dfrac{2}{3}BD=\dfrac{2\cdot 2 \sqrt{3}}{3}=\dfrac{4\sqrt{3}}{3}$.\\
+        Xét tam giác vuông $SHD$ ta có:\\ $SH=HD\cdot\tan{30^\circ}=\dfrac{4\sqrt{3}}{3}\cdot\dfrac{\sqrt{3}}{3}=\dfrac{4}{3}$.\\
+        Áp dụng hệ thức lượng trong tam giác vuông $SHC$ ta có:\\
+        $\dfrac{1}{HK^2}=\dfrac{1}{SH^2}+\dfrac{1}{HC^2}=\dfrac{1}{\dfrac{{{4\cdot2}^2}}{9}}+\dfrac{1}{\dfrac{2^2}{3}}=\dfrac{21}{16}$.\\
+        $\Rightarrow HK=\dfrac{4\sqrt{21}}{21}$.\\
+        Vậy $\mathrm{d}\left(B;\left(SCD\right) \right)=\dfrac{3}{2}HK=\dfrac{6\sqrt{21}}{21}\approx 1{,}31$}
+        \dotlineEX{5}
+\end{ex}
+
+\begin{ex}%[1H8V5-4]
+    Cho hình chóp $S.ABCD$ có đáy là hình thoi cạnh bằng $1$, $\widehat{ABC}=60^{\circ}$. Mặt bên $SAB$ là tam giác đều và nằm trong mặt phẳng vuông góc với mặt phẳng đáy. Gọi $M$, $N$ lần lượt là trung điểm của $SA$ và $CD$. Khoảng cách giữa hai đường thẳng $BM$ và $SN$ bằng bao nhiêu? (\textit{làm tròn kết quả đến hàng phần trăm}).
+    \shortans{0,33}
+    \loigiai{	\begin{center}
+            \begin{tikzpicture}[line join = round, line cap=round,>=stealth,font=\small,scale=0.9]
+                \tikzset{declare function={a=5; b=3; h=4;}}
+                \path (0,0) coordinate (A)
+                (a,0) coordinate (D)
+                (-135:b) coordinate (B)
+                ($(B)+(D)$) coordinate (C)
+                ($(0,h)+(-135:{0.35*b})$) coordinate (S)
+                ($(A)!0.5!(B)$) coordinate (H)
+                ($(A)!0.5!(S)$) coordinate (M)
+                ($(C)!0.5!(D)$) coordinate (N);
+                \path (barycentric cs:A=1,B=1,S=1) coordinate (G);
+                \path ($(H)!1/3!(N)$) coordinate (E);
+                \draw[dashed] (B)--(A)--(D) (A)--(S) (H)--(N) (S)--(H) (M)--(B) (B)--(G)--(E)--cycle ;
+                \draw (S)--(B)--(C)--(D)--cycle (S)--(C) (S)--(N);
+                \foreach \t/\g in {A/60,B/-90,C/-90,D/90,S/90,H/-90,M/0,N/0,G/0,E/-90}{
+                    \draw[fill=black] (\t) circle (1pt) node[shift={(\g:7pt)},font=\scriptsize]{$\t$};
+                }
+            \end{tikzpicture}
+        \end{center}
+        Gọi $H$ là trung điểm của $AB$, $G$ là giao điểm của $SH$ và $BM$, khi đó $G$ là trọng tâm của tam giác $SAB$.\\
+        Tam giác $SAB$ đều nên $SH\perp AB$. Do $(SAB)\perp (ABCD)$ nên suy ra $SH\perp (ABCD)$.\\
+        Trong mặt phẳng $(SHN)$, kẻ đường thẳng đi qua $G$ và song song với $SN$, cắt $HN$ tại $E$.\\
+        Ta có $SN\parallel \left(BGE\right)$ nên
+        \[\mathrm{d}\left(BM,SN\right)=\mathrm{d}\left(SN,\left(BGE\right)\right)=\mathrm{d}\left(S,\left(BGE\right)\right).\]
+        Do $G$ là trọng tâm của tam giác $SAB$ nên \[\dfrac{\mathrm{d}\left(S,\left(BGE\right)\right)}{\mathrm{d}\left(H,\left(BGE\right)\right)}=\dfrac{SG}{HG}=2\Rightarrow\mathrm{d}\left(S,\left(BGE\right)\right)=2\mathrm{d}\left(H,\left(BGE\right)\right).\]
+        Ta có $HE=\dfrac{1}{3} HN=\dfrac{1}{3}$ nên $S_{\triangle BHE}=\dfrac{1}{2}\cdot BH\cdot HE\cdot\sin 120^{\circ}=\dfrac{\sqrt{3}}{24}$.\\
+        Thể tích của tứ diện $GBHE$ là $V_{GBHE}=\dfrac{1}{3} GH\cdot S_{\triangle BHE}=\dfrac{1}{3}\cdot\dfrac{\sqrt{3}}{6}\cdot\dfrac{\sqrt{3}}{24}=\dfrac{1}{144}$.\\
+        Mặt khác $V_{GBHE}=\dfrac{1}{3}\cdot \mathrm{d}\left(H,\left(BGE\right)\right)\cdot S_{\triangle BGE}$.\\
+        Ta có $BE^2=BH^2+HE^2-2BH\cdot HE\cdot\cos 120^{\circ}=\dfrac{19}{36}$, $BG=\dfrac{\sqrt{3}}{3}$,\\ $GE=\dfrac{1}{3} SN=\dfrac{1}{3} \sqrt{SH^2+HN^2}=\dfrac{1}{3} \sqrt{\dfrac{3}{4}+1}=\dfrac{\sqrt{7}}{6}$.\\
+        Vì $BE^2=BG^2+GE^2$ nên tam giác $BGE$ vuông tại $G$, $S_{\triangle BGE}=\dfrac{1}{2} BG\cdot GE=\dfrac{\sqrt{21}}{36}$.\\
+        Do đó $\mathrm{d}\left(H,\left(BGE\right)\right)=\dfrac{3V_{GBHE}}{S_{\triangle BGE}}=\dfrac{3}{4\sqrt{21}}$.\\
+        Vậy $\mathrm{d}\left(BM,SN\right)=2\cdot\dfrac{3}{4\sqrt{21}}=\dfrac{\sqrt{21}}{14} \approx 0{,}33$.
+    }
+    \dotlineEX{4}
+\end{ex}
+
+\begin{ex}%[1H8V5-3]
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình thang vuông tại $A$ và $B$ với $AB=2$, $BC=\dfrac{3}{2}$, $AD=3$. Hình chiếu vuông góc của $S$ lên mặt phẳng $\left(ABCD\right)$ là trung điểm $H$ của $BD$. Biết góc giữa mặt phẳng $\left(SCD\right)$ và mặt phẳng $\left(ABCD\right)$ bằng $60^\circ$. TínHKhoảng cách từ điểm $C$ đến mặt phẳng $\left(SBD\right)$ (làm tròn đến hàng phần trăm)
+    \shortans{$0{,}83$}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[line join=round,line cap=round,>=stealth,font=\small,scale=1]
+                \coordinate (A) at (0,0);
+                \coordinate (B) at (1.5,-3);
+                \coordinate (D) at (7,0);
+                \coordinate (C) at ($(B)+.5*(D)-(A)$);
+                \coordinate (M) at ($(A)!.5!(D)$);
+                \coordinate (H) at ($(B)!.5!(D)$);
+                \coordinate (S) at ($(H)+(0,7)$);
+                \draw (S)--(A)--(B)--(S)--(C) (S)--(D) (B)--(C)--(D);
+                \draw[dashed] (A)--(D)--(B) (M)--(C) (A)--(H)--(S);
+                \pic[draw,angle radius=2mm] {right angle = S--H--D} pic[draw,angle radius=2mm] {right angle = S--H--A};
+                \path (B)--(H) node[midway,sloped]{$||$};
+                \path (D)--(H) node[midway,sloped]{$||$};
+                \foreach \i/\g in {S/90,A/180,B/-115,C/-45,D/0,M/90,H/-110}{\draw[fill=black](\i) circle (1.5pt) ($(\i)+(\g:4mm)$) node[scale=1]{$\i$};}
+            \end{tikzpicture}
+            \begin{tikzpicture}[line join=round,line cap=round,>=stealth,font=\small,scale=1]
+                \coordinate (A) at (0,0);
+                \coordinate (B) at (0,-4);
+                \coordinate (D) at (6,0);
+                \coordinate (C) at ($(B)+.5*(D)-(A)$);
+                \coordinate (M) at ($(A)!.5!(D)$);
+                \coordinate (H) at ($(B)!.5!(D)$);
+                \coordinate (I) at ($(B)!(C)!(D)$);
+                \coordinate (K) at ($(A)!(B)!(H)$);
+                \draw (H)--(A)--(B)--(B)--(C)--(D)
+                (A)--(D)--(B)--(K)
+                (M)--(C)--(I)
+                ;
+                \pic[draw,angle radius=2mm] {right angle = M--C--B}
+                pic[draw,angle radius=2mm] {right angle = A--B--C}
+                pic[draw,angle radius=2mm] {right angle = B--A--M}
+                pic[draw,angle radius=2mm] {right angle = B--I--C}
+                pic[draw,angle radius=2mm] {right angle = B--K--A};
+                \foreach \i/\g in {A/150,B/-115,C/-45,D/0,M/90,H/-45,I/90,K/90}{\draw[fill=black](\i) circle (1.5pt) ($(\i)+(\g:4mm)$) node[scale=1]{$\i$};}
+            \end{tikzpicture}
+        \end{center}
+        Ta có $SH \bot \left(ABCD\right) \Rightarrow \left(SBD\right) \bot \left(ABCD\right)$ theo giao tuyến $AH$.\\
+        Trong mặt phẳng $\left(ABCD\right)$, kẻ $BK\bot AH$ tại $K$, ta có \\
+        $BK\bot \left(SAH\right)\Rightarrow BK=\mathrm{d}\left(B,\left(SAH\right) \right)$.\\
+        Tam giác $ABD$ vuông tại $A$ nên $BD^2=AB^2+AD^2=13\Rightarrow BD=\sqrt{13}\Rightarrow BH=\dfrac{\sqrt{13}}{2}$.\\
+        Gọi $M$ là trung điểm của $AD$, ta có $\heva{& CM\parallel AB\\& HM\parallel AB}\Rightarrow$ ba điểm $C$, $H$, $M$ thẳng hàng.\\
+        Ta có $HM=\dfrac{AB}{2}=1\Rightarrow CH=1$.\\
+        Suy ra tam giác $BCH$ vuông tại $C$. Do đó, ta có
+        $CI=\dfrac{CH \cdot CB}{BH}=\dfrac{3\sqrt{13}}{13}$.\\
+        Vậy $\mathrm{d}\left(C,\left(SBD\right) \right)=CI=\dfrac{3\sqrt{13}}{13}\approx 0{,}83$.}
+        \dotlineEX{5}
+\end{ex}
+
+\begin{ex}%[1H8V5-4]
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a=5\sqrt{3}$, $SD=\dfrac{a\sqrt{17}}{2}$, $KA=KD$, hình chiếu vuông góc $H$ của $S$ trên mặt phẳng  $(ABCD)$  là trung điểm của đoạn $AB$. Khoảng cách $h$ giữa hai đường thẳng $HK$ và $SD$ bằng bao nhiêu?
+    \shortans{$1$}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[declare function={a=2.65;b=4.5;h=3;},line join=round]
+                \path (0,0) coordinate (A)
+                (-135:a) coordinate (B)
+                (b,0) coordinate (D)
+                ($(D)-(A)+(B)$) coordinate (C)
+                ($(A)!.5!(B)$) coordinate (H)
+                ($(H)+(0,h)$) coordinate (S)
+                ($(A)!.5!(D)$) coordinate (K)
+                ($(B)!.3!(D)$) coordinate (E)
+                ($(S)!.4!(E)$) coordinate (F)
+                ;
+                \foreach \x/\y/\z in {H/E/B,H/F/E}{
+                    \path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};
+                }
+                \draw[dashed] (S)--(A)--(B) (A)--(D) (S)--(H)--(K) (B)--(D) (H)--(E)--(S) (H)--(F);
+                \draw (B)--(C)--(D) (B)--(S)  (D)--(S)--(C);
+                \foreach \t/\g in {A/160,B/-90,C/-90,D/0,S/90,H/-90,K/90,E/-90,F/180}{
+                    \draw[fill=black] (\t) circle (1pt) node[shift={(\g:7pt)},font=\small]{$ \t $};
+                }
+            \end{tikzpicture}
+        \end{center}
+        Ta có $SH\perp (ABCD)\Rightarrow SH\perp HD$.\\
+        Suy ra $ SH=\sqrt{SD^2-HD^2}=\sqrt{SD^2-\left(HA^2+DA^2\right)}=\sqrt{\dfrac{17a^2}{4}-\left(\dfrac{a^2}{4}+a^2\right)}=a\sqrt{3}$.\\
+        Do $HK\parallel BD\Rightarrow HK\parallel (SBD)$ $\Rightarrow \mathrm{d}\left(HK,SD\right)=\mathrm{d}\left(HK,(SBD)\right)=\mathrm{d}\left(H,(SBD)\right)$. $\qquad(1)$\\
+        Kẻ $HE\perp BD$ ($E\in BD$) suy ra  $(SHE)\perp(SBD)$  và  $(SHE)\cap(SBD)=SE$. \\
+        Kẻ $HF\perp SE~  (F\in SE) $ khi đó  $HF\perp(SBD)$.\\
+        Suy ra $\mathrm{d}\left(H,(SBD)\right)=HF$. $\qquad(2)$\\
+        Xét tam giác $HEB$, ta có $HE=HB\sin\widehat{HBE}=\dfrac{a}{2}\cdot \sin45^\circ=\dfrac{a}{2\sqrt{2}}$.\\
+        Xét tam giác $SHE$, ta có \\ $\dfrac{1}{HF^2}=\dfrac{1}{SH^2}+\dfrac{1}{HE^2}=\dfrac{1}{3a^2}+\dfrac{8}{a^2}=\dfrac{25}{3a^2}\Rightarrow HF=\dfrac{a\sqrt{3}}{5}$. $\qquad(3)$\\
+        Từ $(1)$, $(2)$, $(3)$ suy ra $\mathrm{d} (HK,SD) =\dfrac{a\sqrt{3}}{5}\xrightarrow{a=5\sqrt{3}}\mathrm{d} (HK,SD)=1$.
+    }
+    \dotlineEX{6}
+\end{ex}
+
+\begin{ex}%[1H8V5-4]
+    Cho hình chóp tứ giác đều $S.ABCD$ có $AB=2$, $SA=2 \sqrt{2}$. Khoảng cách giữa hai đường thẳng $AB$ và $SD$ bằng bao nhiêu? (\textit{làm tròn đến hàng đơn vị}).
+    \shortans{2}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[scale=0.85, font=\small, line join=round, line cap=round]
+                \def\a{4}
+                \path 	(0:0) coordinate (A)
+                ++(0:\a) coordinate (D)
+                ++(-140:.55*\a) coordinate (C)
+                ($(A)+(C)-(D)$) coordinate (B)
+                (intersection of A--C and B--D) coordinate (O)
+                ($(O)+(90:\a)$) coordinate (S)
+                ($(C)!.5!(D)$) coordinate (M)
+                ($(S)!.6!(M)$) coordinate (H);
+                \draw[dashed] 	(B)--(A)--(D)	(A)--(S)
+                (A)--(C)	(B)--(D)	(S)--(O)	(M)--(O)--(H);
+                \draw	(B)--(C)--(D)	(B)--(S)	(C)--(S)	(D)--(S)	(S)--(M);
+                \foreach \x/\g in {A/135,B/-135,C/-45,D/45,S/90,O/-90,M/-45,H/15}
+                \fill[black] 	(\x) circle (1pt)
+                ($(\g:3mm)+(\x)$) node {$\x$};
+                \draw pic[draw,angle radius=2mm]{right angle=A--O--S}
+                pic[draw,angle radius=2mm]{right angle=O--H--M}
+                pic[draw,angle radius=2mm]{right angle=O--M--C}
+                pic[draw,angle radius=2mm]{right angle=S--M--D};
+            \end{tikzpicture}
+        \end{center}
+        Gọi $O$ là tâm hình vuông $ABCD$.\\
+        Ta có $AB \parallel (SCD) \Rightarrow \mathrm{d}(AB, SD)=\mathrm{d}\big(AB,(SCD)\big)=\mathrm{d}\big(A,(SCD)\big)=2\cdot \mathrm{d}\big(O,(SCD)\big)$.\\
+        Mặt khác, gọi $M$ là trung điểm của $CD$ thì
+        \begin{itemize}
+            \item $OM \perp CD$ (do $\triangle OCD$ cân tại $O$).
+            \item $SM \perp CD$ (do $\triangle SCD$ cân tại $S$).
+        \end{itemize}
+        Suy ra $CD\perp(SOM)$.\\
+        Mà $CD\subset(SCD)$ nên $(SOM)\perp (SCD)$ và  $(SOM)\cap(SCD)=SM$.\\ Trong mặt phẳng $(SOM)$, dựng $OH \perp SM$ tại $H$ thì $OH \perp (SCD) \Rightarrow OH=\mathrm{d}(O,(SCD))$.\\
+        Xét $\triangle SOM$ vuông tại $O$, ta có
+        \begin{itemize}
+            \item $OM=1$, $SO=\sqrt{6}$.
+            \item $\dfrac{1}{OH^2}=\dfrac{1}{OM^2}+\dfrac{1}{SO^2} \Rightarrow OH=\dfrac{\sqrt{42}}{7}$.
+        \end{itemize}
+        Vậy $\mathrm{d}(AB, SD)=2\cdot \mathrm{d}\big(O,(SCD)\big)=2\cdot OH=\dfrac{2 \sqrt{42}}{7} \approx 2$.
+    }
+    \dotlineEX{6}
+\end{ex}
+
+\begin{ex}%[1H8V5-4]
+    Cho hình chóp đều $S.ABCD$ có $AB=1$, $SA = 2$. Tính khoảng cách giữa hai đường thẳng $SD$ và $AB$. (\textit{làm tròn đến hàng phần trăm})
+    \shortans{0{,}97}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[scale=1, font=\small, line join=round, line cap=round, >=stealth]
+                \def\a{4}
+                \def\h{4.5}
+                \path 	(0:0) coordinate (A)
+                ++(0:\a) coordinate (D)
+                ++(-130:\a/2) coordinate (C)
+                ($(A)+(C)-(D)$) coordinate (B)
+                (intersection of A--C and B--D) coordinate (O)
+                ($(O)+(90:\h)$) coordinate (S)
+                ($(C)!.5!(D)$) coordinate (M)
+                ($(S)!.7!(M)$) coordinate (H);
+                \draw[dashed] 	(B)--(A)--(D)	(A)--(S)
+                (A)--(C)	(B)--(D)	(S)--(O) (O)--(M) (O)--(H)	;
+                \draw	(B)--(C)--(D) (S)--(M)
+                (B)--(S)	(C)--(S)	(D)--(S);
+                \foreach \x/\g in {A/135,B/-135,C/-45,D/45,S/90,O/-90,M/-30,H/30}
+                \fill[black] 	(\x) circle (1.5pt)
+                ($(\g:3mm)+(\x)$) node {$\x$};
+                \draw pic[draw,angle radius=2mm]{right angle=O--H--M};
+            \end{tikzpicture}
+        \end{center}
+        Gọi $O$ là tâm hình vuông $ABCD$ và $M$ là trung điểm $CD$.\\
+        Ta có $\heva{& AB\parallel CD\\
+            &SD\subset (SCD)}\Rightarrow AB\parallel (SCD)\Rightarrow \mathrm{d}(AB,SD)=\mathrm{d}(AB,(SCD))=\mathrm{d}(A,(SCD))$.\\
+        Mặt khác $OA$ cắt $(SCD)$ tại $C$ nên $\dfrac{\mathrm{d}(A,(SCD))}{\mathrm{d}(O,(SCD))} = \dfrac{CA}{CO}=2$.\\
+        Do đó $\mathrm{d}(A,(SCD))=2\mathrm{d}(O,(SCD))$.\\
+        Ta có $\heva{&CD \perp OM\\ &CD \perp SO }\Rightarrow CD\perp (SOM)$.\\
+        Trong $(SOM)$, kẻ $OH\perp SM$ tại $H$.\\
+        Khi đó $\heva{&OH\perp SM\\
+            &OH \perp CD \text{ do }CD \perp (SOM) }\Rightarrow OH\perp SM$ tại $H$.\\
+        Suy ra $\mathrm{d}(O,(SCD))=OH$.\\
+        Ta có $SO=\sqrt{SA^2 - OA^2}=\sqrt{2^2 - \left(\dfrac{\sqrt{2}}{2} \right)^2}=\dfrac{\sqrt{14}}{2}$.\\
+        Xét tam giác $SOM$ vuông tại $O$ có $OH$ là đường cao
+        \begin{align*}
+            \dfrac{1}{OH^2}=\dfrac{1}{SO^2}+\dfrac{1}{OM^2}=\dfrac{1}{\left(\dfrac{\sqrt{14}}{2} \right)^2 } + \dfrac{1}{\left(\dfrac{1}{2} \right)^2 }=\dfrac{30}{7}\Rightarrow OH=\dfrac{\sqrt{210}}{30}.
+        \end{align*}
+        Vậy $\mathrm{d}(A,(SCD))=2\mathrm{d}(O,(SCD))=2OH=\dfrac{\sqrt{210}}{15}\approx 0{,}97$.
+    }
+    \dotlineEX{5}
+\end{ex}
+\begin{ex}%[1H8V6-1]
+    Cho hình lăng trụ đứng $ABCD.A'B'C'D'$ có đáy $ABCD$ là hình thoi, $AC=2 AA'=2a\sqrt{3}$. Góc giữa hai mặt phẳng $\left(A'BD\right)$ và $\left(C'BD\right)$ bằng bao nhiêu?
+    \shortans{$90$}
+    \loigiai
+    {
+        \immini{
+            Ta có $\heva{&BD \perp AC \\ &BD \perp A'A} \Rightarrow BD \perp\left(ACC'A'\right) \Rightarrow BD \perp OA', BD \perp OC'$.\\
+            Suy ra góc giữa hai mặt phẳng $\left(A'BD\right)$ và $\left(C'BD\right)$ là góc giữa hai đường thẳng $OA'$ và $OC'$.\\
+            Theo giả thiết
+            $AC=2 A'A=2 a \sqrt{3}\Rightarrow AO=A'A=a \sqrt{3}\Rightarrow OA'=O C'=a \sqrt{6}$.\\
+            Trong tam giác $OA'C'$ có\\
+            \[\cos \widehat{A'OC'}=\dfrac{O A'^2+OC'^2-A'C'}{2 \cdot O A'\cdot O C'}=\dfrac{6 a^2+6 a^2-12 a^2}{2\cdot6 a^2}=0.\]
+            Suy ra $\widehat{A'OC'}=90^{\circ}$.\\
+            Vậy góc giữa hai mặt phẳng $\left(A'BD\right)$ và $\left(C'BD\right)$ bằng $90^{\circ}$.
+        }
+        {
+            \begin{tikzpicture}[scale=0.7, font=\small, line join=round, line cap=round,>=stealth]
+                \path
+                (0,0) coordinate (B)
+                (-1.3,-1.6) coordinate (A)
+                (3,-1.6)coordinate (D)
+                ($(B)+(D)-(A)$) coordinate (C)
+                ($(A)+(0,-3.5)$) coordinate (A')
+                ($(B)+(0,-3.5)$) coordinate (B')
+                ($(C)+(0,-3.5)$) coordinate (C')
+                ($(D)+(0,-3.5)$) coordinate (D')
+                ($(B)!0.5!(D)$) coordinate (O)
+                ;
+                \draw (B)--(A)--(D)--(C)--(B) (A)--(A')--(D')--(C')--(C)  (D')--(D)--(B) (A')--(D) (A)--(C);
+                \draw[dashed] (B)--(B')--(A') (B')--(C')--(O)--(A')--(B)--(C');
+                \foreach \p/\q in {A/90,B/180,C/0,D/0,A'/180,B'/-60,C'/0,D'/0,O/90}
+                \fill[black] (\p) circle (1.0pt)node[shift={(\q:2.5mm)}]{$\p$};
+            \end{tikzpicture}
+        }
+    }
+    \dotlineEX{6}
+\end{ex}
+\begin{ex}%[1H8V5-4]
+    Cho hình chóp $S.ABCD$ có $SD=x$ và tất cả các cạnh còn lại bằng $1$. Biết $SD$ tạo với mặt phẳng $(ABCD)$ góc $60^\circ$. Tính khoảng cách giữa hai đường thẳng $AC$, $SB$ (kết quả làm tròn đến hàng phần trăm).
+    \shortans[oly]{$0{,}29$}
+    \loigiai{\begin{center}
+            \begin{tikzpicture}[scale=.7, font=\small, line join=round, line cap=round, >=stealth, declare function={a=5; b=3; h=5; bad=-135;}]
+                \path 
+                (0,0) coordinate (A)
+                (bad:b) coordinate (B)
+                (0:a) coordinate (D)
+                ($(B)+(D)-(A)$) coordinate (C)
+                ($(B)!0.75!(D)$) coordinate (H)
+                ($(H)+(90:h)$) coordinate (S)
+                ($(B)!0.5!(S)$) coordinate (K)
+                ($(A)!0.5!(C)$) coordinate (O);
+                \draw[dashed] (H)--(S)--(O) (S)--(A)--(D)--(B)--(A)--(C) (O)--(K);
+                \draw (S)--(B)--(C)--(D)--(S)--(C)--(D);
+                \foreach \x/\y in {S/90,A/-90,B/180,C/-60,D/0,O/-90,H/-45,K/180}{\fill (\x)node[shift={(\y:3mm)}]{$\x$}circle(1.2pt);}
+                \draw pic[draw, angle radius = 12pt, "$60^\circ$", angle eccentricity = 1.5]{ angle = S--D--B};
+                \draw[thin] pic[draw, angle radius = 6pt]{right angle = O--K--S};
+            \end{tikzpicture}
+        \end{center}
+        Ta có $ABCD$ là hình thoi, gọi $O=AC\cap BD$ trong mặt phẳng $(ABCD)$. Suy ra $BO$ là đường trung trực của $\triangle ABC$.\\
+        Hình chóp $S.ABC$ có $SA=SB=SC=1$ nên hình chiếu $H$ của $S$ lên mặt phẳng $(ABC)$ nằm trên đường trung trực $BO$ của $\triangle ABC$.\\
+        Vì $AC \perp (SBD)$ nên $\mathrm{d}(AC,SB)=\mathrm{d}(O,SB)$.\\
+        Vì $\triangle SAC = \triangle BAC$ (c-c-c) nên $SO=BO=\dfrac{BD}{2}$.
+        Suy ra tam giác $SBD$ vuông tại $S$.
+        Lại có $\big(SD,(ABCD)\big)=\widehat{SDH}=60^\circ$ suy ra $SD=\dfrac{\sqrt{3}}{3}$ \\
+        Gọi $K$ là hình chiếu của $O$ lên $SB$ suy ra $OK \parallel SD$ ($\perp SB$) nên $OK=\dfrac{SD}{2}=\dfrac{\sqrt{3}}{6}$.\\
+        Vậy $\mathrm{d}(AC,SB)=\mathrm{d}(O,SB)=OK=\dfrac{\sqrt{3}}{6}\approx 0{,}29$.
+    }
+    \dotlineEX{5}
+\end{ex}
+
+
+\begin{ex}%[1H8V5-4]
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $SA\perp (ABCD)$ và $AB=$, $AD=\sqrt{3}$, góc giữa mặt phẳng $(SBD)$ và $(ABCD)$ bằng $60^\circ$. Biết khoảng cách giữa hai đường thẳng $AC$ và $SD$ là $a$. Tìm $a$
+    \shortans{$0{,}75$}
+    \loigiai{
+        \immini{
+            Lấy điểm $E$ thuộc $AB$ sao cho $DE\parallel AC$ thì $AE=AB=1$.\\
+            Khi đó $AC\parallel (SDE)$ nên $\mathrm{d}(AC,SD)=\mathrm{d}(AC,(SDE))=\mathrm{d}(A,(SDE))$.\\
+            Kẻ $SH\perp BD$ tại $H$ thì ta có $(SAH)\perp BD\Rightarrow AH\perp BD$.\\
+            Khi đó $((SBD),(ABCD))=(AH,SH)=\widehat{SHA}=60^\circ$.\\
+            Lại có $\dfrac{1}{AH^2}=\dfrac{1}{AB^2}+\dfrac{1}{AD^2}=\dfrac{4}{3}\Rightarrow AH=\dfrac{\sqrt{3}}{2}$,\\
+            nên $SA=AH\cdot\tan\widehat{SHA}=AH\cdot\tan60^\circ=\dfrac{3}{2}$.\\
+            Trong tứ diện vuông $A.SDE$ kẻ đường cao $AK\perp(SDE)$, khi đó\[\dfrac{1}{AK^2}=\dfrac{1}{AS^2}+\dfrac{1}{AE^2}+\dfrac{1}{AD^2}=\dfrac{16}{9}\] nên $\mathrm{d}(AC,SD)=\mathrm{d}(A,(SDE))=AK=\dfrac{3}{4}=0{,}75$.
+        }{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\small,scale=0.6]
+                \path (0,0) coordinate (A)
+                (-2.5,-1.4) coordinate (D)
+                (5,0) coordinate (B)
+                ($(B)+(D)-(A)$) coordinate (C)
+                ($(A)!0.5!(C)$) coordinate (O)
+                ($(A)+(0,6)$)coordinate (S)
+                ($(A)+(D)-(C)$) coordinate (E)
+                ($(D)!0.5!(E)$) coordinate (I)
+                ($(B)!0.3!(D)$) coordinate (H)
+                ($(S)!0.65!(I)$) coordinate (K)
+                ;
+                \draw (D)--(E)--(S)--(B)--(C)--(S)--(D)--(C) (S)--(I);
+                \draw[dashed] (E)--(A)--(H)--(S)--(A)--(B)--(D)--(A)--(C) (K)--(A)--(I);
+                \foreach \p / \r in {A/65,B/45,C/-45,S/90,H/-80,I/-135,D/-135,K/135,E/135}
+                \fill (\p) circle (1.2pt) node[shift={(\r:2mm)}]{$\p$};
+                \pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = B--H--S};
+                \pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = D--I--A};
+                \pic[draw,angle radius=2mm,angle eccentricity=1.5] {right angle = A--K--S};
+                \foreach \x/\y/\z in {S/H/A} \draw pic[draw,angle radius=3mm]{angle=\x--\y--\z};
+                \draw ($(H)+(140:1)$)node{$60^\circ$};
+        \end{tikzpicture}}
+    }
+    \dotlineEX{6}
+\end{ex}
+
+\begin{ex}%[1H8V5-3]
+    Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình chữ nhật, $AB=a, AD=2a\sqrt{3}$. Cạnh bên $SA$ vuông góc với đáy, biết tam giác $SAD$ có diện tích $S=3a^2$. Khi $a=\sqrt{51}$ thì khoảng cách từ $C$ đến $(SBD)$ bằng bao nhiêu?
+    \shortans{$6$}
+    \loigiai{
+        \immini{
+            Do $S_{SAD}=3a^2=\dfrac{1}{2}\cdot SA\cdot  AD\Rightarrow SA=\dfrac{6a^2}{2a\sqrt{3}}=a\sqrt{3}$.\\
+            Mặt khác ta có $\mathrm{d}\left(C,(SBD)\right)=\mathrm{d}\left(A,(SBD)\right)$.\\
+            Kẻ $AH\bot BD$ tại $H$, $AK\bot SH$ tại $K$ $\Rightarrow \mathrm{d}\left(A,(SBD)\right)=AK$.\\
+            $BD=\sqrt{AB^2+AD^2}=a\sqrt{13}$\\
+            $ \Rightarrow AH=\dfrac{AB\cdot AD}{BD}=\dfrac{a\cdot 2a\sqrt{3}}{a\sqrt{13}}=\dfrac{2a\sqrt{39}}{13}$.\\
+            $\Rightarrow AK=\dfrac{SA.AH}{\sqrt{SA^2+AH^2}}=\dfrac{a\sqrt{3}\cdot \dfrac{2a\sqrt{39}}{13}}{\sqrt{\left(a\sqrt{3} \right)^2+\left(\dfrac{2a\sqrt{39}}{13} \right)^2}}=\dfrac{2a\sqrt{51}}{17}$.\\
+        }{
+            \begin{tikzpicture}[scale=0.8, line join=round, line cap=round, >=stealth]
+                \coordinate (A) at (0,0);
+                \coordinate (S) at (0,4);
+                \coordinate (B) at (-1.6,-2);
+                \coordinate (D) at (5,0);
+                \coordinate (C) at ($(B)+(D)-(A)$);
+                \coordinate (H) at ($(B)!0.4!(D)$);
+                \coordinate (K) at ($(S)!0.7!(H)$);
+                \draw(S)--(B)--(C)--(D)--(S)--(C);
+                \draw[dashed](S)--(A)--(B)--(D)--(A)--(H)--(S) (A)--(K);
+                \foreach \x/\g in {A/180,B/-120,C/0,D/0,H/-90,K/20,S/90}\fill[black](\x) circle (1pt)($(\x)+(\g:2.5mm)$) node[scale = 0.7]{$\x$};
+                \draw pic[draw,angle radius=2mm] {right angle = A--H--B};
+                \draw pic[draw,angle radius=2mm] {right angle = S--K--A};
+            \end{tikzpicture}
+        }
+        Vậy $\mathrm{d}\left(C,(SBD)\right)=\mathrm{d}\left(A,(SBD)\right)=\dfrac{2a\sqrt{51}}{17} \stackrel{a=\sqrt{51}}{\to} \mathrm{d}\left(C,(SBD)\right)=6$.
+    }
+    \dotlineEX{6}
+\end{ex}
+
+\begin{ex}%[1H8V6-3]
+    Cho khối chóp $S.ABCD$ có đáy là hình bình hành, $AB=3$, $AD=4$, $\widehat{BAD} =120^\circ$. Cạnh bên $SA=2\sqrt{3}$ vuông góc với mặt phẳng đáy. Gọi $M$, $N$, $P$ lần lượt là trung điểm các cạnh $SA$, $AD$, $BC$. Tính góc giữa hai mặt phẳng $\left(SBC\right)$ và $\left(MNP\right)$.
+    \shortans{$45$}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[scale=1, font=\small, line join=round, line cap=round, >=stealth]
+                \def\a{3}
+                \path
+                (0,0) coordinate (A)
+                (0:\a) coordinate (D)
+                (220:0.6*\a) coordinate (B)
+                ($(B)+(D)$) coordinate (C)
+                (90:0.8*\a) coordinate (S)
+                ($(S)!0.5!(A)$) coordinate (M)
+                ($(A)!0.5!(D)$) coordinate (N)
+                ($(B)!0.5!(C)$) coordinate (P)
+                ($(S)!0.5!(B)$) coordinate (I)
+                ($(B)!0.2!(C)$) coordinate (K)
+                ($(S)+(P)-(C)$) coordinate (J)
+                ($(J)!1.7!(S)$) coordinate (X)node[above]{$x$}
+                ($(S)!1.2!(J)$) coordinate (Y)
+                ($(S)!0.6!(K)$) coordinate (E)
+                ;
+                \draw (S)--(B)--(C)--(D)--(S)--(C)(X)--(Y)(J)--(P)(S)--(K);
+                \draw[dashed] (S)--(A)--(B)(A)--(D)(A)--(K)(J)--(N)--(P)(I)--(M)(A)--(E);
+                \foreach \x/\g in {S/90,A/-60,B/180,C/-80,D/0,M/20,N/60,P/-90,I/180,J/90,K/-90,E/30}\fill[black] (\x) circle (1pt)+(\g:.3)node{$\x$};
+            \end{tikzpicture}
+        \end{center}
+        Ta có $\left(SAD\right)\cap\left(SBC\right)=Sx\parallel AD\parallel BC$\\
+        Gọi $I$ là trung điểm $SB$ suy ra $\heva{&MI\parallel NP\parallel AB\\
+            &MI=\dfrac{NP}{2}.}$\\
+        Dễ dàng chứng minh được $IP$, $MN$, $Sx$ đồng quy tại $J$.\\
+        Như vậy $I$ là trung điểm của $JP$, $M$ là trung điểm $JN$.\\
+        Gọi $\alpha $ là góc giữa hai mặt phẳng $\left(SBC\right)$ và $\left(MNP\right)$, suy ra $\sin\alpha=\dfrac{\mathrm{d}\left(M,\left(SBC\right)\right)}{\mathrm{d}\left(M,IP\right)}$.\\
+        Suy ra $\mathrm{d}\left(M,\left(SBC\right)\right)=\dfrac{1}{2}\mathrm{d}\left(A,\left(SBC\right)\right)$.\\
+        Hạ $AK\perp BC$, $AE\perp SK\Rightarrow AE\perp\left(SBC\right)\Rightarrow \mathrm{d}\left(A,\left(SBC\right)\right)=AE$.\\
+        $AK=AB\cdot\sin\widehat{ABK}=3\sin60^\circ=\dfrac{3\sqrt{3}}{2}$.\\
+        Xét $\triangle SAK$ có
+        \[\dfrac{1}{AE^2}=\dfrac{1}{AS^2}+\dfrac{1}{AK^2}=\dfrac{1}{12}+\dfrac{4}{27}=\dfrac{75}{324}\Rightarrow AE=\dfrac{6\sqrt{3}}{5}\Rightarrow \mathrm{d}\left(M,\left(SBC\right)\right)=\dfrac{3\sqrt{3}}{5}.\]
+        Ta có $\mathrm{d}\left(M,PI\right)=\dfrac{1}{2}\mathrm{d}\left(N,PI\right)$.\\
+        Xét $\triangle ABC$ có $AC^2=AB^2+CB^2-2AB\cdot BC\cdot \cos60^\circ=13\Rightarrow AC=\sqrt{13}$.\\
+        $JP=2IP=SC=\sqrt{13+12}=55,JN=2MN=SD=2\sqrt{7},PN=AB=3$.\\
+        $\Rightarrow{S_{\triangle JPN}}=3\sqrt{6}$.\\
+        Mà $S_{JPN}=\dfrac{1}{2}\mathrm{d}\left(N,JP\right)\cdot JP=\dfrac{6\sqrt{6}}{5}\Rightarrow \mathrm{d}\left(M,IP\right)=\dfrac{3\sqrt{6}}{5}$.\\
+        Vậy $\sin\alpha=\dfrac{\sqrt{2}}{2}\Rightarrow\alpha=45^\circ$.
+    }
+    \dotlineEX{5}
+\end{ex}
+\begin{ex}%[1H8V5-4]
+    Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$, $SA$ vuông góc với mặt phẳng đáy và $SA=\dfrac{a}{2}$. Khoảng cách giữa hai đường thẳng $SA$ và $BC$ bằng bao nhiêu? (Kết quả làm tròn đến hàng phần trăm)
+    \shortans{$0{,}87$}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[declare function={a=5; b=0.45*a; h=0.65*a;}, line join=round, line cap=round, >=stealth, scale=0.8]
+                \path (0,0) coordinate (A)
+                (a,0) coordinate (C)
+                (-45:b) coordinate (B)
+                ($(A)+(0,h)$) coordinate (S);
+                \path ($(C)!0.5!(B)$) coordinate (M);
+                \draw[dashed] (M)--(A)--(C);
+                \draw (S)--(B) (S)--(A)--(B)--(C)--cycle;
+                \path pic[draw,angle radius=5pt]{right angle= M--A--S};
+                \path pic[draw,angle radius=5pt]{right angle= A--M--B};
+                \foreach \x/\goc in {S/90,A/190,B/-90,C/0,M/-45}
+                \fill (\x) node[shift={(\goc:7pt)}]{$\x$} circle (1pt);
+            \end{tikzpicture}
+        \end{center}
+        Gọi $M$ là trung điểm cạnh $BC$.\\
+        Ta có $\heva{&AM\perp BC \\&AM\perp SA}$ suy ra $AM$ là đoạn vuông góc chung của hai đường thẳng $SA$ và $BC$.\\
+        Ta có $BM=\dfrac{1}{2} BC=\dfrac{a}{2}$ và $AM=\sqrt{AB^2-BM^2}=\sqrt{a^2-\left(\dfrac{a}{2} \right)^2}=\dfrac{a\sqrt{3}}{2}$.\\
+        Do đó $AM=\mathrm{d}(SA, BC)=\dfrac{a\sqrt{3}}{2}$.\\
+        Vậy $\mathrm{d}(SA, BC)=\dfrac{a\sqrt{3}}{2}$.
+    }
+    \dotlineEX{5}
+\end{ex}
+
+\begin{ex}%[1H8V5-4]
+    Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác vuông tại $A$, $AB=1$, $SA$ vuông góc với mặt phẳng đáy. Gọi $M$ là trung điểm của $BC$. Biết rằng khoảng cách giữa hai đường thẳng $AC$ và $SM$ bằng $\dfrac{\sqrt{2}}{3}$. Tính $SA$? (Kết quả làm tròn đến hàng phần trăm)
+    \shortans{$1{,}41$}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[declare function={a=5; b=0.45*a; h=0.65*a;}, line join=round, line cap=round, >=stealth, scale=1]
+                \path (0,0) coordinate (A)
+                (a,0) coordinate (C)
+                (-45:b) coordinate (B)
+                ($(A)+(0,h)$) coordinate (S);
+                \path ($(C)!0.5!(B)$) coordinate (M);
+                \path ($(A)!0.5!(B)$) coordinate (N);
+                \path ($(S)!0.6!(N)$) coordinate (H);
+                \draw[dashed] (N)--(M)--(A)--(C);
+                \draw (N)--(S)--(B) (M)--(S)--(A)--(B)--(C)--(S) (A)--(H);
+                \foreach \x/\goc in {S/90,A/190,B/-90,C/0,M/-45,N/-135,H/180}
+                \fill (\x) node[shift={(\goc:7pt)}]{$\x$} circle (1pt);
+            \end{tikzpicture}
+        \end{center}
+        Gọi $N$ là trung điểm của $AB$.\\
+        Ta có $\heva{&MN\parallel AC \\&MN\subset (SMN)} \Rightarrow AC\parallel (SMN)$.\\
+        Khi đó $\mathrm{d}(AC,SM)=\mathrm{d}\left(AC,(SMN)\right)=\mathrm{d}\left(A,(SMN)\right)$.\\
+        Kẻ $AH\perp SN$ ($H\in SN$).\\
+        Ta có $\heva{&MN\perp AB \\&MN\perp SA} \Rightarrow MN\perp (SAB)\Rightarrow MN\perp AH$.\\
+        Lại có $\heva{&MN\perp AH \\&SN\perp AH} \Rightarrow AH\perp (SMN)\Rightarrow \mathrm{d}\left(A,(SMN)\right)=AH=\dfrac{\sqrt{2}}{3}$.\\
+        Xét tam giác vuông $SAN$ vuông tại $A$ có
+        \[\dfrac{1}{AH^2}=\dfrac{1}{SA^2}+\dfrac{1}{AN^2} \Rightarrow \dfrac{1}{SA^2}=\dfrac{1}{AH^2}-\dfrac{1}{AN^2}=\dfrac{1}{\left(\dfrac{\sqrt{2}}{3} \right)^2}-\dfrac{1}{\left(\dfrac{1}{2}\right)^2}=\dfrac{1}{2} \Rightarrow SA=\sqrt{2}.\]
+    }
+    \dotlineEX{6}
+\end{ex}
+
+\begin{ex}%[1H8V5-4]
+    Cho hình tứ diện $OABC$ có đáy $OBC$ là tam giác vuông tại $O$, $OB = 1$ và $OC = \sqrt{3}$. $OA\perp(OBC)$; $OA = \sqrt{5}$ và gọi $M$ là trung điểm của $BC$. Tính khoảng cách giữa hai đường thẳng $AB$ và $OM$ (Kết quả làm tròn đến hàng phần trăm).
+    \shortans{0,77}
+    \loigiai{
+        \immini{Dựng $D$ sao cho $BD\parallel  OM$ và $OM$ là đường trung bình của tam giác $BCD$.\\
+            Khi đó ta có $OM\parallel (ABD) \Rightarrow \mathrm{d}(OM,AB) = \mathrm{d}(OM, (ABD)) =\mathrm{d}(O, (ABD))$.\\
+            Kẻ $OH \perp BD$. Lại có $BD \perp OA$ (do $\heva{& OA \perp (OBC) \\& BD \subset (OBC)}$) suy ra $BD \perp (AOH)$.\\
+            Suy ra $(AOH) \perp (ABD)$ theo giao tuyến $AH$.\\
+            Trong $(AHO)$, kẻ $OK \perp AH$ suy ra $OK \perp (ABD) \Leftrightarrow OK = \mathrm{d}(O, (ABD))$.\\
+            Trong $\triangle AHO$:
+            \begin{eqnarray*}
+                \dfrac{1}{OK^2}=  \dfrac{1}{OH^2} + \dfrac{1}{OA^2}
+                =  \dfrac{1}{OD^2} + \dfrac{1}{OB^2} + \dfrac{1}{OA^2}
+                =  \dfrac{1}{3\cdot1^2} + \dfrac{1}{3\cdot1^2} + \dfrac{1}{1^2}.
+            \end{eqnarray*}
+            Suy ra $OK = \dfrac{\sqrt{15}}{5}$ hay $\mathrm{d}(OM,AB) = \dfrac{\sqrt{15}}{5} \approx 0{,}77$.
+        }{\begin{tikzpicture}[>=stealth,line join=round,line cap=round,font=\small,scale=0.9]
+                \path (0,0) coordinate (O)
+                (-1,-1) coordinate (B)
+                (4,0) coordinate (C)
+                ($(O)+(0,3)$)coordinate (A)
+                ($(B)!0.5!(C)$)coordinate (M)
+                ($(C)!2!(O)$)coordinate (D)
+                ($(B)!0.4!(D)$)coordinate (H)
+                ($(A)!0.5!(H)$)coordinate (K)
+                ;
+                \draw (A)--(B)--(C)--(A)--(H) (B)--(D)--(A);
+                \draw[dashed] (A)--(O)--(C) (H)--(O)--(B) (M)--(O)--(D) (O)--(K);
+                \pic[draw,angle radius=1.5mm,angle eccentricity=1.5] {right angle = O--K--A};
+                \pic[draw,angle radius=1.5mm,angle eccentricity=1.5] {right angle = O--H--B};
+                \pic[draw,angle radius=1.5mm,angle eccentricity=1.5] {right angle = A--O--C};
+                \foreach \p / \r in {A/90,B/-135,C/45,O/-90,M/-45,D/180,H/-90,K/180}
+                \fill (\p) circle (1pt) node[shift={(\r:3mm)}]{$\p$};
+        \end{tikzpicture}}
+    }
+    \dotlineEX{5}
+\end{ex}
+\begin{ex}%[1H8C5-4]
+    Cho hình lăng trụ đứng $ABC.A'B'C'$ có đáy $ABC$ là tam giác đều có cạnh bằng $1$ và cạnh bên $AA'=\sqrt{2}$. Tính khoảng cách giữa hai đường thẳng $A'B$ và $B'C$ (\textit{làm tròn kết quả đến hàng phần trăm}).
+    \shortans{0,47}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[scale=1, font=\small, line join=round, line cap=round, >=stealth]
+                \foreach \x/\y/\z/\t in {A/0/0/180,B/4/0/-90,C/2.5/-1.5/-90,D/8/0/0,A'/0/4/90,B'/4/4/90,C'/2.5/2.5/90} {
+                    \coordinate (\x) at (\y,\z);
+                    \draw[fill=black] (\x) circle (1pt) ($(\x)+(\t:3mm)$) node {$\x$};
+                }
+                \coordinate (K) at ($(C)!0.5!(D)$);
+                \coordinate (H) at ($(B')!0.7!(K)$);
+                \foreach \x/\y in {K/-80,H/0} {\draw[fill=black] (\x) circle (1pt) ($(\x)+(\y:3mm)$) node {$\x$};}
+                \draw (A)--(A')--(B')--(D)--(C)--(A) (C)--(C')--(A') (C')--(B')--(C) (B')--(K);
+                \draw[dashed] (A)--(D) (A')--(B)--(B') (C)--(B)--(K) (B)--(H);
+                \tkzMarkRightAngles(B,K,C B,H,B')
+            \end{tikzpicture}
+        \end{center}
+        Gọi $D$ là điểm đối xứng với $A$ qua $B$ thì khi đó $A'B\parallel B'D$.\\
+        Suy ra $d\left(A'B,B'C\right)=d\left(A'B,(B'CD)\right)=d\left(B,(B'CD)\right)$.\\
+        kẻ $BK\perp CD$ $(K\in CD)$, ta có $BA=BC=BD$ nên $\triangle ACD$ vuông tại $C$ mà $BK\parallel AC$.\\
+        Mặt khác $B$ là trung điểm của $AD$ nên $K$ là trung điểm của $CD$ và $BK=\dfrac{1}{2}AC=\dfrac{1}{2}$.\\
+        Kẻ $BH\perp B'K$ tại $H$ thì ta suy ra được $d\left(B,(B'CD)\right)=BH$.\\
+        Ta có $\dfrac{1}{BH^2}=\dfrac{1}{BK^2}+\dfrac{1}{BB'^2}=\dfrac{4}{1^2}+\dfrac{1}{2\cdot 1^2}=\dfrac{9}{2}\Rightarrow BH=\dfrac{\sqrt{2}}{3}$.\\
+        Vậy $d\left(A'B,B'C\right)=\dfrac{\sqrt{2}}{3}\approx 0{,}47$
+    }
+    \dotlineEX{5}
+\end{ex}
+
+\begin{ex}%[1H8V6-6]
+    Cho khối lăng trụ tam giác đều $ABC.A'B'C'$. Biết số đo góc nhị diện $[A',BC,A]$ bằng $30^\circ$ và tam giác $A'BC$ có diện tích bằng $32$. Khoảng cách giữa hai đường thẳng $AB$ và $A'C'$ bằng bao nhiêu? ({\it kết quả làm tròn đến hàng đơn vị}) \shortans{4}
+    \loigiai{
+        \immini
+        {
+            Ta có $\heva{&AB\perp AA',\, A\in AB\\ &A'C'\perp AA', \,A'\in A'C'}$\\
+            nên $AA'$ là đoạn vuông góc chung của $AB$ và $A'C'\Rightarrow \mathrm{d}\left(AB, A'C'\right)=AA'$.\\
+            Gọi $M$ là trung điểm $BC$ nên $AM\perp BC$.\\
+            Mà $AA' \perp BC$ nên $BC\perp\left(AA'M\right) \Rightarrow A'M \perp BC \Rightarrow\left[A',BC, A\right]=\widehat{AMA'}=30^{\circ}$.\\
+            Xét tam giác $AA'M$ vuông tại $A$, ta có $\dfrac{AM}{A'M}=\cos \widehat{AMA'}=\dfrac{\sqrt{3}}{2}$.\\
+            Mặt khác $\dfrac{S_{ABC}}{S_{A'BC}}=\dfrac{\dfrac{1}{2} AM \cdot BC}{\dfrac{1}{2} A'M\cdot BC}=\dfrac{A M}{A'M}=\dfrac{\sqrt{3}}{2} \Rightarrow S_{ABC}=\dfrac{\sqrt{3}}{2} S_{A'BC}=16 \sqrt{3}$.\\
+            Ta có $S_{ABC}=\dfrac{AB^{2} \sqrt{3}}{4}=16 \sqrt{3} \Rightarrow AB=8 \Rightarrow A A'=A M \cdot \tan \widehat{AMA'}=\dfrac{8 \sqrt{3}}{2} \tan 30^{\circ}=4$.\\
+            Vậy $\mathrm{d}\left(AB,A'C'\right)=AA'=4$.
+        }
+        {
+            \begin{tikzpicture}
+                \def\kc{1.5}
+                \def\tile{.5}
+                \def\goc{35}
+                \path (0,0) coordinate (A)
+                +(90:2*\kc) coordinate (A')
+                ($(A)+(-\goc:1.2*\kc)$) coordinate (B)
+                ($(A)+(0:2*\kc)$) coordinate (C)
+                ($(B)!1/2!(C)$) coordinate (O)
+                ;
+                \foreach \p in {B,C,O} \coordinate (\p') at ([shift={($(A')-(A)$)}]\p);
+                \pgfresetboundingbox
+                \draw[densely dash dot]
+                (A)--(C)--(A')--(O)--(A)
+                ;
+                \draw (B')--(C')--(A')--cycle (A)--(A') (B)--(B') (C)--(C') (A)--(B)--(C)
+                (A')--(B)
+                ;
+                \foreach \p/\g/\pp in {
+                    O/-40/M,
+                    A/180/A,
+                    B/-120/B,
+                    C/0/C,
+                    A'/180/A',
+                    B'/-30/B',
+                    C'/0/C'
+                }
+                \shade[shading=ball,fill=cyan](\p)circle(1.5pt)node[shift={(\g:.3)}]{$\pp$};
+            \end{tikzpicture}
+        }
+    }
+    \dotlineEX{5}
+\end{ex}
+
+\begin{ex}%[1H8C6-2]
+    Cho hình hộp chữ nhật $ABCD.A'B'C'D'$ có $AB=AD=a\sqrt{2}$, $AA'=b$. Gọi $M$ là
+    trung điểm của $CC'$. Khi số đo góc phẳng nhị diện $[A', BD, M]=135^{\circ}$ thì giá trị $\dfrac{a}{b}=\dfrac{m+\sqrt{n}}{2}$
+    với $m$, $n\in\mathbb{Z^*}$. Hỏi giá trị của $m+n$ bằng bao nhiêu?
+    \shortans{$10$}
+    \loigiai{
+        \begin{center}
+            \begin{tikzpicture}[line join=round, line cap=round,>=stealth,font=\small,scale=0.6]
+                \def\d{4} \def\r{2} \def\h{3} \def\g{60}
+                \path
+                (0,0) coordinate (A)
+                (0:\d) coordinate (D)
+                (\g:\r) coordinate (B)
+                ($(D)+(B)-(A)$) coordinate (C)
+                ($(A)!0.5!(C)$) coordinate (O)
+                (C)++(90:\h/2) coordinate (M)
+                ;
+                \foreach \i in {A,B,C,D}{\coordinate (\i') at ($(\i)+(90:\h)$);}
+                \draw (A')--(B')--(C')--(D')--(A')--(A)--(D)--(C)--(C') (D')--(D) (A')--(D)--(M);
+                \draw[dashed] (A)--(C) (B)--(D) (A')--(O)--(M)--(B)--(A') (B')--(B) (A)--(B)--(C);
+                \foreach \i/\g in {A/-90,B/-90,C/-0,D/-90,A'/180,B'/90,C'/90,D'/90,O/-90,M/0}{\draw[fill=black](\i) circle (1pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+            \end{tikzpicture}
+        \end{center}
+        Vì tứ giác $ABCD$ là hình vuông nên $AC\perp BD$, mà $BD\perp A'A$.\\
+        Suy ra $BD\perp (ACC'A') \Rightarrow \heva{&A'O\perp BD\\&MO\perp DB.}$\\
+        Hay
+        \begin{eqnarray*}
+            & & \left[ A',BD,M\right]=\widehat{A'OM}=135^\circ\\
+            &\Rightarrow & \widehat{A'OA}+\widehat{MOC}=45^\circ\\
+            &\Rightarrow & \tan \left(\widehat{A'OA}+\widehat{MOC} \right) =1\\
+            &\Rightarrow & \dfrac{\tan \widehat{A'OA}+\tan \widehat{MOC}}{1-\tan \widehat{A'OA}\cdot\tan \widehat{MOC}}=1.
+        \end{eqnarray*}
+        Mà ta có $\heva{&\tan \widehat{A'OA}=\dfrac{AA'}{AO}=\dfrac{b}{a}\\&\tan \widehat{MOC}=\dfrac{MC}{OC}=\dfrac{b}{2a} .}$\\
+        Suy ra
+        \begin{eqnarray*} &&\dfrac{\dfrac{b}{a}+\dfrac{b}{2a}}{1-\dfrac{b^2}{2a^2}}=1\\
+            &\Rightarrow& \dfrac{3b}{2a}=1-\dfrac{b^2}{2a^2}\\
+            &\Rightarrow& \left(\dfrac{b}{a} \right)^2+3\dfrac{b}{a}-1=0\\
+            &\Rightarrow&\dfrac{b}{a}=\dfrac{-3+\sqrt{13}}{2}\quad \left(\text{vì } \dfrac{b}{a}>0\right ).
+        \end{eqnarray*}
+        Vậy $m+n=10$.
+    }
+    \dotlineEX{5}
+\end{ex}
+
+
+\begin{ex}%[1H8V7-4]
+    Cho hình lăng trụ đứng $ABC.A'B'C'$ có đáy $ABC$ là tam giác vuông tại $A$, $\widehat{ACB}=30^{\circ}$, biết góc giữa $B'C$ và mặt phẳng $(ACC'A')$ bằng $\alpha$ thỏa mãn $\sin\alpha = \dfrac{1}{2\sqrt{5}}$. Cho khoảng cách giữa hai đường thẳng $A'B$ và $CC'$ bằng $\sqrt{3}$. Thể tích $V$ của khối lăng trụ $ABC.A'B'C'$ bằng bao nhiêu? (Kết quả làm tròn đến hàng phần trăm)
+    \shortans{3,46}
+    \loigiai{
+        \immini{
+            Ta có $CC' \parallel AA' \Rightarrow CC' \parallel (AA'B'B)$.\\
+            Mà $A'B \subset (AA'B'B)$, nên
+            \[\mathrm{d}(CC', A'B) = \mathrm{d}(CC', (AA'B'B)) = C'A' = \sqrt{3}.\]
+            Xét $\triangle ABC$ vuông tại $A$ (do lăng trụ đứng nên $\triangle A'B'C'$ cũng vuông tại $A'$):
+            \begin{itemize}
+                \item $AC = A'C' = \sqrt{3}$.
+                \item $AB = A'B' = A'C' \cdot \tan 30^{\circ} = \sqrt{3} \cdot \dfrac{1}{\sqrt{3}} = 1$.
+            \end{itemize}
+            Suy ra diện tích đáy: $S_{ABC} = \dfrac{1}{2}AB \cdot AC = \dfrac{\sqrt{3}}{2}$.
+        }{
+            \begin{tikzpicture}[scale=1, font=\small, line join=round, line cap=round, >=stealth]
+                % Định nghĩa các điểm
+                \coordinate (A) at (0,3.5);
+                \coordinate (C) at (2.5,4.7);
+                \coordinate (B) at (-1.5,4.7);
+                \coordinate (A') at (0,0);
+                \coordinate (C') at (2.5,1.2);
+                \coordinate (B') at (-1.5,1.2);
+                
+                % Vẽ các cạnHKhuất
+                \draw[dashed] (C)--(B')--(C');
+                
+                % Vẽ các cạnh thấy
+                \draw (A)--(C)--(B)--(A)--(A')--(C')--(C) (A')--(B)--(B')--(B)--(C) (B')--(A');
+                
+                % Điểm
+                \foreach \p/\pos in {A/left, B/above, C/right, A'/left, B'/below, C'/right}
+                \fill[black] (\p) circle (1.5pt) node[\pos] {$\p$};
+            \end{tikzpicture}
+        }
+        Ta có $A'B' \perp A'C'$ (tam giác vuông) và $A'B' \perp AA'$ (lăng trụ đứng) nên $A'B' \perp (ACC'A')$.\\
+        Do đó, hình chiếu vuông góc của $B'$ lên mặt phẳng $(ACC'A')$ là điểm $A'$.\\
+        Góc giữa $B'C$ và mặt phẳng $(ACC'A')$ là góc $\widehat{B'CA'} = \alpha$.\\
+        Xét tam giác vuông $A'B'C$ (vuông tại $A'$ vì $A'B' \perp (ACC'A') \Rightarrow A'B' \perp A'C$):
+        \[ \sin\alpha = \dfrac{A'B'}{B'C} = \dfrac{1}{B'C} = \dfrac{1}{2\sqrt{5}} \Rightarrow B'C = 2\sqrt{5}. \]
+        Xét tam giác vuông $B'C'C$ (vuông tại $C'$):
+        \[ CC' = \sqrt{B'C^2 - B'C'^2} = \sqrt{(2\sqrt{5})^2 - (A'B'^2 + A'C'^2)}= \sqrt{20 - (1^2 + (\sqrt{3})^2)}=4. \]
+        Vậy thể tích khối lăng trụ là $ V = S_{ABC} \cdot CC' = \dfrac{\sqrt{3}}{2} \cdot 4 = 2\sqrt{3} \approx 3{,}46$.
+    }
+    \dotlineEX{5}
+\end{ex}
+\begin{ex}%[1H8V7-6]
+    Cho hình chóp cụt đều $ ABC.A'B'C'$ có $ AB=4\sqrt {3}a$, $ AA'=3a$, góc giữa cạnh bên $AA'$ và mặt đáy $\left(ABC\right)$ bằng $ 60^\circ $. Thể tích khối chóp cụt đều đã cho bằng $V=\dfrac{m}{n}{a^3}$ với $\dfrac{m}{n}$ là phân số tối giản và. Tính giá trị biểu thức $ T=m+24n$.
+    \shortans{$393$}
+%    \loigiai{
+%        \immini{
+%            Diện tích tam giác $ABC$ là\\
+%            $S_{ABC}=\dfrac{AB^2\sqrt {3}}{4}=\dfrac{\left(4\sqrt{3}a\right)^2\sqrt {3}}{4}=12\sqrt{3}a^2$.\\
+%            Gọi $E, E’$ tương ứng là trung điểm của các đoạn thẳng $BC, B’C’; H$ và $H$ tương ứng là tâm của các tam giác đều $ABC$ và $A’B’C’; M$ là hình chiếu vuông góc của $A’$ trên mặt phẳng $(ABC)$.\\
+%            Ta có $AM$ là hình chiếu vuông góc của $AA’$ trên mặt phẳng $(ABC)$.\\
+%            Suy ra góc giữa cạnh bên $ AA'$ và mặt đáy $\left(ABC\right)$ bằng góc giữa $AA’$ và $AM$. Do đó $\widehat{A'AM}=60^\circ $.\\
+%            $\sin\widehat{A'AM}=\dfrac{A'M}{AA'}\Rightarrow A'M=AA'\cdot \sin\widehat{A'AM}=3a\cdot\sin 60^\circ=\dfrac{3\sqrt {3}}{2}a$.\\
+%            Chiều cao $ HH'=A'M=\dfrac{3\sqrt 3}{2}a$.\\
+%        }
+%        {
+%            \begin{tikzpicture}[>=stealth,line width=0.5pt,scale=1]
+%                \def\h{4}
+%                \coordinate (A) at (0,0);
+%                \coordinate (B) at (1.2,-2);
+%                \coordinate (C) at (5,0);
+%                \coordinate (S) at (2,5);
+%                \coordinate (A') at ($(A)!0.5!(S)$);
+%                \coordinate (B') at ($(B)!0.5!(S)$);
+%                \coordinate (C') at ($(C)!0.5!(S)$);
+%                \coordinate (E') at ($(B')!0.5!(C')$);
+%                \coordinate (E) at ($(B)!0.5!(C)$);
+%                \coordinate (H') at ($(A')!0.66!(E')$);
+%                \coordinate (H) at ($(A)!0.66!(E)$);
+%                \coordinate (M) at ($(A)!0.33!(E)$);
+%                \draw (A)--(B)--(C)--(C')--(A')--(B')--(C')--(A')--(A) (B)--(B') (C)--(C') (A')--(E') ;
+%                \draw[dashed](A)--(C) (A)--(E) (A')--(M) (H')--(H);
+%                \foreach \x/\g in {A/180,B/-90,C/-90,A'/180, B'/210, C'/0, E'/-90,E/-90, H'/40,M/-90,H/-90}\fill[black](\x) circle (1pt)($(\x)+(\g:2.5mm)$) node{$\x$};
+%        \end{tikzpicture}}
+%        \noindent
+%        $AE$ là đường trung tuyến của tam giác đều $ABC$ nên $AE=\dfrac{AB\sqrt {3}}{2}=\dfrac{4\sqrt{3}a.\sqrt 3}{2}=6a$.\\
+%        $\cos\widehat{A'AM}=\dfrac{AM}{AA'}\Rightarrow AM=AA'\cdot\cos\widehat{A'AM}=3a\cdot\cos 60^\circ=\dfrac{3}{2}a$.\\
+%        Ta có $ MH=AE-AM-HE=6a-\dfrac{3}{2}a-\dfrac{1}{3}\cdot 6a=\dfrac{5}{2}a$.\\
+%        Suy ra $ A'H'=MH=\dfrac{5}{2}a\Rightarrow A'E'=\dfrac{3}{2}A'H'=\dfrac{3}{2}\cdot\dfrac{5}{2}a=\dfrac{15}{4}a$.\\
+%        Mặt khác $ A'E'=\dfrac{A'B'\sqrt 3}{2}\Rightarrow A'B'=\dfrac{2}{\sqrt 3}\cdot A'E'=\dfrac{2}{\sqrt 3}\cdot\dfrac{15}{4}a=\dfrac{5\sqrt 3}{2}a$.\\
+%        Diện tích tam giác $A’B’C’$ là\\
+%        $S_{A'B'C'}=\dfrac{A'B'{^2}\sqrt 3}{4}=\dfrac{\left(\dfrac{5\sqrt 3}{2}a\right)^2.\sqrt 3}{4}=\dfrac{75\sqrt 3}{16}{a^2}$.\\
+%        Thể tích khối chóp cụt đều đã cho là $ V=\dfrac{1}{3}\left(S_{ABC}+S_{A'B'C'}+\sqrt{S_{ABC}\cdot S_{A'B'C}}\right)\cdot HH'$\\
+%        $=\dfrac{1}{3}\left(12\sqrt 3a^2+\dfrac{75\sqrt 3}{16}{a^2}+\sqrt{12\sqrt 3a^2\cdot \dfrac{75\sqrt 3}{16}{a^2}}\right)\cdot\dfrac{3\sqrt 3}{2}a=\dfrac{1161}{32}{a^3}$.\\
+%        Vậy $\heva{&m=1161\\&n=32}$. Suy ra $T=1161-24\cdot 32=393$.
+%    }
+\end{ex}
+\Closesolutionfile{ans}

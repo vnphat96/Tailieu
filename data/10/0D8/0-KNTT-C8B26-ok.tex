@@ -1,241 +1,249 @@
+% % \begin{name}
+% % 	{GV biên soạn: Huỳnh Quốc Đạt\\ GV phản biện 1: Trí Thiện\\ GV phản biện 2: Nguyễn Sĩ Đạt}
+% % 	{TOÁN 10-KNTT-CS}
+% % \end{name}
+% \setcounter{section}{25}
+% \section{Biến cố và định nghĩa cổ điển của xác suất}
+% %-------------------------------------------
+% \subsection{KIẾN THỨC TRỌNG TÂM}
+% \subsubsection{Phép thử ngẫu nhiên, không gian mẫu}
+% \begin{dn}~
+% 	\begin{itemize}
+% 		\item [$\bullet$]  \textbf{Phép thử ngẫu nhiên} (gọi tắt là phép thử) là một thí nghiệm hay một hành động mà kết quả của nó không thể biết được trước khi phép thử được thực hiện.
+% 		\item [$\bullet$]  \textbf{Không gian mẫu} của phép thử (kí hiệu là $\Omega$) là tập hợp tất cả các kết quả có thể xảy ra khi thực hiện phép thử.
+% 	\end{itemize}
+% \end{dn}
+% \begin{note}
+% 	Ta chỉ xét phép thử mà không gian mẫu gồm hữu hạn kết quả.
+% \end{note}
+% \subsubsection{Biến cố}
+% \begin{dn}
+% 	\immini{
+% 		\begin{itemize}
+% 			\item [$\bullet$] Biến cố là một tập con của không gian mẫu $\Omega $, kí hiệu $A$, $B$, $C$,...
+% 			\item [$\bullet$] Một kết quả thuộc tập $A$ được gọi là kết quả thuận lợi cho biến cố $A$.
+% 		\end{itemize}
+% 	}{
+% 		\begin{tikzpicture}[scale=.6]
+% 			\tkzDefPoints{0/0/A, 5/0/B, 0/3/D, 5/3/C}
+% 			\draw[fill=cyan!50] (A)--(B)--(C)--(D)--cycle;
+% 			\draw(4,0)--(4.5,-.5) node[below] {$\Omega$};
+% 			\node (A) at (1.5,1.5) [circle, draw,fill=white] {$A$};
+% 	\end{tikzpicture}}
+% \end{dn}
+% \begin{note}
+% \begin{itemize}
+% 	\item [$\bullet$] Biến cố chắc chắn là biến cố luôn xảy ra, kí hiệu là $\Omega$.
+% 	\item [$\bullet$] Biến cố không thể là biến cố không bao giờ xảy ra, ki hiệu là $\varnothing$.
+% \end{itemize}
+% \end{note}
+% \subsubsection{Biến cố đối}
+% Xét phép thử $T$  với không gian mẫu là  $\Omega$. Giả sử $E$ là một biến cố.
+% \begin{dn}
+% 	\begin{itemize}
+% 		\item [$\bullet$] Biến cố đối của biến cố $E$ là biến cố \lq\lq$E$ không xảy ra\rq\rq. Nếu biến cố $E$ được mô tả dưới dạng mệnh đề toán học $Q$ thì biến cố đối $\overline{E}$ được mô tả bằng mệnh đề phủ định của mệnh đề $Q$ (tức là mệnh đề $\overline{Q}$ ).
+% 		\item [$\bullet$] Biến cố đối của biến cố $E$ kí hiệu là $\overline{E}$. Nhận xét $\overline{E}=\Omega \backslash E$.
+% 	\end{itemize}
+% \end{dn}
+% \begin{nx} Nếu biến cố $E$ là tập con của không gian mẫu $\Omega$ thì $\overline{E}$ là phần bù của $E$ trong $\Omega$.
+% \begin{center}
+% 	\begin{tikzpicture}[scale=.8]
+% 		\tkzDefPoints{0/0/A, 5/0/B, 0/3/D, 5/3/C}
+% 		\fill[cyan!10] (A)--(B)--(C)--(D);
+% 		\draw[fill=cyan!50] (A)--(B)--(C)--(D)--cycle;
+% 		\draw(4,0)--(4.5,-.5) node[below] {$\Omega$};
+% 		\node (A) at (1.5,1.5) [circle, draw,fill=white] {$E $};
+% 		\node at (4,2) {$\overline{E}$};
+% 	\end{tikzpicture}
+% \end{center}
+% \end{nx}
+% \subsubsection{Định nghĩa cổ điển của xác suất}
+% \begin{dn}
+% 	 Cho phép thử $T$ có không gian mẫu là $\Omega$. Giả thiết rằng các kết quả có thể của $T$ là đồng khả năng. Khi đó, nếu $E$ là một biến cố liên quan phép thử $T$ thì xác suất của $E$ được cho bởi công thức
+% 	$$\mathrm{P}(E) = \dfrac{n(E)}{n(\Omega)}$$
+% 	Trong đó, $n(\Omega)$ và $n(E)$ lần lượt là số phần tử của tập không gian mẫu $\Omega$ và tập biến cố $E$.
+% \end{dn}
+% \begin{nx}~
+% 	\begin{itemize}
+% 	\item $0\le \mathrm{P}(E)\le 1$, với mọi biến cố $E$.
+% 	\item Với biến cố chắc chắn (là tập $\Omega$), ta có  $\mathrm{P}(\Omega)=1$.
+% 	\item Với biến cố không thể (là tập $\varnothing$), ta có  $\mathrm{P}(\varnothing)=0$.
+% \end{itemize}
+% \end{nx}
+% \subsection{PHÂN LOẠI VÀ PHƯƠNG PHÁP GIẢI TOÁN}
+% \begin{dang}{Mô tả không gian mẫu}
+% 	\textbf{Phương pháp:} Không gian mẫu là tập hợp các kết quả có thể xảy ra của một phép thử. Tập hợp này được gọi là \textbf{không gian mẫu} của phép thử đó và được ký hiệu là $\Omega$.
+% \end{dang}
+% \begin{vd}%[0D0H1-2]
+% 	Chọn ngẫu nhiên một số nguyên dương không lớn hơn $30$. Mô tả không gian mẫu.
+% \loigiai{
+% 	Không gian mẫu $\Omega = \{1; 2; 3; \ldots; 27; 28; 29; 30\}$.
+% 	}
+% \end{vd}
+% \begin{vd}%[0D0H1-2]
+% 	Chọn ngẫu nhiên hai số khác nhau từ $5$ số nguyên dương đầu tiên. Mô tả không gian mẫu.
+% \loigiai{
+% 	Không gian mẫu $\Omega = \{(1; 2); (1; 3); (1; 4); (1; 5); (2; 3); (2; 4); (2; 5); (3; 4); (3; 5); (4; 5)\}$.
+% 	}
+% \end{vd}
+% \begin{vd}%[0D0H1-2]
+% 	Gieo đồng thời một con xúc xắc và một đồng xu. Mô tả không gian mẫu.
+% \loigiai{
+% 	Kí hiệu $S$ và $N$ tương ứng là đồng xu ra mặt sấp và đồng xu ra mặt ngửa. Khi đó không gian mẫu là
+% 	$$\Omega = \{(1; S); (2; S); (3; S); (4; S); (5; S); (6; S); (1; N); (2; N); (3; N); (4; N); (5; N); (6; N)\}.$$
+% 	}
+% \end{vd}
+% \begin{vd}%[0D0H1-2]
+% 	Gieo đồng thời ba đồng xu cân đối đồng chất. Mô tả không gian mẫu.
+% \loigiai{
+% 	Kí hiệu $S$ và $N$ tương ứng là đồng xu ra mặt sấp và đồng xu ra mặt ngửa. Khi đó không gian mẫu là
+% 	$$\Omega = \{(S; S; S); (S; S; N); (S; N; S); (S; N; N); (N; S; S); (N; S; N); (N; N; S); (N; N; N)\}.$$
+% 	}
+% \end{vd}
+% \begin{vd}%[0D0H1-2]
+% 	Chọn ngẫu nhiên một gia đình có ba con ($12$ tuổi, $15$ tuổi và $18$ tuổi). Quan sát giới tính của ba người con này. Mô tả không gian mẫu.
+% \loigiai{
+% 	Chọn ngẫu nhiên một gia đình có ba con và quan sát giới tính của ba người con này, ta có không gian mẫu $\Omega = \{TTT; TTG; TGT; TGG; GTT; GTG; GGT; GGG\}$ nên số phần tử của không gian mẫu là $n(\Omega) = 8$.
+% 	}
+% \end{vd}
+% \begin{dang}{Tính xác suất theo định nghĩa cổ điển}
+% 	\textbf{Phương pháp:} Ta có thể sử dụng các công thức sau
+% 	\begin{itemize}
+% 		\item Tính xác suất theo thống kê ta sử dụng công thức
+% 		$$\mathrm{P} \left(A\right)=\dfrac{n}{N}.$$
+% 		\item  Tính xác suất của biến cố theo định nghĩa cổ điển ta sử dụng công thức
+% 		$$\mathrm{P} \left(A\right)=\dfrac{n\left(A\right)}{n \left(\Omega\right)}.$$
+% 	\end{itemize}
+% \end{dang}
+% \begin{vd}%[0D0N2-2]%[GV:Xuan Vy Pham]
+% 	Gieo một con xúc xắc cân đối đồng chất. Tính xác suất của biến cố \lq \lq Mặt có số chấm chẵn xuất hiện\rq \rq.
+% \loigiai{Không gian mẫu $\Omega = \left\{1;2;3;4;5;6\right\}$ suy ra $n(\Omega)=6$.\\
+% 	Gọi $A$ là biến cố: \lq \lq Mặt có số chấm chẵn xuất hiện\rq \rq.
+% 	\\
+% 	Khi đó $A=\left\{2;4;6\right\}$ nên $n(A)=3$.\\
+% 	Do đó $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{1}{2}$.
+% 	}
+% \end{vd}
+% %BT2
+% \begin{vd}%[0D0N2-2]%[GV:Xuan Vy Pham]
+% 	Gieo lần lượt hai con xúc xắc cân đối đồng chất. Tính xác suất của biến cố \lq \lq Số chấm xuất hiện trên mặt hai con xúc xắc giống nhau \rq \rq.
+% \loigiai{Số phần tử của không gian mẫu là $n(\Omega)=6 \cdot 6=36$.\\
+% 	Gọi $A$ là biến cố: \lq \lq Số chấm xuất hiện trên mặt hai con xúc xắc giống nhau\rq \rq.\\
+% 	Có $6$ kết quả thuận lợi cho biến cố $A$ là $\left\{1;1\right\}$; $\left\{2;2\right\}$; $\left\{3;3\right\}$; $\left\{4;4\right\}$; $\left\{5;5\right\}$; $\left\{6;6\right\}$.\\
+% 	Xác suất để số chấm xuất hiện trên mặt hai con xúc xắc giống nhau là $$\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{6}{36}=\dfrac{1}{6}.$$
+% 	}
+% \end{vd}
+% %BT3
+% \begin{vd}%[0D0H2-2]%[GV:Xuan Vy Pham]
+% 	Gieo một con xúc xắc cân đối đồng chất $2$ lần, tính xác suất của biến cố \lq Tích số chấm ở $2$ lần khi gieo xúc xắc là một số chẵn\rq \rq.
+% \loigiai{Số phần tử của không gian mẫu là $n(\Omega)=6 \cdot 6=36$.\\
+% 	Gọi $A$ là biến cố: \lq \lq Tích hai lần số chấm khi gieo xúc xắc là một số chẵn \rq \rq.\\
+% 	Ta xét các trường hợp sau:\\
+% 	\textbf{Trường hợp 1:} Gieo lần một, số chấm xuất hiện trên mặt là số lẻ thì khi gieo lần hai, số chấm xuất hiện phải là số chẵn. Khi đó có $3 \cdot 3=9$ cách gieo.\\
+% 	\textbf{Trường hợp 2}: Gieo lần một, số chấm xuất hiện trên mặt là số chẵn thì có hai trường hợp xảy ra là số chấm xuất hiện trên mặt khi gieo lần hai là số lẻ hoặc số chẵn. \\
+% 	Khi đó có $3 \cdot 3+3 \cdot 3 =18$ cách gieo.\\
+% 	Suy ra số kết quả thuận lợi cho biến cố là $n(A)=9+18=27$.\\
+% 	Vậy xác suất cần tìm là $\mathrm{P}(A)=\dfrac{27}{36}=0{,}75$.
+% 	}
+% \end{vd}
+% %BT4
+% \begin{vd}%[0D0H2-4]%[GV:Xuan Vy Pham]
+% 	Một nhóm học sinh gồm có $9$ nam, $3$ nữ. Tính xác suất để khi chọn ngẫu nhiên $4$ người thì có đúng $1$ nữ.
+% \loigiai{Số phần tử của không gian mẫu là $n(\Omega) = \mathrm{C}_{12}^{4}=495$.\\
+% 	Gọi $A$ là biến cố: \lq \lq Trong $4$ người được chọn thì có đúng $1$ nữ \rq \rq.  \\
+% 	Để chọn $4$ người có đúng $1$ nữ thì phải chọn $1$ nữ và $3$ nam có $\mathrm{C}_{3}^{1} \cdot \mathrm{C}_{9}^{3}=252$ cách.\\ Do đó $n(A)=252$.\\
+% 	Vậy xác suất cần tìm là $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{252}{495}=\dfrac{28}{55}$.
+% 	}
+% \end{vd}
+% %BT5
+% \begin{vd}%[0D0H2-4]%[GV:Xuan Vy Pham]
+% 	Một đội gồm $5$ nam và $8$ nữ. Lập một nhóm gồm $4$ người hát tốp ca, tính xác suất để trong $4$ người được chọn có ít nhất $3$ nữ.
+% \loigiai{Chọn tùy ý  $4$ người từ $13$ người nên số phần tử của không gian mẫu là $n(\Omega)=\mathrm{C}_{30}^{3}$.\\
+% 	Gọi  $A$ là biến cố  \lq \lq Trong $4$ người được chọn có ít nhất $3$ nữ\rq \rq. \\
+% 	Ta có hai trường hợp như sau:\\
+% 	\textbf{Trường hợp 1:} Chọn $3$ nữ và $1$ nam, có $\mathrm{C}_{8}^{3} \cdot \mathrm{C}_{5}^{1}$ cách.\\
+% 	\textbf{Trường hợp 2:} Chọn cả $4$ nữ, có $\mathrm{C}_{8}^{4}$ cách.\\
+% 	Suy ra số phần tử của biến cố $A$ là $n(A)=\mathrm{C}_{8}^{3} \cdot \mathrm{C}_{5}^{1}+\mathrm{C}_{8}^{4}=350$.\\
+% 	Vậy xác suất cần tính là $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{350}{715}=\dfrac{70}{143}$. }
+% \end{vd}
+% \begin{dang}{Tính xác suất dựa vào biến cố đối}
+% 	\textbf{Phương pháp}: Ta có thể sử dụng các công thức sau
+% 	$$\mathrm{P}(A)=1-\mathrm{P}\left(\overline{A}\right)$$
+% 	\begin{note}
+% 	Nên dùng khi: Biến cố $A$ có nhiều trường hợp phức tạp, khó liệt kê. Thường trong đề bài xuất hiện các từ như \lq\lq ít nhất\rq\rq, \lq\lq không ít hơn\rq\rq, \lq\lq có ít nhất một\rq\rq.
+% 	\end{note}
+% \end{dang}
+% \begin{vd}%[0D0V2-4]
+% 	Một lớp có $15$ học sinh nam và $20$ học sinh nữ. Chọn ngẫu nhiên $5$ học sinh tham gia lao động. Tính xác suất sao cho
+% 	\begin{enumerate}
+% 		\item Chọn $5$ học sinh có đúng $3$ nam và $2$ nữ.
+% 		\item Chọn $5$ học sinh sao cho có ít nhất $1$ nam.
+% 	\end{enumerate}
+% \loigiai{
+% 	\begin{enumerate}
+% 		\item 	$n(\Omega)=\mathrm{C}_{35}^5=324\,632$. \\
+% 		Gọi $A$ là biến cố chọn $5$ học sinh có đúng $3$ nam và $2$ nữ.\\
+% 		$n(A)=\mathrm{C}_{15}^3\cdot \mathrm{C}_{20}^2=86\,450$.\\
+% 		Xác suất của biến cố $A$ là  $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{86\,450}{324\,632} \approx 0{,}266$.
+% 		\item Gọi $B$ là biến cố chọn $5$ học sinh sao cho có ít nhất $1$ nam. \\
+% 		Khi đó $\overline{B}$ là biến cố chọn được $5$ học sinh nữ nên $n(\overline{B})=\mathrm{C}_{20}^5=15\,504$.\\
+% 		$\mathrm{P}(B)=1-\mathrm{P}(\overline{B})=1-\dfrac{\mathrm{C}_{20}^5}{\mathrm{C}_{35}^5} \approx 0{,}95$.
+% 	\end{enumerate}
+% 	}
+% \end{vd}
+% \begin{vd}%[0D0H2-1]
+% 	Gieo một đồng xu cân đối liên tiếp một số lần. Biết rằng xác suất để mặt ngửa không xuất hiện lần nào là $\dfrac{1}{1\,024}$. Xác suất để mặt ngửa xuất hiện ít nhất một lần là $\dfrac{a}{b}$ với $\dfrac{a}{b}$ là phân số tối giản. Tính giá trị $a+b$.
+% \loigiai{
+% 	Gọi $A$ là biến cố \lq\lq Đồng xu không xuất hiện mặt ngửa\rq\rq.\\
+% 	Suy ra $\overline{A}$ là biến cố \lq\lq Đồng xu xuất hiện mặt ngửa ít nhất một lần\rq\rq.\\
+% 	Theo đề bài có $\mathrm{P}(A)=\dfrac{1}{1\,024}$.\\
+% 	Vậy $\mathrm{P}\left(\overline{A}\right)=1-\mathrm{P}(A)=1-\dfrac{1}{1\,024}=\dfrac{1\,023}{1\,024}$.\\
+% 	Suy ra $a=1\,023$, $b=1\,024$ hay $a+b=2\,047$.
+% 	}
+% \end{vd}
+% \begin{vd}%[0D0V2-2]
+% 	Gieo một con xúc xắc cân đối và đồng chất $3$ lần liên tiếp. Xác suất để ít nhất hai lần gieo cho kết quả khác nhau bằng?
+% \loigiai{
+% 	Số phần tử của không gian mẫu là $n(\Omega) = 6 \cdot  6 \cdot 6 = 216$. \\
+% 	Gọi $A$ là biến cố \lq\lq Số chấm xuất hiện trong ba lần gieo là khác nhau\rq\rq. \\
+% 	Gọi $\overline{A}$ là biến cố \lq\lq Số chấm xuất hiện trong ba lần gieo là giống nhau\rq\rq. \\
+% 	Các kết quả thuận lợi cho $\overline{A}$ là $(1;1;1), (2;2;2), (3;3;3), (4;4;4), (5;5;5), (6;6;6)$. \\
+% 	Suy ra $n(\overline{A}) = 6$. \\
+% 	Vậy $\mathrm{P}(\overline{A}) = \dfrac{n(\overline{A})}{n(\Omega)} = \dfrac{6}{36} = \dfrac{1}{6}$. \\
+% 	Do đó $\mathrm{P}(A) = 1 - \mathrm{P}(\overline{A}) = 1 - \dfrac{1}{6} = \dfrac{5}{6}$.
+% 	}
+% \end{vd}
+% %Từ ngân hàng. Câu 2134. File gốc: /Users/huynhbill/Downloads/SpDuAn-A-Dot11/data/HKII/0-TN-DS-TLN-SGD-BacNinh-HKII-NH24-25.tex
+% \begin{vd}%[0D0C2-7][Lê Phúc]%[0-TN-DS-TLN-SGD-BacNinh-HKII-NH24-25]
+% 	Một chiếc hộp đựng $8$ viên bi màu trắng và được đánh số từ $1$ đến $8$; $9$ viên bi màu xanh được đánh số từ $1$ đến $9$ và $10$ viên bi màu đỏ được đánh số từ $1$ đến $10$. Lấy ngẫu nhiên $3$ viên bi trong hộp trên. Tính xác suất để $3$ viên bi được chọn có số ghi trên đó đôi một khác nhau.
+% \loigiai{
+% 	Tổng số bi trong hộp là $8+9+10=27$ viên bi. \\
+% 	Số cách chọn ngẫu nhiên $3$ viên bi từ $27$ viên bi là $n(\Omega) = \mathrm{C}_{27}^3 = 2925$. \\
+% 	Gọi $A$ là biến cố \lq\lq$3$ viên bi được chọn có số ghi trên đó đôi một khác nhau\rq\rq. \\
+% 	Suy ra biến cố $\overline{A}$ là \lq\lq $3$ viên bi được chọn số ghi trên đó có ít nhất hai số trùng nhau\rq\rq.
+% 	\begin{itemize}
+% 		\item \textbf{Trường hợp 1:} Ba viên bi cùng số.\\
+% 		Suy ra số cách chọn là $8$ cách.
+% 		\item \textbf{Trường hợp 2:} Có hai bi có số giống nhau
+% 		\begin{itemize}
+% 			\item Hai viên bi số $9$ và một bi khác có $25$ cách chọn.
+% 			\item Hai viên bi có cùng số bé hơn $9$ và $1$ bi khác có $8\cdot 3\cdot 24$ cách.
+% 		\end{itemize}
+% 	\end{itemize}
+% 	Suy ra $n\left(\overline{A}\right)=8+25+8\cdot 3\cdot 24=609$.\\
+% 	Vậy $\mathrm{P}\left(\overline{A}\right)=\dfrac{n\left(\overline{A}\right)}{n(\Omega)}=\dfrac{609}{2925}$.\\
+% 	Do đó $\mathrm{P}(A)=1-\mathrm{P}\left(\overline{A}\right)=1-\dfrac{609}{2925}=\dfrac{772}{975}$.
+% 	}
+% \end{vd}
+\subsection{ĐỀ ÔN TẬP CUỐI CHƯƠNG}
+
 \begin{name}
-	{GV biên soạn: Huỳnh Quốc Đạt\\ GV phản biện 1: Trí Thiện\\ GV phản biện 2: Nguyễn Sĩ Đạt}
-	{TOÁN 10-KNTT-CS}
+	{\tenchude}
+	{TOÁN 10}
+	{LỚP TOÁN THẦY PHÁT}
+	{Thời gian: 90 phút - Không kể thời gian phát đề}
 \end{name}
-\setcounter{section}{25}
-\section{Biến cố và định nghĩa cổ điển của xác suất}
-%-------------------------------------------
-\subsection{KIẾN THỨC TRỌNG TÂM}
-\subsubsection{Phép thử ngẫu nhiên, không gian mẫu}
-\begin{dn}~
-	\begin{itemize}
-		\item [$\bullet$]  \textbf{Phép thử ngẫu nhiên} (gọi tắt là phép thử) là một thí nghiệm hay một hành động mà kết quả của nó không thể biết được trước khi phép thử được thực hiện.
-		\item [$\bullet$]  \textbf{Không gian mẫu} của phép thử (kí hiệu là $\Omega$) là tập hợp tất cả các kết quả có thể xảy ra khi thực hiện phép thử.
-	\end{itemize}
-\end{dn}
-\begin{chuy}
-	Ta chỉ xét phép thử mà không gian mẫu gồm hữu hạn kết quả.
-\end{chuy}
-\subsubsection{Biến cố}
-\begin{dn}
-	\immini{
-		\begin{itemize}
-			\item [$\bullet$] Biến cố là một tập con của không gian mẫu $\Omega $, kí hiệu $A$, $B$, $C$,...
-			\item [$\bullet$] Một kết quả thuộc tập $A$ được gọi là kết quả thuận lợi cho biến cố $A$.
-		\end{itemize}
-	}{
-		\begin{tikzpicture}[scale=.6]
-			\tkzDefPoints{0/0/A, 5/0/B, 0/3/D, 5/3/C}
-			\draw[fill=cyan!50] (A)--(B)--(C)--(D)--cycle;
-			\draw(4,0)--(4.5,-.5) node[below] {$\Omega$};
-			\node (A) at (1.5,1.5) [circle, draw,fill=white] {$A$};
-	\end{tikzpicture}}
-\end{dn}
-\begin{chuy}
-\begin{itemize}
-	\item [$\bullet$] Biến cố chắc chắn là biến cố luôn xảy ra, kí hiệu là $\Omega$.
-	\item [$\bullet$] Biến cố không thể là biến cố không bao giờ xảy ra, ki hiệu là $\varnothing$.
-\end{itemize}
-\end{chuy}
-\subsubsection{Biến cố đối}
-Xét phép thử $T$  với không gian mẫu là  $\Omega$. Giả sử $E$ là một biến cố.
-\begin{dn}
-	\begin{itemize}
-		\item [$\bullet$] Biến cố đối của biến cố $E$ là biến cố \lq\lq$E$ không xảy ra\rq\rq. Nếu biến cố $E$ được mô tả dưới dạng mệnh đề toán học $Q$ thì biến cố đối $\overline{E}$ được mô tả bằng mệnh đề phủ định của mệnh đề $Q$ (tức là mệnh đề $\overline{Q}$ ).
-		\item [$\bullet$] Biến cố đối của biến cố $E$ kí hiệu là $\overline{E}$. Nhận xét $\overline{E}=\Omega \backslash E$.
-	\end{itemize}
-\end{dn}
-\begin{nx} Nếu biến cố $E$ là tập con của không gian mẫu $\Omega$ thì $\overline{E}$ là phần bù của $E$ trong $\Omega$.
-\begin{center}
-	\begin{tikzpicture}[scale=.8]
-		\tkzDefPoints{0/0/A, 5/0/B, 0/3/D, 5/3/C}
-		\fill[cyan!10] (A)--(B)--(C)--(D);
-		\draw[fill=cyan!50] (A)--(B)--(C)--(D)--cycle;
-		\draw(4,0)--(4.5,-.5) node[below] {$\Omega$};
-		\node (A) at (1.5,1.5) [circle, draw,fill=white] {$E $};
-		\node at (4,2) {$\overline{E}$};
-	\end{tikzpicture}
-\end{center}
-\end{nx}
-\subsubsection{Định nghĩa cổ điển của xác suất}
-\begin{dn}
-	 Cho phép thử $T$ có không gian mẫu là $\Omega$. Giả thiết rằng các kết quả có thể của $T$ là đồng khả năng. Khi đó, nếu $E$ là một biến cố liên quan phép thử $T$ thì xác suất của $E$ được cho bởi công thức
-	$$\mathrm{P}(E) = \dfrac{n(E)}{n(\Omega)}$$
-	Trong đó, $n(\Omega)$ và $n(E)$ lần lượt là số phần tử của tập không gian mẫu $\Omega$ và tập biến cố $E$.
-\end{dn}
-\begin{nx}~
-	\begin{itemize}
-	\item $0\le \mathrm{P}(E)\le 1$, với mọi biến cố $E$.
-	\item Với biến cố chắc chắn (là tập $\Omega$), ta có  $\mathrm{P}(\Omega)=1$.
-	\item Với biến cố không thể (là tập $\varnothing$), ta có  $\mathrm{P}(\varnothing)=0$.
-\end{itemize}
-\end{nx}
-\subsection{PHÂN LOẠI VÀ PHƯƠNG PHÁP GIẢI TOÁN}
-\begin{dang}[Mô tả không gian mẫu]
-	\textbf{Phương pháp:} Không gian mẫu là tập hợp các kết quả có thể xảy ra của một phép thử. Tập hợp này được gọi là \textbf{không gian mẫu} của phép thử đó và được ký hiệu là $\Omega$.
-\end{dang}
-\begin{vd}%[0D0H1-2]
-	Chọn ngẫu nhiên một số nguyên dương không lớn hơn $30$. Mô tả không gian mẫu.
-\loigiai{
-	Không gian mẫu $\Omega = \{1; 2; 3; \ldots; 27; 28; 29; 30\}$.
-	}
-\end{vd}
-\begin{vd}%[0D0H1-2]
-	Chọn ngẫu nhiên hai số khác nhau từ $5$ số nguyên dương đầu tiên. Mô tả không gian mẫu.
-\loigiai{
-	Không gian mẫu $\Omega = \{(1; 2); (1; 3); (1; 4); (1; 5); (2; 3); (2; 4); (2; 5); (3; 4); (3; 5); (4; 5)\}$.
-	}
-\end{vd}
-\begin{vd}%[0D0H1-2]
-	Gieo đồng thời một con xúc xắc và một đồng xu. Mô tả không gian mẫu.
-\loigiai{
-	Kí hiệu $S$ và $N$ tương ứng là đồng xu ra mặt sấp và đồng xu ra mặt ngửa. Khi đó không gian mẫu là
-	$$\Omega = \{(1; S); (2; S); (3; S); (4; S); (5; S); (6; S); (1; N); (2; N); (3; N); (4; N); (5; N); (6; N)\}.$$
-	}
-\end{vd}
-\begin{vd}%[0D0H1-2]
-	Gieo đồng thời ba đồng xu cân đối đồng chất. Mô tả không gian mẫu.
-\loigiai{
-	Kí hiệu $S$ và $N$ tương ứng là đồng xu ra mặt sấp và đồng xu ra mặt ngửa. Khi đó không gian mẫu là
-	$$\Omega = \{(S; S; S); (S; S; N); (S; N; S); (S; N; N); (N; S; S); (N; S; N); (N; N; S); (N; N; N)\}.$$
-	}
-\end{vd}
-\begin{vd}%[0D0H1-2]
-	Chọn ngẫu nhiên một gia đình có ba con ($12$ tuổi, $15$ tuổi và $18$ tuổi). Quan sát giới tính của ba người con này. Mô tả không gian mẫu.
-\loigiai{
-	Chọn ngẫu nhiên một gia đình có ba con và quan sát giới tính của ba người con này, ta có không gian mẫu $\Omega = \{TTT; TTG; TGT; TGG; GTT; GTG; GGT; GGG\}$ nên số phần tử của không gian mẫu là $n(\Omega) = 8$.
-	}
-\end{vd}
-\begin{dang}[Tính xác suất theo định nghĩa cổ điển]
-	\textbf{Phương pháp:} Ta có thể sử dụng các công thức sau
-	\begin{itemize}
-		\item Tính xác suất theo thống kê ta sử dụng công thức
-		$$\mathrm{P} \left(A\right)=\dfrac{n}{N}.$$
-		\item  Tính xác suất của biến cố theo định nghĩa cổ điển ta sử dụng công thức
-		$$\mathrm{P} \left(A\right)=\dfrac{n\left(A\right)}{n \left(\Omega\right)}.$$
-	\end{itemize}
-\end{dang}
-\begin{vd}%[0D0N2-2]%[GV:Xuan Vy Pham]
-	Gieo một con xúc xắc cân đối đồng chất. Tính xác suất của biến cố \lq \lq Mặt có số chấm chẵn xuất hiện\rq \rq.
-\loigiai{Không gian mẫu $\Omega = \left\{1;2;3;4;5;6\right\}$ suy ra $n(\Omega)=6$.\\
-	Gọi $A$ là biến cố: \lq \lq Mặt có số chấm chẵn xuất hiện\rq \rq.
-	\\
-	Khi đó $A=\left\{2;4;6\right\}$ nên $n(A)=3$.\\
-	Do đó $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{1}{2}$.
-	}
-\end{vd}
-%BT2
-\begin{vd}%[0D0N2-2]%[GV:Xuan Vy Pham]
-	Gieo lần lượt hai con xúc xắc cân đối đồng chất. Tính xác suất của biến cố \lq \lq Số chấm xuất hiện trên mặt hai con xúc xắc giống nhau \rq \rq.
-\loigiai{Số phần tử của không gian mẫu là $n(\Omega)=6 \cdot 6=36$.\\
-	Gọi $A$ là biến cố: \lq \lq Số chấm xuất hiện trên mặt hai con xúc xắc giống nhau\rq \rq.\\
-	Có $6$ kết quả thuận lợi cho biến cố $A$ là $\left\{1;1\right\}$; $\left\{2;2\right\}$; $\left\{3;3\right\}$; $\left\{4;4\right\}$; $\left\{5;5\right\}$; $\left\{6;6\right\}$.\\
-	Xác suất để số chấm xuất hiện trên mặt hai con xúc xắc giống nhau là $$\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{6}{36}=\dfrac{1}{6}.$$
-	}
-\end{vd}
-%BT3
-\begin{vd}%[0D0H2-2]%[GV:Xuan Vy Pham]
-	Gieo một con xúc xắc cân đối đồng chất $2$ lần, tính xác suất của biến cố \lq Tích số chấm ở $2$ lần khi gieo xúc xắc là một số chẵn\rq \rq.
-\loigiai{Số phần tử của không gian mẫu là $n(\Omega)=6 \cdot 6=36$.\\
-	Gọi $A$ là biến cố: \lq \lq Tích hai lần số chấm khi gieo xúc xắc là một số chẵn \rq \rq.\\
-	Ta xét các trường hợp sau:\\
-	\textbf{Trường hợp 1:} Gieo lần một, số chấm xuất hiện trên mặt là số lẻ thì khi gieo lần hai, số chấm xuất hiện phải là số chẵn. Khi đó có $3 \cdot 3=9$ cách gieo.\\
-	\textbf{Trường hợp 2}: Gieo lần một, số chấm xuất hiện trên mặt là số chẵn thì có hai trường hợp xảy ra là số chấm xuất hiện trên mặt khi gieo lần hai là số lẻ hoặc số chẵn. \\
-	Khi đó có $3 \cdot 3+3 \cdot 3 =18$ cách gieo.\\
-	Suy ra số kết quả thuận lợi cho biến cố là $n(A)=9+18=27$.\\
-	Vậy xác suất cần tìm là $\mathrm{P}(A)=\dfrac{27}{36}=0{,}75$.
-	}
-\end{vd}
-%BT4
-\begin{vd}%[0D0H2-4]%[GV:Xuan Vy Pham]
-	Một nhóm học sinh gồm có $9$ nam, $3$ nữ. Tính xác suất để khi chọn ngẫu nhiên $4$ người thì có đúng $1$ nữ.
-\loigiai{Số phần tử của không gian mẫu là $n(\Omega) = \mathrm{C}_{12}^{4}=495$.\\
-	Gọi $A$ là biến cố: \lq \lq Trong $4$ người được chọn thì có đúng $1$ nữ \rq \rq.  \\
-	Để chọn $4$ người có đúng $1$ nữ thì phải chọn $1$ nữ và $3$ nam có $\mathrm{C}_{3}^{1} \cdot \mathrm{C}_{9}^{3}=252$ cách.\\ Do đó $n(A)=252$.\\
-	Vậy xác suất cần tìm là $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{252}{495}=\dfrac{28}{55}$.
-	}
-\end{vd}
-%BT5
-\begin{vd}%[0D0H2-4]%[GV:Xuan Vy Pham]
-	Một đội gồm $5$ nam và $8$ nữ. Lập một nhóm gồm $4$ người hát tốp ca, tính xác suất để trong $4$ người được chọn có ít nhất $3$ nữ.
-\loigiai{Chọn tùy ý  $4$ người từ $13$ người nên số phần tử của không gian mẫu là $n(\Omega)=\mathrm{C}_{30}^{3}$.\\
-	Gọi  $A$ là biến cố  \lq \lq Trong $4$ người được chọn có ít nhất $3$ nữ\rq \rq. \\
-	Ta có hai trường hợp như sau:\\
-	\textbf{Trường hợp 1:} Chọn $3$ nữ và $1$ nam, có $\mathrm{C}_{8}^{3} \cdot \mathrm{C}_{5}^{1}$ cách.\\
-	\textbf{Trường hợp 2:} Chọn cả $4$ nữ, có $\mathrm{C}_{8}^{4}$ cách.\\
-	Suy ra số phần tử của biến cố $A$ là $n(A)=\mathrm{C}_{8}^{3} \cdot \mathrm{C}_{5}^{1}+\mathrm{C}_{8}^{4}=350$.\\
-	Vậy xác suất cần tính là $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{350}{715}=\dfrac{70}{143}$. }
-\end{vd}
-\begin{dang}[Tính xác suất dựa vào biến cố đối]
-	\textbf{Phương pháp}: Ta có thể sử dụng các công thức sau
-	$$\mathrm{P}(A)=1-\mathrm{P}\left(\overline{A}\right)$$
-	\begin{luuy}
-	Nên dùng khi: Biến cố $A$ có nhiều trường hợp phức tạp, khó liệt kê. Thường trong đề bài xuất hiện các từ như \lq\lq ít nhất\rq\rq, \lq\lq không ít hơn\rq\rq, \lq\lq có ít nhất một\rq\rq.
-	\end{luuy}
-\end{dang}
-\begin{vd}%[0D0V2-4]
-	Một lớp có $15$ học sinh nam và $20$ học sinh nữ. Chọn ngẫu nhiên $5$ học sinh tham gia lao động. Tính xác suất sao cho
-	\begin{enumerate}
-		\item Chọn $5$ học sinh có đúng $3$ nam và $2$ nữ.
-		\item Chọn $5$ học sinh sao cho có ít nhất $1$ nam.
-	\end{enumerate}
-\loigiai{
-	\begin{enumerate}
-		\item 	$n(\Omega)=\mathrm{C}_{35}^5=324\,632$. \\
-		Gọi $A$ là biến cố chọn $5$ học sinh có đúng $3$ nam và $2$ nữ.\\
-		$n(A)=\mathrm{C}_{15}^3\cdot \mathrm{C}_{20}^2=86\,450$.\\
-		Xác suất của biến cố $A$ là  $\mathrm{P}(A)=\dfrac{n(A)}{n(\Omega)}=\dfrac{86\,450}{324\,632} \approx 0{,}266$.
-		\item Gọi $B$ là biến cố chọn $5$ học sinh sao cho có ít nhất $1$ nam. \\
-		Khi đó $\overline{B}$ là biến cố chọn được $5$ học sinh nữ nên $n(\overline{B})=\mathrm{C}_{20}^5=15\,504$.\\
-		$\mathrm{P}(B)=1-\mathrm{P}(\overline{B})=1-\dfrac{\mathrm{C}_{20}^5}{\mathrm{C}_{35}^5} \approx 0{,}95$.
-	\end{enumerate}
-	}
-\end{vd}
-\begin{vd}%[0D0H2-1]
-	Gieo một đồng xu cân đối liên tiếp một số lần. Biết rằng xác suất để mặt ngửa không xuất hiện lần nào là $\dfrac{1}{1\,024}$. Xác suất để mặt ngửa xuất hiện ít nhất một lần là $\dfrac{a}{b}$ với $\dfrac{a}{b}$ là phân số tối giản. Tính giá trị $a+b$.
-\loigiai{
-	Gọi $A$ là biến cố \lq\lq Đồng xu không xuất hiện mặt ngửa\rq\rq.\\
-	Suy ra $\overline{A}$ là biến cố \lq\lq Đồng xu xuất hiện mặt ngửa ít nhất một lần\rq\rq.\\
-	Theo đề bài có $\mathrm{P}(A)=\dfrac{1}{1\,024}$.\\
-	Vậy $\mathrm{P}\left(\overline{A}\right)=1-\mathrm{P}(A)=1-\dfrac{1}{1\,024}=\dfrac{1\,023}{1\,024}$.\\
-	Suy ra $a=1\,023$, $b=1\,024$ hay $a+b=2\,047$.
-	}
-\end{vd}
-\begin{vd}%[0D0V2-2]
-	Gieo một con xúc xắc cân đối và đồng chất $3$ lần liên tiếp. Xác suất để ít nhất hai lần gieo cho kết quả khác nhau bằng?
-\loigiai{
-	Số phần tử của không gian mẫu là $n(\Omega) = 6 \cdot  6 \cdot 6 = 216$. \\
-	Gọi $A$ là biến cố \lq\lq Số chấm xuất hiện trong ba lần gieo là khác nhau\rq\rq. \\
-	Gọi $\overline{A}$ là biến cố \lq\lq Số chấm xuất hiện trong ba lần gieo là giống nhau\rq\rq. \\
-	Các kết quả thuận lợi cho $\overline{A}$ là $(1;1;1), (2;2;2), (3;3;3), (4;4;4), (5;5;5), (6;6;6)$. \\
-	Suy ra $n(\overline{A}) = 6$. \\
-	Vậy $\mathrm{P}(\overline{A}) = \dfrac{n(\overline{A})}{n(\Omega)} = \dfrac{6}{36} = \dfrac{1}{6}$. \\
-	Do đó $\mathrm{P}(A) = 1 - \mathrm{P}(\overline{A}) = 1 - \dfrac{1}{6} = \dfrac{5}{6}$.
-	}
-\end{vd}
-%Từ ngân hàng. Câu 2134. File gốc: /Users/huynhbill/Downloads/SpDuAn-A-Dot11/data/HKII/0-TN-DS-TLN-SGD-BacNinh-HKII-NH24-25.tex
-\begin{vd}%[0D0C2-7][Lê Phúc]%[0-TN-DS-TLN-SGD-BacNinh-HKII-NH24-25]
-	Một chiếc hộp đựng $8$ viên bi màu trắng và được đánh số từ $1$ đến $8$; $9$ viên bi màu xanh được đánh số từ $1$ đến $9$ và $10$ viên bi màu đỏ được đánh số từ $1$ đến $10$. Lấy ngẫu nhiên $3$ viên bi trong hộp trên. Tính xác suất để $3$ viên bi được chọn có số ghi trên đó đôi một khác nhau.
-\loigiai{
-	Tổng số bi trong hộp là $8+9+10=27$ viên bi. \\
-	Số cách chọn ngẫu nhiên $3$ viên bi từ $27$ viên bi là $n(\Omega) = \mathrm{C}_{27}^3 = 2925$. \\
-	Gọi $A$ là biến cố \lq\lq$3$ viên bi được chọn có số ghi trên đó đôi một khác nhau\rq\rq. \\
-	Suy ra biến cố $\overline{A}$ là \lq\lq $3$ viên bi được chọn số ghi trên đó có ít nhất hai số trùng nhau\rq\rq.
-	\begin{itemize}
-		\item \textbf{Trường hợp 1:} Ba viên bi cùng số.\\
-		Suy ra số cách chọn là $8$ cách.
-		\item \textbf{Trường hợp 2:} Có hai bi có số giống nhau
-		\begin{itemize}
-			\item Hai viên bi số $9$ và một bi khác có $25$ cách chọn.
-			\item Hai viên bi có cùng số bé hơn $9$ và $1$ bi khác có $8\cdot 3\cdot 24$ cách.
-		\end{itemize}
-	\end{itemize}
-	Suy ra $n\left(\overline{A}\right)=8+25+8\cdot 3\cdot 24=609$.\\
-	Vậy $\mathrm{P}\left(\overline{A}\right)=\dfrac{n\left(\overline{A}\right)}{n(\Omega)}=\dfrac{609}{2925}$.\\
-	Do đó $\mathrm{P}(A)=1-\mathrm{P}\left(\overline{A}\right)=1-\dfrac{609}{2925}=\dfrac{772}{975}$.
-	}
-\end{vd}
-\subsection{BÀI TẬP RÈN LUYỆN}
+
 \ind{PHẦN I.} \inden{Câu trắc nghiệm nhiều phương án lựa chọn. Mỗi câu hỏi học sinh chỉ chọn một phương án.}
 \setcounter{ex}{0}
 \Opensolutionfile{ans}[ans/0-KNTT-LT-C8B26-caulc]

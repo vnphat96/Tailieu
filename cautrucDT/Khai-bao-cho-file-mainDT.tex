@@ -639,6 +639,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 	\newgeometry{top=\tren cm, bottom=\duoi cm, left=\trai cm, right=\mepphai cm}
 }
 %===================đn name
+
 \newcommand{\name}[4]{
 %	\NOTE
 %	\newpage
@@ -646,16 +647,18 @@ marginparwidth=\so cm, marginparsep=5mm,
 	\boldmath\fontfamily{qag}\selectfont\color{\mauname}
 \hoten \dotfill {\fontsize{10}{11}\selectfont \ngaylamde}
 	\begin{tcolorbox}[boxrule=0.7pt,arc=0mm,breakable,colframe=\mauSO,colback=\mauname!2,before skip=2mm,after skip=2mm]\color{\mauname}
-		% \imminiL{
+		\imminiL{
 	\begin{center}
 		%%---
-		{\damTT \MakeUppercase{#1}}\\[1pt]
-		{\dam \MakeUppercase{#2 --- Đề} \stepcounter{deso}\thedeso}\\[1pt]
+		{\damTT\color{\mauSO} \MakeUppercase{#1}}\\[1pt]
+		{\dam\color{\mauSO} \MakeUppercase{#2 --- Đề} \stepcounter{deso}\thedeso}\\[1pt]
 		% {\dam \MakeUppercase{#2}}\\[1pt]
 		{\dam\color{\mauSO} \MakeUppercase{#3}}\\[1pt]
-		{\fontsize{10}{10}\selectfont \textit{#4}.}\\[-1mm]
+		{\fontsize{10}{10}\selectfont \textit{#4}.}\\[1pt]
+		\includegraphics[width=2cm]{QRcode/\QRde.png}\\[-1mm]
 	\end{center}
-	% 	}{\includegraphics[width=4.5cm]{logo/logo.jpg}}
+		}{\includegraphics[width=4.5cm]{logo/logo.jpg}}
+		
 	\end{tcolorbox}
 	%%--- Phần note đầu đề
 	\notename
@@ -683,6 +686,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 }
 %---Hiện bảng ĐA
 \let\inputansboxold\inputansbox
+\let\indapanold\indapan
 \newcommand{\hienDA}{
 	\renewcommand{\inputansbox}[2]{
 		% \addcontentsline{toc}{subsection}{\hspace*{-4.2cm}\sf Bảng đáp án} % đưa MT vào mục lục
@@ -695,10 +699,20 @@ marginparwidth=\so cm, marginparsep=5mm,
 		% \vspace*{-2mm}
 		\inputansboxold{##1}{##2}
 	}
+	\renewcommand{\indapan}[2]{
+	% \addcontentsline{toc}{subsection}{\sf Bảng đáp án} % đưa MT vào mục lục
+	% \begin{center}
+	% 	\begin{tikzpicture}%
+	% 		\node[thick,scale=1,fill=\mauEX!2,draw=\maufoot,minimum width=3.5cm,minimum height=0.1cm,rounded corners=2mm]{\fontfamily{qag}\fontsize{11}{11}\selectfont\bfseries\color{\mauEX} BẢNG ĐÁP ÁN};
+	% 	\end{tikzpicture}%
+	% \end{center}
+	\indapanold{##1}{##2}
+	}
 }
 %---Ẩn bảng ĐA
 \newcommand{\anDA}{
 	\renewcommand{\inputansbox}[2]{}
+	\renewcommand{\indapan}[2]{}
 }
 %---Dòng chấm từng câu
 \newcommand{\dongchamEX}[1]{
