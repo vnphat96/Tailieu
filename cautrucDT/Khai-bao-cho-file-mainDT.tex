@@ -19,7 +19,7 @@
 % \usepackage{casiovn}
 \usepackage{cancel}
 %==========
-\usetikzlibrary{math,through,calc,intersections,angles,quotes,shapes,shapes.geometric,arrows,patterns,snakes,matrix,chains,arrows.meta,decorations.shapes,decorations.fractals,decorations.markings,shadows}
+\usetikzlibrary{math,through,calc,intersections,angles,quotes,shapes,shapes.geometric,arrows,patterns,snakes,matrix,chains,arrows.meta,decorations.shapes,decorations.fractals,decorations.markings,shadows,3d}
 \usetikzlibrary{positioning,decorations.text,decorations.pathmorphing}% Để uốn cong văn bản 
 \usetikzlibrary{shadings,fadings} %ĐỔ BÓNG
 \usepackage{pgfplots}
@@ -654,8 +654,8 @@ marginparwidth=\so cm, marginparsep=5mm,
 		{\dam\color{\mauSO} \MakeUppercase{#2 --- Đề} \stepcounter{deso}\thedeso}\\[1pt]
 		% {\dam \MakeUppercase{#2}}\\[1pt]
 		{\dam\color{\mauSO} \MakeUppercase{#3}}\\[1pt]
-		{\fontsize{10}{10}\selectfont \textit{#4}.}\\[1pt]
-		\includegraphics[width=2cm]{QRcode/\QRde.png}\\[-1mm]
+		{\fontsize{10}{10}\selectfont \textit{#4}}\\[1pt]
+		% \includegraphics[width=2cm]{QRcode/\QRde.png}\\[-1mm]
 	\end{center}
 		}{\includegraphics[width=4.5cm]{logo/logo.jpg}}
 		
@@ -784,6 +784,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 }
 %---Ẩn LG
 \newcommand{\anLG}{
+	\let\oldTrueEX\TrueEX
 	\renewcommand{\loigiai}[1]{	}%
 	% \chooseNSA
 	\renewcommand{\TrueTF}{\FalseTF}
@@ -794,6 +795,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 }
 %---Hiện LG
 \newcommand{\hienLG}{
+	\renewcommand{\TrueEX}{\oldTrueEX}
 	%Xuất hiện chữ Lời giải trong môi trường onlysolution
 	\renewcommand{\loigiai}[1]{%
 		\begin{onlysolution}%
@@ -888,12 +890,12 @@ marginparwidth=\so cm, marginparsep=5mm,
 \newenvironment{khung}
 {\begin{tcolorbox}[
 		enhanced,breakable,
-		colback=cyan!10!white,
-		colframe=cyan,
-		boxrule=0.5pt,
+		colback=\maudl!0,
+		colframe=\maudl,
+		coltext=mauB,
+		boxrule=0.4mm,
 		%		drop fuzzy shadow=gray,
-		left=5pt,right=5pt,top=5pt,bottom=5pt,
-		arc=0mm
+		left=5pt,right=5pt,top=5pt,bottom=5pt
 		]}
 	{\end{tcolorbox}}
 %-----------------------------Mục con = subsub
@@ -938,9 +940,9 @@ marginparwidth=\so cm, marginparsep=5mm,
 \newtcolorbox[auto counter]{khung4}[1]{enhanced, breakable,
 	before skip=1mm,after skip=1mm,
 	left=1mm,right=1mm,top=2mm,bottom=1mm,
-	colframe=myblue,colback=cyan!0,colbacktitle=cyan!6,coltitle=myblue,colupper=black,sharp corners,
+	colframe=myblue,colback=cyan!0,colbacktitle=cyan!6,coltitle=myblue,colupper=black,%sharp corners,
 	,boxrule=0.4mm,
-	coltext=mauE,
+	coltext=mauB,
 	attach boxed title to top center=
 	{yshift=-0.1mm-\tcboxedtitleheight/2,yshifttext=2mm-\tcboxedtitleheight/2},
 	varwidth boxed title*=-3cm,
@@ -960,14 +962,10 @@ marginparwidth=\so cm, marginparsep=5mm,
 }
 
 \newcommand{\boxmini}[1]{
-	\vspace*{-2mm}
 	\begin{center}
-		\begin{tikzpicture}[outline/.style={draw=##1,thick,fill=##1!3},outline/.default=myblue]
-			\node [outline,
-			sharp corners] at (0,0) {\fontfamily{qag} \selectfont\bfseries\color{\mauEX} #1};
-		\end{tikzpicture}
+		\tcbox[enhanced, breakable,colframe=\maudl,colback=cyan!0,boxrule=.4mm]
+		{\itshape\color{\mauEX} #1}
 	\end{center}
-	\vspace*{0mm}
 }
 
 %-----------------------
