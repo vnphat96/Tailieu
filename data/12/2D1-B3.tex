@@ -241,7 +241,7 @@
 \end{vd}
 \begin{vd}
     Tìm các đường tiệm cận của đồ thị hàm số $y=f(x)$, biết
-    \begin{listEX}[2]
+    \begin{listEX}[1]
         \item
         \begin{tikzpicture}[>=stealth]
             \tkzTabInit[nocadre=false,lgt=1,espcl=2,deltacl=0.5]{$x$/.7 ,$y'$/.7,$y$/2}
@@ -497,7 +497,47 @@
 		\end{itemize}
 	}
 \end{ex}
-
+\begin{ex}%[2D1K4-1]
+    Cho hàm số $y=f(x)$ có bảng biến thiên như hình bên. Đồ thị hàm số $y=\dfrac{2-f(x)}{f(x)+3}$ có tiệm cận ngang là đường thẳng
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \tkzTabInit[nocadre=false,lgt=1.5,espcl=3,deltacl=0.6]
+            {$x$ /0.6,$y’$ /0.6,$y$ /2}
+            {$-\infty$ ,$0$, $2$, $+\infty$}
+            \tkzTabLine{,-,0,+,0,-,}
+            \tkzTabVar{+/$+\infty$,-/$1$,+/$5$,-/$-\infty$}
+        \end{tikzpicture}
+    \end{center}
+    \choice
+    {$y=1$}
+    {$y=-3$}
+    {$y=2$}
+    {\True $y=-1$}
+    \loigiai{
+        Dựa vào bảng biến thiên suy ra
+        $\lim \limits_{x \to \pm \infty} f(x)=\pm \infty \Leftrightarrow \lim \limits_{x \to \pm \infty} \dfrac{2-f(x)}{f(x)+3} =-1$ nên đồ thị hàm số $y=\dfrac{2-f(x)}{f(x)+3}$ có tiệm cận ngang là $y=-1$.
+    }
+\end{ex}
+\begin{ex}%[2D1K4-1]
+    Cho hàm số $y=f(x)$ có bảng biến thiên như hình bên. Đồ thị hàm số $y=\dfrac{1}{f^2(x)-4f(x)+4}$ có bao nhiêu tiệm cận đứng?
+    \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            \tkzTabInit[nocadre=false,lgt=1.5,espcl=3,deltacl=0.6]
+            {$x$ /0.6,$y’$ /0.6,$y$ /2}
+            {$-\infty$, $2$, $+\infty$}
+            \tkzTabLine{,-,0,+,}
+            \tkzTabVar{+/$1$,-/$-3$,+/$1$}
+        \end{tikzpicture}
+    \end{center}
+    \choice
+    {$1$}
+    {$3$}
+    {$2$}
+    {$0$}
+    \loigiai{
+        Dựa vào bảng biến thiên suy ra $f^2(x)-4f(x)+4=0 \Leftrightarrow f(x)=2$, phương trình $f(x)=2$ vô nghiệm nên đồ thị hàm số đã cho không có tiệm cận đứng.
+    }
+\end{ex}
 \Closesolutionfile{ans}
 
 \ind{PHẦN II.} \inden{Câu trắc nghiệm đúng sai. Trong mỗi ý a), b), c), d) ở mỗi câu, học sinh chọn đúng hoặc sai.}\\
@@ -546,6 +586,48 @@
 	}
 \end{ex}
 
+\begin{ex}
+	\immini[thm]{Cho đồ thị của hàm số $y=f(x)=\dfrac{2 x^2}{x^2-1}$. Xét tính đúng sai của các khẳng định sau:
+	\choiceTF
+	{Đồ thị hàm số có 3 điểm cực trị}
+	{$\lim \limits_{x \rightarrow-\infty} f(x)=2$ ; $\lim \limits_{x \rightarrow 1^{-}} f(x)=-\infty$}
+	{Đồ thị hàm số có 3 đường tiệm cận đứng $x=-1$, $x=0$, $x=1$} 
+	{Đồ thị hàm số có hai đường tiệm cận ngang $y=2$ và $y=0$} 
+	}{
+\begin{tikzpicture}[scale=.5,>=stealth, font=\footnotesize, line join=round, line cap=round]
+	\def\xmin{-6} \def\xmax{6}
+	\def\ymin{-5} \def\ymax{7}
+	%\draw[color=gray!50,dashed] (\xmin,\ymin) grid (\xmax,\ymax);
+	\draw[->] (\xmin,0)--(\xmax,0) node [below]{$x$};
+	\draw[->] (0,\ymin)--(0,\ymax) node [left]{$y$};
+	\fill (0,0) circle (1pt) node[shift={(135:2.5mm)}]{$O$};
+	\clip (\xmin+0.1,\ymin+0.1) rectangle (\xmax-0.1,\ymax-0.1);
+	\draw[thick,smooth,violet,samples=300,domain=(\xmin:-1.01)] plot(\x,{(2*(\x)^2)/((\x)^2-1)});		
+	\draw[thick,smooth,violet,samples=300,domain=(-0.9:0.9)] plot(\x,{(2*(\x)^2)/((\x)^2-1)});
+	\draw[thick,smooth,violet,samples=300,domain=(1.1:\xmax)] plot(\x,{(2*(\x)^2)/((\x)^2-1)});
+	\draw[blue] (\xmin,2)--(\xmax,2);	
+	\draw[blue] (-1,\ymin)--(-1,\ymax);	
+	\draw[blue] (1,\ymin)--(1,\ymax);		
+	\foreach \x in {\xmin,...,\xmax}
+	\draw (\x,-0.1)--(\x,0.1);
+	\foreach \y in {\ymin,...,\ymax}
+	\draw (-0.1,\y)--(0.1,\y);
+	\node at (-5,2)[below]{$y=2$};
+	\node at (-1.2,-4)[left]{$x=-1$};
+	\node at (1.2,-4)[right]{$x=1$};
+	%\node at (-1,0)[shift={(-135:2.5mm)}]{$-1$};
+	%\node at (.5,0)[shift={(-75:2.5mm)}]{$\dfrac{1}{2}$};
+	%\node at (0,-1)[left]{$-1$};
+	%\node at (0,2)[shift={(135:2.5mm)}]{$2$};		
+\end{tikzpicture}}
+	\loigiai{
+	\begin{enumerate}[a)]
+		\item Đồ thị hàm số có một điểm cực trị $(0;0)$.
+		\item Theo hình vẽ thì $\lim \limits_{x \rightarrow-\infty} f(x)=2$; $\lim \limits_{x \rightarrow 1^{-}} f(x)=-\infty$.
+		\item Đồ thị hàm số có 2 đường tiệm cận đứng $x= \pm 1$.
+		\item Đồ thị hàm số có 1 đường tiệm cận ngang $y= 2$.
+\end{enumerate}}
+\end{ex}
 \Closesolutionfile{ans}
 
 \begin{dang}{Bài toán tìm tiệm cận đứng và tiệm cận xiên của đồ thị hàm số}
@@ -566,14 +648,15 @@
 	\end{enumerate}
 	
 \end{dang}
-\boxmini{BÀI TẬP TỰ LUẬN}
+\viduminhhoa
 
 \begin{vd}
 	Tìm các tiệm cận đứng và tiệm cận xiên của đồ thị hàm số sau:
-	\begin{listEX}[3]
-		\item $y=\dfrac{x^{2}+2}{2x-4}$;
-		\item $y=\dfrac{2x^{2}-3x-6}{x+2}$;
-		\item $y=\dfrac{2x^{2}+9x+11}{2x+5}$.
+	\begin{listEX}[1]
+		\item $y=\dfrac{x^{2}+2}{2x-4}$ \dotfill
+		\item $y=\dfrac{2x^{2}-3x-6}{x+2}$ \dotfill
+		\item $y=\dfrac{2x^{2}+9x+11}{2x+5}$ \dotfill
+		\item $y=x+\sqrt{x^2-1}$ \dotfill
 	\end{listEX}
 	\loigiai{
 		\begin{listEX}
@@ -616,7 +699,7 @@
 	}
 \end{vd}
 
-\boxmini{BÀI TẬP TRẮC NGHIỆM}
+\baitaptn
 \ind{PHẦN I.} \inden{Câu trắc nghiệm nhiều phương án lựa chọn. Mỗi câu hỏi học sinh chỉ chọn một phương án.}\\
 \setcounter{ex}{0}
 \Opensolutionfile{ans}[ans/2D1-B3-d2-1]
@@ -759,53 +842,10 @@ Xét hệ $\heva{&x=1\\&y=2x-1} \Leftrightarrow \heva{&x=1\\&y=1}$}
 	\end{tikzpicture}}
 \end{ex}
 
-\begin{ex}
-	\immini[thm]{Cho đồ thị của hàm số $y=f(x)=\dfrac{2 x^2}{x^2-1}$. Xét tính đúng sai của các khẳng định sau:
-	\choiceTF
-	{Đồ thị hàm số có 3 điểm cực trị}
-	{$\lim \limits_{x \rightarrow-\infty} f(x)=2$ ; $\lim \limits_{x \rightarrow 1^{-}} f(x)=-\infty$}
-	{Đồ thị hàm số có 3 đường tiệm cận đứng $x=-1$, $x=0$, $x=1$} 
-	{Đồ thị hàm số có hai đường tiệm cận ngang $y=2$ và $y=0$} 
-	}{
-\begin{tikzpicture}[scale=.5,>=stealth, font=\footnotesize, line join=round, line cap=round]
-	\def\xmin{-6} \def\xmax{6}
-	\def\ymin{-5} \def\ymax{7}
-	%\draw[color=gray!50,dashed] (\xmin,\ymin) grid (\xmax,\ymax);
-	\draw[->] (\xmin,0)--(\xmax,0) node [below]{$x$};
-	\draw[->] (0,\ymin)--(0,\ymax) node [left]{$y$};
-	\fill (0,0) circle (1pt) node[shift={(135:2.5mm)}]{$O$};
-	\clip (\xmin+0.1,\ymin+0.1) rectangle (\xmax-0.1,\ymax-0.1);
-	\draw[thick,smooth,violet,samples=300,domain=(\xmin:-1.01)] plot(\x,{(2*(\x)^2)/((\x)^2-1)});		
-	\draw[thick,smooth,violet,samples=300,domain=(-0.9:0.9)] plot(\x,{(2*(\x)^2)/((\x)^2-1)});
-	\draw[thick,smooth,violet,samples=300,domain=(1.1:\xmax)] plot(\x,{(2*(\x)^2)/((\x)^2-1)});
-	\draw[blue] (\xmin,2)--(\xmax,2);	
-	\draw[blue] (-1,\ymin)--(-1,\ymax);	
-	\draw[blue] (1,\ymin)--(1,\ymax);		
-	\foreach \x in {\xmin,...,\xmax}
-	\draw (\x,-0.1)--(\x,0.1);
-	\foreach \y in {\ymin,...,\ymax}
-	\draw (-0.1,\y)--(0.1,\y);
-	\node at (-5,2)[below]{$y=2$};
-	\node at (-1.2,-4)[left]{$x=-1$};
-	\node at (1.2,-4)[right]{$x=1$};
-	%\node at (-1,0)[shift={(-135:2.5mm)}]{$-1$};
-	%\node at (.5,0)[shift={(-75:2.5mm)}]{$\dfrac{1}{2}$};
-	%\node at (0,-1)[left]{$-1$};
-	%\node at (0,2)[shift={(135:2.5mm)}]{$2$};		
-\end{tikzpicture}}
-	\loigiai{
-	\begin{enumerate}[a)]
-		\item Đồ thị hàm số có một điểm cực trị $(0;0)$.
-		\item Theo hình vẽ thì $\lim \limits_{x \rightarrow-\infty} f(x)=2$; $\lim \limits_{x \rightarrow 1^{-}} f(x)=-\infty$.
-		\item Đồ thị hàm số có 2 đường tiệm cận đứng $x= \pm 1$.
-		\item Đồ thị hàm số có 1 đường tiệm cận ngang $y= 2$.
-\end{enumerate}}
-\end{ex}
-
 \Closesolutionfile{ans}
 \begin{dang}{Bài toán về đường tiệm cận có chứa tham số}
 \end{dang}
-\boxmini{BÀI TẬP TỰ LUẬN}
+\viduminhhoa
 \begin{vd}%[2D1Y4-2]
 	Tìm tham số $m$ để đồ thị hàm số 
 	\begin{tasks}
@@ -843,7 +883,7 @@ Xét hệ $\heva{&x=1\\&y=2x-1} \Leftrightarrow \heva{&x=1\\&y=1}$}
 \end{vd}
 
 
-\boxmini{BÀI TẬP TRẮC NGHIỆM}
+\baitaptn
 \ind{PHẦN I.} \inden{Câu trắc nghiệm nhiều phương án lựa chọn. Mỗi câu hỏi học sinh chỉ chọn một phương án.}\\
 \setcounter{ex}{0}
 \Opensolutionfile{ans}[ans/2D1-B3-d3-1]
@@ -1038,5 +1078,149 @@ Xét hệ $\heva{&x=1\\&y=2x-1} \Leftrightarrow \heva{&x=1\\&y=1}$}
 		\end{enumerate}
 	}
 \end{ex}
+\begin{ex}%[EX-TF-2024, Lê Đạt]%[2D1H4-2]
+    Cho hàm số $ y=\dfrac{m^2x+1}{x-1} $. Xét tính đúng sai của các khẳng định sau
+    \choiceTF
+    {\True Đồ thị hàm số luôn có tiệm cận ngang}
+    {\True Đồ thị hàm số luôn có tiệm cận đứng}
+    {\True Khi $ m=1$ đồ thị hàm số có $ 2 $ đường tiệm cận}
+    {Khi $ m=0 $ đồ thị hàm số có $ 1 $ đường tiệm cận}
+    \loigiai{
+        \begin{itemchoice}
+            \itemch $\lim\limits_{x\to -\infty}y=\lim\limits_{x\to +\infty}y=m^2$ suy ra hàm số luôn có tiệm cận ngang.
+            \itemch $\lim\limits_{x\to 1^+}y=+\infty$ nên đồ thị hàm số đã cho có tiệm cận ngang là $ x=1 $.
+            \itemch Khi $ m=1 $ ta được hàm số $ y=\dfrac{x+1}{x-1} $ suy ra đồ thì hàm số có $ x=1 $ là tiệm cận đứng và $ y=1 $ là tiệm cận ngang nên đồ thị hàm số có $ 2 $ tiệm cận.
+            \itemch Khi $ m=0 $ ta được hàm số $ y=\dfrac{1}{x-1} $ suy ra đồ thì hàm số có $ x=1 $ là tiệm cận đứng và $ y=0 $ là tiệm cận ngang nên đồ thị hàm số có $ 2 $ tiệm cận.
+        \end{itemchoice}
+    }
+\end{ex}
+\begin{ex}%[EX-TF-2024, Lê Đạt]%[2D1H4-2]
+    Cho hàm số $y=\dfrac{m x^{2}+6 x-2}{x+2}$. Xét tính đúng sai của các khẳng định sau
+    \choiceTF
+    {Đồ thị hàm số luôn có tiệm cận đứng với mọi $ m $}
+    {Đồ thị hàm số không có tiệm cận ngang với mọi $ m $}
+    {\True Khi $ m=1 $ đồ thị hàm số có một tiệm cận xiên là $ y=x+4 $ }
+    {Đồ thị hàm số luôn có tiệm cận xiên}
+    \loigiai{
+        \begin{itemchoice}
+            \itemch Khi $ m=\dfrac{7}{2} $ hàm số trở thành $y=\dfrac{\dfrac{7}{2} x^{2}+6 x-2}{x+2}=\dfrac{7}{2}\left(x-\dfrac{2}{7} \right) $ suy ra đồ thị hàm số không có tiệm cận đứng.
+            \itemch Khi $ m=0 $ hàm số trở thành $ y=\dfrac{6x-2}{x+2} $ từ đó suy ra đồ thị hàm số có $ y=6 $ là tiệm cận ngang.
+            \itemch Khi $ m=1 $ hàm số trở thành $ y=\dfrac{x^2+6x-2}{x+2}=x+4-\dfrac{10}{x+2} $ từ đó suy ra $ y=x+4 $ là một tiệm cận ngang.
+            \itemch Khi $ m=0 $ hàm số trở thành $ y=\dfrac{6x-2}{x+2} $ từ đó suy ra đồ thị hàm số có $ y=6 $ là tiệm cận ngang, $ x=-2 $ là tiệm cận đứng và không có tiệm cận xiên.
+        \end{itemchoice}
+    }
+\end{ex}
+\begin{ex}
+    Cho hàm số $y=\dfrac{x-1}{x^2-8 x+m}$, $m$ là tham số. Các mệnh đề sau đúng hay sai?
+    \choiceTF
+    {\True Đồ thị hàm số có 1 đường tiệm cận ngang}
+    {Khi $m<16$ thì đồ thị hàm số có 3 đường tiệm cận}
+    {Khi $m=16$ thì đồ thị hàm số có 2 đường tiệm cận đứng}
+    {\True Có 14 giá trị nguyên dương của $m$ để đồ thị hàm số có 3 đường tiệm cận}
+    \loigiai{
+        Ta có $\lim \limits_{x \rightarrow-\infty} \frac{x-1}{x^2-8 x+m}=\lim \limits_{x \rightarrow+\infty} \frac{x-1}{x^2-8 x+m}=0$ nên hàm số có một tiện cận ngang $y=0$.
+        Hàm số có 3 đường tiệm cận khi và chỉ khi hàm số có hai đường tiệm cận đứng $\Leftrightarrow$ phương trình $x^2-8 x+m=0$ có hai nghiệm phân biệt khác $1 \Leftrightarrow\left\{\begin{array}{l}\Delta'=16-m>0 \\ m-7 \neq 0\end{array} \Leftrightarrow\left\{\begin{array}{l}m<16 \\ m \neq 7\end{array}\right.\right.$.
+        Kết hợp với điều kiện $m$ nguyên dương ta có $\quad m \in\{1 ; 2 ; 3 ; \ldots ; 6 ; 8 ; \ldots ; 15\}$. Vậy có 14 giá trị của $m$ thỏa mãn đề bài.}
+\end{ex}
+\begin{ex}
+    Cho hàm số $y=\dfrac{x^2+m x-1}{x-1}\left(C_m\right)$ ( $m$ là tham số). Các mệnh đề sau đúng hay sai?
+    \choiceTF
+    {\True Để đồ thị $\left(C_m\right)$ của hàm số có tiệm cận xiên thì $m \neq 0$.}
+    {\True Để tiệm cận xiên của $\left(C_m\right)$ đi qua $M(2,-5)$ thì $m=-8$}
+    { Để tiệm cận xiên của $\left(C_m\right)$ tạo với hai trục toạ độ một tam giác có diện tích bằng 8 thì tổng tất cả các giá trị $m$ tìm được bằng 2}
+    { Với $m=3$ thì giao điểm của hai đường tiệm cận của $\left(C_m\right)$ nằm trên Parapol $y=x^2+3$}
+    \loigiai{
+        Hàm số xác định trên $\mathbb{R} \backslash\{1\}$.
+        \begin{listEX}
+            \item Ta có $y=x+m+1+\frac{m}{x-1}$
+            Để đồ thị $\left(C_m\right)$ của hàm số có tiệm cận xiên thì $m \neq 0$.
+            - Với $m \neq 0,\left(C_m\right)$ có tiệm cận xiên
+            $y=x+m+1\left(\Delta_m\right)$ vì $\lim \limits_{x \rightarrow \infty}[y-(x+m+1)]=\lim \limits_{x \rightarrow \infty} \frac{m}{x-1}=0$.
+            \item Để $\left(\Delta_m\right)$ qua $M(2,-5)$ thì $-5=2+m+1 \Leftrightarrow m=-8$. (thỏa mãn $m \neq 0$ ).
+            \item Gọi $A$ là giao điểm của $\Delta_m$ với $O x$. Khi đó $A(-m-1 ; 0)$
+            Gọi $B$ là giao điểm của $\Delta_m$ với $O y$. Khi đó $B(0 ; m+1)$.
+            Suy ra $S_{\triangle O A B}=\frac{1}{2} O A \cdot O B=\frac{1}{2}|-m-1||m+1|=\frac{1}{2}(m+1)^2$
+            Để $S_{\triangle O A B}=8 \Leftrightarrow \frac{1}{2}(m+1)^2=8 \Leftrightarrow\left[\begin{array}{l}m=-5 \\ m=3\end{array}\right.$ (thỏa mãn $m \neq 0$ ).
+            \item Ta có với $m \neq 0, x=1$ là tiệm cận đứng vì $\lim \limits_{x \rightarrow 1} y=\infty$ nên $y=x+m+1$ là tiệm cận xiên.
+            Khi đó giao điểm của 2 tiệm cận là $I(1, m+2)$.
+            Để $I$ nằm trên Parabol $y=x^2+3$ thì $m+2=1+3 \Leftrightarrow m=2(\mathrm{t} / \mathrm{m} m \neq 0)$.
+        \end{listEX}
+    }
+\end{ex}
 
+\TNSA
+\begin{ex}%[2D1K4-2]%
+    Cho hàm số $y=\dfrac{2x^2-3x+m}{x-m}$ có đồ thị $(C)$. Với tất cả các giá trị thực nào của tham số $m$ thì đồ thị $(C)$ không có tiệm cận đứng?
+    \shortans{$m=0$ hoặc $m=1$}
+    %	\choice
+    %	{$m=2$}
+    %	{$m=0$}
+    %	{$m=1$}
+    %	{\True $m=0$ hoặc $m=1$}
+    \loigiai{
+        Đồ thị không có tiệm cận đứng khi $x=m$ là nghiệm của phương trình $2x^2-3x+m=0$, suy ra $2m^2-3m+m=0 \Leftrightarrow \hoac{&m=0\\&m=1}$.
+    }
+\end{ex}
+\begin{ex}%[2D1K4-2]%
+    Với tất cả các giá trị thực nào của tham số $m$ thì đồ thị hàm số $y=\dfrac{x^2+x-2}{x^2+x+m}$ có ba đường tiệm cận?
+    \shortans{$m<\dfrac{1}{4}$ và $m\ne -2$}
+    %	\choice
+    %	{$m>\dfrac{1}{4}$ và $m\ne 2$}
+    %	{$m>\dfrac{1}{4}$}
+    %	{$m<\dfrac{1}{4}$}
+    %	{\True $m<\dfrac{1}{4}$ và $m\ne -2$}
+    \loigiai{
+        Đồ thị hàm số chỉ có $1$ tiệm cận ngang là $y=1$.\\
+        Ta có $x^2+x-2 \Leftrightarrow \hoac{&x=1\\&x=-2.}$\\
+        Đồ thị hàm số có ba đường tiệm cận khi và chỉ khi có $2$ tiệm cận đứng. Điều này tương đương với phương trình $x^2+x+m=0$ có $2$ nghiệm phân biệt khác $1$ và $-2$, nghĩa là\\
+        $\heva{&1-4m>0\\&1^2+1+m \ne 0\\& (-2)^2-2+m\ne 0} \Leftrightarrow \heva{&m<\dfrac{1}{4}\\&m\ne -2.}$
+    }
+\end{ex}
+\begin{ex}%[đề thi thử THPT Quốc gia, đề số 3, nguyễn hoàng thanh]%[2D1K4-2]%
+    Tìm số giá trị nguyên thuộc đoạn $ [-2025;2025] $ của tham số $ m $ để đồ thị hàm số $ y=\dfrac{\sqrt{x-3}}{x^2+x-m} $ có đúng hai đường tiệm cận.
+    \shortans{$2014$}
+    %	\choice
+    %	{$ 2007 $}
+    %	{$ 2010 $}
+    %	{$ 2009 $}
+    %	{\True $ 2008 $}
+    \loigiai{
+        Điều kiện xác định của hàm số $ \heva{& x\ge 3\\& x^2+x-m\ne 0.} $\\
+        Vì $ \lim\limits_{x\to +\infty}\dfrac{\sqrt{x-3}}{x^2+x-m}=\lim\limits_{x\to +\infty}\dfrac{\sqrt{\frac{1}{x}-\frac{3}{x^2 }}}{1+\frac{1}{x}-\frac{m}{x^2}}=0 $, suy ra $ y=0 $ là tiệm cận ngang.\\
+        Để đồ thị hàm số có đúng hai tiệm cận thì đồ thị hàm số chỉ có thêm một tiệm cận đứng, tương đương $ f(x)=x^2+x-m $ có đúng một nghiệm lớn hơn $ 3 $. Xét các trường hợp xảy ra như sau
+        \begin{enumerate}
+            \item $ f(x)=0 $ có nghiệm kép $ x_{1}=x_2=-\dfrac{1}{2}<3 $ (không thỏa mãn).
+            \item $ f(x)=0 $ có hai nghiệm thỏa $ x_1<3\le x_2\Leftrightarrow a\cdot f(3)\le 0\Leftrightarrow 12-m\le 0\Leftrightarrow m\ge 12 $.
+        \end{enumerate}
+        Kết hợp với yêu cầu bài toán ta suy ra $ \heva{&m\in \mathbb{Z}\\ &m\in[12;2025]} $, suy ra có $ 2025-12+1=2014 $ giá trị nguyên của $ m $ thỏa mãn bài toán.
+    }
+\end{ex}
+\begin{ex}%[Đề tham khảo THPT Quốc gia 2021 - Đề 5]%[Đoàn Minh Tân]%[2D1K4-2]%
+    Tìm tất cả giá trị thực của tham số $m$ để đồ thị hàm số $y=\dfrac{3x+2018}{\sqrt{mx^2+5x+6}}$ có hai đường tiệm cận ngang.
+    \shortans{$m>0$}
+    %	\choice
+    %	{$m\in \varnothing$}
+    %	{$m<0$}
+    %	{$m=0$}
+    %	{\True $m>0$}
+    \loigiai{
+        Ta có $\displaystyle \lim \limits_{x\to +\infty} y=\displaystyle\lim\limits_{x\to +\infty}\dfrac{3x+2018}{\sqrt{mx^2+5x+6}}=\displaystyle\lim\limits_{x\to +\infty}\dfrac{3+\dfrac{2018}{x}}{\sqrt{m+\dfrac{5}{x}+\dfrac{6}{x^2}}}=\dfrac{3}{\sqrt{m}}$ tồn tại khi $m>0$.\\
+        $\displaystyle\lim\limits_{x\to -\infty}=\displaystyle\lim\limits_{x\to -\infty}\dfrac{3x+2018}{\sqrt{mx^2+5x+6}}=\displaystyle\lim\limits_{x\to -\infty}\dfrac{3+\dfrac{2018}{x}}{-\sqrt{m+\dfrac{5}{x}+\dfrac{6}{x^2}}}=-\dfrac{3}{\sqrt{m}}$ tồn tại khi $m>0$.\\
+        Hiên nhiên $\displaystyle\lim\limits_{x\to +\infty}y\ne \displaystyle \lim \limits_{x\to -\infty}y$.\\
+        Vậy đồ thị hàm số đã cho có hai tiệm cận ngang khi và chỉ khi $m>0$.
+    }
+\end{ex}
+\begin{ex}%[2D1K4-2]%
+    Có bao nhiêu giá trị nguyên của tham số thực $m$ thuộc đoạn $[-20; 10]$ để đồ thị hàm số $y=\dfrac{x+2}{\sqrt{x^2-4x+m}}$ có hai đường tiệm cận đứng?
+    \shortans{$23$}
+    %	\choice
+    %	{$20$}
+    %	{$21$}
+    %	{$22$}
+    %	{\True $23$}
+    \loigiai{
+        Đồ thị hàm số có hai đường tiệm cận đứng $\Leftrightarrow$ phương trình $x^2-4x+m=0$ có hai nghiệm phân biệt khác $-2$ \\
+        $ \Leftrightarrow\heva{&2^2-m>0\\&(-2)^2-4\cdot (-2)+m\neq 0}\Leftrightarrow\heva{&m<4\\&m\neq-12.} $ \\
+        Do $m$ nguyên và $m\in[-20; 10]$ nên $m\in\left\{-20;-19;\ldots;-13;-11;\ldots; 2; 3\right\}$, gồm $23$ giá trị thỏa mãn.}
+\end{ex}
 \Closesolutionfile{ans}
