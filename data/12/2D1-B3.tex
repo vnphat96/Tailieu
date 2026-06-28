@@ -587,14 +587,9 @@
 \end{ex}
 
 \begin{ex}
-	\immini[thm]{Cho đồ thị của hàm số $y=f(x)=\dfrac{2 x^2}{x^2-1}$. Xét tính đúng sai của các khẳng định sau:
-	\choiceTF
-	{Đồ thị hàm số có 3 điểm cực trị}
-	{$\lim \limits_{x \rightarrow-\infty} f(x)=2$ ; $\lim \limits_{x \rightarrow 1^{-}} f(x)=-\infty$}
-	{Đồ thị hàm số có 3 đường tiệm cận đứng $x=-1$, $x=0$, $x=1$} 
-	{Đồ thị hàm số có hai đường tiệm cận ngang $y=2$ và $y=0$} 
-	}{
-\begin{tikzpicture}[scale=.5,>=stealth, font=\footnotesize, line join=round, line cap=round]
+	Cho đồ thị của hàm số $y=f(x)=\dfrac{2 x^2}{x^2-1}$. Xét tính đúng sai của các khẳng định sau:
+	\begin{center}
+		\begin{tikzpicture}[scale=.5,>=stealth, font=\footnotesize, line join=round, line cap=round]
 	\def\xmin{-6} \def\xmax{6}
 	\def\ymin{-5} \def\ymax{7}
 	%\draw[color=gray!50,dashed] (\xmin,\ymin) grid (\xmax,\ymax);
@@ -619,7 +614,13 @@
 	%\node at (.5,0)[shift={(-75:2.5mm)}]{$\dfrac{1}{2}$};
 	%\node at (0,-1)[left]{$-1$};
 	%\node at (0,2)[shift={(135:2.5mm)}]{$2$};		
-\end{tikzpicture}}
+\end{tikzpicture}
+	\end{center}
+	\choiceTF
+	{Đồ thị hàm số có 3 điểm cực trị}
+	{$\lim \limits_{x \rightarrow-\infty} f(x)=2$ ; $\lim \limits_{x \rightarrow 1^{-}} f(x)=-\infty$}
+	{Đồ thị hàm số có 3 đường tiệm cận đứng $x=-1$, $x=0$, $x=1$} 
+	{Đồ thị hàm số có hai đường tiệm cận ngang $y=2$ và $y=0$} 
 	\loigiai{
 	\begin{enumerate}[a)]
 		\item Đồ thị hàm số có một điểm cực trị $(0;0)$.
@@ -627,6 +628,75 @@
 		\item Đồ thị hàm số có 2 đường tiệm cận đứng $x= \pm 1$.
 		\item Đồ thị hàm số có 1 đường tiệm cận ngang $y= 2$.
 \end{enumerate}}
+\end{ex}
+\begin{ex}%[2D1V4-4]
+Một bể bơi chứa $5\,000$ lít nước tinh khiết. Người ta bơm vào bể đó nước muối có nồng đồ $30$ gam muối cho mỗi lít nước với tốc độ $25$ lít/phút.
+\choiceTFt
+{\True Sau $t$ phút khối lượng muối trong bể là $750t$ (gam)}
+{\True Nồng độ muối trong bể sau $t$ phút (tính bằng tỉ số của khối lượng muối trong bể và thể tích nước trong bể, đơn vị: gam/lít) là $f(t)=\dfrac{30t}{200-t}$}
+{\True Xem $y=f(t)$ là một hàm số xác định trên nửa khoảng $[0;+\infty)$,  tiệm cận ngang của đồ thị hàm số đó có phương trình là $y = 30$}
+{\True Khi $t$ ngày càng lớn thì nồng độ muối trong bể sẽ tiến gần đến mức $30$ (gam/lít)}
+\loigiai{
+\immini{Sau $t$ phút, khối lượng muối trong bể là
+\[
+25\cdot 30\cdot t=750t \text{ (gam)}
+\]
+Thể tích của lượng nước trong bể là $5\,000+25t$ (lít).\\
+Vậy nồng độ muối sau $t$ phút là
+\[
+f(t)=\dfrac{750t}{5\,000+25t}=\dfrac{30t}{200+t}\,\text{(gam/lít)}.
+\]
+Ta có\\
+$\lim\limits_{t\to +\infty}f(t)=\lim\limits_{t \to +\infty}\dfrac{30t}{200+t}=\lim\limits_{t\to +\infty}\left(30-\dfrac{6\,000}{200+t}\right)=30$.\\
+Vậy đường thẳng $y=30$ là tiệm cận ngang của đồ thị hàm số $f(t)$ \texttt{(Hình 17).}
+}{
+\begin{tikzpicture}[scale=.1,xscale=0.1, font=\footnotesize, line join=round, line cap=round, >=stealth]
+\draw[->] (-.5,0)--(0,0) node[below right]{$O$}--(500,0) node[below]{$x$};
+\draw[->] (0,-1) --(0,34) node[right]{$y$};
+\draw[blue] [domain=0:500, samples=100] %
+plot (\x, {(30*(\x))/((\x)+200)});
+\draw[fill] (0,0) circle (1pt);
+\foreach \y/\g in {30/180}
+\draw[fill] (0,\y) circle(1pt)node [shift={(\g:.3)}] {$\y$};
+\draw[red] (-.1,30)--(500,30);
+\draw (250,-5) node{Hình 17};
+\end{tikzpicture}}
+\noindent
+Ta có đồ thị hàm số $y=f(t)$ nhận đường thẳng $y=30$ làm đường tiệm cận ngang, tức là khi $t$ càng lớn thì nồng độ muối trong bể sẽ tiến gần đến mức $30$ (gam/lít). Lúc đó, nồng độ muối trong bể sẽ gần như bằng nồng độ nước muối bơm vào bể.
+\begin{itemchoice}
+\itemch \textbf{Đúng}.
+\itemch \textbf{Sai}.
+\itemch \textbf{Đúng}.
+\itemch \textbf{Đúng}.
+\end{itemchoice}
+}
+\end{ex}
+\begin{ex}%[2D1V4-4]%[Tran Ngoc Thanh]%[Du an C]
+Để loại bỏ $p\%$ một loài tảo độc khỏi một hồ nước, người ta ước tính chi phí bỏ ra là
+\[
+C(p)=\dfrac{45p}{100-p} \text { (triệu đồng), với } 0 \leq p<100.
+\]
+\choiceTF[t]
+{Để loại bỏ $10\%$ tảo độc khỏi hồ nước thì chi phí bỏ ra là $10$ triệu đồng}
+{Tiệm cận đứng của đồ thị hàm số là $x=45$}
+{\True Với chi phí là $11{,}25$ triệu đồng thì loại bỏ được $20\%$ tảo độc ra khỏi hồ nước}
+{Có thể loại bỏ hoàn toàn tảo độc khỏi hồ nước}
+\loigiai{
+\begin{itemchoice}
+\itemch Sai.\\
+Ta có $C(10)=\dfrac{45\cdot 10}{100-10}=5$.\\
+Vậy chi phí để loại bỏ $10\%$ tảo độc khỏi hồ nước là $5$ triệu đồng.
+\itemch Sai.\\
+Ta có $\displaystyle\lim_{p\to 100^-}C(p)=\displaystyle\lim_{p\to 100^-}\dfrac{45p}{100-p}=+\infty$. \\
+Suy ra đồ thị hàm số có tiệm cận đứng là đường thẳng $p=100$.
+\itemch Đúng.\\
+Ta có $11{,}25=\dfrac{45p}{100-p} \Rightarrow p=20$.\\
+Vậy với chi phí là $11{,}25$ triệu đồng thì loại bỏ được $20\%$ tảo độc ra khỏi hồ nước.
+\itemch Sai.\\
+Ta có $\displaystyle\lim_{p\to 100^-}C(p)=\displaystyle\lim_{p\to 100^-}\dfrac{45p}{100-p}=+\infty$.\\
+Vậy để loại bỏ hoàn toàn loài tảo độc trên thì chi phí vô cùng lớn (không thể thực hiện được).
+\end{itemchoice}
+}
 \end{ex}
 \Closesolutionfile{ans}
 
@@ -841,7 +911,80 @@ Xét hệ $\heva{&x=1\\&y=2x-1} \Leftrightarrow \heva{&x=1\\&y=1}$}
 			\draw (-1,-8)--(-1,0)node[above left] {$-1$}--(-1,6);
 	\end{tikzpicture}}
 \end{ex}
-
+\begin{ex}%[2D1V4-3]%[THPT Văn Giang Hưng Yên-L3-2425-ChuHa]
+Cho hàm số $y=\dfrac{x^2+2x-1}{x-1}$ và đồ thị của nó là $(C)$.
+\choiceTF
+{\True Hàm số có $2$ điểm cực trị}
+{\True Đồ thị $(C)$ có tiệm cận đứng là đường thẳng $x=1$}
+{Hàm số nghịch biến trên khoảng $(0;2)$}
+{\True $M$ là điểm bất kì thuộc đồ thị $(C)$. Tích khoảng cách từ $M$ đến tiệm cận đứng và tiệm cận xiên của đồ thị $(C)$ luôn bằng $\sqrt{2}$}
+\loigiai{
+\begin{itemchoice}
+\itemch
+Ta có $y'=\dfrac{(2x+2)(x-1)-(x^2+2x-1)}{(x-1)^2}
+=\dfrac{x^2-2x-1}{(x-1)^2}$.\\
+Ta có $y'=0\Leftrightarrow x^2-2x-1=0\Leftrightarrow x=1\pm\sqrt{2}$.\\
+Vậy hàm số có $2$ điểm cực trị.
+\itemch
+Xét giới hạn $\lim\limits_{x\to 1^+}\dfrac{x^2+2x-1}{x-1}=+\infty$.\\
+Do đó $x=1$ là tiệm cận đứng của đồ thị hàm số.
+\itemch
+Bảng biến thiên
+\begin{center}
+\begin{tikzpicture}
+\tkzTabInit[nocadre=false,lgt=1.2,espcl=2.5,deltacl=0.6]
+{$x$/0.6,$y'$/0.6,$y$/2}
+{$-\infty$, $1-\sqrt{2}$, $1$, $1+\sqrt{2}$, $+\infty$}
+\tkzTabLine{,+,0,-,d,-,0,+,}
+\tkzTabVar{-/$-\infty$, +/$f(1-\sqrt{2})$, -D+/$-\infty$ /$+\infty$,-/$f(1+\sqrt{2})$, +/$+\infty$}
+\end{tikzpicture}
+\end{center}
+Từ bảng biến thiên suy ra hàm số nghịch biến trên $\left(1-\sqrt{2};1\right)$ và $\left(1;1+\sqrt{2}\right)$.\\
+Do hàm số gián đoạn tại $x=1$ nên không nghịch biến trên khoảng $(0;2)$.
+\itemch
+Ta có $y=x+3+\dfrac{2}{x-1}$.\\
+Tiệm cận xiên của đồ thị là $(d_1)\colon x-y+3=0$, tiệm cận đứng là $(d_2)\colon x-1=0$.\\
+Gọi $M\left(a;a+3+\dfrac{2}{a-1}\right) \in (C)$ (với $a\ne 1$).\\
+Khoảng cách từ $M$ đến tiệm cận đứng là $\mathrm{d}(M,d_2)=|a-1|$.\\
+Khoảng cách từ $M$ đến tiệm cận xiên là
+\[\mathrm{d}(M,d_1)=\dfrac{\left|a-\left(a+3+\dfrac{2}{a-1}\right)+3\right|}{\sqrt{1^2+(-1)^2}}=\dfrac{\left|-\dfrac{2}{a-1}\right|}{\sqrt{2}}=\dfrac{2}{\sqrt{2}|a-1|}=\dfrac{\sqrt{2}}{|a-1|}.\]
+Tích các khoảng cách là $T = \mathrm{d}(M,d_1) \cdot \mathrm{d}(M,d_2) = \dfrac{\sqrt{2}}{|a-1|} \cdot |a-1| = \sqrt{2}$.
+\end{itemchoice}
+}
+\end{ex}
+\begin{ex}%[2D1V4-3]%[Dự án C đợt 3 - KSCL LeThanhTong-Võ Hoàng Nghĩa]
+Cho hàm số $f(x)=\dfrac{x^{3}}{3}-3x-6\ln(2-x)+1$.
+\choiceTF
+{\True Đạo hàm của hàm số đã cho là $f'(x)=\dfrac{x^{3}-2x^{2}-3x}{x-2}$}
+{\True Hàm số đã cho đồng biến trong khoảng $(-\infty;-1)$}
+{\True Tổng các giá trị cực đại và cực tiểu của đồ thị hàm số bằng $\dfrac{14}{3}-6\ln(6)$}
+{Hàm số $g(x)=\dfrac{f(x)}{x^{2}+2x+2}$ có đường tiệm cận xiên có dạng $y=ax+b$. Khi đó $a+b=\dfrac{1}{3}$}
+\loigiai{
+\begin{itemchoice}
+\itemch Hàm số xác định trên khoảng $(-\infty;2)$ và
+$f'(x)=x^2-3+\dfrac{6}{2-x}=\dfrac{x^3-2x^2-3x}{x-2}$.
+\itemch Giải $f'(x)=0\Leftrightarrow x^3-2x^2-3x=0\Leftrightarrow\hoac{&x=3\\&x=-1\\&x=0.}$\\
+Bảng biến thiên
+\begin{center}
+\begin{tikzpicture}
+\tkzTabInit
+[lgt=2,espcl=3.5] % tùy chọn lgt độ dọc/ espcl độ dài
+{$x$/1.2, $f’(x)$/1, $f(x)$/2.5} % cột đầu tiên
+{$-\infty$, $-1$,$0$, $2$,$ $} % hàng 1 cột 2
+\tkzTabLine{,+,0,-,0,+,d,} % hàng 2 cột 2
+\tkzTabVar{-/$-\infty$,+/$\frac{11}{3}-6\ln 3$,-/$1-6\ln2$,+D/$+\infty$} % hàng 3 cột 2
+\end{tikzpicture}
+\end{center}
+Hàm số đã cho đồng biến trong khoảng $(-\infty;-1)$.
+\itemch Ta có $y_\text{CĐ}=y(-1)=\dfrac{11}{3}-6\ln 3$; $y_\text{CT}=y(0)=1-6\ln 2$. \\
+Suy ra $y_\text{CĐ}+y_\text{CT}=\dfrac{11}{3}-6\ln 3+1-6\ln 2=\dfrac{14}{3}-6\ln 6$.
+\itemch Xét $g(x)=\dfrac{f(x)}{x^{2}+2x+2}$ có đường tiệm cận xiên có dạng $y=ax+b$.\\
+Ta có \[a=\lim\limits_{x\to-\infty}\dfrac{g(x)}{x}=\lim\limits_{x\to-\infty}\dfrac{\dfrac{x^3}{3}-3x-6\ln (2-x)+1}{x^3+2x^2+2x}=\dfrac{1}{3}.\]
+và  \[b=\lim\limits_{x\to-\infty}\left(g(x)-\dfrac{1}{3}x \right)=\lim\limits_{x\to-\infty}\left(\dfrac{\dfrac{x^3}{3}-3x-6\ln (2-x)+1}{x^2+2x+2}-\frac{1}{3}x \right)=-\dfrac{2}{3}.	\]
+Vậy $a+b=\dfrac{1}{3}-\dfrac{2}{3}=-\dfrac{1}{3}$.
+\end{itemchoice}
+}
+\end{ex}
 \Closesolutionfile{ans}
 \begin{dang}{Bài toán về đường tiệm cận có chứa tham số}
 \end{dang}
