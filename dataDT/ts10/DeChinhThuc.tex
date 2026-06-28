@@ -3,8 +3,8 @@
 \begin{name}
     {KỲ THI TUYỂN SINH VÀO LỚP 10}
     {ĐỀ CHÍNH THỨC}
-    {~}
-    {120 phút (không kể thời gian phát đề)}
+    {$\star\star\star$}
+    {Thời gian: 120 phút (không kể thời gian phát đề)}
 \end{name}
 
 \begin{bt}[1,5 điểm]~
@@ -161,13 +161,17 @@
                 (intersection of C--B and A--M) coordinate (D)
                 (intersection of C--M and B--H) coordinate (K)
                 ($(A)!.5!(B)$) coordinate (N);
-                \path (intersection of A--{$($(A)!1mm!(B)$)!.5!($(A)!1mm!(M)$)$} and B--{$($(B)!1mm!(A)$)!.5!($(B)!1mm!(M)$)$}) coordinate (I);
-                \foreach \x/\y/\z in {C/B/A,D/A/O,M/B/O,M/N/A}{
+                
+                \path 
+                (intersection of A--{$($(A)!1mm!(B)$)!.5!($(A)!1mm!(M)$)$} and B--{$($(B)!1mm!(A)$)!.5!($(B)!1mm!(M)$)$}) coordinate (I)
+                ($(A)!(I)!(M)$) coordinate (P);
+
+                \foreach \x/\y/\z in {C/B/A,D/A/O,M/B/O,B/H/A,I/P/M}{
                         \draw pic[draw, angle radius = 6pt]{right angle = \x--\y--\z};
                     }
                 \draw (O)circle(4);
-                \draw (A)--(C)--(D)--cycle (M)--(O)--(H)--(B)--cycle (M)--(C) (O)--(B)--(A)--(I);
-                \foreach \d/\g in {O/135,A/45,B/-45,C/-135,M/45,H/135,D/-45,K/90,I/135,N/135}
+                \draw (A)--(C)--(D)--cycle (M)--(O)--(H)--(B)--cycle (M)--(C) (O)--(B)--(A)--(I)--(P);
+                \foreach \d/\g in {O/135,A/45,B/-45,C/-135,M/45,H/135,D/-45,K/90,I/30,P/45}
                     {\fill (\d)circle(1.5pt) node[shift=(\g:10pt)]{$\d$};}
             \end{tikzpicture}
         \end{center}
@@ -185,7 +189,7 @@
                   Mà $MA=MB$ (tiếp tuyến đường tròn $(O;R)$) nên $MB=MD$.\\
                   Do vậy tam giác $MBD$ cân tại M.\\
                   Ta chứng minh $K$ là trung điểm của $BH$.\\
-                  Vì $BH$ và $AD$ cùng vuông góc $AC$ nên $BH \parallel AD$.
+                  Vì $BH$ và $AD$ cùng vuông góc $AC$ nên $BH \parallel AD$.\\
                   Áp dụng định lí Thales trong tam giác $CAM$ ta được $\dfrac{HK}{AM}=\dfrac{CK}{CM}$.\\
                   Áp dụng định lí Thales trong tam giác $CDM$ ta được $\dfrac{BK}{DM}=\dfrac{CK}{CM}$.\\
                   Suy ra $\dfrac{HK}{AM}=\dfrac{BK}{DM}\left( =\dfrac{CK}{CM} \right) $.\\
@@ -195,7 +199,27 @@
                   Mà $\widehat{JOB}=\widehat{JOA}$ (tính chất tiếp tuyến) và $\widehat{JOA}=\widehat{BAM}$ (cùng phụ $\widehat{OAB}$).\\
                   Do đó $\widehat{BAJ}=\dfrac12 \widehat{BAM}$ nên $AJ$ là tia phân giác góc $\widehat{MAB}$. Suy ra $J$ là giao điểm hai đường phân giác tam giác $MAB$.\\
                   Do đó $I$ trùng $J$ hay $I$ là giao điểm của $MO$ và đường tròn $(O;R)$.\\
-                  Gọi $N$ là giao điểm $AB$ và $OM$. Ta dễ dàng chứng minh được $IN$ vuông góc $AB$ hay $IN=r$ là bán kính đường tròn nội tiếp tam giác $MAB$.
+                  Kẻ $IP \perp AM$. Khi đó $IP=r$ là bán kính đường tròn nội tiếp tam giác $MAB$.\\
+                  Ta có $IP \parallel OA$ (vì cùng vuông góc $AM$). Áp dụng định lí Thales trong tam giác $MOA$ ta được
+                  \begin{center}
+                    $\dfrac{IP}{OA}=\dfrac{IM}{OM}=\dfrac{OM-OI}{OM} \Leftrightarrow \dfrac{r}{R}=\dfrac{OM-R}{OM}$
+                  \end{center}
+                  Suy ra 
+                  \begin{center}
+                    $OM \cdot r = OM \cdot R - R^2 \Leftrightarrow OM = \dfrac{R^2}{R-r}$. \quad ($*$)
+                  \end{center}
+                  Tam giác $BHC$ vuông tại $H$ có $BH=BC \cdot \sin ACB$.\\
+                  Tam giác $ABC$ vuông tại $B$ (vì có $AC$ là đường kính đường tròn ngoại tiếp) có $BC=AC \cdot \cos ACB $.\\
+                  Suy ra $BH=AC \cdot \cos ACB \cdot \sin ACB$.\\
+                  Mà $\widehat{ACB}=\widehat{AOM}$ và trong tam giác $AOM$ vuông tại $A$ có 
+                  \begin{itemize}
+                  \item $\cos AOM = \dfrac{OA}{OM}= \dfrac{R-r}{R}$ (vì ($*$))\\
+                  \item $\sin AOM = \dfrac{AM}{OM}= \sqrt{1-\cos ^2 AOM}=\sqrt{1-\dfrac{(R-r)^2}{R^2}}=\dfrac{\sqrt{2Rr-r^2}}{R}$.
+                  \end{itemize}
+                  Do vậy
+                  \begin{center}
+                    $BH = 2R \cdot \dfrac{R-r}{R} \cdot \dfrac{\sqrt{2Rr-r^2}}{R} = \dfrac{2}{R} \cdot (R-r) \cdot \sqrt{2Rr-r^2}$.
+                  \end{center}
         \end{enumerate}
     }
 \end{bt}
