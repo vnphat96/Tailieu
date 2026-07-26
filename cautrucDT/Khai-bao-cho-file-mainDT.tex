@@ -813,8 +813,11 @@ marginparwidth=\so cm, marginparsep=5mm,
 }
 %---Ẩn LG
 \let\oldTrueEX\TrueEX
+\let\oldloigiai\loigiai
+\let\oldendloigiai\endloigiai
 \newcommand{\anLG}{	
-	\renewcommand{\loigiai}[1]{	}%
+	% \renewcommand{\loigiai}[1]{	}%\
+	\RenewEnviron{loigiai}{}
 	% \chooseNSA
 	\renewcommand{\TrueTF}{\FalseTF}
 	\renewcommand{\TrueEX}{\FalseEX}
@@ -825,12 +828,9 @@ marginparwidth=\so cm, marginparsep=5mm,
 %---Hiện LG
 \newcommand{\hienLG}{
 	\renewcommand{\TrueEX}{\oldTrueEX}
-	%Xuất hiện chữ Lời giải trong môi trường onlysolution
-	\renewcommand{\loigiai}[1]{%
-		\begin{onlysolution}%
-			##1
-		\end{onlysolution}%
-	}%
+	
+	\let\loigiai\oldloigiai
+	\let\endloigiai\oldendloigiai
 	%---
 	\def\loigiaiEXS{}
 	%\choiceTF
