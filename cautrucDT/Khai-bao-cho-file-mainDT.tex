@@ -18,6 +18,7 @@
 \usepackage{tasks}
 \usepackage{casiovn}
 \usepackage{cancel}
+\usepackage{pdfpages}
 %==========
 \usetikzlibrary{math,through,calc,intersections,angles,quotes,shapes,shapes.geometric,arrows,patterns,snakes,matrix,chains,arrows.meta,decorations.shapes,decorations.fractals,decorations.markings,shadows,3d}
 \usetikzlibrary{positioning,decorations.text,decorations.pathmorphing}% Để uốn cong văn bản 
@@ -651,7 +652,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 	\begin{center}
 		%%---
 		{\damTT\color{\mauSO} \MakeUppercase{#1}}\\[1pt]
-		{\dam\color{\mauSO} \MakeUppercase{#2 --- Đề} \stepcounter{deso}\thedeso}\\[1pt]
+		{\dam\color{\mauSO} \MakeUppercase{#2}}\\[1pt]% \stepcounter{deso}\thedeso}
 		% {\dam \MakeUppercase{#2}}\\[1pt]
 		{\dam\color{\mauSO} \MakeUppercase{#3}}\\[1pt]
 		{\fontsize{10}{10}\selectfont \textit{#4}}\\[1pt]
@@ -842,7 +843,8 @@ marginparwidth=\so cm, marginparsep=5mm,
 	}
 	\def\kindSA{ShowSAKeyLG}
 	\showanswers
-	\renewcommand{\dotlineEXS}[1]{}	
+	\renewcommand{\dotlineEXS}[1]{}
+	\def\dotfill{}
 }
 %=======Đn các phương án
 \def\khoanhtrondapan{
@@ -1022,14 +1024,12 @@ marginparwidth=\so cm, marginparsep=5mm,
 
 \newcommand{\dongcham}[1]{
 	\def\sod{#1}
-	\pgfmathsetmacro{\sodong}{2*\sod -1} 
+	\pgfmathsetmacro{\sodong}{\sod } 
 	\columnsep=10pt
-	\vspace*{-3.5mm}
-	\begin{multicols}{2}
+	% \vspace*{-3.5mm}
 		\foreach \dotline in{1,...,\sodong}
-		{\noindent\color{gray}{\dotfill}\\[1mm]
-		}\noindent\color{gray}{\dotfill}\\[-4mm]
-	\end{multicols}
+		{\noindent{.\dotfill}\\[1mm]
+		}\noindent{.\dotfill}\\[-4mm]
 }
 
 \newcommand{\cham}[1]{
