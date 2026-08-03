@@ -845,6 +845,7 @@ marginparwidth=\so cm, marginparsep=5mm,
 	\showanswers
 	\renewcommand{\dotlineEXS}[1]{}
 	\def\dotfill{}
+	\renewcommand{\dongcham}[1]{}
 }
 %=======Đn các phương án
 \def\khoanhtrondapan{
@@ -1023,15 +1024,17 @@ marginparwidth=\so cm, marginparsep=5mm,
 \def\iconCV{{\color{myblue}\faCubes}}
 
 \newcommand{\dongcham}[1]{
-	\def\sod{#1}
-	\pgfmathsetmacro{\sodong}{\sod } 
-	\columnsep=10pt
-	% \vspace*{-3.5mm}
-		\foreach \dotline in{1,...,\sodong}
+	\ifthenelse{\equal{#1}{0}}
+	{.\dotfill}
+	{\ifthenelse{\equal{#1}{1}}{.\dotfill}
+	{\def\sod{#1}
+	\pgfmathsetmacro{\sodong}{\sod -1} 
+	\foreach \dotline in{1,...,\sodong}
 		{\noindent{.\dotfill}\\[1mm]
-		}\noindent{.\dotfill}\\[-4mm]
+		}\noindent{.\dotfill}%\\[-4mm]
+	}
 }
-
+}
 \newcommand{\cham}[1]{
 	\def\sod{#1}
 	\pgfmathsetmacro{\sodong}{2*\sod -1} 
