@@ -1,0 +1,12 @@
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{graphicx}
+\usetikzlibrary{calc,intersections,angles,quotes}
+\begin{document}
+\begin{tikzpicture}[violet]
+	\node (A) {\includegraphics[scale=0.25]{building.png}};
+	\draw[thick] ([shift={(1.2,-1.15)}]A.north) coordinate (A)--++(-0.1,-6.35) coordinate (B)--+(4,0) coordinate (C)--cycle;
+	\draw pic["$\alpha$",draw=violet, fill=yellow, angle radius = 10,thick, angle eccentricity = 1.6,font = \large] {angle = C--B--A};
+	\draw[ultra thick] (B)--(A)--(C)--cycle;
+	\foreach \p/\q in {A/80,B/-90,C/-90} \draw[fill=white,line width=0.3pt] (\p) circle(1.5pt) node[shift={(\q:8pt)}]{\color{violet}$\p$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,210 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[margin=0pt,includefoot=true,marginpar=0mm,a4paper]{geometry}
+\usepackage[version=latest]{pgf}
+\usepackage{tikz}
+\usetikzlibrary{fadings,calc,angles,quotes}
+\tikzfading[name=fade top,
+  top color=transparent!0,middle color=transparent!30,
+  bottom color=transparent!80]
+\usepackage[utf8]{vietnam}
+\usepackage{fontawesome}
+\usepackage{pdfrender,enumitem}
+\usepackage{tikz-3dplot,pgfplots}
+\definecolor{xanhnhat}{HTML}{25AAE2}
+\definecolor{xanhdam}{HTML}{16416B}
+
+\def\n{9} %%number of ray lights
+\tikzfading[name=fade out, inner color=transparent!0, outer
+color=transparent!100]
+\tikzset{
+   Sao/.pic={
+   \pgfmathsetmacro{\arcangle}{360/(4*\n)}
+   \foreach \r [count=\i,evaluate={\xc=0.15+1/\i;}]  in {1,2,...,10}{
+   \def\lightray{(\arcangle:\r)
+   	\foreach \i in {1,3,...,2\n}{
+   	  --({2*\i*\arcangle}:{9*\r})--({(2*\i+1)*\arcangle}:\r)
+   	  --({2*(\i+1)*\arcangle}:{3*\r})--({(2*\i+3)*\arcangle}:\r)
+   	}
+   };
+   \fill[path fading=fade out,opacity=\xc] \lightray;
+   }
+   },
+}
+
+\usepackage{miama}
+\usepackage[linkcolor=xanh,colorlinks]{hyperref}
+\usepackage{qrcode}
+\begin{document}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay,
+line cap=round,
+declare function={r1=8.5;r2=10;r3=10.7;r4=11;r5=21.2;r6=22.5;r7=24.5;r8=(r3+r5)/2;}]
+  \path (current page.north west) coordinate (A) rectangle (current page.south east) coordinate (C);
+ \path (current page.north east) coordinate (D) 
+		(current page.south west) coordinate (B) 
+		($ (A)!0.5!(D) $) coordinate (AD)
+		($ (A)!0.5!(B) $) coordinate (AB)
+		($ (C)!0.5!(B) $) coordinate (CB)
+		($ (C)!0.5!(D) $) coordinate (CD)
+		($ (A)!0.5!(C) $) coordinate (AC);
+
+%Các dãy cung tròn
+\begin{scope}[shift={(A)}]
+   \path[fill=xanhdam] (0,0)--({r3-0.1},0) arc (0:-90:{r3-0.1})--cycle;
+   \draw[xanhdam!80!black,opacity=0.5,line width=4pt] 
+   ({r1-0.2},0) arc (0:-90:{r1-0.2});
+   \draw[xanhdam!80!black,opacity=0.75,line width=0.5cm]  
+     (r1,0) arc (0:-37:r1);
+   \draw[white,line width=0.35cm]  
+        (r1,0) arc (0:-37:r1);
+  \draw[white,line width=2pt]  
+          (r1,0) arc (0:-53:r1) coordinate (T1);
+\draw[white,line width=3pt] (r2,0) arc (0:-90:r2);          
+ \pic[scale=0.01,color=white] at (T1) {Sao};
+ \pic[scale=0.025,color=white] at (-60:r2) {Sao};
+ 
+  \draw[xanhdam,line width=0.2cm]  
+           (r5,0) arc (0:-90:r5);
+   \begin{scope}
+   		\clip ({r3+0.1},0) arc (0:-29:{r3+0.1})--
+   		(-29:{r5-0.3}) arc (-29:0:{r5-0.3})--cycle;
+   		\path[top color=xanhnhat,bottom color=white,middle color=xanhnhat!45] (0,0) rectangle (22,-10);
+   \end{scope}
+   
+   \begin{scope}
+   		\clip (-30:{r3+0.1}) arc (-30:-59:{r3+0.1})--
+   		(-59:{r5-0.3}) arc (-59:-29.5:{r5-0.3})--cycle;
+   		\path[top color=xanhnhat,bottom color=white,middle color=xanhnhat!35] (0,-5) rectangle (22,-19);
+   \end{scope}   
+ 
+    \begin{scope}
+    		\clip (-60:{r3+0.1}) arc (-60:-90:{r3+0.1})--
+    		(-90:{r5-0.3}) arc (-90:-59.5:{r5-0.3})--cycle;
+    		\path[top color=xanhnhat,bottom color=white,middle color=xanhnhat!35] (0,-7) rectangle (22,-22);
+    \end{scope}   
+   
+   \draw[gray!45,line width=4pt,shift={(-45:2pt)}] (r6,0) arc (0:-60:r6);
+   \draw[xanhnhat,line width=3.5pt] (r6,0) arc (0:-60:r6) coordinate (T2);    
+    \path[ball color=xanhnhat] (T2) circle (0.2);
+    \pic[scale=0.027,color=xanhnhat!65] at (T2) {Sao};
+    
+    \draw[gray!25,line width=1.05cm] (r7,0) arc (0:-45:r7);
+   \draw[xanhnhat,line width=0.9cm] (r7,0) arc (0:-45:r7);
+\end{scope}		
+
+%Phần văn bản
+  \path ($ (C)+(-1.95,7.45) $) node[anchor=east,font=\bfseries\sffamily\fmmfamily\fontsize{70pt}{0pt}\selectfont\color{gray!35}] {Bài tập chọn lọc};
+ \path ($ (C)+(-2,7.5) $) node[anchor=east,font=\bfseries\fmmfamily\fontsize{70pt}{0pt}\selectfont\color{xanhnhat}] (NBT) {Bài tập chọn lọc};
+\path (NBT.south east) node[anchor=north east,font=\bfseries\fontfamily{pag}\fontsize{80pt}{0pt}\selectfont\color{xanhdam},circle,draw=xanhdam,thick] (NL) {9};
+\path (NL.west) node[anchor=east,font=\bfseries\fontfamily{ugq}\fontsize{55pt}{0pt}\selectfont\color{xanhdam}]{HÌNH HỌC};
+\path (NL.north) node[font=\bfseries\sffamily\fontsize{25pt}{0pt}\selectfont\color{xanhdam},fill=white,inner sep=0pt,outer sep=0pt]{Lớp};
+
+ \path ($ (C)+(-2,2) $) node[anchor=east,font=\bfseries\sffamily\LARGE\selectfont] (NNH) {Năm học 2023 - 2024};
+ 
+% \hypersetup{urlcolor=white}
+% \path ($ (A) + (3.5,-3)$) node[rounded corners=3pt,
+% outer sep=2pt,inner sep=5pt,draw=white,thick]{\qrcode[height=2.5cm]{https://forms.gle/DVpNXZAztZV8e5k4A}};
+
+%Mã QR
+  \hypersetup{urlcolor=xanhnhat}
+  \path ($ (A) + (3.5,-3)$) node[rounded corners=3pt,
+  outer sep=2pt,inner sep=5pt,draw=xanhnhat,thick]{\qrcode[height=2.5cm]{https://forms.gle/DVpNXZAztZV8e5k4A}};
+
+%Hình vẽ minh họa trong 3 hình quạt, từ trên xuống
+ \path (-12:0.9*r8) node{
+ \begin{tikzpicture}[declare function={r=2.5;},color=gray]
+ 	\path (180:r) coordinate (A)
+ 			(0:r) coordinate (B)
+ 			(0,0) coordinate (O);
+ 	\begin{scope}[overlay]
+ 		\path ($ (A)!2cm!90:(O) $) coordinate (SA)
+ 		 	($ (O)!2cm!-60:(A) $) coordinate (OA)
+ 			($ (B)!2cm!-90:(O) $) coordinate (SB);
+ 	\path (intersection of A--SA and O--OA) coordinate (C);
+ 	\path ($(O)!1!-90:(C)$) coordinate (CP);
+ 	\path (intersection of O--CP and B--SB) coordinate (D);
+ 	\path ($(C)!0.5!(D)$) coordinate (I);
+ 	\end{scope}
+ \foreach \x/\y/\z in {A/B/D,C/A/B,D/O/C}{
+ 	\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};
+ }
+ 
+ \path pic["\scriptsize$60^\circ$", angle eccentricity=2,draw,angle radius=9pt]{angle= C--O--A};
+ 
+ 	\draw[dashed] let \p1=($(I) -  (C) $) in  (I) circle ({veclen(\x1,\y1)});
+ 	\draw (A)--(C)--(O) (O)--(D)--(B)  (O)--(I)
+ 		(C)--(D) (A) arc (180:0:r)--cycle;
+ 	
+ 	\foreach \t/\g in {A/-90,B/-90,O/-90,C/150,D/30,I/90}{
+ 		\draw[fill=white] (\t) circle (1pt) node[shift={(\g:7pt)},font=\scriptsize]{$ \t $};
+ 	}
+ \end{tikzpicture}
+ };
+ 
+ \path (-45:r8)node{
+ \begin{tikzpicture}[line join=round,color=gray]
+ 		\def\r{3};
+ 		\def\goca{120};
+ 		\def\gocb{210};
+ 		\def\gocc{-30};
+ 		\path 
+ 		(0,0) coordinate (O)
+ 		(\goca:\r)coordinate (A)
+ 		(\gocb:\r)coordinate (B)
+ 		(\gocc:\r)coordinate (C)
+ 		($(B)!(A)!(C)$) coordinate (D)
+ 		($(B)!(C)!(A)$) coordinate (F)
+ 		($(C)!(B)!(A)$) coordinate (E)
+ 		(intersection of A--D and B--E) coordinate (H)
+ 		;	
+ 		\path pic[draw,angle radius = 6] {right angle = A--D--C} 
+ 		pic[draw,angle radius = 6] {right angle = B--E--C}
+ 		pic[draw,angle radius = 6] {right angle = B--F--C}
+ 		;
+ 		\draw 
+ 		(A)--(B)--(C)--cycle
+ 		(A)--(D) (B)--(E)--(F)--(C)
+ 		(F)--(D)--(E)
+ 		;
+ 		\draw[dashed] let \p1=($  (H) -  (A) $) in  ($(H)!0.5!(A)$) coordinate (P) circle ({veclen(\x1,\y1)/2});
+% 		\draw[dashed,teal] let \p1=($  (C) -  (B) $) in  ($(C)!0.5!(B)$)  coordinate (Q) circle ({veclen(\x1,\y1)/2});
+ 		\foreach \t/\g in {O/-90,A/90, B/180, C/0,D/-45,F/180,E/0,H/135,P/0}{
+ 			\draw[fill=white] (\t) circle (1pt) node[shift={(\g:7pt)},font=\scriptsize]{$ \t $};
+ 		}
+ 	\end{tikzpicture}
+ };
+\path (-75:r8) node{
+    \begin{tikzpicture}[declare function={R=1.75;a=2;},>=stealth,color=gray]
+         	\tikzset{declare function={r=R;d=-2*a;
+         	 theta=75;
+         	 Phi=-25; tt=Phi+asin(r*cot(theta)/d);tth=Phi+180-asin(r*cot(theta)/d);gqay=45;},samples=200,smooth}
+         	\tdplotsetmaincoords{theta}{Phi}
+         	\begin{scope}[tdplot_main_coords]
+         		\draw plot[domain=0:360] ({r*cos(\x)},{r*sin(\x)},0);
+         		\draw[dash pattern=on 2pt off 1.5pt,dashed]({r*cos(tt)},{r*sin(tt)},0) --(0,0,d) coordinate (An)--({r*cos(tth)},{r*sin(tth)},0)
+         			coordinate (Bn);
+         		\foreach \x/\y/\z/\t in {a/a/0/A,-a/a/0/B,-a/-a/0/C,a/-a/0/D,a/a/-2*a/Ap,-a/a/-2*a/Bp,-a/-a/-2*a/Cp,a/-a/-2*a/Dp}{%
+         			\path (\x,\y,\z) coordinate (\t);
+         		}  
+         	\end{scope}
+         	\path (0,0) coordinate (O)
+         			($ 2*(O) -(Bn)$) coordinate (Cn)
+         			($ (An)!0.5!(Cn) $) coordinate (Dn);
+         	\draw[dash pattern=on 2pt off 1.5pt,dashed] (Bp)--(Ap)--(A)
+         		(Ap)--(Dp) (O)--(An);
+         	\draw (A)--(B)--(C)--(D)--cycle
+         	  (B)--(Bp)--(Cp)--(C) 
+         	  (Cp)--(Dp)--(D)
+         	  (Cn)--(Bn);
+         	\draw[<-,dashed,shorten <=2pt] (Dn)--+(3,-1.25) node[below]{$ \sqrt{73} $ cm};
+         	\foreach \x/\y in {Bp/Cp,Cp/Dp,B/Bp}{
+         	   \path(\x)--(\y) node[sloped,pos=0.5,below]{$ 8 $ cm};
+         	}
+         	\foreach \t/\g/\z in {O/90/O,Cn/-25/B,An/-45/A}{
+         		\path[ball color=gray] (\t) circle (1pt) node[shift={(\g:7pt)},font=\scriptsize]{$ \z $};
+         	}
+       \end{tikzpicture}
+  };
+\end{tikzpicture}
+\end{document}
+ 

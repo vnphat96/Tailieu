@@ -1,0 +1,144 @@
+\documentclass[a4paper,twoside,openleft]{book}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{vietnam}
+\usepackage{cmbright}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{oplotsymbl,fontawesome}
+\usepackage{tikz-3dplot,amsmath}
+\usetikzlibrary{calc,angles,fadings,decorations.text,intersections,backgrounds}
+\usepackage{marvosym}
+\usepackage{qrcode,pdfrender}
+\usepackage{miama}
+\tikzfading[name=fade top,
+  top color=transparent!75,bottom color=transparent!0,middle color=transparent!50]
+\tikzfading[name=fade right,
+  right color=transparent!75,left color=transparent!30,middle color=transparent!50]	  
+ \tikzfading[name=fade bot,
+   top color=transparent!20,bottom color=transparent!65,middle color=transparent!35]
+ \tikzfading[name=Nfade bot,
+    top color=transparent!0,bottom color=transparent!100,middle color=transparent!100]
+\definecolor{tim}{HTML}{02A0DA}
+\definecolor{do}{HTML}{02DA3C}
+\definecolor{xanh}{HTML}{DA3C02}
+\definecolor{nhat}{HTML}{DA02A0}
+\usepackage[linkcolor=do,colorlinks]{hyperref}
+\newcommand{\nodeshadowed}[2][]{
+               \node[above,#1,inner sep=3pt]{#2};
+               \node[above,#1,yscale=-1,scope fading=Nfade bot,opacity=0.5,inner sep=3pt] 
+               (TNA){#2};
+%               \begin{scope}
+%               	\clip (TNA.north west) rectangle ($ (TNA.north east)!0.5!(TNA.south east) $);
+%                 \node[above,#1,yscale=-1,scope fading=Nfade bot,inner sep=0pt] {#2};               	
+%               \end{scope}
+}
+\begin{document}
+\thispagestyle{empty}
+\begin{tikzpicture}[overlay,remember picture]
+\clip (current page.north west) coordinate (A) 
+		rectangle (current page.south east) coordinate (C);
+\path (current page.north east) coordinate (D) 
+		(current page.south west) coordinate (B) 
+		($ (A)!0.5!(D) $) coordinate (AD)
+		($ (A)!0.5!(B) $) coordinate (AB)
+		($ (C)!0.5!(B) $) coordinate (CB)
+		($ (C)!0.5!(D) $) coordinate (CD)
+		($ (A)!0.5!(C) $) coordinate (AC);
+%Goc tren ben trai
+    \path[top color=nhat!65!yellow!75,bottom color=nhat,path fading=fade bot] ($ (A)+(0,-4) $).. controls +(-15:3) and +(180:3)..($ (A)+(6,-6) $).. controls +(0:4) and +(-145:2)..($ (A)+(12.5,0) $)--(A)--cycle;
+     \path[fill=xanh,path fading=fade bot] ($ (A)+(0,-8) $).. controls +(0:5) and +(-145:7)..($ (A)+(10.7,0) $)--(A)--cycle; 
+   
+  %Day duong cong phia duoi
+ \path[left color=xanh, right color=nhat!45!yellow,path fading=fade right] ($ (B)+(0,6.25) $).. controls +(-30:9) and +(180:7)..($ (B)+(16,6.5) $).. controls +(0:1.5) and +(135:3)..($ (C)+(0,3.75) $)--(C)--(B)--cycle ;   	   
+
+\path[left color=xanh!65, right color=nhat!65!yellow!75,path fading=fade bot] ($ (B)+(0.5,0) $).. controls +(10:3.5) and +(180:3)..($ (B)+(12,7) $).. controls +(0:3) and +(165:2)..($ (C)+(0,2.5) $)--(C)--(B)--cycle;
+
+\path[left color=xanh,right color=xanh!85] ($ (B)+(0,6) $).. controls +(-43:8) and +(180:5)..($ (B)+(13,3.75) $).. controls +(0:2.5) and +(135:3)..($ (C)+(-2,0) $)--(B)--cycle;
+
+\path[fill=xanh!45,fill opacity=0.25] ($ (B)+(2,0) $).. controls +(15:8) and +(145:5)..($ (C)+(-2,0) $)--(B)--cycle;    
+ 
+ %%Văn bản
+      \path ($ (A)+(2.25,-9.06) $) node[anchor=north west,font=\itshape\bfseries\fontsize{60pt}{0pt}\selectfont]{
+      	\textpdfrender{%
+      	      TextRenderingMode=2,
+      	      LineWidth=2pt,
+      	      FillColor=white,
+      	      StrokeColor=black!15
+      	}{200}%
+      }; 
+          	     	      
+     \path ($ (A)+(2.2,-9) $) node[anchor=north west,font=\itshape\bfseries\fontsize{60pt}{0pt}\selectfont] (NT){
+     	\textpdfrender{%
+     	      TextRenderingMode=2,
+     	      LineWidth=2pt,
+     	      FillColor=white,
+     	      StrokeColor=xanh
+     	}{200}%
+     };    
+
+\begin{scope}[shift={($ (NT.east) + (6.6cm,-5pt)$)}]
+   	  \nodeshadowed[font=\color{gray!25}\bfseries\sffamily\fontsize{25pt}{0pt}\selectfont]{\resizebox{12.5cm}{!}{BÀI TOÁN BẤT ĐẲNG THỨC}}
+  \end{scope}  
+    
+ \begin{scope}[shift={($ (NT.east) + (6.65cm,-3pt)$)}]
+   	  \nodeshadowed[font=\color{xanh}\bfseries\sffamily\fontsize{25pt}{0pt}\selectfont]{\resizebox{12.5cm}{!}{BÀI TOÁN BẤT ĐẲNG THỨC}}
+  \end{scope}  
+   
+   %%Thông tin tài liệu
+   \path ($ (B)+(0.5*\linewidth,0.55*\paperheight)$) coordinate (T);
+   \foreach[count=\i] \t in {{\TeX\ hóa từ chia sẻ của các nhóm},%
+   {80 bài toán 2 biến số},%
+   {120 bài toán 3 biến số},%
+   {Lời giải chi tiết}%,%
+%   {Sản phẩm cập nhật đến khi kết thúc dự án}%
+   }{
+   	\path ($ (T)+({-0.5*\i},{1-\i}) $) node[anchor=south west,font=\bfseries\sffamily\LARGE\color{gray!75}]{\textcolor{gray!50}{\rhombusdot}\, \t};
+   	\path ($ (T)+(-0.025,0.025) +({-0.5*\i},{1-\i}) $) node[anchor=south west,font=\bfseries\sffamily\LARGE]{\textcolor{xanh}{\rhombusdot}\, \t};
+   }
+   
+   
+   \path ($ (B)+(4,7.5) $) node[anchor=south west,font=\bfseries\sffamily\huge\color{tim!65},rotate=15]{$\boldsymbol{%
+   \dfrac{1}{a}+\dfrac{1}{b}\ge\dfrac{4}{a+b}}$};
+   
+   
+    \path ($ (C)+(-2.5,11) $) node[anchor=east,font=\bfseries\sffamily\huge\color{tim!65}]{$\boldsymbol{%
+      \dfrac{1}{a}+\dfrac{1}{b}+\dfrac{1}{c}\ge\dfrac{9}{a+b+c}}$};
+      
+   \path ($ (D)+(-5,-5.25) $) node[scale=0.35]{
+   \begin{tikzpicture}[declare function={r =7;rl=r*sqrt(3);
+           rn=rl-r;ts=rn/r;},line join=miter,line cap=butt,color=tim,x=0.5cm,y =0.5cm]
+     \def\duong{(90:r) arc (150:270:r)
+       arc(30:150:r)
+       arc(270:390:r)--cycle;}
+     \foreach \tl/\mau/\net in {0.385/1/3,0.625/0.8/4.5,1/0.65/5.5}{
+         \begin{scope}[scale=\tl,opacity=\mau,blend mode=darken]
+           \path[draw,line width=\net pt]
+           \duong;
+           \path[rotate=60,scale=ts,draw,line width=\net pt]
+           \duong;
+         \end{scope}
+       }
+     \path [
+       decorate,
+       decoration={
+           text along path,
+           text align={fit to path},
+           text color=tim,
+           text={|\fontsize{25pt}{0pt}\selectfont\bfseries\sffamily|THEME LATEX AND RELATED TOPICS}
+         },
+     ] (225:{1.15*r}) arc (225:-45:{1.15*r}) ;
+     \path%[draw] 
+     (0,0) circle (1.35*r)
+     circle (1.03*r);
+   \end{tikzpicture}
+   };
+   
+   \path ($ (D)-(1,2) $)  node[anchor=south east,font=\bfseries\sffamily\Large\color{xanh}] (NN) {NĂM HỌC 2022 - 2023};
+   
+   \path[left color=xanh!15,right color=xanh!5]
+   ($ (NN.north west) +(-3pt,0)$) rectangle ($ (NN.south east)+(3,0) $);
+   
+    \path ($ (D)-(1,2) $)  node[anchor=south east,font=\bfseries\sffamily\Large\color{xanh}]{NĂM HỌC 2022 - 2023};
+\end{tikzpicture}
+\end{document}

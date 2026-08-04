@@ -1,0 +1,161 @@
+\documentclass[a4paper,twoside,openleft]{book}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{vietnam}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{oplotsymbl,fontawesome}
+\usepackage{tikz-3dplot,amsmath}
+\usetikzlibrary{calc,angles,fadings,decorations.text,intersections,backgrounds}
+\usepackage{marvosym}
+\usepackage{qrcode}
+\usepackage{miama}
+\tikzfading[name=fade top,
+  top color=transparent!75,bottom color=transparent!0,middle color=transparent!30]
+  \tikzfading[name=fade bot,
+   top color=transparent!0,bottom color=transparent!95,middle color=transparent!40]
+\definecolor{xanh}{HTML}{00CC99}
+%\definecolor{xanh}{HTML}{24A0C2}
+\definecolor{nhat}{HTML}{24C295}
+\definecolor{do}{HTML}{CC0033}
+%\definecolor{tim}{HTML}{C224A0}
+\usepackage[linkcolor=xanh,colorlinks]{hyperref}
+\begin{document}
+\thispagestyle{empty}
+\begin{tikzpicture}[overlay,remember picture,declare function={r=4.5; a=0.25;b=0.5*a;}]
+\clip (current page.north west) coordinate (A) 
+		rectangle (current page.south east) coordinate (C);
+\path (current page.north east) coordinate (D) 
+		(current page.south west) coordinate (B) 
+		($ (A)!0.5!(D) $) coordinate (AD)
+		($ (A)!0.5!(B) $) coordinate (AB)
+		($ (C)!0.5!(B) $) coordinate (CB)
+		($ (C)!0.5!(D) $) coordinate (CD)
+		($ (A)!0.5!(C) $) coordinate (AC);
+%%Gốc trên bên trái
+\path ($ (A)+(2.5,-1.5) $) node[scale=0.35] (NL) {
+\begin{tikzpicture}[declare function={rt =5;rl=rt*sqrt(3);
+        rn=rl-rt;ts=rn/rt;},line join=miter,line cap=butt,color=do!85!black,x=0.5cm,y =0.5cm]
+  \def\duong{(90:rt) arc (150:270:rt)
+    arc(30:150:rt)
+    arc(270:390:rt)--cycle;}
+  \foreach \tl/\mau/\net in {0.385/1/3,0.625/0.8/4.5,1/0.65/5.5}{
+      \begin{scope}[scale=\tl,opacity=\mau,blend mode=darken]
+        \path[draw,line width=\net pt]
+        \duong;
+        \path[rotate=60,scale=ts,draw,line width=\net pt]
+        \duong;
+      \end{scope}
+    } 
+\end{tikzpicture}
+};
+
+%%Dòng thông tin Cơ sở ở trên
+\path ($ (NL) + (1,0)$) node[anchor=west,font=\bfseries\sffamily\LARGE]{THEME LATEX AND RELATED TOPICS};
+
+\path ($ (D)-(1.5,1) $) node[font=\bfseries\fontfamily{ugq}\fontsize{39pt}{0pt}\selectfont,anchor=north east]{20\textcolor{xanh}{23}};
+
+%%Hai vòng tròn
+\begin{scope}[shift={($ (A)+(1.65*r,-2.15*r) $)}]
+		%%Vòng tròn bên trái
+		\path (-45:{r-a}) coordinate (T)
+		         (0,0) coordinate (TamT);
+		\path[right color=xanh!85,left color=xanh!85!black] (-135:r) arc (225:-45:r) --+(-135:2*r) arc (135:315:a)--+(45:1.525*r) to [out=45,in=90]
+		($(1.5*r,-1.5*r)+(160:{r+2*a}) $) arc (160:330:{r+2*a})
+		arc(150:-30:b) arc (330:170:{r+2*a+2*b})--+(-135:1.33*r) arc (315:135:{a+2*b})--(T) arc (-45:225:{r-a})
+		arc(45:-135:b);
+		%%Vòng tròn bên phải
+	    \path ($(1.5*r,-1.5*r)+(135:{r-a})$) coordinate (Th)
+	    		 (1.5*r,-1.5*r) coordinate (TamP);
+		\path[left color=xanh!85,right color=xanh!85!black] ($(1.5*r,-1.5*r)+(45:r) $) arc (405:135:r) --+(45:2*r) arc (-45:135:a)--+(225:1.525*r)
+		 to [out=-135,in=-90] (-20:{r+2*a}) arc (-20:150:{r+2*a}) arc (325:135:b)
+		arc (150:-10:{r+2*a+2*b})
+		--+(45:1.33*r) arc(135:-45:{a+2*b})
+		--(Th) arc (135:405:{r-a}) arc (225:45:b);
+\end{scope}
+   \draw[gray!25,line width=5pt] (TamP) circle (0.9*r)
+			 (TamT) circle (0.9*r);
+   \fill[inner color=do!10,outer color=white](TamT) circle (0.9*r);
+   \fill[inner color=do!10,outer color=white](TamP) circle (0.9*r);
+
+%%Thông tin tài liệu
+\path ($ (B) + (2.25,8)$) node[anchor=west,font=\bfseries\fontsize{35pt}{0pt}\fmmfamily\selectfont\color{do}] (NCD){Tài Liệu};
+\path ($ (NCD.south west) +(0,-0.75)$) node[anchor=west,font=\fontsize{29pt}{0pt}\fontfamily{ugq}\bfseries\selectfont]{ÔN TẬP MÔN TOÁN  \textcolor{xanh}{LỚP {\fontsize{39pt}{0pt}\selectfont 9}}};
+
+\path ($ (B) + (2,{1.2*r})$) node[anchor=north west,font=\bfseries\sffamily\Large]{
+	\begin{minipage}{0.45\linewidth}
+		\begin{itemize}[label=\protect{\color{xanh}\rhombusdot}]
+				\item Trích xuất từ các đề thi tuyển 10
+				\item Đáp ứng nhiều mức độ
+				\item Phân dạng chi tiết
+			\end{itemize}
+	\end{minipage}
+};
+
+%Thông tin gạch đứng phía dưới
+  \path[top color=xanh!85!black,bottom color=xanh]
+   ($(CB)+(0.5,0)$)--+(0,1.15*r) arc (0:180:0.5) --+(0,-1.15*r)--cycle;
+   
+   \path ($(CB)+(0,1.1*r)$) node[font=\color{white}\LARGE] (ND) {\faMapMarker};
+   \path ($ (ND.east)+ (0.2,0)$) node[anchor=west,font=\Large\bfseries\sffamily]{135, Phan Văn Cử, Mỹ Phú};
+   \path ($ (ND.east)+ (0.2,-0.65)$) node[anchor=west,font=\Large\bfseries\sffamily]{TP. Cao Lãnh, Đồng Tháp};
+      
+   \path ($(CB)+(0,0.75*r)$) node[font=\color{white}\LARGE] (NF) {\Mobilefone};
+   \path ($ (NF.east)+ (0.2,0)$) node[anchor=west,font=\Large\bfseries\sffamily]{0919 999 999};
+ 
+    \path ($(CB)+(0,0.575*r)$) node[font=\color{white}\LARGE] (NF) {\faEnvelopeO};
+    \path ($ (NF.east)+ (0.2,0)$) node[anchor=west,font=\Large\bfseries\sffamily]{tranlenam@dthu.edu.vn};
+    
+    %%Mã QR
+   \hypersetup{urlcolor=black}  
+    \path ($ (C) + (-2,2)$) node[draw=xanh!55,fill=white,line width=1.5pt,rounded corners=3pt]{\qrcode[height=2cm]{https://zalo.me/g/lcubia433}};
+    
+    %%Thông tin trong vòng tròn TRÁI
+    \path (TamT) node[font=\LARGE\color{do}\boldmath]{
+   $
+    \begin{array}{l}
+   		x_{1,2}=\dfrac{-b\pm\sqrt{\Delta}}{2a}\\
+   		S=x_1+x_2=\dfrac{-b}{a}\\
+   		P=x_1.x_2=\dfrac{c}{a}
+   \end{array}
+   $
+    };
+    
+    %%Thông tin trong vòng tròn PHẢI
+    \begin{scope}[shift={(TamP)},thick,color=do]
+   			 \tikzset{declare function={gocA=105;gocB=220;gocC=320;tr=0.75*r;}}
+   			 \path (0,0) coordinate (O)
+   			 (gocA:tr) coordinate (A)
+   			 ({gocB}:tr) coordinate (B)
+   			 ({gocC}:tr) coordinate (C)	
+   			 ($ (A)!(B)!(C) $) coordinate (E)
+   			 ($ (A)!(C)!(B) $) coordinate (F)
+   			 ($ (B)!(A)!(C) $) coordinate (D)
+   			 (intersection of A--D and B--E) coordinate (H)
+   			 ($ (B)!.5!(C) $) coordinate (O);
+   			 \foreach \x/\y/\z in {A/D/C,B/E/A,C/F/B}{
+   			 	\path pic[draw,angle radius=5pt]{right angle= \x--\y--\z};
+   			 }
+   			 \foreach \x/\y/\z in {C/B/E,C/F/E}{
+   			 	\path pic[draw,angle radius=7pt]{angle= \x--\y--\z};
+   			 }
+   			\path pic[draw,angle radius=9pt]{angle=D--F--C};
+   			\path pic[draw,angle radius=7pt, double]{angle= E--O--B};
+   			
+   			 \draw (A)--(B)--(C)--cycle (A)--(D) (C)--(F)
+   			  (B)--(E) (O)--(E)--(F)--(D) ;
+   			\begin{scope}[overlay]
+   				\path ($ (D)!0.5!(E) $) coordinate (Nt)
+   				($ (Nt)!1!90:(D) $) coordinate (Xt)
+   				($ (E)!0.5!(F) $) coordinate (Mt)
+   				($ (Mt)!1!90:(E) $) coordinate (Yt)
+   				(intersection of Nt--Xt and Mt--Yt) coordinate (I);
+   			\end{scope}
+   			\draw[dashed] let \p1=($  (I) -  (D) $) in  (I)  circle ({veclen(\x1,\y1)});
+   			 
+   			 \foreach \t/\g in {A/90,B/200,C/-20,D/-90,E/30,F/150,H/60,O/-90}{
+   			 	\draw[fill=white] (\t) circle (1pt) node[shift={(\g:7pt)}]{$ \t $};
+   			 }
+    \end{scope} 
+\end{tikzpicture}
+\end{document}

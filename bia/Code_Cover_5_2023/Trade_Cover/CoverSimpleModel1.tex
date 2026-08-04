@@ -1,0 +1,155 @@
+\documentclass[a4paper,twoside,openleft]{book}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{vietnam}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{oplotsymbl}
+\usetikzlibrary{calc,angles,fadings,decorations.text,intersections}
+\tikzfading[name=fade top,
+  top color=transparent!0,middle color=transparent!20,
+  bottom color=transparent!80]
+\tikzfading[name=fade bot,
+  top color=transparent!80,middle color=transparent!20,
+  bottom color=transparent!0]
+
+\newcommand{\nodeshadowed}[2][]{
+               \node[above,#1,inner sep=0pt]{#2};
+               \node[above,#1,yscale=-1,scope fading=south,opacity=0.4,inner sep=0pt] 
+               {#2};
+}
+\definecolor{xanh}{HTML}{00CC99}
+%\definecolor{xanh}{HTML}{24A0C2}%Xanh đậm
+\begin{document}
+\thispagestyle{empty}
+\begin{tikzpicture}[overlay,remember picture,transform shape,
+declare function={a=9; b=8;k=0.925;ca=1.5;}]
+\clip (current page.north west) coordinate (A) 
+		rectangle 
+		(current page.south east) coordinate (C);
+\path (current page.north east) coordinate (D) 
+		(current page.south west) coordinate (B) 
+		($ (A)!0.5!(D) $) coordinate (AD)
+		($ (A)!0.5!(B) $) coordinate (AB)
+		($ (C)!0.5!(B) $) coordinate (CB)
+		($ (C)!0.5!(D) $) coordinate (CD)
+		($ (A)!0.5!(C) $) coordinate (AC);
+
+%Gốc trên bên trái
+\path[left color=xanh,right color=xanh!70!white,fill opacity=0.15] (A)--++(0,-4) to [out=-15,in=-120] ++(10,4)--cycle;
+\draw[xanh!90!blue,thick,preaction={transform canvas={shift={(-0.065,-0.065)}},draw=gray!65,ultra thick}] 
+	($ (A)+(6,-1.65) $) coordinate (Tam) circle (1.5);
+\fill[xanh,preaction={transform canvas={shift={(-0.05,-0.05)}},fill=gray!75}] ($ (Tam) +(0.5,0)$) circle (1);
+\shade[inner color=xanh, outer color=xanh!20!white,opacity=0.55] ($ (Tam) +(2.5,0)$) ellipse (1.75 and 1.35);
+
+%Gốc trên bên phải
+\path ($ (D)+(-1,-1.5) $) node[anchor=north east] (N) 
+	{\LARGE\bfseries\sffamily \LaTeX\ THEME AND RELATED TOPICS};
+\fill[left color=xanh,right color=xanh!10] (N.south west) rectangle ([yshift=-1pt]N.south east);
+
+%%Bốn hình vuông gốc trên bên phải
+\begin{scope}[shift={($ (D)+(-3,-4.5) $)}]
+   \foreach \i/\mau in {0/100,1/80,2/70,3/60}{
+   		\path[rounded corners=2pt,fill=xanh!\mau,preaction={transform canvas={shift={(-0.05,-0.05)}},fill=gray!\mau}] ({45+90*\i}:0.1) rectangle ({45+90*\i}:{ca});
+   }
+\end{scope}
+
+%Ba dãy TRÊN, bên trái
+\begin{scope}[shift={($ (A)+(3,-2) $)}]
+ \path[top color=xanh,bottom color=violet,path fading=fade top] 
+	 (0,0) coordinate (At)--++(0,-4)--++(-1.25,-1)--++(0,-5)--++(0.075,0)
+ 		--++(0,4.975)--++(1.25,1)--+(0,4.05) coordinate (Ah) --cycle;
+ \fill[xanh] ($ (At)!0.5!(Ah) $) circle (7pt);
+ 
+  \path[top color=xanh,bottom color=violet,path fading=fade top] 
+  	(0.5,-2) coordinate (At)--++(0,-3)--++(-1.25,-1)--++(0,-4.5)
+  		--++(0.075,0)--++(0,4.475)--++(1.25,1)--+(0,3.05) coordinate (Ah) --cycle;
+  \fill[xanh] ($ (At)!0.5!(Ah) $) circle (5pt);
+  
+   \path[top color=xanh,bottom color=violet,path fading=fade top] 
+   		(1,-1.5) coordinate (At)--++(0,-3.75)--++(-1.25,-1)--++(0,-4.75)
+   		--++(0.075,0)--++(0,4.725)--++(1.25,1)--+(0,4.05) coordinate (Ah) --cycle;
+   \fill[xanh] ($ (At)!0.5!(Ah) $) circle (6pt);
+\end{scope}
+   
+ %Ba dãy DƯỚI, bên trái
+ \begin{scope}[shift={($ (B)+(3,2) $)},yscale=-1]
+  \path[top color=violet,bottom color=xanh,path fading=fade bot] 
+  (0,0) coordinate (At)--++(0,-4)--++(-1.25,-1)--++(0,-5)--++(0.075,0)
+  	--++(0,4.975)--++(1.25,1)--+(0,4.05) coordinate (Ah) --cycle;
+  \fill[xanh] ($ (At)!0.5!(Ah) $) circle (7pt);
+  
+   \path[top color=violet,bottom color=xanh,path fading=fade bot] 
+   (0.5,-2) coordinate (At)--++(0,-3)--++(-1.25,-1)--++(0,-4.5)--++(0.075,0)
+   	--++(0,4.475)--++(1.25,1)--+(0,3.05) coordinate (Ah) --cycle;
+   \fill[xanh] ($ (At)!0.5!(Ah) $) circle (5pt);
+   
+    \path[top color=violet,bottom color=xanh,path fading=fade bot]
+    (1,-1.5) coordinate (At)--++(0,-3.75)--++(-1.25,-1)--++(0,-4.75)
+    --++(0.075,0)--++(0,4.725)--++(1.25,1)--+(0,4.05) coordinate (Ah) --cycle;
+    \fill[xanh] ($ (At)!0.5!(Ah) $) circle (6pt);
+ \end{scope}
+ 
+ 
+ %%Elip ở giữa
+ \begin{scope}[shift={($ (AC) + (2,1)$)}]
+ 	\path (0,0) coordinate (TamE);
+    \path[left color=xanh,right color=xanh!75,preaction={transform canvas={shift={(-0.15,-0.15)}},fill=gray!50}] 
+    (30:{a and b}) arc (30:250:{a and b}) coordinate (Bt)--(250:{{k*a} and {k*b}}) arc (250:30:{{k*a} and {k*b}})--cycle;
+    \path ($ (Bt)+(0.5,0) $) node[anchor=west]{\Large\bfseries\sffamily
+      Tên học sinh:\makebox[6.5cm]{\dotfill}
+    };
+ \end{scope}   
+ 
+ \newfont{\ten}{ugqb8v at 27pt}
+ \begin{scope}[shift={($ (TamE) + (0,2.75)$)}]
+ \nodeshadowed{\ten
+ TUYỂN TẬP ĐỀ THI TOÁN 9};
+ \end{scope}
+
+%%Hình minh họa
+\path ($ (TamE) + (-0.5,-2.5)$) node[scope fading=south]{
+    \begin{tikzpicture}[line join=round,line cap=round,color=xanh!90!black,thick]
+          \def\r{3}
+          \path
+          (0,0) coordinate (O)
+          (110:\r) coordinate (A)
+          (-150:\r) coordinate (B)
+          (-30:\r) coordinate (C)
+          ($(A)!2!(O)$) coordinate (K)
+          ($(A)!(B)!(C)$) coordinate (E)
+          ($(A)!(C)!(B)$) coordinate (F)
+          (intersection of E--F and C--B) coordinate (S)
+          (intersection of B--E and C--F) coordinate (H)
+          ;
+          \draw[name path=dt] (S)--(A);
+          \draw[name path=dtron] (O) circle (\r);
+          \path [name intersections={of =dt and dtron,by={A,N}}];
+          \draw pic[draw, angle radius=5pt]{right angle=B--E--C};
+          \draw pic[draw, angle radius=5pt]{right angle=B--F--C};
+          \draw pic[draw, angle radius=5pt]{right angle=K--N--A};
+          \draw
+          (A)--(B)--(C)--cycle
+          (B)--(E) (C)--(F) (A)--(K) (S)--(B) (S)--(E) (N)--(F)
+          (N)--(K);
+  
+          \draw[dashed] let \p1=($  (H) -  (A) $) in  ($(H)!0.5!(A)$)  circle ({veclen(\x1,\y1)/2});
+  
+          \foreach \t/\g in {A/90, B/-120, C/-40, O/0,K/-80,E/70,F/160,S/180,N/150,H/-90}{
+              \draw[fill=white,fill opacity=100] (\t) circle (1.5pt);
+            }
+        \end{tikzpicture}
+};
+
+%%Dãy thông tin phía dưới
+\path (current page.north east) coordinate (D) 
+		(current page.south west) coordinate (B);		
+\foreach[count=\i] \t in {{Đề thi học kỳ 2},{Đề kiểm tra chất lượng},{Đề tham khảo của các sở}}{
+	\path ($ (B)+(10.975,6.975) +({-0.3*\i},{-.9*\i}) $) node[anchor=west,font=\bfseries\sffamily\Large\color{gray!75}]{\textcolor{gray!50}{\rhombusdot}\, \t};
+	\path ($ (B)+(11,7) +({-0.3*\i},{-.9*\i}) $) node[anchor=west,font=\bfseries\sffamily\Large]{\textcolor{xanh}{\rhombusdot}\, \t};
+}
+
+\path ($ (CB) +(0,1.75)$) node[font=\bfseries\sffamily\Large\color{xanh!80!black}]{ĐỒNG THÁP \textendash\ 4\raisebox{1pt}{/}2023};
+\end{tikzpicture}
+
+\end{document}

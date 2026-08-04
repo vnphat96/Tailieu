@@ -1,0 +1,178 @@
+\documentclass[12pt,a4paper,twoside]{book}
+\usepackage{scrextend} %Tăng cỡ chữ
+\changefontsizes{13pt}%Cỡ chữ mới là 13pt
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{enumerate}
+\usepackage{multirow,makecell}
+\usepackage{fontawesome}
+\usepackage[tikz]{bclogo}
+\usepackage{tikz,tkz-tab,tkz-linknodes}
+\usepackage{venndiagram}
+\usetikzlibrary{arrows,calc,intersections,angles,snakes,quotes}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm] {geometry}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{currfile}
+\usepackage{ex_test}
+\def\colorEX{\color{violet}}
+\renewcommand{\dapan}{\stepcounter{dapan}{\textbf{\color{blue}\Alph{dapan}.}}}
+\newtheorem{bt}{Bài}
+\usepackage{esvect}
+\def\vec{\vv}
+\def\overrightarrow{\vv}
+%Lệnh cung
+\DeclareSymbolFont{largesymbols}{OMX}{yhex}{m}{n}
+\DeclareMathAccent{\wideparen}{\mathord}{largesymbols}{"F3}
+%Tạo background 
+%%%%%%%%%%%%%% Tạo header, footer và watermark
+\makeatletter
+\renewcommand{\@oddhead}{
+\tikz[remember picture,overlay]{
+\fill[violet!20] (current page.north west) rectangle  ([shift={(2cm,-1.8cm)}]current page.north east);
+\fill[violet!30] (current page.north east) -- +(-0.35*\textwidth,0)--([turn]45:2.55cm)--([shift={(2cm,-1.8cm)}]current page.north east)--cycle;
+\fill[violet!35] (current page.north east) -- +(-0.25*\textwidth,0)--([turn]45:2.55cm)--([shift={(2cm,-1.8cm)}]current page.north east)--cycle;
+\node[text=violet,anchor=west] at ([shift={(2cm,-1cm)}]current page.north west) {\href{https://www.facebook.com/groups/ToanTHCSVietNam/}{\faFacebookSquare~|~Nhóm Toán THCS Việt Nam}};
+\node[text=white,anchor=east] at ([shift={(-2cm,-1cm)}]current page.north east) {\href{https://www.facebook.com/groups/ToanTHCSVietNam/}{\bf \thepage}};
+}}
+
+\renewcommand{\@oddfoot}{\begin{tikzpicture}[remember picture,overlay]
+    \fill[violet!20] (current page.south west) rectangle  ([shift={(0,1.8cm)}]current page.south east);
+    \fill[violet!30] (current page.south west) -- +(0.35*\textwidth,0)--([turn]45:2.55cm)--([shift={(0,1.8cm)}]current page.south west)--cycle;
+    \fill[violet!35] (current page.south west) -- +(0.25*\textwidth,0)--([turn]45:2.55cm)--([shift={(0,1.8cm)}]current page.south west)--cycle;
+    \node[text=white,anchor=west] at ([shift={(1.75cm,0.85cm)}]current page.south west) {\href{https://www.facebook.com/groups/ToanTHCSVietNam/}{\bfseries\scshape Dự án~\duan}};   
+	\path (current page.south west)--(current page.north west) node[midway,sloped,gray!50,below=.5cm]{\fontsize{20pt}{15pt}\fontfamily{qag}\selectfont \faFacebookSquare~|~NHÓM TOÁN THCS VIỆT NAM - DỰ ÁN \duan};
+	 \end{tikzpicture}
+	 }
+	 
+\renewcommand{\@evenhead}{
+\tikz[remember picture,overlay]{
+\fill[violet!20] (current page.north west) rectangle  ([shift={(2cm,-1.8cm)}]current page.north east);
+\fill[violet!30] (current page.north west) -- +(0.35*\textwidth,0)--([turn]-45:2.55cm)--([shift={(0,-1.8cm)}]current page.north west)--cycle;
+\fill[violet!35] (current page.north west) -- +(0.25*\textwidth,0)--([turn]-45:2.55cm)--([shift={(0,-1.8cm)}]current page.north west)--cycle;
+\node[text=violet,anchor=east] at ([shift={(-2cm,-1cm)}]current page.north east) {\href{https://www.facebook.com/groups/ToanTHCSVietNam/}{\faCubes~|~Dự án~\duan}};
+\node[text=white,anchor=west] at ([shift={(2cm,-1cm)}]current page.north west) {\href{https://www.facebook.com/groups/ToanTHCSVietNam/}{\bf \thepage}};
+}}
+
+\renewcommand{\@evenfoot}{\begin{tikzpicture}[remember picture,overlay]
+	\path (current page.north east)--(current page.south east) node[midway,sloped,gray!50,below=.5cm]{\fontsize{20pt}{15pt}\fontfamily{qag}\selectfont \faFacebookSquare~|~NHÓM TOÁN THCS VIỆT NAM - DỰ ÁN \duan};
+	    \fill[violet!20] (current page.south west) rectangle  ([shift={(0,1.8cm)}]current page.south east);
+	    \fill[violet!30] (current page.south east) -- +(-0.35*\textwidth,0)--([turn]-45:2.55cm)--([shift={(0,1.8cm)}]current page.south east)--cycle;
+	    \fill[violet!35] (current page.south east) -- +(-0.25*\textwidth,0)--([turn]-45:2.55cm)--([shift={(0,1.8cm)}]current page.south east)--cycle;
+	\end{tikzpicture}}
+\makeatother
+%%%%%%%%%%%%%%
+
+%Lệnh của gói mathrsfs
+%\DeclareSymbolFont{rsfs}{U}{rsfs}{m}{n}
+%\DeclareSymbolFontAlphabet{\mathscr}{rsfs}
+%Lệnh cung
+%\DeclareSymbolFont{largesymbols}{OMX}{yhex}{m}{n}
+%\DeclareMathAccent{\wideparen}{\mathord}{largesymbols}{"F3}
+%Lệnh song song
+%\DeclareSymbolFont{symbolsC}{U}{txsyc}{m}{n}
+%\DeclareMathSymbol{\varparallel}{\mathrel}{symbolsC}{9}
+%\DeclareMathSymbol{\parallel}{\mathrel}{symbolsC}{9}
+%Hệ hoặc, hệ và
+\newcommand{\hoac}[1]{
+	\left[\begin{aligned}#1\end{aligned}\right.}
+\newcommand{\heva}[1]{
+	\left\{\begin{aligned}#1\end{aligned}\right.}
+\renewcommand{\baselinestretch}{1.4}
+
+%Tạo biến đếm số đề
+\newcounter{demsode}[section]
+
+%Chỉnh section
+\usepackage[framemethod=tikz]{mdframed}
+\mdfdefinestyle{RFrame}{%
+linecolor=violet,
+linewidth=3pt,
+topline=false,
+rightline=false,
+% leftline=false,
+bottomline=false,
+skipabove=-6pt,
+backgroundcolor=violet!10}
+\usepackage[explicit]{titlesec}
+\titleformat{\section}
+{\normalfont\fontsize{15}{17}\bfseries}
+{}{.5em}
+{\fontsize{18}{20}\selectfont\filcenter\color{violet}
+{\begin{mdframed}[style=RFrame,frametitle={}]
+\bfseries\scshape #1
+\end{mdframed}
+}
+}
+[]
+
+\makeatletter
+\renewcommand{\labelenumi}{\alph{enumi})}
+\makeatother
+\newenvironment{name}[2]{\par\noindent
+	\addtocounter{demsode}{1}
+	\noindent
+	\tikz\draw[double,violet,thick] (0,0)--+(\linewidth,0);	
+	
+	\vspace*{-6pt}
+	\begingroup
+	\begin{minipage}[t]{0.44\textwidth}
+	\begin{center}
+			{\large\color{black}\bfseries\fontfamily{anttlc}\selectfont TOÁN THCS VIỆT NAM}\\	
+			{\Large\color{violet}	\bfseries\fontfamily{anttlc}\selectfont CHUYÊN ĐỀ KHỐI 9 }\\			
+			\color{black}	{\bfseries\fontfamily{anttlc}\selectfont #1}\\
+			\rule{3cm}{1pt}
+	\end{center}
+	\end{minipage}
+	\begin{minipage}[t]{0.54\textwidth}
+	   \vspace*{0pt}
+		\color{violet}	
+		\begin{center}
+		%{\Large	\bfseries\fontfamily{anttlc}\selectfont\MakeUppercase{#2}}\\
+		{\bfseries\fontfamily{qag}\selectfont \MakeUppercase{#2} }\\
+		\addcontentsline{toc}{section}{Đề số \thedemsode.\, #2}
+		\end{center}
+	\end{minipage}
+	\endgroup
+	
+	\bigskip
+	\hspace*{1cm}
+	\textit{Họ và tên thí sinh:} \makebox[5cm]{\dotfill}
+	\textit{Lớp:} \dotfill \\
+	\tikz \draw[double,violet,remember picture,thick] (0,0)--(\linewidth,0);
+}
+
+%indapan
+\newcommand{\indapan}[2]{
+	\newpage %tùy chọn này in đáp án ở trang kế
+	\begin{center}
+		{\fbox{\color{red}\fontfamily{qag}\bfseries\selectfont ĐÁP ÁN ĐỀ SỐ \circled{\thedemsode}}}
+	\end{center}
+	\fontfamily{lmtt}\bfseries\selectfont	\inputansbox{11}{#2}
+}
+\usepackage[many]{tcolorbox}
+\newtcolorbox{luuyy}[1][]{breakable,enhanced,
+	before skip=2mm,after skip=3mm,
+	boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+	colback=black!5,
+	colframe=black!70,
+	sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+	underlay={%
+		\path[fill=yellow!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+		\path[draw=orange,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+		\path[fill=black!30!orange,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+	},
+	drop fuzzy shadow, #1}
+\newenvironment{luuy}{\begin{luuyy}}{\end{luuyy}}
+%%%%%%%%%%%%%% Tạo header, footer và watermark
+
+\usepackage{lipsum}
+%%%%%%%%%%%%
+\begin{document}
+	\def\duan{EP-01}
+
+	% File Mẫu Tự Luận
+	\input{data/DAI-SO-CHUONG-III-CHUYEN-DE-1}
+	\input{data/DAI-SO-CHUONG-III-TRAC-NGHIEM-CD-1}
+	\input{data/KIEM-TRA-TUAN-AMS}
+%	% File Mẫu Trắc Nghiệm
+%	\include{data/THCSVietnam-EP01_8_KiemTraHinhHoc_THCSGoVap_2016_TNTL}
+\end{document}

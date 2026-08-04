@@ -1,0 +1,195 @@
+\documentclass[a4paper,twoside,openleft]{book}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{vietnam}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{oplotsymbl,fontawesome}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{calc,angles,fadings,decorations.text,intersections,backgrounds}
+\usepackage{marvosym}
+\usepackage{qrcode}
+\definecolor{xanh}{HTML}{00CC99}
+%\definecolor{xanh}{HTML}{24A0C2}
+\definecolor{do}{HTML}{CC0033}
+\definecolor{vang}{RGB}{250,252,157}
+\usepackage[linkcolor=xanh,colorlinks]{hyperref}
+\begin{document}
+\thispagestyle{empty}
+\begin{tikzpicture}[overlay,remember picture,transform shape,
+  declare function={a=9; b=8;k=0.925;ca=1.25;} ]
+\clip (current page.north west) coordinate (A) 
+		rectangle (current page.south east) coordinate (C);
+\path (current page.north east) coordinate (D) 
+		(current page.south west) coordinate (B) 
+		($ (A)!0.5!(D) $) coordinate (AD)
+		($ (A)!0.5!(B) $) coordinate (AB)
+		($ (C)!0.5!(B) $) coordinate (CB)
+		($ (C)!0.5!(D) $) coordinate (CD)
+		($ (A)!0.5!(C) $) coordinate (AC);
+
+%%Bốn hình vuông, gốc trên bên phải
+\begin{scope}[shift={($ (D)+(-1.5,-2) $)}]
+ \foreach \i/\mau in {0/60,1/80,2/90,3/100}{
+   		\path[rounded corners=2pt,fill=xanh!\mau,preaction={transform canvas={shift={(-0.05,-0.05)}},fill=gray!\mau}] ({45+90*\i}:0.1) rectangle ({45+90*\i}:{ca});
+   }
+\end{scope}
+
+%%Gốc trên bên trái, thanh đứng và logo
+\fill[top color=xanh!50,bottom color=xanh] ($ (A)+(1.35,1) $) rectangle +(0.15,-4.5);
+
+%%Thay thế logo ở đây. Nếu logo bằng ảng thì dùng lệnh \includegraphics[width=2.5cm]{Tên file}
+\path ($ (A)+(3.5,-2.25) $) node[scale=0.35]{
+\begin{tikzpicture}[declare function={r =7;rl=r*sqrt(3);
+        rn=rl-r;ts=rn/r;},line join=miter,line cap=butt,color=xanh,x=0.5cm,y =0.5cm]
+  \def\duong{(90:r) arc (150:270:r)
+    arc(30:150:r)
+    arc(270:390:r)--cycle;}
+  \foreach \tl/\mau/\net in {0.385/1/3,0.625/0.8/4.5,1/0.65/5.5}{
+      \begin{scope}[scale=\tl,opacity=\mau,blend mode=darken]
+        \path[draw,line width=\net pt]
+        \duong;
+        \path[rotate=60,scale=ts,draw,line width=\net pt]
+        \duong;
+      \end{scope}
+    }
+  \path [
+    decorate,
+    decoration={
+        text along path,
+        text align={fit to path},
+        text color=xanh,
+        text={|\fontsize{25pt}{0pt}\selectfont\bfseries\sffamily|THEME LATEX AND RELATED TOPICS}
+      },
+  ] (225:{1.15*r}) arc (225:-45:{1.15*r}) ;
+  \path%[draw] 
+  (0,0) circle (1.35*r)
+  circle (1.03*r);
+\end{tikzpicture}
+};
+
+\path ($ (AD)+(1,-1.5) $) node[font=\Large\bfseries\sffamily]{TRƯỜNG TRUNG HỌC CƠ SỞ};
+
+%%Hình vuông lớn
+\tikzset{declare function={rl = 9; rn=6;rt=0.925*rn;rx=0.25*rl;}}		
+\begin{scope}[shift={($ (A)+(7,-13.5) $)}]
+		\foreach \i in {0,1,2,3}{
+			\path ({90*\i+90}:rl) coordinate (VL\i)
+				 ({90*\i+90}:rn) coordinate (VN\i)
+				 ({90*\i+90}:rt) coordinate (VT\i)
+				 ;
+		}
+	\path ($ (VL0)!0.5!(VL3) $) coordinate (TD2)
+			 ($ (VN0)!0.5!(VN3) $) coordinate (TD1)
+			 ($ 3*(VN3)-2*(VN2) $) coordinate (NN)
+			 ($ 3*(VL3)-2*(VL2) $) coordinate (NL);
+		\shade[inner color=gray!25,outer color=white,even odd rule]
+		   (VL0)--(VL1)--(VL2)--(VL3)--cycle
+		   (VN0)--(VN1)--(VN2)--(VN3)--cycle;
+	\shade[inner color=gray!10,outer color=gray!5]
+	     (VT0)--(VT1)--(VT2)--(VT3)--cycle;
+
+	\draw[line width=1.5pt,gray!50] ($ (TD1)!0.5!(TD2) $)--+(-45:5);
+		     
+	 \shade[inner color=xanh,outer color=xanh!75!white,preaction={transform canvas={shift={(0.05,-0.05)}},fill=gray!35}]
+		 (TD1)--(TD2)--(VL0)--(VL1)--(VL2)--(NL)--(NN)--(VN3)--(VN2)--(VN1)--(VN0)--cycle;
+
+%%Ly nước, có thể thay thế hình vào đây, lưu ý tên các biến.
+	\path (0.25,0) node{
+	\begin{tikzpicture}[smooth,samples=300,declare function={aa=2; bb =0.85; d = -3; goc=asin(bb/d); goch=180-goc;},thick,color=teal,>=stealth]
+	  %Lấy tọa độ đáy ly, chân ly, đáy nước chưa tịnh tiến
+	  \path (0,d) coordinate (O)
+	  +(0,0.65*d) coordinate (Oh)
+	  [scale=0.7] (0,d) coordinate (Op);
+	  %Phần nước được vị tự 7/10 và tịnh tiến về đáy
+	  \begin{scope}[scale=0.7,shift={($ (O)-(Op) $)}]
+	    %nước phần tam giác
+	    \fill[xanh!45] ({aa*cos(goch)},{bb*sin(goch)}) --(0,d) --
+	    ({aa*cos(goc )},{bb*sin(goc)})--cycle;
+	    %nước phần mặt trên elllipse
+	    \path[draw,dashed,draw opacity=0.75,thin]
+	    plot[domain=goc:goch,variable=\t]({aa*cos(\t )},{bb*sin(\t)});
+	    \path[draw,draw opacity=0.75,thin]
+	    plot[domain=goch:{360+goc},variable=\t]({aa*cos(\t )},{bb*sin(\t)});
+	    \path (30:{0.65*a and 0.65*b}) coordinate (TamNuoc);
+	    \path[inner color=xanh!50,outer color=xanh!70] (0,0)  ellipse (aa and bb);
+	  \end{scope}
+	  %ellipse biểu diễn chân ly
+	  \path[inner color=xanh!75,outer color=xanh,scale=0.65,shift={(Oh)}]
+	  plot[domain=0:360,variable=\t]({aa*cos(\t )},{bb*sin(\t)});
+	  %thân ly, phía ngoài      
+	  \draw ({aa*cos(180-goc)},{bb*sin(180-goc)}) coordinate (A)-- (0,d)--({aa*cos(goc)},{bb*sin(goc)}) coordinate (B)
+	  plot[domain=0:360,variable=\t]({aa*cos(\t )},{bb*sin(\t)});
+	  \draw[line width=3pt] ([yshift=2pt]O)--(Oh);
+	  %Miếng chanh
+	  \draw[fill=vang,line width=0.75pt] (A) circle (0.325*aa);
+	  \shade[inner color=xanh!85,outer color=xanh!25,line width=0.25pt] (A) circle (0.15*aa);
+	  \foreach \i  in {5,25,...,351}{
+	      \draw[ultra thin,magenta!65] (A)--+(\i:0.325*aa);
+	    }  
+	   \draw ({aa*cos(180-goc)},{bb*sin(180-goc)}) coordinate (A)
+	   -- (0,d)--({aa*cos(goc)},{bb*sin(goc)}) coordinate (B)
+	   plot[domain=180-goc:360,variable=\t]({aa*cos(\t )},{bb*sin(\t)});
+	   \draw[<->] ({aa+0.25},d)--({aa+0.25},0) node[sloped,pos=0.5,inner sep=1pt,fill=gray!7]{$ 9 $ cm};
+	  \draw[<->] ({aa-0.5},d)--({aa-0.5},{0.33*d}) node[sloped,pos=0.5,inner sep=1pt,fill=gray!7]{$ 6 $ cm};
+	  \draw[<->] (0,0)--(aa,0) node[sloped,pos=0.5,inner sep=1pt,fill=gray!7]{$ 3 $ cm};
+	  \draw[dashed] (0,d)--({aa+0.25},d);
+%	  ({aa-0.5},{0.33*d})--+(-0.75,0);
+	   \fill[ball color=yellow] ([yshift=2pt]O) circle (1.5pt);
+	   \fill[ball color=yellow] (Oh) circle (2.25pt);
+	 \end{tikzpicture}
+	}; 
+\end{scope}
+
+ %%Các hình vuông màu xám nhỏ 
+ \path (current page.north west) coordinate (A) 
+ 		(current page.south east) coordinate (C);
+ \begin{pgfonlayer}{background}
+ \begin{scope}[line width=1.5pt,color=gray!35]
+      \draw[transform canvas={shift={($ (VL0)!0.5!(VL1)$)}}]
+         ({90}:rx)--(180:rx)--(270:rx)--(0:rx)--cycle;
+       \draw ($ (TD1)!0.5!(VL0) $)--+(45:5)--([turn]-90:9);
+       \draw ($ (TD1)!0.5!(TD2) $)--+(-45:12)--([turn]-90:20);
+       \draw[densely dashed]($ (A)-(0,17.5) $)--+(-45:5)--([turn]-90:5);
+        \draw[densely dashed,shift={($ 1.25*(VL3)-0.25*(VL2)+(-2.5,2.5) $)}]
+         ({90}:{1.3*rx})--(180:{1.3*rx})--(270:{1.3*rx})--(0:{1.3*rx})--cycle;
+ \end{scope}
+ \end{pgfonlayer}
+
+%%Tên tài liệu
+\path ($ (C)+(-10,10) $) node (NA) [anchor=west,font=\fontsize{29pt}{0pt}\fontfamily{ugq}\bfseries\selectfont]{KHỐI TRÒN XOAY};
+
+\path (NA.south east) node (NB) [anchor=north east,outer sep=5pt,inner sep=0pt,
+font=\Huge\fontfamily{ugq}\bfseries\selectfont\color{xanh}]{LỚP 9};
+\draw[ultra thick] ([xshift=-5pt]NB.south east)--([xshift=5pt]NB.south west);
+
+%%Thông tin tài liệu
+\path ($ (NA.south west)+(0,-1)$) coordinate (T);
+\foreach[count=\i] \t in {{Tài liệu cập nhật thường xuyên},{Phù hợp nhiều mục tiêu},{Ứng dụng thực tế}}{
+	\path ($ (T)+({0.9*\i},{-0.9*\i}) $) node[anchor=west,font=\bfseries\sffamily\Large\color{gray!75}]{\textcolor{gray!50}{\rhombusdot}\, \t};
+	\path ($ (T)+(-0.025,0.025) +({0.9*\i},{-.9*\i}) $) node[anchor=west,font=\bfseries\sffamily\Large]{\textcolor{xanh}{\rhombusdot}\, \t};
+}
+
+%%Năm xuất bản tài liệu
+\fill[left color=xanh,right color=xanh!50] ($ (C)+(-4,2) $) coordinate (NAM)
+ rectangle +(5,-0.15);
+ \path ($ (NAM) + (0.25,0.25)$) node[anchor=south west,font=\Huge\fontfamily{ugq}\bfseries\selectfont]{2023};
+
+%%Mã QR địa chỉ
+\hypersetup{urlcolor=black}
+ \path ($ (NAM) + (-6,-0.5)$) node[anchor=south,font=\Large\bfseries\sffamily,
+ text width=7cm,align=center]{\faMapMarker\ 135, Phan Văn Cử\\
+ Cao Lãnh, Đồng Tháp};
+
+%%Thay đổi liên kết trong lệnh \qrcode{}
+\path ($ (NAM) + (-6,2.5)$) node[draw=xanh,fill=white,line width=1.5pt,rounded corners=3pt]{\qrcode[height=2cm]{https://forms.gle/QAuAH1qZUZLgauJm9}};
+
+%%Thông tin tác giả
+ \path ($ (NAM) + (-13,-0.5)$) node[anchor=south,font=\Large\bfseries\sffamily,
+ text width=7cm,align=center]{\Mobilefone\ 0919 999 999\\
+ Trần Lê Nam}; 
+ 
+ %%Thay đổi liên kết trong lệnh \qrcode{}
+  \path ($ (NAM) + (-13,2.5)$) node[draw=xanh,fill=white,line width=1.5pt,rounded corners=3pt]{\qrcode[height=2cm]{https://zalo.me/g/lcubia433}};
+\end{tikzpicture}
+\end{document}
