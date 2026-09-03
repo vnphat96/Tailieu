@@ -7,7 +7,7 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{oplotsymbl,fontawesome}
 \usepackage{tikz-3dplot}
-\usetikzlibrary{calc,angles,fadings,decorations.text,intersections,backgrounds}
+\usetikzlibrary{calc,angles,fadings,decorations.text,intersections,backgrounds,patterns}
 \usepackage{marvosym}
 \usepackage{qrcode}
 % \definecolor{xanh}{HTML}{00CC99}
@@ -99,39 +99,25 @@
 
 %%Ly nước, có thể thay thế hình vào đây, lưu ý tên các biến.
 	\path (0.25,0) node{
-	\begin{tikzpicture}[smooth,samples=300,scale=0.8,>=stealth,font=\footnotesize]
-			\draw[->] (-4,0)node[above right]{Bắc}--(6,0) node[below]{$x$} node[above left]{Nam};
-			\draw[->] (3,3)node[above right]{Tây}--(-2.3,-2.3) node[left]{$y$}node[below right]{Đông};
-			\draw[->] (0,0)--(0,4.5) node[right]{$z$};
-			\draw (0,0) node[below]{$O$};
-			\fill [scale=.1,black,yshift=12 cm,xshift=25 cm]
-			(-1,0) rectangle (1,1)
-			(-1,2).. controls +(135:1) and +(180:4) .. (0,7)
-			.. controls +(180:2) and +(135:2).. (-.5,2)
-			.. controls +(120:2) and +(180:1) .. (0,6.99)
-			.. controls +(0:1) and +(60:2) .. (.5,2)
-			.. controls +(45:2) and +(0:2) .. (0,7)
-			.. controls +(0:4) and +(45:1).. (1,2)
-			;
-			\draw[scale=.1,yshift=12 cm,xshift=25 cm] (-1,0) rectangle (1,2) (0,1)--(0,2);
-			;
-			\fill [scale=.1,blue,yshift=37 cm,xshift=-20 cm]
-			(-1,0) rectangle (1,1)
-			(-1,2).. controls +(135:1) and +(180:4) .. (0,7)
-			.. controls +(180:2) and +(135:2).. (-.5,2)
-			.. controls +(120:2) and +(180:1) .. (0,6.99)
-			.. controls +(0:1) and +(60:2) .. (.5,2)
-			.. controls +(45:2) and +(0:2) .. (0,7)
-			.. controls +(0:4) and +(45:1).. (1,2)
-			;
-			\draw[blue,scale=.1,yshift=37 cm,xshift=-20 cm] (-1,0) rectangle (1,2) (0,1)--(0,2);
-			;
-			\draw[dashed] (4,0)--(2.5,-1.5)--(-1.5,-1.5)
-			(2.5,1)--(0,0)--(2.5,-1.5)--(2.5,1);
-			\draw[dashed] (-3,0)--(-2,1)--(1,1) (-2,1)--(0,0)--(-2,3.5)--(-2,1)
-			;
-			\draw[fill=black] (2.5,1) circle(2pt) (-2,3.5) circle(2pt);
-		\end{tikzpicture}
+	\begin{tikzpicture}[line join=round, line cap=round,>=stealth,thick,scale=0.7]
+		\begin{scope}
+			\clip (-2,-1) rectangle (6,6);
+			% \fill[pattern=north east lines] (-3,-4)--(-3,6)--(2,6)--cycle;
+			% \fill[pattern=north east lines] (-3,0.5)--(-3,-1)--(6,-1)--(6,6)--(8,6)--cycle;
+			% \fill[pattern=north east lines] (-1,6)--(6,6)--(6,-1)--cycle;
+			\draw[samples=200,domain=-3:2,smooth,variable=\x] plot (\x,{2*(\x)+2});
+			\draw[samples=200,domain=-3:8,smooth,variable=\x] plot (\x,{0.5*(\x)+2});
+			\draw[samples=200,domain=-1:6,smooth,variable=\x] plot (\x,{-1*(\x)+5});
+		\end{scope}
+		\draw[->] (-2,0)--(6,0) node[below]{$x$};
+		\draw[->] (0,-1)--(0,6) node[left]{$y$};
+		\draw (0,0) node[below left]{$O$};
+		\foreach \x in {1,2,3,5} \draw[thin] (\x,1pt)--(\x,-1pt) node [below] {$\x$};
+		\foreach \x in {-1} \draw[thin] (\x,1pt)--(\x,-1pt) node [above left] {$\x$};
+		\foreach \y in {1,2,3,4,5} \draw[thin] (1pt,\y)--(-1pt,\y) node [left] {$\y$};
+		\draw[dashed] (2,0)--(2,3) node[above]{$C$}--(0,3) (1,0)--(1,4)node[right]{$B$}--(0,4);
+		\draw (0,2) node[below right]{$A$};
+	\end{tikzpicture}
 	}; 
 \end{scope}
 
