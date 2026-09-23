@@ -1,22 +1,36 @@
 \subsection{PHÂN LOẠI, PHƯƠNG PHÁP GIẢI TOÁN}
 \begin{dang}{Các quan hệ cơ bản}
 	\begin{itemize}
-		\item [\ding{172}] Chứng minh điểm $A$ thuộc $(\alpha)$: Ta chứng tỏ điểm $A$ thuộc đường thẳng $\Delta$ nằm trong $\alpha$, nghĩa là
-		$$\heva{&A \in \Delta \\& \Delta \subset (\alpha)} \Rightarrow A \in (\alpha).$$
-		\item [\ding{173}] Chứng minh đường thẳng $d$ nằm trong $(\alpha)$: Ta chứng tỏ $d$ có hai điểm phân biệt cùng thuộc $(\alpha)$, nghĩa là
-		$$\heva{&A \in (\alpha), B \in (\alpha)\\& A,\,B \in d} \Rightarrow d \subset (\alpha).$$
-		\item [\ding{174}] Chứng minh $A$ là điểm chung của hai mặt phẳng $(\alpha)$ và $(\beta)$:Ta thường sử dụng một trong hai cách sau
-		$$\heva{&A \in (\alpha) \\& A \in (\beta)} \Rightarrow A \in (\alpha) \cap  (\beta).$$ 
-		hoặc 
-		$$\heva{&d \subset (\alpha), \Delta \subset (\beta)\\& d \cap \Delta = A} \Rightarrow A \in (\alpha) \cap  (\beta).$$
+		\item [\ding{172}] Chứng minh điểm $A$ thuộc $(\alpha)$: %Ta chứng tỏ điểm $A$ thuộc đường thẳng $\Delta$ nằm trong $\alpha$, nghĩa là
+		$\heva{&A \in \Delta \\& \Delta \subset (\alpha)} \Rightarrow A \in (\alpha).$
+		\item [\ding{173}] Chứng minh đường thẳng $d$ nằm trong $(\alpha)$: %Ta chứng tỏ $d$ có hai điểm phân biệt cùng thuộc $(\alpha)$, nghĩa là
+		$\heva{&A \in (\alpha), B \in (\alpha)\\& A,\,B \in d} \Rightarrow d \subset (\alpha).$
+		\item [\ding{174}] Chứng minh $A$ là điểm chung của hai mặt phẳng $(\alpha)$ và $(\beta)$:%Ta thường sử dụng một trong hai cách sau
+		$$\heva{&A \in (\alpha) \\& A \in (\beta)} \Rightarrow A \in (\alpha) \cap  (\beta).
+		\quad \text{ hoặc }\quad
+		\heva{&d \subset (\alpha), \Delta \subset (\beta)\\& d \cap \Delta = A} \Rightarrow A \in (\alpha) \cap  (\beta).$$
 	\end{itemize}
 \end{dang}
 \begin{vd}
-	Cho tam giác $ABC$ và điểm $S$ không thuộc mặt phẳng $(ABC)$. Lấy $D, E$ là các điểm lần lượt thuộc các cạnh $SA, SB$ ($D, E$ khác $S$).
+	\immini{Cho tam giác $ABC$ và điểm $S$ không thuộc mặt phẳng $(ABC)$. Lấy $D, E$ là các điểm lần lượt thuộc các cạnh $SA, SB$ ($D, E$ khác $S$).
 	\begin{enumerate}[a)]
 		\item Đường thẳng $DE$ có nằm trong mặt phẳng $(SAB)$ không?
 		\item Giả sử $DE$ cắt $AB$ tại $F$. Chứng minh rằng $F$ là điểm chung của hai mặt phẳng $(SAB)$ và $(CDE)$.
 	\end{enumerate}
+	\dongcham{5}}
+	{\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round]
+		\path
+		(0,0) coordinate (A)
+		+(4,0) coordinate (B)
+		+(-35:3) coordinate (C) 
+		+(75:4) coordinate (S)
+		;
+		\draw[dashed] (S)--(A)--(C)--(B)--cycle (S)--(C);
+		\draw[dashed] (A)--(B);
+
+		\foreach \d/\g in {A/-135, B/-45, C/-45,S/135}
+		{\fill (\d)circle(1.5pt) node[shift=(\g:10pt)] {$\d$};}
+	\end{tikzpicture}}
 	\loigiai{
 		\immini{
 			a) Ta có $D \in SA$, mà $SA \subset (SAB)$ nên $D \in (SAB)$.\\
@@ -28,38 +42,52 @@
 			Mặt khác, $F \in AB$, mà $AB \subset (SAB)$ nên suy ra $F \in (SAB)$. \quad (2)\\
 			Từ (1) và (2), ta kết luận $F$ là điểm chung của hai mặt phẳng $(SAB)$ và $(CDE)$.
 		}{
-			\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
-				\coordinate (A) at (2,1.5);
-				\coordinate (B) at (0,0);
-				\coordinate (C) at (4,0);
-				\coordinate (S) at (1.5,4);
-				\coordinate (D) at ($(S)!0.4!(A)$);
-				\coordinate (E) at ($(S)!0.7!(B)$);
-				\coordinate (F) at (intersection of D--E and A--B);
-				
-				\draw[dashed] (B) -- (A) -- (C) (S) -- (A) (D) -- (E) (A) -- (F) (D) -- (F);
-				\draw (S) -- (B) -- (C) -- cycle;
-				\draw (S) -- (C) (C) -- (D) (C) -- (E);
-				\draw (E) -- (F) -- (B);
-				
-				\fill (A) circle (1.5pt) node[above right] {$A$};
-				\fill (B) circle (1.5pt) node[below left] {$B$};
-				\fill (C) circle (1.5pt) node[below right] {$C$};
-				\fill (S) circle (1.5pt) node[above] {$S$};
-				\fill (D) circle (1.5pt) node[right] {$D$};
-				\fill (E) circle (1.5pt) node[left] {$E$};
-				\fill (F) circle (1.5pt) node[below] {$F$};
-			\end{tikzpicture}
+			\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round]
+		\path
+		(0,0) coordinate (A)
+		+(4,0) coordinate (B)
+		+(-35:3) coordinate (C) 
+		+(75:4) coordinate (S)
+		($(S)!0.6!(A)$) coordinate (D)
+		($(S)!0.3!(B)$) coordinate (E)
+		(intersection of D--E and A--B) coordinate (F)
+		;
+		\draw (S)--(D)--(F)--(C)--(B)--(S) (D)--(C)--(E) (S)--(C);
+		\draw[dashed] (F)--(B) (E)--(D)--(A)--(C) (A)--(B);
+
+		\foreach \d/\g in {A/-135, B/-45, C/-45,S/135,E/45,D/135,F/135}
+		{\fill (\d)circle(1.5pt) node[shift=(\g:10pt)] {$\d$};}
+	\end{tikzpicture}
 		}
 	}
 \end{vd}
-\dongcham{5}
+
 \begin{vd}
-	Cho hình chóp $S.ABCD$, gọi $O$ là giao điểm của $AC$ và $BD$. Lấy $M, N$ lần lượt thuộc các cạnh $SA, SC$.
+	\immini{Cho hình chóp $S.ABCD$, gọi $O$ là giao điểm của $AC$ và $BD$. Lấy $M, N$ lần lượt thuộc các cạnh $SA, SC$.
 	\begin{enumerate}[a)]
 		\item Chứng minh rằng đường thẳng $MN$ nằm trong mặt phẳng $(SAC)$.
 		\item Chứng minh rằng $O$ là điểm chung của hai mặt phẳng $(SAC)$ và $(SBD)$.
 	\end{enumerate}
+	\dongcham{6}}
+	{\begin{tikzpicture}[scale=.8, font=\footnotesize, line join=round, line cap=round]
+\path 
+(0:0) coordinate (A)
++(0:5) coordinate (B)
++(-30:5) coordinate (C)
++(-70:2) coordinate (D)
++(70:4) coordinate (S)
+;
+\draw[dashed] 
+(A)--(B)
+;
+\draw[dashed]
+(S)--(A)--(D)--(C)--(B)--cycle
+(S)--(D) (S)--(C)
+;
+\foreach \x/\g in {A/180,B/0,C/-90,D/-90,S/90}
+\fill (\x) circle (1.5pt)
++(\g:3mm) node {$\x$};
+\end{tikzpicture}}
 	\loigiai{
 		\immini{
 			a) Ta có $M \in SA$, mà $SA \subset (SAC)$ nên $M \in (SAC)$.\\
@@ -97,7 +125,7 @@
 		}
 	}
 \end{vd}
-\dongcham{6}
+
 \begin{vd}
 	\immini{
 		Cho hình tứ diện $ABCD$. Gọi $I$ là trung điểm cạnh $CD$. Gọi $M, N$ lần lượt là trọng tâm của các tam giác $BCD, CDA$.
@@ -105,43 +133,26 @@
 			\item[a)] Chứng minh rằng các điểm $M, N$ thuộc mặt phẳng $(ABI)$.
 			\item[b)] Gọi $G$ là giao điểm của $AM$ và $BN$. Chứng minh rằng $\dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}$.
 		\end{enumerate}
+		\dongcham{6}
 	}{
 		\begin{tikzpicture}[scale=0.9, line join=round, line cap=round, font=\footnotesize]
-			\coordinate (A) at (0,4);
-			\coordinate (B) at (-2,1);
-			\coordinate (C) at (1,-1.5);
-			\coordinate (D) at (4,1);
-			
-			\coordinate (I) at ($(C)!0.5!(D)$);
-			\coordinate (M) at ($(B)!2/3!(I)$);
-			\coordinate (N) at ($(A)!2/3!(I)$);
-			\coordinate (G) at (intersection of A--M and B--N);
-			
-			\draw[dashed] (B) -- (D);
-			\draw[dashed] (B) -- (I);
-			\draw[dashed] (A) -- (M);
-			\draw[dashed] (B) -- (N);
-			\draw[dashed, red, thick] (M) -- (N);
-			
-			\draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
-			\draw[thick] (A) -- (C);
-			\draw[thick] (A) -- (I);
-			
-			\node[above] at (A) {$A$};
-			\node[left] at (B) {$B$};
-			\node[below] at (C) {$C$};
-			\node[right] at (D) {$D$};
-			\node[below right] at (I) {$I$};
-			\node[below] at (M) {$M$};
-			\node[right] at (N) {$N$};
-			\node[below left] at (G) {$G$};
-			
-			\fill (I) circle (1.5pt);
-			\fill (M) circle (1.5pt);
-			\fill (N) circle (1.5pt);
-			\fill (G) circle (1.5pt);
+			\path
+			(0,0) coordinate (B)
+			+(4,0) coordinate (D)
+			+(75:4) coordinate (A)
+			+(-45:2) coordinate (C)
+			($(C)!0.5!(D)$) coordinate (I)
+			($(B)!2/3!(I)$) coordinate (M)
+			($(A)!2/3!(I)$) coordinate (N)
+			(intersection of A--M and B--N) coordinate (G)
+			;
+			\draw (A)--(B)--(C)--(D)--cycle (A)--(C) (A)--(I);
+			\draw[dashed] (D)--(B)--(I) (A)--(M) (B)--(N);
+			\foreach \d/\g in {A/90, B/-135, C/-45, D/-45, I/-45, M/-90, N/45, G/-135} 
+			 {\fill (\d)circle(1.5pt) node[shift=(\g:10pt)]{$\d$};}
 		\end{tikzpicture}
 	}
+	\dongcham{6}
 	\loigiai{
 		\textbf{Nhắc lại kiến thức:}
 		\begin{itemize}
@@ -179,7 +190,7 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 (Điều phải chứng minh).
 		\end{enumerate}
 	}
-\end{vd}\dongcham{15}
+\end{vd}
 \begin{dang}{Xác định giao tuyến của hai mặt phẳng}
 	Cho hai mặt phẳng $(\alpha)$ và $(\beta)$ cắt nhau. Để xác định giao tuyến của chúng, ta đi tìm hai điểm chung phân biệt. Cụ thể, ta thường gặp một trong ba trường hợp sau:
 \begin{itemize}
@@ -198,12 +209,11 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 \begin{vd}
 	\immini{Cho tứ giác $ABCD$ sao cho các cạnh đối không song song với nhau. Lấy một điểm $S$ không thuộc mặt phẳng $\left(ABCD\right)$. Xác định giao tuyến của 
 		\begin{itemize}
-			\item [a)] Mặt phẳng $\left(SAC\right)$ và mặt phẳng $\left(SBD\right)$. 
-			\item [b)] Mặt phẳng $\left(SAB\right)$ và mặt phẳng $\left(SCD\right)$.
-			\item [c)] Mặt phẳng $\left(SAD\right)$ và mặt phẳng $\left(SBC\right)$.  
+			\item [a)] Mặt phẳng $\left(SAC\right)$ và mặt phẳng $\left(SBD\right)$. \dongcham{5}
+			\item [b)] Mặt phẳng $\left(SAB\right)$ và mặt phẳng $\left(SCD\right)$.\dongcham{5}
 		\end{itemize}
 	}{
-		\begin{tikzpicture}[scale=0.5, font=\footnotesize, line join=round, line cap=round, >=stealth]
+		\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
 			\tkzDefPoints{0/0/A, 1/-1.5/D, 6/0/B, 4/-2.5/C, 2/3.5/S}
 			\tkzLabelPoints[above](S)
 			\tkzLabelPoints[above left](A)
@@ -211,8 +221,11 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			\tkzLabelPoints[right](B,C)
 			\tkzDrawPoints[fill=black](A,B,C,D)
 			\tkzDrawSegments[dashed](B,A)
-			\tkzDrawSegments(S,A S,B S,C S,D A,D D,C C,B)
+			\tkzDrawSegments[dashed](S,A S,B S,C S,D A,D D,C C,B)
 	\end{tikzpicture}}
+	\begin{itemize}
+		\item [c)] Mặt phẳng $\left(SAD\right)$ và mặt phẳng $\left(SBC\right)$.\dongcham{5}  
+	\end{itemize}
 	\loigiai{
 		\begin{itemize}
 			\immini{	
@@ -243,18 +256,18 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 					\tkzDrawSegments(S,C S,B S,D D,K S,K B,C D,L C,L S,L)
 			\end{tikzpicture}}
 			\item[c)] Gọi $L$ là giao điểm của hai đường thẳng $AD$ và $BC$.\\
-			Khi đó $\heva{&L\in AD\\&K\in BC}\Rightarrow L\in \left(SAD\right)\cap\left(SBC\right)\quad (5)$.
+			Khi đó $\heva{&L\in AD\\&L\in BC}\Rightarrow L\in \left(SAD\right)\cap\left(SBC\right)\quad (5)$.
 			Mặt khác $S\in \left(SAD\right)\cap\left(SBC\right)\quad (6)$.\\
 			Từ $(5)$ và $(6)$ suy ra $SL=\left(SAD\right)\cap\left(SBC\right)$.
 		\end{itemize}
 	}
-\end{vd}\dongcham{15}
+\end{vd}%\dongcham{15}
 
 \begin{vd}
 	\immini{Cho tứ diện $ABCD$. Lấy các điểm $M$ thuộc cạnh $AB$, $N$  thuộc cạnh $AC$ sao cho $MN$ cắt $BC$. Gọi $I$ là điểm bên trong tam giác $BCD$. Tìm giao tuyến của mặt phẳng $\left(MNI\right)$ với các mặt phẳng $\left(ABC\right)$, $\left(BCD\right)$, $\left(ABD\right)$, $\left(ACD\right)$.  
-		\cham{7}
+		\dongcham{9}
 	}{
-	\begin{tikzpicture}[scale=0.7, font=\footnotesize,>=stealth]
+	\begin{tikzpicture}[scale=0.8, font=\footnotesize,>=stealth]
 		\path
 		%	Vẽ mp
 		(0,0) coordinate (B)
@@ -265,10 +278,11 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 		($(A)!0.6!(B)$)coordinate (M)
 		($(C)!0.7!(A)$)coordinate (N)
 		;
-		\draw (B)--(A)--(D)--(C)--(A) (B)--(D);
+		\draw[dashed] (B)--(A)--(D)--(C)--(A) (B)--(D);
 		\draw[dashed] (M)--(N)--(I)--cycle (B)--(C);
 		\foreach \x/\g in {B/180,A/90,C/0,D/-90,M/180,I/30,N/30}\draw[fill=black] (\x) circle (.05) +(\g:.5)node{\footnotesize$\x$};
 \end{tikzpicture}}
+\dongcham{6}
 	\loigiai{
 		\begin{itemize}
 			\immini{
@@ -336,7 +350,7 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			\end{itemize}
 		\end{itemize}
 	}
-\end{vd}\dongcham{10}
+\end{vd}
 
 \begin{vd}
 	\immini{Cho hình chóp $S.ABCD$ đáy là hình bình hành tâm $O$. Gọi $M$, $N$, $P$ lần lượt là trung điểm của cạnh $BC$, $CD$, $SA$. Tìm giao tuyến của 
@@ -345,17 +359,18 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			\task $(MNP)$ và $(SBC)$.
 			\task $(MNP)$ và $(SAD)$.
 			\task $(MNP)$ và $(SCD)$.
-	\end{tasks}}{
+	\end{tasks} \dongcham{3}}{
 		\begin{tikzpicture}
-			[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+			[scale=1, font=\footnotesize, line join=round, line cap=round, >=stealth]
 			\tkzDefPoints{0/0/A,-1.3/-1.6/B,2.5/-1.6/C}
 			\coordinate (D) at ($(A)+(C)-(B)$);
 			\coordinate (S) at ($(A)+(0.5,2.5)$);
 			\coordinate (P) at ($(S)!0.5!(A)$);
 			\coordinate (M) at ($(B)!0.5!(C)$);
 			\coordinate (N) at ($(C)!0.5!(D)$);
+			\draw ($(D)!-1!(A)$);
 			\tkzDrawPoints[fill=black](D,C,A,B,S,M,N,P)
-			\tkzDrawPolygon(S,B,C,D)
+			\tkzDrawPolygon[dashed](S,B,C,D)
 			\tkzDrawPolygon[dashed](M,N,P)
 			\tkzDrawSegments[dashed](A,B A,D A,S)
 			\tkzDrawSegments(S,C)
@@ -435,15 +450,36 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 		\end{itemize}
 		
 	}
-\end{vd}\dongcham{34}
+\end{vd}\dongcham{15}
 
 \begin{vd}
-	Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M,P$ lần lượt là trung điểm của $SA, BC$. $N$ là điểm trên cạnh $SB$ sao cho $BN=\dfrac{1}{4}BS$. Xác định giao tuyến của mặt phẳng $(MNP)$ với các mặt phẳng
+	\immini{Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M,P$ lần lượt là trung điểm của $SA, BC$. $N$ là điểm trên cạnh $SB$ sao cho $BN=\dfrac{1}{4}BS$. Xác định giao tuyến của mặt phẳng $(MNP)$ với các mặt phẳng
 	\begin{tasks}(3)
 		\task $(ABCD)$.
 		\task $(SAD)$.
 		\task $(SCD)$.
 	\end{tasks}
+	\dongcham{7}}
+	{\begin{tikzpicture}[scale=.8]
+				\tkzDefPoints{0/0/A, -2/-2/B, 4/0/D}
+				\coordinate (C) at ($(B)+(D)-(A)$);
+				\coordinate (S) at ($(A)+(0,4)$);
+				\coordinate (M) at ($(A)!0.5!(S)$);
+				\coordinate (P) at ($(B)!0.5!(C)$);
+				\coordinate (Q) at ($(C)!0.5!(D)$);
+				\tkzInterLL(P,Q)(A,B) \tkzGetPoint{I}
+				\tkzInterLL(P,Q)(A,D) \tkzGetPoint{K}
+				\tkzInterLL(M,I)(S,B) \tkzGetPoint{N}
+				\tkzInterLL(M,K)(S,D) \tkzGetPoint{R}
+				% \tkzDrawSegments(S,N N,I I,P P,N P,C C,Q C,S Q,R Q,K K,R R,S)
+				% \tkzDrawSegments[dashed](S,A A,I B,P B,N A,K Q,P R,D M,N M,R Q,D)
+				\draw[dashed] (S)--(B)--(C)--(D)--(S)--(A)--(B) (A)--(D);
+				\draw (K);
+				\tkzLabelPoints[above](S)
+				\tkzLabelPoints[below](B,C,D,A)
+				% \tkzLabelPoints[left](N)
+				% \tkzLabelPoints[above right](M)
+			\end{tikzpicture}}
 	\loigiai{
 		\immini{a) Gọi $I$ là giao điểm của $MN$ và $AB$, khi đó ta có $\heva{&I\in MN\\&I\in AB}\Rightarrow \heva{&I\in (MNP)\\&I\in (ABCD)}.$\hfill (1)\\
 			Hiển nhiên $\heva{&P\in (MNP)\\&P\in (ABCD)}.$\hfill (2)\\
@@ -474,7 +510,7 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			\end{tikzpicture}
 		}
 	}
-\end{vd}\dongcham{20}
+\end{vd}\dongcham{6}
 
 \begin{dang}{Tìm giao điểm của đường thẳng và mặt phẳng}
 	\begin{note}
@@ -524,11 +560,31 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 \end{dang}
 
 \begin{vd}
-	Cho tứ diện $ABCD$. Gọi $M,N$ lần lượt là trung điểm của $AC$ và $BC$. $K$ là điểm nằm trên $BD$ sao cho $KD<KB$. 
+	\imminiL{Cho tứ diện $ABCD$. Gọi $M,N$ lần lượt là trung điểm của $AC$ và $BC$. $K$ là điểm nằm trên $BD$ sao cho $KD<KB$. 
 	\begin{tasks}
 		\task Tìm giao điểm của $CD$ với mặt phẳng $(MNK)$.
 		\task Tìm giao điểm của $AD$ với mặt phẳng $(MNK)$.
 	\end{tasks}
+	\dongcham{5}}
+	{\begin{tikzpicture}[line cap=round, line join=round,font=\footnotesize,>=stealth, scale=1]
+					\tikzset{label style/.style={font=\footnotesize}}
+					\tkzDefPoints{0/0/B, 4/0/D, 3/-1.5/C, 1/2.5/A}
+					\tkzDefBarycentricPoint(B=0.2,D=0.8)\tkzGetPoint{K}
+					\tkzDefMidPoint(A,C)\tkzGetPoint{M}
+					\tkzDefMidPoint(B,C)\tkzGetPoint{N}
+					\tkzInterLL(N,K)(C,D)\tkzGetPoint{I}
+					\tkzInterLL(I,M)(A,D)\tkzGetPoint{H}
+					\tkzDrawSegments[dashed](B,D)
+					\tkzDrawSegments[dashed](A,B B,C A,D A,C C,D)
+					
+					\tkzDrawPoints[fill=black](A,B,C,D)
+					\tkzLabelPoints[above](A)
+					\tkzLabelPoints[left](B)
+					\tkzLabelPoints[below](C)
+					\tkzLabelPoints[below right](D)
+					% \tkzLabelPoints[above right](I,H)
+					% \tkzLabelPoints[below left](N)
+			\end{tikzpicture}}
 	\loigiai{
 		\begin{enumerate}[a)]
 			\immini{	\item Tìm giao điểm của $CD$ với mp$(MNK)$.
@@ -564,7 +620,7 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			Trong mặt phẳng $(ACD)$, gọi $H=AD \cap MI$. Ta có
 			$$\heva{&H \in AD\\& H \in MI, MI \subset (MNK)}\Rightarrow H=AD \cap (MNK).$$		
 	\end{enumerate}}
-\end{vd}\dongcham{17}
+\end{vd}\dongcham{7}
 
 \begin{vd}
 	Cho tứ diện $ABCD$. trên cạnh $AC$ và $AD$ lấy hai điểm $M$, $N$ sao cho $AC=3AM$ và $AN=\dfrac{2}{3}AD$. Gọi $O$ là điểm bên trong tam giác $(BCD)$.
@@ -712,31 +768,32 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			\end{tikzpicture}
 		} 
 	}
-\end{vd}\dongcham{14}
-
+\end{vd}\dongcham{16}
+\newpage
 \begin{dang}{Chứng minh ba điểm thẳng hàng}
 \begin{note}
 	Muốn chứng minh ba điểm $A$, $B$, $C$ thẳng hàng, ta chứng minh ba điểm đó lần lượt thuộc hai mặt phẳng phân biệt $(\alpha)$ và $(\beta)$, nghĩa là chúng cùng nằm trên một đường giao tuyến.
 \end{note}
 	\immini{	\begin{itemize}
 			\item [$\bullet$]  Ta có $A=a \cap b$, mà $a \subset (\alpha)$, $b \subset (\beta)$ nên
-			$$A \in (\alpha) \cap (\beta) \quad (1)$$
+			$A \in (\alpha) \cap (\beta)$
 			\item [$\bullet$] Tương tự ta cũng tìm xem $B$ và $C$ tương ứng là giao của cặp đường thẳng nào nằm trong $(\alpha)$ và $(\beta)$. Từ đó, suy ra
-			$$B \in (\alpha) \cap (\beta) \quad (2)$$
+			$B \in (\alpha) \cap (\beta)$
 			và 
-			$$C \in (\alpha) \cap (\beta) \quad(3)$$
+			$C \in (\alpha) \cap (\beta)$
 		\end{itemize}
+		Suy ra $A$, $B$, $C$ cùng thuộc đường giao tuyến của $(\alpha)$ và $(\beta)$, nên chúng thẳng hàng.
 	}	
-	{\begin{tikzpicture}[scale=0.65, font=\footnotesize,line join=round, line cap=round,>=stealth]
-			\tikzset{label style/.style={font=\footnotesize}}
+	{\begin{tikzpicture}[scale=0.5, font=\small,line join=round, line cap=round,>=stealth]
+			% \tikzset{label style/.style={font=\footnotesize}}
 			\tkzDefPoints{0/0/M,7/0/N,10/-2/P,3/-2/Q,6/2/X,3/5/Y, 2.5/3/E, 5.5/-1/F}
 			\tkzInterLL(M,N)(Q,X)\tkzGetPoint{T}
 			\coordinate (A) at ($(M)!0.15!(Q)$);
 			\coordinate (B) at ($(M)!0.45!(Q)$);
 			\coordinate (C) at ($(M)!0.84!(Q)$);
 			\tkzInterLL(A,F)(X,Q)\tkzGetPoint{I}
-			\tkzDrawPoints[size=5,fill=black](A,B,C)
-			\tkzLabelPoints[below](A,B,C)
+			\tkzDrawPoints[size=3,fill=black](A,B,C)
+			\tkzLabelPoints[below left](A,B,C)
 			\tkzLabelSegment(I,F){$b$}
 			\tkzLabelSegment(A,E){$a$}
 			\tkzLabelAngles[pos=0.6,rotate=30](M,Y,X){$\alpha$}
@@ -746,8 +803,8 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			\tkzDrawSegments[dashed](M,T A,I)
 			\tkzMarkAngles[size=1cm,arc=l](M,Y,X)
 			\tkzMarkAngles[size=1.35cm,arc=l](N,P,Q)
-		\end{tikzpicture}\hspace{-2cm}}
-		Từ (1), (2), (3) suy ra $A$, $B$, $C$ cùng thuộc đường giao tuyến nên chúng thẳng hàng.
+		\end{tikzpicture}}
+		
 	
 \end{dang}
 \begin{vd}
@@ -788,7 +845,7 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			Vậy ba điểm $D$, $I$, $J$ thẳng hàng.
 		\end{enumerate}	
 	}
-\end{vd}\dongcham{22}
+\end{vd}\dongcham{14}
 
 \begin{vd}
 	Cho hình chóp $S.ABCD$ có đáy là hình bình hành. Gọi $O$ là giao điểm của $AC$ và $BD$; $M,N$ lần lượt là trung điểm của $SB,SD$; $P$ thuộc đoạn $SC$ và không là trung điểm của $SC$.
@@ -848,7 +905,7 @@ $$ \dfrac{GM}{GA} = \dfrac{GN}{GB} = \dfrac{1}{3}. $$
 			Vậy $I, J, K$ thẳng hàng.
 		\end{enumerate}
 	}
-\end{vd}\dongcham{26}
+\end{vd}\dongcham{18}
 
 \subsection{BÀI TẬP TỰ LUYỆN}
 
