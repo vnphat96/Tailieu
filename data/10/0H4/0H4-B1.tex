@@ -85,7 +85,7 @@ Các vectơ có thể là $\vec{AB}$, $\vec{AC}$, $\vec{BC}$, $\vec{BA}$, $\vec{
 \loigiai{
 \begin{enumerate}[a)]
 	\item Hai vectơ cùng phương với $\vec{OA}$ là $\vec{AC}$, $\vec{OC}$ hoặc $\vec{CA}$, $\vec{OA}$,...
-	\item vectơ cùng hướng với $\vec{OB}$ là $\vec{DB}$; hướng với $\vec{OB}$ là $\vec{BO}$ và $\vec{BD}$.
+	\item Vectơ cùng hướng với $\vec{OB}$ là $\vec{DB}$; hướng với $\vec{OB}$ là $\vec{BO}$ và $\vec{BD}$.
 \end{enumerate}}
 \end{vd} \dongcham{1}
 
@@ -153,19 +153,18 @@ Các vectơ có thể là $\vec{AB}$, $\vec{AC}$, $\vec{BC}$, $\vec{BA}$, $\vec{
 		\begin{tasks}(1)
 			\task Tìm các vectơ bằng với $\vec{EF}$.
 			\task Tìm các vectơ bằng với $\vec{OB}$.
-	\end{tasks}}{\hspace{1cm}
-		\begin{tikzpicture}[scale=0.7]
-		\tkzDefPoint(0,0){O}
-		\tkzDefPoint(2,0){E}
-		\tkzDefPointBy[rotation = center O angle 60](E) \tkzGetPoint{F}
-		\tkzDefPointBy[rotation = center O angle 120](E) \tkzGetPoint{A}
-		\tkzDefPointBy[rotation = center O angle 180](E) \tkzGetPoint{B}
-		\tkzDefPointBy[rotation = center O angle 240](E) \tkzGetPoint{C}
-		\tkzDefPointBy[rotation = center O angle 300](E) \tkzGetPoint{D}
-		\tkzDrawPoints[size=2,fill=black](A,B,C,D,E,F,O)
-		\tkzDrawSegments(A,B B,C C,D D,E E,F F,A)
-		\draw (A) node[above] {$A$} (B) node[left] {$B$} (C) node[below] {$C$} (D) node[below] {$D$} (E) node[right] {$E$} (F) node[above] {$F$} (O) node[below left] {$O$};
-		\end{tikzpicture}}
+	\end{tasks}}{		
+		\begin{tikzpicture}[line cap=round, line join=round, scale = 0.7, font=\small]
+			\path
+			(0,0) coordinate (O)
+			;
+			\foreach \d/\g in {A/180,B/-120,C/-60,D/0,E/60,F/120}
+			{
+				\path (\g:2) coordinate (\d); \fill (\d)circle(1.5pt) node[shift=(\g:10pt)]{$\d$}; 
+			}
+			\draw (A)--(B)--(C)--(D)--(E)--(F)--cycle (A)--(D) (B)--(E) (C)--(F);
+		\end{tikzpicture}
+	}
 	\loigiai{
 	\begin{enumerate}
 		\item[a)] Các vectơ bằng với $\overrightarrow{EF}$ (cùng hướng và cùng độ dài với $\overrightarrow{EF}$) là: $\overrightarrow{DO}, \overrightarrow{OA}$ và $\overrightarrow{CB}$.
@@ -193,20 +192,12 @@ Các vectơ có thể là $\vec{AB}$, $\vec{AC}$, $\vec{BC}$, $\vec{BA}$, $\vec{
 	\tkzLabelPoints[below left,font=\footnotesize](G)
 	\end{tikzpicture}}
 \loigiai{
-\begin{enumerate}
-	\item[a)] Vì $G$ là trọng tâm của tam giác $ABC$ nên ta có đẳng thức vectơ:
-	$$ \overrightarrow{GA} + \overrightarrow{GB} + \overrightarrow{GC} = \vec{0} \Leftrightarrow -\overrightarrow{AG} + \overrightarrow{GB} + \overrightarrow{GC} = \vec{0} \Leftrightarrow \overrightarrow{AG} = \overrightarrow{GB} + \overrightarrow{GC} $$
-	Theo quy tắc ba điểm, ta chèn điểm $B$ vào vectơ $\overrightarrow{B'G}$:
-	$$ \overrightarrow{B'G} = \overrightarrow{B'B} + \overrightarrow{BG} = \overrightarrow{B'B} - \overrightarrow{GB} $$
-	Mà theo giả thiết $\overrightarrow{B'B} = \overrightarrow{AG}$, thay vào ta được:
-	$$ \overrightarrow{B'G} = \overrightarrow{AG} - \overrightarrow{GB} = (\overrightarrow{GB} + \overrightarrow{GC}) - \overrightarrow{GB} = \overrightarrow{GC} \text{ (điều phải chứng minh).} $$
-	
-	\item[b)] Vì $K$ là trung điểm của đoạn thẳng $BB'$ nên:
-	$$ \overrightarrow{BK} = \dfrac{1}{2}\overrightarrow{BB'} = -\dfrac{1}{2}\overrightarrow{B'B} = -\dfrac{1}{2}\overrightarrow{AG} $$
-	Mặt khác, $G$ là trọng tâm tam giác $ABC$ và $I$ là trung điểm của $BC$ nên $A, G, I$ thẳng hàng, $G$ nằm giữa $A$ và $I$, đồng thời $AG = 2GI$.
-	Viết dưới dạng vectơ, ta có: $\overrightarrow{AG} = 2\overrightarrow{GI} = -2\overrightarrow{IG}$.\\
-	Thay đẳng thức này vào biểu thức của $\overrightarrow{BK}$, ta thu được:
-	$$ \overrightarrow{BK} = -\dfrac{1}{2}(-2\overrightarrow{IG}) = \overrightarrow{IG} \text{ (điều phải chứng minh).} $$
+\begin{enumerate}[a)]
+	\item Vì $I$ là trung điểm đoạn $BC$ nên $\vec{BI}=\vec{IC}$.	
+	\item Vì $\vec{B'B}=\vec{AG}$ nên $B'B=AG$ và $B'B \parallel AG$.\\
+	Tam giác $ABC$ có trọng tâm $G$, trung tuyến $AI$ nên $GI=\dfrac{1}{2}AG$.\\
+	Vì $K$ là trung điểm $BB'$ nên $BK=\dfrac{1}{2}BB'$.\\
+	Do đó $BK=IG$ và $BK \parallel IG$ nên $\vec{BK} = \vec{IG}$.
 \end{enumerate}}
 \end{vd} \dongcham{4}
 
