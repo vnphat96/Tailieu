@@ -1,0 +1,628 @@
+%  \begin{name}
+% 	{GV biên soạn: Duong Xuan Loi\\ GV phản biện: Nguyễn Liên Phúc Quỳnh}
+% 	{TOÁN 10-KNTT-CS}
+% \end{name}
+\setcounter{section}{24}
+\section{NHỊ THỨC NEWTON}
+\subsection{KIẾN THỨC TRỌNG TÂM}
+\begin{enumerate}
+	\item Nhắc lại các hằng đẳng thức
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $(a+b)^2=a^2+2ab+b^2$.
+			\item $(a-b)^2=a^2-2ab+b^2$.
+			\item $(a+b)^3=a^3+3a^2b+3ab^2+b^3$.
+			\item $(a-b)^3=a^3-3a^2b+3ab^2-b^3$.
+		\end{itemize}
+	\end{multicols}
+	\item Công thức nhị thức Niu - tơn
+	\begin{align*}
+		\left(a+b\right)^n &=\mathrm{C}_n^0a^n+\mathrm{C}_n^1{a}^{n-1}b+\cdots+\mathrm{C}_n^{n-1}a{b}^{n-1} +\mathrm{C}_n^nb^n \\
+		&=\displaystyle \sum\limits_{k=0}^n{\mathrm{C}_n^k{a}^{n-k}b^k. \quad (1)}
+	\end{align*}
+\end{enumerate}
+\begin{note}
+	Trong biểu thức ở vế phải của công thức $(1)$
+	\begin{itemize}
+		\item Với $a=b=1$, ta có \quad $\mathrm{C}_n^0+\mathrm{C}_n^1+\cdots+\mathrm{C}_n^{n-1}+\mathrm{C}_n^n=2^n$.
+		\item Với $a=1;  b=-1$, ta có \quad $\mathrm{C}_n^0-\mathrm{C}_n^1+\cdots+{\left(-1\right)}^k\mathrm{C}_n^k+\cdots+{\left(-1\right)}^n\mathrm{C}_n^n=0$.
+	\end{itemize}
+\end{note}
+\begin{note}
+	Trong biểu thức ở vế phải của công thức $(1)$
+	\begin{itemize}
+		\item Số các hạng tử là $n+1$.
+		\item Các hạng tử có số mũ của $a$ giảm dần từ $n$ đến $0$, số mũ của $b$ tăng dần từ $0$ đến $n$, nhưng tổng các số mũ của $a$ và $b$ trong mỗi hạng tử luôn bằng $n$.
+		\item Các hệ số của mỗi hạng tử cách đều hai hạng tử đầu và cuối thì bằng nhau.
+		\item Số hạng tổng quát là \fbox{$T_{k+1}=\mathrm{C}_n^ka^{n-k}b^k$} (số hạng thứ $k+1$).
+	\end{itemize}
+\end{note}
+\begin{note}
+	Từ công thức $\mathrm{C}_n^k=\mathrm{C}_{n-1}^{k-1}+\mathrm{C}_{n-1}^k$ suy ra cách tính các số ở mỗi dòng dựa vào các số ở dòng trước nó. Chẳng hạn $\mathrm{C}_5^2=\mathrm{C}_4^1+\mathrm{C}_4^2=4+6=10$.
+\end{note}
+%---------------------------------------------------
+\subsection{PHÂN LOẠI VÀ PHƯƠNG PHÁP GIẢI TOÁN}
+\begin{dang}{Khai triển nhị thức Newton}
+	Áp dụng công thức nhị thức Newton để khai triển các biểu thức.
+	$$\left(a+b\right)^n = \mathrm{C}_n^0a^n+\mathrm{C}_n^1a^{n-1}b+\cdots+\mathrm{C}_n^ka^{n-k}b^k+\cdots+\mathrm{C}_n^{n-1}ab^{n-1}+\mathrm{C}_n^nb^n.\quad (1)$$
+\end{dang}
+\begin{vd}%[0D8N3-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển $\left(a+b\right)^4$.
+\loigiai{
+	\begin{eqnarray*}
+		\left(a+b\right)^4&=&\mathrm{C}_4^0a^4+\mathrm{C}_4^1{a}^{3}b+\mathrm{C}_4^2{a}^{2}b^2+\mathrm{C}_4^3{a}^{1}b^3+\mathrm{C}_4^4b^4 \\
+		&=&a^4 +4a^3 b +6a^2 b^2 +4ab^3 +b^4.
+	\end{eqnarray*}
+	}
+\end{vd}
+\begin{vd}%[0D8N3-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển $\left(a-b\right)^5$.
+\loigiai{
+	\begin{eqnarray*}
+		\left(a-b\right)^5&=&\mathrm{C}_5^0a^5-\mathrm{C}_5^1{a}^{4}b+\mathrm{C}_5^2{a}^{3}b^2-\mathrm{C}_5^3{a}^{2}b^3+\mathrm{C}_5^4{a}^{1}b^4-\mathrm{C}_5^5b^5 \\
+		&=&a^5-5a^4b +10a^3 b^2-10a^2b^3+5ab^4-b^5.
+	\end{eqnarray*}
+	}
+\end{vd}
+\begin{vd}%[0D8N3-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển $(2x+1)^4$.
+\loigiai{
+	Thay $a=2x$, $b=1$ và $n=4$ trong công thức khai triển của $(1)$ ta được
+	\begin{eqnarray*}
+		\left(2x+1\right)^4&=&(2x)^4+4\cdot(2x)^{3}\cdot 1+6\cdot(2x)^{2}\cdot 1^2+4\cdot(2x)^{1}\cdot 1^3+1^4 \\
+		&=&16x^4 +32x^3 +24x^2 +8x +1.
+	\end{eqnarray*}
+	}
+\end{vd}
+\begin{vd}%[0D8N3-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển $(3x-2)^5$.
+\loigiai{
+	Thay $a=3x$, $b=-2$ và $n=5$ trong công thức khai triển của (1) ta được
+	\begin{eqnarray*}
+		\left(3x-2\right)^5 &=&(3x)^5+5\cdot (3x)^{4}\cdot (-2)+10\cdot (3x)^{3}\cdot (-2)^2+10\cdot (3x)^{2}\cdot (-2)^3\\
+		&&\quad \quad \quad \quad \quad +5\cdot (3x)\cdot (-2)^4+(-2)^5 \\
+		&=&243x^5-810x^4+1080x^3-720x^2+240x+32.
+	\end{eqnarray*}
+	}
+\end{vd}
+\begin{vd}%[0D8H3-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển các biểu thức sau
+	\begin{listEX}[2]
+		\item $(x-2y)^4$;
+		\item $(3x-y)^5$.
+	\end{listEX}
+\loigiai{
+	\begin{enumerate}
+		\item Ta có
+		\begin{eqnarray*}
+			\left(x-2y\right)^4&=&\left[x+(-2y)\right]^4\\
+			&=&x^4+4x^3(-2y)+6x^2(-2y)^2+4x(-2y)^3+(-2y)^4\\
+			&=&x^4-8x^3y+24x^2y^2-32xy^3+16y^4.
+		\end{eqnarray*}
+		\item Ta có
+		\begin{eqnarray*}
+			\left(3x-y\right)^5&=&\left[3x+(-y)\right]^5\\
+			&=&(3x)^5+5(3x)^4(-y)+10(3x)^3(-y)^2+10(3x)^2(-y)^3+5(3x)(-y)^4+(-y)^5\\
+			&=&243x^5-405x^4y^3+270x^3y^2-90x^2y^3+15xy^4-y^5.
+		\end{eqnarray*}
+	\end{enumerate}
+	}
+\end{vd}
+\begin{dang}{Tìm hệ số, số hạng trong khai triển nhị thức Newton}
+	Xác định số hạng tổng quát $T_{k+1}=\mathrm{C}_n^ka^{n-k}b^k$ trong khai triển $\left(a+b\right)^n$ và kết hợp với yêu cầu của bài toán để thiết lập một phương trình, từ đó tìm ra kết quả mà bài toán yêu cầu.\\
+	Lưu ý rằng $T_{k+1}$ là số hạng thức $k+1$ trong khai triển $\left(a+b\right)^n$ theo lũy thừa tăng dần của $b$.\\
+	Đối với các biểu thức dạng $(a+b+c)^k$ ta biến đổi $(a+b+c)^k=\left[a+(b+c)\right]^k$ rồi áp dụng khai triển nhị thức Newton $2$ lần và tìm số hạng tổng quát.
+\end{dang}
+\begin{vd}%[0D8N3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm số hạng chứa $x^{15}$ trong khai triển $\left(3x^2-2x\right)^{10}$.
+\loigiai{
+	Theo công thức ở trên, ta có số hạng tổng quát trong khai triển là $$T_{k+1}=\mathrm{C}_{10}^k(3x^2)^{10-k}(-2x)^k
+	=\mathrm{C}_{10}^k3^{10-k}(-2)^kx^{20-k}.$$
+	Số hạng chứa $x^{15}$ tương ứng với số hạng tổng quát có $k$ thỏa mãn $20-k=15\Leftrightarrow k=5$.\\
+	Vậy số hạng chứa $x^{15}$ trong khai triển là $T_6=\mathrm{C}_{10}^53^{5}(-2)^5x^{15}=-6^5\mathrm{C}_{10}^5x^{15}$
+	}
+\end{vd}
+\begin{vd}%[0D8N3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm số hạng chứa $x^{13}$ trong khai triển $\left(x^3+2xy\right)^{21}$.
+\loigiai{
+	Số hạng tổng quát trong khai triển $\left(x^3+2xy\right)^{21}$ là $$T_{k+1}=\mathrm{C}_{21}^k\left(x^3\right)^{21-k}\left(2xy\right)^k=2^k\mathrm{C}_{21}^kx^{63-2k}y^k.$$
+	Số hạng chứa $x^{13}$ tương ứng với số hạng có $k$ thỏa mãn $\heva{& k\in \mathbb{N} \\ & 0\le k\le 21\\&63-2k=13}\Leftrightarrow \heva{& k\in \mathbb{N} \\ & 0\le k\le 21\\&k=25}\Leftrightarrow k\in \varnothing$.\\
+	Vậy không có số hạng chứa $x^{13}$ trong khai triển nhị thức đã cho.
+	}
+\end{vd}
+\begin{vd}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm hệ số của $x^{12}$ trong khai triển $\left(1+x^2\right)^n$, biết tổng tất cả các hệ số trong khai triển đó bằng $1\,024$.
+\loigiai{
+	Ta có
+	$$\left(1+x^2\right)^n=\sum\limits_{k=0}^n\mathrm{C}_n^k(x^2)^k.$$
+	Gọi $S$ là tổng tất cả các hệ số trong khai triển, khi đó $S=\displaystyle\sum\limits_{k=0}^n\mathrm{C}_n^k=(1+1)^2=2^n$.\\
+	Do đó $2^n=1024\Rightarrow n=10$.\\
+	Số hạng tổng quát trong khai triển $\left(1+x^2\right)^{10}$ là $T_{k+1}=\mathrm{C}_{10}^k(x^2)^k=\mathrm{C}_{10}^kx^{2k}$.\\
+	Số hạng chứa $x^{12}$ tương ứng với số hạng tổng quát có $k$ thỏa mãn $2k=12\Leftrightarrow k=6$.\\
+	Vậy hệ số của $x^{12}$ trong khai triển là $\mathrm{C}_{10}^6=210$.
+	}
+\end{vd}
+\begin{vd}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Cho $x>0$ và $n$ là số tự nhiên thỏa mãn điều kiện $\mathrm{C}_{n+4}^{n+1}-\mathrm{C}_{n+3}^n=7(n+3)$. Tìm số hạng chứa $x^{19}$ trong khai triển $\left(\dfrac{1}{x^3}+x^8\right)^n$.
+\loigiai{Ta có
+	\begin{align*}
+		\mathrm{C}_{n+4}^{n+1}-\mathrm{C}_{n+3}^n=7(n+3)& \Leftrightarrow \dfrac{(n+4)(n+3)(n+2)}{3!}- \dfrac{(n+3)(n+2)(n+1)}{3!}=7(n+3)\\
+		& \Leftrightarrow (n+4)(n+2)-(n+2)(n+1)=42 \ (\text{do } n+3>0) \\
+		& \Leftrightarrow 3n=36\Leftrightarrow n=12.
+	\end{align*}
+	Số hạng tổng quát trong khai triển $\left(\dfrac{1}{x^3}+x^8\right)^n$ với $n=12$ là $$T_{k+1}=\mathrm{C}_{12}^k\left(\dfrac{1}{x^3}\right)^{12-k}\left(x^8\right)^k=\mathrm{C}_{12}^kx^{11k-36}$$
+	Số hạng chứa $x^{19}$ tương ứng với số hạng có $k$ thỏa mãn $11k-36=19\Leftrightarrow k=5$.\\
+	Vậy số hạng chứa $x^{19}$ trong khai triển đã cho là $\mathrm{C}_{12}^{5}x^{19}.$
+	}
+\end{vd}
+\begin{dang}{CM đẳng thức tổ hợp bằng cách sử dụng nhị thức Newton}
+	\begin{itemize}
+		\item \textbf{\textit{Phương pháp: }} Sử dụng biến đổi đại số và lựa chọn các giá trị thực phù hợp.
+		\item \textbf{\textit{Một số hệ thức thường gặp:}}
+		\begin{itemize}
+			\item $\mathrm{C}_n^0+\mathrm{C}_n^1+\cdots+\mathrm{C}_n^k+\cdots+\mathrm{C}_n^n=2^n$.
+			\item $\mathrm{C}_n^0-\mathrm{C}_n^1+\cdots+(-1)^k\mathrm{C}_n^k+\cdots+(-1)^n\mathrm{C}_n^n=0$.
+			\item $\mathrm{C}_{2n}^0+\mathrm{C}_{2n}^2+\mathrm{C}_{2n}^4+\cdots+\mathrm{C}_{2n}^{2n}=2^{2n-1}$.
+			\item $\mathrm{C}_{2n}^1+\mathrm{C}_{2n}^3+\mathrm{C}_{2n}^5+\cdots+\mathrm{C}_{2n}^{2n-1}=2^{2n-1}$.
+		\end{itemize}
+		\item \textbf{\textit{Một số hướng tiếp cận:}}
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item Thay thế.
+				\item Nhân thêm.
+				\item Gộp, tách tổng.
+				\item Đồng nhất thức.
+			\end{itemize}
+		\end{multicols}
+	\end{itemize}
+\end{dang}
+\begin{vd}%[0D8H3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Với $n$ là số nguyên dương, chứng minh rằng: $1+4\mathrm{C}_n^1+4^2\mathrm{C}_n^2+\cdots+4^n\mathrm{C}_n^n=5^n$.
+\loigiai{
+	Áp dụng khai triển nhị thức ta có:\\
+	$VT=1+4\mathrm{C}_n^1+4^2\mathrm{C}_n^2+\cdots+4^n\mathrm{C}_n^n=\mathrm{C}_n^0+4\mathrm{C}_n^1+4^2\mathrm{C}_n^2+\cdots+4^n\mathrm{C}_n^n=(1+4)^n=5^n=VP$ \\$\Rightarrow $ điều phải chứng minh.
+	}
+\end{vd}
+\begin{vd}%[0D8H3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Với $n$ là số nguyên dương, chứng minh rằng:
+	\begin{center}
+		$4^n\mathrm{C}_n^0-4^{n-1}\mathrm{C}_n^1+4^{n-2}\mathrm{C}_n^2+\cdots+(-1)^n\mathrm{C}_n^n=\mathrm{C}_n^0+2\mathrm{C}_n^1+2^2\mathrm{C}_n^2+\cdots+2^n\mathrm{C}_n^n$.
+	\end{center}
+\loigiai{
+	Trong khai triển nhị thức Newton:\\
+	$\circ$ Chọn $a=4,b=-1\Rightarrow $ $4^n\mathrm{C}_n^0-4^{n-1}\mathrm{C}_n^1+4^{n-2}\mathrm{C}_n^2+\cdots+(-1)^n\mathrm{C}_n^n=3^n$.\\
+	$\circ$ Chọn $a=1,b=2\Rightarrow $ $\mathrm{C}_n^0+2\mathrm{C}_n^1+2^2\mathrm{C}_n^2+\cdots+2^n\mathrm{C}_n^n=3^n$.\\
+	Từ đó ta có điều phải chứng minh.
+	}
+\end{vd}
+\begin{vd}%[0D8H3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tính tổng $S=2^{18}\mathrm{C}_{18}^0-2^{17}\mathrm{C}_{18}^1+2^{16}\mathrm{C}_{18}^2-\cdots+\mathrm{C}_{18}^{18}$.
+\loigiai{
+	Các số hạng của tổng đều có dạng: $\mathrm{C}_{18}^k 2^{18-k}(-1)^k$.\\
+	Do đó:
+	$S=2^{18}\mathrm{C}_{18}^0-2^{17}\mathrm{C}_{18}^1+2^{16}\mathrm{C}_{18}^2-\cdots+\mathrm{C}_{18}^{18}=\displaystyle\sum\limits_{k=0}^{18}{\mathrm{C}_{18}^k 2^{18-k}(-1)^k}=(2-1)^{18}=1$.
+	}
+\end{vd}
+\begin{dang}{Bài toán thực tế}
+	Đối với dạng bài toán giá trị A tăng lên $x\%$ sau $n$ lần
+	\begin{itemize}
+		\item sau lần thứ nhất: $A + A \cdot x\% = A(1 + x\%)$.
+		\item sau lần thứ hai: $A(1 + x\%) + A(1 + x\%) \cdot x\% = A(1 + x\%)^2$.
+		\item sau lần thứ ba: $A(1 + x\%)^2 + A(1 + x\%)^2\cdot x\% = A(1 + x\%)^3$.
+		\item $\cdots$
+		\item sau lần thứ $n$: $A(1 + x\%)^n$.
+	\end{itemize}
+\end{dang}
+\begin{vd}%[0D8H3-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Bác Minh gửi ngân hàng $200$ triệu đồng với lãi suất $2{,}8\%$/năm. Biết tiền lãi của năm trước sẽ được cộng vào tiền gốc của năm sau đó. Công thức tính số tiền bác An nhận được sau $12$ năm là
+	\choice
+	{\True $200\left(1 + 2{,}8\%\right)^{12}$}
+	{$200\left(1 + 0{,}028^{12}\right)$}
+	{$200\left[1 + (2{,}8\%)^{12}\right]$}
+	{$200(1 + 0{,}028 \cdot 12)$}
+\loigiai{
+	Công thức tính số tiền bác An nhận được sau $5$ năm là $200(1 + 2{,}8\%)^{12}$.
+	}
+\end{vd}
+\begin{vd}%[0D8H3-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Sau một cuộc khảo sát, người ta thu được kết quả số dân của một đất nước tăng thêm $3{,}2\%$ mỗi năm. Hiện tại đất nước đó có $300$ triệu dân. Hỏi sau $5$ năm dân số của đất nước đó là bao nhiêu triệu dân? (làm tròn đến chữ số hàng triệu)
+	\choice
+	{$349$}
+	{$350$}
+	{\True $351$}
+	{$352$}
+\loigiai{
+	Sau $5$ năm số dân của nước đó là $300(1 + 3{,}2\%)^5\approx 351$ triệu.
+	}
+\end{vd}
+\begin{vd}%[0D8H3-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Năm lớp $6$ Đức cao $160$ cm. Sau mỗi năm Đức cao thêm $1,6\%$. Hỏi năm Đức học lớp $10$ Đức cao bao nhiêu cm? (làm tròn đến chữ số hàng đơn vị)
+	\choice
+	{$170$}
+	{$171$}
+	{\True $173$}
+	{$172$}
+\loigiai{
+	Sau $5$ năm bạn Đức cao $160(1 + 1{,}6\%)^5\approx 173$ cm.
+	}
+\end{vd}
+\subsection{BÀI TẬP RÈN LUYỆN}
+%-------------Trắc nghiệm nhiều lựa chọn
+\ind{PHẦN I.} \inden{Câu trắc nghiệm nhiều phương án lựa chọn. Mỗi câu hỏi học sinh chỉ chọn một phương án.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-c8b25-lc]
+\begin{ex}%[0D8N3-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Số số hạng trong khai triển $(x+2)^{5}$ là
+	\choice
+	{$5$}
+	{$7$}
+	{$4$}
+	{\True $6$}
+\loigiai{
+	Số số hạng trong khai triển là $n+1=5+1=6$.}
+\end{ex}
+\begin{ex}%[0D8N3-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển nhị thức $\left(3x-2y^2\right)^4$ ta được
+	\choice
+	{\True $81x^4-216x^3y^2+216x^2y^4-96x y^6+16y^8$}
+	{$81x^4+216x^3y^2+216x^2y^4+96x y^6+16y^8$}
+	{$81x^4-216x^3y^2+296x^2y^4-96x y^6+16y^8$}
+	{$81x^4-216x^3y^2+216x^2y^4-96x y^6+36y^8$}
+\loigiai{
+	\allowdisplaybreaks
+	$\begin{aligned}[t]
+	\left(3x-2y^2\right)^4&= (3x)^4-4(3x)^3(2y^2)+6(3x)^2\left(2y^2\right)^2-4(3x)\left(2y^2\right)^3+\left(2y^2\right)^4 \\
+	&= 81x^4-216x^3y^2+216x^2y^4-96x y^6+16y^8.
+	\end{aligned}$
+	}
+\end{ex}
+\begin{ex}%[0D8N3-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển nhị thức $\left(2x+\dfrac{3}{x}\right)^5$.
+	\choice
+	{\True $32x^5+240x^3+720x+\dfrac{1\,080}
+	{x}+\dfrac{810}
+	{x^3}+\dfrac{243}
+	{x^5}$}
+	{$32x^5-240x^3+720x+\dfrac{1\,080}{x}-\dfrac{810}{x^3}+\dfrac{243}{x^5}$}
+	{$-32x^5+240x^3-720x+\dfrac{1\,080}{x}-\dfrac{810}{x^3}+\dfrac{243}{x^5}$}
+	{$32x^5+240x^3+72x+\dfrac{1\,080}{x}+\dfrac{810}{x^3}+\dfrac{243}{x^5}$}
+\loigiai{
+	\begin{eqnarray*}
+		\left(2x+\dfrac{3}{x}\right)^5 &=& \mathrm{C}_5^0(2x)^5+\mathrm{C}_5^1(2x)^4\left(\dfrac{3}{x}\right)+\mathrm{C}_5^2(2x)^3\left(\dfrac{3}{x}\right)^2+\mathrm{C}_5^3(2x)^2\left(\dfrac{3}{x}\right)^3 +\mathrm{C}_5^4(2x)\left(\dfrac{3}{x}\right)^4+\mathrm{C}_5^5\left(\dfrac{3}{x}\right)^5\\
+		&=& 32x^5+240x^3+720x+\dfrac{1\,080}{x}+\dfrac{810}{x^3}+\dfrac{243}{x^5}.
+	\end{eqnarray*}
+	}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Số hạng thứ $13$ trong khai triển $(2-x)^{15}$ bằng
+	\choice
+	{$3\,640x^{13}$}
+	{\True $3\,640x^{12}$}
+	{$-420x^{12}$}
+	{$3\,640$}
+\loigiai{
+	Số hạng tổng quát trong khai triển $(2-x)^{15}$ là $T_{k+1} = \mathrm{C}_{15}^k \cdot 2^{15-k} \cdot (-x)^k$.\\
+	Để tìm số hạng thứ $13$, ta chọn $k=12$:\\
+	$T_{13} = \mathrm{C}_{15}^{12} \cdot 2^{15-12} \cdot (-x)^{12} = \mathrm{C}_{15}^{12} \cdot 2^3 \cdot x^{12}$.\\
+	Ta có $\mathrm{C}_{15}^{12} = \mathrm{C}_{15}^3 = \dfrac{15 \cdot 14 \cdot 13}{3 \cdot 2 \cdot 1} = 455$.\\
+	Vậy số hạng thứ $13$ là $455 \cdot 8 \cdot x^{12} = 3\,640x^{12}$.
+	}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm hệ số của $x^7$ trong khai triển $(1+x)^{10}$.
+	\choice
+	{$90$}
+	{$720$}
+	{\True $120$}
+	{$45$}
+\loigiai{
+	Số hạng tổng quát trong khai triển $(1+x)^{10}$ là $T_{k+1} = \mathrm{C}_{10}^k \cdot 1^{10-k} \cdot x^k = \mathrm{C}_{10}^k \cdot x^k$.\\
+	Số hạng chứa $x^7$ ứng với $k=7$.\\
+	Hệ số của $x^7$ là $\mathrm{C}_{10}^7 = \dfrac{10 \cdot 9 \cdot 8}{3 \cdot 2 \cdot 1} = 120$.
+	}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Số hạng không chứa $x$ trong khai triển của $P(x)=\left(x^{2}+\dfrac{1}{x}\right)^{15}$ là
+	\choice
+	{$4\,000$}
+	{$2\,700$}
+	{\True $3\,003$}
+	{$3\,600$}
+\loigiai{
+	Số hạng tổng quát là $T_{k+1}=\mathrm{C}_{15}^{k} x^{30-2k}\cdot\left(\dfrac{1}{x}\right)^k=\mathrm{C}_{15}^{k} x^{30-3k}$.\\
+	Do đó số hạng không chứa $x$ là $\mathrm{C}_{15}^{10}=3\,003$.
+	}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Hệ số chứa $x^6$ trong khai triển $\left(3x^3-\dfrac{1}{x}\right)^{10}$ là
+	\choice
+	{\True $17\,010$}
+	{$295\,245$}
+	{$153\,290$}
+	{$405$}
+\loigiai{
+	Số hạng tổng quát là $T_{k+1}=\mathrm{C}_{n}^{k} (3x^3)^{10-k}\cdot\left(-\dfrac{1}{x}\right)^k=\mathrm{C}_{n}^{k}\cdot 3^{10-k}\cdot (-1)^k\cdot x^{30-4k}$.\\
+	Suy ra, hệ số của số hạng chứa $x^6$ bằng $\mathrm{C}_{10}^{6}\cdot 3^4=17\,010$.}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm số tự nhiên $n$, biết hệ số của số hạng thứ ba theo số mũ giảm dần của $x$ trong khai triển $\left(x-\dfrac{1}{3}\right)^{n}$ bằng $4$
+	\choice
+	{$8$}
+	{$17$}
+	{\True $9$}
+	{$4$}
+\loigiai{
+	Số hạng tổng quát là $T_{k+1}=\mathrm{C}_{n}^{k} x^{n-k}\cdot\left(-\dfrac{1}{3}\right)^k$.\\
+	Hệ số của số hạng thứ ba bằng $4$ nên $\mathrm{C}_{n}^{2}\cdot \left(-\dfrac{1}{3}\right)^2=4\Leftrightarrow \mathrm{C}_{n}^2=36\Leftrightarrow n=9$.}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm hệ số của $x^5$ trong khai triển $P(x)=x(1-2x)^5+x^2(1+3x)^{10}$
+	\choice
+	{$80$}
+	{$3\,240$}
+	{\True $3\,320$}
+	{$259\,200$}
+\loigiai{
+	Hệ số của số hạng chứa $x^3$ trong khai triển $(1+3x)^{10}$ bằng $\mathrm{C}_{10}^3 (3)^3=3\,240$.\\
+	Hệ số của số hạng chứa $x^4$ trong khai triển $(1-2x)^5$ bằng $\mathrm{C}_5^4 (-2)^4=80$.\\
+	Vậy hệ số của số hạng chứa $x^5$ trong khai triển đã cho bằng $3\,320$.}
+\end{ex}
+\begin{ex}%[0D8N3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tổng các hệ số của các số hạng trong khai triển nhị thức $(x-2y)^{2\,026}$ bằng
+	\choice
+	{$2\,027$}
+	{$2\,026$}
+	{$-1$}
+	{\True $1$}
+\loigiai{
+	Ta có $(x-2y)^{2\,026} =\displaystyle\sum\limits_{k=0}^{2\,026}\mathrm{C}_{2\,026}^kx^{2\,026-k}(-2y)^k =\displaystyle\sum\limits_{k=0}^{2\,026} a_kx^{2\,026-k}y^k$.\\
+	Chọn $x=y=1$ ta có $\displaystyle\sum\limits_{k=0}^{2\,026} a_k=(-1)^{2\,026}=1$.
+	}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm hệ số của $x^4$ trong khai triển $P(x)=\left(1-x-3x^3\right)^{n}$ với $n$ là số tự nhiên thỏa hệ thức $\mathrm{C}_{n}^{n-2}+6n+5=A_{n+1}^{2}$.
+	\choice
+	{$210$}
+	{$840$}
+	{\True $480$}
+	{$270$}
+\loigiai{
+	Ta có $\mathrm{C}_n^{n-2}+6n+5=A_{n+1}^2\Leftrightarrow \dfrac{n(n-1)}{2}+6n+5=(n+1)n\Leftrightarrow n=10$.\\
+	Xét khai triển $P(x)=(1-x-3x^3)^{10} =\displaystyle\sum\limits_{k=0}^{10}\mathrm{C}_{10}^k(-x)^{k}(1+3x^2)^{k} =\displaystyle\sum\limits_{k=0}^{10}\displaystyle\sum\limits_{h=0}^{k}\mathrm{C}_{10}^k\mathrm{C}_{k}^{h}\cdot 3^{h}\cdot(-1)^k\cdot x^{k+2h}$.\\
+	Số hạng tổng quát là $T_{k,h}=\mathrm{C}_{10}^k\mathrm{C}_{k}^{h}\cdot 3^{h}\cdot(-1)^k\cdot x^{k+2h}$.\\
+	Do $T_{k, h}$ chứa $x^4$ nên $k+2h=4$ mà $h$, $k$ là số tự nhiên nên $\heva{&k=4\\&h=0}$ hoặc $\heva{&k=2\\&h=1.}$\\
+	Vậy hệ số của $x^4$ là $a=\mathrm{C}_{10}^4\mathrm{C}_4^0\cdot 3^{0}\cdot(-1)^4+\mathrm{C}_{10}^2\mathrm{C}_{2}^{1}\cdot 3^1\cdot(-1)^2=480$.
+	}
+\end{ex}
+\begin{ex}%[0D8H3-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Theo số liệu thống kê, lượng khí thải của thế giới năm $2021$ là $37{,}8$ tỉ tấn. Để bảo vệ môi trường, tổ chức Môi trường thế giới kêu gọi mỗi năm lượng khí thải tiêu thụ giảm đi $2{,}8\%$. Hỏi để đạt được mục tiêu đề ra, lượng khí thải của thế giới năm $2\,025$ là bao nhiêu tỷ tấn? (kết quả làm tròn đến hàng phần mười)
+	\choice
+	{$33{,}4$}
+	{\True $33{,}7$}
+	{$33{,}6$}
+	{$33{,}5$}
+\loigiai{
+	Từ năm $2021$ đến năm $2025$ là $4$ năm.\\
+	Sau $4$ năm lượng khí thải của thế giới là $37{,}8(1-2{,}8\%)^4\approx 33{,}7$ tỷ tấn.
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-c8b25-lc}
+%---------------------Trắc nghiệm đúng sai
+\ind{PHẦN II.} \inden{Câu trắc nghiệm đúng sai. Trong mỗi ý a), b), c), d) ở mỗi câu, học sinh chọn đúng hoặc sai.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-c8b25-ds]
+\begin{ex}%[0D8V3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển $(x+1)^{5}$. Khi đó
+	\choiceTF
+	{\True Hệ số của $x^{4}$ là $5$}
+	{\True Số hạng không chứa $x$ là $1$}
+	{$\mathrm{C}_{5}^{0}+\mathrm{C}_{5}^{1}+\mathrm{C}_{5}^{2}+\mathrm{C}_{5}^{3}+\mathrm{C}_{5}^{4}+\mathrm{C}_{5}^{5}=3^{5}$}
+	{\True $32 \mathrm{C}_{5}^{0}+16 \mathrm{C}_{5}^{1}+8 \mathrm{C}_{5}^{2}+4 \mathrm{C}_{5}^{3}+2 \mathrm{C}_{5}^{4}+\mathrm{C}_{5}^{5}=3^{5}$}
+\loigiai{
+	\begin{itemchoice}
+		\itemch Ta có \[(x+1)^{5}=\mathrm{C}_{5}^{0} x^{5}+\mathrm{C}_{5}^{1} x^{4}+\mathrm{C}_{5}^{2} x^{3}+\mathrm{C}_{5}^{3} x^{2}+\mathrm{C}_{5}^{4} x+\mathrm{C}_{5}^{5}=1+5 x+10 x^{2}+10 x^{3}+5 x^{4}+x^{5}.\quad \left(*\right)\]
+		Hệ số của $x^4$ là $5$.
+		\itemch Số hạng không chứa $x$ là $1$.
+		\itemch Từ khai triển $\left(*\right)$, thay $x=1$, ta được
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&(1+1)^{5}=\mathrm{C}_{5}^{0} \cdot 1^{5}+\mathrm{C}_{5}^{1} \cdot 1^{4}+\mathrm{C}_{5}^{2} \cdot 1^{3}+\mathrm{C}_{5}^{3} \cdot 1^{2}+\mathrm{C}_{5}^{4} \cdot 1+\mathrm{C}_{5}^{5}\\ &\Leftrightarrow&2^5=\mathrm{C}_{5}^{0}+\mathrm{C}_{5}^{1}+\mathrm{C}_{5}^{2}+\mathrm{C}_{5}^{3}+\mathrm{C}_{5}^{4}+\mathrm{C}_{5}^{5}.
+		\end{eqnarray*}
+		\itemch Từ khai triển $\left(*\right)$, thay $x=2$, ta được
+		\allowdisplaybreaks
+		\begin{eqnarray*}
+			&&(2+1)^{5}=\mathrm{C}_{5}^{0} \cdot 2^{5}+\mathrm{C}_{5}^{1} \cdot 2^{4}+\mathrm{C}_{5}^{2} \cdot 2^{3}+\mathrm{C}_{5}^{3} \cdot 2^{2}+\mathrm{C}_{5}^{4} \cdot 2+\mathrm{C}_{5}^{5}\\
+			&\Leftrightarrow &3^{5}=32 \mathrm{C}_{5}^{0}+16 \mathrm{C}_{5}^{1}+8 \mathrm{C}_{5}^{2}+4 \mathrm{C}_{5}^{3}+2 \mathrm{C}_{5}^{4}+\mathrm{C}_{5}^{5}.
+		\end{eqnarray*}
+	\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[0D8V3-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Trong khai triển $ \left(\dfrac{2}{x}-x^3\right)^n, \forall x \neq 0 $, biết $ \mathrm{C}_{n-4}^{n-6}+n \cdot \mathrm{A}_n^2=454 $.
+	\choiceTF
+	{\True Giá trị của $n$ bằng $8$}
+	{\True Tổng hệ số trong khai triển là $1$}
+	{Hệ số của số hạng chứa $x^4$ trong khai triển là $896$}
+	{Số hạng chứa $x^4$ trong khai triển là $896x^4$}
+\loigiai{
+	\begin{itemchoice}
+		\itemch
+		Điều kiện $ \heva{&n\ge 6\\&n\in\mathbb{N}.}$\\
+		Phương trình đã cho tương đương với
+		$\begin{aligned}[t]
+		&\dfrac{(n-4)!}{(n-6)!\cdot2!}+n\cdot\dfrac{n!}{(n-2)!}=454\\
+		\Leftrightarrow& \dfrac{(n-5)(n-4)}{2}+n\cdot(n-1)\cdot n=454\\
+		\Leftrightarrow&n=8\,\text{(nhận)}\\
+		\end{aligned}
+		$
+		\itemch Với $ n=8 $ ta có $ \left(\dfrac{2}{x}-x^3\right)^n =\displaystyle\sum_{k=0}^{8}\mathrm{C}_{8}^k\cdot2^{8-k}\cdot x^{k-8}\cdot (x^3)^k=\displaystyle\sum_{k=0}^{8}\mathrm{C}_{8}^k\cdot 2^{8-k}\cdot x^{4k-8}$.\\
+		Thay $x=1$ ta được tổng hệ số là $(2-1)^8=1$.
+		\itemch
+		Để trong khai triển đã cho có số hạng chứa $ x^4 $ là $ 4k-8=4\Leftrightarrow k=3$\,(nhận).\\
+		Vậy hệ số của $ x^4 $ trong khai triển đã cho là $\mathrm{C}_{8}^3\cdot 2^5=1\,792$.
+		\itemch Vậy số hạng chứa $ x^4 $ trong khai triển đã cho là $\mathrm{C}_{8}^3\cdot 2^5=1\,792x^4$.
+	\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[0D8H3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển biểu thức $x^2(2x-1)^5$ thành đa thức.
+	\choiceTF
+	{\True Trong khai triển có $6$ số hạng}
+	{\True Hệ số của $x^5$ trong khai triển là $80$}
+	{\True Tổng các hệ số trong khai triển bằng $1$}
+	{Hệ số của $x^2$ trong khai triển là $1$}
+\loigiai{
+	Số hạng tổng quát $x^2\cdot \mathrm{C}_5^k\cdot\left(2x\right)^{5-k}\cdot (-1)^k=\mathrm{C}_5^k\cdot 2^{5-k}\cdot(-1)^k\cdot x^{7-k}$.
+	\begin{itemchoice}
+		\itemch Trong khai triển $(a+b)^n$ có $n+1$ số hạng.\\
+		Vậy khai triển $x^2(2x-1)^5$ có $6$ số hạng.
+		\itemch Hệ số của $x^5$ trong khai triển tương ứng $7-k=5\Rightarrow k=2$.\\
+		Vậy hệ số của $x^5$ trong khai triển $x^2(2x-1)^5$ bằng	$\mathrm{C}_5^2\cdot 2^{5-2}\cdot (-1)^2=80$.
+		\itemch Thay $x=1$, ta được tổng các hệ số trong khai triển.\\
+		Vậy tổng các hệ số trong khai triển là $S=1^2\cdot (2\cdot 1-1)^5=1$.
+		\itemch Hệ số của $x^2$ trong khai triển tương ứng với $7-k=2\Leftrightarrow k=5$.\\
+		Suy ra hệ số của $x^2$ trong khai triển là $\mathrm{C}_5^5\cdot 2^0\cdot(-1)^5=-1$.
+	\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[0D8V3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Cho $\left(1-\dfrac{1}{2} x\right)^5=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4+a_5x^5$.
+	\choiceTF
+	{$a_3=\dfrac{5}{2}$}
+	{\True $a_5=-\dfrac{1}{32}$}
+	{\True Hệ số lớn nhất trong tất cả hệ số là $\dfrac{5}{2}$}
+	{Tổng $a_0+a_1+a_2+a_3+a_4+a_5=\dfrac{1}{16}$}
+\loigiai{
+	\begin{eqnarray*}
+		\left(1-\dfrac{1}{2} x\right)^5&=& \mathrm{C}_5^0+ \mathrm{C}_5^1\left(-\dfrac{1}{2} x\right)+ \mathrm{C}_5^2\left(-\dfrac{1}{2} x\right)^2+ \mathrm{C}_5^3\left(-\dfrac{1}{2} x\right)^3+ \mathrm{C}_5^4\left(-\dfrac{1}{2} x\right)^4+ \mathrm{C}_5^5\left(-\dfrac{1}{2} x\right)^5\\
+		&=&1-\dfrac{5}{2} x+\dfrac{5}{2} x^2-\dfrac{5}{4} x^3+\dfrac{5}{16} x^4-\dfrac{1}{32} x^5=a_0+a_1 x+a_2 x^2+a_3 x^3+a_4 x^4+a_5 x^5\quad(*)
+	\end{eqnarray*}
+	Suy ra $a_0=1,a_1=-\dfrac{5}{2}$, $a_2=\dfrac{5}{2}$, $a_3=-\dfrac{5}{4}$, $a_4=\dfrac{5}{16}$, $a_5=-\dfrac{1}{32}$.
+	\begin{itemchoice}
+		\itemch $a_3=-\dfrac{5}{4}$.
+		\itemch $a_5=-\dfrac{1}{32}$.
+		\itemch Ta thấy hệ số lớn nhất tìm được là $a_2=\dfrac{5}{2}$.
+		\itemch Thay $x=1$ vào $(*)$, ta được $\left(1-\dfrac{1}{2}\right)^5=a_0+a_1+a_2+a_3+a_4+a_5$.\\
+		Vậy $a_0+a_1+a_2+a_3+a_4+a_5=\dfrac{1}{32}$.
+	\end{itemchoice}
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{2}{ans/ans-c8b25-ds}
+%---------------Trắc nghiệm trả lời ngắn
+\ind{PHẦN III.} \inden{Câu trả lời ngắn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-c8b25-kq]
+\begin{ex}%[0D8H3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Cho khai triển $(1-2x)^5=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4+a_5x^5$. Giá trị của $S=a_0+a_1+a_2+a_3+a_4+a_5$ bằng bao nhiêu?
+	\par\shortans[oly]{$-1$}
+\loigiai{
+	Vì $(1-2x)^5=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4+a_5x^5$ nên thay $x=1$ vào khai triển ta được
+	\[(1-2\cdot 1)^5=a_0+a_1+a_2+a_3+a_4+a_5.\]
+	Vậy $S=(-1)^5=-1.$
+	}
+\end{ex}
+\begin{ex}%[0D8H3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Biết khai triển $x(1-2x)^5+(1+2x)^5=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4+a_5x^5+a_6x^6$. Giá trị của biểu thức $T=a_0+a_1+a_2+a_3+a_4+a_5+a_6$ bằng bao nhiêu?
+	\par\shortans[oly]{$242$}
+\loigiai{
+	Thay $x=1$ vào hai vế của khai triển đã cho, ta được
+	\allowdisplaybreaks
+	\begin{eqnarray*}
+		1(1-2\cdot1)^5+(1+2\cdot1)^5&=&a_0+a_1+a_2+a_3+a_4+a_5+a_6 \\
+		242&=&T.
+	\end{eqnarray*}
+	Vậy $T=242$.
+	}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm hệ số của số hạng $x^{25}y^{10}$ trong khai triển $\left(x^3+xy\right)^{15}$.
+	\par\shortans[oly]{$3\,030$}
+\loigiai{
+	Số hạng tổng quát của khai triển là $T_{k+1}=\mathrm{C}_{15}^k(x^3)^{15-k}(xy)^k=\mathrm{C}_{15}^kx^{45-2k}y^k$.\\
+	Số hạng chứa $x^{25}y^{10}$ tương ứng với $k=10$, từ đó suy ra hệ số của $x^{25}y^{10}$ là $\mathrm{C}_{15}^{10}=3\,003.$
+	}
+\end{ex}
+\begin{ex}%[0D8H3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khi tính giá trị của biểu thức  $\mathrm{C}_{15}^8+\mathrm{C}_{15}^9+\mathrm{C}_{15}^{10}+\cdots+\mathrm{C}_{15}^{15} $ ta được $2^n$ với $n\in\mathbb{N}$. Giá trị của $n$ bằng bao nhiêu?
+	\par\shortans[oly]{$14$}
+\loigiai{
+	Sử dụng tính chất: $\mathrm{C}_n^k=\mathrm{C}_n^{n-k}$. Ta có:\\
+	$2S=\mathrm{C}_{15}^0+\mathrm{C}_{15}^1+\mathrm{C}_{15}^2+\cdots+\mathrm{C}_{15}^{8}+\cdots+\mathrm{C}_{15}^{15}=2^{15}\Rightarrow S=2^{14}$.
+	}
+\end{ex}
+\begin{ex}%[0D8H3-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Trên quầy có $5$ tờ vé số khác nhau. Một khách hàng có bao nhiêu lựa chọn mua một số vé trong các vé xổ số đó (tính cả không mua vé nào)?
+	\par\shortans[oly]{$32$}
+\loigiai{
+	Số cách mua vé số là số tập con của tập chứa $5$ phần tử bằng
+	$$\mathrm{C}_5^0+\mathrm{C}_5^1+\cdots +\mathrm{C}_5^5=\left(1+1\right)^5=2^5=32.$$}
+\end{ex}
+\begin{ex}%[0D8V3-5]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Số dân ở thời điểm hiện tại của một tỉnh là $2$ triệu người. Tỉ lệ tăng dân số hàng năm của tỉnh đó là $5\%$. Biết số dân $A_n$ sau $n$ năm được tính bởi công thức $A_n=A_0(1+r)^n$, trong đó $A_0$ là số dân ở thời điểm hiện tại và $r$ là tỉ lệ tăng dân số hàng năm của tỉnh đó. Sử dụng hai số hạng đầu tiên trong khai triển của lũy thừa $(a+b)^n$, ta được sau $n$ năm thì số dân của tỉnh đó là $2{,}6$ triệu người. Tính $180 n$.
+	\par\shortans[oly]{$1\,080$}
+\loigiai{
+	Theo đề, ta được số dân của tỉnh đó sau $n$ năm là
+	\begin{eqnarray*}
+		A_n=2\cdot(1+0{,}05)^n\approx 2(1+0{,}05n).
+	\end{eqnarray*}
+	Ta có $A_n=2{,}6 \Leftrightarrow 1+0{,}05n=1{,}3\Leftrightarrow n=6$.\\
+	Do đó $180 n=180\cdot6=1\,080$.}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{3}{ans/ans-c8b25-kq}
+%------------------Tự luận
+\ind{PHẦN IV.} \inden{Tự luận.}
+\setcounter{ex}{0}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm hệ số của số hạng chứa $x^3$ trong khai triển biểu thức $\left(x^2+\dfrac{2}{x}\right)^{21}$.
+\loigiai{
+	Số hạng tổng quát trong khai triển $\left(x^2+\dfrac{2}{x}\right)^{21}$ là $T_{k+1}=\mathrm{C}_{21}^k\cdot (x^2)^{21-k}\left(\dfrac{2}{x}\right)^k=\mathrm{C}_{21}^k2^kx^{42-3k}$.\\
+	Số hạng chứa $x^3$ tương ứng với số hạng chứa $k$ thỏa mãn $42-3k=3\Leftrightarrow k=13$. Từ đó suy ra hệ số của $x^3$ trong khai triển là $2^{13}\mathrm{C}_{21}^{13}$.}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm hệ số của số hạng $x^{25}y^{10}$ trong khai triển $\left(x^3+xy\right)^{15}$.
+\loigiai{
+	Số hạng tổng quát của khai triển là $T_{k+1}=\mathrm{C}_{15}^k(x^3)^{15-k}(xy)^k=\mathrm{C}_{15}^kx^{45-2k}y^k$.\\
+	Số hạng chứa $x^{25}y^{10}$ tương ứng với $k=10$, từ đó suy ra hệ số của $x^{25}y^{10}$ là $\mathrm{C}_{15}^{10}=3\,003.$
+	}
+\end{ex}
+\begin{ex}%[0D8H3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Khai triển biểu thức $(1+x)^9+(1+x)^{10}+\cdots+(1+x)^{14}$ ta được đa thức:
+	$$Q(x)=a_0+a_1x+\cdots+a_{14}x^{14}.$$
+	Hãy xác định $a_{10}$.
+\loigiai{
+	Trước hết ta thấy với $k\leq n$ thì hệ số của $x^k$ trong khai triển $(1+x)^n$ là $\mathrm{C}_n^k$. Từ đó suy ra hệ số của $x^{10}$ trong các khai triển $(1+x)^9,(1+x)^{10},\ldots,(1+x)^{14}$ lần lượt là $0, \mathrm{C}_{10}^{10},\ldots,\mathrm{C}_{14}^{10}$.\\
+	Từ đó suy ra $a_{10}=\mathrm{C}_{10}^{10}+\cdots+\mathrm{C}_{14}^{10}=1\,365$.
+	}
+\end{ex}
+\begin{ex}%[0D8V3-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Tìm hệ số của $x^8$ trong khai triển thành đa thức của biểu thức $\left(1+ x^2-x^3\right)^8$.
+\loigiai{Ta có
+	\begin{align*}
+		\left(1+ x^2-x^3\right)^8&=\left[1+x^2\left(1-x\right)\right]^8\\
+		&= \sum\limits_{k = 0}^8\mathrm{C}_8^k\left[x^2(1-x)\right]^k= \sum\limits_{k = 0}^8 \mathrm{C}_8^kx^{2k}(1 - x)^k\\
+		&= \sum\limits_{k = 0}^8 \mathrm{C}_8^kx^{2k}\left(\sum\limits_{i = 0}^k\mathrm{C}_k^i(-x)^i\right)= \sum\limits_{k = 0}^8 \sum\limits_{i = 0}^k \mathrm{C}_8^kx^{2k}\mathrm{C}_k^i(-1)^ix^i \\
+		&= \sum\limits_{k = 0}^8 \sum\limits_{i = 0}^k \mathrm{C}_8^k\mathrm{C}_k^i(-1)^ix^{2k + i}
+	\end{align*}
+	Số hạng chứa $x^8$ tương ứng số hạng chứa $k$ và $i$ thỏa $2k+i=8$.\\
+	Vì $0\leq i\leq k\leq 8$ nên $2k + i = 8 \Leftrightarrow \heva{&k = 3\\&i = 2}$ hoặc $\heva{&k = 4\\&i = 0}$.\\
+	Vậy hệ số của số hạng chứa $x^8$ là $\mathrm{C}_8^3\mathrm{C}_3^2{( - 1)^2} + \mathrm{C}_8^4\mathrm{C}_4^0{( - 1)^0} = 238$.
+	}
+\end{ex}
+\begin{ex}%[0D8V3-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Cho khai triển nhị thức $\left(\dfrac{1}{3}+\dfrac{2}{3}x\right)^{10}=a_0+a_1x+a_2x^2+\cdots+a_{10}x^{10}$. Tìm hệ số lớn nhất trong các hệ số $a_0, a_1, \ldots, a_{10}$.
+\loigiai{
+	Số hạng tổng quát là $T_{k+1}=\mathrm{C}_{10}^k\left(\dfrac{1}{3}\right)^{10-k}\left(\dfrac{2}{3}x\right)^{k}=\mathrm{C}_{10}^k\left(\dfrac{1}{3}\right)^{10-k}\left(\dfrac{2}{3}\right)^{k}x^k$.\\
+	Để $T_{k+1}$ là số hạng có hệ số lớn nhất thì $$\heva{&\mathrm{C}_{10}^k\left(\dfrac{1}{3}\right)^{10-k}\left(\dfrac{2}{3}\right)^{k}\geq\mathrm{C}_{10}^{k-1}\left(\dfrac{1}{3}\right)^{11-k}\left(\dfrac{2}{3}\right)^{k-1}\\ &\mathrm{C}_{10}^k\left(\dfrac{1}{3}\right)^{10-k}\left(\dfrac{2}{3}\right)^{k}\geq\mathrm{C}_{10}^{k+1}\left(\dfrac{1}{3}\right)^{9-k}\left(\dfrac{2}{3}\right)^{k+1}}\break\Leftrightarrow\dfrac{19}{3}\leq k \leq \dfrac{22}{3}.$$
+	Do $k\in \mathbb{N}$ nên ta có $k=7$.\\
+	Vậy hệ số lớn nhất là $a_7=\mathrm{C}_{10}^7\left(\dfrac{1}{3}\right)^3\left(\dfrac{2}{3}\right)^7=\dfrac{2^7}{3^{10}}\mathrm{C}_{10}^7=\dfrac{5120}{19683}$.
+	}
+\end{ex}
+\begin{ex}%[0D8H3-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[Duong Xuan Loi]
+	Theo số liệu thống kê, lượng khí thải của thế giới năm $2\,016$ là $32{,}3$ tỉ tấn. Mỗi năm lượng khí thải của thế giới tăng thêm $5{,}6\%$. Hỏi lượng khí thải của thế giới năm $2021$ là bao nhiêu tỉ tấn?
+\loigiai{
+	Đến năm $2021$ là cách $5$ lượng khí thải của thế giới là  $32{,}3\cdot(1 + 5{,}6)^5\approx 42{,}4$ tỉ tấn.
+	}
+\end{ex}

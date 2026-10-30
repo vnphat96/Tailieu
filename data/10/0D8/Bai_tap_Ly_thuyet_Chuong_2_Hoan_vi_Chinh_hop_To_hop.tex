@@ -1,0 +1,2672 @@
+%==============================================================================
+% QUY TẮC ĐẾM - HOÁN VỊ, CHỈNH HỢP, TỔ HỢP  (bài tập lý thuyết, chương 2)
+% Chuyển đổi từ file Markdown sang LaTeX, định dạng theo mẫu ex_test:
+%   \begin{ex} ... \choice{..}{..}{..}{..} ... \loigiai{..} ... \end{ex}
+% Đáp án đúng được đánh dấu bằng \True trong \choice.
+% Yêu cầu: amsmath, amssymb, tikz (hình minh họa ở Câu 29 - Quy tắc đếm).
+%==============================================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  PHẦN 1: QUY TẮC ĐẾM  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{QUY TẮC ĐẾM}
+\subsection*{A -- LÝ THUYẾT VÀ PHƯƠNG PHÁP}
+
+\textbf{1. Qui tắc cộng:}
+
+\textbf{a) Định nghĩa:} \textit{Một công việc nào đó có thể được thực hiện theo một trong hai phương án $A$ hoặc $B$. Nếu phương án $A$ có $m$ cách thực hiện, phương án $B$ có $n$ cách thực hiện và không trùng với bất kì cách nào trong phương án $A$ thì công việc đó có $m+n$ cách thực hiện.}
+
+\textbf{b) Công thức quy tắc cộng}
+
+Nếu các tập $A_1,A_2,\ldots,A_n$ đôi một rời nhau. Khi đó:
+\[\left|A_1\cup A_2\cup\ldots\cup A_n\right|=\left|A_1\right|+\left|A_2\right|+\ldots+\left|A_n\right|\]
+
+\textbf{2. Qui tắc nhân:}
+
+\textbf{a) Định nghĩa:}
+
+\textit{Một công việc nào đó có thể bao gồm hai công đoạn $A$ và $B$. Nếu công đoạn $A$ có $m$ cách thực hiện và ứng với mỗi cách đó có $n$ cách thực hiện công đoạn $B$ thì công việc đó có $m.n$ cách thực hiện.}
+
+\textbf{b) Công thức quy tắc nhân}
+
+Nếu các tập $A_1,A_2,\ldots,A_n$ đôi một rời nhau. Khi đó:
+\[\left|A_1\cap A_2\cap\ldots\cap A_n\right|=\left|A_1\right|.\left|A_2\right|.\ldots.\left|A_n\right|.\]
+
+\textbf{\textit{3. Các bài toán đếm cơ bản}}
+
+\textbf{Bài toán 1:} Đếm số phương án liên quan đến số tự nhiên
+
+Khi lập một số tự nhiên $x=\overline{a_1\ldots a_n}$ ta cần lưu ý:
+\begin{itemize}
+	\item $a_i\in\{0,1,2,\ldots,9\}$ và $a_1\ne 0$.
+	\item $x$ là số chẵn $\Leftrightarrow a_n$ là số chẵn.
+	\item $x$ là số lẻ $\Leftrightarrow a_n$ là số lẻ.
+	\item $x$ chia hết cho $3\Leftrightarrow a_1+a_2+\ldots+a_n$ chia hết cho $3$.
+	\item $x$ chia hết cho $4\Leftrightarrow\overline{a_{n-1}a_n}$ chia hết cho $4$.
+	\item $x$ chia hết cho $5\Leftrightarrow a_n\in\{0,5\}$.
+	\item $x$ chia hết cho $6\Leftrightarrow x$ là số chẵn và chia hết cho $3$.
+	\item $x$ chia hết cho $8\Leftrightarrow\overline{a_{n-2}a_{n-1}a_n}$ chia hết cho $8$.
+	\item $x$ chia hết cho $9\Leftrightarrow a_1+a_2+\ldots+a_n$ chia hết cho $9$.
+	\item $x$ chia hết cho $11\Leftrightarrow$ tổng các chữ số ở hàng lẻ trừ đi tổng các chữ số ở hàng chẵn là một số chia hết cho $11$.
+	\item $x$ chia hết cho $25\Leftrightarrow$ hai chữ số tận cùng là $00,25,50,75$.
+\end{itemize}
+
+\textbf{Bài toán 2:} Đếm số phương án liên quan đến kiến thức thực tế
+
+\textbf{Bài toán 3:} Đếm số phương án liên quan đến hình học
+
+\textbf{Chú ý:} \textbf{\textit{1. Ta thường gặp bài toán đếm số phương án thực hiện hành động $H$ thỏa mãn tính chất $T$. Để giải bài toán này ta thường giải theo hai cách sau}}
+
+\textbf{Cách 1:} Đếm trực tiếp
+\begin{itemize}
+	\item Nhận xét đề bài để phân chia các trường hợp xảy ra đối với bài toán cần đếm.
+	\item Đếm số phương án thực hiện trong mỗi trường hợp đó.
+	\item Kết quả của bài toán là tổng số phương án đếm trong các trường hợp trên.
+\end{itemize}
+
+\textbf{Phương án 2:} Đếm gián tiếp (đếm phần bù)
+
+Trong trường hợp hành động $H$ chia nhiều trường hợp thì ta đi đếm phần bù của bài toán như sau:
+\begin{itemize}
+	\item Đếm số phương án thực hiện hành động $H$ (không cần quan tâm đến có thỏa tính chất $T$ hay không) ta được $a$ phương án.
+	\item Đếm số phương án thực hiện hành động $H$ không thỏa tính chất $T$ ta được $b$ phương án.
+\end{itemize}
+Khi đó số phương án thỏa yêu cầu bài toán là: $a-b$.
+
+\subsection*{B -- BÀI TẬP}
+
+%%-----Câu QTD-1.1-----%%%
+\begin{ex}
+	Từ các số $1,2,3,4,5,6,7$ lập được bao nhiêu số tự nhiên chẵn gồm 4 chữ số khác nhau
+	\choice
+	{\True $360$}
+	{$343$}
+	{$523$}
+	{$347$}
+	\loigiai{
+		Gọi số cần lập $x = \overline {abcd}$; $a,b,c,d \in \left\{ {1,2,3,4,5,6,7} \right\}$ và $a,b,c,d$ đôi một khác nhau. \\
+		Công việc ta cần thực hiện là lập số $x$ thỏa mãn $x$ là số chẵn nên $d$ phải là số chẵn. Do đó để thực hiện công việc này ta thực hiện qua các công đoạn sau \\
+		\textit{Bước 1:} Chọn $d$: Vì $d$ là số chẵn nên $d$ chỉ có thể là các số $2,4,6$ nên $d$ có 3 cách chọn. \\
+		\textit{Bước 2:} Chọn $a$: Vì ta đã chọn d nên $a$ chỉ có thể chọn một trong các số của tập $\left\{ {1,2,3,4,5,6,7} \right\}\setminus \{ d\} $ nên có $6$ cách chọn $a$ \\
+		\textit{Bước 3:} Chọn $b$: Tương tự ta có $5$ cách chọn $b$ \\
+		\textit{Bước 4:} Chọn $c$: Có 4 cách chọn. \\
+		Vậy theo quy tắc nhân có: $3.6.5.4 = 360$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu QTD-1.2-----%%%
+\begin{ex}
+	Từ các số $1,2,3,4,5,6,7$ lập được bao nhiêu số tự nhiên lẻ gồm 4 chữ số khác nhau
+	\choice
+	{$360$}
+	{$343$}
+	{\True $480$}
+	{$347$}
+	\loigiai{
+		Gọi số cần lập $x = \overline {abcd}$; $a,b,c,d \in \left\{ {1,2,3,4,5,6,7} \right\}$ và $a,b,c,d$ đôi một khác nhau. \\
+		Vì số $x$ cần lập là số lẻ nên $d$ phải là số lẻ. Ta lập $x$ qua các công đoạn sau. \\
+		\textit{Bước 1:} Có 4 cách chọn d \\
+		\textit{Bước 2:} Có 6 cách chọn a \\
+		\textit{Bước 3:} Có 5 cách chọn b \\
+		\textit{Bước 4:} Có 4 cách chọn c \\
+		Vậy có 480 số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu QTD-2-----%%%
+\begin{ex}
+	Cho các số $1,5,6,7$ có thể lập được bao nhiêu số tự nhiên có $4$ chữ số với các chữ số khác nhau:
+	\choice
+	{$12$}
+	{\True $24$}
+	{$64$}
+	{$256$}
+	\loigiai{
+		Gọi số tự nhiên có $4$ chữ số cần tìm là: $\overline {abcd} , a \ne 0$, khi đó: \\
+		$a$ có $4$ cách chọn \\
+		$b$ có $3$ cách chọn \\
+		$c$ có $2$ cách chọn \\
+		$d$ có $1$ cách chọn \\
+		Vậy có: $4.3.2.1 = 24$ số \\
+		Nên chọn $B$.
+	}
+\end{ex}
+
+%%-----Câu QTD-3-----%%%
+\begin{ex}
+	Từ các chữ số $2,3,4,5$ có thể lập được bao nhiêu số gồm $4$ chữ số:
+	\choice
+	{\True $256$}
+	{$120$}
+	{$24$}
+	{$16$}
+	\loigiai{
+		Gọi số tự nhiên có $4$ chữ số cần tìm là: $\overline {abcd} , a \ne 0$, khi đó: \\
+		$a$ có $4$ cách chọn \\
+		$b$ có $4$ cách chọn \\
+		$c$ có $4$ cách chọn \\
+		$d$ có $4$ cách chọn \\
+		Vậy có: $4.4.4.4 = 256$ số \\
+		Nên chọn $A$.
+	}
+\end{ex}
+
+%%-----Câu QTD-4-----%%%
+\begin{ex}
+	Có bao nhiêu chữ số chẵn gồm bốn chữ số đôi một khác nhau được lập từ các số $0,1,2,4,5,6,8$.
+	\choice
+	{$252$}
+	{\True $520$}
+	{$480$}
+	{$368$}
+	\loigiai{
+		Gọi $x = \overline {abcd}$; $a,b,c,d \in \left\{ {0,1,2,4,5,6,8} \right\}$. \\
+		\textbf{Cách 1:} Tính trực tiếp \\
+		Vì $x$ là số chẵn nên $d \in \left\{ {0,2,4,6,8} \right\}$. \\
+		\textbf{\textit{TH 1:}} $d = 0 \Rightarrow$ có 1 cách chọn $d$. \\
+		Với mỗi cách chọn $d$ ta có 6 cách chọn $a \in \left\{ {1,2,4,5,6,8} \right\}$ \\
+		Với mỗi cách chọn $a,d$ ta có 5 cách chọn $b \in \left\{ {1,2,4,5,6,8} \right\}\setminus \left\{ a \right\}$ \\
+		Với mỗi cách chọn $a,b,d$ ta có $4$ cách chọn $c \in \left\{ {1,2,4,5,6,8} \right\}\setminus \left\{ {a,b} \right\}$ \\
+		Suy ra trong trường hợp này có $1.6.5.4 = 120$ số. \\
+		\textbf{\textit{TH 2:}} $d \ne 0 \Rightarrow d \in \left\{ {2,4,6,8} \right\} \Rightarrow$ có 4 cách chọn d \\
+		Với mỗi cách chọn $d$, do $a \ne 0$ nên ta có 5 cách chọn \\
+		$a \in \left\{ {1,2,4,5,6,8} \right\}\setminus \left\{ d \right\}$. \\
+		Với mỗi cách chọn $a,d$ ta có 5 cách chọn $b \in \left\{ {1,2,4,5,6,8} \right\}\setminus \left\{ a \right\}$ \\
+		Với mỗi cách chọn $a,b,d$ ta có $4$ cách chọn $c \in \left\{ {1,2,4,5,6,8} \right\}\setminus \left\{ {a,b} \right\}$ \\
+		Suy ra trong trường hợp này có $4.5.5.4 = 400$ số. \\
+		Vậy có tất cả $120 + 400 = 520$ số cần lập. \\
+		\textbf{Cách 2:} Tính gián tiếp ( đếm phần bù) \\
+		Gọi $A =$\{ số các số tự nhiên có bốn chữ số đôi một khác nhau được lập từ các số $0,1,2,4,5,6,8$\} \\
+		$B =$\{ số các số tự nhiên lẻ có bốn chữ số đôi một khác nhau được lập từ các số $0,1,2,4,5,6,8$\} \\
+		$C =$\{ số các số tự nhiên chẵn có bốn chữ số đôi một khác nhau được lập từ các số $0,1,2,4,5,6,8$\} \\
+		Ta có: $\left| C \right| = \left| A \right| - \left| B \right|$. \\
+		Dễ dàng tính được: $\left| A \right| = 6.6.5.4 = 720$. \\
+		Ta đi tính $\left| B \right|$? \\
+		$x = \overline {abcd}$ là số lẻ $\Rightarrow d \in \left\{ {1,5} \right\} \Rightarrow d$ có 2 cách chọn. \\
+		Với mỗi cách chọn $d$ ta có 5 cách chọn $a$(vì $a \ne 0,a \ne d$) \\
+		Với mỗi cách chọn $a,d$ ta có 5 cách chọn $b$ \\
+		Với mỗi cách chọn $a,b,d$ ta có 4 cách chọn $c$ \\
+		Suy ra $\left| B \right| = 2.5.5.4 = 200$ \\
+		Vậy $\left| C \right| = 520$.
+	}
+\end{ex}
+
+%%-----Câu QTD-5-----%%%
+\begin{ex}
+	Cho $6$ chữ số $2,3,4,5,6,7$ số các số tự nhiên chẵn có $3$ chữ số lập thành từ $6$ chữ số đó:
+	\choice
+	{$36$}
+	{$18$}
+	{$256$}
+	{\True $108$}
+	\loigiai{
+		Gọi số tự nhiên có $3$ chữ số cần tìm là: $\overline {abc} , a \ne 0$, khi đó: \\
+		$c$ có $3$ cách chọn \\
+		$a$ có $6$ cách chọn \\
+		$b$ có $6$ cách chọn \\
+		Vậy có: $3.6.6 = 108$ số \\
+		Nên chọn $D$.
+	}
+\end{ex}
+
+%%-----Câu QTD-6-----%%%
+\begin{ex}
+	Có bao nhiêu số tự nhiên có hai chữ số mà các chữ số hàng chục lớn hơn chữ số hàng đơn vị?
+	\choice
+	{$40$}
+	{\True $45$}
+	{$50$}
+	{$55$}
+	\loigiai{
+		Nếu chữ số hàng chục là $n$ thì số có chữ số hàng đơn vị là $n - 1$ thì số các chữ số nhỏ hơn $n$ năm ở hàng đơn vị cũng bằng $n$. Do chữ số hang chục lớn hơn bằng $1$ còn chữ số hang đơn vị thi $\ge$. \\
+		Vậy số các số tự nhiên có hai chữ số mà các chữ số hàng chục lớn hơn chữ số hàng đơn vị là: \\
+		$1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45$ nên chọn $B$.
+	}
+\end{ex}
+
+%%-----Câu QTD-7-----%%%
+\begin{ex}
+	Có bao nhiêu số tự nhiên có chín chữ số mà các chữ số của nó viết theo thứ tự giảm dần:
+	\choice
+	{$5$}
+	{$15$}
+	{$55$}
+	{\True $10$}
+	\loigiai{
+		Với một cách chọn $9$ chữ số từ tập $\left\{ {0,1,2,3,4,5,6,7,8,9} \right\}$ ta có duy nhất một cách xếp chúng theo thứ tự giảm dần. \\
+		Ta có $10$ cách chọn $9$ chữ số từ tập $\left\{ {0,1,2,3,4,5,6,7,8,9} \right\}$ \\
+		Do đó có $10$ số tự nhiên cần tìm. nên chọn $D$.
+	}
+\end{ex}
+
+%%-----Câu QTD-8-----%%%
+\begin{ex}
+	Có bao nhiêu số tự nhiên có $3$ chữ số:
+	\choice
+	{\True $900$}
+	{$901$}
+	{$899$}
+	{$999$}
+	\loigiai{
+		\textbf{Cách 1:} Số có $3$ chữ số là từ $100$ đến $999$ nên có $999 - 100 + 1 = 900$ số. \\
+		\textbf{Cách 2:} \\
+		Gọi số tự nhiên có $3$ chữ số cần tìm là: $\overline {abc} , a \ne 0$, khi đó: \\
+		$a$ có $9$ cách chọn \\
+		$b$ có $10$ cách chọn \\
+		$c$ có $10$ cách chọn \\
+		Vậy có: $9.10.10 = 900$ số \\
+		Nên chọn $A$.
+	}
+\end{ex}
+
+%%-----Câu QTD-9.a-----%%%
+\begin{ex}
+	Cho các chữ số 1, 2, 3,., 9. Từ các số đó có thể lập được bao nhiêu số có 4 chữ số đôi một khác nhau
+	\choice
+	{\True $3024$}
+	{$2102$}
+	{$3211$}
+	{$3452$}
+	\loigiai{
+		Gọi số cần lập $x = \overline {abcd}$, $a,b,c,d \in \left\{ {1,2,3,4,5,6,7,8,9} \right\}$ \\
+		Có $9.8.7.6 = 3024$ số
+	}
+\end{ex}
+
+%%-----Câu QTD-9.b-----%%%
+\begin{ex}
+	Cho các chữ số 1, 2, 3,., 9. Từ các số đó có thể lập được bao nhiêu số số chẵn gồm 4 chữ số khác nhau và không vượt quá 2011.
+	\choice
+	{\True $168$}
+	{$170$}
+	{$164$}
+	{$172$}
+	\loigiai{
+		Gọi số cần lập $x = \overline {abcd}$, $a,b,c,d \in \left\{ {1,2,3,4,5,6,7,8,9} \right\}$ \\
+		Vì $x$ chẵn nên $d \in \left\{ {2,4,6,8} \right\}$. Đồng thời $x \le 2011 \Rightarrow a = 1$ \\
+		$\bullet$ $a = 1 \Rightarrow a$ có 1 cách chọn, khi đó $d$ có 4 cách chọn; $b,c$ có $7.6$ cách \\
+		Suy ra có: $1.4.6.7 = 168$ số
+	}
+\end{ex}
+
+%%-----Câu QTD-10-----%%%
+\begin{ex}
+	Có bao nhiêu số tự nhiên có $3$ chữ số lập từ các số $0,2,4,6,8$ với điều các chữ số đó không lặp lại:
+	\choice
+	{$60$}
+	{$40$}
+	{\True $48$}
+	{$10$}
+	\loigiai{
+		Gọi số tự nhiên có $3$ chữ số cần tìm là: $\overline {abc} , a \ne 0$, khi đó: \\
+		$a$ có $4$ cách chọn \\
+		$b$ có $4$ cách chọn \\
+		$c$ có $3$ cách chọn \\
+		Vậy có: $4.4.3 = 48$ số \\
+		Nên chọn $C$.
+	}
+\end{ex}
+
+%%-----Câu QTD-11-----%%%
+\begin{ex}
+	Cho hai tập hợp $A =$ a,b,c,d $ $ ;$B =$ c,d,e $ $. Chọn khẳng định \textbf{\textit{sai}} trong các khẳng định sau:
+	\choice
+	{$N\left( A \right) = 4$}
+	{$N\left( B \right) = 3$}
+	{\True $N(A \cup B) = 7$}
+	{$N(A \cap B) = 2$}
+	\loigiai{
+		Ta có : $A \cup B = \left\{ {a,b,c,d,e} \right\} \Rightarrow N\left( {A \cup B} \right) = 5$.
+	}
+\end{ex}
+
+%%-----Câu QTD-12-----%%%
+\begin{ex}
+	Cho các số $1,2,3,4,5,6,7$. Số các số tự nhiên gồm $5$ chữ số lấy từ $7$ chữ số trên sao cho chữ số đầu tiên bằng $3$ là:
+	\choice
+	{${7^5}$}
+	{$7!$}
+	{$240$}
+	{\True $2401$}
+	\loigiai{
+		Gọi số cần tìm có dạng : $\overline {abcde}$. \\
+		Chọn $a$ : có 1 cách $\left( {a = 3} \right)$ \\
+		Chọn $\overline {bcde}$ : có ${7^4}$ cách \\
+		Theo quy tắc nhân, có ${1.7^4} = 2401$(số)
+	}
+\end{ex}
+
+%%-----Câu QTD-13-----%%%
+\begin{ex}
+	Từ các số $1,3,5$ có thể lập được bao nhiêu số tự nhiên có $3$ chữ số:
+	\choice
+	{$6$}
+	{$8$}
+	{$12$}
+	{\True $27$}
+	\loigiai{
+		Gọi số tự nhiên cần tìm có dạng $\overline {abc}$. \\
+		Khi đó: $a$ có 3 cách chọn, $b$ có 3 cách chọn, $c$ có 3 cách chọn. \\
+		Nên có tất cả $3.3.3 = 27$ số
+	}
+\end{ex}
+
+%%-----Câu QTD-14-----%%%
+\begin{ex}
+	Có bao nhiêu số có $2$ chữ số, mà tất cả các chữ số đều lẻ:
+	\choice
+	{\True $25$}
+	{$20$}
+	{$30$}
+	{$10$}
+	\loigiai{
+		Gọi số tự nhiên cần tìm có dạng $\overline {ab}$. \\
+		Khi đó: $a$ có 5 cách chọn, $b$ có 5 cách chọn. \\
+		Nên có tất cả $5.5 = 25$ số.
+	}
+\end{ex}
+
+%%-----Câu QTD-15-----%%%
+\begin{ex}
+	Có bao nhiêu số tự nhiên gồm $5$ chữ số lớn hơn $4$ và đôi một khác nhau:
+	\choice
+	{$240$}
+	{\True $120$}
+	{$360$}
+	{$24$}
+	\loigiai{
+		Gọi số tự nhiên cần tìm có dạng $\overline {abcde}$. \\
+		Khi đó: $a$ có 5 cách chọn, $b$ có 4 cách chọn, $c$ có 3 cách chọn, $d$ có 2 cách chọn, $e$ có 1 cách chọn. \\
+		Nên có tất cả $5.4.3.2.1 = 120$ số.
+	}
+\end{ex}
+
+%%-----Câu QTD-16-----%%%
+\begin{ex}
+	Cho tập. Từ tập A ta có thể lập được bao nhiêu số tự nhiên lẻ gồm 4 chữ số đôi một khác nhau
+	\choice
+	{\True $720$}
+	{$261$}
+	{$235$}
+	{$679$}
+	\loigiai{
+		Gọi số cần lập $x = \overline {abcd}$, $a,b,c,d \in \left\{ {0,1,2,3,4,5,6} \right\};a \ne 0$ \\
+		Chọn $a:$ có 6 cách; chọn $b,c,d$ có $6.5.4$ \\
+		Vậy có $720$ số.
+	}
+\end{ex}
+
+%%-----Câu QTD-17-----%%%
+\begin{ex}
+	Từ các số $1,2,3$ có thể lập được bao nhiêu số tự nhiên khác nhau và mỗi số có các chữ số khác nhau:
+	\choice
+	{\True $15$}
+	{$20$}
+	{$72$}
+	{$36$}
+	\loigiai{
+		TH1: số có 1 chữ số thì có 3 cách. \\
+		TH2: số có 2 chữ số và mỗi số có các chữ số khác nhau thì có $3.2 = 6$ số. \\
+		TH3: số có 3 chữ số và mỗi số có các chữ số khác nhau thì có $3.2.1 = 6$ số \\
+		Vậy có $3 + 6 + 6 = 15$ số.
+	}
+\end{ex}
+
+%%-----Câu QTD-18-----%%%
+\begin{ex}
+	Từ tập A có thể lập được bao nhiêu số gồm 8 chữ số đôi một khác nhau sao chữ số đầu chẵn chữ số đứng cuối lẻ.
+	\choice
+	{$11523$}
+	{\True $11520$}
+	{$11346$}
+	{$22311$}
+	\loigiai{
+		Vì chữ số đứng đầu chẵn nên ${a_1}$ có $4$ cách chọn, chữ số đứng cuối lẻ nên ${a_8}$ có 4 cách chọn. Các số còn lại có $6.5.4.3.2.1$ cách chọn \\
+		Vậy có ${4^2}.6.5.4.3.2.1 = 11520$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu QTD-19-----%%%
+\begin{ex}
+	Tính tổng các chữ số gồm 5 chữ số khác nhau được lập từ các số 1, 2, 3, 4, 5?
+	\choice
+	{\True $3999960$}
+	{$33778933$}
+	{$4859473$}
+	{$3847294$}
+	\loigiai{
+		Có 120 số có 5 chữ số được lập từ 5 chữ số đã cho. \\
+		Bây giờ ta xét vị trí của một chữ số trong 5 số 1, 2, 3, 4, 5 chẳng hạn ta xét số 1. Số 1 có thể xếp ở 5 vị trí khác nhau, mỗi vị trí có 4!=24 số nên khi ta nhóm các các vị trí này lại có tổng là : $24\left( {{{10}^4} + {{10}^3} + {{10}^2} + 10 + 1} \right) = 24.11111$ \\
+		Vậy tổng các số có 5 chữ số là : $24.11111\left( {1 + 2 + 3 + 4 + 5} \right) = 3999960$.
+	}
+\end{ex}
+
+%%-----Câu QTD-20-----%%%
+\begin{ex}
+	Có 100000 vé được đánh số từ 00000 đến 99999. Hỏi số vé gồm 5 chữ số khác nhau.
+	\choice
+	{\True $30240$}
+	{$32212$}
+	{$23460$}
+	{$32571$}
+	\loigiai{
+		Gọi số in trên vé có dạng $\overline {{a_1}{a_2}{a_3}{a_4}{a_5}}$ \\
+		Số cách chọn ${a_1}$ là 10 (${a_1}$ có thể là 0). \\
+		Số cách chọn ${a_2}$ là 9. \\
+		Số cách chọn ${a_3}$ là 8. \\
+		Số cách chọn ${a_4}$ là 7. \\
+		Số cách chọn ${a_5}$ là 6.
+	}
+\end{ex}
+
+%%-----Câu QTD-21-----%%%
+\begin{ex}
+	Có bao nhiêu số tự nhiên nhỏ hơn $100$ chia hết cho $2$ và $3$.
+	\choice
+	{$12$}
+	{$16$}
+	{\True $17$}
+	{$20$}
+	\loigiai{
+		Số các số tự nhiên lớn nhất nhỏ hơn $100$ chia hết cho $2$ và $3$ là $96$. \\
+		Số các số tự nhiên nhỏ nhất nhỏ hơn $100$ chia hết cho $2$ và $3$ là $0$. \\
+		Số các số tự nhiên nhỏ hơn $100$ chia hết cho $2$ và $3$ là $\frac{{96 - 0}}{6} + 1 = 17$ nên chọn $C$.
+	}
+\end{ex}
+
+%%-----Câu QTD-22-----%%%
+\begin{ex}
+	Cho tập $A = \left\{ {1,2,3,4,5,6,7,8} \right\}$. Từ tập A có thể lập được bao nhiêu số gồm 8 chữ số đôi một khác nhau sao các số này lẻ không chia hết cho 5.
+	\choice
+	{\True $15120$}
+	{$23523$}
+	{$16862$}
+	{$23145$}
+	\loigiai{
+		Vì $x$ lẻ và không chia hết cho 5 nên $d \in \left\{ {1,3,7} \right\} \Rightarrow d$ có 3 cách chọn \\
+		Số các chọn các chữ số còn lại là: $7.6.5.4.3.2.1$ \\
+		Vậy $15120$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu QTD-23-----%%%
+\begin{ex}
+	Từ các số $1,2,3,4,5,6,7$ lập được bao nhiêu số tự nhiên gồm 4 chữ số khác nhau và là số chia hết cho 5
+	\choice
+	{$360$}
+	{\True $120$}
+	{$480$}
+	{$347$}
+	\loigiai{
+		Vì $x$ chia hết cho 5 nên $d$ chỉ có thể là 5 $\Rightarrow$ có 1 cách chọn d. \\
+		Có 6 cách chọn a, 5 cách chọn b và 4 cách chọn c. \\
+		Vậy có $1.6.5.4 = 120$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu QTD-24-----%%%
+\begin{ex}
+	Cho tập $A = \left\{ {0,1,2,3,4,5,6} \right\}$. Từ tập A có thể lập được bao nhiêu số tự nhiên gồm 5 chữ số và chia hết cho 5.
+	\choice
+	{\True $660$}
+	{$432$}
+	{$679$}
+	{$523$}
+	\loigiai{
+		Gọi $x = \overline {abcde}$ là số cần lập, $e \in \left\{ {0,5} \right\},a \ne 0$ \\
+		$\bullet$ $e = 0 \Rightarrow e$ có 1 cách chọn, cách chọn $a,b,c,d:$ $6.5.4.3$ \\
+		Trường hợp này có 360 số \\
+		$e = 5 \Rightarrow e$ có một cách chọn, số cách chọn $a,b,c,d:$ $5.5.4.3 = 300$ \\
+		Trường hợp này có 300 số \\
+		Vậy có $660$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu QTD-25-----%%%
+\begin{ex}
+	Số các số tự nhiên gồm $5$ chữ số chia hết cho $10$ là:
+	\choice
+	{$3260$}
+	{$3168$}
+	{\True $9000$}
+	{$12070$}
+	\loigiai{
+		Gọi số cần tìm có dạng : $\overline {abcde} \left( {a \ne 0} \right)$. \\
+		Chọn $e$ : có 1 cách $\left( {e = 0} \right)$ \\
+		Chọn $a$ : có 9 cách $\left( {a \ne 0} \right)$ \\
+		Chọn $\overline {bcd}$ : có ${10^3}$ cách \\
+		Theo quy tắc nhân, có ${1.9.10^3} = 9000$(số).
+	}
+\end{ex}
+
+%%-----Câu QTD-26-----%%%
+\begin{ex}
+	Cho tập hợp số : $A = \left\{ {0,1,2,3,4,5,6} \right\}$.Hỏi có thể thành lập bao nhiêu số có 4 chữ số khác nhau và chia hết cho 3.
+	\choice
+	{$114$}
+	{\True $144$}
+	{$146$}
+	{$148$}
+	\loigiai{
+		Ta có một số chia hết cho 3 khi và chỉ khi tổng các chữ số chia hết cho 3. Trong tập A có các tập con các chữ số chia hết cho 3 là $\{ 0,1,2,3\} ,$ $\{ 0,1,2,6\} $, $\{ 0,2,3,4\} $, $\{ 0,3,4,5\} $, $\{ 1,2,4,5\} $, $\{ 1,2,3,6\} $, $\left\{ {1,3,5,6} \right\}$. \\
+		Vậy số các số cần lập là: $4(4! - 3!) + 3.4! = 144$ số.
+	}
+\end{ex}
+
+%%-----Câu QTD-27-----%%%
+\begin{ex}
+	Hỏi có tất cả bao nhiêu số tự nhiên chia hết cho $9$ mà mỗi số $2011$ chữ số và trong đó có ít nhất hai chữ số $9$.
+	\choice
+	{\True $\frac{{{9^{2011}} - {{2019.9}^{2010}} + 8}}{9}$}
+	{$\frac{{{9^{2011}} - {{2.9}^{2010}} + 8}}{9}$}
+	{$\frac{{{9^{2011}} - {9^{2010}} + 8}}{9}$}
+	{$\frac{{{9^{2011}} - {{19.9}^{2010}} + 8}}{9}$}
+	\loigiai{
+	Đặt $X$ là các số tự nhiên thỏa yêu cầu bài toán. \\
+	$A =$\{ các số tự nhiên không vượt quá 2011 chữ số và chia hết cho 9\} \\
+	Với mỗi số thuộc A có $m$ chữ số $(m \le 2008)$ thì ta có thể bổ sung thêm $2011 - m$ số $0$ vào phía trước thì số có được không đổi khi chia cho 9. Do đó ta xét các số thuộc A có dạng $\overline {{a_1}{a_2}...{a_{2011}}} ; {a_i} \in \left\{ {0,1,2,3,...,9} \right\}$ \\
+	${A_0} = \left\{ {a \in A|} \right.$ mà trong $a$ không có chữ số 9\} \\
+	${A_1} = \left\{ {a \in A|} \right.$ mà trong $a$ có đúng 1 chữ số 9\} \\
+	$\bullet$ Ta thấy tập A có $1 + \frac{{{9^{2011}} - 1}}{9}$ phần tử \\
+	$\bullet$ Tính số phần tử của ${A_0}$ \\
+	Với $x \in {A_0} \Rightarrow x = \overline {{a_1}...{a_{2011}}} ;{a_i} \in \left\{ {0,1,2,...,8} \right\} i = \overline {1,2010}$ và ${a_{2011}} = 9 - r$ với $r \in \left[ {1;9} \right],r \equiv \sum\limits_{i = 1}^{2010} {{a_i}}$. Từ đó ta suy ra ${A_0}$ có ${9^{2010}}$ phần tử \\
+	$\bullet$ Tính số phần tử của ${A_1}$ \\
+	Để lập số của thuộc tập ${A_1}$ ta thực hiện liên tiếp hai bước sau \\
+	\textbf{Bước 1}: Lập một dãy gồm $2010$ chữ số thuộc tập $\left\{ {0,1,2...,8} \right\}$ và tổng các chữ số chia hết cho 9. Số các dãy là ${9^{2009}}$ \\
+	\textbf{Bước 2:} Với mỗi dãy vừa lập trên, ta bổ sung số 9 vào một vị trí bất kì ở dãy trên, ta có 2010 các bổ sung số 9 \\
+	Do đó ${A_1}$ có ${2010.9^{2009}}$ phần tử. \\
+	Vậy số các số cần lập là: \\
+	$1 + \frac{{{9^{2011}} - 1}}{9} - {9^{2010}} - {2010.9^{2009}} = \frac{{{9^{2011}} - {{2019.9}^{2010}} + 8}}{9}$.
+	}
+\end{ex}
+
+%%-----Câu QTD-28-----%%%
+\begin{ex}
+	Từ thành phố $A$ đến thành phố B có 6 con đường, từ thành phố B đến thành phố C có 7 con đường. Có bao nhiêu cách đi từ thành phố A đến thành phố C, biết phải đi qua thành phố \textbf{B.}
+	\choice
+	{\True $42$}
+	{$46$}
+	{$48$}
+	{$44$}
+	\loigiai{
+		Để đi từ thành phố A đến thành phố B ta có 6 con đường để đi. Với mỗi cách đi từ thành phố A đến thành phố B ta có 7 cách đi từ thành phố B đến thành phố \textbf{C.} Vậy có $6.7 = 42$ cách đi từ thành phố A đến B.
+	}
+\end{ex}
+
+%%-----Câu QTD-29-----%%%
+\begin{ex}
+	Từ thành phố A đến thành phố B có $3$ con đường, từ thành phố A đến thành phố C có $2$ con đường, từ thành phố B đến thành phố D có $2$ con đường, từ thành phố C đến thành phố D có $3$ con đường, không có con đường nào nối từ thành phố C đến thành phố \textbf{B.} Hỏi có bao nhiêu con đường đi từ thành phố A đến thành phố \textbf{D.}
+	\choice
+	{$6$}
+	{\True $12$}
+	{$18$}
+	{$36$}
+	\loigiai{
+		\begin{center}
+			\begin{tikzpicture}[scale=1,>=stealth,font=\footnotesize]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (2.5,1.5);
+				\coordinate (C) at (2.5,-1.5);
+				\coordinate (D) at (5,0);
+				\draw (A)--(B)--(D) (A)--(C)--(D);
+				\foreach \p/\pos in {A/180,B/90,C/-90,D/0}
+				\fill (\p) circle (1.5pt) node[shift={(\pos:3mm)}] {$\p$};
+			\end{tikzpicture}
+		\end{center}
+		Số cách đi từ A đến D bằng cách đi từ A đến B rồi đến D là $3.2 = 6$. \\
+		Số cách đi từ A đến D bằng cách đi từ A đến C rồi đến D là $2.3 = 6$. \\
+		Nên có : $6 + 6 = 12$ cách.
+	}
+\end{ex}
+
+%%-----Câu QTD-30-----%%%
+\begin{ex}
+	Từ thành phố A có 10 con đường đi đến thành phố B, từ thành phố A có 9 con đường đi đến thành phố C, từ B đến D có 6 con đường, từ C đến D có 11 con đường và không có con đường nào nối B với C. Hỏi có bao nhiêu cách đi từ A đến D.
+	\choice
+	{$156$}
+	{\True $159$}
+	{$162$}
+	{$176$}
+	\loigiai{
+		Để đi từ A đến D ta có các cách đi sau \\
+		$A \to B \to D$: Có $10.6 = 60$ \\
+		$A \to C \to D$: Có $9.11 = 99$ \\
+		Vậy có tất cả $159$ cách đi từ A đến D
+	}
+\end{ex}
+
+%%-----Câu QTD-31-----%%%
+\begin{ex}
+	Trong một giải thi đấu bóng đá có 20 đội tham gia với thể thức thi đấu vòng tròn. Cứ hai đội thì gặp nhau đúng một lần. Hỏi có tất cả bao nhiêu trận đấu xảy ra.
+	\choice
+	{\True $190$}
+	{$182$}
+	{$280$}
+	{$194$}
+	\loigiai{
+		Cứ mỗi đội phải thi đấu với 19 đội còn lại nên có $19.20$ trận đấu. Tuy nhiên theo cách tính này thì một trận đấu chẳng hạn A gặp B được tính hai lần. Do đó số trận đấu thực tế diễn ra là: $\frac{{19.20}}{2} = 190$ trận.
+	}
+\end{ex}
+
+%%-----Câu QTD-32-----%%%
+\begin{ex}
+	Có $10$ cặp vợ chồng đi dự tiệc. Tổng số cách chọn một người đàn ông và một người phụ nữ trong bữa tiệc phát biểu ý kiến sao cho hai người đó không là vợ chồng:
+	\choice
+	{$100$}
+	{$91$}
+	{$10$}
+	{\True $90$}
+	\loigiai{
+		Có $10$ cách chọn $1$ người đàn ông. \\
+		Có $10$ cách chọn $1$ người phụ nữ. \\
+		Tổng số cách chọn một người đàn ông và một người đàn bà trong bữa tiệc phát biểu ý kiến sao cho hai người đó không là vợ chồng:$10.10 - 10 = 90$ \\
+		Nên chọn $D$. \\
+		Theo em nên làm như thế này cho tiện \\
+		Chọn $1$ người trong $10$ người đàn ông có $10$ cách. \\
+		Chọn $1$ người trong $9$ người phụ nữ không là vợ của người đàn ông đã chọn có $9$ cách. \\
+		Vậy có $10.9 = 90$ cách chọn
+	}
+\end{ex}
+
+%%-----Câu QTD-33-----%%%
+\begin{ex}
+	Hội đồng quản trị của công ty X gồm 10 người. Hỏi có bao nhiêu cách bầu ra ba người vào ba vị trí chủ tịch, phó chủ tịch và thư kí, biết khả năng mỗi người là như nhau.
+	\choice
+	{$728$}
+	{$723$}
+	{\True $720$}
+	{$722$}
+	\loigiai{
+		Chọn chủ tịch có 10 cách chọn, phó chủ tịch có 9 cách và thư kí có 8 cách. Do đó có tất cả $10.9.8 = 720$ cách chọn.
+	}
+\end{ex}
+
+%%-----Câu QTD-34-----%%%
+\begin{ex}
+	Một người vào cửa hàng ăn, người đó chọn thực đơn gồm $1$ món ăn trong $5$ món, $1$ loại quả tráng miệng trong $5$ loại quả tráng miệng và một nước uống trong $3$ loại nước uống. Có bao nhiêu cách chọn thực đơn:
+	\choice
+	{$25$}
+	{\True $75$}
+	{$100$}
+	{$15$}
+	\loigiai{
+		Chọn $1$ món ăn trong $5$ món có $5$ cách \\
+		Chọn $1$ loại quả tráng miệng trong $5$ loại quả tráng miệng có $5$ cách \\
+		Chọn $1$ nước uống trong $3$ loại nước uống có $3$ cách \\
+		Số cách cách chọn thực đơn: $5.5.3 = 75$ cách \\
+		Nên chọn $B$.
+	}
+\end{ex}
+
+%%-----Câu QTD-35-----%%%
+\begin{ex}
+	Bạn muốn mua một cây bút mực và một cây bút chì. Các cây bút mực có $8$ màu khác nhau, các cây bút chì cũng có $8$ màu khác nhau. Như vậy bạn có bao nhiêu cách chọn
+	\choice
+	{\True $64$}
+	{$16$}
+	{$32$}
+	{$20$}
+	\loigiai{
+		Chọn cây bút mực : có 8 cách \\
+		Chọn cây bút chì : có 8 cách \\
+		Theo quy tắc nhân, số cách mua là : 8.8 = 64 (cách )
+	}
+\end{ex}
+
+%%-----Câu QTD-36-----%%%
+\begin{ex}
+	Trong một tuần, bạn A dự định mỗi ngày đi thăm một người bạn trong $12$ người bạn của mình. Hỏi bạn A có thể lập được bao nhiêu kế hoạch đi thăm bạn của mình (Có thể thăm một bạn nhiều lần).
+	\choice
+	{$7!$}
+	{\True $35831808$}
+	{$12!$}
+	{$3991680$}
+	\loigiai{
+		Thứ 2 : có $12$ cách chọn bạn đi thăm \\
+		Thứ 3 : có $12$ cách chọn bạn đi thăm \\
+		Thứ 4 : có $12$ cách chọn bạn đi thăm \\
+		Thứ 5 : có $12$ cách chọn bạn đi thăm \\
+		Thứ 6 : có $12$ cách chọn bạn đi thăm \\
+		Thứ 7 : có $12$ cách chọn bạn đi thăm \\
+		Chủ nhật : có $12$ cách chọn bạn đi thăm \\
+		Vậy theo quy tắc nhân, có ${12^7} = 35831808$ (kế hoạch)
+	}
+\end{ex}
+
+%%-----Câu QTD-37-----%%%
+\begin{ex}
+	Có bao nhiêu cách sắp xếp $3$ nữ sinh, $3$ nam sinh thành một hàng dọc sao cho các bạn nam và nữ ngồi xen kẽ:
+	\choice
+	{$6$}
+	{\True $72$}
+	{$720$}
+	{$144$}
+	\loigiai{
+		Chọn vị trí 3 nam và 3 nữ: $2.1$ cách chọn. \\
+		Xếp 3 nam có: $3.2.1$ cách xếp. \\
+		Xếp 3 nữ có: $3.2.1$ cách xếp. \\
+		Vậy có $2.1.{\left( {3.2.1} \right)^2} = 72$ cách xếp.
+	}
+\end{ex}
+
+%%-----Câu QTD-38-----%%%
+\begin{ex}
+	Số điện thoại ở Huyện Củ Chi có $7$ chữ số và bắt đầu bởi $3$ chữ số đầu tiên là $790$. Hỏi ở Huyện Củ Chi có tối đa bao nhiêu máy điện thoại:
+	\choice
+	{$1000$}
+	{$100000$}
+	{\True $10000$}
+	{$1000000$}
+	\loigiai{
+	Gọi số điện thoại cần tìm có dạng $\overline {790abcd}$. \\
+	Khi đó: $a$ có 10 cách chọn, $b$ có 10 cách chọn, $c$ có 10 cách chọn, $d$ có 10 cách chọn. \\
+	Nên có tất cả $10.10.10.10 = {10^4}$ số.
+	}
+\end{ex}
+
+%%-----Câu QTD-39-----%%%
+\begin{ex}
+	Có bao nhiêu cách xếp 4 người A,B,C,D lên 3 toa tàu, biết mỗi toa có thể chứa 4 người.
+	\choice
+	{\True $81$}
+	{$68$}
+	{$42$}
+	{$98$}
+	\loigiai{
+		Để xếp A ta có 3 cách lên một trong ba toa \\
+		Với mỗi cách xếp A ta có 3 cách xếp B lên toa tàu \\
+		Với mỗi cách xếp A,B ta có 3 cách xếp C lên toa tàu \\
+		Với mỗi cách xếp A,B,C ta có 3 cách xếp D lên toa tàu \\
+		Vậy có $3.3.3.3 = 81$ cách xếp 4 người lên toa tàu.
+	}
+\end{ex}
+
+%%-----Câu QTD-40.a-----%%%
+\begin{ex}
+	Có 3 nam và 3 nữ cần xếp ngồi vào một hàng ghế. Hỏi có mấy cách xếp sao cho : nam, nữ ngồi xen kẽ ?
+	\choice
+	{\True $72$}
+	{$74$}
+	{$76$}
+	{$78$}
+	\loigiai{
+		Có 6 cách chọn một người tuỳ ý ngồi vào chỗ thứ nhất. Tiếp đến, có 3 cách chọn một người khác phái ngồi vào chỗ thứ 2. Lại có 2 cách chọn một người khác phái ngồi vào chỗ thứ 3, có 2 cách chọn vào chỗ thứ 4, có 1 cách chọn vào chỗ thứ 5, có 1 cách chọn vào chỗ thứ 6. \\
+		Vậy có : $6.3.2.2.1.1 = 72$ cách.
+	}
+\end{ex}
+
+%%-----Câu QTD-40.b-----%%%
+\begin{ex}
+	Có 3 nam và 3 nữ cần xếp ngồi vào một hàng ghế. Hỏi có mấy cách xếp sao cho : nam, nữ ngồi xen kẽ và có một người nam A, một người nữ B phải ngồi kề nhau ?
+	\choice
+	{\True $40$}
+	{$42$}
+	{$46$}
+	{$70$}
+	\loigiai{
+		Cho cặp nam nữ A, B đó ngồi vào chỗ thứ nhất và chỗ thứ hai, có 2 cách. Tiếp đến, chỗ thứ ba có 2 cách chọn, chỗ thứ tư có 2 cách chọn, chỗ thứ năm có 1 cách chọn, chỗ thứ sáu có 1 cách chọn. \\
+		Bây giờ, cho cặp nam nữ A, B đó ngồi vào chỗ thứ hai và chỗ thứ ba. Khi đó, chỗ thứ nhất có 2 cách chọn, chỗ thứ tư có 2 cách chọn, chỗ thứ năm có 1 cách chọn, chỗ thứ sáu có 1 cách chọn. \\
+		Tương tự khi cặp nam nữ A, B đó ngồi vào chỗ thứ ba và thứ tư, thứ tư và thứ năm, thứ năm và thứ sáu. \\
+		Vậy có : $5.2.2.2.1.1. = 40$ cách.
+	}
+\end{ex}
+
+%%-----Câu QTD-40.c-----%%%
+\begin{ex}
+	Có 3 nam và 3 nữ cần xếp ngồi vào một hàng ghế. Hỏi có mấy cách xếp sao cho : nam, nữ ngồi xen kẽ và có một người nam C, một người nữ D không được ngồi kề nhau ?
+	\choice
+	{\True $32$}
+	{$30$}
+	{$35$}
+	{$70$}
+	\loigiai{
+		Số cách chọn để cặp nam nữ đó không ngồi kề nhau bằng số cách chọn tuỳ ý trừ số cách chọn để cặp nam nữ đó ngồi kề nhau. \\
+		Vậy có : $72 - 40 = 32$ cách
+	}
+\end{ex}
+
+%%-----Câu QTD-41.a-----%%%
+\begin{ex}
+	Một bàn dài có 2 dãy ghế đối diện nhau, mỗi dãy gồm có 6 ghế. Người ta muốn xếp chỗ ngồi cho 6 học sinh trường A và 6 học sinh trường B vào bàn nói trên. Hỏi có bao nhiêu cách xếp chỗ ngồi trong mỗi trường hợp sau : bất kì 2 học sinh nào ngồi cạnh nhau hoặc đối diện nhau thì khác trường nhau.
+	\choice
+	{\True $1036800$}
+	{$234780$}
+	{$146800$}
+	{$2223500$}
+	\loigiai{
+		Ta đánh số liên tiếp 12 chỗ ngồi bằng các số từ 1 đến 6 thuộc một dãy và từ 7 đến 12 thuộc một dãy
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|c|}
+				\hline
+				1  & 2  & 3  & 4 & 5 & 6 \\ \hline
+				12 & 11 & 10 & 9 & 8 & 7 \\ \hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				Vị trí      & 1  & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+				Số cách xếp & 12 & 6 & 5 & 5 & 4 & 4 & 3 & 3 & 2 & 2  & 1  & 1  \\ \hline
+			\end{tabular}
+		\end{center}
+		Vậy có ${12.6.5^2}{.4^2}{.3^2}{.2^2}.1 = 1036800$ cách xếp
+	}
+\end{ex}
+
+%%-----Câu QTD-41.b-----%%%
+\begin{ex}
+	Một bàn dài có 2 dãy ghế đối diện nhau, mỗi dãy gồm có 6 ghế. Người ta muốn xếp chỗ ngồi cho 6 học sinh trường A và 6 học sinh trường B vào bàn nói trên. Hỏi có bao nhiêu cách xếp chỗ ngồi trong mỗi trường hợp sau : bất kì 2 học sinh nào ngồi đối diện nhau thì khác trường nhau.
+	\choice
+	{$33177610$}
+	{$34277600$}
+	{$33176500$}
+	{\True $33177600$}
+	\loigiai{
+		Ta đánh số liên tiếp 12 chỗ ngồi bằng các số từ 1 đến 6 thuộc một dãy và từ 7 đến 12 thuộc một dãy
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|c|}
+				\hline
+				1  & 2  & 3  & 4 & 5 & 6 \\ \hline
+				12 & 11 & 10 & 9 & 8 & 7 \\ \hline
+			\end{tabular}
+		\end{center}
+		\begin{center}
+			\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				Vị trí      & 1  & 12 & 2  & 11 & 3 & 10 & 4 & 9 & 5 & 8 & 6 & 7 \\ \hline
+				Số cách xếp & 12 & 6  & 10 & 5  & 8 & 4  & 6 & 3 & 4 & 2 & 2 & 1 \\ \hline
+			\end{tabular}
+		\end{center}
+		Vậy có: $33177600$ cách xếp.
+	}
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%  PHẦN 2: HOÁN VỊ, CHỈNH HỢP, TỔ HỢP  %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{HOÁN VỊ, CHỈNH HỢP, TỔ HỢP}
+\subsection*{A -- LÝ THUYẾT TÓM TẮT}
+
+\textbf{I. Hoán vị}
+
+\textbf{1. Giai thừa:}
+\begin{itemize}
+	\item $n!=1\cdot2\cdot3\cdots n$. Qui ước: $0!=1$.
+	\item $n!=(n-1)!\,n$.
+	\item $\dfrac{n!}{p!}=(p+1)\cdot(p+2)\cdots n$ (với $n>p$).
+	\item $\dfrac{n!}{(n-p)!}=(n-p+1)\cdot(n-p+2)\cdots n$ (với $n>p$).
+\end{itemize}
+
+\textbf{2. Hoán vị (không lặp):}
+
+Một tập hợp gồm $n$ phần tử ($n\ge 1$). Mỗi cách sắp xếp $n$ phần tử này theo một thứ tự nào đó được gọi là một hoán vị của $n$ phần tử.
+
+Số các hoán vị của $n$ phần tử là: $P_n=n!$
+
+\textbf{3. Hoán vị lặp:}
+
+Cho $k$ phần tử khác nhau: $a_1,a_2,\ldots,a_k$. Một cách sắp xếp $n$ phần tử trong đó gồm $n_1$ phần tử $a_1$, $n_2$ phần tử $a_2$, \ldots, $n_k$ phần tử $a_k$ $(n_1+n_2+\ldots+n_k=n)$ theo một thứ tự nào đó được gọi là một hoán vị lặp cấp $n$ và kiểu $(n_1,n_2,\ldots,n_k)$ của $k$ phần tử.
+
+Số các hoán vị lặp cấp $n$ kiểu $(n_1,n_2,\ldots,n_k)$ của $k$ phần tử là:
+\[P_n(n_1,n_2,\ldots,n_k)=\dfrac{n!}{n_1!\,n_2!\ldots n_k!}\]
+
+\textbf{4. Hoán vị vòng quanh:}
+
+Cho tập $A$ gồm $n$ phần tử. Một cách sắp xếp $n$ phần tử của tập $A$ thành một dãy kín được gọi là một hoán vị vòng quanh của $n$ phần tử.
+
+Số các hoán vị vòng quanh của $n$ phần tử là: $Q_n=(n-1)!$
+
+\textbf{II. Chỉnh hợp}
+
+\textbf{1. Chỉnh hợp (không lặp):}
+
+Cho tập hợp $A$ gồm $n$ phần tử. Mỗi cách sắp xếp $k$ phần tử của $A$ ($1\le k\le n$) theo một thứ tự nào đó được gọi là một chỉnh hợp chập $k$ của $n$ phần tử của tập $A$.
+
+Số chỉnh hợp chập $k$ của $n$ phần tử:
+\[A_n^k=n(n-1)(n-2)\ldots(n-k+1)=\dfrac{n!}{(n-k)!}\]
+\begin{itemize}
+	\item Công thức trên cũng đúng cho trường hợp $k=0$ hoặc $k=n$.
+	\item Khi $k=n$ thì $A_n^n=P_n=n!$
+\end{itemize}
+
+\textbf{2. Chỉnh hợp lặp:}
+
+Cho tập $A$ gồm $n$ phần tử. Một dãy gồm $k$ phần tử của $A$, trong đó mỗi phần tử có thể được lặp lại nhiều lần, được sắp xếp theo một thứ tự nhất định được gọi là một chỉnh hợp lặp chập $k$ của $n$ phần tử của tập $A$.
+
+Số chỉnh hợp lặp chập $k$ của $n$ phần tử: $\overline{A_n^k}=n^k$.
+
+\textbf{III. Tổ hợp}
+
+\textbf{1. Tổ hợp (không lặp):}
+
+Cho tập $A$ gồm $n$ phần tử. Mỗi tập con gồm $k$ ($1\le k\le n$) phần tử của $A$ được gọi là một tổ hợp chập $k$ của $n$ phần tử.
+
+Số các tổ hợp chập $k$ của $n$ phần tử:
+\[C_n^k=\dfrac{A_n^k}{k!}=\dfrac{n!}{k!(n-k)!}\]
+\begin{itemize}
+	\item Qui ước: $C_n^0=1$.
+\end{itemize}
+Tính chất:
+\[C_n^0=C_n^n=1;\qquad C_n^k=C_n^{n-k};\qquad C_n^k=C_{n-1}^{k-1}+C_{n-1}^k;\qquad C_n^k=\dfrac{n-k+1}{k}C_n^{k-1}\]
+
+\textbf{2. Tổ hợp lặp:}
+
+Cho tập $A=\{a_1;a_2;\ldots;a_n\}$ và số tự nhiên $k$ bất kì. Một tổ hợp lặp chập $k$ của $n$ phần tử là một hợp gồm $k$ phần tử, trong đó mỗi phần tử là một trong $n$ phần tử của $A$.
+
+Số tổ hợp lặp chập $k$ của $n$ phần tử: $\overline{C_n^k}=C_{n+k-1}^k=C_{n+k-1}^{n-1}$.
+
+\textbf{3. Phân biệt chỉnh hợp và tổ hợp:}
+\begin{itemize}
+	\item Chỉnh hợp và tổ hợp liên hệ nhau bởi công thức: $A_n^k=k!\,C_n^k$.
+	\item Chỉnh hợp: có thứ tự.
+	\item Tổ hợp: không có thứ tự.
+\end{itemize}
+Những bài toán mà kết quả phụ thuộc vào vị trí các phần tử $\Rightarrow$ chỉnh hợp. Ngược lại, là tổ hợp.
+\begin{itemize}
+	\item Cách lấy $k$ phần tử từ tập $n$ phần tử ($k\le n$):
+	      \begin{itemize}
+		      \item[+] Không thứ tự, không hoàn lại: $C_n^k$
+		      \item[+] Có thứ tự, không hoàn lại: $A_n^k$
+		      \item[+] Có thứ tự, có hoàn lại: $\overline{A_n^k}$
+	      \end{itemize}
+\end{itemize}
+
+% (Đoạn dưới đây lặp lại từ phần Quy tắc đếm trong file gốc)
+\textbf{Phương án 2:} Đếm gián tiếp (đếm phần bù)
+
+Trong trường hợp hành động $H$ chia nhiều trường hợp thì ta đi đếm phần bù của bài toán như sau:
+\begin{itemize}
+	\item Đếm số phương án thực hiện hành động $H$ (không cần quan tâm đến có thỏa tính chất $T$ hay không) ta được $a$ phương án.
+	\item Đếm số phương án thực hiện hành động $H$ không thỏa tính chất $T$ ta được $b$ phương án.
+\end{itemize}
+Khi đó số phương án thỏa yêu cầu bài toán là: $a-b$.
+
+\subsection*{B -- BÀI TẬP}
+
+\subsubsection*{DẠNG 1: BÀI TOÁN ĐẾM}
+
+\textbf{Phương pháp:} Dựa vào hai quy tắc cộng, quy tắc nhân và các khái niệm hoán vị, chỉnh hợp, tổ hợp.
+
+Một số dấu hiệu giúp chúng ta nhận biết được hoán vị, chỉnh hợp hay tổ hợp.
+
+\textbf{1) Hoán vị:} Các dấu hiệu đặc trưng để giúp ta nhận dạng một hoán vị của $n$ phần tử là:
+\begin{itemize}
+	\item Tất cả $n$ phần tử đều phải có mặt.
+	\item Mỗi phần tử xuất hiện một lần.
+	\item Có thứ tự giữa các phần tử.
+\end{itemize}
+
+\textbf{2) Chỉnh hợp:} Ta sẽ sử dụng khái niệm chỉnh hợp khi
+\begin{itemize}
+	\item Cần chọn $k$ phần tử từ $n$ phần tử, mỗi phần tử xuất hiện một lần.
+	\item $k$ phần tử đã cho được sắp xếp thứ tự.
+\end{itemize}
+
+\textbf{3) Tổ hợp:} Ta sử dụng khái niệm tổ hợp khi
+\begin{itemize}
+	\item Cần chọn $k$ phần tử từ $n$ phần tử, mỗi phần tử xuất hiện một lần.
+	\item Không quan tâm đến thứ tự $k$ phần tử đã chọn.
+\end{itemize}
+
+%%-----Câu D1-1-----%%%
+\begin{ex}
+	Từ các số 0,1,2,3,4,5 có thể lập được bao nhiêu số tự mà mỗi số có 6 chữ số khác nhau và chữ số 2 đứng cạnh chữ số 3?
+	\choice
+	{\True $192$}
+	{$202$}
+	{$211$}
+	{$180$}
+	\loigiai{
+	Đặt $y = 23$, xét các số $x = \overline {abcde}$ trong đó $a,b,c,d,e$ đôi một khác nhau và thuộc tập $\left\{ {0,1,y,4,5} \right\}$. Có ${P_5} - {P_4} = 96$ số như vậy \\
+	Khi ta hoán vị $2,3$ trong $y$ ta được hai số khác nhau \\
+	Nên có $96.2 = 192$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-2-----%%%
+\begin{ex}
+	Có 3 học sinh nữ và 2 hs nam.Ta muốn sắp xếp vào một bàn dài có 5 ghế ngồi. Hỏi có bao nhiêu cách sắp xếp để 3 học sinh nữ ngồi kề nhau
+	\choice
+	{$34$}
+	{$46$}
+	{\True $36$}
+	{$26$}
+	\loigiai{
+		Số cách xếp thỏa yêu cầu bài toán: $3!.3! = 36$
+	}
+\end{ex}
+
+%%-----Câu D1-3-----%%%
+\begin{ex}
+	Có 3 học sinh nữ và 2 hs nam.Ta muốn sắp xếp vào một bàn dài có 5 ghế ngồi. Hỏi có bao nhiêu cách sắp xếp để 2 học sinh nam ngồi kề nhau.
+	\choice
+	{\True $48$}
+	{$42$}
+	{$58$}
+	{$28$}
+	\loigiai{
+		Số cách xếp thỏa yêu cầu bài toán: $2!.4! = 48$
+	}
+\end{ex}
+
+%%-----Câu D1-4-----%%%
+\begin{ex}
+	Xếp 6 người A, B, C, D, E, F vào một ghế dài.Hỏi có bao nhiêu cách sắp xếp sao cho A và F ngồi ở hai đầu ghế
+	\choice
+	{\True $48$}
+	{$42$}
+	{$46$}
+	{$50$}
+	\loigiai{
+		Số cách xếp A, F: $2! = 2$ \\
+		Số cách xếp $B,C,D,E$: $4! = 24$ \\
+		Số cách xếp thỏa yêu cầu bài toán: $2.24 = 48$
+	}
+\end{ex}
+
+%%-----Câu D1-5-----%%%
+\begin{ex}
+	Xếp 6 người A, B, C, D, E, F vào một ghế dài.Hỏi có bao nhiêu cách sắp xếp sao cho: A và F ngồi cạnh nhau
+	\choice
+	{$242$}
+	{\True $240$}
+	{$244$}
+	{$248$}
+	\loigiai{
+		Xem $AF$ là một phần tử $X$, ta có: $5! = 120$ số cách xếp \\
+		$X,B,C,D,E$. Khi hoán vị $A,F$ ta có thêm được một cách xếp \\
+		Vậy có $240$ cách xếp thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-6-----%%%
+\begin{ex}
+	Xếp 6 người A, B, C, D, E, F vào một ghế dài.Hỏi có bao nhiêu cách sắp xếp sao cho: A và F không ngồi cạnh nhau
+	\choice
+	{\True $480$}
+	{$460$}
+	{$246$}
+	{$260$}
+	\loigiai{
+		Số cách xếp thỏa yêu cầu bài toán: $6! - 240 = 480$ cách
+	}
+\end{ex}
+
+%%-----Câu D1-7-----%%%
+\begin{ex}
+	Trong tủ sách có tất cả $10$ cuốn sách. Hỏi có bao nhiêu cách sắp xếp sao cho quyển thứ nhất ở kề quyển thứ hai:
+	\choice
+	{$10!$}
+	{\True $725760$}
+	{$9!$}
+	{$9! - 2!$}
+	\loigiai{
+		Chọn $2$ vị trí liên tiếp trong $10$ vị trí, có $9$ cách. \\
+		Hoán vị hai quyển sách có $2$ cách. \\
+		Sắp $8$ quyển sách còn lại vào $8$ vị trí, có $8!$ cách. \\
+		Vậy có $9.2.8! = 725760$ cách.
+	}
+\end{ex}
+
+%%-----Câu D1-8-----%%%
+\begin{ex}
+	Có bao nhiêu cách xếp $5$ sách Văn khác nhau và $7$ sách Toán khác nhau trên một kệ sách dài nếu các sách Văn phải xếp kề nhau?
+	\choice
+	{$5!.7!$}
+	{$2.5!.7!$}
+	{\True $5!.8!$}
+	{$12!$}
+	\loigiai{
+		Sắp $5$ quyển văn có $5!$ cách sắp xếp. \\
+		Sắp $7$ quyển toán và bộ $5$ quyển văn có $8!$ cách sắp xếp. \\
+		Vậy có $5!.8!$ cách sắp xếp.
+	}
+\end{ex}
+
+%%-----Câu D1-9-----%%%
+\begin{ex}
+	Từ các số $1,2,3,4,5,6$ có thể lập được bao nhiêu số tự nhiên,mỗi số có 6 chữ số đồng thời thỏa điều kiện :sáu số của mỗi số là khác nhau và trong mỗi số đó tổng của 3 chữ số đầu nhỏ hơn tổng của 3 số sau một đơn vị.
+	\choice
+	{$104$}
+	{$106$}
+	{\True $108$}
+	{$112$}
+	\loigiai{
+	\textbf{Cách 1:} Gọi $x = \overline {{a_1}{a_2}...{a_6}} , {a_i} \in \left\{ {1,2,3,4,5,6} \right\}$ là số cần lập \\
+	Theo bài ra ta có: ${a_1} + {a_2} + {a_3} + 1 = {a_4} + {a_5} + {a_6}$ (1) \\
+	Mà ${a_1},{a_2},{a_3},{a_4},{a_5},{a_6} \in \left\{ {1,2,3,4,5,6} \right\}$ và đôi một khác nhau nên \\
+	${a_1} + {a_2} + {a_3} + {a_4} + {a_5} + {a_6} = 1 + 2 + 3 + 4 + 5 + 6 = 21$ (2) \\
+	Từ (1), (2) suy ra: ${a_1} + {a_2} + {a_3} = 10$ \\
+	Phương trình này có các bộ nghiệm là: $({a_1},{a_2},{a_3}) = (1,3,6); (1,4,5); (2,3,5)$ \\
+	Với mỗi bộ ta có $3!.3! = 36$ số. \\
+	Vậy có cả thảy $3.36 = 108$ số cần lập. \\
+	\textbf{Cách 2:} Gọi $x = \overline {abcdef}$ là số cần lập \\
+	Ta có: $\heva{& a + b + c + d + e + f = 1 + 2 + 3 + 4 + 5 + 6 = 21\\& a + b + c = d + e + f + 1}$ \\
+	$\Rightarrow a + b + c = 11$. Do $a,b,c \in \left\{ {1,2,3,4,5,6} \right\}$ \\
+	Suy ra ta có các cặp sau: $(a,b,c) = (1,4,6); (2,3,6); (2,4,5)$ \\
+	Với mỗi bộ như vậy ta có $3!$ cách chọn $a,b,c$ và $3!$ cách chọn $d,e,f$ \\
+	Do đó có: $3.3!.3! = 108$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-10-----%%%
+\begin{ex}
+	Từ các số $1,2,3$ lập được bao nhiều số tự nhiên gôm $6$ chữ số thỏa mãn đồng thời hai điều kiện sau: Trong mỗi số, hai chữ số giống nhau không đứng cạnh nhau.
+	\choice
+	{\True $76$}
+	{$42$}
+	{$80$}
+	{$68$}
+	\loigiai{
+	Đặt $A = \{ 1,2,3\}$. Gọi $S$ là tập các số thỏa yêu cầu thứ nhất của bài toán \\
+	Ta có số các số thỏa điều kiện thứ nhất của bài toán là $\frac{{6!}}{{{2^3}}} = 90$ (vì các số có dạng $\overline {aabbcc}$ và khi hoán vị hai số $a,a$ ta được số không đổi) \\
+	Gọi ${S_1},{S_2},{S_3}$ là tập các số thuộc $S$ mà có $1,2,3$ cặp chữ số giống nhau đứng cạnh nhau. \\
+	$\bullet$ Số phần tử của ${S_3}$ chính bằng số hoán vị của 3 cặp $11,22,33$ nên $\left| {{S_3}} \right| = 6$ \\
+	$\bullet$ Số phần tử của ${S_2}$ chính bằng số hoán vị của 4 phần tử là có dạng $a,a,bb,cc$ nhưng $a,a$ không đứng cạnh nhau. Nên $\left| {{S_2}} \right| = \frac{{4!}}{2} - 6 = 6$ phần tử. \\
+	$\bullet$ Số phần tử của ${S_1}$ chính bằng số hoán vị của các phần tử có dạng $a,a,b,b,cc$ nhưng $a,a$ và $b,b$ không đứng cạnh nhau nên $\left| {{S_1}} \right| = \frac{{5!}}{4} - 6 - 12 = 12$ \\
+	Vậy số các số thỏa yêu cầu bài toán là: $90 - (6 + 6 + 12) = 76$.
+	}
+\end{ex}
+
+%%-----Câu D1-11-----%%%
+\begin{ex}
+	Có bao nhiêu cách xếp $5$ cuốn sách Toán, $6$ cuốn sách Lý và $8$ cuốn sách Hóa lên một kệ sách sao cho các cuốn sách cùng một môn học thì xếp cạnh nhau, biết các cuốn sách đôi một khác nhau.
+	\choice
+	{$7.5!.6!.8!$}
+	{\True $6.5!.6!.8!$}
+	{$6.4!.6!.8!$}
+	{$6.5!.6!.7!$}
+	\loigiai{
+		Ta xếp các cuốn sách cùng một bộ môn thành một nhóm \\
+		Trước hết ta xếp 3 nhóm lên kệ sách chúng ta có: $3! = 6$ cách xếp \\
+		Với mỗi cách xếp 3 nhóm đó lên kệ ta có $5!$ cách hoán vị các cuốn sách Toán, $6!$ cách hoán vị các cuốn sách Lý và $8!$ cách hoán vị các cuốn sách Hóa \\
+		Vậy theo quy tắc nhân có tất cả: $6.5!.6!.8!$ cách xếp
+	}
+\end{ex}
+
+%%-----Câu D1-12-----%%%
+\begin{ex}
+	Có bao nhiêu cách xếp $n$ người ngồi vào một bàn tròn.
+	\choice
+	{$n!$}
+	{\True $(n - 1)!$}
+	{$2(n - 1)!$}
+	{$(n - 2)!$}
+	\loigiai{
+		Nếu xếp một người ngồi vào một vị trí nào đó thì ta có 1 cách xếp và \\
+		$n - 1$ người còn lại được xếp vào $n - 1$ vị trí còn lại nên có $(n - 1)!$ cách xếp. \\
+		Vậy có tất cả $(n - 1)!$ cách xếp.
+	}
+\end{ex}
+
+%%-----Câu D1-13-----%%%
+\begin{ex}
+	Số tập hợp con có $3$ phần tử của một tập hợp có $7$ phần tử là:
+	\choice
+	{\True $C_7^3$}
+	{$A_7^3$}
+	{$\frac{{7!}}{{3!}}$}
+	{$7$}
+	\loigiai{
+		Đây là tổ hợp chập $3$ của $7$ phần tử. Vậy có $C_7^3$ tập hợp con.
+	}
+\end{ex}
+
+%%-----Câu D1-14-----%%%
+\begin{ex}
+	Cho các số $1,2,4,5,7$ có bao nhiêu cách tạo ra một số chẵn gồm $3$ chữ số khác nhau từ $5$ chữ số đã cho:
+	\choice
+	{$120$}
+	{$256$}
+	{\True $24$}
+	{$36$}
+	\loigiai{
+		Gọi số cần tìm có dạng : $\overline {abc} $ \\
+		Chọn $c$ : có 2 cách $\left( {c \in \left\{ {2;4} \right\}} \right)$ \\
+		Chọn $\overline {ab}$ : có $A_4^2$ cách \\
+		Theo quy tắc nhân, có $2.A_4^2 = 24$(số)
+	}
+\end{ex}
+
+%%-----Câu D1-15-----%%%
+\begin{ex}
+	Có thể lập được bao nhiêu số tự nhiên gồm $5$ chữ số khác nhau lấy từ các số $0,1,2$,$3,4,5$.
+	\choice
+	{$60$}
+	{$80$}
+	{$240$}
+	{\True $600$}
+	\loigiai{
+		Gọi số cần tìm có dạng : $\overline {abcde} \left( {a \ne 0} \right)$. \\
+		Chọn $a$ : có 5 cách $\left( {a \ne 0} \right)$ \\
+		Chọn $\overline {bcde}$ : có $A_5^4$ cách \\
+		Theo quy tắc nhân, có $5.A_5^4 = 600$(số)
+	}
+\end{ex}
+
+%%-----Câu D1-16.1-----%%%
+\begin{ex}
+	Từ các số 1, 2, 3, 4, 5, 6 lập được bao nhiêu số tự nhiên gồm 4 chữ số
+	\choice
+	{\True $1296$}
+	{$2019$}
+	{$2110$}
+	{$1297$}
+	\loigiai{
+		Gọi số cần lập là: $x = \overline {abcd}$. Ta chọn $a,b,c,d$ theo thứ tự sau \\
+		$a:$ có 6 cách chọn \\
+		$b:$ có 6 cách chọn \\
+		$c:$ có 6 cách chọn \\
+		$d:$ có 6 cách chọn \\
+		Vậy có ${6^4} = 1296$ số
+	}
+\end{ex}
+
+%%-----Câu D1-16.2-----%%%
+\begin{ex}
+	Từ các số 1, 2, 3, 4, 5, 6 lập được bao nhiêu số tự nhiên gồm 3 chữ số đôi một khác nhau
+	\choice
+	{$110$}
+	{$121$}
+	{\True $120$}
+	{$125$}
+	\loigiai{
+		Mỗi số cần lập ứng với một chỉnh hợp chập 3 của 6 phần tử \\
+		Nên số cần lập là: $A_6^3 = 120$ số.
+	}
+\end{ex}
+
+%%-----Câu D1-16.3-----%%%
+\begin{ex}
+	Từ các số 1, 2, 3, 4, 5, 6 lập được bao nhiêu số tự nhiên gồm 4 chữ số đôi một khác nhau và là chữ số tự nhiên chẵn
+	\choice
+	{$182$}
+	{\True $180$}
+	{$190$}
+	{$192$}
+	\loigiai{
+		Gọi số cần lập là : $x = \overline {abcd}$ \\
+		Vì $x$ chẵn nên có $3$ cách chọn $d$. Ứng với mỗi cách chọn $d$ sẽ có \\
+		$A_5^3$ cách chọn $a,b,c$. Vậy có $3.A_5^3 = 180$ số.
+	}
+\end{ex}
+
+%%-----Câu D1-16.4-----%%%
+\begin{ex}
+	Từ các số 1, 2, 3, 4, 5, 6 lập được bao nhiêu số tự nhiên gồm 4 chữ số đôi một khác nhau và không bắt đầu bằng chữ số 1
+	\choice
+	{\True $300$}
+	{$320$}
+	{$310$}
+	{$330$}
+	\loigiai{
+		Gọi số cần lập là : $x = \overline {abcd}$ \\
+		Vì $a \ne 1$ nên $a$ có $5$ cách chọn. Ứng với mỗi cách chọn $a$ ta có: $A_5^3$ cách chọn $b,c,d$. Vậy có $5.A_5^3 = 300$ số.
+	}
+\end{ex}
+
+%%-----Câu D1-16.5-----%%%
+\begin{ex}
+	Từ các số 1, 2, 3, 4, 5, 6 lập được bao nhiêu số tự nhiên gồm 6 chữ số đôi một khác nhau và hai chữ số 1 và 2 không đứng cạnh nhau.
+	\choice
+	{$410$}
+	{\True $480$}
+	{$500$}
+	{$512$}
+	\loigiai{
+		Gọi $x$ là số có 6 chữ số đôi một khác nhau và hai chữ số 1 và 2 luôn đứng cạnh nhau. \\
+		Đặt $y = 12$ khi đó $x$ có dạng $\overline {abcde}$ với $a,b,c,d,e$ đôi một khác nhau và thuộc tập $\left\{ {y,3,4,5,6} \right\}$ nên có ${P_5} = 5! = 120$ số. \\
+		Khi hoán vị hai số $1,2$ ta được một số khác nên có $120.2 = 240$ số $x$ \\
+		Vậy số thỏa yêu cầu bài toán là: ${P_6} - 240 = 480$ số.
+	}
+\end{ex}
+
+%%-----Câu D1-17-----%%%
+\begin{ex}
+	Cho $6$ chữ số $4,5,6,7,8,9$. số các số tự nhiên chẵn có $3$ chữ số khác nhau lập thành từ 6 chữ số đó:
+	\choice
+	{$120$}
+	{\True $60$}
+	{$256$}
+	{$216$}
+	\loigiai{
+		Gọi số cần tìm có dạng : $\overline {abc}$. \\
+		Chọn $c$: có 3 cách $\left( {c \in \left\{ {4;6;8} \right\}} \right)$ \\
+		Chọn $\overline {ab}$ : có $A_5^2$ cách \\
+		Theo quy tắc nhân, có $3.A_5^2 = 60$(số).
+	}
+\end{ex}
+
+%%-----Câu D1-18-----%%%
+\begin{ex}
+	Cho các chữ số $0,1,2,3,4,5$. Từ các chữ số đã cho lập được bao nhiêu số chẵn có $4$ chữ số và các chữ số đó phải khác nhau:
+	\choice
+	{$160$}
+	{\True $156$}
+	{$752$}
+	{$240$}
+	\loigiai{
+		Gọi số cần tìm có dạng : $\overline {abcd} \left( {a \ne 0} \right)$. \\
+		\textbf{TH1.} $d = 0$ \\
+		Chọn $d$ : có 1 cách \\
+		Chọn $\overline {abc}$ : có $A_5^3$ cách \\
+		Theo quy tắc nhân, có $1.A_5^3 = 60$ (số) \\
+		\textbf{TH2.} $d \ne 0$ \\
+		Chọn $d$ : có 2 cách $\left( {d \in \left\{ {2;4} \right\}} \right)$ \\
+		Chọn $a$ : có 4 cách $\left( {a \ne 0,a \ne d} \right)$ \\
+		Chọn $\overline {bc}$ : có $A_4^2$ cách \\
+		Theo quy tắc nhân, có $2.4.A_4^2 = 96$ (số) \\
+		Theo quy tắc cộng, vậy có $60 + 96 = 156$ (số).
+	}
+\end{ex}
+
+%%-----Câu D1-19-----%%%
+\begin{ex}
+	Từ các số của tập $A = \left\{ {0,1,2,3,4,5,6} \right\}$ có thể lập được bao nhiêu số chẵn gồm 5 chữ số đôi một khác nhau trong đó có hai chữ số lẻ và hai chữ số lẻ đứng cạnh nhau.
+	\choice
+	{\True $360$}
+	{$362$}
+	{$345$}
+	{$368$}
+	\loigiai{
+	Vì có 3 số lẻ là 1,3,5, nên ta tạo được 6 cặp số kép: $13,31,15,51,35,53$ \\
+	Gọi A là tập các số gồm 4 chữ số được lập từ $X = \left\{ {0,13,2,4,6} \right\}$. \\
+	Gọi ${A_1},{A_2},{A_3}$ tương ứng là số các số tự nhiên lẻ gồm 4 chữ số khác nhau được lập từ các chữ số của tập $X = \left\{ {0,13,2,4,6} \right\}$ và 13 đứng ở vị trí thứ nhất, thứ hai và thứ ba. \\
+	Ta có: $\left| {{A_1}} \right| = A_4^3 = 24;\left| {{A_2}} \right| = \left| {{A_3}} \right| = 3.3.2 = 18$ nên $\left| A \right| = 24 + 2.18 = 60$ \\
+	Vậy số các số cần lập là: $6.60 = 360$ số.
+	}
+\end{ex}
+
+%%-----Câu D1-20-----%%%
+\begin{ex}
+	Trong một tuần bạn A dự định mỗi ngày đi thăm một người bạn trong $12$ người bạn của mình. Hỏi bạn A có thể lập được bao nhiêu kế hoạch đi thăm bạn của mình (thăm một bạn không quá một lần).
+	\choice
+	{\True $3991680$}
+	{$12!$}
+	{$35831808$}
+	{$7!$}
+	\loigiai{
+		Vì 1 tuần có 7 ngày nên có $A_{12}^7 = 3991680$ (kế hoạch).
+	}
+\end{ex}
+
+%%-----Câu D1-21.1-----%%%
+\begin{ex}
+	Cho tập $A = \left\{ {1,2,3,4,5,6,7,8} \right\}$ có bao nhiêu tập con của A chứa số 2 mà không chứa số 3
+	\choice
+	{\True $64$}
+	{$83$}
+	{$13$}
+	{$41$}
+	\loigiai{
+		Xét tập $B = \left\{ {1,4,5,6,7,8} \right\}$, ta có B không chứa số 3. \\
+		$X$ là một tập con của A thỏa yêu cầu bài toán khi và chỉ khi $X\setminus \left\{ 2 \right\}$ là một tập con của $B$. Do đo, số tập con của A thỏa yêu cầu bài toán bằng số tập con của B và bằng ${2^6} = 64$.
+	}
+\end{ex}
+
+%%-----Câu D1-21.2-----%%%
+\begin{ex}
+	Cho tập $A = \left\{ {1,2,3,4,5,6,7,8} \right\}$ tức các chữ số thuộc tập A, lập được bao nhiêu số tự nhiên lẻ gồm 5 chữ số không bắt đầu bởi 123.
+	\choice
+	{\True $3340$}
+	{$3219$}
+	{$4942$}
+	{$2220$}
+	\loigiai{
+		Xét số $x = \overline {abcde}$ được lập từ các chữ số thuộc tập A. \\
+		Vì $x$ lẻ nên $e \in \left\{ {1,3,5,7} \right\}$, suy ra có 4 cách chọn e. Bốn chữ số còn lại được chọn từ 7 chữ số của tập $A\setminus \left\{ e \right\}$ nên có $A_7^4 = 840$ cách \\
+		Suy ra, có $4.840 = 3360$ số lẻ gồm năm chữ số khác nhau. \\
+		Mà số $x$ bắt đầu bằng 123 có $A_5^2 = 20$ số. \\
+		Vậy số $x$ thỏa yêu cầu bài toán là : $3360 - 20 - 3340$ số.
+	}
+\end{ex}
+
+%%-----Câu D1-22-----%%%
+\begin{ex}
+	Từ $7$ chữ số $1,\,2,\,3,\,4,\,5,\,6,\,7$ có thể lập được bao nhiêu số từ $4$ chữ số khác nhau?
+	\choice
+	{$7!$}
+	{${7^4}$}
+	{\True $7.6.5.4$}
+	{$7!.6!.5!.4!$}
+	\loigiai{
+		Chọn $4$ trong $7$ chữ số để sắp vào $4$ vị trí (phân biệt thứ tự) có $A_7^4 = \frac{{7!}}{{3!}} = 7.6.5.4$. \\
+		Vậy có $8! - A_6^2.6! = 18720$ cách sắp xếp.
+	}
+\end{ex}
+
+%%-----Câu D1-23-----%%%
+\begin{ex}
+	Từ các số $0,\,1,\,2,\,7,\,8,\,9$ tạo được bao nhiêu số chẵn có $5$ chữ số khác nhau?
+	\choice
+	{$120$}
+	{$216$}
+	{\True $312$}
+	{$360$}
+	\loigiai{
+		Gọi $\overline {abcde}$ là số cần tìm. \\
+		Nếu $e = 0$, chọn $4$ trong $5$ số còn lại sắp vào các vị trí $a,\,b,\,c,\,d$ có $A_5^4 = 120$ cách. \\
+		Nếu $e \ne 0$, chọn $e$ có $2$ cách. \\
+		Chọn $a \ne 0$ và $a \ne e$ có $4$ cách. \\
+		Chọn $3$ trong $4$ số còn lại sắp vào các vị trí $b,\,c,\,d$ có $A_4^3$ cách. \\
+		Như vậy có: $A_5^4 + 2.4.A_4^3 = 312$ số.
+	}
+\end{ex}
+
+%%-----Câu D1-24-----%%%
+\begin{ex}
+	Từ các số $0,\,1,\,2,\,7,\,8,\,9$ tạo được bao nhiêu số lẻ có $5$ chữ số khác nhau?
+	\choice
+	{\True $288$}
+	{$360$}
+	{$312$}
+	{$600$}
+	\loigiai{
+		Gọi $\overline {abcde}$ là số cần tìm. \\
+		Chọn $e$ có $3$ cách. \\
+		Chọn $a \ne 0$ và $a \ne e$ có $4$ cách. \\
+		Chọn $3$ trong $4$ số còn lại sắp vào $b,\,c,\,d$ có $A_4^3$ cách. \\
+		Vậy có $3.4.A_4^3 = 288$ số.
+	}
+\end{ex}
+
+%%-----Câu D1-25-----%%%
+\begin{ex}
+	Từ các chữ số 0,1,2,3,4,5,6 có thể lập được bao nhiêu số chẵn, mỗi số có 5 chữ số khác nhau trong đó có đúng hai chữ số lẻ và 2 chữ số lẻ đứng cạnh nhau?
+	\choice
+	{\True $360$}
+	{$280$}
+	{$310$}
+	{$290$}
+	\loigiai{
+		Gọi $A$ \textbf{l}à số tự nhiên có hai chữ số lẻ khác nhau lấy từ các số $0,1,2,3,4,5,6$ số cách chọn được $A$ là $A_3^2 = 6$. Số chẵn có 5 chữ số mà hai số lẻ đứng kề nhau phải chứa $A$ và ba trong 4 chữ số 0;2;4;6. Gọi $\overline {abcd} ;a,b,c,d \in \{ A,0,2,4,6\}$ là số thỏa mãn yêu cầu bài toán. \\
+		$\bullet$TH1: Nếu $a = A$ có 1 cách chọn $a$ và $A_4^3$ chọn $b,c,d$. \\
+		$\bullet$ TH 2: $a \ne A$ có 3 cách chọn $a$ \\
+		+ Nếu $b = A$ có 1 cách chọn $b$ và $A_3^2$ cách chọn $c,d$. \\
+		+ Nếu $c = A$ có 1 cách chọn $c$ và $A_3^2$ cách chọn $b,d$. \\
+		Vậy có $A_3^2\left( {A_4^3 + 3\left( {1.A_3^2 + 1.A_3^2} \right)} \right) = 360$ số thỏa mãm yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-26-----%%%
+\begin{ex}
+	Có bao nhiêu số tự nhiên gồm 7 chữ số, biết rằng chữ số 2 có mặt hai lần, chữ số ba có mặt ba lần và các chữ số còn lại có mặt nhiều nhất một lần?
+	\choice
+	{\True $26460$}
+	{$27901$}
+	{$27912$}
+	{$26802$}
+	\loigiai{
+		$\bullet$ Ta đếm các số có 7 chữ số được chọn từ các số $\left\{ {2,2,3,3,3,a,b} \right\}$ với $a,b \in \left\{ {0,1,4,5,6,7,8,9} \right\}$, kể cả số 0 đứng đầu. \\
+		Ta có được: $7!$ số như vậy. Tuy nhiên khi hoán vị hai số 2 cho nhau hoặc các số 3 cho nhau thì ta được số không đổi do đó có tất cả \\
+		$\frac{{7!}}{{2!.3!}} = 420$ số. \\
+		Vì có $A_8^2$ cách chọn $a,b$ nên ta có: $480.A_8^2 = 26880$ số. \\
+		$\bullet$ Ta đếm các số có 6 chữ số được chọn từ các số $\left\{ {2,2,3,3,3,x} \right\}$ với $x \in \left\{ {1,4,5,6,7,8,9} \right\}$. \\
+		Tương tự như trên ta tìm được $\frac{{6!}}{{2!.3!}}A_7^1 = 420$ số \\
+		Vậy số các số thỏa yêu cầu bài toán: $26460$.
+	}
+\end{ex}
+
+%%-----Câu D1-27.1-----%%%
+\begin{ex}
+	Từ các số của tập $A = \{ 1,2,3,4,5,6,7\} $ lập được bao nhiêu số tự nhiên gồm năm chữ số đôi một khác nhau
+	\choice
+	{\True $2520$}
+	{$2510$}
+	{$2398$}
+	{$2096$}
+	\loigiai{
+		Mỗi số cần lập thỏa yêu cầu bài toán sẽ ứng với mỗi chỉnh hợp chập $5$ của 7 phần tử. Do đó, có $A_7^5 = 2520$.
+	}
+\end{ex}
+
+%%-----Câu D1-27.2-----%%%
+\begin{ex}
+	Từ các số của tập $A = \{ 1,2,3,4,5,6,7\} $ lập được bao nhiêu số tự nhiên gồm sáu chữ số khác nhau và chia hết cho 5.
+	\choice
+	{\True $720$}
+	{$710$}
+	{$820$}
+	{$280$}
+	\loigiai{
+	Gọi số cần lập là $x = \overline {{a_1}{a_2}...{a_6}}$ \\
+	Vì $x$ chia hết cho 5 nên ${a_6} = 5 \Rightarrow {a_6}$ có một cách chọn \\
+	Số cách chọn các chữ số ${a_1},{a_2},...,{a_5}$ chính bằng số chỉnh hợp chập $5$ của 6 phân tử và bằng $A_6^5$. \\
+	Vậy số các số cần lập là $1.A_6^5 = 720$
+	}
+\end{ex}
+
+%%-----Câu D1-27.3-----%%%
+\begin{ex}
+	Từ các số của tập $A = \{ 1,2,3,4,5,6,7\} $ lập được bao nhiêu số tự nhiên gồm năm chữ số đôi một khác nhau, đồng thời hai chữ số 2 và 3 luôn đứng cạnh nhau
+	\choice
+	{\True $720$}
+	{$710$}
+	{$820$}
+	{$280$}
+	\loigiai{
+		Đặt $x = 23$. Số các số cần lập có dạng $\overline {abcd}$ với $a,b,c,d \in \left\{ {1,x,4,5,6,7} \right\}$. Có $A_6^4 = 360$ số như vậy \\
+		Mặt khác khi hoán vị hai số $2$ và 3 ta được thêm một số thỏa yêu cầu bài toán. \\
+		Vậy có $360.2 = 720$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-27.4-----%%%
+\begin{ex}
+	Từ các số của tập $A = \{ 1,2,3,4,5,6,7\} $ lập được bao nhiêu số tự nhiên gồm bảy chữ số, trong đó chữ số 2 xuất hiện đúng ba lần.
+	\choice
+	{\True $31203$}
+	{$30240$}
+	{$31220$}
+	{$32220$}
+	\loigiai{
+		Xét các số tự nhiên có bảy chữ số được lập từ $\left\{ {1,2,2,2,3,4,5,6,7} \right\}$ \\
+		Ta thấy có $A_9^7$ số như vậy. \\
+		Tuy nhiên khi hoán vị vị trí của ba số 2 cho nhau thì số thu được không thay đổi. Vậy có $\frac{{A_9^7}}{{3!}} = 30240$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-28.1-----%%%
+\begin{ex}
+	Từ các chữ số của tập hợp $A = \left\{ {0,1,2,3,4,5,6} \right\}$ lập được bao nhiêu số tự nhiên gồm 5 chữ số
+	\choice
+	{\True $14406$}
+	{$13353$}
+	{$15223$}
+	{$14422$}
+	\loigiai{
+		Gọi $x = \overline {abcde}$ với $a,b,c,e \in A;a \ne 0$ \\
+		Để lập $x$ ta chọn các số $a,b,c,d,e$ theo tứ thự sau \\
+		Chọn $a$: Vì $a \in A,a \ne 0$ nên ta có $6$ cách chọn $a$ \\
+		Vì $b \in A$ và $b$ có thể trùng với $a$ nên với mỗi cách chọn $a$ ta có $7$ cách chọn $b$ \\
+		Tương tự : với mỗi cách chọn $a,b$ có $7$ cách chọn $c$ \\
+		với mỗi cách chọn $a,b,c$ có $7$ cách chọn $d$ \\
+		với mỗi cách chọn $a,b,c,d$ có $7$ cách chọn $e$ \\
+		Vậy theo quy tắc nhân ta có: $6.7.7.7.7 = 14406$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-28.2-----%%%
+\begin{ex}
+	Từ các chữ số của tập hợp $A = \left\{ {0,1,2,3,4,5,6} \right\}$ lập được bao nhiêu số tự nhiên gồm 4 chữ số đôi một khác nhau
+	\choice
+	{$418$}
+	{\True $720$}
+	{$723$}
+	{$731$}
+	\loigiai{
+		Gọi $x = \overline {abcd}$ là số cần lập với $a,b,d,c \in A$ đôi một khác nhau và $a \ne 0$. Ta chọn $a,b,c,d$ theo thứ tự sau \\
+		Chọn $a$: Vì $a \in A,a \ne 0$ nên có 6 cách chọn $a$ \\
+		Với mỗi cách chọn $a$ ta thấy mỗi cách chọn $b,c,d$ chính là một cách lấy ba phần tử của tập $A\setminus \left\{ a \right\}$ và xếp chúng theo thứ tự, nên mỗi cách chọn $b,c,d$ ứng với một chỉnh hợp chập $3$ của 6 phần tử \\
+		Suy ra số cách chọn $b,c,d$ là: $A_6^3$ \\
+		Theo quy tắc nhân ta có: $6.A_6^3 = 720$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-28.3-----%%%
+\begin{ex}
+	Từ các chữ số của tập hợp $A = \left\{ {0,1,2,3,4,5,6} \right\}$ lập được bao nhiêu số tự nhiên gồm 4 chữ số đôi một khác nhau và là số lẻ
+	\choice
+	{\True $300$}
+	{$324$}
+	{$354$}
+	{$341$}
+	\loigiai{
+		Gọi $x = \overline {abcd}$ là số cần lập với $a,b,c,d \in A$ đôi một khác nhau, $a \ne 0$. \\
+		Vì $x$ là số lẻ nên $d \in \left\{ {1,3,5} \right\} \Rightarrow d$ có 3 cách chọn. \\
+		Với mỗi cách chọn $d$ ta có $a \in A\setminus \left\{ {0,d} \right\} \Rightarrow a$ có $5$ cách chọn \\
+		Với mỗi cách chọn $a,d$ ta có $A_5^2$ cách chọn $bc$ \\
+		Theo quy tắc nhân ta có: $3.5.A_5^2 = 300$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-28.4-----%%%
+\begin{ex}
+	Từ các chữ số của tập hợp $A = \left\{ {0,1,2,3,4,5,6} \right\}$ lập được bao nhiêu số tự nhiên gồm 5 chữ số đôi một khác nhau và là số chẵn.
+	\choice
+	{\True $1260$}
+	{$1234$}
+	{$1250$}
+	{$1235$}
+	\loigiai{
+		Gọi $x = \overline {abcde}$ là số cần lập với $a,b,c,d,e \in A$ đôi một khác nhau và $a \ne 0$. \\
+		Vì $x$ là số lẻ nên $e \in \left\{ {0,2,4,6} \right\}$. Ta xét các trường hợp sau \\
+		$\bullet$ $e = 0 \Rightarrow e$ có 1 cách chọn \\
+		Vì $a \ne 0 \Rightarrow a$ có 6 cách chọn \\
+		Số cách chọn các chữ số còn lại: $A_5^3$ \\
+		Do đó trường hợp này có tất cả $1.6.A_5^3 = 360$ số \\
+		$\bullet$ $e \ne 0 \Rightarrow e$ có 3 cách chọn \\
+		Với mỗi cách chọn $e$ ta có $a \in A\setminus \left\{ {0,e} \right\} \Rightarrow a$ có 5 cách chọn \\
+		Số cách chọn các số còn lại là: $A_5^3$ \\
+		Do đó trường hợp này có tất cả $3.5.A_5^3 = 900$ số \\
+		Vậy có cả thảy $360 + 900 = 1260$ số thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D1-29-----%%%
+\begin{ex}
+	Từ các số $1,2,3,4,5,6,7,8,9$ có thể lập được bao nhiêu số tự nhiên có, mỗi số có $6$ chữ số khác nhau và tổng các chữ số ở hàng chục, hàng trăm, hàng ngàn bằng 8.
+	\choice
+	{$1300$}
+	{\True $1400$}
+	{$1500$}
+	{$1600$}
+	\loigiai{
+	Gọi $n = \overline {{a_1}{a_2}{a_3}{a_4}{a_5}{a_6}}$ là một số thỏa yêu cầu bài toán thì \\
+	${a_3} + {a_4} + {a_5} = 8$. \\
+	Có hai bộ 3 số có tổng bằng 8 trong các số 1,2,…,8,9 là : \\
+	$\left\{ {1;2;5} \right\}$ và $\left\{ {1;3;4} \right\}$ \\
+	Nếu ${a_3};{a_4};{a_5} \in \left\{ {1;2;5} \right\}$ thì ${a_3},{a_4},{a_5}$ có $3!$ cách chọn và ${a_1},{a_2},{a_6}$ có $A_6^3$ cách chọn suy ra có $3!A_6^3 = 720$ số thỏa yêu cầu. \\
+	Nếu ${a_3};{a_4};{a_5} \in \left\{ {1;2;5} \right\}$ thì cũng có $720$ số thỏa yêu cầu. \\
+	Vậy có $720 + 720 = 1400$ số thỏa yêu cầu
+	}
+\end{ex}
+
+%%-----Câu D1-30-----%%%
+\begin{ex}
+	Hỏi có thể lập được bao nhiêu số tự nhiên có 4 chữ số sao cho trong mỗi số đó, chữ số hàng ngàn lớn hơn hàng trăm, chữ số hàng trăm lớn hơn hàng chục và chữ số hàng chục lớn hơn hàng đơn vị.
+	\choice
+	{$221$}
+	{$209$}
+	{\True $210$}
+	{$215$}
+	\loigiai{
+		Gọi $x = \overline {{a_1}{a_2}{a_3}{a_4}}$ với $9 \ge {a_1} > {a_2} > {a_3} > {a_4} \ge 0$ là số cần lập. \\
+		$X = \left\{ {0; 1; 2; ...; 8; 9} \right\}$. \\
+		Từ 10 phần tử của X ta chọn ra 4 phần tử bất kỳ thì chỉ lập được 1 số A. Nghĩa là không có hoán vị hay là một tổ hợp chập 4 của 10. \\
+		Vậy có $C_{10}^4 = 210$ số.
+	}
+\end{ex}
+
+\subsubsection*{DẠNG 2: XẾP VỊ TRÍ -- CÁCH CHỌN, PHÂN CÔNG CÔNG VIỆC}
+
+%%-----Câu D2-1-----%%%
+\begin{ex}
+	Một liên đoàn bóng rổ có $10$ đội, mỗi đội đấu với mỗi đội khác hai lần, một lần ở sân nhà và một lần ở sân khách. Số trận đấu được sắp xếp là:
+	\choice
+	{$45$}
+	{\True $90$}
+	{$100$}
+	{$180$}
+	\loigiai{
+		Mỗi đội sẽ gặp $9$ đội còn lại. Do đó có $10.9 = 90$ trận đấu.
+	}
+\end{ex}
+
+%%-----Câu D2-2-----%%%
+\begin{ex}
+	Một liên đoàn bóng rổ có $10$ đội, mỗi đội đấu với mỗi đội khác hai lần, một lần ở sân nhà và một lần ở sân khách. Số trận đấu được sắp xếp là:
+	\choice
+	{$45$}
+	{\True $90$}
+	{$100$}
+	{$180$}
+	\loigiai{
+		Mỗi đội sẽ gặp $9$ đội còn lại. Do đó có $10.9 = 90$ trận đấu.
+	}
+\end{ex}
+
+%%-----Câu D2-3-----%%%
+\begin{ex}
+	Một liên đoàn bóng đá có $10$ đội, mỗi đội phải đá $4$ trận với mỗi đội khác, $2$ trận ở sân nhà và $2$ trận ở sân khách. Số trận đấu được sắp xếp là:
+	\choice
+	{\True $180$}
+	{$160$}
+	{$90$}
+	{$45$}
+	\loigiai{
+		Mỗi đội sẽ gặp $9$ đội khác trong hai lượt trận sân nhà và sân khách. Có $10.9 = 90$ trận. \\
+		Mỗi đội đá $2$ trận sân nhà, $2$ trận sân khách. Nên số trận đấu là $2.90 = 180$ trận.
+	}
+\end{ex}
+
+%%-----Câu D2-4-----%%%
+\begin{ex}
+	Giả sử ta dùng $5$ màu để tô cho $3$ nước khác nhau trên bản đồ và không có màu nào được dùng hai lần. Số các cách để chọn những màu cần dùng là:
+	\choice
+	{\True $\frac{{5!}}{{2!}}$}
+	{$8$}
+	{$\frac{{5!}}{{3!2!}}$}
+	{${5^3}$}
+	\loigiai{
+		Chọn $3$ trong $5$ màu để tô vào $3$ nước khác nhau nên có $A_5^3 = \frac{{5!}}{{2!}}$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-5-----%%%
+\begin{ex}
+	Sau bữa tiệc, mỗi người bắt tay một lần với mỗi người khác trong phòng. Có tất cả $66$ người lần lượt bắt tay. Hỏi trong phòng có bao nhiêu người:
+	\choice
+	{$11$}
+	{\True $12$}
+	{$33$}
+	{$66$}
+	\loigiai{
+	Cứ hai người sẽ có $1$ lần bắt tay. \\
+	Khi đó $C_n^2 = 66 \Leftrightarrow \frac{{n!}}{{\left( {n - 2} \right)!.2!}} = 66 \Leftrightarrow n\left( {n - 1} \right) = 132 \Leftrightarrow \hoac{& n = 12\\& n = - 11} \Leftrightarrow n = 12$
+	}
+\end{ex}
+
+%%-----Câu D2-6-----%%%
+\begin{ex}
+	Tên $15$ học sinh được ghi vào $15$ tờ giấy để vào trong hộp. Chọn tên $4$ học sinh để cho đi du lịch. Hỏi có bao nhiêu cách chọn các học sinh:
+	\choice
+	{$4!$}
+	{$15!$}
+	{\True $1365$}
+	{$32760$}
+	\loigiai{
+		Chọn $4$ trong $15$ học sinh (không phân biệt thứ tự) là tổ hợp chập $4$ của $15$. \\
+		Vậy có $C_{15}^4 = 1365$ cách chọn.
+	}
+\end{ex}
+
+%%-----Câu D2-7-----%%%
+\begin{ex}
+	Một hội đồng gồm $2$ giáo viên và $3$ học sinh được chọn từ một nhóm $5$ giáo viên và $6$ học sinh. Hỏi có bao nhiêu cách chọn?
+	\choice
+	{\True $200$}
+	{$150$}
+	{$160$}
+	{$180$}
+	\loigiai{
+		Chọn $2$ trong $5$ giáo viên có: $C_5^2 = 10$ cách chọn. \\
+		Chọn $3$ trong $6$ học sinh có $C_6^3 = 20$ cách chọn. \\
+		Vậy có $10.20 = 200$ cách chọn.
+	}
+\end{ex}
+
+%%-----Câu D2-8-----%%%
+\begin{ex}
+	Một tổ gồm $12$ học sinh trong đó có bạn An. Hỏi có bao nhiêu cách chọn $4$ em đi trực trong đó phải có An:
+	\choice
+	{$990$}
+	{$495$}
+	{$220$}
+	{\True $165$}
+	\loigiai{
+		Chọn An có $1$ cách chọn. \\
+		Chọn $3$ bạn trong $11$ bạn còn lại có $C_{11}^3 = 165$ cách chọn. \\
+		Vậy có $165$ cách chọn.
+	}
+\end{ex}
+
+%%-----Câu D2-9-----%%%
+\begin{ex}
+	Từ một nhóm $5$ người, chọn ra các nhóm ít nhất $2$ người. Hỏi có bao nhiêu cách chọn:
+	\choice
+	{$25$}
+	{\True $26$}
+	{$31$}
+	{$32$}
+	\loigiai{
+		Chọn lần lượt nhóm có $2,\,3,\,4,\,5$ người, ta có $C_5^2,\,C_5^3,\,C_5^4,\,C_5^5$ cách chọn. \\
+		Vậy tổng cộng có: $C_5^2 + C_5^3 + C_5^4 + C_5^5 = 26$ cách chọn.
+	}
+\end{ex}
+
+%%-----Câu D2-10-----%%%
+\begin{ex}
+	Một tổ gồm $7$ nam và $6$ nữ. Hỏi có bao nhiêu cách chọn $4$ em đi trực sao cho có ít nhất $2$ nữ?
+	\choice
+	{$\left( {C_7^2 + C_6^5) + (C_7^1 + C_6^3} \right) + C_6^4$}
+		{\True $\left( {C_7^2.C_6^2} \right) + \left( {C_7^1.C_6^3} \right) + C_6^4$. $>$}
+		{$C_{11}^2.C_{12}^2$}
+		{$C_7^2.C_6^2 + C_7^3.C_6^1 + C_7^4$}
+	\loigiai{
+		Chọn nhóm gồm $2$ nam, $2$ nữ, có $C_7^2.C_6^2$ cách. \\
+		Chọn nhóm gồm $1$ nam, $3$ nữ, có $C_7^1.C_6^3$ cách. \\
+		Chọn nhóm gồm $4$ nữ, có $C_6^4$ cách \\
+		Vậy có: $\left( {C_7^2.C_6^2} \right) + \left( {C_7^1.C_6^3} \right) + C_6^4$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-11-----%%%
+\begin{ex}
+	Số cách chia $10$ học sinh thành $3$ nhóm lần lượt gồm $2$, $3$, $5$ học sinh là:
+	\choice
+	{$C_{10}^2 + C_{10}^3 + C_{10}^5$}
+	{\True $C_{10}^2.C_8^3.C_5^5$ $>$}
+	{$C_{10}^2 + C_8^3 + C_5^5$}
+	{$C_{10}^5 + C_5^3 + C_2^2$}
+	\loigiai{
+		Chọn $2$ trong $10$ học sinh chia thành nhóm $2$ có: $C_{10}^2$ cách. \\
+		Chọn $3$ trong $8$ học sinh còn lại chia thành nhóm $3$ có: $C_8^3$ cách. \\
+		Chọn $5$ trong $5$ học sinh còn lại chia thành nhóm $5$ có $C_5^5$ cách. \\
+		Vậy có $C_{10}^2.C_8^3.C_5^5$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-12-----%%%
+\begin{ex}
+	Một thí sinh phải chọn $10$ trong số $20$ câu hỏi. Hỏi có bao nhiêu cách chọn $10$ câu hỏi này nếu $3$ câu đầu phải được chọn:
+	\choice
+	{$C_{20}^{10}$}
+	{$c_7^{10} + C_{10}^3$}
+	{$C_{10}^7.C_{10}^3$}
+	{\True $C_{17}^7$}
+	\loigiai{
+		Thí sinh chỉ phải chọn $7$ câu trong $17$ câu còn lại. Vậy có $C_{17}^7$ cách chọn.
+	}
+\end{ex}
+
+%%-----Câu D2-13-----%%%
+\begin{ex}
+	Trong các câu sau câu nào \textbf{\textit{sai}}?
+	\choice
+	{$C_{14}^3 = C_{14}^{11}$}
+	{$C_{10}^3 + C_{10}^4 = C_{11}^4$}
+	{$C_4^0 + C_4^1 + C_4^2 + C_4^3 + C_4^4 = 16$}
+	{\True $C_{10}^4 + C_{11}^4 = C_{11}^5$}
+	\loigiai{
+		Ta có công thức: $C_n^k + C_n^{k + 1} = C_{n + 1}^{k + 1}$ nên đáp án sai là $C_{10}^4 + C_{11}^4 = C_{11}^5$.
+	}
+\end{ex}
+
+%%-----Câu D2-14-----%%%
+\begin{ex}
+	Có tất cả $120$ cách chọn $3$ học sinh từ nhóm $n$ (chưa biết) học sinh. Số $n$ là nghiệm của phương trình nào sau đây?
+	\choice
+	{$n\left( {n + 1} \right)\left( {n + 2} \right) = 120$}
+	{$n\left( {n + 1} \right)\left( {n + 2} \right) = 720$. $>$}
+	{$n\left( {n - 1} \right)\left( {n - 2} \right) = 120$}
+	{\True $n\left( {n - 1} \right)\left( {n - 2} \right) = 720$}
+	\loigiai{
+		Chọn $3$ trong $n$ học sinh có $C_n^3 = \frac{{n!}}{{\left( {n - 3} \right)!.3!}} = \frac{{n\left( {n - 1} \right)\left( {n - 2} \right)}}{6}$. \\
+		Khi đó $C_n^3 = 120 \Leftrightarrow n\left( {n - 1} \right)\left( {n - 2} \right) = 720$.
+	}
+\end{ex}
+
+%%-----Câu D2-15-----%%%
+\begin{ex}
+	Số cách chọn một ban chấp hành gồm một trưởng ban, một phó ban, một thư kí và một thủ quỹ được chọn từ $16$ thành viên là:
+	\choice
+	{$4$}
+	{$\frac{{16!}}{4}$}
+	{$\frac{{16!}}{{12!.4!}}$}
+	{\True $\frac{{16!}}{{12!}}$}
+	\loigiai{
+		Chọn $4$ trong $16$ thành viên để bầu ban chấp hành (có phân biệt thứ tự) có $A_{16}^4 = \frac{{16!}}{{12!}}$
+	}
+\end{ex}
+
+%%-----Câu D2-16-----%%%
+\begin{ex}
+	Trong một buổi hoà nhạc, có các ban nhạc của các trường đại học từ Huế, Đà Nằng, Quy Nhơn, Nha Trang, Đà Lạt tham dự. Tìm số cách xếp đặt thứ tự để các ban nhạc Nha Trang sẽ biểu diễn đầu tiên.
+	\choice
+	{$4$}
+	{$20$}
+	{\True $24$}
+	{$120$}
+	\loigiai{
+		Sắp xếp thứ tự biểu diễn của $4$ ban nhạc còn lại có $A_4^4 = 4! = 20$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-17-----%%%
+\begin{ex}
+	Ông và bà An cùng có $6$ đứa con đang lên máy bay theo một hàng dọc. Có bao nhiêu cách xếp hàng khác nhau nếu ông An hay bà An đứng ở đầu hoặc cuối hàng:
+	\choice
+	{$720$}
+	{$1440$}
+	{\True $18720$}
+	{$40320$}
+	\loigiai{
+		Ta dùng phần bù. \\
+		Sắp $8$ người vào $8$ vị trí theo hàng dọc có $8!$ cách sắp xếp. \\
+		Sắp ông và bà An vào $2$ trong $6$ vị trí (trừ vị trí đầu và cuối hàng) có $A_6^2$ cách. \\
+		Sắp $6$ người con vào $6$ vị trí còn lại có $6!$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-18-----%%%
+\begin{ex}
+	Trong một hộp bánh có $6$ loại bánh nhân thịt và $4$ loại bánh nhân đậu xanh. Có bao nhiêu cách lấy ra $6$ bánh để phát cho các em thiếu nhi.
+	\choice
+	{$240$}
+	{$151200$}
+	{$14200$}
+	{\True $210$}
+	\loigiai{
+		Chọn $6$ trong $10$ bánh có $C_{10}^6 = 210$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-19-----%%%
+\begin{ex}
+	Hai nhóm người cần mua nền nhà, nhóm thứ nhất có 2 người và họ muốn mua 2 nền kề nhau, nhóm thứ hai có 3 người và họ muốn mua 3 nền kề nhau. Họ tìm được một lô đất chia thành 7 nền đang rao bán (các nền như nhau và chưa có người mua). Tính số cách chọn nền của mỗi người thỏa yêu cầu trên
+	\choice
+	{\True $144$}
+	{$125$}
+	{$140$}
+	{$132$}
+	\loigiai{
+		Xem lô đất có 4 vị trí gồm 2 vị trí 1 nền, 1 vị trí 2 nền và 1 vị trí 3 nền. \\
+		Bước 1: nhóm thứ nhất chọn 1 vị trí cho 2 nền có 4 cách và mỗi cách có \\
+		$2! = 2$ cách chọn nền cho mỗi người. Suy ra có $4.2 = 8$ cách chọn nền. \\
+		Bước 2: nhóm thứ hai chọn 1 trong 3 vị trí còn lại cho 3 nền có 3 cách và mỗi cách có $3! = 6$ cách chọn nền cho mỗi người. \\
+		Suy ra có $3.6 = 18$ cách chọn nền. \\
+		Vậy có $8.18 = 144$ cách chọn nền cho mỗi người
+	}
+\end{ex}
+
+%%-----Câu D2-20-----%%%
+\begin{ex}
+	Một liên đoàn bóng đá có $10$ đội, mỗi đội phải đá $4$ trận với mỗi đội khác, $2$ trận ở sân nhà và $2$ trận ở sân khách. Số trận đấu được sắp xếp là:
+	\choice
+	{\True $180$}
+	{$160$}
+	{$90$}
+	{$45$}
+	\loigiai{
+		Mỗi đội sẽ gặp $9$ đội khác trong hai lượt trận sân nhà và sân khách. Có $10.9 = 90$ trận. \\
+		Mỗi đội đá $2$ trận sân nhà, $2$ trận sân khách. Nên số trận đấu là $2.90 = 180$ trận.
+	}
+\end{ex}
+
+%%-----Câu D2-21-----%%%
+\begin{ex}
+	Một Thầy giáo có 10 cuốn sách Toán đôi một khác nhau, trong đó có 3 cuốn Đại số, 4 cuốn Giải tích và 3 cuốn Hình học. Ông muốn lấy ra 5 cuốn và tặng cho 5 học sinh sao cho sau khi tặng mỗi loại sách còn lại ít nhất một cuốn. Hỏi có bao nhiêu cách tặng.
+	\choice
+	{$23314$}
+	{$32512$}
+	{\True $24480$}
+	{$24412$}
+	\loigiai{
+	Số cách lấy 5 cuốn sách và đem tặng cho 5 học sinh:$S = A_{10}^5 = 30240$ cách. \\
+	Số cách chọn sao cho không còn sách Đại số:${S_1} = C_7^2.5! = 2520$ cách \\
+	Số cách chọn sao cho không còn sách Giải tích:${S_2} = C_6^1.5! = 720$ cách \\
+	Số cách chọn sao cho không còn sách Hình học:${S_3} = C_7^2.5! = 2520$ cách. \\
+	Vậy số cách tặng thỏa yêu cầu bài toán::$S - {S_1} - {S_2} - {S_3} = 24480$ cách tặng.
+	}
+\end{ex}
+
+%%-----Câu D2-22-----%%%
+\begin{ex}
+	Một đội thanh niên tình nguyện có 15 người,gồm 12 nam và 3 nữ.Hỏi có bao nhiêu cách phân công đội thanh niên tình nguyện đó về giúp đỡ 3 tỉnh miền núi, sao cho mỗi tỉnh có 4 nam và một nữ ?
+	\choice
+	{$12141421$}
+	{$5234234$}
+	{\True $4989600$}
+	{$4144880$}
+	\loigiai{
+		Có $C_{12}^4$ cách phân công 4 nam về tỉnh thứ nhất \\
+		Với mỗi cách phân công trên thì có $C_8^4$ cách phân công 4 nam về tỉnh thứ hai và có $C_4^4$ cách phân công 4 nam còn lại về tỉnh thứ ba. \\
+		Khi phân công nam xong thì có $3!$ cách phân công ba nữ về ba tỉnh đó. \\
+		Vậy có tất cả $C_{12}^4.C_8^4.C_4^4.3! = 4989600$ cách phân công.
+	}
+\end{ex}
+
+%%-----Câu D2-23-----%%%
+\begin{ex}
+	Đội thanh niên xung kích có của một trường phổ thông có 12 học sinh, gồm 5 học sinh lớp A, 4 học sinh lớp B và 3 học sinh lớp \textbf{C.} Cần chọn 4 học sinh đi làm nhiệm vụ sao cho 4 học sinh này thuộc không quá 2 trong ba lớp trên. Hỏi có bao nhiêu cách chọn như vậy?
+	\choice
+	{$4123$}
+	{$3452$}
+	{\True $372$}
+	{$446$}
+	\loigiai{
+		\textbf{TH 1:} 4 học sinh được chọn thuộc một lớp: \\
+		$\bullet$ A: có $C_5^4 = 5$ cách chọn \\
+		$\bullet$ B: có $C_4^4 = 1$ cách chọn \\
+		Trường hợp này có: $6$ cách chọn. \\
+		\textbf{TH 2:} 4 học sinh được chọn thuộc hai lớp: \\
+		$\bullet$ A và B: có $C_9^4 - (C_5^4 + C_4^4) = 120$ \\
+		$\bullet$ B và C: có $C_9^4 - C_4^4 = 125$ \\
+		$\bullet$ C và A: có $C_9^4 - C_5^4 = 121$ \\
+		Trường hợp này có 366 cách chọn. \\
+		Vậy có 372 cách chọn thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D2-24-----%%%
+\begin{ex}
+	Một nhóm học sinh gồm 15 nam và 5 nữ. Người ta muốn chọn từ nhóm ra 5 người để lập thành một đội cờ đỏ sao cho phải có 1 đội trưởng nam, 1 đội phó nam và có ít nhất 1 nữ. Hỏi có bao nhiêu cách lập đội cờ đỏ.
+	\choice
+	{$131444$}
+	{$141666$}
+	{$241561$}
+	{\True $111300$}
+	\loigiai{
+		Vì trong 5 người được chọn phải có ít nhất 1 nữ và ít nhất phải có 2 nam nên số học sinh nữ gồm 1 hoặc 2 hoặc 3 nên ta có các trường hợp sau: \\
+		$\bullet$ chọn 1 nữ và 4 nam. \\
+		+) Số cách chọn 1 nữa: 5 cách \\
+		+) Số cách chọn 2 nam làm đội trưởng và đội phó: $A_{15}^2$ \\
+		+) Số cách chọn 2 nam còn lại: $C_{13}^2$ \\
+		Suy ra có $5A_{15}^2.C_{13}^2$ cách chọn cho trường hợp này. \\
+		$\bullet$ chọn 2 nữ và 3 nam. \\
+		+) Số cách chọn 2 nữ: $C_5^2$ cách. \\
+		+) Số cách chọn 2 nam làm đội trưởng và đội phó: $A_{15}^2$ cách. \\
+		+) Số cách chọn 1 còn lại: 13 cách. \\
+		Suy ra có $13A_{15}^2.C_5^2$ cách chọn cho trường hợp này. \\
+		$\bullet$ Chọn 3 nữ và 2 nam. \\
+		+) Số cách chọn 3 nữ : $C_5^3$ cách. \\
+		+) Số cách chọn 2 làm đội trưởng và đội phó: $A_{15}^2$ cách. \\
+		Suy ra có $A_{15}^2.C_5^3$ cách chọn cho trường hợp 3. \\
+		Vậy có $5A_{15}^2.C_{13}^2 + 13A_{15}^2.C_5^2 + A_{15}^2.C_5^3 = 111300$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-25.1-----%%%
+\begin{ex}
+	Một Thầy giáo có 5 cuốn sách Toán, 6 cuốn sách Văn và 7 cuốn sách anh văn và các cuốn sách đôi một khác nhau. Thầy giáo muốn tặng 6 cuốn sách cho 6 học sinh. Hỏi Thầy giáo có bao nhiêu cách tặng nếu: thầy giáo chỉ muốn tặng hai thể loại
+	\choice
+	{\True $2233440$}
+	{$2573422$}
+	{$2536374$}
+	{$2631570$}
+	\loigiai{
+		Tặng hai thể loại Toán, Văn có :$A_{11}^6$ cách \\
+		Tặng hai thể loại Toán, Anh Văn có :$A_{12}^6$ cách \\
+		Tặng hai thể loại Văn, Anh Văn có :$A_{13}^6$ cách \\
+		Số cách tặng: $A_{11}^6 + A_{12}^6 + A_{13}^6 = 2233440$
+	}
+\end{ex}
+
+%%-----Câu D2-25.2-----%%%
+\begin{ex}
+	Một Thầy giáo có 5 cuốn sách Toán, 6 cuốn sách Văn và 7 cuốn sách anh văn và các cuốn sách đôi một khác nhau. Thầy giáo muốn tặng 6 cuốn sách cho 6 học sinh. Hỏi Thầy giáo có bao nhiêu cách tặng nếu: thầy giáo muốn sau khi tặng xong mỗi thể loại còn lại ít nhất một cuốn.
+	\choice
+	{\True $13363800$}
+	{$2585373$}
+	{$57435543$}
+	{$4556463$}
+	\loigiai{
+		Số cách tặng hết sách Toán : $5!.13 = 1560$ \\
+		Số cách tặng hết sách Văn: $6! = 720$ \\
+		Số cách tặng thỏa yêu cầu bài toán: $A_{18}^6 - 1560 - 720 = 13363800$.
+	}
+\end{ex}
+
+%%-----Câu D2-26-----%%%
+\begin{ex}
+	Đội tuyển HSG của một trường gồm 18 em, trong đó có 7 HS khối 12, 6 HS khối 11 và 5 HS khối10. Hỏi có bao nhiêu cách cử 8 cách cử 8 HS đi dự đại hội sao cho mỗi khối có ít nhất 1 HS được chọn
+	\choice
+	{\True $41811$}
+	{$42802$}
+	{$41822$}
+	{$32023$}
+	\loigiai{
+		Số cách chọn 8 học sinh gồm hai khối là: \\
+		$C_{13}^8 + C_{11}^8 + C_{12}^8 = 1947$. \\
+		Số cách chọn thỏa yêu cầu bài toán: $C_{18}^8 - 1947 = 41811$.
+	}
+\end{ex}
+
+%%-----Câu D2-27-----%%%
+\begin{ex}
+	Một cuộc họp có 13 người, lúc ra về mỗi người đều bắt tay người khác một lần, riêng chủ tọa chỉ bắt tay ba người. Hỏi có bao nhiêu cái bắt tay?
+	\choice
+	{\True $69$}
+	{$80$}
+	{$82$}
+	{$70$}
+	\loigiai{
+		Số bắt tay 12 người (trừ chủ tọa) $C_{12}^2$ \\
+		Vậy có : $C_{12}^2 + 3 = 69$ bắt tay.
+	}
+\end{ex}
+
+%%-----Câu D2-28-----%%%
+\begin{ex}
+	Đội tuyển học sinh giỏi của một trường gồm 18 em, trong đó có 7 em khối 12, 6 em khối 11 và 5 em khối 10. Tính số cách chọn 6 em trong đội đi dự trại hè sao cho mỗi khối có ít nhất 1 em được chọn
+	\choice
+	{\True $41811$}
+	{$42802$}
+	{$41822$}
+	{$32023$}
+	\loigiai{
+		Số cách chọn 8 học sinh gồm hai khối là: \\
+		$C_{13}^8 + C_{11}^8 + C_{12}^8 = 1947$. \\
+		Số cách chọn thỏa yêu cầu bài toán: $C_{18}^8 - 1947 = 41811$.
+	}
+\end{ex}
+
+%%-----Câu D2-29-----%%%
+\begin{ex}
+	Trong một môn học, Thầy giáo có 30 câu hỏi khác nhau gồm 5 câu khó,10 câu trung bình và 15 câu dễ.Từ 30 câu hỏi đó có thể lập được bao nhiêu đề kiểm tra,mỗi đề gồm 5 câu hỏi khác nhau,sao cho trong mỗi đề nhất thiết phải có đủ cả 3 câu ( khó, dễ, Trung bình) và số câu dễ không ít hơn 2?
+	\choice
+	{$41811$}
+	{$42802$}
+	{\True $56875$}
+	{$32023$}
+	\loigiai{
+		Ta có các trường hợp sau \\
+		\textbf{TH 1:} Đề thi gồm 2 D, 2 TB, 1 K: $C_{15}^2.C_{10}^2.C_5^1$ \\
+		\textbf{TH 1:} Đề thi gồm 2 D, 1 TB, 2 K: $C_{15}^2.C_{10}^1.C_5^2$ \\
+		\textbf{TH 1:} Đề thi gồm 3 D, 1 TB, 1 K: $C_{15}^3.C_{10}^1.C_5^1$ \\
+		Vậy có: $56875$ đề kiểm tra.
+	}
+\end{ex}
+
+%%-----Câu D2-30-----%%%
+\begin{ex}
+	Một nhóm công nhân gồm 15 nam và 5 nữ. Người ta muốn chọn từ nhóm ra 5 người để lập thành một tổ công tác sao cho phải có 1 tổ trưởng nam, 1 tổ phó nam và có ít nhất 1 nữ. Hỏi có bao nhiêu cách lập tổ công tác
+	\choice
+	{\True $111300$}
+	{$233355$}
+	{$125777$}
+	{$112342$}
+	\loigiai{
+		$\bullet$ Chọn 2 trong 15 nam làm tổ trưởng và tổ phó có $A_{15}^2$ cách. \\
+		$\bullet$ Chọn 3 tổ viên, trong đó có nữ. \\
+		+) chọn 1 nữ và 2 nam có $5.C_{13}^2$ cách. \\
+		+) chọn 2 nữ và 1 nam có $13.C_5^2$ cách. \\
+		+) chọn 3 nữ có $C_5^3$ cách. \\
+		Vậy có $A_{15}^2\left( {5.C_{13}^2 + 13.C_5^2 + C_5^3} \right) = 111300$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-31-----%%%
+\begin{ex}
+	Một nhóm có 5 nam và 3 nữ. Chọn ra 3 người sao cho trong đó có ít nhất 1 nữ. Hỏi có bao nhiêu cách.
+	\choice
+	{\True $46$}
+	{$69$}
+	{$48$}
+	{$40$}
+	\loigiai{
+		\textbf{\textit{Cách 1:}} Ta có các trường hợp sau \\
+		$\bullet$ 3 người được chọn gồm 1 nữ và 2 nam. \\
+		chọn ra 1 trong 3 nữ ta có 3 cách. \\
+		chọn ra 2 trong 5 nam ta có $C_5^2$ cách \\
+		Suy ra có $3C_5^2$ cách chọn \\
+		$\bullet$ 3 người được chọn gồm 2 nữ và 1 nam. \\
+		chọn ra 2 trong 3 nữ có $C_3^2$ cách. \\
+		chọn ra 1 trong 5 nam có 5 cách. \\
+		Suy ra có $5C_3^2$ cách chọn. \\
+		$\bullet$ 3 người chọn ra gồm 3 nữ có 1 cách. \\
+		Vậy có $3C_5^2 + 5C_3^2 + 1 = 46$ cách chọn. \\
+		\textbf{\textit{Cách 2:}} Số cách chọn 3 người bất kì là: $C_8^3$ \\
+		Số cách chọn 3 người nam cả là: $C_5^3$ \\
+		Vậy số cách chọn 3 người thỏa yêu cầu bài toán là: \\
+		$C_8^3 - C_5^3 = 46$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-32-----%%%
+\begin{ex}
+	Một hội nghị bàn tròn có các phái đoàn 3 người Anh, 5 người Pháp và 7 người Mỹ. Hỏi có bao nhiêu cách xếp chỗ ngồi cho các thành viên sao cho những người có cùng quốc tịch thì ngồi gần nhau.
+	\choice
+	{\True $72757600$}
+	{$7293732$}
+	{$3174012$}
+	{$1418746$}
+	\loigiai{
+		Có $2!$ cách xếp 3 phái đoàn vào bàn tròn. Với mỗi cách xếp thì có: \\
+		$3!$ cách xếp các thành viên phái đoàn Anh \\
+		$5!$ cách xếp các thành viên phái đoàn Pháp \\
+		$7!$ cách xếp các thành viên phái đoàn Mỹ \\
+		Vậy có tất cả: $2!3!5!7! = 7257600$ cách xếp.
+	}
+\end{ex}
+
+%%-----Câu D2-33.1-----%%%
+\begin{ex}
+	Một lớp học có 20 nam và 26 nữ. Giáo viên chủ nhiệm cần chọn một ban cán sự gồm 3 người. Hỏi có bao nhiêu cách chọn nếu trong ban cán sự có ít nhất một nam
+	\choice
+	{\True $12580$}
+	{$12364$}
+	{$12462$}
+	{$12561$}
+	\loigiai{
+		Có $C_{46}^3$ cách chọn ba học sinh trong lớp \\
+		Có $C_{26}^3$ cách chọn ban cán sự không có nam (ta chọn nữ cả) \\
+		Do đó, có $C_{46}^3 - C_{26}^3 = 12580$ cách chọn ban cán sự trong đó có ít nhất một nam được chọn.
+	}
+\end{ex}
+
+%%-----Câu D2-33.2-----%%%
+\begin{ex}
+	Một lớp học có 20 nam và 26 nữ. Giáo viên chủ nhiệm cần chọn một ban cán sự gồm 3 người. Hỏi có bao nhiêu cách chọn nếu trong ban cán sự có cả nam và nữ.
+	\choice
+	{\True $11440$}
+	{$11242$}
+	{$24141$}
+	{$53342$}
+	\loigiai{
+		Có $C_{46}^3$ cách chọn ba học sinh trong lớp \\
+		Có $C_{26}^3$ cách chọn ban cán sự không có nam \\
+		Có $C_{20}^3$ cách chọn ban cán sự không có nữ. \\
+		Vậy có $C_{46}^3 - (C_{26}^3 + C_{20}^3) = 11440$ cách chọn thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D2-34-----%%%
+\begin{ex}
+	Một lớp có 33 học sinh, trong đó có 7 nữ. Cần chia lớp thành 3 tổ, tổ 1 có 10 học sinh, tổ 2 có 11 học sinh, tổ 3 có 12 học sinh sao cho trong mỗi tổ có ít nhất 2 học sinh nữ. Hỏi có bao nhiêu cách chia như vậy?
+	\choice
+	{$C_7^3C_{26}^7$}
+	{$C_4^2C_{19}^9$}
+	{$C_7^2C_{26}^8C_5^3C_{18}^8$}
+	{\True $C_7^3C_{26}^7$ $C_4^2C_{19}^9$+$C_7^2C_{26}^8C_5^3C_{18}^8$+$C_7^2C_{26}^8C_5^2C_{18}^9$}
+	\loigiai{
+		Số cách chia lớp thành 3 tổ thỏa yêu cầu có 3 trường hợp \\
+		\textbf{$\bullet$ TH1}: Tổ 1 có 3 nữ, 7 nam có $C_7^3C_{26}^7$ cách chọn \\
+		Tổ 2 có 2 nữ, 9 nam có $C_4^2C_{19}^9$ cách chọn \\
+		Tổ 3 có 2 nữ, 10 nam có $C_2^2C_{10}^{10} = 1$ cách chọn \\
+		Vậy có $C_7^3C_{26}^7$ $C_4^2C_{19}^9$ cách chia thành 3 tổ trong TH này \\
+		\textbf{$\bullet$ TH2}: Tổ 2 có 3 nữ và hai tổ còn lại có 2 nữ, tương tự tính được $C_7^2C_{26}^8C_5^3C_{18}^8$ cách chia. \\
+		\textbf{$\bullet$ TH3}: Tổ 3 có 3 nữ và hai tổ còn lại có 2 nữ, tương tự tính được $C_7^2C_{26}^8C_5^2C_{18}^9$ cách chia. \\
+		Vậy có tất cả $C_7^3C_{26}^7$ $C_4^2C_{19}^9$+$C_7^2C_{26}^8C_5^3C_{18}^8$+$C_7^2C_{26}^8C_5^2C_{18}^9$ cách chia
+	}
+\end{ex}
+
+%%-----Câu D2-35-----%%%
+\begin{ex}
+	Từ 20 câu hỏi trắc nghiệm gồm 9 câu dễ, 7 câu trung bình và 4 câu khó người ta chọn ra 10 câu để làm đề kiểm tra sao cho phải có đủ cả 3 loại dễ, trung bình và khó. Hỏi có thể lập được bao nhiêu đề kiểm tra
+	\choice
+	{\True $176451$}
+	{$176435$}
+	{$268963$}
+	{$168637$}
+	\loigiai{
+		\textbf{\textit{$\bullet$ Loại 1:}} chọn 10 câu tùy ý trong 20 câu có $C_{20}^{10}$ cách. \\
+		\textbf{\textit{$\bullet$ Loại 2:}} chọn 10 câu có không quá 2 trong 3 loại dễ, trung bình và khó. \\
+		+) Chọn 10 câu dễ và trung bình trong 16 câu có $C_{16}^{10}$ cách. \\
+		+) Chọn 10 câu dễ và khó trong 13 câu có $C_{13}^{10}$ cách. \\
+		+) Chọn 10 câu trung bình và khó trong 11 câu có $C_{11}^{10}$ cách. \\
+		Vậy có $C_{20}^{10} - \left( {C_{16}^{10} + C_{13}^{10} + C_{11}^{10}} \right) = 176451$ đề kiểm tra.
+	}
+\end{ex}
+
+%%-----Câu D2-36.1-----%%%
+\begin{ex}
+	Trong một lớp học có 20 học sinh nữ và 15 học sinh nam. Hỏi giáo viên chủ nhiệm có bao nhiêu cách chọn: ba học sinh làm ban các sự lớp
+	\choice
+	{\True $6545$}
+	{$6830$}
+	{$2475$}
+	{$6554$}
+	\loigiai{
+		Số cách chọn ban cán sự: $C_{35}^3 = 6545$
+	}
+\end{ex}
+
+%%-----Câu D2-36.2-----%%%
+\begin{ex}
+	Trong một lớp học có 20 học sinh nữ và 15 học sinh nam. Hỏi giáo viên chủ nhiệm có bao nhiêu cách chọn: ba học sinh làm ba nhiệm vụ lớp trưởng, lớp phó và bí thư
+	\choice
+	{\True $39270$}
+	{$47599$}
+	{$14684$}
+	{$38690$}
+	\loigiai{
+		Số cách chọn 3 học sinh làm lớp trưởng, lớp phó và bí thư là \\
+		$A_{35}^3 = 39270$
+	}
+\end{ex}
+
+%%-----Câu D2-36.3-----%%%
+\begin{ex}
+	Trong một lớp học có 20 học sinh nữ và 15 học sinh nam. Hỏi giáo viên chủ nhiệm có bao nhiêu cách chọn: ba học sinh làm ban cán sự trong đó có ít nhất một học sinh nữ
+	\choice
+	{\True $6090$}
+	{$6042$}
+	{$5494$}
+	{$7614$}
+	\loigiai{
+		Số cách chọn ba học sinh làm ban cán sự mà không có nữ được chọn là : $C_{15}^3 = 455$ \\
+		Số cách chọn thỏa yêu cầu bài toán: $C_{35}^3 - C_{15}^3 = 6090$
+	}
+\end{ex}
+
+%%-----Câu D2-36.4-----%%%
+\begin{ex}
+	Trong một lớp học có 20 học sinh nữ và 15 học sinh nam. Hỏi giáo viên chủ nhiệm có bao nhiêu cách chọn: bốn học sinh làm tổ trưởng của 4 tổ sao cho trong 4 học sinh được chọn có cả nam và nữ.
+	\choice
+	{\True $1107600$}
+	{$246352$}
+	{$1267463$}
+	{$1164776$}
+	\loigiai{
+		Số cách chọn 4 học sinh làm 4 tổ trưởng là: $A_{35}^4$ \\
+		Số cách chọn 4 học sinh làm tổ trưởng trong đó không có học sinh nam được chọn là: $A_{20}^4$ \\
+		Số cách chọn 4 học sinh làm tổ trưởng trong đó không có học sinh nữ được chọn là: $A_{15}^4$ \\
+		Vậy số cách chọn thỏa yêu cầu bài toán: $A_{35}^4 - \left( {A_{20}^4 + A_{15}^4} \right) = 1107600$
+	}
+\end{ex}
+
+%%-----Câu D2-37.1-----%%%
+\begin{ex}
+	Có 3 bông hồng vàng, 3 bông hồng trắng và 4 bông hồng đỏ ( các bông hoa xem như đôi 1 khác nhau) người ta muốn chọn ra một bó hoa gồm 7 bông. Có bao nhiêu cách chọn các bông hoa được chọn tuỳ ý.
+	\choice
+	{\True $120$}
+	{$136$}
+	{$268$}
+	{$170$}
+	\loigiai{
+		Mỗi cách chọn thỏa yêu cầu bài toán có nghĩa là ta lấy bất kì 7 bông từ 10 bông đã cho mà không tính đến thứ tự lấy. Do đó mỗi cách lấy là một tổ hợp chập $7$ của $10$ phần tử \\
+		Vậy số cách chọn thỏa yêu cầu bài toán là: $C_{10}^7 = 120$.
+	}
+\end{ex}
+
+%%-----Câu D2-37.2-----%%%
+\begin{ex}
+	Có 3 bông hồng vàng, 3 bông hồng trắng và 4 bông hồng đỏ ( các bông hoa xem như đôi 1 khác nhau) người ta muốn chọn ra một bó hoa gồm 7 bông. Có bao nhiêu cách chọn sao cho có đúng 1 bông màu đỏ.
+	\choice
+	{\True $4$}
+	{$7$}
+	{$9$}
+	{$8$}
+	\loigiai{
+		Có 4 cách chọn 1 bông hồng màu đỏ \\
+		Với mỗi cách chọn bông hồng màu đỏ, có 1 cách chọn 6 bông còn lại \\
+		Vậy có tất cả 4 cách chọn bông thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D2-37.3-----%%%
+\begin{ex}
+	Có 3 bông hồng vàng, 3 bông hồng trắng và 4 bông hồng đỏ ( các bông hoa xem như đôi 1 khác nhau) người ta muốn chọn ra một bó hoa gồm 7 bông. Có bao nhiêu cách chọn sao cho có ít nhất 3 bông hồng vàng và ít nhất 3 bông hồng đỏ.
+	\choice
+	{\True $13$}
+	{$36$}
+	{$23$}
+	{$36$}
+	\loigiai{
+		Vì có tất cả 4 bông hồng đỏ nên ta có các trường hợp sau \\
+		$\bullet$ 7 bông được chọn gồm 3 bông vàng và 4 bông đỏ \\
+		Số cách chọn trong trường hợp này là 1 cách \\
+		$\bullet$ 7 bông được chọn gồm 3 bông vàng, 3 bông đỏ và 1 bông trắng \\
+		Số cách chọn trong trường hợp này là $3.C_4^3 = 12$ cách \\
+		Vậy có tất cả 13 cách chọn thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D2-38-----%%%
+\begin{ex}
+	Một đội văn nghệ có 15 người gồm 10 nam và 5 nữ. Hỏi có bao nhiêu cách lập một nhóm đồng ca gồm 8 người biết rằng nhóm đó có ít nhất 3 nữ.
+	\choice
+	{\True $3690$}
+	{$3120$}
+	{$3400$}
+	{$3143$}
+	\loigiai{
+		Mỗi cách chọn có ít nhất 3 nữ có 3 khả năng xảy ra \\
+		\textbf{KN1:} 3 Nữ + 5 Nam có $C_5^3C_{10}^5$ cách chọn \\
+		\textbf{KN2:} 4 Nữ + 4 Nam có $C_5^4C_{10}^4$ cách chọn \\
+		\textbf{KN3:} 5 Nữ + 3Nam có $C_5^5C_{10}^3$ cách chọn \\
+		Vậy số cách chọn thỏa yêu cầu là $C_5^3C_{10}^5 + C_5^4C_{10}^4 + C_5^5C_{10}^3 = 3690$.
+	}
+\end{ex}
+
+%%-----Câu D2-39-----%%%
+\begin{ex}
+	Một đội thanh niên tình nguyện có 15 người gồm 12 nam và 3 nữ. Hỏi có bao nhiêu cách phân công đội thanh niên tình nguyện đó về 3 tỉnh miền núi sao cho mỗi tỉnh có 4 nam và 1 nữ.
+	\choice
+	{$2037131$}
+	{$3912363$}
+	{\True $207900$}
+	{$213930$}
+	\loigiai{
+		Có $C_{12}^4.C_3^1$ cách phân công các thanh niên tình nguyện về tỉnh thứ nhất. \\
+		Với mỗi cách phân công các thanh niên tình nguyện về tỉnh thứ nhất thì có \\
+		$C_8^4.C_2^1$ cách phân công các thanh niên tình nguyện về tỉnh thứ hai. \\
+		Với mỗi cách phân công các thanh niên tình nguyện về tỉnh thứ nhất và tỉnh thứ hai thì có $C_4^4.C_1^1$ cách phân công các thanh niên tình nguyện về tỉnh thứ ba. Vậy số cách phân công thỏa mãn yêu cầu bài toán là: $C_{12}^4C_3^1.C_8^4C_2^1.C_4^4C_1^1 = 207900$.
+	}
+\end{ex}
+
+%%-----Câu D2-40-----%%%
+\begin{ex}
+	Có 10 quả cầu đỏ được đánh số từ 1 đến 10, 7 quả cầu xanh được đánh số từ 1 đến 7 và 8 quả cầu vàng được đánh số từ 1 đến 8. Hỏi có bao nhiêu cách lấy ra 3 quả cầu khác màu và khác số.
+	\choice
+	{\True $392$}
+	{$1023$}
+	{$3014$}
+	{$391$}
+	\loigiai{
+		Ta chọn các quả cầu theo trình tự sau \\
+		Chọn quả xanh: 7 cách chọn \\
+		Chọn quả cầu vàng: có 7 cách chọn \\
+		Chọn quả cầu đỏ: có 8 cách chọn \\
+		Vậy có tất cả $7.7.8 = 392$ cách chọn.
+	}
+\end{ex}
+
+%%-----Câu D2-41-----%%%
+\begin{ex}
+	Có 7 bông hồng đỏ, 8 bông hồng vàng và 10 bông hồng trắng, mỗi bông hồng khác nhau từng đôi một. Hỏi có bao nhiêu cách lấy 3 bông hồng có đủ ba màu.
+	\choice
+	{\True $560$}
+	{$310$}
+	{$3014$}
+	{$319$}
+	\loigiai{
+		Số cách lấy 3 bông hồng bất kì: $C_{25}^3 = 2300$ \\
+		Số cách lấy 3 bông hồng chỉ có một màu: $C_7^3 + C_8^3 + C_{10}^3 = 211$ \\
+		Số cách lấy 3 bông hồng có đúng hai màu:$C_{15}^3 + C_{17}^3 + C_{18}^3 - 2\left( {C_7^3 + C_8^3 + C_{10}^3} \right) = 1529$. \\
+		Vậy số cách chọn thỏa yêu cầu bài toán là:$2300 - 211 - 1529 = 560$.
+	}
+\end{ex}
+
+%%-----Câu D2-42-----%%%
+\begin{ex}
+	Có 7 nhà toán học nam, 4 nhà toán học nữ và 5 nhà vật lý nam.Có bao nhiêu cách lập đoàn công tác gồm 3 người có cả nam và nữ đồng thời có cả toán học và vật lý.
+	\choice
+	{\True $210$}
+	{$314$}
+	{$420$}
+	{$213$}
+	\loigiai{
+		Ta có các khả năng sau \\
+		$\bullet$ Đoàn công tác gồm: 1 nhà toán học nữ, 1 nhà vật lý và 1 nhà toán học nam \\
+		Số cách chọn: $C_7^1.C_4^1.C_5^1 = 140$ cách \\
+		$\bullet$ Đoàn công tác gồm: 1 nhà toán học nữ, 2 nhà vật lý \\
+		Số cách chọn: $C_4^1.C_5^2 = 40$ cách \\
+		$\bullet$ Đoàn công tác gồm: 2 nhà toán học nữ, 1 nhà vật lý \\
+		Số cách chọn: $C_4^2.C_5^1 = 30$ cách \\
+		Vậy số cách lập là: $210$ cách.
+	}
+\end{ex}
+
+%%-----Câu D2-43-----%%%
+\begin{ex}
+	Có 15 học sinh lớp A, trong đó có Khánh và 10 học sinh lớp B, trong đó có Oanh. Hỏi có bao nhiêu cách lập một đội tình nguyện gồm 7 học sinh trong đó có 4 học sinh lớp A, 3 học sinh lớp B và trong đó chỉ có một trong hai em Hùng và Oanh.
+	\choice
+	{$C_{14}^3.C_9^3$}
+	{$C_{14}^4.C_9^2$}
+	{\True $C_{14}^3.C_9^3 + C_{14}^4.C_9^2$}
+	{$C_9^3 + C_{14}^4$}
+	\loigiai{
+		Ta có các khả năng sau \\
+		$\bullet$ Đội tình nguyện chỉ có Khánh mà không có Oanh \\
+		Số cách chọn chính bằng số cách chọn 3 học sinh từ 14 học sinh lớp A (vì đã chọn Khánh) và 3 học sinh từ 9 (vì đã loại Oanh) học sinh lớp B nên số cách chọn bằng: $C_{14}^3.C_9^3$ \\
+		$\bullet$ Đội tình nguyện chỉ có Oanh mà không có Khánh \\
+		Số cách chọn bằng: $C_{14}^4.C_9^2$ \\
+		Vậy số cách chọn là: $C_{14}^3.C_9^3 + C_{14}^4.C_9^2$
+	}
+\end{ex}
+
+%%-----Câu D2-44-----%%%
+\begin{ex}
+	Có $m$ nam và $n$ nữ. Có bao nhiêu cách chọn ra $k$ người trong đó có ít nhất $a$ nam và ít nhất $b$ nữ ($k \le m,n;a + b < k;a,b \ge 1$)
+	\choice
+	{Số cách chọn thoả mãn điều kiện bài toán là: $C_{m + n}^k - 2({S_1} + {S_2})$}
+	{Số cách chọn thoả mãn điều kiện bài toán là: $2C_{m + n}^k - ({S_1} + {S_2})$}
+	{Số cách chọn thoả mãn điều kiện bài toán là: $3C_{m + n}^k - 2({S_1} + {S_2})$}
+	{\True Số cách chọn thoả mãn điều kiện bài toán là: $C_{m + n}^k - ({S_1} + {S_2})$}
+	\loigiai{
+	Số cách chọn $k$ người trong $m + n$ người là $C_{m + n}^k$ \\
+	$\bullet$Số cách chọn có ít hơn $a$ nam là: ${S_1} = \sum\limits_{i = 0}^{a - 1} {C_m^{a - i - 1}.C_n^{k - a + i + 1}}$ \\
+	$\bullet$Số cách chọn có ít hơn $b$ nữ là: ${S_2} = \sum\limits_{i = 0}^{b - 1} {C_n^{b - i - 1}.C_m^{k - b + i + 1}}$ \\
+	Số cách chọn thoả mãn điều kiện bài toán là: $C_{m + n}^k - ({S_1} + {S_2})$.
+	}
+\end{ex}
+
+\subsubsection*{DẠNG 3: ĐẾM TỔ HỢP LIÊN QUAN ĐẾN HÌNH HỌC}
+
+%%-----Câu D3-1-----%%%
+\begin{ex}
+	Cho hai đường thẳng song song ${d_1},{d_2}$. Trên đường thẳng ${d_1}$ lấy $10$ điểm phân biệt, trên ${d_2}$ lấy $15$ điểm phân biệt. Hỏi có bao nhiêu tam giác mà ba đỉnh của nó được chọn từ $25$ vừa nói trên.
+	\choice
+	{$C_{10}^2C_{15}^1$}
+	{$C_{10}^1C_{15}^2$}
+	{\True $C_{10}^2C_{15}^1 + C_{10}^1C_{15}^2$}
+	{$C_{10}^2C_{15}^1.C_{10}^1C_{15}^2$}
+	\loigiai{
+		Số tam giác lập được thuộc vào một trong hai loại sau \\
+		\textbf{\textit{Loại 1:}} Gồm hai đỉnh thuộc vào ${d_1}$ và một đỉnh thuộc vào ${d_2}$ \\
+		Số cách chọn bộ hai điểm trong $10$ thuộc ${d_1}$: $C_{10}^2$ \\
+		Số cách chọn một điểm trong $15$ điểm thuộc ${d_2}$: $C_{15}^1$ \\
+		Loại này có: $C_{10}^2.C_{15}^1 =$ tam giác. \\
+		\textbf{\textit{Loại 2:}} Gồm một đỉnh thuộc vào ${d_1}$ và hai đỉnh thuộc vào ${d_2}$ \\
+		Số cách chọn một điểm trong $10$ thuộc ${d_1}$: $C_{10}^1$ \\
+		Số cách chọn bộ hai điểm trong $15$ điểm thuộc ${d_2}$: $C_{15}^2$ \\
+		Loại này có: $C_{10}^1.C_{15}^2 =$ tam giác. \\
+		Vậy có tất cả: $C_{10}^2C_{15}^1 + C_{10}^1C_{15}^2$ tam giác thỏa yêu cầu bài toán.
+	}
+\end{ex}
+
+%%-----Câu D3-2-----%%%
+\begin{ex}
+	Trong mặt phẳng cho 2010 điểm phân biệt sao cho ba điểm bất kì không thẳng hàng. Hỏi: Có bao nhiêu véc tơ khác véc tơ – không có điểm đầu và điểm cuối thuộc 2010 điểm đã cho.
+	\choice
+	{$4039137$}
+	{\True $4038090$}
+	{$4167114$}
+	{$167541284$}
+	\loigiai{
+		Mỗi véc tơ thỏa yêu cầu bài toán ứng với một chỉnh hợp chập 2 của 2010, nên số véc tơ cần tìm là: $A_{2010}^2$.
+	}
+\end{ex}
+
+%%-----Câu D3-3-----%%%
+\begin{ex}
+	Có bao nhiêu tam giác mà ba đỉnh của nó thuộc vào 2010 điểm đã cho.
+	\choice
+	{$141427544$}
+	{$1284761260$}
+	{\True $1351414120$}
+	{$453358292$}
+	\loigiai{
+		Mỗi tam giác thỏa yêu cầu bài toán ứng với một tổ hợp chập 3 của 2010, nên số tam giác cần tìm là: $C_{2010}^3$.
+	}
+\end{ex}
+
+%%-----Câu D3-4-----%%%
+\begin{ex}
+	Số tam giác xác định bởi các đỉnh của một đa giác đều $10$ cạnh là:
+	\choice
+	{$35$}
+	{\True $120$}
+	{$240$}
+	{$720$}
+	\loigiai{
+		Cứ ba đỉnh của đa giác sẽ tạo thành một tam giác. \\
+		Chọn $3$ trong $10$ đỉnh của đa giác, có $C_{10}^3 = 120$. \\
+		Vậy có $120$ tam giác xác định bởi các đỉnh của đa giác $10$ cạnh.
+	}
+\end{ex}
+
+%%-----Câu D3-5-----%%%
+\begin{ex}
+	Nếu tất cả các đường chéo của đa giác đều $12$ cạnh được vẽ thì số đường chéo là:
+	\choice
+	{$121$}
+	{$66$}
+	{$132$}
+	{\True $54$}
+	\loigiai{
+		Cứ $2$ đỉnh của đa giác sẽ tạo thành một đoạn thẳng (bao gồm cả cạnh đa giác và đường chéo). \\
+		Khi đó có $C_{12}^2 = 66$ cạnh. \\
+		Số đường chéo là: $66 - 12 = 54$.
+	}
+\end{ex}
+
+%%-----Câu D3-6-----%%%
+\begin{ex}
+	Nếu một đa giác đều có $44$ đường chéo, thì số cạnh của đa giác là:
+	\choice
+	{\True $11$}
+	{$10$}
+	{$9$}
+	{$8$}
+	\loigiai{
+	Cứ hai đỉnh của đa giác $n$ đỉnh tạo thành một đoạn thẳng (bao gồn cả cạnh đa giác và đường chéo). \\
+	Khi đó số đường chéo là: $C_n^2 - n = 44 \Leftrightarrow \frac{{n!}}{{\left( {n - 2} \right)!.2!}} - n = 44$ \\
+	$\Leftrightarrow n\left( {n - 1} \right) - 2n = 88 \Leftrightarrow \hoac{& n = 11\\& n = - 8} \Leftrightarrow n = 11$ (vì ).
+	}
+\end{ex}
+
+%%-----Câu D3-7-----%%%
+\begin{ex}
+	Một đa giác đều có số đường chéo gấp đôi số cạnh. Hỏi đa giác đó có bao nhiêu cạnh?
+	\choice
+	{$5$}
+	{$6$}
+	{\True $7$}
+	{$8$}
+	\loigiai{
+	Đa giác có $n$ cạnh . \\
+	Số đường chéo trong đa giác là: $C_n^2 - n$. \\
+	Ta có: $C_n^2 - n = 2n \Leftrightarrow \frac{{n!}}{{\left( {n - 2} \right)!.2!}} = 3n \Leftrightarrow n\left( {n - 1} \right) = 6n \Leftrightarrow \hoac{& n = 7\\& n = 0} \Leftrightarrow n = 7$.
+	}
+\end{ex}
+
+%%-----Câu D3-8-----%%%
+\begin{ex}
+	Mười hai đường thẳng có nhiều nhất bao nhiêu giao điểm?
+	\choice
+	{$12$}
+	{\True $66$}
+	{$132$}
+	{$144$}
+	\loigiai{
+		Để được nhiều giao điểm nhất thì mười hai đường thẳng này phải đôi một cắt nhau tại các điểm phân biệt. \\
+		Như vậy có $C_{12}^2 = 66$.
+	}
+\end{ex}
+
+%%-----Câu D3-9-----%%%
+\begin{ex}
+	Cho hai đường thẳng $d_{1}$ và $d_{2}$ song song với nhau. Trên $d_{1}$ có 10 điểm phân biệt, trên $d_{2}$ có n điểm phân biệt ($n \ge 2$). Biết có 2800 tam giác có đỉnh là các điểm nói trên. Tìm n?
+	\choice
+	{\True $20$}
+	{$21$}
+	{$30$}
+	{$32$}
+	\loigiai{
+		Tam giác cần lập thuộc hai loại \\
+		\textbf{Loại 1:} Tam giác có một đỉnh thuộc $d_{1}$ và hai đỉnh thuộc $d_{2}$. Loại này có $C_{10}^1.C_n^2$ tam giác. \\
+		\textbf{Loại 2:} Tam giác có một đỉnh thuộc $d_{2}$ và hai đỉnh thuộc $d_{1}$. Loại này có $C_{10}^2.C_n^1$ tam giác. \\
+		Theo bài ra ta có: $C_{10}^1.C_n^2 + C_{10}^2.C_n^1 = 2800$ \\
+		$\Leftrightarrow 10\frac{{n(n - 1)}}{2} + 45n = 2800 \Leftrightarrow {n^2} + 8n - 560 = 0 \Leftrightarrow n = 20$.
+	}
+\end{ex}
+
+%%-----Câu D3-10-----%%%
+\begin{ex}
+	Cho đa giác đều ${A_1}{A_2}...{A_{2n}}$ nội tiếp trong đường tròn tâm O. Biết rằng số tam giác có đỉnh là 3 trong 2n điểm ${A_1},{A_2},...,{A_{2n}}$ gấp 20 lần so với số hình chữ nhật có đỉnh là 4 trong 2n điểm ${A_1},{A_2},...,{A_{2n}}$. Tìm n?
+	\choice
+	{$3$}
+	{$6$}
+	{\True $8$}
+	{$12$}
+	\loigiai{
+	Số tam giác có các đỉnh là 3 trong 2n điểm ${A_1},{A_2},...,{A_{2n}}$ là: $C_{2n}^3$. \\
+	Ta thấy ứng với hai đường chéo đi qua tâm O của đa giác ${A_1}{A_2}...{A_{2n}}$ cho tương ứng một hình chữ nhật có 4 đỉnh là 4 điểm trong 2n điểm ${A_1},{A_2},...,{A_{2n}}$ và ngược lại mỗi hình chữ nhật như vậy sẽ cho tương ứng hai đường chéo đi qua tâm O của đa giác. Mà số đường chéo đi qua tâm của đa giác là n nên số hình chữ nhật có đỉnh là 4 trong 2n điểm bằng $C_n^2$. \\
+	Theo giả thiết: $C_{2n}^3 = 20C_n^2 \Leftrightarrow \frac{{2n(2n - 1)(2n - 2)}}{{3!}} = 20\frac{{n(n - 1)}}{2}$ $\Leftrightarrow n = 8$.
+	}
+\end{ex}
+
+%%-----Câu D3-11-----%%%
+\begin{ex}
+	Trong mặt phẳng cho $n$ điểm, trong đó không có 3 điểm nào thẳng hàng và trong tất cả các đường thẳng nối hai điểm bất kì, không có hai đường thẳng nào song song, trùng nhau hoặc vuông góc. Qua mỗi diểm vẽ các đường thẳng vuông góc với các đường thẳng được xác định bởi 2 trong $n - 1$ điểm còn lại. Số giao điểm của các đường thẳng vuông góc giao nhau là bao nhiêu?
+	\choice
+	{$2C_{\frac{{n(n - 1)(n - 2)}}{2}}^2 - \left[ {n(C_{n - 1}^2 - 1) + 5C_n^3} \right]$}
+	{$C_{\frac{{n(n - 1)(n - 2)}}{2}}^2 - 2\left[ {n(C_{n - 1}^2 - 1) + 5C_n^3} \right]$}
+	{$3C_{\frac{{n(n - 1)(n - 2)}}{2}}^2 - 2\left[ {n(C_{n - 1}^2 - 1) + 5C_n^3} \right]$}
+	{\True $C_{\frac{{n(n - 1)(n - 2)}}{2}}^2 - \left[ {n(C_{n - 1}^2 - 1) + 5C_n^3} \right]$}
+	\loigiai{
+		Gọi n điểm đã cho là ${A_1},{A_2},...,{A_n}$. Xét một điểm cố định, khi đó có $C_{n - 1}^2$ đường thẳng nên sẽ có $C_{n - 1}^2$ đường thẳng vuông góc đi qua điểm cố định đó. \\
+		Do đó có $nC_{n - 1}^2 = \frac{{n(n - 1)(n - 2)}}{2}$ đường thẳng vuông góc nên có \\
+		$C_{\frac{{n(n - 1)(n - 2)}}{2}}^2$ giao điểm (tính cả những giao điểm trùng nhau). \\
+		Ta chia các điểm trùng nhau thành 3 loại \\
+		$\bullet$ Qua một điểm có $C_{n - 1}^2 = \frac{{(n - 1)(n - 2)}}{2}$ nên ta phải trừ đi $n\left( {C_{n - 1}^2 - 1} \right)$ điểm \\
+		$\bullet$ Qua ${A_1},{A_2},{A_3}$ có 3 đường thẳng cùng vuông góc với ${A_4}{A_5}$ và 3 đường thẳng này song song với nhau, nên ta mất 3 giao điểm, do đó trong TH này ta phải loại đi $3C_n^3$ \\
+		$\bullet$ Trong mỗi tam giác thì ba đường cao chỉ có một giao điểm, nên ta mất 2 điểm cho mỗi tam giác, do đó trường hợp này ta phải trừ đi $2C_n^3$ \\
+		Vậy số giao điểm nhiều nhất có được là: \\
+		$C_{\frac{{n(n - 1)(n - 2)}}{2}}^2 - \left[ {n(C_{n - 1}^2 - 1) + 5C_n^3} \right]$.
+	}
+\end{ex}

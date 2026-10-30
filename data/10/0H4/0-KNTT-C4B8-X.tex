@@ -1,0 +1,1023 @@
+% \begin{name}
+% 	{GV biên soạn: Huỳnh Công Minh\\ GV phản biện: Duong Xuan Loi}
+% 	{TOÁN 10-KNTT-CS}
+% \end{name}
+\newpage
+\setcounter{section}{7}
+\section{Tổng và Hiệu của hai vectơ}
+%-------------------------------------------
+\subsection{KIẾN THỨC TRỌNG TÂM}
+\subsubsection{Tổng  của hai vectơ}
+% \noindent\textbf{H01.} Với hai vectơ $\overrightarrow{a}$, $\overrightarrow{b}$ cho trước, lấy một điểm $A$ và vẽ các vectơ
+% $\overrightarrow{AB}=\overrightarrow{a}$, $\overrightarrow{BC}=\overrightarrow{b}$; lấy điểm $A'$ khác $A$ và cũng vẽ các vectơ $\overrightarrow{A'B'}=\overrightarrow{a}$, $\overrightarrow{B'C'}=\overrightarrow{b}$.
+% Hỏi hai vectơ $\overrightarrow{AC}$ và $\overrightarrow{A'C'}$ có mối quan hệ gì?
+\begin{khung4}{}
+	Cho hai vectơ $\overrightarrow{a}$, $\overrightarrow{b}$. Lấy một điểm $A$ tuỳ ý và vẽ
+	$\overrightarrow{AB}=\overrightarrow{a}$, $\overrightarrow{BC}=\overrightarrow{b}$.
+	Khi đó vectơ $\overrightarrow{AC}$ được gọi là \textbf{tổng} của hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$ và được kí hiệu là $\overrightarrow{a}+\overrightarrow{b}$.\\
+	Phép lấy tổng của hai vectơ được gọi là \textbf{phép cộng vectơ}.
+\end{khung4}
+% Hình 4.13 (xấp xỉ theo hình bạn gửi) — chỉ cần dán vào file đang dùng
+\begin{center}
+	\begin{tikzpicture}[>=Stealth, line cap=round, line join=round, font=\small,scale=0.75]
+		% \colorlet{lbl}{cyan!65!blue}
+		% ===================== KHUNG TRÊN =====================
+		% \begin{scope}
+		% 	% lưới + khung
+		% 	\draw[step=1, gray!30] (0,0) grid (16,7);
+		% 	\draw[gray!55, line width=0.4pt] (0,0) rectangle (16,7);
+		% 	% 2 vectơ a, b (minh họa đặt cùng gốc)
+		% 	\coordinate (O) at (1,4);
+		% 	\coordinate (O') at (0,2);
+		% 	\coordinate (Va) at ($(O)+(2,2)$);
+		% 	\coordinate (Vb) at ($(O')+(5,-1)$);
+		% 	\draw[thick,->] (O) -- (Va) node[midway, left] {$\overrightarrow a$};
+		% 	\draw[thick,->] (O') -- (Vb) node[midway, above] {$\overrightarrow b$};
+		% 	% tam giác ABC (biểu diễn hiệu: từ B sang C)
+		% 	\coordinate (A) at (3,3);
+		% 	\coordinate (B) at (5.2,5);
+		% 	\coordinate (C) at (8.2,2);
+		% 	\draw[thick,->] (A) -- (B) node[midway, above left] {$\overrightarrow a$};
+		% 	\draw[thick,->] (A) -- (C) node[midway, below] {$\overrightarrow b$};
+		% 	\draw[very thick,->] (B) -- (C); % vectơ "nối đầu": (b - a)
+		% 	\node[left]  at (A) {$A$};
+		% 	\node[above] at (B) {$B$};
+		% 	\node[below] at (C) {$C$};
+		% 	% tam giác tịnh tiến A'B'C' bên phải
+		% 	\begin{scope}[shift={(9.0,0)}]
+		% 		\coordinate (Ap) at (1,3);
+		% 		\coordinate (Bp) at (3.2,5);
+		% 		\coordinate (Cp) at (6.2,2);
+		% 		\draw[thick,->] (Ap) -- (Bp);
+		% 		\draw[thick,->] (Ap) -- (Cp);
+		% 		\draw[very thick,->] (Bp) -- (Cp);
+		% 		\node[left]  at (Ap) {$A'$};
+		% 		\node[above] at (Bp) {$B'$};
+		% 		\node[below] at (Cp) {$C'$};
+		% 	\end{scope}
+		% \end{scope}
+		% ===================== KHUNG DƯỚI =====================
+		\begin{scope}%[yshift=-160]
+			% lưới + khung
+			\draw[step=1, gray!30] (0,0) grid (18,4);
+			\draw[gray!55, line width=0.4pt] (0,0) rectangle (18,4);
+			% minh họa cộng vectơ: đặt nối đuôi (a rồi b)
+			\coordinate (O2) at (0,1);
+			\coordinate (P2) at (2,3);
+			\coordinate (Q2) at (2,1);
+			\coordinate (M2) at (4,0);
+			\draw[thick,->] (O2) -- (P2) node[midway, left] {$\overrightarrow a$};
+			\draw[thick,->] (Q2) -- (M2) node[midway, above] {$\overrightarrow b$};
+			% tam giác ABC biểu diễn a+b ở bên phải
+			\begin{scope}[shift={(5.0,0)}]
+				\coordinate (A2) at (1,1);
+				\coordinate (B2) at (3,3);
+				\coordinate (C2) at (5,1);
+				\draw[very thick,->] (A2) -- (B2) node[midway, left] {$\overrightarrow a$};
+				\draw[very thick,->] (B2) -- (C2) node[midway, right] {$\overrightarrow b$};
+				\draw[very thick,->]      (A2) -- (C2) node[midway, below] {$\overrightarrow a+\overrightarrow b$};
+				\node[below left]  at (A2) {$A$};
+				\node[above]       at (B2) {$B$};
+				\node[below right] at (C2) {$C$};
+			\end{scope}
+			\begin{scope}[shift={(12,0)}]
+				\coordinate (A3) at (0,1);
+				\coordinate (B3) at (1,3);
+				\coordinate (C3) at (5,3);
+				\coordinate (D3) at (4,1);
+				\draw[thick] (B3)--(C3)--(D3);
+				\draw[very thick,->] (A3) -- (B3) node[midway, left] {$\overrightarrow a$};
+				\draw[very thick,->] (A3) -- (D3) node[midway, below] {$\overrightarrow b$};
+				\draw[very thick,->]      (A3) -- (C3) node[midway, above] {$\overrightarrow a+\overrightarrow b$};
+				\node[below left]  at (A3) {$A$};
+				\node[above]       at (B3) {$B$};
+				\node[above right] at (C3) {$C$};
+				\node[below right] at (D3) {$D$};
+			\end{scope}
+			% chú thích
+			% \node[text=orange!80!black, font=\bfseries] at (7,-0.7) {Hình 4.13};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
+\begin{khung4}{}
+	\noindent
+	\textbf{Quy tắc ba điểm:} Với ba điểm bất kì $A$, $B$, $C$, ta có
+	$$\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}.$$
+	\textbf{Quy tắc hình bình hành:} Nếu $ABCD$ là một hình bình hành thì
+	$$\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}.$$
+\end{khung4}
+\begin{khung4}{}
+	Với ba vectơ $\overrightarrow{a}$, $\overrightarrow{b}$, $\overrightarrow{c}$ tuỳ ý:
+	\begin{itemize}
+		\item \textbf{Tính chất giao hoán:} $\overrightarrow{a}+\overrightarrow{b}=\overrightarrow{b}+\overrightarrow{a}$;
+		\item \textbf{Tính chất kết hợp:} $\left(\overrightarrow{a}+\overrightarrow{b}\right)+\overrightarrow{c}=\overrightarrow{a}+\left(\overrightarrow{b}+\overrightarrow{c}\right)$;
+		\item \textbf{Tính chất của vectơ-không:} $\overrightarrow{a}+\overrightarrow{0}=\overrightarrow{0}+\overrightarrow{a}=\overrightarrow{a}$.
+	\end{itemize}
+\end{khung4}
+\subsubsection{Hiệu của hai vectơ}
+\begin{khung4}{}
+	\begin{itemize}
+		\item Vectơ có cùng độ dài và ngược hướng vectơ $\overrightarrow{a}$ được gọi là \textbf{vectơ đối} của vectơ $\overrightarrow{a}$.
+		\item Vectơ đối của $\overrightarrow{a}$ được kí hiệu là $-\overrightarrow{a}$.
+		\item Vectơ $\overrightarrow{0}$ được coi là vectơ đối của chính nó.
+	\end{itemize}
+\end{khung4}
+\begin{note}
+	Hai vectơ đối nhau khi và chỉ khi tổng của chúng bằng $\overrightarrow{0}$.
+\end{note}
+\begin{khung4}{}
+	Vectơ $\overrightarrow{a}+(-\overrightarrow{b})$ được gọi là \textbf{hiệu} của hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$
+	và được kí hiệu là $\overrightarrow{a}-\overrightarrow{b}$. Phép lấy hiệu hai vectơ được gọi là \textbf{phép trừ vectơ}.
+\end{khung4}
+% \noindent\textbf{Chú ý.} Nếu $\overrightarrow{b}+\overrightarrow{c}=\overrightarrow{a}$ thì
+% $$
+% \overrightarrow{a}-\overrightarrow{b}=\overrightarrow{a}+\left(-\overrightarrow{b}\right)
+% =\overrightarrow{c}+\overrightarrow{b}+\left(-\overrightarrow{b}\right)
+% =\overrightarrow{c}+\overrightarrow{0}
+% =\overrightarrow{c}.
+% $$
+% Với ba điểm $O$, $M$, $N$ tuỳ ý, ta có
+% $$
+% \overrightarrow{MN}
+% =\overrightarrow{MO}+\overrightarrow{ON}
+% =\left(-\overrightarrow{OM}\right)+\overrightarrow{ON}
+% =\overrightarrow{ON}-\overrightarrow{OM}.
+% $$
+\begin{khung4}{}
+	\textbf{Quy tắc hiệu:} Với ba điểm $O$, $M$, $N$, ta có
+	$$
+	\overrightarrow{MN}=\overrightarrow{ON}-\overrightarrow{OM}.
+	$$
+\end{khung4}
+\begin{khung4}{}
+	\immini{\begin{itemize}
+		\item Nếu $I$ là trung điểm đoạn thẳng $AB$ thì $\vec{IA}+\vec{IB}=\vec{0}$.
+		\item Nếu $G$ là trọng tâm tam giác $ABC$ thì $\vec{GA}+\vec{GB}+\vec{GC}=\vec{0}$.
+	\end{itemize}}
+	{\begin{tikzpicture}[>=stealth, line cap=round, line join=round, font=\small,scale=0.7]
+			\path
+			(0,0) coordinate (A)
+			(3.5,0) coordinate (B)
+			($(A)!.5!(B)$) coordinate (I)
+			(1,3) coordinate (C)
+			($(C)!2/3!(I)$) coordinate (G)
+			;
+			\draw[thick] (A)--(B)--(C)--cycle (C)--(I);
+			\foreach \d/\g in {A/-135,B/-45,I/-90,C/45,G/45} 
+			{\draw (\d) circle(1.5pt) node[shift=(\g:10pt)]{$\d$};}
+		\end{tikzpicture}}
+\end{khung4}
+\subsection{PHÂN LOẠI VÀ PHƯƠNG PHÁP GIẢI TOÁN}
+\begin{dang}{Quy tắc ba điểm (Quy tắc cộng vectơ)}
+	\textbf{Phương pháp:}
+	\begin{itemize}
+		\item	Quy tắc ba điểm (Quy tắc cộng vectơ): Cho ba điểm $A$, $B$, $C$ bất kỳ, ta có $\overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC}$.
+		\item  Quy tắc hình bình hành: Nếu $ABCD$ là hình bình hành thì $\overrightarrow{AB} + \overrightarrow{AD} = \overrightarrow{AC}$.
+		\item Quy tắc trừ vectơ: Với $O$ là điểm gốc, ta có $\overrightarrow{AB} = \overrightarrow{OB} - \overrightarrow{OA}$.
+		\item  Vectơ đối: $\overrightarrow{BA} = -\overrightarrow{AB}$.
+		\item  Tính chất vectơ không: $\overrightarrow{AA} = \overrightarrow{0}$.
+	\end{itemize}
+\end{dang}
+\begin{vd}%[0H5N2-1][Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Sử dụng quy tắc ba điểm, hãy rút gọn các tổng vectơ sau
+	\begin{listEX}[1]
+		\item $\overrightarrow{MN} + \overrightarrow{NP} + \overrightarrow{PQ}$.\dotfill
+		\item  $\overrightarrow{AD} + \overrightarrow{DB} + \overrightarrow{BC}$.\dotfill
+	\end{listEX}
+\loigiai{
+	\begin{enumerate}
+		\item Áp dụng quy tắc ba điểm liên tiếp:
+		$$\overrightarrow{MN} + \overrightarrow{NP} + \overrightarrow{PQ} = \left(\overrightarrow{MN} + \overrightarrow{NP}\right) + \overrightarrow{PQ} = \overrightarrow{MP} + \overrightarrow{PQ} = \overrightarrow{MQ}.$$
+		\item Áp dụng quy tắc ba điểm liên tiếp:
+		$$\overrightarrow{AD} + \overrightarrow{DB} + \overrightarrow{BC} = \left(\overrightarrow{AD} + \overrightarrow{DB}\right) + \overrightarrow{BC} = \overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC}.$$
+	\end{enumerate}
+	}
+\end{vd}
+\begin{vd}%[0H5H2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho tứ giác $EFGH$. Chứng minh rằng $\overrightarrow{EH} + \overrightarrow{HG} + \overrightarrow{GF} = \overrightarrow{EF}$.
+\loigiai{
+	Ta áp dụng quy tắc ba điểm cho vế trái
+	$$\overrightarrow{EH} + \overrightarrow{HG} + \overrightarrow{GF} = \left(\overrightarrow{EH} + \overrightarrow{HG}\right) + \overrightarrow{GF}
+	= \overrightarrow{EG} + \overrightarrow{GF} = \overrightarrow{EF}.$$
+	Vậy $\overrightarrow{EH} + \overrightarrow{HG} + \overrightarrow{GF} = \overrightarrow{EF}$.
+	}
+\end{vd}
+\dongcham{3}
+% \begin{vd}%[0H5H2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+% 	Cho tam giác $ABC$. Hãy rút gọn biểu thức vectơ $\overrightarrow{u} = \overrightarrow{CB} + \overrightarrow{BA} + \overrightarrow{AC}$.
+% \loigiai{
+% 	Áp dụng quy tắc ba điểm liên tiếp:
+% 	$$\overrightarrow{u} = \left(\overrightarrow{CB} + \overrightarrow{BA}\right) + \overrightarrow{AC}=\overrightarrow{CA} + \overrightarrow{AC}.$$
+% 	Ta có $\overrightarrow{CA} + \overrightarrow{AC} = \overrightarrow{CC} = \overrightarrow{0}$.\\
+% 	Vậy $\overrightarrow{u} = \overrightarrow{0}$.
+% 	}
+% \end{vd}
+
+\begin{vd}%[0H5H2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho sáu điểm $A$, $B$, $C$, $D$, $E$, $F$ bất kỳ. Rút gọn tổng các vectơ sau $$\overrightarrow{AB} + \overrightarrow{CD} + \overrightarrow{BC} + \overrightarrow{EF} + \overrightarrow{DA} + \overrightarrow{FE}.$$
+\loigiai{
+	Ta nhóm các vectơ theo thứ tự thích hợp để áp dụng quy tắc ba điểm:
+	$$\left(\overrightarrow{AB} + \overrightarrow{BC}\right) + \left(\overrightarrow{CD} + \overrightarrow{DA}\right) + \left(\overrightarrow{EF} + \overrightarrow{FE}\right).$$
+	Áp dụng quy tắc ba điểm:
+	$\overrightarrow{AC} + \overrightarrow{CA} + \overrightarrow{EE}$.\\
+	Ta có $\overrightarrow{AC} + \overrightarrow{CA} = \overrightarrow{AA} = \overrightarrow{0}$ và $\overrightarrow{EE} = \overrightarrow{0}$.\\
+	Kết quả là $\overrightarrow{0} + \overrightarrow{0} + \overrightarrow{0} = \overrightarrow{0}$.
+	}
+\end{vd}
+\dongcham{3}
+
+\begin{vd}%[0H5H2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hình bình hành $ABCD$ tâm $O$.
+	\begin{listEX}[1]
+		\item Rút gọn tổng $\overrightarrow{AB} + \overrightarrow{BC} + \overrightarrow{CO}$.\dotfill
+		\item  Chứng minh rằng $\overrightarrow{OA} + \overrightarrow{OB} + \overrightarrow{OC} + \overrightarrow{OD} = \overrightarrow{0}$.
+	\end{listEX}
+\loigiai{
+	\begin{enumerate}
+		\item Áp dụng quy tắc ba điểm:
+		$$\overrightarrow{AB} + \overrightarrow{BC} + \overrightarrow{CO} = \left(\overrightarrow{AB} + \overrightarrow{BC}\right) + \overrightarrow{CO} = \overrightarrow{AC} + \overrightarrow{CO}=\overrightarrow{AC} + \overrightarrow{CO} = \overrightarrow{AO}.$$
+		\item Vì $ABCD$ là hình bình hành tâm $O$, ta có $O$ là trung điểm của $AC$ và $BD$.\\
+		Do đó, $\overrightarrow{OA}$ và $\overrightarrow{OC}$ là hai vectơ đối nhau, tức là $\overrightarrow{OA} = -\overrightarrow{OC}$, hay $\overrightarrow{OA} + \overrightarrow{OC} = \overrightarrow{0}$.\\
+		Tương tự, $\overrightarrow{OB} = -\overrightarrow{OD}$, hay $\overrightarrow{OB} + \overrightarrow{OD} = \overrightarrow{0}$.
+		Ta có:
+		$$\overrightarrow{OA} + \overrightarrow{OB} + \overrightarrow{OC} + \overrightarrow{OD} = \left(\overrightarrow{OA} + \overrightarrow{OC}\right) + \left(\overrightarrow{OB} + \overrightarrow{OD}\right) = \overrightarrow{0} + \overrightarrow{0} = \overrightarrow{0}.$$
+	\end{enumerate}
+	}
+\end{vd}
+\dongcham{3}
+
+% \begin{vd}%[0H5H2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+% 	Cho ba điểm $A, B, C$. Chứng minh rằng $\overrightarrow{AB} = \overrightarrow{CB} - \overrightarrow{CA}$. (Đây là một cách phát biểu của quy tắc trừ vectơ).
+% \loigiai{
+% 	Ta có vế phải là $\overrightarrow{CB} - \overrightarrow{CA}$.
+% 	Sử dụng quy tắc trừ (hoặc chuyển đổi phép trừ sang phép cộng với vectơ đối):
+% 	$$\overrightarrow{CB} - \overrightarrow{CA} = \overrightarrow{CB} + \left(-\overrightarrow{CA}\right) = \overrightarrow{CB} + \overrightarrow{AC}.$$
+% 	Sử dụng tính chất giao hoán của phép cộng vectơ:
+% 	$$\overrightarrow{CB} + \overrightarrow{AC} = \overrightarrow{AC} + \overrightarrow{CB}.$$
+% 	Áp dụng quy tắc ba điểm:
+% 	$$\overrightarrow{AC} + \overrightarrow{CB} = \overrightarrow{AB}.$$
+% 	Vậy $\overrightarrow{CB} - \overrightarrow{CA} = \overrightarrow{AB}$.
+% 	}
+% \end{vd}
+\begin{dang}{Toán thực tế}
+	\textbf{Phương pháp:}
+	\begin{itemize}
+		\item Quy tắc hình bình hành: Nếu hai vectơ $\overrightarrow{u}$ và $\overrightarrow{v}$ có chung gốc, thì vectơ tổng $\overrightarrow{u} + \overrightarrow{v}$ là vectơ xuất phát từ gốc chung và là đường chéo của hình bình hành được tạo bởi $\overrightarrow{u}$ và $\overrightarrow{v}$.
+		\item	Độ lớn của vectơ tổng (Định lí cosin): Cho hai vectơ $\overrightarrow{u}$ và $\overrightarrow{v}$. Gọi $\alpha$ là góc giữa hai vectơ đó ($\alpha = (\overrightarrow{u}, \overrightarrow{v})$). Độ lớn của vectơ tổng $\overrightarrow{w} = \overrightarrow{u} + \overrightarrow{v}$ được tính theo công thức:
+		$$
+		\left|\overrightarrow{w}\right|^2 = \left|\overrightarrow{u}\right|^2 + \left|\overrightarrow{v}\right|^2 + 2\left|\overrightarrow{u}\right|\left|\overrightarrow{v}\right|\cos \alpha.
+		$$
+		\item  Ứng dụng Vật lí: Khi hai lực $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ cùng tác động lên một vật, hợp lực là $\overrightarrow{F} = \overrightarrow{F}_1 + \overrightarrow{F}_2$. Độ lớn của hợp lực $F = \left|\overrightarrow{F}\right|$ được tính theo công thức trên.
+	\end{itemize}
+\end{dang}
+\begin{vd}%[0H5N2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	\immini{Một vật chịu tác động của hai lực $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$. Biết $\left|\overrightarrow{F}_1\right| = 5 \text{ N}$ và $\left|\overrightarrow{F}_2\right| = 8 \text{ N}$. Nếu góc giữa hai lực là $\alpha = 60^\circ$, hãy tính độ lớn của hợp lực $\overrightarrow{F} = \overrightarrow{F}_1 + \overrightarrow{F}_2$.
+	\dongcham{6}}{\begin{tikzpicture}[>=Stealth, line cap=round, line join=round, scale=0.4]
+			% --- Gốc ---
+			\coordinate (O) at (0,0);
+			% --- Chọn tỉ lệ: 1 đơn vị độ dài ~ 1 N (để minh hoạ) ---
+			\coordinate (A) at (5,0);                         % F1 = 5 N theo trục Ox
+			\coordinate (B) at ({8*cos(60)},{8*sin(60)});     % F2 = 8 N, hợp với F1 góc 60°
+			% --- Hợp lực (đường chéo hình bình hành) ---
+			\coordinate (C) at ($(A)+(B)$);
+			% --- Vẽ vectơ lực ---
+			\draw[->, very thick, blue] (O)--(A)
+			node[midway, below] {$\overrightarrow{F}_1$};
+			\draw[->, very thick, red] (O)--(B)
+			node[midway, left] {$\overrightarrow{F}_2$};
+			\draw[->, very thick, green!60!black] (O)--(C)
+			node[right] {$\overrightarrow{F}$};
+			% --- Hình bình hành (nét đứt) ---
+			\draw[dashed] (A)--(C);
+			\draw[dashed] (B)--(C);
+			% --- Góc alpha ---
+			% \draw pic[
+			% draw, ->, "$\alpha=60^\circ$",
+			% angle radius=8mm, angle eccentricity=1.25
+			% ] {angle=A--O--B};
+			% --- Nhãn gốc ---
+			\fill (O) circle (1.2pt) node[below left] {$O$};
+		\end{tikzpicture}}
+\loigiai{
+	Gọi $F$ là độ lớn của hợp lực $\overrightarrow{F}=\overrightarrow{F}_1+\overrightarrow{F}_2$.\\
+	Áp dụng công thức:
+	$$
+	F^2=\left|\overrightarrow{F}_1\right|^2+\left|\overrightarrow{F}_2\right|^2+2\left|\overrightarrow{F}_1\right|\left|\overrightarrow{F}_2\right|\cos\alpha.
+	$$
+	Thay số: $\left|\overrightarrow{F}_1\right|=5$, $\left|\overrightarrow{F}_2\right|=8$, $\cos60^\circ=\dfrac12$:
+	\begin{eqnarray*}
+		& & F^2=5^2+8^2+2\cdot 5\cdot 8\cdot\dfrac12.\\
+		&\Leftrightarrow & F^2=25+64+40=129.\\
+		&\Rightarrow & F=\sqrt{129}\ \text{N}.
+	\end{eqnarray*}
+	}
+\end{vd}
+\begin{vd}%[0H5N2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	\immini{Hai tàu kéo đang kéo một sà lan. Lực kéo của tàu thứ nhất là $\overrightarrow{T}_1$ với $\left|\overrightarrow{T}_1\right| = 1000 \text{ N}$. Lực kéo của tàu thứ hai là $\overrightarrow{T}_2$ với $\left|\overrightarrow{T}_2\right| = 1500 \text{ N}$. Hai dây cáp tạo với nhau một góc $90^\circ$. Tính độ lớn của hợp lực kéo $\overrightarrow{T} = \overrightarrow{T}_1 + \overrightarrow{T}_2$ tác động lên sà lan.
+	\dongcham{7}
+	}{\begin{tikzpicture}[>=Stealth, line cap=round, line join=round, scale=0.5]
+			% --- Gốc ---
+			\coordinate (O) at (0,0);
+			% --- Chọn tỉ lệ: 1 đơn vị độ dài ~ 1 N (để minh hoạ) ---
+			\coordinate (A) at (5,0);                         % F1 = 5 N theo trục Ox
+			\coordinate (B) at ({8*cos(90)},{8*sin(90)});     % F2 = 8 N, hợp với F1 góc 90°
+			% --- Hợp lực (đường chéo hình bình hành) ---
+			\coordinate (C) at ($(A)+(B)$);
+			% --- Vẽ vectơ lực ---
+			\draw[->, very thick, blue] (O)--(A)
+			node[midway, below] {$\overrightarrow{T}_1$};
+			\draw[->, very thick, red] (O)--(B)
+			node[midway, left] {$\overrightarrow{T}_2$};
+			\draw[->, very thick, green!60!black] (O)--(C)
+			node[ right, yshift=5pt] {$\overrightarrow{T}$};
+			% --- Hình bình hành (nét đứt) ---
+			\draw[dashed] (A)--(C);
+			\draw[dashed] (B)--(C);
+			% --- Góc alpha ---
+			% cần: \usetikzlibrary{angles,quotes}
+			% \draw pic[
+			% draw,
+			% "$\alpha=90^\circ$",
+			% angle radius=5.8mm,
+			% angle eccentricity=1.25] {right angle = A--O--B};
+			% --- Nhãn gốc ---
+			\fill (O) circle (1.2pt) node[below left] {$O$};
+		\end{tikzpicture}}
+\loigiai{
+	Gọi $T$ là độ lớn của hợp lực $\overrightarrow{T}$. Góc giữa hai lực là $\alpha = 90^\circ$, nên $\cos \alpha = \cos(90^\circ) = 0$.\\
+	Áp dụng công thức tính độ lớn hợp lực:
+	\begin{eqnarray*}
+		& & T^2 = \left|\overrightarrow{T}_1\right|^2 + \left|\overrightarrow{T}_2\right|^2 + 2\cdot \left|\overrightarrow{T}_1\right|\cdot \left|\overrightarrow{T}_2\right|\cdot \cos \alpha\\
+		&\Leftrightarrow & T^2 = 1\,000^2 + 1\,500^2 + 2\cdot (1\,000)\cdot (1\,500)\cdot (0)\\
+		&\Leftrightarrow & T^2 = 1\,000\,000 + 2\,250\,000\\
+		&\Leftrightarrow & T^2 = 3\,250\,000\\
+		&\Leftrightarrow & T = \sqrt{3\,250\,000} = \sqrt{250\,000 \cdot 13} = 500\sqrt{13} \text{ N}.
+	\end{eqnarray*}
+	}
+\end{vd}
+% \begin{vd}%[0H5N2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+% 	Hai người cùng đẩy một chiếc xe hàng. Lực đẩy của người thứ nhất là $\overrightarrow{P_1}$ với độ lớn $P_1 = 35 \text{ N}$. Lực đẩy của người thứ hai là $\overrightarrow{P_2}$ với độ lớn $P_2 = 40 \text{ N}$. Nếu góc giữa hướng đẩy của hai người là $150^\circ$, hãy xác định độ lớn của hợp lực $\overrightarrow{P} = \overrightarrow{P_1} + \overrightarrow{P_2}$ (làm tròn kết quả đến hai chữ số thập phân).
+% \loigiai{
+% 	Gọi $P$ là độ lớn của hợp lực $\overrightarrow{P}$. Góc giữa hai lực là $\alpha = 150^\circ$.
+% 	$$
+% 	P^2 = \left|\overrightarrow{P_1}\right|^2 + \left|\overrightarrow{P_2}\right|^2 + 2\cdot \left|\overrightarrow{P_1}\right|\cdot \left|\overrightarrow{P_2}\right|\cdot \cos \alpha.
+% 	$$
+% 	Thay số: $P_1 = 35$, $P_2 = 40$, $\cos(150^\circ) = -\frac{\sqrt{3}}{2}$.
+% 	\begin{eqnarray*}
+% 		& & P^2 = 35^2 + 40^2 + 2\cdot (35)\cdot (40) \left(-\frac{\sqrt{3}}{2}\right)\\
+% 		&\Leftrightarrow & P^2 = 1\,225 + 1\,600 - 1\,400\sqrt{3}\\
+% 		&\Leftrightarrow & P^2 = 2\,825 - 1\,400\sqrt{3} \approx 2\,825 - 1\,400\cdot (1{,}732) = 2\,825 - 2\,424{,8} = 400{,}2\\
+% 		&\Leftrightarrow & P = \sqrt{400{,}2} \approx 20{,}00 \text{ N}.
+% 	\end{eqnarray*}
+% 	(Lưu ý: Nếu dùng máy tính $2\,825 - 1\,400\sqrt{3} \approx 400{,}186$; $P \approx 20{,}0\,046$ N. Làm tròn: $20{,}00$ N).
+% 	}
+% \end{vd}
+% \begin{vd}%[0H5N2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+% 	Một máy bay di chuyển chịu tác động của hai luồng gió. Luồng gió thứ nhất $\overrightarrow{G_1}$ có tốc độ $60 \text{ km/h}$. Luồng gió thứ hai $\overrightarrow{G_2}$ có tốc độ $40 \text{ km/h}$. Giả sử góc giữa hướng của hai luồng gió là $180^\circ$ (ngược chiều nhau). Tính độ lớn của hợp vận tốc gió $\overrightarrow{G} = \overrightarrow{G_1} + \overrightarrow{G_2}$. Giải thích ý nghĩa vật lý của trường hợp này.
+% \loigiai{
+% 	Độ lớn của hợp vận tốc gió $G$ được tính theo công thức:
+% 	$$
+% 	G^2 = \left|\overrightarrow{G_1}\right|^2 + \left|\overrightarrow{G_2}\right|^2 + 2\cdot \left|\overrightarrow{G_1}\right|\cdot \left|\overrightarrow{G_2}\right|\cdot \cos \alpha.
+% 	$$
+% 	Thay số: $\left|\overrightarrow{G_1}\right| = 60$, $\left|\overrightarrow{G_2}\right| = 40$, $\alpha = 180^\circ$, $\cos(180^\circ) = -1$.
+% 	\begin{eqnarray*}
+% 		& & G^2 = 60^2 + 40^2 + 2\cdot 60\cdot 40\cdot (-1)\\
+% 		&\Leftrightarrow & G^2 = 3\,600 + 1\,600 - 4\,800\\
+% 		&\Leftrightarrow & G^2 = 5\,200 - 4\,800\\
+% 		&\Leftrightarrow & G^2 = 400\\
+% 		&\Leftrightarrow & G = 20 \text{ km/h}.
+% 	\end{eqnarray*}
+% 	Ý nghĩa vật lý: Khi hai vectơ ngược chiều nhau ($\alpha=180^\circ$), độ lớn của vectơ tổng bằng hiệu độ lớn của hai vectơ thành phần ($G = |60 - 40| = 20$).
+% 	}
+% \end{vd}
+% \begin{vd}%[0H5N2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+% 	Hai người thợ xây dùng dây kéo một khối vật liệu lên cao. Lực kéo của mỗi người có độ lớn bằng nhau là $F_1 = F_2 = 150 \text{ N}$. Để đạt được hiệu quả kéo tối đa, họ cố gắng giữ cho góc giữa hai sợi dây là $\alpha$. Tính độ lớn của hợp lực $\overrightarrow{F}$ nếu $\alpha = 0^\circ$ (tức là cùng phương, cùng chiều).
+% \loigiai{
+% 	Gọi $F$ là độ lớn của hợp lực $\overrightarrow{F}$. Góc giữa hai lực là $\alpha = 0^\circ$, nên $\cos \alpha = \cos(0^\circ) = 1$.\\
+% 	Áp dụng công thức tính độ lớn hợp lực:
+% 	$$
+% 	F^2 = \left|\overrightarrow{F}_1\right|^2 + \left|\overrightarrow{F}_2\right|^2 + 2\cdot \left|\overrightarrow{F}_1\right|\cdot \left|\overrightarrow{F}_2\right|\cdot \cos \alpha.
+% 	$$
+% 	Thay số: $\left|\overrightarrow{F}_1\right| = 150$, $\left|\overrightarrow{F}_2\right| = 150$, $\cos(0^\circ) = 1$.
+% 	\begin{eqnarray*}
+% 		& & F^2 = 150^2 + 150^2 + 2\cdot 150\cdot 150\cdot 1\\
+% 		&\Leftrightarrow & F^2 = 2\cdot (150^2) + 2\cdot (150^2) = 4\cdot (150^2)\\
+% 		&\Leftrightarrow & F = \sqrt{4\cdot (150^2)} = 2 \cdot 150 = 300 \text{ N}.
+% 	\end{eqnarray*}
+% 	(Ý nghĩa vật lý: Khi hai lực cùng phương, cùng chiều, hợp lực bằng tổng độ lớn của chúng: $F = 150 + 150 = 300 \text{ N}$).
+% 	}
+% \end{vd}
+% \begin{vd}%[0H5N2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+% 	\begin{center}
+% 		\begin{tikzpicture}[>=Stealth, line cap=round, line join=round, scale=0.5]
+% 			% --- Gốc ---
+% 			\coordinate (O) at (0,0);
+% 			% --- Chọn tỉ lệ: 1 đơn vị độ dài ~ 1 N (để minh hoạ) ---
+% 			\coordinate (A) at (6,0);                         % F1 = 5 N theo trục Ox
+% 			\coordinate (B) at ({4*cos(120)},{4*sin(120)});     % F2 = 8 N, hợp với F1 góc 60°
+% 			% --- Hợp lực (đường chéo hình bình hành) ---
+% 			\coordinate (C) at ($(A)+(B)$);
+% 			% --- Vẽ vectơ lực ---
+% 			\draw[->, very thick, blue] (O)--(A)
+% 			node[midway, below] {$\overrightarrow{F}_1\,(3\,\mathrm{N})$};
+% 			\draw[->, very thick, red] (O)--(B)
+% 			node[midway, left] {$\overrightarrow{F}_2\,(2\,\mathrm{N})$};
+% 			\draw[->, very thick, green!60!black] (O)--(C)
+% 			node[midway, right] {$\overrightarrow{F}=\overrightarrow{F}_1+\overrightarrow{F}_2$};
+% 			% --- Hình bình hành (nét đứt) ---
+% 			\draw[dashed] (A)--(C);
+% 			\draw[dashed] (B)--(C);
+% 			% --- Góc alpha ---
+% 			\draw pic[
+% 			draw, ->, "$\alpha=120^\circ$",
+% 			angle radius=12mm, angle eccentricity=1.25
+% 			] {angle=A--O--B};
+% 			% --- Nhãn gốc ---
+% 			\fill (O) circle (1.2pt) node[below left] {$O$};
+% 		\end{tikzpicture}
+% 	\end{center}
+% 	Hai vectơ $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ có chung gốc, tạo thành góc $120^\circ$.	Hình biểu diễn hai lực $\overrightarrow{F}_1$, $\overrightarrow{F}_2$ cùng tác động lên một vật, cho $\left|\overrightarrow{F}_1\right| = 3 \text{ N}$, $\left|\overrightarrow{F}_2\right| = 2 \text{ N}$. Tính độ lớn của hợp lực $\overrightarrow{F} = \overrightarrow{F}_1 + \overrightarrow{F}_2$.
+% \loigiai{
+% 	Bước 1: Xác định các đại lượng đã cho và công thức áp dụng.\\
+% 	Gọi $F$ là độ lớn của hợp lực $\overrightarrow{F}$. Góc giữa hai lực là $\alpha = 120^\circ$. Ta có $\left|\overrightarrow{F}_1\right| = 3$ và $\left|\overrightarrow{F}_2\right| = 2$.\\
+% 	Áp dụng công thức tính độ lớn của vectơ tổng (định lí cosin):
+% 	$$F^2 = \left|\overrightarrow{F}_1\right|^2 + \left|\overrightarrow{F}_2\right|^2 + 2\left|\overrightarrow{F}_1\right|\left|\overrightarrow{F}_2\right|\cos \alpha$$
+% 	Bước 2: Thay số và tính toán.\\
+% 	Ta có $\cos(120^\circ) = -\frac{1}{2}$. Thay số vào công thức:
+% 	$$
+% 	\begin{aligned}
+% 		F^2 &= 3^2 + 2^2 + 2\cdot 3\cdot 2\cdot\left(-\frac12\right)\\
+% 		\Leftrightarrow\quad F^2 &= 9 + 4 - 6\\
+% 		\Leftrightarrow\quad F^2 &= 7
+% 	\end{aligned}
+% 	$$
+% 	Bước 3: Tính độ lớn hợp lực.\\
+% 	$$F = \sqrt{7}$$
+% 	Kết luận: Độ lớn của hợp lực là $\sqrt{7} \text{ N}$.
+% 	}
+% \end{vd}
+\subsection{BÀI TẬP RÈN LUYỆN}
+%-------------Trắc nghiệm nhiều lựa chọn
+\ind{PHẦN I.} \inden{Câu trắc nghiệm nhiều phương án lựa chọn. Mỗi câu hỏi học sinh chỉ chọn một phương án.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-C8B27-lc]
+\begin{ex}%[0H5H2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hai vectơ $\overrightarrow{a}$, $\overrightarrow{b}$. Lấy một điểm $A$ tuỳ ý và vẽ $\overrightarrow{AB} = \overrightarrow{a}$, $\overrightarrow{BC} = \overrightarrow{b}$. Khi đó, vectơ $\overrightarrow{AC}$ được gọi là gì?
+	\choice
+	{Hiệu của hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$}
+	{\True Tổng của hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$}
+	{Tích của hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$}
+	{Vectơ đối của vectơ $\overrightarrow{a}$}
+\loigiai{
+	Theo định nghĩa trong sách giáo khoa: Cho hai vectơ $\overrightarrow{a}, \overrightarrow{b}$. Lấy một điểm $A$ tuỳ ý và vẽ $\overrightarrow{AB} = \overrightarrow{a}$, $\overrightarrow{BC} = \overrightarrow{b}$. Khi đó vectơ $\overrightarrow{AC}$ được gọi là tổng của hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$ và được kí hiệu là $\overrightarrow{a} + \overrightarrow{b}$. Phép lấy tổng của hai vectơ được gọi là phép cộng vectơ.
+	}
+\end{ex}
+\begin{ex}%[0H5N2-3]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho ba điểm $M$, $N$, $P$ phân biệt. Khẳng định nào sau đây là đúng?
+	\choice
+	{$\overrightarrow{MN} + \overrightarrow{NP} = \overrightarrow{PM}$}
+	{$\overrightarrow{MP} + \overrightarrow{PN} = \overrightarrow{NM}$}
+	{\True $\overrightarrow{MN} + \overrightarrow{NP} = \overrightarrow{MP}$}
+	{$\overrightarrow{NP} + \overrightarrow{MN} = \overrightarrow{PN}$}
+\loigiai{
+	Theo quy tắc ba điểm, với ba điểm $M$, $N$, $P$ bất kì, ta luôn có $\overrightarrow{MN} + \overrightarrow{NP} = \overrightarrow{MP}$.
+	}
+\end{ex}
+\begin{ex}%[0H5N2-3]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hình bình hành $ABCD$ tâm $O$. Khẳng định nào sau đây là {\bf{sai}}?
+	\choice
+	{$\overrightarrow{AB} + \overrightarrow{AD} = \overrightarrow{AC}$}
+	{\True $\overrightarrow{OA} + \overrightarrow{OB} = \overrightarrow{OC} + \overrightarrow{OD}$}
+	{$\overrightarrow{AB} = \overrightarrow{DC}$}
+	{$\overrightarrow{OA} + \overrightarrow{OC} = \overrightarrow{0}$}
+\loigiai{
+	\begin{itemize}
+		\item Theo quy tắc hình bình hành: $\overrightarrow{AB} + \overrightarrow{AD} = \overrightarrow{AC}$.
+		\item Vì $ABCD$ là hình bình hành nên $\overrightarrow{AB} = \overrightarrow{DC}$.
+		\item Vì $O$ là tâm hình bình hành nên $O$ là trung điểm của $AC$, do đó $\overrightarrow{OA}$ và $\overrightarrow{OC}$ là hai vectơ đối nhau, suy ra $\overrightarrow{OA} + \overrightarrow{OC} = \overrightarrow{0}$.
+		\item Biểu thức $\overrightarrow{OA} + \overrightarrow{OB} = \overrightarrow{OC} + \overrightarrow{OD}$ là sai vì $\overrightarrow{OA} + \overrightarrow{OC} = \overrightarrow{0}$ và $\overrightarrow{OB} + \overrightarrow{OD} = \overrightarrow{0}$, dẫn đến $\overrightarrow{OA} = -\overrightarrow{OC}$ và $\overrightarrow{OB} = -\overrightarrow{OD}$.
+	\end{itemize}
+	}
+\end{ex}
+\begin{ex}%[0H5N2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hai vectơ $\overrightarrow{a}$ và $\overrightarrow{b}$ đều khác $\overrightarrow{0}$. Biết rằng $\overrightarrow{a} + \overrightarrow{b} = \overrightarrow{0}$. Khẳng định nào sau đây là đúng?
+	\choice
+	{$\overrightarrow{a}$ và $\overrightarrow{b}$ cùng hướng}
+	{\True $\overrightarrow{a}$ và $\overrightarrow{b}$ là hai vectơ đối nhau}
+	{$\overrightarrow{a} = \overrightarrow{b}$}
+	{$\overrightarrow{a}$ và $\overrightarrow{b}$ có độ dài khác nhau}
+\loigiai{
+	Theo định nghĩa và chú ý về vectơ đối, hai vectơ đối nhau khi và chỉ khi tổng của chúng bằng $\overrightarrow{0}$. Do đó, nếu $\overrightarrow{a} + \overrightarrow{b} = \overrightarrow{0}$ thì $\overrightarrow{a}$ và $\overrightarrow{b}$ là hai vectơ đối nhau (có cùng độ dài và ngược hướng).
+	}
+\end{ex}
+\begin{ex}%[0H5N2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Với ba điểm $O$, $A$, $B$ tùy ý, đẳng thức nào sau đây mô tả quy tắc hiệu?
+	\choice
+	{$\overrightarrow{AB} = \overrightarrow{OA} - \overrightarrow{OB}$}
+	{\True $\overrightarrow{AB} = \overrightarrow{OB} - \overrightarrow{OA}$}
+	{$\overrightarrow{AB} = \overrightarrow{OA} + \overrightarrow{OB}$}
+	{$\overrightarrow{AB} = \overrightarrow{OB} + \overrightarrow{AO}$}
+\loigiai{
+	Theo quy tắc hiệu: Với ba điểm $O$, $M$, $N$ tùy ý, ta có $\overrightarrow{MN} = \overrightarrow{ON} - \overrightarrow{OM}$.\\
+	Áp dụng cho ba điểm $O$, $A$, $B$, ta có $\overrightarrow{AB} = \overrightarrow{OB} - \overrightarrow{OA}$.
+	}
+\end{ex}
+\begin{ex}%[0H5N2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho bốn điểm $A$, $B$, $C$, $D$. Tổng $\overrightarrow{AB} + \overrightarrow{BC} + \overrightarrow{CD} + \overrightarrow{DA}$ bằng
+	\choice
+	{$\overrightarrow{AC}$}
+	{$\overrightarrow{AD}$}
+	{$\overrightarrow{BD}$}
+	{\True $\overrightarrow{0}$}
+\loigiai{
+	Ta có $ \overrightarrow{AB} + \overrightarrow{BC} + \overrightarrow{CD} + \overrightarrow{DA}=\overrightarrow{AC}+\overrightarrow{CA}=\overrightarrow{0}$.
+	}
+\end{ex}
+\begin{ex}%[0H5H2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Trong các khẳng định sau về tính chất của phép cộng vectơ, khẳng định nào {\bf{sai}}?
+	\choice
+	{$\overrightarrow{a} + \overrightarrow{b} = \overrightarrow{b} + \overrightarrow{a}$}
+	{$\left(\overrightarrow{a} + \overrightarrow{b}\right) + \overrightarrow{c} = \overrightarrow{a} + \left(\overrightarrow{b} + \overrightarrow{c}\right)$}
+	{\True $\overrightarrow{a} + \overrightarrow{0} = \overrightarrow{0}$}
+	{$\overrightarrow{a} + \overrightarrow{0} = \overrightarrow{a}$}
+\loigiai{
+	Theo tính chất của vectơ-không: $\overrightarrow{a} + \overrightarrow{0} = \overrightarrow{0} + \overrightarrow{a} = \overrightarrow{a}$.\\
+	Do đó, khẳng định $\overrightarrow{a} + \overrightarrow{0} = \overrightarrow{0}$ là sai (trừ trường hợp $\overrightarrow{a} = \overrightarrow{0}$).
+	}
+\end{ex}
+\begin{ex}%[0H5N2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho bốn điểm bất kì $A$, $B$, $C$, $D$. Đẳng thức nào sau đây là đúng?
+	\choice
+	{$\overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{BA}$}
+	{\True $\overrightarrow{AC} + \overrightarrow{CD} = \overrightarrow{AD}$}
+	{$\overrightarrow{AB} + \overrightarrow{AD} = \overrightarrow{BD}$}
+	{$\overrightarrow{AC} + \overrightarrow{CB} = \overrightarrow{CA}$}
+\loigiai{
+	Theo quy tắc ba điểm (quy tắc cộng), ta có $\overrightarrow{AC} + \overrightarrow{CD} = \overrightarrow{AD}$.\\
+	Đẳng thức này luôn đúng với ba điểm bất kì $A$, $C$, $D$.
+	}
+\end{ex}
+\begin{ex}%[0H5H2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hình bình hành $ABCD$ tâm $O$. Khẳng định nào sau đây là \textbf{sai}?
+	\choice
+	{$\overrightarrow{AB} + \overrightarrow{AD} = \overrightarrow{AC}$}
+	{\True $\overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{DB}$}
+	{$\overrightarrow{OA} + \overrightarrow{OC} = \overrightarrow{0}$}
+	{$\overrightarrow{BC} + \overrightarrow{BA} = \overrightarrow{BD}$}
+\loigiai{
+	\begin{itemize}
+		\item $\overrightarrow{AB} + \overrightarrow{AD} = \overrightarrow{AC}$.
+		\item $\overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC}\neq \overrightarrow{DB}$
+		\item $\overrightarrow{OA} + \overrightarrow{OC} = \overrightarrow{0}$.
+		\item $\overrightarrow{BC} + \overrightarrow{BA} = \overrightarrow{BD}$.
+	\end{itemize}
+	}
+\end{ex}
+\begin{ex}%[0H5N2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho tam giác $ABC$. Kết quả của phép trừ $\overrightarrow{AB} - \overrightarrow{AC}$ là
+	\choice
+	{$\overrightarrow{BC}$}
+	{\True $\overrightarrow{CB}$}
+	{$\overrightarrow{AB}$}
+	{$\overrightarrow{AC}$}
+\loigiai{
+	Theo quy tắc hiệu: Với ba điểm $A$, $B$, $C$ tùy ý, ta có $\overrightarrow{AC} - \overrightarrow{AB} = \overrightarrow{BC}$ hoặc $\overrightarrow{AB} - \overrightarrow{AC} = \overrightarrow{CB}$.\\
+	Vậy $\overrightarrow{AB} - \overrightarrow{AC} = \overrightarrow{CB}$.
+	}
+\end{ex}
+\begin{ex}%[0H5N2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho bốn điểm $M$, $N$, $P$, $Q$ tùy ý. Biểu thức $\overrightarrow{u} = \overrightarrow{MN} + \overrightarrow{NP} + \overrightarrow{PQ}$ được rút gọn thành
+	\choice
+	{$\overrightarrow{u} = \overrightarrow{MP}$}
+	{$\overrightarrow{u} = \overrightarrow{NQ}$}
+	{\True $\overrightarrow{u} = \overrightarrow{MQ}$}
+	{$\overrightarrow{u} = \overrightarrow{MN}$}
+\loigiai{
+	Áp dụng tính chất kết hợp và quy tắc ba điểm:
+	$\overrightarrow{u} = \left(\overrightarrow{MN} + \overrightarrow{NP}\right) + \overrightarrow{PQ}
+	= \overrightarrow{MP} + \overrightarrow{PQ}
+	= \overrightarrow{MQ}$.
+	}
+\end{ex}
+\begin{ex}%[0H5N2-1]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hình bình hành $ABCD$. Tổng $\overrightarrow{AB} + \overrightarrow{CD}$ bằng
+	\choice
+	{$\overrightarrow{AC}$}
+	{$\overrightarrow{BD}$}
+	{\True $\overrightarrow{0}$}
+	{$2\overrightarrow{AB}$}
+\loigiai{
+	Vì $ABCD$ là hình bình hành nên các cạnh đối $AB$ và $CD$ song song và bằng nhau.\\
+	Mặt khác, vectơ $\overrightarrow{AB}$ và vectơ $\overrightarrow{CD}$ ngược hướng nhau.\\
+	Do đó $\overrightarrow{CD}$ là vectơ đối của vectơ $\overrightarrow{AB}$, hay $\overrightarrow{CD} = -\overrightarrow{AB}$.\\
+	Vậy $\overrightarrow{AB} + \overrightarrow{CD} = \overrightarrow{AB} + (-\overrightarrow{AB}) = \overrightarrow{0}$.
+	}
+\end{ex}
+\Opensolutionfile{ans}[Ans/TamPAEX]
+\Closesolutionfile{ans}
+\Closesolutionfile{ans}
+\indapan{6}{ans/ans-C8B27-lc}
+%---------------------Trắc nghiệm đúng sai
+\ind{PHẦN II.} \inden{Câu trắc nghiệm đúng sai. Trong mỗi ý a), b), c), d) ở mỗi câu, học sinh chọn đúng hoặc sai.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-C8B27-ds]
+\begin{ex}%[0H5N2-2]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hình chữ nhật $DFEC$ có tâm $O$, $DF=3$, $FE=4$. Gọi $P$, $Q$ lần lượt là trung điểm của $FE$ và $DC$. Khẳng định nào sau đây là đúng?
+	\choiceTF
+	{Hai vectơ $\overrightarrow{DO}$ và $\overrightarrow{OE}$ ngược hướng}
+	{$\overrightarrow{EF}+\overrightarrow{EC}=\overrightarrow{DE}$}
+	{\True $\overrightarrow{DP}-\overrightarrow{CE}=\overrightarrow{QC}$}
+	{$\left|\overrightarrow{DP}+\overrightarrow{QC}\right|=4$}
+\loigiai{
+	\begin{center}
+		%=== TikZ: Hình chữ nhật DFEC, tâm O, trung điểm P của FE và Q của DC ===
+		\begin{tikzpicture}[scale=1, line cap=round, line join=round, >=Stealth, font=\small]
+			% Chọn toạ độ: D(0,0), F(3,0), E(3,4), C(0,4)
+			\coordinate (D) at (0,0);
+			\coordinate (F) at (3,0);
+			\coordinate (E) at (3,4);
+			\coordinate (C) at (0,4);
+			% Trung điểm
+			\coordinate (O) at ($(D)!0.5!(E)$);
+			\coordinate (P) at ($(F)!0.5!(E)$);
+			\coordinate (Q) at ($(D)!0.5!(C)$);
+			% Vẽ hình chữ nhật
+			\draw[thick] (D)--(F)--(E)--(C)--cycle;
+			% Vẽ đường chéo để thấy tâm
+			\draw[dashed] (D)--(E);
+			\draw[dashed] (F)--(C);
+			% Đánh dấu điểm
+			\fill (D) circle (1.6pt) node[below left] {$D$};
+			\fill (F) circle (1.6pt) node[below right] {$F$};
+			\fill (E) circle (1.6pt) node[above right] {$E$};
+			\fill (C) circle (1.6pt) node[above left] {$C$};
+			\fill (O) circle (1.6pt) node[right] {$O$};
+			\fill (P) circle (1.6pt) node[right] {$P$};
+			\fill (Q) circle (1.6pt) node[left] {$Q$};
+			% Ký hiệu trung điểm (vạch nhỏ)
+			\draw ($(F)!0.48!(E)$) -- ($(F)!0.52!(E)$);
+			\draw ($(D)!0.48!(C)$) -- ($(D)!0.52!(C)$);
+			% Ghi độ dài cạnh
+			\node[below] at ($(D)!0.5!(F)$) {$DF=3$};
+			\node[right] at ($(F)!0.5!(E)$) {$FE=4$};
+		\end{tikzpicture}
+	\end{center}
+	\begin{itemchoice}
+		\itemch	 Trong hình chữ nhật $DFEC$, $O$ là trung điểm của đường chéo $DE$ nên $\overrightarrow{DO}$ và $\overrightarrow{OE}$ cùng hướng.
+		\itemch		Theo quy tắc hình bình hành
+		$$
+		\overrightarrow{EF}+\overrightarrow{EC}=\overrightarrow{ED}\neq \overrightarrow{DE}.
+		$$
+		\itemch	 Ta có
+		$$
+		\overrightarrow{DP}-\overrightarrow{CE}=\overrightarrow{DP}+\overrightarrow{EC}.
+		$$
+		Vì $P$ là trung điểm của $FE$ và $Q$ là trung điểm của $DC$ nên $\overrightarrow{QE}=\overrightarrow{DP}$.
+		Suy ra
+		$$
+		\overrightarrow{DP}+\overrightarrow{EC}=\overrightarrow{QE}+\overrightarrow{EC}=\overrightarrow{QC}.
+		$$
+		\itemch	 Vì $P$ là trung điểm của $FE$ nên $\overrightarrow{QC}=\overrightarrow{PE}$ (cùng hướng và cùng độ dài).
+		Do đó
+		$$
+		\left|\overrightarrow{DP}+\overrightarrow{QC}\right|
+		=\left|\overrightarrow{DP}+\overrightarrow{PE}\right|
+		=\left|\overrightarrow{DE}\right|.
+		$$
+		Trong hình chữ nhật $DFEC$:
+		$$
+		DE=\sqrt{DF^2+FE^2}=\sqrt{3^2+4^2}=5.
+		$$
+		Suy ra $\left|\overrightarrow{DP}+\overrightarrow{QC}\right|=5\neq 4$.
+	\end{itemchoice}
+	}
+\end{ex}
+%%----------Câu 2----------%%
+\begin{ex}%[0H5H2-2]
+	Cho tam giác $ABC$ vuông cân tại $A$ có $AB=a$. $I$ là trung điểm của $BC$. Xét tính đúng-sai của các khẳng định sau.
+	\choiceTF
+	{\True $\overrightarrow{AB} \cdot \overrightarrow{AC} = 0$}
+	{$\left|\overrightarrow{BC}\right| = 2a$}
+	{\True $\left|\overrightarrow{AB}+\overrightarrow{AC}\right| = a\sqrt{2}$}
+	{$\overrightarrow{IA}+\overrightarrow{IB}+\overrightarrow{IC} = \overrightarrow{AC}$}
+\loigiai{
+	$ABC$ vuông cân tại $A$ với $AB=AC=a$. $BC = \sqrt{a^2+a^2} = a\sqrt{2}$. $I$ là trung điểm $BC$.
+	\begin{itemchoice}
+		\itemch Vì $AB \perp AC$ nên $\overrightarrow{AB} \cdot \overrightarrow{AC} = 0$.
+		\itemch $\left|\overrightarrow{BC}\right| = BC = a\sqrt{2}$.
+		\itemch $\overrightarrow{AB}+\overrightarrow{AC} = 2\overrightarrow{AI}$. Tam giác $ABC$ vuông tại $A$ có $AI = \dfrac{1}{2}BC = \dfrac{a\sqrt{2}}{2}$.\\
+		$\left|\overrightarrow{AB}+\overrightarrow{AC}\right| = \left|2\overrightarrow{AI}\right| = 2AI = 2 \cdot \dfrac{a\sqrt{2}}{2} = a\sqrt{2}$.
+		\itemch $I$ là trung điểm $BC$ nên $\overrightarrow{IB}+\overrightarrow{IC}=\overrightarrow{0}$.\\
+		$\overrightarrow{IA}+\overrightarrow{IB}+\overrightarrow{IC} = \overrightarrow{IA} + \left(\overrightarrow{IB}+\overrightarrow{IC}\right) = \overrightarrow{IA} \ne \overrightarrow{AC}$.
+	\end{itemchoice}
+	}
+\end{ex}
+%%----------Câu 1----------%%
+\begin{ex}%[0H5V2-6]
+	Một vật $M$ được kéo bởi hai lực $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ đồng quy tại $M$. Cho $\left|\overrightarrow{F}_1\right| = 3\ \text{N}$ và $\left|\overrightarrow{F}_2\right| = 4\ \text{N}$. Xét các khẳng định sau về lực tổng hợp $\overrightarrow{F} = \overrightarrow{F}_1 + \overrightarrow{F}_2$:
+	\choiceTF
+	{\True Nếu hai lực $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ vuông góc với nhau, thì độ lớn lực tổng hợp là $5\ \text{N}$}
+	{Độ lớn của lực tổng hợp $\left|\overrightarrow{F}\right|$ luôn thỏa mãn $5 \le \left|\overrightarrow{F}\right| \le 7\ \text{N}$}
+	{Nếu lực tổng hợp có độ lớn $1\ \text{N}$, thì góc giữa $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ là $60^\circ$}
+	{\True  Nếu hai lực $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ cùng phương và ngược chiều, thì độ lớn lực tổng hợp là $1\ \text{N}$}
+\loigiai{
+	\begin{itemchoice}
+		\itemch	 Nếu $\overrightarrow{F}_1 \perp \overrightarrow{F}_2$, góc $\alpha = 90^\circ$, $\cos \alpha = 0$. \\
+		$\left|\overrightarrow{F}\right|^2 = 3^2 + 4^2 + 2 \cdot 3 \cdot 4 \cdot 0 = 9+16=25$. Vậy $\left|\overrightarrow{F}\right| = 5\ \text{N}$.
+		\itemch	 Độ lớn lực tổng hợp luôn thỏa mãn $\left|{F_1} - {F_2}\right| \le \left|\overrightarrow{F}\right| \le {F_1} + {F_2}$.
+		Tức là $|3-4| \le \left|\overrightarrow{F}\right| \le 3+4$, hay $1 \le \left|\overrightarrow{F}\right| \le 7\ \text{N}$.
+		\itemch	 Nếu $\left|\overrightarrow{F}\right| = 1\ \text{N}$, ta có:
+		\begin{eqnarray*}
+			& & 1^2 = 3^2 + 4^2 + 2 \cdot 3 \cdot 4 \cdot \cos \alpha \Leftrightarrow 1 = 9+16 + 24 \cos \alpha\\
+			&\Leftrightarrow & 1 = 25 + 24 \cos \alpha \Leftrightarrow 24 \cos \alpha = -24\\
+			&\Leftrightarrow & \cos \alpha = -1.
+		\end{eqnarray*}
+		Góc $\alpha = 180^\circ$.
+		\itemch	 Nếu $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ cùng phương ngược chiều, thì $\left|\overrightarrow{F}\right| = \left|\overrightarrow{F}_1-\overrightarrow{F}_2\right| =  \left|3-4\right| = 1\ \text{N}$.
+	\end{itemchoice}
+	}
+\end{ex}
+\begin{ex}%[0H5V2-6]
+	Xét một chất điểm $M$ chịu tác dụng của các lực $\overrightarrow{F}_1$, $\overrightarrow{F}_2$, $\overrightarrow{F}_3$.
+	\choiceTF
+	{Hợp lực $\overrightarrow{R}$ của $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ luôn có độ lớn $R = F_1 + F_2$}
+	{\True Nếu $\overrightarrow{R} = \overrightarrow{F}_1 + \overrightarrow{F}_2$ và $\theta$ là góc giữa $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$, thì độ lớn $R$ thỏa mãn $|F_1 - F_2| \le R \le F_1 + F_2$}
+	{Điều kiện để chất điểm cân bằng là các lực tác dụng phải có cùng phương}
+	{\True Nếu chất điểm $M$ cân bằng dưới tác dụng của ba lực $\overrightarrow{F}_1$, $\overrightarrow{F}_2$, $\overrightarrow{F}_3$ thì hợp lực của $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ phải có độ lớn bằng độ lớn của $\overrightarrow{F}_3$}
+\loigiai{
+	\begin{itemchoice}
+		\itemch Độ lớn hợp lực chỉ bằng tổng đại số khi hai lực cùng phương, cùng chiều ($\theta=0^\circ$).\\
+		\itemch Đây là giới hạn về độ lớn của vectơ tổng, đạt cực tiểu khi $\theta=180^\circ$ và cực đại khi $\theta=0^\circ$.\\
+		\itemch Điều kiện cân bằng là $\sum \overrightarrow{F_i} = \overrightarrow{0}$, không nhất thiết phải cùng phương.
+		\itemch Nếu cân bằng, $\overrightarrow{F}_1+\overrightarrow{F}_2 = -\overrightarrow{F}_3$, suy ra $\left|\overrightarrow{F}_1+\overrightarrow{F}_2\right| = \left|\overrightarrow{F}_3\right|$.
+	\end{itemchoice}
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{3}{ans/ans-C8B27-ds}
+%---------------Trắc nghiệm trả lời ngắn
+\ind{PHẦN III.} \inden{Câu trả lời ngắn.}
+\setcounter{ex}{0}
+\Opensolutionfile{ans}[ans/ans-C8B27-kq]
+\begin{ex}%[0H5N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho tam giác ${BAF}$ vuông tại ${B}$ có $BA=2$, $AF=\sqrt{13}$. Tính độ dài của vectơ $\overrightarrow{AF}-\overrightarrow{AB}$.
+	\shortans[oly]{$3$}
+\loigiai{
+	Ta có $\left|\overrightarrow{AF}-\overrightarrow{AB}\right|=\left|\overrightarrow{BF}\right|=\sqrt{\left(\sqrt{13}\right)^2-2^2}=3$.}
+\end{ex}
+\begin{ex}%[0H5N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho tam giác vuông ${BCD}$ có các cạnh góc vuông là $BC=1$, $BD=1$. Gọi ${M}$ là trung điểm của cạnh $BD$. Gọi ${H}$ là điểm thỏa mãn $\overrightarrow{HM}+\overrightarrow{BD}=\overrightarrow{BH}+\overrightarrow{CM}$. Tính độ dài vectơ $\overrightarrow{CH}$. (kết quả làm tròn đến hàng phần mười)
+	\shortans[4]{$0,7$}
+\loigiai{
+	$\overrightarrow{HM}+\overrightarrow{BD}=\overrightarrow{BH}+\overrightarrow{CM}$$\Rightarrow \overrightarrow{HM}+\overrightarrow{MC}+\overrightarrow{HB}+\overrightarrow{BD}=\overrightarrow{0}$
+	$\Rightarrow \overrightarrow{HC}+\overrightarrow{HD}=\overrightarrow{0}$. Suy ra ${H}$ là trung điểm của ${CD}$.
+	$\left|\overrightarrow{CH}\right|=\dfrac{CD}{2}=\dfrac{1^2+1^2}{2}=\frac{\sqrt{2}}{2}$.
+	}\end{ex}
+\begin{ex}%[0H5N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hình chữ nhật ${BCDE}$ có tâm ${I}$, $BC=5$, $BE=7$. Gọi ${J}$ là trung điểm của ${CD}$. Tính độ dài của vectơ $\overrightarrow{x}=\overrightarrow{JC}-\overrightarrow{JE}-\overrightarrow{DE}$ (kết quả làm tròn đến hàng phần mười).
+	\begin{center}
+		\begin{tikzpicture}[line join=round, line cap=round,thick]
+			\coordinate (B) at (0,3);
+			\coordinate (C) at (5,3);
+			\coordinate (E) at (0,0);
+			\coordinate (D) at ($(C)+(E)-(B)$);
+			\draw(B)--(C)--(D)--(E)--cycle;
+			\foreach \i/\g in {B/90,C/90,D/-90,E/-90}{\draw[fill=white](\i) circle (1.5pt) ($(\i)+(\g:3mm)$) node[scale=1]{$\i$};}
+		\end{tikzpicture}
+	\end{center}
+	\shortans[4]{12,2}
+\loigiai{
+	Gọi ${K}$ là điểm đối xứng với ${B}$ qua ${C}$.
+	Tứ giác ${CEDK}$ là hình bình hành.
+	$\overrightarrow{x}=\overrightarrow{JC}-\overrightarrow{JE}-\overrightarrow{DE}=\overrightarrow{EC}+\overrightarrow{ED}=\overrightarrow{EK}$.
+	$\left|\overrightarrow{x}\right|=\left|\overrightarrow{EK}\right|=\sqrt{EB^2+BK^2}=\sqrt{7^2+10^2}=\sqrt{149}$.
+	}\end{ex}
+\begin{ex}%[0H5N2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Ba bạn Tuấn, Lam, Minh cùng cột dây vào vật ${M}$ và kéo về phía mình với ba lực $\overrightarrow{F}_1=\overrightarrow{MA}$, $\overrightarrow{F}_2=\overrightarrow{MB}$, $\overrightarrow{F}_3=\overrightarrow{MC}$ như hình vẽ. Biết cường độ lực của $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ đều bằng ${32}N$ và góc $\widehat{AMB}=60^\circ$. Tính cường độ lực của $\overrightarrow{F}_3$ để vật đứng yên (kết quả làm tròn đến hàng phần mười).
+	\begin{center}
+		\begin{tikzpicture}[line join=round, line cap=round,thick,>=stealth]
+			\coordinate (M) at (0,0);
+			\coordinate (A) at (2,1);
+			\coordinate (B) at (2,-1);
+			\coordinate (x) at ($(A)+(B)-(M)$);
+			\coordinate (C) at ($(M)!-1!(x)$);
+			\draw[->] (M)node [above]{$M$}--node [above]{$\overrightarrow{F}_1$}(A)node [above]{$A$};
+			\draw[->] (M)--node [below]{$\overrightarrow{F}_2$}(B)node [above]{$B$};
+			\draw[->] (M)--node [above]{$\overrightarrow{F}_3$}(C)node [above]{$C$};
+			\draw pic[draw,angle eccentricity=1.8,angle radius=0.5cm]{angle=B--M--A};
+		\end{tikzpicture}
+	\end{center}
+	\shortans[oly]{$55{,}4$}
+\loigiai{
+	Vật đứng yên khi $\overrightarrow{F}_3=-\left(\overrightarrow{F}_1+\overrightarrow{F}_2\right)$.\\
+	Dựng hình bình hành ${AMBN}$.\\		$-\left(\overrightarrow{F1}+\overrightarrow{F2}\right)=-\overrightarrow{MN}$.\\
+	Suy ra $\left|\overrightarrow{F}_3\right|=MN=\dfrac{2 \sqrt{3}MA}{2}=32\sqrt{3}=55{,}4$.
+	}
+\end{ex}
+\begin{ex}%[0H5N2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Một vật có khối lượng ${m}$ được treo cố định trên trần nhà bằng hai sợi dây không dãn có độ dài như nhau. Biết rằng lực căng dây $\overrightarrow{T}_1$ và $\overrightarrow{T}_2$ có độ lớn như nhau bằng ${313}$ N và hợp với nhau một góc $60^{\circ}$ (hình bên). Trọng lượng của vật bằng bao nhiêu (làm tròn kết quả đến hàng đơn vị).
+	\begin{center}
+		\begin{tikzpicture}[line join=round, line cap=round,thick,scale=.8,>=stealth]
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (1.5,2);
+			\coordinate (A') at (-1.5,2);
+			\coordinate (T_1) at ($(O)!0.6!(A')$);
+			\coordinate (T_2) at ($(O)!0.6!(A)$);
+			\coordinate (P) at ($(O)-(0,3)$);
+			\draw[fill=black] (-0.5,-0.7)rectangle (0.5,0) node [below right]{$m$};
+			\draw[->, line width=1.2pt] (O)--node [right]{$\overrightarrow{T}_1$}(T_2);
+			\draw[->, line width=1.2pt] (O)--node [left]{$\overrightarrow{T}_2$}(T_1);
+			\draw[->] (O)--(P)node [below]{$\overrightarrow{P}$};
+			\draw (O)--(A) (O)--(A');
+			\draw pic[,draw,angle eccentricity=1.8,angle radius=0.5cm]{{angle=T_2--O--T_1}};
+		\end{tikzpicture}
+	\end{center}
+	\shortans[oly]{542}
+\loigiai{
+	\begin{center}
+		\begin{tikzpicture}[line join=round, line cap=round,thick]
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (1.5,2);
+			\coordinate (A') at (-1.5,2);
+			\coordinate (T) at ($(A)+(A')-(O)$);
+			\coordinate (P) at ($(O)!-1!(T)$);
+			\coordinate (H) at (intersection of A--A' and O--T);
+			\draw[->] (O)--node [right]{$\overrightarrow{T}_1$}(A);
+			\draw[->] (O)--node [left]{$\overrightarrow{T}_2$}(A');
+			\draw[->] (O)--(T)node [above]{$\overrightarrow{T}_{12}$};
+			\draw[->] (O)--(P)node [below]{$\overrightarrow{P}$};
+			\draw[dashed] (A)--(T)--(A')--(A);
+			\draw pic[,draw,angle eccentricity=2,angle radius=0.5cm]{{angle=A--O--H}};
+			\draw pic[,draw,angle eccentricity=2,angle radius=0.5cm]{{angle=H--O--A'}};
+		\end{tikzpicture}
+	\end{center}
+	Ta có
+	\begin{eqnarray*}
+		&&\overrightarrow{T}_1+\overrightarrow{T}_2+\overrightarrow{P}=\overrightarrow{0}\\
+		&\Leftrightarrow& \overrightarrow{P}=-\left(\overrightarrow{T}_1+\overrightarrow{T}_2\right)\\
+		&\Leftrightarrow& \overrightarrow{P}^2=\left(\overrightarrow{T}_1+\overrightarrow{T}_2\right)^2\\
+		&\Leftrightarrow&  \overrightarrow{P}^2=\overrightarrow{T}_1^2+\overrightarrow{T}_2^2+2\cdot\overrightarrow{T}_1\cdot\overrightarrow{T}_2\\
+		&\Leftrightarrow& \overrightarrow{P}^2=313^2+313^2+2\cdot313\cdot 313\cdot\cos60^\circ\\
+		&\Leftrightarrow& \overrightarrow{P}^2=3\cdot313^2\\
+		&\Leftrightarrow& \left|\overrightarrow{P}\right|\approx 542 \,\text{N}.
+	\end{eqnarray*}
+	Vậy trọng lượng của vật là $542$ N.
+	}
+\end{ex}
+\begin{ex}%[0H5H2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Một vật chịu tác dụng của ba lực $\overrightarrow{F}_1$, $\overrightarrow{F}_2$, $\overrightarrow{F}_3$ và đang ở trạng thái cân bằng. Biết rằng$\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ vuông góc với nhau. Nếu $\left|\overrightarrow{F}_1\right|=60$ N và $\left|\overrightarrow{F}_2\right|=80$ N. Tính độ lớn (theo N) của lực $\overrightarrow{F}_3$.
+	\shortans{$100$}
+\loigiai{
+	Điều kiện cân bằng là $\overrightarrow{F}_1+\overrightarrow{F}_2+\overrightarrow{F}_3=\overrightarrow{0}$, suy ra $\left|\overrightarrow{F}_3\right| = \left|\overrightarrow{F}_1+\overrightarrow{F}_2\right|$.\\
+	Vì $\overrightarrow{F}_1\perp \overrightarrow{F}_2$, độ lớn của $\overrightarrow{F}_3$ được tính theo định lý Pythagore
+	\begin{eqnarray*}
+		& & \left|\overrightarrow{F}_3\right| = \sqrt{\left|\overrightarrow{F_{1}}\right|^2 + \left|\overrightarrow{F_{2}}\right|^2}\\
+		&\Leftrightarrow & \left|\overrightarrow{F}_3\right| = \sqrt{60^2 + 80^2} = \sqrt{3\,600 + 6\,400} = \sqrt{10\,000}\\
+		&\Leftrightarrow & \left|\overrightarrow{F}_3\right| = 100 \text{ N}.
+	\end{eqnarray*}
+	}
+\end{ex}
+\Closesolutionfile{ans}
+\indapan{4}{ans/ans-C8B27-kq}
+\ind{PHẦN IV.} \inden{Tự luận.}
+\setcounter{ex}{0}
+\begin{ex}%[0H5N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho tam giác $ABC$. Gọi $M$ là trung điểm của $BC$ và $I$ là điểm thỏa mãn $\overrightarrow{IA}+\overrightarrow{IB}+\overrightarrow{IC}=\overrightarrow{AB}$. Tính độ dài đoạn $IM$, biết $AB=6$ cm, $AC=8$ cm và $BC=10$ cm. (kết quả làm tròn đến hàng phần trăm)
+\loigiai{
+	Ta có $AB=6$, $AC=8$, $BC=10$.\\
+	Vì $6^2+8^2=36+64=100=10^2$, nên tam giác $ABC$ vuông tại $A$.\\
+	Gọi $G$ là trọng tâm tam giác $ABC$. Ta có $\overrightarrow{IA}+\overrightarrow{IB}+\overrightarrow{IC}=3\overrightarrow{IG}$.\\
+	Từ giả thiết $\overrightarrow{IA}+\overrightarrow{IB}+\overrightarrow{IC}=\overrightarrow{AB}$, ta có $3\overrightarrow{IG}=\overrightarrow{AB}$.\\
+	$$\left|\overrightarrow{IG}\right| = \dfrac{1}{3} \left|\overrightarrow{AB}\right| = \dfrac{1}{3} AB = \dfrac{6}{3} = 2 \text{ cm}.$$
+	Vectơ $\overrightarrow{IG}$ cùng phương, cùng chiều với $\overrightarrow{AB}$.\\
+	$M$ là trung điểm của $BC$. $G$ là trọng tâm, nên $G$ nằm trên trung tuyến $AM$ và $AG = \dfrac{2}{3} AM$.\\
+	Trong tam giác vuông $ABC$, $AM$ là trung tuyến ứng với cạnh huyền, nên $AM = \dfrac{BC}{2} = \dfrac{10}{2} = 5$ cm.\\
+	$$GM = \dfrac{1}{3} AM = \dfrac{5}{3} \text{ cm}.$$
+	Ta cần tính độ dài $IM$. Ta có $\overrightarrow{IM} = \overrightarrow{IG} + \overrightarrow{GM}$.
+	$\overrightarrow{IG}$ cùng phương với $\overrightarrow{AB}$.
+	$\overrightarrow{GM}$ nằm trên trung tuyến $AM$.\\
+	Do $\overrightarrow{IG}$ cùng phương với $\overrightarrow{AB}$ và $\overrightarrow{AB} \perp \overrightarrow{AC}$, ta có $\overrightarrow{IG} \perp \overrightarrow{AC}$.\\
+	$M$ là trung điểm $BC$, $G$ nằm trên $AM$.\\
+	Gọi hệ trục tọa độ $A(0; 0)$, $B(6; 0)$, $C(0; 8)$.
+	$M$ là trung điểm $BC$: $M\left(\dfrac{6+0}{2}; \dfrac{0+8}{2}\right) = (3; 4)$.
+	$G$ là trọng tâm: $G\left(\dfrac{6+0+0}{3};\dfrac{0+8+0}{3}\right) = \left(2; \dfrac{8}{3}\right)$.\\
+	$\overrightarrow{AB} = (6; 0)$.
+	$3\overrightarrow{IG} = \overrightarrow{AB} \implies \overrightarrow{IG} = \left(2; 0\right)$.\\
+	Gọi $I(x_I; y_I)$.
+	$x_G - x_I = 2 \implies x_I = x_G - 2 = 2 - 2 = 0$.
+	$y_G - y_I = 0 \implies y_I = y_G = 8/3$.
+	$I\left(0; \dfrac{8}{3}\right)$.
+	Độ dài $IM$:
+	\begin{eqnarray*}
+		& & IM = \sqrt{(x_M - x_I)^2 + (y_M - y_I)^2}\\
+		&\Leftrightarrow & IM = \sqrt{(3 - 0)^2 + \left(4 - \dfrac{8}{3}\right)^2} = \sqrt{3^2 + \left(\dfrac{12-8}{3}\right)^2}\\
+		&\Leftrightarrow & IM = \sqrt{9 + \left(\dfrac{4}{3}\right)^2} = \sqrt{9 + \dfrac{16}{9}} = \sqrt{\dfrac{81+16}{9}} = \sqrt{\dfrac{97}{9}}\\
+		&\Leftrightarrow & IM \approx 3{,}28.
+	\end{eqnarray*}
+	Kết quả làm tròn đến hàng phần trăm: $3{,}28$ cm.
+	}
+\end{ex}
+\begin{ex}%[0H5N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho tam giác $ABC$. Gọi $P, Q$ lần lượt là các điểm thỏa mãn $\overrightarrow{PA}+2\overrightarrow{PB}=\overrightarrow{0}$ và $\overrightarrow{QA}+3\overrightarrow{QC}=\overrightarrow{0}$. Tính độ dài vectơ $\overrightarrow{PQ}$, biết $AB=4$, $AC=6$ và góc $\widehat{BAC}=60^\circ$. (kết quả làm tròn đến hàng phần mười)
+\loigiai{
+	Xác định vị trí điểm $P$:\\ $\overrightarrow{PA}+2\overrightarrow{PB}=\overrightarrow{0}$.\\
+	$P$ chia đoạn $AB$ theo tỉ lệ $2:1$. Hay $\overrightarrow{AP} = \dfrac{2}{3}\overrightarrow{AB}$. $P$ nằm trên đoạn $AB$.\\
+	$AP = \dfrac{2}{3} AB = \dfrac{2}{3} \cdot 4 = \dfrac{8}{3}$.\\
+	Xác định vị trí điểm $Q$: $\overrightarrow{QA}+3\overrightarrow{QC}=\overrightarrow{0}$.\\
+	$\overrightarrow{AQ} = \dfrac{3}{4}\overrightarrow{AC}$. $Q$ nằm trên đoạn $AC$.
+	$AQ = \dfrac{3}{4} AC = \dfrac{3}{4} \cdot 6 = \dfrac{9}{2}$.\\
+	Ta cần tính $\left|\overrightarrow{PQ}\right|$.\\
+	Áp dụng công thức hiệu hai vectơ: $\overrightarrow{PQ} = \overrightarrow{AQ} - \overrightarrow{AP}$.\\
+	$$\left|\overrightarrow{PQ}\right|^2 = \left|\overrightarrow{AQ} - \overrightarrow{AP}\right|^2 = \left|\overrightarrow{AQ}\right|^2 + \left|\overrightarrow{AP}\right|^2 - 2\cdot \left|\overrightarrow{AQ}\right|\cdot \left|\overrightarrow{AP}\right|\cdot \cos\widehat{QAP}.$$
+	Vì $P \in AB$ và $Q \in AC$, nên $\widehat{QAP} = \widehat{BAC} = 60^\circ$.
+	\begin{eqnarray*}
+		&& \left|\overrightarrow{PQ}\right|^2 = \left(\dfrac{9}{2}\right)^2 + \left(\dfrac{8}{3}\right)^2 - 2 \cdot \dfrac{9}{2} \cdot \dfrac{8}{3} \cdot \cos 60^\circ\\
+		&\Leftrightarrow & \left|\overrightarrow{PQ}\right|^2 = \dfrac{81}{4} + \dfrac{64}{9} - 2 \cdot \dfrac{9}{2} \cdot \dfrac{8}{3} \cdot \dfrac{1}{2}\\
+		&\Leftrightarrow & \left|\overrightarrow{PQ}\right|^2 = \dfrac{81}{4} + \dfrac{64}{9} - \dfrac{9 \cdot 8}{6}\\
+		&\Leftrightarrow & \left|\overrightarrow{PQ}\right|^2 = \dfrac{81}{4} + \dfrac{64}{9} - 12\\
+		&\Leftrightarrow & \left|\overrightarrow{PQ}\right| \approx 3{,}9.
+	\end{eqnarray*}
+	Kết quả làm tròn đến hàng phần mười: $3{,}9$.
+	}
+\end{ex}
+\begin{ex}%[0H5N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Hai lực$\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ có độ lớn lần lượt là $\left|\overrightarrow{F}_1\right|=6\ \text{N}$ và $\left|\overrightarrow{F}_2\right|=8\ \text{N}$ cùng tác dụng lên một chất điểm. Biết rằng góc giữa hai lực là $\theta = 90^\circ$. Tính độ lớn của hợp lực $\overrightarrow{R} = \overrightarrow{F}_1 + \overrightarrow{F}_2$.
+\loigiai{
+	Vì $\overrightarrow{F}_1 \perp \overrightarrow{F}_2$, ta áp dụng công thức tính độ lớn hợp lực trong trường hợp hai vectơ vuông góc:\\
+	$\left|\overrightarrow{R}\right| = \sqrt{\left|\overrightarrow{F}_1\right|^2 + \left|\overrightarrow{F}_2\right|^2}$\\
+	Thay số:
+	\begin{eqnarray*}
+		& & \left|\overrightarrow{R}\right| = \sqrt{6^2 + 8^2}\\
+		&\Leftrightarrow & \left|\overrightarrow{R}\right| = \sqrt{36 + 64}= \sqrt{100}\\
+		&\Leftrightarrow & \left|\overrightarrow{R}\right| = 10\ \text{N}.
+	\end{eqnarray*}
+	Kết luận: Độ lớn hợp lực là $10\ \text{N}$.
+	}
+\end{ex}
+%%----------Câu 2----------%%
+\begin{ex}%[0H5N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Cho hai lực đồng quy$\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ có độ lớn bằng nhau, $\left|\overrightarrow{F}_1\right| = \left|\overrightarrow{F}_2\right| = F = 20\ \text{N}$. Góc giữa hai lực là $\theta = 60^\circ$. Tính độ lớn hợp lực $\overrightarrow{R} = \overrightarrow{F}_1 + \overrightarrow{F}_2$.
+\loigiai{
+	Áp dụng công thức tính độ dài vectơ tổng hợp:\\
+	$\left|\overrightarrow{R}\right|^2 = \left|\overrightarrow{F}_1\right|^2 + \left|\overrightarrow{F}_2\right|^2 + 2\left|\overrightarrow{F}_1\right|\left|\overrightarrow{F}_2\right|\cos\theta$\\
+	Vì $\left|\overrightarrow{F}_1\right| = \left|\overrightarrow{F}_2\right| = 20\ \text{N}$ và $\theta = 60^\circ$, ta có:\\
+	\begin{eqnarray*}
+		& & \left|\overrightarrow{R}\right|^2 = 20^2 + 20^2 + 2 \cdot 20 \cdot 20 \cdot \cos 60^\circ\\
+		&\Leftrightarrow & \left|\overrightarrow{R}\right|^2 = 400 + 400 + 2 \cdot 400 \cdot \left(\dfrac{1}{2}\right)\\
+		&\Leftrightarrow & \left|\overrightarrow{R}\right|^2 = 800 + 400= 1\,200\\
+		&\Leftrightarrow & \left|\overrightarrow{R}\right| = \sqrt{1\,200} = 20\sqrt{3}\ \text{N}.
+	\end{eqnarray*}
+	Kết luận: Độ lớn hợp lực là $20\sqrt{3}\ \text{N}$.
+	}
+\end{ex}
+%%----------Câu 3----------%%
+\begin{ex}%[0H5N2-4]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Một chất điểm đứng yên dưới tác dụng của ba lực $\overrightarrow{F}_1$, $\overrightarrow{F}_2$, $\overrightarrow{F}_3$. Biết rằng $\overrightarrow{F}_1$ và $\overrightarrow{F}_2$ vuông góc với nhau và có độ lớn lần lượt là $\left|\overrightarrow{F}_1\right|=3\ \text{N}$, $\left|\overrightarrow{F}_2\right|=4\ \text{N}$. Xác định độ lớn của lực $\overrightarrow{F}_3$.
+	\choice
+	{$1\ \text{N}$}
+	{$7\ \text{N}$}
+	{\True $5\ \text{N}$}
+	{$2\ \text{N}$}
+\loigiai{
+	Điều kiện cân bằng của chất điểm là $\overrightarrow{F}_1 + \overrightarrow{F}_2 + \overrightarrow{F}_3 = \overrightarrow{0}$.\\
+	Gọi $\overrightarrow{R} = \overrightarrow{F}_1 + \overrightarrow{F}_2$ là hợp lực của hai lực đầu.\\
+	Để chất điểm cân bằng, ta phải có $\overrightarrow{F}_3 = -\overrightarrow{R}$, suy ra $\left|\overrightarrow{F}_3\right| = \left|\overrightarrow{R}\right|$.\\
+	Vì $\overrightarrow{F}_1 \perp \overrightarrow{F}_2$, ta tính độ lớn hợp lực $\overrightarrow{R}$ theo công thức Pitago:\\
+	$$\left|\overrightarrow{R}\right| = \sqrt{\left|\overrightarrow{F_{1}}\right|^2 + \left|\overrightarrow{F_{2}}\right|^2}
+	= \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = 5\ \text{N}.$$
+	Vậy độ lớn của lực $\overrightarrow{F}_3$ là $\left|\overrightarrow{F}_3\right| = 5\ \text{N}$.
+	}
+\end{ex}
+\begin{ex}%[0H5H2-6]%[Biên soạn tài liệu dạy học bộ KNTT-CS]%[GV: Huỳnh Công Minh]
+	Một vật có khối lượng $m$ được treo cố định trên trần nhà bằng hai sợi dây không dãn có độ dài như nhau. Biết rằng lực căng dây $\overrightarrow{T}_1$ và $\overrightarrow{T}_2$ có độ lớn như nhau bằng $212$ N và hợp với nhau một góc $120^{\circ}$ (hình bên). Trọng lượng của vật bằng bao nhiêu (làm tròn kết quả đến hàng đơn vị).
+	\begin{center}
+		\begin{tikzpicture}[line join=round, line cap=round,thick,scale=.8,>=stealth]
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (2,1.5);
+			\coordinate (A') at (-2,1.5);
+			\coordinate (T_1) at ($(O)!0.6!(A')$);
+			\coordinate (T_2) at ($(O)!0.6!(A)$);
+			\coordinate (P) at ($(O)-(0,3)$);
+			\draw[fill=black] (-0.5,-0.7)rectangle (0.5,0) node [below right]{$m$};
+			\draw[->, line width=1.2pt] (O)--node [right]{$\overrightarrow{T}_1$}(T_2);
+			\draw[->, line width=1.2pt] (O)--node [left]{$\overrightarrow{T}_2$}(T_1);
+			\draw[->] (O)--(P)node [below]{$\overrightarrow{P}$};
+			\draw (O)--(A) (O)--(A');
+			\draw pic[,draw,angle eccentricity=1.8,angle radius=0.5cm]{{angle=T_2--O--T_1}};
+		\end{tikzpicture}
+	\end{center}
+\loigiai{
+	Vật ở trạng thái cân bằng nên tổng các lực tác dụng lên vật bằng vectơ không: $\overrightarrow{T}_1+\overrightarrow{T}_2+\overrightarrow{P}=\overrightarrow{0}$.
+	Gọi $\overrightarrow{T_{12}}=\overrightarrow{T}_1+\overrightarrow{T}_2$. Khi đó $\overrightarrow{T_{12}}=-\overrightarrow{P}$.
+	Suy ra $\left|\overrightarrow{P}\right|=\left|\overrightarrow{T_{12}}\right|$. Trọng lượng của vật là $\left|\overrightarrow{P}\right|$.
+	Áp dụng công thức tổng hai vectơ có cùng độ lớn $T = \left|\overrightarrow{T}_1\right| = \left|\overrightarrow{T}_2\right| = 212$ N và góc $\alpha=60^\circ$:
+	\begin{eqnarray*}
+		& & \left|\overrightarrow{T}_{12}\right|=2\cdot T\cdot \cos\left(\dfrac{\alpha}{2}\right)\\
+		&\Leftrightarrow & \left|\overrightarrow{T_{12}}\right|=2 \cdot 212 \cdot \cos\left(\dfrac{60^\circ}{2}\right)\\
+		&\Leftrightarrow & \left|\overrightarrow{T_{12}}\right|=424 \cdot \cos 30^\circ = 424 \cdot \dfrac{\sqrt{3}}{2} = 212\sqrt{3}\,\text{N}.
+	\end{eqnarray*}
+	Giá trị $212\sqrt{3} \approx 367{,}07 \text{ N}$.\\
+	Trọng lượng của vật làm tròn đến hàng đơn vị là $367 \, \text{N}$.
+	}
+\end{ex}
+\Closesolutionfile{ans}

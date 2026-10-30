@@ -1,0 +1,1264 @@
+\chap{NHỊ THỨC NEWTON}
+\Opensolutionfile{ans}[ans/ans-NhiThucNewton]
+
+\subsection{LÝ THUYẾT TÓM TẮT}
+\begin{enumerate}[1.]
+	\item Công thức khai triển nhị thức Newton: Với mọi $n\in\mathbb{N}^*$ và với mọi cặp số $a$, $b$ ta có
+	$$(a+b)^n=\displaystyle\sum\limits_{k=0}^{n}\mathrm{C}_n^ka^{n-k}b^k.$$
+	\item Tính chất:
+	\begin{enumerate}[1)]
+		\item Số các số hạng của khai triển bằng $n+1$.
+		\item Tổng các số mũ của $a$ và $b$ trong mỗi số hạng bằng $n$.
+		\item Số hạng tổng quát (thứ $k+1$) có dạng $T_{k+1}=\mathrm{C}_n^ka^{n-k}b^k$ $(k=0,1,2,\ldots,n)$.
+		\item Các hệ số của các cặp số hạng cách đều số hạng đầu và cuối thì bằng nhau: $\mathrm{C}_n^k=\mathrm{C}_n^{n-k}$.
+		\item $\mathrm{C}_n^0=\mathrm{C}_n^n=1$, $\mathrm{C}_n^{k-1}+\mathrm{C}_n^k=\mathrm{C}_{n+1}^k$.
+	\end{enumerate}
+\end{enumerate}
+\textbf{Nhận xét:} Nếu trong khai triển nhị thức Newton, ta gán cho $a$ và $b$ những giá trị đặc biệt thì ta sẽ thu được những công thức đặc biệt. Chẳng hạn
+\begin{itemize}
+	\item $(1+x)^n=\mathrm{C}_n^0x^n+\mathrm{C}_n^1x^{n-1}+\cdots+\mathrm{C}_n^n\Rightarrow \mathrm{C}_n^0+\mathrm{C}_n^1+\cdots+\mathrm{C}_n^n=2^n$.
+	\item $(x-1)^n=\mathrm{C}_n^0x^n-\mathrm{C}_n^1x^{n-1}+\cdots+(-1)^n\mathrm{C}_n^n\Rightarrow \mathrm{C}_n^0-\mathrm{C}_n^1+\cdots+(-1)^n\mathrm{C}_n^n=0$.
+\end{itemize}
+Từ khai triển này ta có các kết quả sau
+\begin{itemize}
+	\item $\mathrm{C}_n^0+\mathrm{C}_n^1+\cdots+\mathrm{C}_n^n=2^n$.
+	\item $\mathrm{C}_n^0-\mathrm{C}_n^1+\mathrm{C}_n^2-\cdots+(-1)^n\mathrm{C}_n^n=0$.
+\end{itemize}
+
+\subsection{DẠNG 1: XÁC ĐỊNH CÁC HỆ SỐ, SỐ HẠNG TRONG KHAI TRIỂN NHỊ THỨC NEWTON}
+\textbf{Phương pháp:}
+$$\left(ax^p+bx^q\right)^n=\displaystyle\sum\limits_{k=0}^{n}\mathrm{C}_n^k\left(ax^p\right)^{n-k}\left(bx^q\right)^k=\displaystyle\sum\limits_{k=0}^{n}\mathrm{C}_n^ka^{n-k}b^kx^{np-pk+qk}.$$
+Số hạng chứa $x^m$ ứng với giá trị $k$ thỏa $np-pk+qk=m$. Từ đó tìm $k=\dfrac{m-np}{p-q}$.\\
+Vậy hệ số của số hạng chứa $x^m$ là $\mathrm{C}_n^ka^{n-k}\cdot b^k$ với giá trị $k$ đã tìm được ở trên.\\
+Nếu $k$ không nguyên hoặc $k>n$ thì trong khai triển không chứa $x^m$, hệ số phải tìm bằng $0$.\\
+\textbf{Chú ý:} Xác định hệ số của số hạng chứa $x^m$ trong khai triển $P(x)=\left(a+bx^p+cx^q\right)^n$ được viết dưới dạng $a_0+a_1x+\cdots+a_{2n}x^{2n}$. Ta làm như sau
+\begin{itemize}
+	\item Viết $P(x)=\left(a+bx^p+cx^q\right)^n=\displaystyle\sum\limits_{k=0}^{n}\mathrm{C}_n^ka^{n-k}\left(bx^p+cx^q\right)^k$.
+	\item Viết số hạng tổng quát khi khai triển các số hạng dạng $\left(bx^p+cx^q\right)^k$ thành một đa thức theo lũy thừa của $x$.
+	\item Từ số hạng tổng quát của hai khai triển trên ta tính được hệ số của $x^m$.
+\end{itemize}
+\textbf{Chú ý:} Để xác định hệ số lớn nhất trong khai triển nhị thức Niutơn, ta làm như sau
+\begin{itemize}
+	\item Tính hệ số $a_k$ theo $k$ và $n$.
+	\item Giải bất phương trình $a_{k-1}\le a_k$ với ẩn số $k$.
+	\item Hệ số lớn nhất phải tìm ứng với số tự nhiên $k$ lớn nhất thỏa mãn bất phương trình trên.
+\end{itemize}
+
+\begin{ex}
+	Trong khai triển ${\left( {2a - b} \right)^5}$, hệ số của số hạng thứ $3$ bằng:
+	\choice
+	{$- 80$}
+	{\True $80$}
+	{$- 10$}
+	{$10$}
+	\loigiai{
+		Ta có: ${\left( {2a - b} \right)^5} = \mathrm{C}_5^0{\left( {2a} \right)^5} - \mathrm{C}_5^1{\left( {2a} \right)^4}b + \mathrm{C}_5^2{\left( {2a} \right)^3}{b^2} + \cdots$\\
+		Do đó hệ số của số hạng thứ $3$ bằng $\mathrm{C}_5^2.8 = 80$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển nhị thức $(a+b)^{n+6}$. Có tất cả $17$ số hạng. Vậy $n$ bằng:
+	\choice
+	{$17$}
+	{$11$}
+	{\True $10$}
+	{$12$}
+	\loigiai{
+		Trong khai triển có tất cả $n + 7$ số hạng.\\
+		Do đó $n + 7 = 17 \Leftrightarrow n = 10$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {3{x^2} - y} \right)^{10}}$, hệ số của số hạng chính giữa là:
+	\choice
+	{${3^4}.\mathrm{C}_{10}^4$}
+	{$- {3^4}.\mathrm{C}_{10}^4$}
+	{${3^5}.\mathrm{C}_{10}^5$}
+	{\True $- {3^5}.\mathrm{C}_{10}^5$}
+	\loigiai{
+		Trong khai triển ${\left( {3{x^2} - y} \right)^{10}}$ có tất cả $11$ số hạng nên số hạng chính giữa là số hạng thứ $6$.\\
+		Vậy hệ số của số hạng chính giữa là $- {3^5}.\mathrm{C}_{10}^5$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {2x - 5y} \right)^8}$, hệ số của số hạng chứa ${x^5}.{y^3}$ là:
+	\choice
+	{\True $- 22400$}
+	{$- 40000$}
+	{$- 8960$}
+	{$- 4000$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = {( - 1)^k}\mathrm{C}_8^k.{(2x)^{8 - k}}{(5y)^k} = {( - 1)^k}\mathrm{C}_8^k{.2^{8 - k}}{5^k}.{x^{8 - k}}.{y^k}$\\
+		Yêu cầu bài toán xảy ra khi $k = 3$. Khi đó hệ số của số hạng chứa ${x^5}.{y^3}$ là: $- 22400$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {x + \dfrac{2}{{\sqrt{x}}}} \right)^6}$, hệ số của ${x^3},\left( {x > 0} \right)$ là:
+	\choice
+	{$60$}
+	{$80$}
+	{\True $160$}
+	{$240$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_6^k.{x^{6 - k}}{2^k}.{x^{ - \dfrac{1}{2}k}}$\\
+		Yêu cầu bài toán xảy ra khi $6 - k - \dfrac{1}{2}k = 3 \Leftrightarrow k = 3$.\\
+		Khi đó hệ số của ${x^3}$ là: $\mathrm{C}_6^3{.2^3} = 160$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {{a^2} + \dfrac{1}{b}} \right)^7}$, số hạng thứ $5$ là:
+	\choice
+	{\True $35.{a^6}.{b^{ - 4}}$}
+	{$- 35.{a^6}.{b^{ - 4}}$}
+	{$35.{a^4}.{b^{ - 5}}$}
+	{$- 35.{a^4}.b$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_7^k.{a^{14 - 2k}}.{b^{ - k}}$\\
+		Vậy số hạng thứ 5 là ${T_5} = \mathrm{C}_7^4.{a^6}.{b^{ - 4}} = 35.{a^6}.{b^{ - 4}}$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {2a - 1} \right)^6}$, tổng ba số hạng đầu là:
+	\choice
+	{$2{a^6} - 6{a^5} + 15{a^4}$}
+	{$2{a^6} - 15{a^5} + 30{a^4}$}
+	{$64{a^6} - 192{a^5} + 480{a^4}$}
+	{\True $64{a^6} - 192{a^5} + 240{a^4}$}
+	\loigiai{
+		Ta có: ${\left( {2a - 1} \right)^6} = \mathrm{C}_6^0{.2^6}{a^6} - \mathrm{C}_6^1{.2^5}{a^5} + \mathrm{C}_6^2{.2^4}{a^4} - \cdots$\\
+		Vậy tổng 3 số hạng đầu là $64{a^6} - 192{a^5} + 240{a^4}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {x - \sqrt y } \right)^{16}}$, tổng hai số hạng cuối là:
+	\choice
+	{\True $- 16x\sqrt {{y^{15}}} + {y^8}$}
+	{$- 16x\sqrt {{y^{15}}} + {y^4}$}
+	{$16x{y^{15}} + {y^4}$}
+	{$16x{y^{15}} + {y^8}$}
+	\loigiai{
+		Ta có: ${\left( {x - \sqrt y } \right)^{16}} = \mathrm{C}_{16}^0{x^{16}} - \mathrm{C}_{16}^1{x^{15}}.\sqrt y + \cdots - \mathrm{C}_{16}^{15}x{\left( {\sqrt y } \right)^{15}} + \mathrm{C}_{16}^{16}{\left( {\sqrt y } \right)^{16}}$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {8{a^2} - \dfrac{1}{2}b} \right)^6}$, hệ số của số hạng chứa ${a^9}{b^3}$ là:
+	\choice
+	{$- 80{a^9}.{b^3}$}
+	{$- 64{a^9}.{b^3}$}
+	{\True $- 1280{a^9}.{b^3}$}
+	{$60{a^6}.{b^4}$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = {\left( { - 1} \right)^k}\mathrm{C}_6^k{.8^{6 - k}}{a^{12 - 2k}}{.2^{ - k}}{b^k}$\\
+		Yêu cầu bài toán xảy ra khi $k = 3$.\\
+		Khi đó hệ số của số hạng chứa ${a^9}{b^3}$ là: $- 1280{a^9}.{b^3}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {x + \dfrac{8}{{{x^2}}}} \right)^9}$, số hạng không chứa $x$ là:
+	\choice
+	{$4308$}
+	{$86016$}
+	{$84$}
+	{\True $43008$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_9^k.{x^{9 - k}}{8^k}.{x^{ - 2k}}$\\
+		Yêu cầu bài toán xảy ra khi $9 - k - 2k = 0 \Leftrightarrow k = 3$.\\
+		Khi đó số hạng không chứa $x$ là: $\mathrm{C}_9^3{.8^3} = 43008$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {2x - 1} \right)^{10}}$, hệ số của số hạng chứa ${x^8}$ là:
+	\choice
+	{$- 11520$}
+	{$45$}
+	{$256$}
+	{\True $11520$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_{10}^k{.2^{10 - k}}.{x^{10 - k}}.{\left( { - 1} \right)^k}$\\
+		Yêu cầu bài toán xảy ra khi $10 - k = 8 \Leftrightarrow k = 2$.\\
+		Khi đó hệ số của số hạng chứa ${x^8}$ là: $\mathrm{C}_{10}^2{.2^8} = 11520$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {a - 2b} \right)^8}$, hệ số của số hạng chứa ${a^4}.{b^4}$ là:
+	\choice
+	{\True $1120$}
+	{$560$}
+	{$140$}
+	{$70$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_8^k.{a^{8 - k}}.{\left( { - 2} \right)^k}.{b^k}$\\
+		Yêu cầu bài toán xảy ra khi $k = 4$.\\
+		Khi đó hệ số của số hạng chứa ${a^4}.{b^4}$ là: $\mathrm{C}_8^4{.2^4} = 1120$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {3x - y} \right)^7}$, số hạng chứa ${x^4}{y^3}$ là:
+	\choice
+	{\True $- 2835{x^4}{y^3}$}
+	{$2835{x^4}{y^3}$}
+	{$945{x^4}{y^3}$}
+	{$- 945{x^4}{y^3}$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_7^k{.3^{7 - k}}{x^{7 - k}}.{\left( { - 1} \right)^k}.{y^k}$\\
+		Yêu cầu bài toán xảy ra khi $k = 3$.\\
+		Khi đó hệ số của số hạng chứa ${x^4}.{y^3}$ là: $- \mathrm{C}_7^3{.3^4}.{x^4}.{y^3} = - 2835.{x^4}.y$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {0,2 + 0,8} \right)^5}$, số hạng thứ tư là:
+	\choice
+	{$0{,}0064$}
+	{$0{,}4096$}
+	{$0{,}0512$}
+	{\True $0{,}2048$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_5^k.{(0{,}2)^{5 - k}}.{(0{,}8)^k}$\\
+		Vậy số hạng thứ tư là ${T_4} = \mathrm{C}_5^3.{(0{,}2)^2}.{(0{,}8)^3} = 0{,}2028$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Hệ số của ${x^3}{y^3}$ trong khai triển ${\left( {1 + x} \right)^6}{\left( {1 + y} \right)^6}$ là:
+	\choice
+	{$20$}
+	{$800$}
+	{$36$}
+	{\True $400$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_6^k.{x^k}.\mathrm{C}_6^m.{y^m}$\\
+		Yêu cầu bài toán xảy ra khi $k = m = 3$.\\
+		Khi đó hệ số của số hạng chứa ${x^3}{y^3}$ là: $\mathrm{C}_6^3.\mathrm{C}_6^3 = 400$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Số hạng chính giữa trong khai triển ${\left( {3x + 2y} \right)^4}$ là:
+	\choice
+	{$\mathrm{C}_4^2{x^2}{y^2}$}
+	{$6{\left( {3x} \right)^2}{\left( {2y} \right)^2}$}
+	{$6\mathrm{C}_4^2{x^2}{y^2}$}
+	{\True $36\mathrm{C}_4^2{x^2}{y^2}$}
+	\loigiai{
+		Số hạng chính giữa trong khai triển trên là số hạng thứ ba: $\mathrm{C}_4^2{\left( {3x} \right)^2}{\left( {2y} \right)^2} = 6{\left( {3x} \right)^2}{\left( {2y} \right)^2}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển ${\left( {x - y} \right)^{11}}$, hệ số của số hạng chứa ${x^8}.{y^3}$ là
+	\choice
+	{$\mathrm{C}_{11}^3$}
+	{\True $- \,\mathrm{C}_{11}^3$}
+	{$- \mathrm{C}_{11}^5$}
+	{$\mathrm{C}_{11}^8$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là ${T_{k + 1}} = \mathrm{C}_{11}^k.{x^{11 - k}}.{\left( { - 1} \right)^k}.{y^k}$\\
+		Yêu cầu bài toán xảy ra khi $k = 3$.\\
+		Khi đó hệ số của số hạng chứa ${x^8}.{y^3}$ là: $- \mathrm{C}_{11}^3$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^7}$ trong khai triển biểu thức sau: $f(x) = {(1 - 2x)^{10}}$
+	\choice
+	{\True $- 15360$}
+	{$15360$}
+	{$- 15363$}
+	{$15363$}
+	\loigiai{
+		Ta có $f(x) = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_n^k{1^{10 - k}}{{( - 2x)}^k}} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k{{( - 2)}^k}{x^k}}$\\
+		Số hạng chứa ${x^7}$ ứng với giá trị $k = 7$\\
+		Vậy hệ số của ${x^7}$ là: $\mathrm{C}_{10}^7{( - 2)^7} = - 15360$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^7}$ trong khai triển biểu thức sau: $h(x) = x{(2 + 3x)^9}$
+	\choice
+	{$489889$}
+	{$489887$}
+	{$- 489888$}
+	{\True $489888$}
+	\loigiai{
+		Ta có ${(2 + 3x)^9} = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{2^{9 - k}}{{(3x)}^k}} = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{2^{9 - k}}{3^k}.{x^k}}$
+		\[ \Rightarrow h(x) = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{2^{9 - k}}{3^k}{x^{k + 1}}}. \]
+		Số hạng chứa ${x^7}$ ứng với giá trị $k$ thỏa $k + 1 = 7 \Leftrightarrow k = 6$\\
+		Vậy hệ số chứa ${x^7}$ là: $\mathrm{C}_9^6{2^3}{3^6} = 489888$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^7}$ trong khai triển biểu thức sau: $g(x) = {(1 + x)^7} + {(1 - x)^8} + {(2 + x)^9}$
+	\choice
+	{\True $29$}
+	{$30$}
+	{$31$}
+	{$32$}
+	\loigiai{
+		Hệ số của ${x^7}$ trong khai triển ${(1 + x)^7} = \displaystyle\sum\limits_{k = 0}^7 {\mathrm{C}_7^k{x^k}}$ là : $\mathrm{C}_7^7 = 1$\\
+		Hệ số của ${x^7}$ trong khai triển ${(1 - x)^8} = \displaystyle\sum\limits_{k = 0}^8 {\mathrm{C}_8^k{{( - 1)}^k}{x^k}}$ là : $\mathrm{C}_8^7{( - 1)^7} = - 8$\\
+		Hệ số của ${x^7}$ trong khai triển ${(1 + x)^9} = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{x^k}}$ là : $\mathrm{C}_7^9 = 36$.\\
+		Vậy hệ số chứa ${x^7}$ trong khai triển $g(x)$ thành đa thức là: $29$.\\
+		Chú ý:
+		\begin{itemize}
+			\item Với $a \ne 0$ ta có: ${a^{ - n}} = \dfrac{1}{{{a^n}}}$ với $n\in\mathbb{N}^*$.
+			\item Với $a \ge 0$ ta có: $\sqrt[n]{{{a^m}}} = {a^{\dfrac{m}{n}}}$ với $m,n\in\mathbb{N}^*$.
+		\end{itemize}
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^7}$ trong khai triển biểu thức sau: $f(x) = {(3 + 2x)^{10}}$
+	\choice
+	{\True $103680$}
+	{$1301323$}
+	{$131393$}
+	{$1031831$}
+	\loigiai{
+		Ta có $f(x) = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_n^k{3^{10 - k}}{{(2x)}^k}} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k{3^{10 - k}}{{( - 2)}^k}{x^k}}$\\
+		Số hạng chứa ${x^8}$ ứng với giá trị $k = 8$\\
+		Vậy hệ số của ${x^8}$ là: $\mathrm{C}_{10}^8{.3^2}.{( - 2)^8} = 103680$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^7}$ trong khai triển biểu thức sau: $h(x) = x{(1 - 2x)^9}$
+	\choice
+	{\True $- 4608$}
+	{$4608$}
+	{$- 4618$}
+	{$4618$}
+	\loigiai{
+		Ta có ${(1 - 2x)^9} = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{1^{9 - k}}{{( - 2x)}^k}} = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{{( - 2)}^k}.{x^k}}$
+		\[ \Rightarrow h(x) = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{{( - 2)}^k}{x^{k + 1}}}. \]
+		Số hạng chứa ${x^8}$ ứng với giá trị $k$ thỏa $k + 1 = 8 \Leftrightarrow k = 7$\\
+		Vậy hệ số chứa ${x^8}$ là: $\mathrm{C}_9^7{( - 2)^7} = - 4608$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Xác định hệ số của ${x^8}$ trong các khai triển sau: $f(x) = {(3{x^2} + 1)^{10}}$
+	\choice
+	{\True $17010$}
+	{$21303$}
+	{$20123$}
+	{$21313$}
+	\loigiai{
+		Ta có: $f(x) = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k{3^k}{x^{2k}}}$, số hạng chứa ${x^8}$ ứng với $k = 4$ nên hệ số ${x^8}$ là: $\mathrm{C}_{10}^4{.3^4} = 17010$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Xác định hệ số của ${x^8}$ trong các khai triển sau: $f(x) = {\left( {\dfrac{2}{x} - 5{x^3}} \right)^8}$
+	\choice
+	{$1312317$}
+	{$76424$}
+	{$427700$}
+	{\True $700000$}
+	\loigiai{
+		Ta có: $f(x) = \displaystyle\sum\limits_{k = 0}^8 {\mathrm{C}_8^k{2^{8 - k}}{{( - 5)}^k}{x^{4k - 8}}}$, số hạng chứa ${x^8}$ ứng với $k = 4$ nên hệ số của ${x^8}$ là: $\mathrm{C}_8^4{.2^4}.{( - 5)^4} = 700000$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Xác định hệ số của ${x^8}$ trong các khai triển sau: $f(x) = {\left( {\dfrac{3}{x} + \dfrac{x}{2}} \right)^{12}}$
+	\choice
+	{\True $\dfrac{{297}}{{512}}$}
+	{$\dfrac{{29}}{{51}}$}
+	{$\dfrac{{27}}{{52}}$}
+	{$\dfrac{{97}}{{12}}$}
+	\loigiai{
+		Ta có: $f(x) = \displaystyle\sum\limits_{k = 0}^{12} {\mathrm{C}_{12}^k{3^{12 - k}}{{.2}^{ - k}}.{x^{2k - 12}}}$, số hạng chứa ${x^8}$ ứng với $k = 10$ nên hệ số của ${x^8}$ là: $\mathrm{C}_{12}^{10}{.3^2}{.2^{ - 10}} = \dfrac{{297}}{{512}}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Xác định hệ số của ${x^8}$ trong các khai triển sau: $f(x) = {(1 + x + 2{x^2})^{10}}$
+	\choice
+	{\True $37845$}
+	{$14131$}
+	{$324234$}
+	{$131239$}
+	\loigiai{
+		Ta có: $f(x) = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k{{(2{x^2})}^{10 - k}}{{(1 + x)}^k}} = \displaystyle\sum\limits_{k = 0}^{10} {\displaystyle\sum\limits_{j = 0}^k {\mathrm{C}_{10}^k\mathrm{C}_k^j{{.2}^{10 - k}}{x^{20 - 2k + j}}} }$\\
+		Số hạng chứa ${x^8}$ ứng với cặp $(k,j)$ thỏa: $\heva{&0 \le j \le k \le 10\\&j = 2k - 12}$\\
+		Nên hệ số của ${x^8}$ là:
+		\[ \mathrm{C}_{10}^6\mathrm{C}_6^0{.2^4} + \mathrm{C}_{10}^7\mathrm{C}_7^2{2^3} + \mathrm{C}_{10}^8\mathrm{C}_8^4{2^2} + \mathrm{C}_{10}^9\mathrm{C}_9^62 + \mathrm{C}_{10}^{10}\mathrm{C}_{10}^8 = 37845 \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Xác định hệ số của ${x^8}$ trong các khai triển sau: $f(x) = 8{(1 + 8x)^8} - 9{(1 + 9x)^9} + 10{(1 + 10x)^{10}}$
+	\choice
+	{$8.\mathrm{C}_8^0{.8^8} - \mathrm{C}_9^1{.9^8} + 10.\mathrm{C}_{10}^8{.10^8}$}
+	{$\mathrm{C}_8^0{.8^8} - \mathrm{C}_9^1{.9^8} + \mathrm{C}_{10}^8{.10^8}$}
+	{$\mathrm{C}_8^0{.8^8} - 9.\mathrm{C}_9^1{.9^8} + 10.\mathrm{C}_{10}^8{.10^8}$}
+	{\True $8.\mathrm{C}_8^0{.8^8} - 9.\mathrm{C}_9^1{.9^8} + 10.\mathrm{C}_{10}^8{.10^8}$}
+	\loigiai{
+		Ta có: ${(1 + 8x)^8} = \displaystyle\sum\limits_{k = 0}^8 {\mathrm{C}_8^k{8^{8 - k}}{x^{8 - k}}}$
+		\[ {(1 + 9x)^9} = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{9^{9 - k}}{x^{9 - k}}} \]
+		\[ {(1 + 10x)^{10}} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k{{10}^{10 - k}}{x^{10 - k}}} \]
+		Nên hệ số chứa ${x^8}$ là: $8.\mathrm{C}_8^0{.8^8} - 9.\mathrm{C}_9^1{.9^8} + 10.\mathrm{C}_{10}^8{.10^8}$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^8}$ trong khai triển biểu thức sau: $g(x) = 8{(1 + x)^8} + 9{(1 + 2x)^9} + 10{(1 + 3x)^{10}}$
+	\choice
+	{\True $22094$}
+	{$139131$}
+	{$130282$}
+	{$21031$}
+	\loigiai{
+		Ta có: ${\left( {1 + ax} \right)^n} = \displaystyle\sum\limits_{i = 0}^n {\mathrm{C}_n^k{a^k}{x^k}}$ nên ta suy ra hệ số của ${x^k}$ trong khai triển ${(1 + ax)^n}$ là $\mathrm{C}_n^k{a^k}$. Do đó:\\
+		Hệ số của ${x^8}$ trong khai triển ${(1 + x)^8}$ là : $\mathrm{C}_8^8$\\
+		Hệ số của ${x^8}$ trong khai triển ${(1 + 2x)^9}$ là : $\mathrm{C}_9^8{.2^8}$\\
+		Hệ số của ${x^8}$ trong khai triển ${(1 + 3x)^{10}}$ là : $\mathrm{C}_{10}^8{.3^8}$.\\
+		Vậy hệ số chứa ${x^8}$ trong khai triển $g(x)$ thành đa thức là: $8\mathrm{C}_8^8 + {9.2^8}.\mathrm{C}_9^8 + {10.3^8}.\mathrm{C}_{10}^8 = 22094$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Hệ số đứng trước ${x^{25}}.{y^{10}}$ trong khai triển ${\left( {{x^3} + xy} \right)^{15}}$ là:
+	\choice
+	{$2080$}
+	{\True $3003$}
+	{$2800$}
+	{$3000$}
+	\loigiai{
+		Số hạng tổng quát trong khai triển trên là $T_{k+1}=\mathrm{C}_{15}^k\left(x^3\right)^{15-k}(xy)^k=\mathrm{C}_{15}^kx^{45-2k}y^k$\\
+		Yêu cầu bài toán xảy ra khi $k=10$.\\
+		Vậy hệ số đứng trước $x^{25}y^{10}$ trong khai triển là: $\mathrm{C}_{15}^{10}=3003$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm số hạng không chứa x trong các khai triển sau: $f(x) = {(x - \dfrac{2}{x})^{12}} (x \ne 0)$
+	\choice
+	{\True $59136$}
+	{$213012$}
+	{$12373$}
+	{$139412$}
+	\loigiai{
+		Ta có: $f(x) = {(x - 2.{x^{ - 1}})^{12}} = \displaystyle\sum\limits_{k = 0}^{12} {\mathrm{C}_{12}^k{x^{12 - k}}.{{( - 2{x^{ - 1}})}^k}}$
+		\[ \displaystyle\sum\limits_{k = 0}^{12} {\mathrm{C}_{12}^k{{( - 2)}^k}{x^{12 - 2k}}} \]
+		Số hạng không chứa $x$ ứng với giá trị $k$ thỏa mãn: $12 - 2k = 0$\\
+		$\Leftrightarrow k = 6 \Rightarrow$ số hạng không chứa $x$ là: $\mathrm{C}_{12}^6{.2^6} = 59136$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm số hạng không chứa x trong các khai triển sau: $g(x) = {(\dfrac{1}{{\sqrt[3]{{{x^2}}}}} + \sqrt[4]{{{x^3}}})^{17}} (x > 0)$
+	\choice
+	{\True $24310$}
+	{$213012$}
+	{$12373$}
+	{$139412$}
+	\loigiai{
+		Vì $\dfrac{1}{{\sqrt[3]{{{x^2}}}}} = {x^{ - \dfrac{2}{3}}}; \sqrt[4]{{{x^3}}} = {x^{\dfrac{3}{4}}}$ nên ta có
+		\[ f(x) = \displaystyle\sum\limits_{k = 0}^{17} {\mathrm{C}_{17}^k{{\left( {{x^{ - \dfrac{2}{3}}}} \right)}^{17 - k}}.{{\left( {{x^{\dfrac{3}{4}}}} \right)}^k}} = \displaystyle\sum\limits_{k = 0}^{17} {\mathrm{C}_{17}^k.{x^{\dfrac{{17k - 136}}{{12}}}}} \]
+		Hệ số không chứa $x$ ứng với giá trị $k$ thỏa: $17k - 136 = 0 \Leftrightarrow k = 8$\\
+		Vậy hệ số không chứa $x$ là: $\mathrm{C}_{17}^8 = 24310$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của số hạng chứa ${x^8}$ trong khai triển nhị thức Niutơn của ${\left( {\dfrac{1}{{{x^3}}} + \sqrt {{x^5}} } \right)^n}$ biết $\mathrm{C}_{n + 4}^{n + 1} - \mathrm{C}_{n + 3}^n = 7\left( {n + 3} \right)$.
+	\choice
+	{\True $495$}
+	{$313$}
+	{$1303$}
+	{$13129$}
+	\loigiai{
+		Ta có: $\mathrm{C}_{n + 4}^{n + 1} - \mathrm{C}_{n + 3}^n = 7\left( {n + 3} \right) \Leftrightarrow \left( {\mathrm{C}_{n + 3}^n + \mathrm{C}_{n + 3}^{n + 1}} \right) - \mathrm{C}_{n + 3}^n = 7\left( {n + 3} \right)$
+		\[ \Leftrightarrow \mathrm{C}_{n + 3}^{n + 1} = 7\left( {n + 3} \right) \Leftrightarrow \dfrac{{\left( {n + 2} \right)\left( {n + 3} \right)}}{{2!}} = 7\left( {n + 3} \right) \]
+		\[ \Leftrightarrow n + 2 = 7.2! = 14 \Leftrightarrow n = 12. \]
+		Khi đó: ${\left( {\dfrac{1}{{{x^3}}} + \sqrt {{x^5}} } \right)^n} = \displaystyle\sum\limits_{k = 0}^{12} {\mathrm{C}_{12}^k{{\left( {{x^{ - 3}}} \right)}^k}.{{\left( {{x^{\dfrac{5}{2}}}} \right)}^{12 - k}}} = \displaystyle\sum\limits_{k = 0}^{12} {\mathrm{C}_{12}^k{x^{\dfrac{{60 - 11k}}{2}}}}$.\\
+		Số hạng chứa ${x^8}$ ứng với $k$ thỏa: $\dfrac{{60 - 11k}}{2} = 8 \Leftrightarrow k = 4$.\\
+		Do đó hệ số của số hạng chứa ${x^8}$ là: $\mathrm{C}_{12}^4 = \dfrac{{12!}}{{4!\left( {12 - 4} \right)!}} = 495$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Xác định số hạng không phụ thuộc vào $x$ khi khai triển biểu thức ${\left[ {\dfrac{1}{x} - \left( {x + {x^2}} \right)} \right]^n}$ với n là số nguyên dương thoả mãn $\mathrm{C}_n^3 + 2n = \mathrm{A}_{n + 1}^2$.( $\mathrm{C}_n^k,\,\,\mathrm{A}_n^k$ tương ứng là số tổ hợp, số chỉnh hợp chập $k$ của $n$ phần tử).
+	\choice
+	{\True $- 98$}
+	{$98$}
+	{$- 96$}
+	{$96$}
+	\loigiai{
+		Ta có: $\mathrm{C}_n^3 + 2n = \mathrm{A}_{n + 1}^2 \Leftrightarrow \heva{&n \ge 3\\&\dfrac{{n\left( {n - 1} \right)\left( {n - 2} \right)}}{6} + 2n = \left( {n + 1} \right)n}$
+		\[ \Leftrightarrow \heva{&n \ge 3\\&{n^2} - 9n + 8 = 0} \Leftrightarrow n = 8. \]
+		Theo nhị thức Newton ta có:
+		\[ {\left[ {\dfrac{1}{x} - \left( {x + {x^2}} \right)} \right]^8} = {\left[ {\dfrac{1}{x} - x\left( {1 + x} \right)} \right]^8} = \mathrm{C}_8^0\dfrac{1}{{{x^8}}} - \mathrm{C}_8^1\dfrac{1}{{{x^6}}}\left( {1 + x} \right) + \]
+		\[ + \mathrm{C}_8^2\dfrac{1}{{{x^4}}}{\left( {1 + x} \right)^2} - \mathrm{C}_8^3\dfrac{1}{{{x^2}}}{\left( {1 + x} \right)^3} + \mathrm{C}_8^4{\left( {1 + x} \right)^4} - \cdots + \mathrm{C}_8^8{x^8}{\left( {1 + x} \right)^8} \]
+		Số hạng không phụ thuộc vào $x$ chỉ có trong hai biểu thức\\
+		$- \mathrm{C}_8^3\dfrac{1}{{{x^2}}}{\left( {1 + x} \right)^3}\,$ và $\mathrm{C}_8^4{\left( {1 + x} \right)^4}$.\\
+		Trong đó có hai số hạng không phụ thuộc vào $x$ là: $- \mathrm{C}_8^3.\mathrm{C}_3^2$ và $\mathrm{C}_8^4.\mathrm{C}_4^0$\\
+		Do đó số hạng không phụ thuộc vào x là: $- \mathrm{C}_8^3.\mathrm{C}_3^2 + \mathrm{C}_8^4.\mathrm{C}_4^0 = - 98$.
+	}
+\end{ex}
+\dongcham{2}
+
+
+\begin{ex}
+	% File gốc không có lời giải cho câu này
+	Trong khai triển $f\left( x \right) = {\left( {x + \dfrac{1}{{{x^2}}}} \right)^{40}}$, hãy tìm hệ số của ${x^{31}}$
+	\choice
+	{\True $9880$}
+	{$1313$}
+	{$14940$}
+	{$1147$}
+	\loigiai{
+		
+	}
+\end{ex}
+\dongcham{2}
+
+
+\begin{ex}
+	Hãy tìm trong khai triển nhị thức ${\left( {{x^3} + \dfrac{1}{{{x^3}}}} \right)^{18}}$ số hạng độc lập đối với $x$
+	\choice
+	{$9880$}
+	{$1313$}
+	{$14940$}
+	{\True $48620$}
+	\loigiai{
+		\[ \mathrm{C}_{18}^9 = 48620 \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của số hạng chứa ${x^4}$ trong khai triển ${\left( {\dfrac{x}{3} - \dfrac{3}{x}} \right)^{12}}$
+	\choice
+	{\True $\dfrac{{55}}{9}$}
+	{$\dfrac{{13}}{2}$}
+	{$\dfrac{{621}}{{113}}$}
+	{$\dfrac{{1412}}{{3123}}$}
+	\loigiai{
+		\[ \dfrac{1}{{{3^8}}}{( - 3)^4}\mathrm{C}_{12}^4 = \dfrac{{55}}{9} \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính hệ số của ${x^{25}}{y^{10}}$ trong khai triển ${\left( {{x^3} + xy} \right)^{15}}$
+	\choice
+	{$300123$}
+	{$121148$}
+	{\True $3003$}
+	{$1303$}
+	\loigiai{
+		\[ \mathrm{C}_{15}^{10} = 3003 \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Cho đa thức $P\left( x \right) = \left( {1 + x} \right) + 2{\left( {1 + x} \right)^2} + \cdots + 20{\left( {1 + x} \right)^{20}}$ có dạng khai triển là $P\left( x \right) = {a_0} + {a_1}x + {a_2}{x^2} + \cdots + {a_{20}}{x^{20}}$. Hãy tính hệ số ${a_{15}}$.
+	\choice
+	{\True $400995$}
+	{$130414$}
+	{$511313$}
+	{$412674$}
+	\loigiai{
+		\[ {a_{15}} = \displaystyle\sum\limits_{k = 15}^{20} {k\mathrm{C}_k^{15}} = 400995 \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm số hạng của khai triển ${\left( {\sqrt 3 + \sqrt[3]{2}} \right)^9}$ là một số nguyên
+	\choice
+	{\True $8$ và $4536$}
+	{$1$ và $4184$}
+	{$414$ và $12$}
+	{$1313$}
+	\loigiai{
+		Ta có ${\left( {\sqrt 3 + \sqrt[3]{2}} \right)^9} = \displaystyle\sum\limits_{k = 0}^9 {\mathrm{C}_9^k{{\left( {\sqrt 3 } \right)}^k}{{\left( {\sqrt[3]{2}} \right)}^{9 - k}}}$\\
+		Số hạng là số nguyên ứng với các giá trị của $k$ thỏa:
+		\[ \heva{&k = 2m\\&9 - k = 3n\\&k = 0,\ldots,9} \Leftrightarrow k = 0,k = 6 \]
+		Các số hạng là số nguyên: $\mathrm{C}_9^0{\left( {\sqrt[3]{2}} \right)^9} = 8$ và $\mathrm{C}_9^6{\left( {\sqrt 3 } \right)^6}{\left( {\sqrt[3]{2}} \right)^3}$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	% Câu gốc gồm 2 ý (1, 2) nên tách thành 2 câu trắc nghiệm
+	Xét khai triển $f(x)=\left(2x+\dfrac{1}{x}\right)^{20}$. Viết số hạng thứ $k+1$ trong khai triển.
+	\choice
+	{$T_{k+1}=\mathrm{C}_{20}^k\cdot 2^{20-k}\cdot x^{20-k}$}
+	{$T_{k+1}=\mathrm{C}_{10}^k\cdot 2^{20-k}\cdot x^{20-2k}$}
+	{$T_{k+1}=\mathrm{C}_{20}^k\cdot 2^{20-4k}\cdot x^{20-2k}$}
+	{\True $T_{k+1}=\mathrm{C}_{20}^k\cdot 2^{20-k}\cdot x^{20-2k}$}
+	\loigiai{
+		Ta có: $T_{k+1}=\mathrm{C}_{20}^k(2x)^{20-k}\dfrac{1}{x^k}=\mathrm{C}_{20}^k\cdot 2^{20-k}\cdot x^{20-2k}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Xét khai triển $f(x)=\left(2x+\dfrac{1}{x}\right)^{20}$. Số hạng nào trong khai triển không chứa $x$?
+	\choice
+	{$\mathrm{C}_{20}^1\cdot 2^{10}$}
+	{$\mathrm{A}_{20}^{10}\cdot 2^{10}$}
+	{$\mathrm{C}_{20}^{10}\cdot 2^4$}
+	{\True $\mathrm{C}_{20}^{10}\cdot 2^{10}$}
+	\loigiai{
+		Số hạng không chứa $x$ ứng với $k$: $20-2k=0\Leftrightarrow k=10$.\\
+		Số hạng không chứa $x$: $\mathrm{C}_{20}^{10}\cdot 2^{10}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Xác định hệ số của ${x^4}$ trong khai triển sau: $f(x) = {(3{x^2} + 2x + 1)^{10}}$.
+	\choice
+	{$8089$}
+	{\True $8085$}
+	{$1303$}
+	{$11312$}
+	\loigiai{
+		\[ f\left( x \right) = {\left( {1 + 2x + 3{x^2}} \right)^{10}} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k} {\left( {2x + 3{x^2}} \right)^k} \]
+		\[ = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k} \displaystyle\sum\limits_{i = 0}^k {\mathrm{C}_k^i} {(2x)^{k - i}}.{(3{x^2})^i} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k} \displaystyle\sum\limits_{i = 0}^k {\mathrm{C}_k^i} {2^{k - i}}{.3^i}{x^{k + i}} \]
+		với $0 \le i \le k \le 10$.\\
+		Do đó $k + i = 4$ với các trường hợp $i = 0,k = 4$ hoặc $i = 1,k = 3$ hoặc $i = k = 2$.\\
+		Vậy hệ số chứa ${x^4}$: ${2^4}\mathrm{C}_{10}^4.\mathrm{C}_4^0 + {2^2}{3^1}\mathrm{C}_{10}^3.\mathrm{C}_3^1 + {3^2}\mathrm{C}_{10}^2.\mathrm{C}_2^2 = 8085$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^7}$ trong khai triển thành đa thức của ${(2 - 3x)^{2n}}$, biết n là số nguyên dương thỏa mãn : $\mathrm{C}_{2n + 1}^1 + \mathrm{C}_{2n + 1}^3 + \mathrm{C}_{2n + 1}^5 + \cdots + \mathrm{C}_{2n + 1}^{2n + 1} = 1024$.
+	\choice
+	{$2099529$}
+	{\True $- 2099520$}
+	{$- 2099529$}
+	{$2099520$}
+	\loigiai{
+		Ta có: $\heva{&\displaystyle\sum\limits_{k = 0}^{2n + 1} {\mathrm{C}_{2n + 1}^k} = {2^{2n + 1}}\\&\displaystyle\sum\limits_{i = 0}^n {\mathrm{C}_{2n + 1}^{2i + 1}} = \displaystyle\sum\limits_{i = 0}^n {\mathrm{C}_{2n + 1}^{2i}}} \Rightarrow \displaystyle\sum\limits_{i = 0}^n {\mathrm{C}_{2n + 1}^{2i + 1}} = {2^{2n}} = 1024 \Rightarrow n = 5$\\
+		Suy ra ${(2 - 3x)^{2n}} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k{2^{10 - k}}.{{( - 3)}^k}{x^k}}$\\
+		Hệ số của ${x^7}$ là $\mathrm{C}_{10}^7{.2^3}.{( - 3)^7} = - 2099520$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^9}$ trong khai triển $f(x) = {(1 + x)^9} + {(1 + x)^{10}} + \cdots + {(1 + x)^{14}}$
+	\choice
+	{$8089$}
+	{$8085$}
+	{\True $3003$}
+	{$11312$}
+	\loigiai{
+		Hệ số của ${x^9}$: $\mathrm{C}_9^9 + \mathrm{C}_{10}^9 + \mathrm{C}_{11}^9 + \mathrm{C}_{12}^9 + \mathrm{C}_{13}^9 + \mathrm{C}_{14}^9 = 3003$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của ${x^5}$ trong khai triển đa thức của: $x{\left( {1 - 2x} \right)^5} + {x^2}{\left( {1 + 3x} \right)^{10}}$
+	\choice
+	{\True $3320$}
+	{$2130$}
+	{$3210$}
+	{$1313$}
+	\loigiai{
+		Đặt $f(x) = x{\left( {1 - 2x} \right)^5} + {x^2}{\left( {1 + 3x} \right)^{10}}$\\
+		Ta có : $f(x) = x\displaystyle\sum\limits_{k = 0}^5 {\mathrm{C}_5^k{{\left( { - 2} \right)}^k}.{x^k}} + {x^2}\displaystyle\sum\limits_{i = 0}^{10} {\mathrm{C}_{10}^i} {\left( {3x} \right)^i}$
+		\[ = \displaystyle\sum\limits_{k = 0}^5 {\mathrm{C}_5^k{{\left( { - 2} \right)}^k}.{x^{k + 1}}} + \displaystyle\sum\limits_{i = 0}^{10} {\mathrm{C}_{10}^i} {3^i}.{x^{i + 2}} \]
+		Vậy hệ số của ${x^5}$ trong khai triển đa thức của $f(x)$ ứng với $k = 4$ và $i = 3$ là: $\mathrm{C}_5^4{\left( { - 2} \right)^4} + \mathrm{C}_{10}^3{.3^3} = 3320$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số cuả ${x^8}$ trong khai triển đa thức $f(x) = {\left[ {1 + {x^2}\left( {1 - x} \right)} \right]^8}$
+	\choice
+	{$213$}
+	{$230$}
+	{\True $238$}
+	{$214$}
+	\loigiai{
+		\textbf{Cách 1:} 
+		\[ {\left[ {1 + {x^2}\left( {1 - x} \right)} \right]^8} = \mathrm{C}_8^0 + \mathrm{C}_8^1{x^2}\left( {1 - x} \right) + \mathrm{C}_8^2{x^4}{\left( {1 - x} \right)^2} + \mathrm{C}_8^3{x^6}{\left( {1 - x} \right)^3} \]
+		\[ + \mathrm{C}_8^4{x^8}{\left( {1 - x} \right)^4} + \mathrm{C}_8^5{x^{10}}{\left( {1 - x} \right)^5}\cdots + \mathrm{C}_8^8{x^{16}}{\left( {1 - x} \right)^8} \]
+		Trong khai triển trên ta thấy bậc của $x$ trong 3 số hạng đầu nhỏ hơn 8, bậc của $x$ trong 4 số hạng cuối lớn hơn 8. Do đó ${x^8}$ chỉ có trong số hạng thứ tư, thứ năm với hệ số tương ứng là: $\mathrm{C}_8^3.\mathrm{C}_3^2,\,\,\mathrm{C}_8^4.\mathrm{C}_4^0$.\\
+		Vậy hệ số cuả ${x^8}$ trong khai triển đa thức ${\left[ {1 + {x^2}\left( {1 - x} \right)} \right]^8}$ là:
+		\[ {a_8} = \mathrm{C}_8^3.\mathrm{C}_3^2 + \,\,\mathrm{C}_8^4.\mathrm{C}_4^0 = 238. \]
+		\textbf{Cách 2:} Ta có:
+		\[ {\left[ {1 + {x^2}\left( {1 - x} \right)} \right]^8} = \displaystyle\sum\limits_{n = 0}^8 {\mathrm{C}_8^n} {x^{2n}}{\left( {1 - x} \right)^n} = \displaystyle\sum\limits_{n = 0}^8 {\mathrm{C}_8^n} \displaystyle\sum\limits_{k = 0}^n {\mathrm{C}_n^k{{\left( { - 1} \right)}^k}{x^{2n + }}^k} \]
+		với $0 \le k \le n \le 8$.\\
+		Số hạng chứa ${x^8}$ ứng với $2n + k = 8 \Rightarrow k = 8 - 2n$ là một số chẵn.\\
+		Thử trực tiếp ta được $k = 0;n = 4$ và $k = 2,\,n = 3$.\\
+		Vậy hệ số của ${x^8}$ là $\mathrm{C}_8^3.\mathrm{C}_3^2 + \,\,\mathrm{C}_8^4.\mathrm{C}_4^0 = 238$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Đa thức $P\left( x \right) = {\left( {1 + 3x + 2{x^2}} \right)^{10}} = {a_0} + {a_1}x + \cdots + {a_{20}}{x^{20}}$. Tìm ${a_{15}}$
+	\choice
+	{${a_{15}} = \mathrm{C}_{10}^{10}.\mathrm{C}_{10}^5{.3^5} + \mathrm{C}_{10}^9.\mathrm{C}_9^6{.3^3} + \mathrm{C}_{10}^8.\mathrm{C}_8^7.3$}
+	{${a_{15}} = \mathrm{C}_{10}^{10}.\mathrm{C}_{10}^5{.2^5} + \mathrm{C}_{10}^9.\mathrm{C}_9^6{.2^6} + \mathrm{C}_{10}^8.\mathrm{C}_8^7{.2^7}$}
+	{${a_{15}} = \mathrm{C}_{10}^{10}.\mathrm{C}_{10}^5{.3^5}{.2^5} + \mathrm{C}_{10}^9.\mathrm{C}_9^6{.3^3}{.2^6} + \mathrm{C}_{10}^8.\mathrm{C}_8^7{.2^7}$}
+	{\True ${a_{15}} = \mathrm{C}_{10}^{10}.\mathrm{C}_{10}^5{.3^5}{.2^5} + \mathrm{C}_{10}^9.\mathrm{C}_9^6{.3^3}{.2^6} + \mathrm{C}_{10}^8.\mathrm{C}_8^7{.3.2^7}$}
+	\loigiai{
+		Ta có: $P\left( x \right) = {\left( {1 + 3x + 2{x^2}} \right)^{10}} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k} {\left( {3x + 2{x^2}} \right)^k}$
+		\[ = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k} \displaystyle\sum\limits_{i = 0}^k {\mathrm{C}_k^i} {(3x)^{k - i}}.{(2{x^2})^i} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k} \displaystyle\sum\limits_{i = 0}^k {\mathrm{C}_k^i} {.3^{k - i}}{.2^i}{x^{k + i}} \]
+		với $0 \le i \le k \le 10\,\,$. Do đó $k + i = 15$ với các trường hợp\\
+		$k = 10,i = 5$ hoặc $k = 9,i = 6$ hoặc $k = 8,i = 7$\\
+		Vậy ${a_{15}} = \mathrm{C}_{10}^{10}.\mathrm{C}_{10}^5{.3^5}{.2^5} + \mathrm{C}_{10}^9.\mathrm{C}_9^6{.3^3}{.2^6} + \mathrm{C}_{10}^8.\mathrm{C}_8^7{.3.2^7}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số không chứa $x$ trong các khai triển sau ${({x^3} - \dfrac{2}{x})^n}$, biết rằng $\mathrm{C}_n^{n - 1} + \mathrm{C}_n^{n - 2} = 78$ với $x > 0$
+	\choice
+	{\True $- 112640$}
+	{$112640$}
+	{$- 112643$}
+	{$112643$}
+	\loigiai{
+		Ta có: $\mathrm{C}_n^{n - 1} + \mathrm{C}_n^{n - 2} = 78 \Leftrightarrow \dfrac{{n!}}{{(n - 1)!1!}} + \dfrac{{n!}}{{(n - 2)!2!}} = 78$
+		\[ \Leftrightarrow n + \dfrac{{n(n - 1)}}{2} = 78 \Leftrightarrow {n^2} + n - 156 = 0 \Leftrightarrow n = 12. \]
+		Khi đó: $f(x) = {\left( {{x^3} - \dfrac{2}{x}} \right)^{12}} = \displaystyle\sum\limits_{k = 0}^{12} {\mathrm{C}_{12}^k{{( - 2)}^k}{x^{36 - 4k}}}$\\
+		Số hạng không chứa $x$ ứng với $k:36 - 4k = 0 \Rightarrow k = 9$\\
+		Số hạng không chứa $x$ là: ${( - 2)^9}\mathrm{C}_{12}^9 = - 112640$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Với n là số nguyên dương, gọi ${a_{3n - 3}}$ là hệ số của ${x^{3n - 3}}$ trong khai triển thành đa thức của ${({x^2} + 1)^n}{(x + 2)^n}$. Tìm $n$ để ${a_{3n - 3}} = 26n$
+	\choice
+	{\True $n=5$}
+	{$n=4$}
+	{$n=3$}
+	{$n=2$}
+	\loigiai{
+		\textbf{Cách 1:} Ta có :
+		\[ \begin{array}{l} {\left( {{x^2} + 1} \right)^n} = \mathrm{C}_n^0{x^{2n}} + \mathrm{C}_n^1{x^{2n - 2}} + \mathrm{C}_n^2{x^{2n - 4}} + \cdots + \mathrm{C}_n^n \\ {\left( {x + 2} \right)^n} = \mathrm{C}_n^0{x^n} + 2\mathrm{C}_n^1{x^{n - 1}} + {2^2}\mathrm{C}_n^2{x^{n - 2}} + \cdots + {2^n}\mathrm{C}_n^n \end{array} \]
+		Dễ dàng kiểm tra $n = 1$, $n = 2$ không thoả mãn điều kiện bài toán.\\
+		Với $n \ge 3$ thì dựa vào khai triển ta chỉ có thể phân tích
+		\[ {x^{3n - 3}} = {x^{2n}}.{x^{n - 3}} = {x^{2n - 2}}.{x^{n - 1}} \]
+		Do đó hệ số của ${x^{3n - 3}}$ trong khai triển thành đa thức của\\
+		${\left( {{x^2} + 1} \right)^n}{\left( {x + 2} \right)^n}$ là : ${a_{3n - 3}} = {2^3}.\mathrm{C}_n^0.\mathrm{C}_n^3 + 2.\mathrm{C}_n^1.\mathrm{C}_n^1$.\\
+		Suy ra ${a_{3n - 3}} = 26n \Leftrightarrow \dfrac{{2n\left( {2{n^2} - 3n + 4} \right)}}{3} = 26n \Leftrightarrow n = - \dfrac{7}{2}$ hoặc $n = 5$\\
+		Vậy $n = 5$ là giá trị cần tìm.\\
+		\textbf{Cách 2:} \\
+		Ta có: ${\left( {{x^2} + 1} \right)^n}{\left( {x + 2} \right)^n} = {x^{3n}}{\left( {1 + \dfrac{1}{{{x^2}}}} \right)^n}{\left( {1 + \dfrac{2}{x}} \right)^n}$
+		\[ = {x^{3n}}\displaystyle\sum\limits_{i = 0}^n {\mathrm{C}_n^i{{\left( {\dfrac{1}{{{x^2}}}} \right)}^i}\displaystyle\sum\limits_{k = 0}^n {\mathrm{C}_n^k{{\left( {\dfrac{2}{x}} \right)}^k}} = } {x^{3n}}\left[ {\displaystyle\sum\limits_{i = 0}^n {\mathrm{C}_n^i{x^{ - 2i}}\displaystyle\sum\limits_{k = 0}^n {\mathrm{C}_n^k{2^k}{x^{ - k}}} } } \right] \]
+		Trong khai triển trên, luỹ thừa của $x$ là $3n - 3$ khi
+		\[ - 2i - k = - 3 \Leftrightarrow 2i + k = 3. \]
+		Ta chỉ có hai trường hợp thoả mãn điều kiện này là $i = 0,k = 3$ hoặc\\
+		$i = 1,k = 1$(vì $i,k$ nguyên).\\
+		Hệ số của ${x^{3n - 3}}$ trong khai triển thành đa thức của ${\left( {{x^2} + 1} \right)^n}{\left( {x + 2} \right)^n}$\\
+		Là : ${a_{3n - 3}} = \mathrm{C}_n^0.\mathrm{C}_n^3{.2^3} + \mathrm{C}_n^1.\mathrm{C}_n^1.2$.\\
+		Do đó ${a_{3n - 3}} = 26n \Leftrightarrow \dfrac{{2n\left( {2{n^2} - 3n + 4} \right)}}{3} = 26n \Leftrightarrow n = - \dfrac{7}{2}$ hoặc $n = 5$\\
+		Vậy $n = 5$ là giá trị cần tìm.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm hệ số của số hạng chứa ${x^{26}}$ trong khai triển nhị thức Newton của ${\left( {\dfrac{1}{{{x^4}}} + {x^7}} \right)^n}$, biết $\mathrm{C}_{2n + 1}^1 + \mathrm{C}_{2n + 1}^2 + \cdots + \mathrm{C}_{2n + 1}^n = {2^{20}} - 1$.
+	\choice
+	{\True $210$}
+	{$213$}
+	{$414$}
+	{$213$}
+	\loigiai{
+		Do $\mathrm{C}_{2n + 1}^k = \mathrm{C}_{2n + 1}^{2n + 1 - k} \forall k = 0,1,2,\ldots,2n + 1$
+		\[ \Rightarrow \mathrm{C}_{2n + 1}^0 + \mathrm{C}_{2n + 1}^1 + \cdots + \mathrm{C}_{2n + 1}^n = \mathrm{C}_{2n + 1}^{n + 1} + \mathrm{C}_{2n + 1}^{n + 2} + \cdots + \mathrm{C}_{2n + 1}^{2n + 1} \]
+		Mặt khác: $\mathrm{C}_{2n + 1}^1 + \mathrm{C}_{2n + 1}^2 + \cdots + \mathrm{C}_{2n + 1}^{2n + 1} = {2^{2n + 1}}$
+		\[ \Rightarrow 2(\mathrm{C}_{2n + 1}^0 + \mathrm{C}_{2n + 1}^1 + \mathrm{C}_{2n + 1}^2 + \cdots + \mathrm{C}_{2n + 1}^n) = {2^{2n + 1}} \]
+		\[ \Rightarrow \mathrm{C}_{2n + 1}^1 + \mathrm{C}_{2n + 1}^2 + \cdots + \mathrm{C}_{2n + 1}^n = {2^{2n}} - \mathrm{C}_{2n + 1}^0 = {2^{2n}} - 1 \]
+		\[ \Rightarrow {2^{2n}} - 1 = {2^{20}} - 1 \Rightarrow n = 10. \]
+		Khi đó: ${\left( {\dfrac{1}{{{x^4}}} + {x^7}} \right)^{10}} = {\left( {{x^{ - 4}} + {x^7}} \right)^{10}} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k{{({x^{ - 4}})}^{10 - k}}.{x^{7k}}} = \displaystyle\sum\limits_{k = 0}^{10} {\mathrm{C}_{10}^k{x^{11k - 40}}}$\\
+		Hệ số chứa ${x^{26}}$ ứng với giá trị $k:$ $11k - 40 = 26 \Rightarrow k = 6$.\\
+		Vậy hệ số chứa ${x^{26}}$ là: $\mathrm{C}_{10}^6 = 210$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Cho $n\in\mathbb{N}^*$ và ${(1 + x)^n} = {a_0} + {a_1}x + \cdots + {a_n}{x^n}$. Biết rằng tồn tại số nguyên $k$ ($1 \le k \le n - 1$) sao cho $\dfrac{{{a_{k - 1}}}}{2} = \dfrac{{{a_k}}}{9} = \dfrac{{{a_{k + 1}}}}{{24}}$. Tính $n = ?$.
+	\choice
+	{\True $10$}
+	{$11$}
+	{$20$}
+	{$22$}
+	\loigiai{
+		Ta có: ${a_k} = \mathrm{C}_n^k$, suy ra hệ $\heva{&\dfrac{1}{2}\dfrac{{n!}}{{(k - 1)!(n - k + 1)!}} = \dfrac{1}{9}\dfrac{{n!}}{{(n - k)!k!}}\\&\dfrac{1}{9}\dfrac{{n!}}{{(n - k)!k!}} = \dfrac{1}{{24}}\dfrac{{n!}}{{(n - k - 1)!(k + 1)!}}}$
+		\[ \Leftrightarrow \heva{&9k = 2(n - k + 1)\\&24(k + 1) = 9(n - k)} \Leftrightarrow \heva{&2n - 11k = - 2\\&9n - 33k = 24} \Leftrightarrow n = 10,k = 2. \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Trong khai triển của ${(\dfrac{1}{3} + \dfrac{2}{3}x)^{10}}$ thành đa thức ${a_0} + {a_1}x + {a_2}{x^2} + \cdots + {a_9}{x^9} + {a_{10}}{x^{10}}$, hãy tìm hệ số ${a_k}$ lớn nhất ($0 \le k \le 10$).
+	\choice
+	{\True ${a_{10}} = 3003\dfrac{{{2^{10}}}}{{{3^{15}}}}$}
+	{${a_5} = 3003\dfrac{{{2^{10}}}}{{{3^{15}}}}$}
+	{${a_4} = 3003\dfrac{{{2^{10}}}}{{{3^{15}}}}$}
+	{${a_9} = 3003\dfrac{{{2^{10}}}}{{{3^{15}}}}$}
+	\loigiai{
+		Ta có: ${\left( {\dfrac{1}{3} + \dfrac{2}{3}x} \right)^{15}} = \displaystyle\sum\limits_{k = 0}^{15} {\mathrm{C}_{15}^k{{\left( {\dfrac{1}{3}} \right)}^{15 - k}}{{\left( {\dfrac{2}{3}x} \right)}^k} = \displaystyle\sum\limits_{k = 0}^{15} {\mathrm{C}_{15}^k\dfrac{{{2^k}}}{{{3^{15}}}}{x^k}} }$\\
+		Hệ số của ${x^k}$ trong khai triển ${a_k} = \dfrac{1}{{{3^{^{15}}}}}\mathrm{C}_{15}^k{2^k}$\\
+		Ta có: ${a_{k - 1}} < {a_k} \Leftrightarrow \mathrm{C}_{15}^{k - 1}{2^{k - 1}} < \mathrm{C}_{15}^k{2^k} \Leftrightarrow \mathrm{C}_{15}^{k - 1} < 2\mathrm{C}_{15}^k$\\
+		$\Leftrightarrow k < \dfrac{{32}}{3} \Rightarrow k \le 10.$ Từ đó: ${a_0} < {a_1} < \ldots < {a_{10}}$\\
+		Đảo dấu bất đẳng thức trên, ta được:
+		\[ {a_{k - 1}} < {a_k} \Leftrightarrow k > \dfrac{{32}}{3} \Rightarrow {a_{10}} > {a_{11}} > \ldots > {a_{15}} \]
+		Vậy hệ số lớn nhất phải tìm là: ${a_{10}} = \dfrac{{{2^{10}}}}{{{3^{15}}}}\mathrm{C}_{15}^{10} = 3003\dfrac{{{2^{10}}}}{{{3^{15}}}}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Giả sử ${(1 + 2x)^n} = {a_0} + {a_1}x + {a_2}{x^2} + \cdots + {a_n}{x^n}$, biết rằng ${a_0} + {a_1} + \cdots + {a_n} = 729$. Tìm $n$ và số lớn nhất trong các số ${a_0},{a_1},\ldots,{a_n}$.
+	\choice
+	{\True $n=6$, $\max \left\{ {{a_k}} \right\} = {a_4} = 240$}
+	{$n=6$, $\max \left\{ {{a_k}} \right\} = {a_6} = 240$}
+	{$n=4$, $\max \left\{ {{a_k}} \right\} = {a_4} = 240$}
+	{$n=4$, $\max \left\{ {{a_k}} \right\} = {a_6} = 240$}
+	\loigiai{
+		Ta có: ${a_0} + {a_1} + \cdots + {a_n} = {(1 + 2.1)^n} = {3^n} = 729 \Rightarrow n = 6$\\
+		${a_k} = \mathrm{C}_6^k{2^k}$ suy ra $\max \left\{ {{a_k}} \right\} = {a_4} = 240$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Cho khai triển ${(1 + 2x)^n} = {a_0} + {a_1}x + \cdots + {a_n}{x^n}$, trong đó $n\in\mathbb{N}^*$. Tìm số lớn nhất trong các số ${a_0},{a_1},\ldots,{a_n}$, biết các hệ số ${a_0},{a_1},\ldots,{a_n}$ thỏa mãn hệ thức: ${a_0} + \dfrac{{{a_1}}}{2} + \cdots + \dfrac{{{a_n}}}{{{2^n}}} = 4096$.
+	\choice
+	{\True $126720$}
+	{$213013$}
+	{$130272$}
+	{$130127$}
+	\loigiai{
+		Đặt $f(x) = {(1 + 2x)^n} = {a_0} + {a_1}x + \cdots + {a_n}{x^n}$
+		\[ \Rightarrow {a_0} + \dfrac{{{a_1}}}{2} + \cdots + \dfrac{{{a_n}}}{{{2^n}}} = f\left( {\dfrac{1}{2}} \right) = {2^n} \Rightarrow {2^n} = 4096 \Leftrightarrow n = 12 \]
+		Với mọi $k \in \left\{ {0,1,2,\ldots,11} \right\}$ ta có: ${a_k} = {2^k}\mathrm{C}_{12}^k, {a_{k + 1}} = {2^{k + 1}}\mathrm{C}_{12}^{k + 1}$
+		\[ \Leftrightarrow \dfrac{{{a_k}}}{{{a_{k + 1}}}} < 1 \Leftrightarrow \dfrac{{{2^k}\mathrm{C}_{12}^k}}{{{2^{k + 1}}\mathrm{C}_{12}^{k + 1}}} < 1 \Leftrightarrow \dfrac{{k + 1}}{{2(12 - k)}} < 1 \Leftrightarrow k < \dfrac{{23}}{3} \]
+		Mà $k \in Z \Rightarrow k \le 7$. Do đó ${a_0} < {a_1} < \ldots < {a_8}$\\
+		Tương tự: $\dfrac{{{a_k}}}{{{a_{k + 1}}}} > 1 \Leftrightarrow k > 7 \Rightarrow {a_8} > {a_9} > \ldots > {a_{12}}$\\
+		Số lớn nhất trong các số ${a_0},{a_1},\ldots,{a_{12}}$ là ${a_8} = {2^8}\mathrm{C}_{12}^8 = 126720$.
+	}
+\end{ex}
+\dongcham{2}
+
+\subsection{DẠNG 2: BÀI TOÁN TỔNG $\displaystyle\sum\limits_{k=0}^{n}a_k\mathrm{C}_n^kb^k$}
+\textbf{Phương pháp 1:} Dựa vào khai triển nhị thức Newton
+$$(a+b)^n=\mathrm{C}_n^0a^n+a^{n-1}b\mathrm{C}_n^1+a^{n-2}b^2\mathrm{C}_n^2+\cdots+b^n\mathrm{C}_n^n.$$
+Ta chọn những giá trị $a$, $b$ thích hợp thay vào đẳng thức trên. Một số kết quả ta thường hay sử dụng
+\begin{itemize}
+	\item $\mathrm{C}_n^k=\mathrm{C}_n^{n-k}$.
+	\item $\mathrm{C}_n^0+\mathrm{C}_n^1+\cdots+\mathrm{C}_n^n=2^n$.
+	\item $\displaystyle\sum\limits_{k=0}^{n}(-1)^k\mathrm{C}_n^k=0$.
+	\item $\displaystyle\sum\limits_{k=0}^{n}\mathrm{C}_{2n}^{2k}=\displaystyle\sum\limits_{k=0}^{n}\mathrm{C}_{2n}^{2k-1}=\dfrac{1}{2}\displaystyle\sum\limits_{k=0}^{2n}\mathrm{C}_{2n}^k$.
+	\item $\displaystyle\sum\limits_{k=0}^{n}\mathrm{C}_n^ka^k=(1+a)^n$.
+\end{itemize}
+\textbf{Phương pháp 2:} Dựa vào đẳng thức đặc trưng\\
+Mấu chốt của cách giải trên là ta tìm ra được đẳng thức $(*)$ và ta thường gọi $(*)$ là đẳng thức đặc trưng.\\
+Cách giải ở trên được trình bày theo cách xét số hạng tổng quát ở vế trái (thường có hệ số chứa $k$) và biến đổi số hạng đó có hệ số không chứa $k$ hoặc chứa $k$ nhưng tổng mới dễ tính hơn hoặc đã có sẵn.
+
+\begin{ex}
+	Tổng $T = \,\,\mathrm{C}_n^0 + \mathrm{C}_n^1 + \mathrm{C}_n^2 + \mathrm{C}_n^3 + \cdots + \mathrm{C}_n^n$ bằng:
+	\choice
+	{\True $T = {2^n}$}
+	{$T = {2^n}- 1$}
+	{$T = {2^n} + 1$}
+	{$T = {4^n}$}
+	\loigiai{
+		Tính chất của khai triển nhị thức Niu – Tơn.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính giá trị của tổng $S = \,\,\mathrm{C}_6^0 + \mathrm{C}_6^1 + \cdots + \mathrm{C}_6^6$ bằng:
+	\choice
+	{\True $64$}
+	{$48$}
+	{$72$}
+	{$100$}
+	\loigiai{
+		\[ S = \,\,\mathrm{C}_6^0 + \mathrm{C}_6^1 + \cdots + \mathrm{C}_6^6 = {2^6} = 64 \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Khai triển ${\left( {x + y} \right)^5}$ rồi thay $x,y$ bởi các giá trị thích hợp. Tính tổng $S = \,\,\mathrm{C}_5^0 + \mathrm{C}_5^1 + \cdots + \mathrm{C}_5^5$
+	\choice
+	{\True $32$}
+	{$64$}
+	{$\,1$}
+	{$\,12$}
+	\loigiai{
+		Với $x = 1,y = 1$ ta có $S = \,\,\mathrm{C}_5^0 + \mathrm{C}_5^1 + \cdots + \mathrm{C}_5^5 = {(1 + 1)^5} = 32$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm số nguyên dương n sao cho: $\mathrm{C}_n^0 + 2\mathrm{C}_n^1 + 4\mathrm{C}_n^2 + \cdots + {2^n}\mathrm{C}_n^n = 243$
+	\choice
+	{$4$}
+	{$11$}
+	{$12$}
+	{\True $5$}
+	\loigiai{
+		Xét khai triển: ${(1 + x)^n} = \mathrm{C}_n^0 + x\mathrm{C}_n^1 + {x^2}\mathrm{C}_n^2 + \cdots + {x^n}\mathrm{C}_n^n$\\
+		Cho $x = 2$ ta có: $\mathrm{C}_n^0 + 2\mathrm{C}_n^1 + 4\mathrm{C}_n^2 + \cdots + {2^n}\mathrm{C}_n^n = {3^n}$\\
+		Do vậy ta suy ra ${3^n} = 243 = {3^5} \Rightarrow n = 5$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Khai triển ${\left( {x + y} \right)^5}$ rồi thay $x,y$ bởi các giá trị thích hợp. Tính tổng $S = \,\,\mathrm{C}_5^0 + \mathrm{C}_5^1 + \cdots + \mathrm{C}_5^5$
+	\choice
+	{\True $32$}
+	{$64$}
+	{$\,1$}
+	{$\,12$}
+	\loigiai{
+		Với $x = 1,y = 1$ ta có $S = \,\,\mathrm{C}_5^0 + \mathrm{C}_5^1 + \cdots + \mathrm{C}_5^5 = {(1 + 1)^5} = 32$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	% Câu gốc gồm 2 ý (a, b) nên tách thành 2 câu trắc nghiệm
+	Khai triển $(1+x+x^2+x^3)^5=a_0+a_1x+a_2x^2+\cdots+a_{15}x^{15}$. Hãy tính hệ số $a_{10}$.
+	\choice
+	{$a_{10}=\mathrm{C}_5^0.+\mathrm{C}_5^4+\mathrm{C}_5^4\mathrm{C}_5^3$}
+	{\True $a_{10}=\mathrm{C}_5^0.\mathrm{C}_5^5+\mathrm{C}_5^2\mathrm{C}_5^4+\mathrm{C}_5^4\mathrm{C}_5^3$}
+	{$a_{10}=\mathrm{C}_5^0.\mathrm{C}_5^5+\mathrm{C}_5^2\mathrm{C}_5^4-\mathrm{C}_5^4\mathrm{C}_5^3$}
+	{$a_{10}=\mathrm{C}_5^0.\mathrm{C}_5^5-\mathrm{C}_5^2\mathrm{C}_5^4+\mathrm{C}_5^4\mathrm{C}_5^3$}
+	\loigiai{
+		Đặt $f(x)=(1+x+x^2+x^3)^5=(1+x)^5(1+x^2)^5$.\\
+		Do đó hệ số $x^{10}$ bằng: $a_{10}=\mathrm{C}_5^0.\mathrm{C}_5^5+\mathrm{C}_5^2\mathrm{C}_5^4+\mathrm{C}_5^4\mathrm{C}_5^3$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	% TODO: file gốc không có đáp án nào khớp với $T=4^5$ nên chưa đánh dấu \True; cần kiểm tra lại đề/đáp án
+	Khai triển $(1+x+x^2+x^3)^5=a_0+a_1x+a_2x^2+\cdots+a_{15}x^{15}$. Tính tổng $T=a_0+a_1+\cdots+a_{15}$ và $S=a_0-a_1+a_2-\cdots-a_{15}$.
+	\choice
+	{$131$}
+	{\True $1024$}
+	{$0$}
+	{$1$}
+	\loigiai{
+		Đặt $f(x)=(1+x+x^2+x^3)^5=(1+x)^5(1+x^2)^5$.\\
+		Ta có $T=f(1)=4^5$; $S=f(-1)=0$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Khai triển $(1+2x+3x^2)^{10}=a_0+a_1x+a_2x^2+\cdots+a_{20}x^{20}$. Hãy tính hệ số $a_4$.
+	\choice
+	{$a_4=\mathrm{C}_{10}^0\cdot 2^4$}
+	{$a_4=2^4\mathrm{C}_{10}^4$}
+	{$a_4=\mathrm{C}_{10}^0\mathrm{C}_{10}^4$}
+	{\True $a_4=\mathrm{C}_{10}^0\cdot 2^4\mathrm{C}_{10}^4$}
+	\loigiai{
+		Đặt $f(x)=(1+2x+3x^2)^{10}=\displaystyle\sum\limits_{k=0}^{10}\mathrm{C}_{10}^k3^kx^{2k}(1+2x)^{10-k}$
+		\[ =\displaystyle\sum\limits_{k=0}^{10}\mathrm{C}_{10}^k3^kx^{2k}\displaystyle\sum\limits_{i=0}^{10-k}\mathrm{C}_{10-k}^i2^{10-k-i}x^{10-k-i} \]
+		\[ =\displaystyle\sum\limits_{k=0}^{10}\displaystyle\sum\limits_{i=0}^{10-k}\mathrm{C}_{10}^k\mathrm{C}_{10-k}^i3^k2^{10-k-i}x^{10+k-i} \]
+		Ta có: $a_4=\mathrm{C}_{10}^0\cdot 2^4\mathrm{C}_{10}^4$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Khai triển $(1+2x+3x^2)^{10}=a_0+a_1x+a_2x^2+\cdots+a_{20}x^{20}$. Tính tổng $S=a_1+2a_2+4a_3+\cdots+2^{20}a_{20}$.
+	\choice
+	{\True $S=17^{10}$}
+	{$S=15^{10}$}
+	{$S=17^{20}$}
+	{$S=7^{10}$}
+	\loigiai{
+		Đặt $f(x)=(1+2x+3x^2)^{10}$.\\
+		Ta có $S=f(2)=17^{10}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng sau: $S = \dfrac{1}{2}\mathrm{C}_n^0 - \dfrac{1}{4}\mathrm{C}_n^1 + \dfrac{1}{6}\mathrm{C}_n^3 - \dfrac{1}{8}\mathrm{C}_n^4 + \cdots + \dfrac{{{{( - 1)}^n}}}{{2(n + 1)}}\mathrm{C}_n^n$
+	\choice
+	{\True $\dfrac{1}{{2(n + 1)}}$}
+	{$1$}
+	{$2$}
+	{$\dfrac{1}{{(n + 1)}}$}
+	\loigiai{
+		Ta có: $S = \dfrac{1}{2}\left( {\mathrm{C}_n^0 - \dfrac{1}{2}\mathrm{C}_n^1 + \dfrac{1}{3}\mathrm{C}_n^2 - \cdots + \dfrac{{{{( - 1)}^n}}}{{n + 1}}\mathrm{C}_n^n} \right)$\\
+		Vì $\dfrac{{{{( - 1)}^k}}}{{k + 1}}\mathrm{C}_n^k = \dfrac{{{{( - 1)}^k}}}{{n + 1}}\mathrm{C}_{n + 1}^{k + 1}$ nên: $S = \dfrac{1}{{2(n + 1)}}\displaystyle\sum\limits_{k = 0}^n {{{( - 1)}^k}\mathrm{C}_{n + 1}^{k + 1}}$
+		\[ = \dfrac{{ - 1}}{{2(n + 1)}}\left( {\displaystyle\sum\limits_{k = 0}^{n + 1} {{{( - 1)}^k}\mathrm{C}_{n + 1}^k} - \mathrm{C}_{n + 1}^0} \right) = \dfrac{1}{{2(n + 1)}}. \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng sau: $S = \mathrm{C}_n^1{3^{n - 1}} + 2\mathrm{C}_n^2{3^{n - 2}} + 3\mathrm{C}_n^3{3^{n - 3}} + \cdots + n\mathrm{C}_n^n$
+	\choice
+	{\True $n{.4^{n - 1}}$}
+	{$0$}
+	{$1$}
+	{${4^{n - 1}}$}
+	\loigiai{
+		Ta có: $S = {3^n}\displaystyle\sum\limits_{k = 1}^n {k\mathrm{C}_n^k{{\left( {\dfrac{1}{3}} \right)}^k}}$\\
+		Vì $k\mathrm{C}_n^k{\left( {\dfrac{1}{3}} \right)^k} = n{\left( {\dfrac{1}{3}} \right)^k}\mathrm{C}_{n - 1}^{k - 1}$ $\forall k \ge 1$ nên
+		\[ S = {3^n}.n\displaystyle\sum\limits_{k = 1}^n {{{\left( {\dfrac{1}{3}} \right)}^k}\mathrm{C}_{n - 1}^{k - 1}} = {3^{n - 1}}.n\displaystyle\sum\limits_{k = 0}^{n - 1} {{{\left( {\dfrac{1}{3}} \right)}^k}\mathrm{C}_{n - 1}^k} = {3^{n - 1}}.n{(1 + \dfrac{1}{3})^{n - 1}} = n{.4^{n - 1}}. \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính các tổng sau: ${S_1} = \mathrm{C}_n^0 + \dfrac{1}{2}\mathrm{C}_n^1 + \dfrac{1}{3}\mathrm{C}_n^2 + \cdots + \dfrac{1}{{n + 1}}\mathrm{C}_n^n$
+	\choice
+	{$\dfrac{{{2^{n + 1}} + 1}}{{n + 1}}$}
+	{\True $\dfrac{{{2^{n + 1}} - 1}}{{n + 1}}$}
+	{$\dfrac{{{2^{n + 1}} - 1}}{{n + 1}} + 1$}
+	{$\dfrac{{{2^{n + 1}} - 1}}{{n + 1}} - 1$}
+	\loigiai{
+		Ta có:
+		\[ \dfrac{1}{{k + 1}}\mathrm{C}_n^k = \dfrac{1}{{k + 1}}\dfrac{{n!}}{{k!(n - k)!}} = \dfrac{1}{{n + 1}}\dfrac{{(n + 1)!}}{{(k + 1)![(n + 1) - (k + 1)]!}} \]
+		$= \dfrac{1}{{n + 1}}\mathrm{C}_{n + 1}^{k + 1}$ (*)
+		\[ \Rightarrow {S_1} = \dfrac{1}{{n + 1}}\displaystyle\sum\limits_{k = 0}^n {\mathrm{C}_{n + 1}^{k + 1}} = \dfrac{1}{{n + 1}}\left( {\displaystyle\sum\limits_{k = 0}^{n + 1} {\mathrm{C}_{n + 1}^k} - \mathrm{C}_{n + 1}^0} \right) = \dfrac{{{2^{n + 1}} - 1}}{{n + 1}}. \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính các tổng sau: ${S_2} = \mathrm{C}_n^1 + 2\mathrm{C}_n^2 + \cdots + n\mathrm{C}_n^n$
+	\choice
+	{$2n{.2^{n - 1}}$}
+	{$n{.2^{n + 1}}$}
+	{$2n{.2^{n + 1}}$}
+	{\True $n{.2^{n - 1}}$}
+	\loigiai{
+		Ta có: $k\mathrm{C}_n^k = k.\dfrac{{n!}}{{k!(n - k)!}} = \dfrac{{n!}}{{(k - 1)![(n - 1) - (k - 1)]!}}$\\
+		$= n\dfrac{{(n - 1)!}}{{(k - 1)![(n - 1) - (k - 1)]!}} = n\mathrm{C}_{n - 1}^{k - 1}$, $\forall k \ge 1$
+		\[ \Rightarrow {S_2} = \displaystyle\sum\limits_{k = 1}^n {n\mathrm{C}_{n - 1}^{k - 1}} = n\displaystyle\sum\limits_{k = 0}^{n - 1} {\mathrm{C}_{n - 1}^k} = n{.2^{n - 1}}. \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính các tổng sau: ${S_3} = 2.1.\mathrm{C}_n^2 + 3.2\mathrm{C}_n^3 + 4.3\mathrm{C}_n^4 + \cdots + n(n - 1)\mathrm{C}_n^n$.
+	\choice
+	{\True $n(n - 1){2^{n - 2}}$}
+	{$n(n + 2){2^{n - 2}}$}
+	{$n(n - 1){2^{n - 3}}$}
+	{$n(n - 1){2^{n + 2}}$}
+	\loigiai{
+		Ta có $k(k - 1)\mathrm{C}_n^k = \dfrac{{n!}}{{(k - 2)!(n - k)!}} = n(n - 1)\mathrm{C}_{n - 2}^{k - 2}$
+		\[ \Rightarrow {S_3} = n(n - 1)\displaystyle\sum\limits_{k = 2}^n {\mathrm{C}_{n - 2}^{k - 2}} = n(n - 1){2^{n - 2}}. \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng $S = \mathrm{C}_n^0 + \dfrac{{{3^2} - 1}}{2}\mathrm{C}_n^1 + \cdots + \dfrac{{{3^{n + 1}} - 1}}{{n + 1}}\mathrm{C}_n^n$
+	\choice
+	{$S = \dfrac{{{4^{n + 1}} - {2^{n + 1}}}}{{n + 1}}$}
+	{$S = \dfrac{{{4^{n + 1}} + {2^{n + 1}}}}{{n + 1}} - 1$}
+	{$S = \dfrac{{{4^{n + 1}} - {2^{n + 1}}}}{{n + 1}} + 1$}
+	{\True $S = \dfrac{{{4^{n + 1}} - {2^{n + 1}}}}{{n + 1}} - 1$}
+	\loigiai{
+		Ta có $S = {S_1} - {S_2}$, trong đó
+		\[ {S_1} = \mathrm{C}_n^0 + \dfrac{{{3^2}}}{2}\mathrm{C}_n^1 + \dfrac{{{3^3}}}{3}\mathrm{C}_n^2 + \cdots + \dfrac{{{3^{n + 1}}}}{{n + 1}}\mathrm{C}_n^n \]
+		\[ {S_2} = \dfrac{1}{2}\mathrm{C}_n^1 + \dfrac{1}{3}\mathrm{C}_n^2 + \cdots + \dfrac{1}{{n + 1}}\mathrm{C}_n^n \]
+		Ta có ${S_2} = \dfrac{{{2^{n + 1}} - 1}}{{n + 1}} - 1$\\
+		Tính ${S_1} = ?$\\
+		Ta có: $\dfrac{{{3^{k + 1}}}}{{k + 1}}\mathrm{C}_n^k = {3^{k + 1}}\dfrac{{n!}}{{(k + 1)!(n - k)!}}$ $= \dfrac{{{3^{k + 1}}}}{{n + 1}}\dfrac{{(n + 1)!}}{{(k + 1)![(n + 1) - (k + 1)]!}} = \dfrac{{{3^{k + 1}}}}{{n + 1}}\mathrm{C}_{n + 1}^{k + 1}$
+		\[ \Rightarrow {S_1} = \dfrac{1}{{n + 1}}\displaystyle\sum\limits_{k = 0}^n {{3^{k + 1}}\mathrm{C}_{n + 2}^{k + 1}} - 2\mathrm{C}_n^0 = \dfrac{1}{{n + 1}}\left( {\displaystyle\sum\limits_{k = 0}^{n + 1} {{3^k}\mathrm{C}_{n + 1}^k} - \mathrm{C}_n^0} \right) - 2\mathrm{C}_n^0 = \dfrac{{{4^{n + 1}} - 1}}{{n + 1}} - 2. \]
+		Vậy $S = \dfrac{{{4^{n + 1}} - {2^{n + 1}}}}{{n + 1}} - 1$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng $S = \mathrm{C}_n^0 + \dfrac{{{2^2} - 1}}{2}\mathrm{C}_n^1 + \cdots + \dfrac{{{2^{n + 1}} - 1}}{{n + 1}}\mathrm{C}_n^n$
+	\choice
+	{\True $S = \dfrac{{{3^{n + 1}} - {2^{n + 1}}}}{{n + 1}}$}
+	{$S = \dfrac{{{3^n} - {2^{n + 1}}}}{{n + 1}}$}
+	{$S = \dfrac{{{3^{n + 1}} - {2^n}}}{{n + 1}}$}
+	{$S = \dfrac{{{3^{n + 1}} + {2^{n + 1}}}}{{n + 1}}$}
+	\loigiai{
+		Ta có: $S = {S_1} - {S_2}$\\
+		Trong đó ${S_1} = \displaystyle\sum\limits_{k = 0}^n {\mathrm{C}_n^k\dfrac{{{2^{k + 1}}}}{{k + 1}}} ; {S_2} = \displaystyle\sum\limits_{k = 0}^n {\dfrac{{\mathrm{C}_n^k}}{{k + 1}}} = \dfrac{{{2^{n + 1}} - 1}}{{n + 1}} - 1$\\
+		Mà $\dfrac{{{2^{k + 1}}}}{{k + 1}}\mathrm{C}_n^k = \dfrac{{{2^{k + 1}}}}{{n + 1}}\mathrm{C}_{n + 1}^{k + 1} \Rightarrow {S_1} = \dfrac{{{3^{n + 1}} - 1}}{{n + 1}} - 1$\\
+		Suy ra: $S = \dfrac{{{3^{n + 1}} - {2^{n + 1}}}}{{n + 1}}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tìm số nguyên dương n sao cho : $\mathrm{C}_{2n + 1}^1 - 2.2\mathrm{C}_{2n + 1}^2 + {3.2^2}\mathrm{C}_{2n + 1}^3 - \cdots + (2n + 1){2^n}\mathrm{C}_{2n + 1}^{2n + 1} = 2005$
+	\choice
+	{$n = 1001$}
+	{\True $n = 1002$}
+	{$n = 1114$}
+	{$n = 102$}
+	\loigiai{
+		Đặt $S = \displaystyle\sum\limits_{k = 1}^{2n + 1} {{{( - 1)}^{k - 1}}.k{{.2}^{k - 1}}\mathrm{C}_{2n + 1}^k}$\\
+		Ta có: ${( - 1)^{k - 1}}.k{.2^{k - 1}}\mathrm{C}_{2n + 1}^k = = {( - 1)^{k - 1}}.(2n + 1){.2^{k - 1}}\mathrm{C}_{2n}^{k - 1}$\\
+		Nên $S = (2n + 1)(\mathrm{C}_{2n}^0 - 2\mathrm{C}_{2n}^1 + {2^2}\mathrm{C}_{2n}^2 - \cdots + {2^{2n}}\mathrm{C}_{2n}^{2n}) = 2n + 1$\\
+		Vậy $2n + 1 = 2005 \Leftrightarrow n = 1002$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng ${1.3^0}{.5^{n - 1}}\mathrm{C}_n^{n - 1} + {2.3^1}{.5^{n - 2}}\mathrm{C}_n^{n - 2} + \cdots + n{.3^{n - 1}}{5^0}\mathrm{C}_n^0$
+	\choice
+	{\True $n{.8^{n - 1}}$}
+	{$(n + 1){.8^{n - 1}}$ C.$(n - 1){.8^n}$}
+	{$n{.8^n}$}
+	\loigiai{
+		Ta có: $VT = \displaystyle\sum\limits_{k = 1}^n {k{{.3}^{k - 1}}{{.5}^{n - k}}\mathrm{C}_n^{n - k}}$\\
+		Mà $k{.3^{k - 1}}{.5^{n - k}}\mathrm{C}_n^{n - k} = n{.3^{k - 1}}{.5^{n - k}}.\mathrm{C}_{n - 1}^{k - 1}$\\
+		Suy ra: $VT = n({3^0}{.5^{n - 1}}\mathrm{C}_{n - 1}^0 + {3^1}{.5^{n - 2}}\mathrm{C}_{n - 1}^1 + \cdots + {3^{n - 1}}{5^0}\mathrm{C}_{n - 1}^{n - 1})$
+		\[ = n{(5 + 3)^{n - 1}} = n{.8^{n - 1}} \]
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng $S = 2.1\mathrm{C}_n^2 + 3.2\mathrm{C}_n^3 + 4.3\mathrm{C}_n^4 + \cdots + n(n - 1)\mathrm{C}_n^n$
+	\choice
+	{$n(n + 1){2^{n - 2}}$}
+	{\True $n(n - 1){2^{n - 2}}$}
+	{$n(n - 1){2^n}$}
+	{$(n - 1){2^{n - 2}}$}
+	\loigiai{
+		Ta có: $S = \displaystyle\sum\limits_{k = 2}^n {k(k - 1)\mathrm{C}_n^k}$\\
+		Mà $k(k - 1)\mathrm{C}_n^k = n(n - 1)\mathrm{C}_{n - 2}^{k - 2}$\\
+		Suy ra $S = n(n - 1)(\mathrm{C}_{n - 2}^0 + \mathrm{C}_{n - 2}^1 + \mathrm{C}_{n - 2}^2 + \cdots + \mathrm{C}_{n - 2}^{n - 2}) = n(n - 1){2^{n - 2}}$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng ${\left( {\mathrm{C}_n^0} \right)^2} + {\left( {\mathrm{C}_n^1} \right)^2} + {\left( {\mathrm{C}_n^2} \right)^2} + \cdots + {\left( {\mathrm{C}_n^n} \right)^2}$
+	\choice
+	{\True $\mathrm{C}_{2n}^n$}
+	{$\mathrm{C}_{2n}^{n - 1}$}
+	{$2\mathrm{C}_{2n}^n$}
+	{$\mathrm{C}_{2n - 1}^{n - 1}$}
+	\loigiai{
+		Ta có: ${\left( {x + 1} \right)^n}{\left( {1 + x} \right)^n} = {\left( {x + 1} \right)^{2n}}$.\\
+		Vế trái của hệ thức trên chính là:
+		\[ \left( {\mathrm{C}_n^0{x^n} + \mathrm{C}_n^1{x^{n - 1}} + \cdots + \mathrm{C}_n^n} \right)\left( {\mathrm{C}_n^0 + \mathrm{C}_n^1x + \cdots + \mathrm{C}_n^n{x^n}} \right) \]
+		Và ta thấy hệ số của ${x^n}$ trong vế trái là
+		\[ {\left( {\mathrm{C}_n^0} \right)^2} + {\left( {\mathrm{C}_n^1} \right)^2} + {\left( {\mathrm{C}_n^2} \right)^2} + \cdots + {\left( {\mathrm{C}_n^n} \right)^2} \]
+		Còn hệ số của ${x^n}$ trong vế phải ${\left( {x + 1} \right)^{2n}}$ là $\mathrm{C}_{2n}^n$\\
+		Do đó ${\left( {\mathrm{C}_n^0} \right)^2} + {\left( {\mathrm{C}_n^1} \right)^2} + {\left( {\mathrm{C}_n^2} \right)^2} + \cdots + {\left( {\mathrm{C}_n^n} \right)^2} = \mathrm{C}_{2n}^n$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng sau: ${S_1} = {5^n}\mathrm{C}_n^0 + {5^{n - 1}}.3.\mathrm{C}_n^{n - 1} + {3^2}{.5^{n - 2}}\mathrm{C}_n^{n - 2} + \cdots + {3^n}\mathrm{C}_n^0$
+	\choice
+	{${28^n}$}
+	{$1 + {8^n}$}
+	{${8^{n - 1}}$}
+	{\True ${8^n}$}
+	\loigiai{
+		Ta có: ${S_1} = {(5 + 3)^n} = {8^n}$
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	${S_2} = \mathrm{C}_{2011}^0 + {2^2}\mathrm{C}_{2011}^2 + \cdots + {2^{2010}}\mathrm{C}_{2011}^{2010}$
+	\choice
+	{$\dfrac{{{3^{2011}} + 1}}{2}$}
+	{$\dfrac{{{3^{211}} - 1}}{2}$}
+	{$\dfrac{{{3^{2011}} + 12}}{2}$}
+	{\True $\dfrac{{{3^{2011}} - 1}}{2}$}
+	\loigiai{
+		Xét khai triển:
+		\[ {(1 + x)^{2011}} = \mathrm{C}_{2011}^0 + x\mathrm{C}_{2011}^1 + {x^2}\mathrm{C}_{2011}^2 + \cdots + {x^{2010}}\mathrm{C}_{2011}^{2010} + {x^{2011}}\mathrm{C}_{2011}^{2011} \]
+		Cho $x = 2$ ta có được:\\
+		${3^{2011}} = \mathrm{C}_{2011}^0 + 2.\mathrm{C}_{2011}^1 + {2^2}\mathrm{C}_{2011}^2 + \cdots + {2^{2010}}\mathrm{C}_{2011}^{2010} + {2^{2011}}\mathrm{C}_{2011}^{2011}$ (1)\\
+		Cho $x = - 2$ ta có được:\\
+		$- 1 = \mathrm{C}_{2011}^0 - 2.\mathrm{C}_{2011}^1 + {2^2}\mathrm{C}_{2011}^2 - \cdots + {2^{2010}}\mathrm{C}_{2011}^{2010} - {2^{2011}}\mathrm{C}_{2011}^{2011}$ (2)\\
+		Lấy (1) + (2) ta có:
+		\[ 2\left( {\mathrm{C}_{2011}^0 + {2^2}\mathrm{C}_{2011}^2 + \cdots + {2^{2010}}\mathrm{C}_{2011}^{2010}} \right) = {3^{2011}} - 1 \]
+		Suy ra: ${S_2} = \mathrm{C}_{2011}^0 + {2^2}\mathrm{C}_{2011}^2 + \cdots + {2^{2010}}\mathrm{C}_{2011}^{2010} = \dfrac{{{3^{2011}} - 1}}{2}$.
+	}
+\end{ex}
+\dongcham{2}
+
+\begin{ex}
+	Tính tổng ${S_3} = \mathrm{C}_n^1 + 2\mathrm{C}_n^2 + \cdots + n\mathrm{C}_n^n$
+	\choice
+	{$4n{.2^{n - 1}}$}
+	{\True $n{.2^{n - 1}}$}
+	{$3n{.2^{n - 1}}$}
+	{$2n{.2^{n - 1}}$}
+	\loigiai{
+		Ta có: $k\mathrm{C}_n^k = k.\dfrac{{n!}}{{k!(n - k)!}} = \dfrac{{n!}}{{(k - 1)![(n - 1) - (k - 1)]!}} = n\dfrac{{(n - 1)!}}{{(k - 1)![(n - 1) - (k - 1)]!}} = n\mathrm{C}_{n - 1}^{k - 1}$, $\forall k \ge 1$
+		\[ \Rightarrow {S_3} = \displaystyle\sum\limits_{k = 1}^n {n\mathrm{C}_{n - 1}^{k - 1}} = n\displaystyle\sum\limits_{k = 0}^{n - 1} {\mathrm{C}_{n - 1}^k} = n{.2^{n - 1}}. \]
+	}
+\end{ex}
+\dongcham{2}
+
+\Closesolutionfile{ans}
