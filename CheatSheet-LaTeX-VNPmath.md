@@ -479,7 +479,7 @@ latexmk -pdf -synctex=1 -interaction=nonstopmode 12.tex
 - Lần build đầu tiên sinh các file trong `ans/` → nếu bảng đáp án trống, build lại.
 - Dọn rác khi cần: `latexmk -c` (giữ PDF) hoặc `latexmk -C`.
 - Lỗi header/footer hoặc dòng chấm lệch → xoá `.aux`, build lại từ đầu.
-- Thư mục `%OUTDIR%/` ở gốc là rác từ lần build có `-outdir` — có thể bỏ qua.
+- `%OUTDIR%/` là thư mục đầu ra của lần build có `-outdir`; giữ lại các tệp `.tex` được sinh trong đó nếu còn cần, còn các tệp phụ biên dịch đã được bỏ qua bởi `.gitignore`.
 
 ---
 
