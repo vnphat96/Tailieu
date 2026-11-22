@@ -148,17 +148,10 @@
 	\loigiai{
 		\immini{Do $I$ là tâm của hình chữ nhật $ABCD$ nên $I$ là trung điểm của $AC$.\\Vậy ta có $\overrightarrow{AI}=\overrightarrow{IC}$.}
 		{\begin{tikzpicture}[scale=1, line join=round, line cap=round]
-				\tkzDefPoints{0/0/A,3/0/B}
-				\tkzDrawGoldRectangle(A,B)
-				\tkzGetPoints{C}{D}
-				%\tkzDrawSegment(A,C)
-				\tkzDefMidPoint(A,C)
-				\tkzGetPoint{I}
-				\draw[->] (A)--(I);
-				\draw[->] (I)--(C);
-				\tkzDrawPoints[fill=black,size=4](D,C,A,B,I)
-				\tkzLabelPoints[below](A,B,I)
-				\tkzLabelPoints[above](C,D)
+			\path (0,0) coordinate (A) (4,0) coordinate (B) (4,3) coordinate (C) (0,3) coordinate (D);
+			\coordinate (I) at ($(A)!0.5!(C)$);
+			\draw (A)--(B)--(C)--(D)--cycle (A)--(C) (B)--(D);
+			\foreach \d/\g in {A/225,B/-45,C/45,D/135,I/0} \fill (\d) circle (1.5pt)node[shift=(\g:10pt)]{$\d$};
 		\end{tikzpicture}}
 	}
 \end{ex}
